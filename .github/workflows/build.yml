@@ -4,31 +4,44 @@ on:
   push:
     branches:
       - main
+  repository_dispatch:
+    types: [submodule-update]
+
+env:
+  NODE_VERSION: "20.7" # Define the Node.js version here
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [20.7]
-
     steps:
       - uses: actions/checkout@v4
-
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
         with:
-          node-version: ${{ matrix.node-version }}
+          submodules: true
+          fetch-depth: 0
+
+      - name: Git Submodule Update
+        run: |
+          git pull --recurse-submodules
+          git submodule update --remote --recursive
+
+
+      - name: Use Node.js ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
 
       - name: Install dependencies & build
         run: |
           npm ci
-          npm run node-modules-front
           npm run build-github
+          npm run node-modules-front
+          npm run build-tailwind
+
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
           publish_dir: ./dist
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.DO_IT_UPDATE_TOKEN }}
