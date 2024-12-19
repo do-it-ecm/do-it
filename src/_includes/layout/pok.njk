@@ -9,7 +9,6 @@ eleventyComputed:
     key: "{{ page.url }}"
     title: "{{ title | safe }}"
     parent: "{{ '../' | siteUrl(page.url) }}"
-
 ---
 
 {{ content | safe }}
