@@ -1,11 +1,11 @@
 import { EleventyRenderPlugin, EleventyHtmlBasePlugin } from "@11ty/eleventy";
 import eleventyNavigationPlugin from "@11ty/eleventy-navigation";
 import syntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
-import setupMarkdown from './config/markdown/index.js';
-import setupShortcodes from "./config/markdown/shortcodes/index.js";
-import assetsConfig from "./config/assets.js";
-import filtersConfig from "./config/filters.js";
-import postCompilation from "./config/post-build.js";
+import setupMarkdown from './scripts/eleventy/markdown/index.js';
+import setupShortcodes from "./scripts/eleventy/markdown/shortcodes/index.js";
+import assetsConfig from "./scripts/eleventy/assets.js";
+import filtersConfig from "./scripts/eleventy/filters.js";
+import postCompilation from "./scripts/eleventy/post-build.js";
 
 export default function(eleventyConfig) {
 
