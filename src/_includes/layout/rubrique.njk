@@ -4,13 +4,7 @@ layout: layout/base.njk
 eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
-    title: "{{ title | safe }}"
-    parent: >
-      {% if page.url == '/' %}
-        null
-      {% else %}
-        {{ '../' | siteUrl(page.url) }}
-      {% endif %}
+    title: "{{ page.url | parentUrl }}"
 ---
 
 <h1 class="text-5xl pt-4 pb-6">{{ title }}</h1>
