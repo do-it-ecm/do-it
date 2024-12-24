@@ -49,15 +49,13 @@ eleventyComputed:
         </div>
     {% endif %}
 
-    {% if page.inputPath | getValueFromPath('/', 2) == 'promo' %}
-        {% set year = page.inputPath | getValueFromPath('/', 3) %}
-        {% if year !== 'index.njk' and year !== 'index.md' %}
-            <div class="absolute top-0 right-0">
-                <span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2" data-pagefind-filter="Année">
-                    {{ year }}
-                </span>
-            </div>
-        {% endif %}
+    {% if page.url | getYearFromUrl %}
+        {% set year = page.url | getYearFromUrl %}
+        <div class="absolute top-0 right-0">
+            <span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2" data-pagefind-filter="Année">
+                {{ year }}
+            </span>
+        </div>
     {% endif%}
 </div>
 {% if résumé %}

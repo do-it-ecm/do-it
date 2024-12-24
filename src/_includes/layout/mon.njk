@@ -1,10 +1,11 @@
 ---
 layout: layout/post.njk
 
-tags: 
-    - "MON"
-
 eleventyComputed:
+  tags:
+    - "{{ page.url | getYearFromUrl }}"
+    - "MON"
+    - "temps {{ temps }}"
   eleventyNavigation:
     key: "{{ page.url }}"
     title: "{{ title | safe }}"

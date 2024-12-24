@@ -1,0 +1,24 @@
+---
+layout: layout/rubrique.njk
+
+eleventyComputed:
+  tags:
+    - "PROMO"
+    - "{{ page.url | getYearFromUrl }}"
+  title: "Promotion {{ page.url | getYearFromUrl }}"
+  resume: "Élèves de la Promotion {{ page.url | getYearFromUrl }}"
+  eleventyNavigation:
+    title: "Promotion {{ page.url | getYearFromUrl }}"
+    key: "{{ page.url }}"
+    parent: "{{ page.url | parentUrl }}"
+---
+
+<article>
+    <div class="my-3 px-2 p-1 border-solid border-2 rounded relative">
+        <div class="text-3xl mb-3">
+            Élèves de la promotion {{ page.url | getYearFromUrl }}
+        </div>
+        {% from 'macros/student-list.njk' import studentList %}
+        {{ studentList(collections.all | eleventyNavigation(eleventyNavigation.key) | reverse, type="promo") }}
+    </div>
+</article>
