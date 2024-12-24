@@ -1,22 +1,21 @@
 
 {% macro studentList(index, type, promo=null) %}
+    {# Invisible span because eleventy does not work properly when loading collections for iteration #}
+    {% set loadIndex = index | length %}
+    <span class="hidden">{{ loadIndex }}</span>
     <ul class="flex flex-wrap not-prose list-none text-sm my-1 mx-0 px-1 gap-1 md:gap-2 lg:gap-3">
-        {% set types = [] %}
-        {% if promo %}
-            {% set types = (types.push(promo), types) %}
-        {% endif %}
-        {% set types = (types.push(type), types) %}
-
         {% for student in index | sort(attribute='data.authors') %}
-            {% set c = 0 %}
+            {% set typeMatches = type  == "promo" %}
+            {% set promoMatches = promo == null %}
             {% for tag in student.data.tags %}
-                {% for type in types %}
-                    {% if tag == type %}
-                        {% set c = c + 1 %}
-                    {% endif %}
-                {% endfor %}
+                {% if tag == type %}
+                    {% set typeMatches = true %}
+                {% elif tag == promo %}
+                    {% set promoMatches = true %}
+                {% endif %}
             {% endfor %}
-            {% if c == types.length or type == "promo" %}
+            {% if typeMatches and promoMatches %}
+                {% if student.data.authors or student.studentName %}
                 {# Dans les pages pok et mon (type= "POK" ou "MON") : on renseigne student.data.authors #}
                 {# Dans les pages ./src/promos/* (type="promo") : on renseigne student.title #}
                 <li class="relative group rounded-full border-blue-200 border-2 flex items-center hover:cursor-pointer">
@@ -25,6 +24,7 @@
                         </svg>{{ student.data.authors or student.title }}
                     </a>
                 </li>
+                {% endif %}
             {% endif %}
         {% endfor %}
     </ul>
