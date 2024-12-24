@@ -1,11 +1,11 @@
 ---
 layout: layout/post.njk
 
-tags: 
-    - "POK"
-    - "index"
-
 eleventyComputed:
+  tags:
+    - "{{ page.url | getYearFromUrl }}"
+    - "index"
+    - "POK"
   eleventyNavigation:
     key: "{{ page.url }}"
     title: "{{ title | safe }}"
