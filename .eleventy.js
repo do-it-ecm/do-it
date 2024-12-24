@@ -5,6 +5,7 @@ import setupMarkdown from './scripts/eleventy/markdown/index.js';
 import setupShortcodes from "./scripts/eleventy/markdown/shortcodes/index.js";
 import assetsConfig from "./scripts/eleventy/assets.js";
 import filtersConfig from "./scripts/eleventy/filters.js";
+import collectionsConfig from "./scripts/eleventy/collections.js";
 import postCompilation from "./scripts/eleventy/post-build.js";
 
 export default function(eleventyConfig) {
@@ -21,6 +22,7 @@ export default function(eleventyConfig) {
   setupShortcodes(eleventyConfig);
   assetsConfig(eleventyConfig);
   filtersConfig(eleventyConfig);
+  collectionsConfig(eleventyConfig);
   postCompilation(eleventyConfig); // tailwind and search
 
   return {
