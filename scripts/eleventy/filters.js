@@ -2,10 +2,6 @@ import { DateTime } from "luxon";
 
 export default async function (eleventyConfig) {
 
-    eleventyConfig.addCollection("promos", function (collectionApi) {
-        return collectionApi.getFilteredByGlob("./src/promos/!(20XX-20YY)/index.njk");
-    });
-
     eleventyConfig.addFilter("parentUrl", function (url) {
         if (!url || typeof url !== "string") return url;
 
@@ -19,6 +15,12 @@ export default async function (eleventyConfig) {
         }
         let parent = singleTrailing.substring(0, idx + 1);
         return parent.replace(/\/+$/, "/");
+    });
+
+    eleventyConfig.addFilter("getYearFromUrl", (url) => {
+        const consideredYear = url.split("/")[2];
+        const yearRegex = /^(\d{4}-\d{4}|\d{2}XX-\d{2}YY)$/;
+        return yearRegex.test(consideredYear) ? consideredYear : undefined;
     });
 
     eleventyConfig.addFilter("HalfTimeFromUrl", (url) => {
