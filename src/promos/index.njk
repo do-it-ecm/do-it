@@ -1,0 +1,30 @@
+---
+layout: layout/rubrique.njk
+
+title: "Promotions"
+tags: ['index']
+
+resume: 'Liste des promotions de Do_It'
+
+eleventyImport:
+  collections: ["PROMO"]
+
+eleventyExcludeFromCollections: true
+
+eleventyComputed:
+  eleventyNavigation:
+    key: "{{ page.url }}"
+    title: "{{ title | safe }}"
+    parent: "{{ page.url | parentUrl }}"
+---
+
+<article>
+    <div class="my-3 px-2 p-1 border-solid border-2 rounded relative">
+        <div class="text-3xl mb-3">
+            Années référencées sur ce site
+        </div>
+
+        {% from 'macros/promo-list.njk' import promoList %}
+        {{ promoList(collections.PROMO) }}
+    </div>
+</article>
