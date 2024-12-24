@@ -2,9 +2,15 @@
 layout: layout/post.njk
 
 title: "MON"
-tags: ['index']
+tags:
+  - "index"
+  - "MON"
 
-order: 2
+eleventyExcludeFromCollections: true
+
+eleventyImport:
+  collections: ["index", "PROMO"]
+
 resume: 'Monitoring of Novelties - Apprentissage en autonomie tutorée'
 ---
 
@@ -14,7 +20,7 @@ resume: 'Monitoring of Novelties - Apprentissage en autonomie tutorée'
     </div>
 
     {% from 'macros/promo-list.njk' import promoList %}
-    {{ promoList(collections.promos) }}
+    {{ promoList(collections.PROMO, "mon") }}
 </div>
 
 <div class="my-3 px-2 p-1 border-solid border-2 rounded relative">
