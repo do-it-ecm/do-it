@@ -4,7 +4,8 @@
  */
 import path from 'path';
 import { validateDirectory } from './filenames.js';
-import { validateMediaDirectory, validateMediaPlacement, MAX_MEDIA_SIZE, ASSETS_DIR } from './medias.js';
+import { validateMediaDirectory, validateMediaPlacement, MAX_MEDIA_SIZE } from './medias.js';
+import { validateStudentsFileStructure, STUDENT_FILESTRUCTURE_MESSAGE} from './filestructure.js';
 
 const SOURCE_DIR = 'src';
 
@@ -13,6 +14,7 @@ export function runComplianceChecks() {
     const invalidPaths = validateDirectory(SOURCE_DIR);
     const filesTooLarge = validateMediaDirectory(SOURCE_DIR);
     const incorrectPlacement = validateMediaPlacement(SOURCE_DIR);
+    const invalidFileStructure = validateStudentsFileStructure(SOURCE_DIR);
 
     if (invalidPaths.length) {
         console.error('The following files or directories have invalid names (must be alphanumeric characters, upper or lower, dashes, underscores or dots):');
@@ -26,8 +28,14 @@ export function runComplianceChecks() {
         console.error(`The following files were detected as media because they do not end with '.md' and are placed in the wrong directory, please move them to the assets directory:`);
         incorrectPlacement.forEach(path => console.error(`    - ${path}`));
     }
+    if (invalidFileStructure.length) {
+        console.error('The following student directories have an invalid file structure:');
+        invalidFileStructure.forEach(path => console.error(`    - ${path}`));
+        console.error('The file structure should be as follows:');
+        console.error(STUDENT_FILESTRUCTURE_MESSAGE);
+    }
 
-    if (invalidPaths.length || filesTooLarge.length || incorrectPlacement.length) {
+    if (invalidPaths.length || filesTooLarge.length || incorrectPlacement.length || invalidFileStructure.length) {
         console.error('Compliance checks failed.');
         process.exit(1);
     }
