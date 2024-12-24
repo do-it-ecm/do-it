@@ -2,9 +2,15 @@
 layout: layout/post.njk
 
 title: "POK"
-tags: ['index']
+tags:
+  - "index"
+  - "POK"
 
-order: 3
+eleventyImport:
+  collections: ["index", "PROMO"]
+
+eleventyExcludeFromCollections: true
+
 resume: 'Proof of Knowledge - Apprentissage en autonomie tutorée'
 ---
 
@@ -14,7 +20,7 @@ resume: 'Proof of Knowledge - Apprentissage en autonomie tutorée'
     </div>
 
     {% from 'macros/promo-list.njk' import promoList %}
-    {{ promoList(collections.promos) }}
+    {{ promoList(collections.PROMO, "pok") }}
 </div>
 
 <div class="my-3 px-2 p-1 border-solid border-2 rounded relative">
