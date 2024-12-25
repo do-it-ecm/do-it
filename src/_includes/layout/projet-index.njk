@@ -13,10 +13,6 @@ eleventyComputed:
     - "PROJET"
   title: "Projets {{ page.url | getYearFromUrl }}"
   resume: "Projets de la Promotion {{ page.url | getYearFromUrl }}"
-  eleventyNavigation:
-    title: "Projets {{ page.url | getYearFromUrl }}"
-    key: "{{ page.url }}"
-    parent: "{{ page.url | parentUrl }}"
 ---
 
 {% set year = page.url | getYearFromUrl %}
