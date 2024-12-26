@@ -5,7 +5,6 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "jest",
     "clean": "rm -rf dist",
     "clean-powershell": "Remove-Item './dist' -Recurse",
     "node-modules-front": "cd ./src/assets ; npm install ; cd ../..",
@@ -14,7 +13,9 @@
     "serve": "npm run check-compliance && npx @11ty/eleventy --serve --incremental",
     "serve-nav": "env NAV=true npm run serve",
     "debug": "DEBUG=* npx @11ty/eleventy",
-    "check-compliance": "node ./scripts/compliance/index.js"
+    "check-compliance": "node ./scripts/compliance/index.js",
+    "init-promotion": "node ./scripts/helper/promotion.js",
+    "init-student": "node ./scripts/helper/student.js"
   },
   "keywords": [],
   "author": "",
@@ -31,5 +32,8 @@
     "markdown-it-multimd-table": "^4.2.3",
     "pagefind": "^1.1.1",
     "tailwindcss": "^3.4.13"
+  },
+  "devDependencies": {
+    "inquirer": "^12.3.0"
   }
 }
