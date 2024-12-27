@@ -2,14 +2,16 @@
 layout: layout/rubrique.njk
 
 title: "Promotions"
-tags: ['index']
+tags:
+  - "index"
+  - "HOME"
 
 resume: 'Liste des promotions de Do_It'
 
 eleventyImport:
   collections: ["PROMO"]
 
-eleventyExcludeFromCollections: true
+eleventyExcludeFromCollections: ["index"]
 
 eleventyComputed:
   eleventyNavigation:

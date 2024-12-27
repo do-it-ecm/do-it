@@ -2,9 +2,16 @@
 layout: layout/post.njk
 
 title: "CS"
-tags: ["index"]
+tags:
+    - "index"
+    - "COURSE"
+    - "HOME"
 
-order: 1
+eleventyExcludeFromCollections: ["index", "COURSE"]
+
+eleventyImport:
+  collections: ["COURSE", "index"]
+
 resume: "Cours de Spécialités"
 ---
 
