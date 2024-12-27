@@ -11,6 +11,9 @@ Welcome to the Do-It 3 static website generator. This repository contains the so
     - [Installation](#installation)
   - [Important Links](#important-links)
   - [Contributing](#contributing)
+  - [Maintainance](#maintainance)
+    - [Maintainers](#maintainers)
+    - [Updating](#updating)
   - [License](#license)
   - [Troubleshooting](#troubleshooting)
     - [Windows](#windows)
@@ -61,6 +64,37 @@ npm install
 ## Contributing <span id="contributing"></span>
 
 Thank you for your interest in contributing to Do-It! We welcome all contributions, whether it be a simple typo fix or a new feature. Please read [the guidelines](./CONTRIBUTING.md) to ensure that your contribution is accepted.
+
+## Maintainance <span id="maintainance"></span>
+
+Do-It 3 is designed to not require any maintenance. In case of an issue, please open an issue on the GitHub repository.
+
+### Maintainers <span id="maintainers"></span>
+
+- [BoxBoxJason](https://github.com/BoxBoxJason)
+- [alouradou](https://githubcom/alouradou)
+- [François Brucker](https://github.com/FrancoisBrucker)
+
+### Updating <span id="updating"></span>
+
+For any updates to the website, please make sure to document them in the [CHANGELOG](./CHANGELOG.md) file.\
+If you want to add a new promotion or student, you can use the helper scripts provided in the `scripts/` directory.
+
+#### Adding a new promotion
+
+This process requires corresponding privileges on the GitHub organization and the GitHub repository.
+
+1. Create a remote repository on GitHub with a README file and a license file (CC0-1.0) in the main branch.
+2. Add the new repository to the list of allowed repositories for DO_IT_UPDATE_TOKEN secret in the [GitHub repository settings](https://github.com/organizations/do-it-ecm/settings/secrets/actions/DO_IT_UPDATE_TOKEN)
+3. Run the `npm run init-promotion` script and follow the instructions.
+
+#### Adding a new student
+
+This process requires corresponding privileges on the GitHub organization and the GitHub repository.
+
+1. Make sure the corresponding promotion repository is present in the `src/promos/` directory.
+2. Make sure you have the permissions to push on the promotion repository.
+3. Run the `npm run init-student` script and follow the instructions.
 
 ## License <span id="license"></span>
 
