@@ -72,7 +72,7 @@ That means you can use the code for any purpose, including commercial purposes, 
 ### Windows <span id="windows"></span>
 
 If you are using Windows, you will surely encounter multiple issues while setting up the project.\
-We **strongly encourage** you to switch to a **proper operating system **like **Fedora**, Ubuntu or MacOS.\
+We **strongly encourage** you to switch to a **proper operating system** like **Fedora**, Ubuntu or MacOS.\
 If you are stuck with Windows, here is a list of common issues and their solutions.
 
 #### Windows Permissions Issue

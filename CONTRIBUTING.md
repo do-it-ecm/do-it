@@ -30,7 +30,7 @@ The repository contains a few helper scripts to help you with the development pr
 `npm run check-compliance` will run the compliance checks on the repository. It will check the filestructure to find any inconsistencies with the guidelines.
 
 ### Init Student
-`npm run init-student` will create a new git branch and checkout in it. It will then create the student directory in the corresponding promotion. It will prompt you for the promotion and student name. It will also create the necessary files and directories for the student.
+`npm run init-student` will create a new git branch and checkout in it. It will then create the student directory in the corresponding promotion. It will prompt you for the promotion and student name, then for a confirmation. It will also create the necessary files and directories for the student.
 
 ### Init Promotion
 `npm run init-promotion` will create a new git submodule for a promotion. It will prompt you for the promotion year. It will also create the necessary files and directories for the promotion. It will set the upstream repository to a new repository that will be created on GitHub.
@@ -119,7 +119,7 @@ Be wary, the **build output will never contain any media file**. It will only co
 That means **you cannot package images** directly in the dist directory. **You must reference** the GitHub repository (or any other website) **URL** in the markdown files.\
 If you need to add a new image for the website (NOT a student page), you can add it in the `src/promos/<PROMO_DIRECTORY>/<STUDENT_DIRECTORY>/assets/` directory and reference its permalink URL in the markdown file.
 
-Under the MON directory, you have to place the student's work for each 
+Under the MON directory, you have to place the student's work for each
 ```
 Zola-Gordon/ (Student directory)
 ├── index.md (Student index file)
