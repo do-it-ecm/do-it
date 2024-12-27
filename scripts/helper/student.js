@@ -423,4 +423,6 @@ function formatStudentDirectory(studentName) {
     return `${removeAccents(firstName)}-${removeAccents(lastName)}`;
 }
 
-initStudent();
+if (import.meta.url === new URL(import.meta.url).href) {
+    initStudent();
+}
