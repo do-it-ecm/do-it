@@ -7,3 +7,6 @@
 [submodule "src/promos/2024-2025"]
 	path = src/promos/2024-2025
 	url = https://github.com/do-it-ecm/promo-2024-2025.git
+[submodule "src/cs"]
+	path = src/cs
+	url = https://github.com/do-it-ecm/courses.git
