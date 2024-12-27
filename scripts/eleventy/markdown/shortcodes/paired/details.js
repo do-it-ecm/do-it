@@ -1,11 +1,10 @@
-
 import { escapeHtml } from "./utils.js";
 
-export default async function(eleventyConfig) {
+export default function (eleventyConfig) {
 
-    eleventyConfig.addPairedShortcode('details', (content, arg) => {
-        
-        return `
+  eleventyConfig.addPairedShortcode('details', (content, arg) => {
+
+    return `
 
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none">
 <details class="group">
@@ -27,9 +26,9 @@ ${escapeHtml(arg)}
 ${escapeHtml(content)}
 </div>
 
-</details>     
+</details>
 </div>
-`        
-    });
+`
+  });
 };
 

@@ -1,7 +1,6 @@
+import { template } from "./utils.js";
 
-import {template} from "./utils.js";
-
-export default async function(eleventyConfig) {
+export default async function (eleventyConfig) {
 
   eleventyConfig.addPairedShortcode('lien', (content, arg) => {
 
@@ -15,6 +14,3 @@ ${template(content, arg)}
 `
   })
 };
-
-
-

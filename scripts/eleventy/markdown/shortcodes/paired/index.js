@@ -1,3 +1,7 @@
+/**
+ * Eleventy configuration for markdown paired shortcodes (build time)
+ */
+
 import info from "./info.js";
 import attention from "./attention.js";
 import note from "./note.js";
@@ -9,7 +13,7 @@ import prerequis from "./prerequis.js";
 import lien from "./lien.js";
 import lieninterne from "./lieninterne.js";
 
-export default async function(eleventyConfig) {
+export default function (eleventyConfig) {
 
     info(eleventyConfig);
     attention(eleventyConfig);

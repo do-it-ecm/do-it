@@ -1,9 +1,11 @@
-import {template} from "./quotes/utils.js";
-import quotes from "./quotes/index.js";
-import resume from "./resume.js";
+/**
+ * Eleventy configuration for markdown shortcodes (build time)
+ */
+
+import setupPairedShortCodes from "./paired/index.js";
+import setupSingleShortCodes from "./single/index.js";
 
 export default function setupShortcodes(eleventyConfig) {
-    quotes(eleventyConfig);
-    // resume(eleventyConfig);
+    setupPairedShortCodes(eleventyConfig);
+    setupSingleShortCodes(eleventyConfig);
 }
-
