@@ -1,7 +1,6 @@
+import { template } from "./utils.js";
 
-import {template} from "./utils.js";
-
-export default async function(eleventyConfig) {
+export default async function (eleventyConfig) {
 
   eleventyConfig.addPairedShortcode('note', (content, arg) => {
 

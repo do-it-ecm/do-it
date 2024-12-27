@@ -1,3 +1,7 @@
+/**
+ * Eleventy configuration for post-build tasks (post-build time)
+ */
+
 import { execSync } from "child_process";
 
 export default function (eleventyConfig) {

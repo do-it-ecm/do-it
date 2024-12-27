@@ -1,4 +1,3 @@
-// utils.js
 export function escapeHtml(code) {
     return "\n\n" + code + "\n\n";
 }

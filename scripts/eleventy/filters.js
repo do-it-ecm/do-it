@@ -1,6 +1,10 @@
+/**
+ * Eleventy configuration for filters (build time)
+ */
+
 import { DateTime } from "luxon";
 
-export default async function (eleventyConfig) {
+export default function (eleventyConfig) {
 
     eleventyConfig.addFilter("parentUrl", function (url) {
         if (!url || typeof url !== "string") return url;

@@ -1,6 +1,6 @@
-import {DateTime} from "luxon";
+import { DateTime } from "luxon";
 
-export default async function(eleventyConfig) {
+export default async function (eleventyConfig) {
 
     eleventyConfig.addShortcode('lieninterne', function (url, dateFormat = "dd/MM/yyyy") {
 
@@ -15,10 +15,6 @@ export default async function(eleventyConfig) {
         }
 
         const article = this.ctx.collections.all.find(item => item.url.endsWith(resolvedUrl));
-
-        // if (!article) {
-        //     return `<p class="error">Aucun article trouvé pour l'URL : ${resolvedUrl}</p>`;
-        // }
 
         const title = article?.data.title || "Titre indisponible";
         const résumé = article ?
