@@ -3,7 +3,10 @@
  */
 
 export default function (eleventyConfig) {
-  // Keep the assets node_modules in the output directory
-  eleventyConfig.addPassthroughCopy("src/assets/node_modules");
-  eleventyConfig.ignores.add("src/!(assets)/**/node_modules");
+  const PASS_THROUGH_GLOBS = [
+    "src/assets/node_modules",
+  ];
+  PASS_THROUGH_GLOBS.forEach((glob) => {
+    eleventyConfig.addPassthroughCopy(glob);
+  });
 };
