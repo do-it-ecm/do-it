@@ -11,9 +11,10 @@ export default function (eleventyConfig) {
         EleventyRenderPlugin,
         EleventyHtmlBasePlugin,
         eleventyNavigationPlugin,
-        syntaxHighlight
+        syntaxHighlight,
     ];
     PLUGINS.forEach((plugin) => {
         eleventyConfig.addPlugin(plugin);
     });
+
 }

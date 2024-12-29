@@ -12,13 +12,14 @@ export default {
         "./src/mon/**/*.{html,js,njk}",
         "./src/pok/**/*.{html,js,njk}",
         "./src/projets/**/*.{html,js,njk}",
-        "./scripts/eleventy/markdown/shortcodes/quotes/!(index).js"
+        "./scripts/eleventy/markdown/shortcodes/paired/!(index).js",
+        "./scripts/eleventy/markdown/shortcodes/single/!(index).js"
     ],
     theme: {
-    extend: {},
+        extend: {
+        },
     },
     plugins: [
         typography,
     ],
 }
-
