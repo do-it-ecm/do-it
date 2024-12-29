@@ -7,13 +7,15 @@
         @apply font-sans;
     }
 
-    img {
+    img:not([class*="img-"]) {
         @apply mx-auto;
+        @apply border-4 rounded p-0 m-4 max-w-[90%] mx-auto;
     }
 
     h2 {
         @apply border-black border-0 border-b-4 border-solid;
     }
+
     h3 {
         @apply border-black border-b-2 border-solid;
     }
@@ -21,15 +23,15 @@
     h4 {
         @apply border-black border-b border-solid;
     }
-            
+
     h5 {
         @apply border-black border-b border-dashed font-bold mt-6 mb-2;
     }
 
-    mjx-container[jax="SVG"] > svg {
+    mjx-container[jax="SVG"]>svg {
         display: inline;
     }
-    
+
     summary p {
         @apply m-0 inline-block;
     }
@@ -41,18 +43,70 @@
     blockquote {
         @apply border-l-8;
     }
-    code[class*=language-]::before, code[class*=language-]::after {
+
+    code[class*=language-]::before,
+    code[class*=language-]::after {
         content: "";
     }
 
-    img {
-        @apply border-4 rounded p-0 m-4 max-w-[90%] mx-auto;
+    .img-big-banner {
+        @apply max-w-full;
+    }
+
+    .img-banner {
+        @apply max-w-[80%];
+    }
+
+    .img-small-banner {
+        @apply max-w-[60%];
+    }
+
+    .img-huge-icon {
+        @apply max-w-[300px] max-h-[300px];
+    }
+
+    .img-bigger-icon {
+        @apply max-w-[200px] max-h-[200px];
+    }
+
+    .img-big-icon {
+        @apply max-w-[100px] max-h-[100px];
+    }
+
+    .img-icon {
+        @apply max-w-[50px] max-h-[50px];
+    }
+
+    .img-small-icon {
+        @apply max-w-[30px] max-h-[30px];
+    }
+
+    .img-tiny-icon {
+        @apply max-w-[20px] max-h-[20px];
+    }
+
+    .img-very-tiny-icon {
+        @apply max-w-[10px] max-h-[10px];
+    }
+
+    .img-big-img {
+        @apply max-w-[65%];
+    }
+
+    .img-img {
+        @apply max-w-[40%];
+    }
+
+    .img-small-img {
+        @apply max-w-[25%];
     }
 
 }
 
 @layer components {
-    a:not([class]), a:not([class]):visited {
+
+    a:not([class]),
+    a:not([class]):visited {
         @apply underline decoration-purple-500 decoration-2 hover:text-purple-800 hover:decoration-purple-800 active:decoration-4;
     }
 }
@@ -65,8 +119,11 @@ table.no-border tr {
     @apply underline decoration-1;
 }
 
-.quote p, .quote ul, .quote ol, .quote li {
-        @apply m-0;
+.quote p,
+.quote ul,
+.quote ol,
+.quote li {
+    @apply m-0;
 }
 
 details p {
@@ -74,25 +131,26 @@ details p {
 }
 
 /* For Safari details render */
-details > summary::-webkit-details-marker {
-  display: none;
+details>summary::-webkit-details-marker {
+    display: none;
 }
 
 /* Show line numbers on code */
 /* Source issue: https://github.com/11ty/eleventy-plugin-syntaxhighlight/issues/10 */
 pre {
-  counter-reset: lineNumber;
+    counter-reset: lineNumber;
 }
+
 code .highlight-line:before {
-  -webkit-user-select: none;
-  border-right: 1px solid #404040;
-  color: #858585;
-  content: counter(lineNumber);
-  counter-increment: lineNumber;
-  display: inline-block;
-  font-variant-numeric: tabular-nums;
-  margin-right: 1.2em;
-  padding-right: 1.2em;
-  text-align: right;
-  width: 2.4em;
+    -webkit-user-select: none;
+    border-right: 1px solid #404040;
+    color: #858585;
+    content: counter(lineNumber);
+    counter-increment: lineNumber;
+    display: inline-block;
+    font-variant-numeric: tabular-nums;
+    margin-right: 1.2em;
+    padding-right: 1.2em;
+    text-align: right;
+    width: 2.4em;
 }
