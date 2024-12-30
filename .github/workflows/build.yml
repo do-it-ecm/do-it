@@ -1,4 +1,4 @@
-name: build
+name: publish
 
 on:
   workflow_run:
@@ -10,7 +10,7 @@ env:
   NODE_VERSION: "20.7" # Define the Node.js version here
 
 jobs:
-  build:
+  publish:
     runs-on: ubuntu-latest
     steps:
       # Checkout code without initializing submodules
@@ -74,20 +74,11 @@ jobs:
           npm run build-github
           npm run node-modules-front
           npm run build-tailwind
-          pwd
-          ls -lAh
 
-    outputs:
-      build-dir: dist
-
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
         with:
-          publish_dir: ${{ needs.build.outputs.build-dir }}
+          publish_dir: dist
           github_token: ${{ secrets.GITHUB_TOKEN }}
           force_orphan: true
           publish_branch: gh-pages
