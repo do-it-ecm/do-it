@@ -2,28 +2,25 @@
  * Eleventy configuration for markdown paired shortcodes (build time)
  */
 
-import info from "./info.js";
-import attention from "./attention.js";
-import note from "./note.js";
-import faire from "./faire.js";
-import details from "./details.js";
-import exercice from "./exercice.js";
-import chemin from "./chemin.js";
-import prerequis from "./prerequis.js";
-import lien from "./lien.js";
-import lieninterne from "./lieninterne.js";
-
+import setupInfo from "./info.js";
+import setupAttention from "./attention.js";
+import setupNote from "./note.js";
+import setupFaire from "./faire.js";
+import setupDetails from "./details.js";
+import setupExercice from "./exercice.js";
+import setupChemin from "./chemin.js";
+import setupPrerequis from "./prerequis.js";
+import setupLien from "./lien.js";
 export default function (eleventyConfig) {
 
-    info(eleventyConfig);
-    attention(eleventyConfig);
-    note(eleventyConfig);
-    faire(eleventyConfig);
-    details(eleventyConfig);
-    exercice(eleventyConfig);
-    chemin(eleventyConfig);
-    prerequis(eleventyConfig);
-    lien(eleventyConfig);
-    lieninterne(eleventyConfig);
+    setupInfo(eleventyConfig);
+    setupAttention(eleventyConfig);
+    setupNote(eleventyConfig);
+    setupFaire(eleventyConfig);
+    setupDetails(eleventyConfig);
+    setupExercice(eleventyConfig);
+    setupChemin(eleventyConfig);
+    setupPrerequis(eleventyConfig);
+    setupLien(eleventyConfig);
 
 }
