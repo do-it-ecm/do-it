@@ -17,7 +17,7 @@ export const ASSETS_DIR = path.join('assets');
  * @param srcPath The path to the directory to validate.
  * @returns A list of invalid media file paths.
  */
-export function validateMediaDirectory(srcPath){
+export function validateMediaDirectory(srcPath) {
     const invalidPaths = [];
     const entries = fs.readdirSync(srcPath, { withFileTypes: true });
 
@@ -58,7 +58,7 @@ export function validateMediaPlacement(srcPath) {
                 invalidPaths.push(...validateMediaPlacement(fullPath));
             }
         } else {
-            if (!entry.name.endsWith('.md')) {
+            if (!(entry.name.endsWith('.md') || entry.name.endsWith('.njk') || entry.name.endsWith('.html'))) {
                 invalidPaths.push(fullPath);
             }
         }
