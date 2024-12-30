@@ -2,7 +2,7 @@ import { escapeHtml } from "./utils.js";
 
 export default function (eleventyConfig) {
 
-  eleventyConfig.addPairedShortcode('details', (content, arg) => {
+  eleventyConfig.addPairedShortcode('details', (content, arg = '<b>Détails</b>') => {
 
     return `
 

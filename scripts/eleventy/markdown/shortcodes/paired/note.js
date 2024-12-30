@@ -2,7 +2,7 @@ import { template } from "./utils.js";
 
 export default async function (eleventyConfig) {
 
-  eleventyConfig.addPairedShortcode('note', (content, arg) => {
+  eleventyConfig.addPairedShortcode('note', (content, arg = '<b>Note</b>') => {
 
     return `
 <div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
