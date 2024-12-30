@@ -153,7 +153,6 @@ def defineParser():
     )
 
     # Directory argument:
-    # - We use type=lambda p: os.path.abspath(p) to force the path to become absolute.
     parser.add_argument(
         "directory", type=str,
         help=("The directory to search for media files. "
