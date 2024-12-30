@@ -74,9 +74,11 @@ jobs:
           npm run build-github
           npm run node-modules-front
           npm run build-tailwind
+          pwd
+          ls -lAh
 
     outputs:
-      build-dir: ./dist
+      build-dir: dist
 
   deploy:
     runs-on: ubuntu-latest
