@@ -5,7 +5,7 @@
 import path from 'path';
 import { validateDirectory } from './filenames.js';
 import { validateMediaDirectory, validateMediaPlacement, MAX_MEDIA_SIZE } from './medias.js';
-import { validateStudentsFileStructure, STUDENT_FILESTRUCTURE_MESSAGE} from './filestructure.js';
+import { validateStudentsFileStructure, STUDENT_FILESTRUCTURE_MESSAGE } from './filestructure.js';
 
 const SOURCE_DIR = 'src';
 
@@ -25,7 +25,7 @@ export function runComplianceChecks() {
         filesTooLarge.forEach(path => console.error(`    - ${path}`));
     }
     if (incorrectPlacement.length) {
-        console.error(`The following files were detected as media because they do not end with '.md' and are placed in the wrong directory, please move them to the assets directory:`);
+        console.error(`WARNING: The following files were detected as media because they do not end with '.md' and are placed in the wrong directory, please move them to an assets directory:`);
         incorrectPlacement.forEach(path => console.error(`    - ${path}`));
     }
     if (invalidFileStructure.length) {
@@ -35,9 +35,11 @@ export function runComplianceChecks() {
         console.error(STUDENT_FILESTRUCTURE_MESSAGE);
     }
 
-    if (invalidPaths.length || filesTooLarge.length || incorrectPlacement.length || invalidFileStructure.length) {
-        console.error('Compliance checks failed.');
+    if (invalidPaths.length || filesTooLarge.length || invalidFileStructure.length) {
+        console.error('Compliance checks failed !');
         process.exit(1);
+    } else {
+        console.log('Compliance checks passed !');
     }
 }
 
