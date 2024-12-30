@@ -8,6 +8,7 @@ Thank you for your interest in contributing to Do-It! We welcome all contributio
 - [How to contribute](#how-to-contribute)
 - [Helper Scripts](#helper-scripts)
     - [Compliance Checks](#compliance-checks)
+    - [Serve](#serve)
     - [Init Student](#init-student)
     - [Init Promotion](#init-promotion)
 - [ShortCodes](#shortcodes)
@@ -54,6 +55,13 @@ The repository contains a few helper scripts to help you with the development pr
 
 ### Compliance Checks <span id="compliance-checks"></span>
 `npm run check-compliance` will run the compliance checks on the repository. It will check the filestructure to find any inconsistencies with the guidelines.
+
+### Serve <span id="serve"></span>
+`npm run serve` will build the website and serve it on a local server. It will watch for changes in the source files and rebuild the website when a change is detected. It will also reload the browser when the build is complete.
+
+PLEASE use this command to **check your changes before pushing them**. It will help you to see how your changes will look on the website.
+
+You can use `npm run serve-nav` to serve the website with the navigation bar. It will help you to navigate through the website more easily, but the build will be slower.
 
 ### Init Student <span id="init-student"></span>
 `npm run init-student` will create a new git branch and checkout in it. It will then create the student directory in the corresponding promotion. It will prompt you for the promotion and student name, then for a confirmation. It will also create the necessary files and directories for the student.

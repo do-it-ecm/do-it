@@ -9,6 +9,7 @@ Welcome to the Do-It 3 static website generator. This repository contains the so
   - [Getting Started](#getting-started)
     - [Prerequisites](#prerequisites)
     - [Installation](#installation)
+    - [Run In Local](#run-in-local)
   - [Important Links](#important-links)
   - [Contributing](#contributing)
   - [Maintainance](#maintainance)
@@ -54,6 +55,17 @@ git clone --recurse-submodules https://github.com/do-it-ecm/do-it.git
 cd do-it
 npm install
 ```
+
+### Run In Local <span id="run-in-local"></span>
+
+To run the website in your local environment, you can use the `npm run serve` command.
+
+This command will start a local server on `http://localhost:8080/` and watch for changes in the source files.\
+You can access the website by opening the URL in your browser.
+
+PLEASE use this command to **check your changes before pushing them**. It will help you to see how your changes will look on the website.
+
+You can use `npm run serve-nav` to serve the website with the navigation bar. It will help you to navigate through the website more easily, but the build will be slower.
 
 ## Important Links <span id="important-links"></span>
 
