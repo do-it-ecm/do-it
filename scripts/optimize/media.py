@@ -1,3 +1,8 @@
+# coding: utf-8
+"""
+Optimize media files in a directory by reducing their size
+"""
+
 import os
 import re
 import argparse
@@ -150,10 +155,9 @@ def defineParser():
     # Directory argument:
     # - We use type=lambda p: os.path.abspath(p) to force the path to become absolute.
     parser.add_argument(
-        "directory",
-        type=lambda p: os.path.abspath(p),
+        "directory", type=str,
         help=("The directory to search for media files. "
-              "Default is the script's directory. Must be absolute if user-supplied.")
+              "Must be absolute.")
     )
 
     # Boolean flags for image, video, and audio
@@ -238,6 +242,10 @@ def processArguments(parser):
     :param parser: The argument parser
     """
     arguments = parser.parse_args()
+    if not arguments.directory.startswith("/"):
+        parser.error("Please provide an absolute path")
+    elif not os.path.isdir(arguments.directory):
+        parser.error(f"Directory '{arguments.directory}' not found")
     if not (arguments.image or arguments.video or arguments.audio):
         parser.error("At least one of --image, --video, or --audio must be specified")
     replacement_dict = {}
