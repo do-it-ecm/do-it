@@ -72,7 +72,6 @@ jobs:
       - name: Build
         run: |
           npm run build-github
-          npm run node-modules-front
           npm run build-tailwind
 
       - name: Deploy

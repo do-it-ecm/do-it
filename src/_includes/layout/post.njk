@@ -6,15 +6,6 @@ eleventyComputed:
     résumé: "{{ résumé }}"
 ---
 
-<head>
-  <script type="module">
-    import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/+esm';
-    mermaid.initialize({
-      startOnLoad: true,
-    });
-  </script>
-</head>
-
 <article class="relative">
 <h1  {% if tags or authors %}class="mb-1"{% endif %}>{{ title }}</h1>
 <div {% if tags or authors %}class="mb-4"{% endif %}>
