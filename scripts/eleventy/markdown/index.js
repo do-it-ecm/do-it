@@ -40,6 +40,10 @@ export default function (eleventyConfig) {
             aotolabel: true,
         });
 
+    eleventyConfig.addFilter("md", function (content = "") {
+        return markdownItLibrary.render(content);
+    });
+
     // Set the customized library to Eleventy
     eleventyConfig.setLibrary("md", markdownItLibrary);
 }

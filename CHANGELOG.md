@@ -14,6 +14,7 @@ All notable changes to the Do-It website will be documented in this file
 - Added a new `CONTRIBUTING.md` file to help new contributors understand the guidelines and the workflow.
 - CC0-1.0 License was added to the repository.
 - A new `CHANGELOG.md` file was added to document all the changes made to the website.
+- Added prism.js plugins: `line-numbers`, `copy-to-clipboard`, `toolbar`, `show-language`, `normalize-whitespace`
 
 ### Changed
 
