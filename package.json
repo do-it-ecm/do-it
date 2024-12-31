@@ -7,7 +7,6 @@
   "scripts": {
     "clean": "rm -rf dist",
     "clean-powershell": "Remove-Item './dist' -Recurse",
-    "node-modules-front": "cd ./src/assets ; npm install ; cd ../..",
     "build-tailwind": "tailwindcss -i ./src/assets/stylesheets/main.css -o ./dist/assets/stylesheets/main.css",
     "build-github": "env NODE_ENV=production npx @11ty/eleventy",
     "serve": "npm run check-compliance && npx @11ty/eleventy --serve --incremental",

@@ -10,7 +10,7 @@ export default function (eleventyConfig) {
         "**/CONTRIBUTING.md",
         "**/.github/**",
         "**/assets/**",
-        "src/!(assets)/**/node_modules"
+        "**/node_modules/**",
     ];
     IGNORE_GLOBS.forEach((glob) => {
         eleventyConfig.ignores.add(glob);

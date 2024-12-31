@@ -6,6 +6,10 @@ import { DateTime } from "luxon";
 
 export default function (eleventyConfig) {
 
+    eleventyConfig.addFilter("md", function (content = "") {
+        return markdownItLibrary.render(content);
+    });
+
     eleventyConfig.addFilter("parentUrl", function (url) {
         if (!url || typeof url !== "string") return url;
 

@@ -10,32 +10,29 @@ footer: '<span style="font-family: Consolas, sans-serif;">Do_<span style="color:
 
         <title>{{ title }}</title>
 
-        <link href={{ "/assets/node_modules/prismjs/themes/prism-solarizedlight.min.css"  }} rel="stylesheet">
-        <link href={{ "/assets/node_modules/prismjs/plugins/line-numbers/prism-line-numbers.min.css"  }} rel="stylesheet">
+        <!-- Prismjs imports
+                - Prism core
+                - Prism line numbers
+                - Prism copy to clipboard
+                - Prism autoloader
+        -->
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+        <!-- Mermaid import and initialization -->
+        <script type="module" defer>
+            import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/+esm';
+            mermaid.initialize({
+                startOnLoad: true,
+            });
+        </script>
 
         <link href={{ "/assets/stylesheets/main.css"  }} rel="stylesheet">
-    </head>
-    <body>
-        <script>
-        window.MathJax = {
-            tex: {
-            inlineMath: [
-                [
-                '$', '$'
-                ],
-                [
-                '\\(', '\\)'
-                ]
-            ]
-            },
-            svg: {
-            fontCache: 'global'
-            }
-        };
-        </script>
-        <script type="text/javascript" id="MathJax-script"
-    src={{ "/assets/node_modules/mathjax/es5/tex-svg-full.js"  }}></script>
 
+    </head>
+
+    <body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000">
         <header class="border-b-2 border-gray-200 mb-4">
         <div class="max-w-[1000px] mx-auto px-4">
             <div class="min-h-[50px] flex justify-between items-center">
@@ -74,12 +71,38 @@ footer: '<span style="font-family: Consolas, sans-serif;">Do_<span style="color:
             </div>
         </footer>
 
-        <script>
+        <!-- MathJax import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer>
+            window.MathJax = {
+                tex: {
+                inlineMath: [
+                    [
+                    '$', '$'
+                    ],
+                    [
+                    '\\(', '\\)'
+                    ]
+                ]
+                },
+                svg: {
+                fontCache: 'global'
+                }
+            };
+
         MathJax
             .startup
             .document
             .getMathItemsWithin(document.body);
         </script>
-        <script src="/assets/node_modules/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js">
+            document.addEventListener('DOMContentLoaded', () => {
+                Prism.highlightAll();
+            });
+        </script>
     </body>
 </html>
