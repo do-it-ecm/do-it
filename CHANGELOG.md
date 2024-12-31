@@ -9,6 +9,9 @@ All notable changes to the Do-It website will be documented in this file
 - Compliance checks make sure that your changes comply with the guidelines before pushing. Bad practices are no longer allowed.
 - The website is now hosted on **aioli** at [https://do-it.aioli.ec-m.fr/](https://do-it.aioli.ec-m.fr/).
 - Multiple helper scripts were added to help with the addition of new promotions and students.
+- Added auto contributions script to automate the process of adding contributors to the promotion README files.
+- Added multiple optimizing script that were added to help with the migration of the images.
+- Added a new `CONTRIBUTING.md` file to help new contributors understand the guidelines and the workflow.
 - CC0-1.0 License was added to the repository.
 - A new `CHANGELOG.md` file was added to document all the changes made to the website.
 
