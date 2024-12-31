@@ -44,7 +44,7 @@ def sanitizeString(input_string: str) -> str:
 
     :return: The sanitized string
     """
-    normalized = unicodedata.normalize('NFD', input_string.replace(' ', '_').replace("'", "_").replace('"', "").replace('+', "_"))
+    normalized = unicodedata.normalize('NFD', input_string.replace(' ', '_').replace("'", "_").replace('"', "").replace('+', "_").replace('’', "_"))
     ascii_equivalent = ''.join(c for c in normalized if unicodedata.category(c) != 'Mn')
     return ascii_equivalent
 
