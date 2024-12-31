@@ -10,7 +10,7 @@ import * as path from 'path';
 // Maximum size of a media file in bytes (50MB)
 export const MAX_MEDIA_SIZE = 50 * 1024 * 1024;
 // Ignore directories when validating media placement
-const IGNORE_DIRECTORIES = ['node_modules', '.git', '.github', 'dist', 'scripts', 'LICENSE'];
+const IGNORE_DIRECTORIES = ['node_modules', '.git', '.github', 'dist', 'scripts', 'LICENSE', 'assets'];
 
 /**
  * Recursively validates that all media files in a given directory are not too large.
