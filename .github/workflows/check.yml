@@ -8,6 +8,9 @@ on:
       - closed
     branches:
       - main
+  push:
+    branches:
+      - main
 
 env:
   NODE_VERSION: "20.7" # Define the Node.js version here
