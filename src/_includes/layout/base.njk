@@ -99,6 +99,15 @@ footer: '<span style="font-family: Consolas, sans-serif;">Do_<span style="color:
         <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">
+            Prism.plugins.NormalizeWhitespace.setDefaults({
+                'remove-trailing': true,
+                'remove-indent': true,
+                'left-trim': true,
+                'right-trim': true,
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js">
             document.addEventListener('DOMContentLoaded', () => {
                 Prism.highlightAll();

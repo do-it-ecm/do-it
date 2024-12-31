@@ -6,7 +6,7 @@ import setupSizedImage from './sizedImage.js'
 import setupLienInterne from "./lieninterne.js";
 
 
-export default function setupShortcodes(eleventyConfig) {
+export default function setupSingleShortcodes(eleventyConfig) {
     setupSizedImage(eleventyConfig)
     setupLienInterne(eleventyConfig)
 }
