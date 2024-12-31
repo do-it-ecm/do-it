@@ -125,28 +125,10 @@ def parseArguments(parser: argparse.ArgumentParser):
                 contributors[contributor] = data
 
     # Print the contributors formatted for html import (sort the contributors by contributions)
-    print("""## Contributors
-
-<style>
-.contributor {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-decoration: none;
-}
-
-.contributor-icon {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin: 5px;
-}
-</style>
-
-""")
+    print("## Contributors\n")
     print('<div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; align-items: center;">')
     for contributor, data in sorted(contributors.items(), key=lambda x: x[1]["contributions"], reverse=True):
-        print(f'    <a href="{data["url"]}" class="contributor"><img src="{data["avatar"]}" title="{contributor}" class="contributor-icon"></a>')
+        print(f'    <a href="{data["url"]}" style="display: flex; flex-direction: column; align-items: center; text-decoration: none;"><img src="{data["avatar"]}" title="{contributor}" alt="{contributor}" style="width: 50px; height: 50px; border-radius: 50%; margin: 5px;"></a>')
     print('</div>')
 
 

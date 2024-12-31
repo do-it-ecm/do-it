@@ -44,7 +44,7 @@ def sanitizeString(input_string: str) -> str:
 
     :return: The sanitized string
     """
-    normalized = unicodedata.normalize('NFD', input_string.replace(' ', '_'))
+    normalized = unicodedata.normalize('NFD', input_string.replace(' ', '_').replace("'", "_").replace('"', "").replace('+', "_"))
     ascii_equivalent = ''.join(c for c in normalized if unicodedata.category(c) != 'Mn')
     return ascii_equivalent
 
@@ -73,17 +73,25 @@ def parseArguments(parser : argparse.ArgumentParser):
 
     # Rename files first to avoid conflicts with directories
     for original_file, sanitized_file in sanitized_file_map.items():
-        os.rename(original_file, sanitized_file)
+        try:
+            os.rename(original_file, sanitized_file)
+        except Exception as e:
+            print(f"Error renaming file {original_file} to {sanitized_file}: {e}")
 
     # Rename directories
     for original_dir, sanitized_dir in sanitized_dir_map.items():
-        os.rename(original_dir, sanitized_dir)
+        try:
+            os.rename(original_dir, sanitized_dir)
+        except Exception as e:
+            print(f"Error renaming directory {original_dir} to {sanitized_dir}: {e}")
 
     # Replace references in project files
+    sanizited_dir_map_replace = {os.path.basename(k): os.path.basename(v) for k, v in sanitized_dir_map.items()}
+    sanizited_file_map_replace = {os.path.basename(k): os.path.basename(v) for k, v in sanitized_file_map.items()}
     for root, _, files in os.walk(args.src):
         for file in files:
             if file.endswith(".md") or file.endswith(".html") or file.endswith(".njk"):
-                replaceReferences(os.path.join(root, file), sanitized_dir_map, sanitized_file_map)
+                replaceReferences(os.path.join(root, file), sanizited_dir_map_replace, sanizited_file_map_replace)
 
 
 def replaceReferences(file_path : str, dir_map : Dict[str, str], file_map : Dict[str, str]):
