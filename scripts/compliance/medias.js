@@ -9,8 +9,8 @@ import * as path from 'path';
 
 // Maximum size of a media file in bytes (50MB)
 export const MAX_MEDIA_SIZE = 50 * 1024 * 1024;
-// Media directory
-export const ASSETS_DIR = path.join('assets');
+// Ignore directories when validating media placement
+const IGNORE_DIRECTORIES = ['node_modules', '.git', '.github', 'dist', 'scripts', 'LICENSE'];
 
 /**
  * Recursively validates that all media files in a given directory are not too large.
@@ -52,11 +52,11 @@ export function validateMediaPlacement(srcPath) {
     for (const entry of entries) {
         const fullPath = path.join(srcPath, entry.name);
 
-        if (entry.isDirectory()) {
-            if (entry.name !== ASSETS_DIR) {
-                // Recursively validate subdirectories
-                invalidPaths.push(...validateMediaPlacement(fullPath));
-            }
+        if (IGNORE_DIRECTORIES.includes(entry.name)) {
+            continue;
+        } else if (entry.isDirectory()) {
+            // Recursively validate subdirectories
+            invalidPaths.push(...validateMediaPlacement(fullPath));
         } else {
             if (!(entry.name.endsWith('.md') || entry.name.endsWith('.njk') || entry.name.endsWith('.html'))) {
                 invalidPaths.push(fullPath);
