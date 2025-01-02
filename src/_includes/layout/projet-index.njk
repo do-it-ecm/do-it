@@ -6,30 +6,27 @@ eleventyImport:
 
 eleventyExcludeFromCollections: true
 
-eleventyComputed:
-  tags:
-    - "{{ page.url | getYearFromUrl }}"
+tags:
     - "index"
     - "PROJET"
+
+eleventyComputed:
+  year: "{{ page.url | getYearFromUrl }}"
   title: "Projets {{ page.url | getYearFromUrl }}"
   resume: "Projets de la Promotion {{ page.url | getYearFromUrl }}"
 ---
 
-{% set year = page.url | getYearFromUrl %}
 {# This is needed because eleventy does not load the collection before the computed data is computed #}
-{% set projetsLoader = collections.PROJET | length %}
 
 <div>
     <h1 class="text-3xl">Projets de la promotion {{ year }}</h1>
 </div>
 
 {% for projet in collections.PROJET | sort | reverse %}
-    {% set yearMatches = false %}
+    {% set yearMatches = projet.data.year == year %}
     {% set isIndex = false %}
     {% for tag in projet.data.tags %}
-        {% if tag == year %}
-            {% set yearMatches = true %}
-        {% elif tag == "index" %}
+        {% if tag == "index" %}
             {% set isIndex = true %}
         {% endif %}
     {% endfor %}
@@ -58,7 +55,7 @@ eleventyComputed:
                 {% endif %}
                 </div>
             </div>
-            
+
 
             <div class="hidden sm:block absolute top-0 right-0 bg-purple-200 rounded-full px-2 mt-2 mr-2">
                 {{ year }}

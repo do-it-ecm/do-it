@@ -1,10 +1,11 @@
 ---
 layout: layout/post.njk
 
+tags:
+  - "PROFILE"
+
 eleventyComputed:
-  tags: 
-    - "PROFILE"
-    - "{{ page.url | getYearFromUrl }}"
+  year: "{{ page.url | getYearFromUrl }}"
   eleventyNavigation:
     key: "{{ page.url }}"
     title: "{{ title | safe }}"

@@ -1,7 +1,6 @@
 
 {% macro promoList(promos, type="") %}
     {# Invisible span because eleventy does not work properly when loading collections for iteration #}
-    {% set loadIndex = promos | length %}
     <ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1 md:gap-2 lg:gap-3">
         {%- for promo in promos | sort | reverse %}
             <li{% if promo.url == page.url %} class="my-active-class group bg-purple-200 rounded-full hover:cursor-pointer"
