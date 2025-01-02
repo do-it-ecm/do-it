@@ -1,0 +1,564 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>MON 1.2 : Apprendre à envoyer des mails en Backend</title>
+
+        <!-- Prismjs imports
+                - Prism core
+                - Prism line numbers
+                - Prism copy to clipboard
+                - Prism autoloader
+        -->
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+        <!-- Mermaid import and initialization -->
+        <script type="module" defer="">
+            import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/+esm';
+            mermaid.initialize({
+                startOnLoad: true,
+            });
+        </script>
+
+        <link href="/assets/stylesheets/main.css" rel="stylesheet">
+
+    </head>
+
+    <body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000">
+        <header class="border-b-2 border-gray-200 mb-4">
+        <div class="max-w-[1000px] mx-auto px-4">
+            <div class="min-h-[50px] flex justify-between items-center">
+                <a class="mx-2" href="/">Home</a>
+                <div class="flex items-center gap-4 sm:gap-6 ">
+                    <a class="" href="/cs">CS</a>
+                    <a class="" href="/pok">POK</a>
+                    <a class="" href="/mon">MON</a>
+                    <a class="" href="/projets">Projets</a>
+                    <a class="hidden sm:block" href="/promos">Promos</a>
+                    <a href="/search">
+                        <svg class="h-5 aspect-square" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+                        </svg>
+                    </a>
+                    <a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank">
+                        <svg class="h-5 aspect-square" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        </header>
+
+        <main class="max-w-[1000px] mx-auto px-4" data-pagefind-body="">
+            
+<article class="relative">
+<h1 class="mb-1">MON 1.2 : Apprendre à envoyer des mails en Backend</h1>
+<div class="mb-4">
+    
+        <div class="px-4 flex flex-wrap items-center">
+            
+                <div class="font-bold">Tags : </div>
+            
+            <ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags">
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">MON</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">email</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">smtp</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">vert</li>
+                
+
+            </ul>
+
+            
+            <div class="hidden" data-pagefind-meta="Type">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Auteurs : </div>
+            <ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs">
+                
+                    <li class="bg-blue-200 rounded-full px-2" data-pagefind-filter="Auteurs">Kévin BERNARD</li>
+                
+            </ul>
+        </div>
+    
+
+    
+        <div class="absolute top-0 right-0">
+            <span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2" data-pagefind-filter="Année">
+                2024-2025
+            </span>
+        </div>
+    
+</div>
+
+        <p class="mb-4 text-lg">
+
+                Ce MON a pour objectif d'expliquer comment envoyer des emails dans différents langages de programmation et de garantir la sécurité dans les échanges.
+
+        </p>
+
+
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/promos/2024-2025/Bernard-Kevin/">Kévin BERNARD</a><span class="px-1">/</span><a href="/promos/2024-2025/Bernard-Kevin/mon/">MON de Kévin BERNARD</a><span class="px-1">/</span><a href="/promos/2024-2025/Bernard-Kevin/mon/temps-1.2/">MON 1.2 : Apprendre à envoyer des mails en Backend</a>
+
+</div></div>
+
+
+
+
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Prérequis</b></p>
+</div><div class="pl-8 mr-8">
+<p>Connaissances de base en programmation (HTML, JavaScript, PHP, Python).</p>
+</div></div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Liens</b></p>
+</div><div class="pl-8 mr-8">
+<p><b>Sources</b></p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=PJo5yOtu7o8">SMTP</a></li>
+<li><a href="https://www.youtube.com/watch?v=NG3WhmbsFvc">Mailto</a></li>
+<li><a href="https://www.youtube.com/watch?v=30VeUWxZjS8&amp;t=1697s">Nodemailer</a></li>
+</ul>
+<!-- - [PHPMailer](https://github.com/PHPMailer/PHPMailer) -->
+<ul>
+<li><a href="https://www.youtube.com/watch?v=ueqZ7RL8zxM">smtplib</a></li>
+<li><a href="https://www.youtube.com/watch?v=C4cfTFglgJc">Variables d'environnement Node.js</a></li>
+<li><a href="https://www.youtube.com/watch?v=BgVjild0C9A">Tuto Email JS</a></li>
+</ul>
+</div></div>
+
+<h2>Table des matières</h2>
+<ol>
+<li><a href="#section1">Introduction</a></li>
+<li><a href="#section2">Exemples de code</a></li>
+<li><a href="#section3">Sécurité</a></li>
+<li><a href="#section4">API</a></li>
+<li><a href="#section5">Conclusion</a></li>
+</ol>
+<h2>1. Introduction <a id="section1"></a></h2>
+<p>L'objectif de ce MON est de découvrir les différentes façons d'envoyer un email dans différents langages de manière sécurisée.</p>
+<h3>Qu'est-ce que SMTP ?</h3>
+<p>SMTP est le protocole qu'utilise notre ordinateur pour acheminer les emails d'un client à un destinataire (le serveur de messagerie).</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Liens</b></p>
+</div><div class="pl-8 mr-8">
+<p><a href="https://www.youtube.com/watch?v=PJo5yOtu7o8">SMTP</a></p>
+</div></div>
+
+<hr>
+<h2>2. Exemples de code <a id="section2"></a></h2>
+<h3>2.1 Envoi d'email avec HTML</h3>
+<p>Avec HTML, il n'est pas possible d'envoyer des emails directement, mais on peut créer un formulaire ou un lien qui ouvre la boîte mail (prêt à send) via <code>mailto</code>.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Liens</b></p>
+</div><div class="pl-8 mr-8">
+<p><a href="https://www.youtube.com/watch?v=NG3WhmbsFvc">Mailto</a></p>
+</div></div>
+
+<p>Exemple de lien <code>mailto</code> :</p>
+<pre class="line-numbers"><code>
+
+html
+
+<a href="mailto:someone@example.com?subject=Bonjour&body=Comment ça va ?">
+  Envoyer un email
+</a>
+
+
+</code></pre><p>🚨 <strong>Limitation :</strong> Cette méthode dépend de la messagerie de celui qui clique sur le lien et n'envoie pas automatiquement d'email.</p>
+<h3>2.2 Envoi d'email avec Node.js (Nodemailer)</h3>
+<p><strong>Nodemailer</strong> est une bibliothèque très populaire quand on utilise JavaScript pour envoyer des emails.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Liens</b></p>
+</div><div class="pl-8 mr-8">
+<p><a href="https://www.youtube.com/watch?v=30VeUWxZjS8&amp;t=1697s">Nodemailer</a></p>
+</div></div>
+
+<h4>Installation :</h4>
+<pre class="line-numbers"><code>
+
+bash
+
+npm install nodemailer
+
+
+</code></pre><h4>Exemple de code :</h4>
+<pre class="line-numbers"><code>
+
+javascript
+
+const nodemailer = require('nodemailer');
+
+let transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: 'votreEmail@gmail.com',
+    pass: 'votreMotDePasse'
+  }
+});
+
+let mailOptions = {
+  from: 'votreEmail@gmail.com',
+  to: 'destinataire@example.com',
+  subject: 'Test Email',
+  text: 'Hello world!'
+};
+
+transporter.sendMail(mailOptions, (error, info) => {
+  if (error) {
+    console.log(error);
+  } else {
+    console.log('Email envoyé : ' + info.response);
+  }
+});
+
+
+</code></pre><!-- ### 2.3 Envoi d'email avec PHP (PHPMailer)
+
+En PHP, la fonction native `mail()` est assez basique et limitée. C’est pourquoi **PHPMailer** est souvent utilisé pour envoyer des emails plus complexes et sécurisés.
+
+
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500"xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244" />
+</svg>
+<div class="pl-8 mb-2 mr-8">
+
+<b>Liens</b>
+
+</div><div class="pl-8 mr-8">
+
+
+
+[PHPMailer](https://github.com/PHPMailer/PHPMailer)
+
+
+
+</div></div>
+</div>
+
+
+#### Installation (via Composer) :
+
+```
+bash
+
+composer require phpmailer/phpmailer
+```
+
+#### Exemple de code :
+
+```
+php
+
+<?php
+use PHPMailer\PHPMailer\PHPMailer;
+require 'vendor/autoload.php';
+
+$mail = new PHPMailer(true);
+
+try {
+    $mail->isSMTP();
+    $mail->Host       = 'smtp.gmail.com';
+    $mail->SMTPAuth   = true;
+    $mail->Username   = 'votreEmail@gmail.com';
+    $mail->Password   = 'votreMotDePasse';
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+    $mail->Port       = 587;
+
+    $mail->setFrom('votreEmail@gmail.com', 'Votre Nom');
+    $mail->addAddress('destinataire@example.com');
+
+    $mail->isHTML(true);
+    $mail->Subject = 'Sujet de l\'email';
+    $mail->Body    = 'Contenu <b>en HTML</b>';
+
+    $mail->send();
+    echo 'Email envoyé avec succès';
+} catch (Exception $e) {
+    echo "L'email n'a pas pu être envoyé. Erreur : {$mail->ErrorInfo}";
+}
+``` -->
+<h3>2.3 Envoi d'email avec Python (smtplib)</h3>
+<p>En Python, on utilise la bibliothèque <strong>smtplib</strong> pour envoyer des emails via le protocole SMTP.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Liens</b></p>
+</div><div class="pl-8 mr-8">
+<p><a href="https://www.youtube.com/watch?v=ueqZ7RL8zxM">smtplib</a></p>
+</div></div>
+
+<h4>Exemple de code :</h4>
+<pre class="line-numbers"><code>
+
+python
+
+import smtplib
+from email.mime.text import MIMEText
+
+sender = 'votreEmail@gmail.com'
+receiver = 'destinataire@example.com'
+msg = MIMEText('Hello, ceci est un email envoyé via Python!')
+msg['Subject'] = 'Test Email'
+msg['From'] = sender
+msg['To'] = receiver
+
+try:
+    with smtplib.SMTP('smtp.gmail.com', 587) as server:
+        server.starttls()
+        server.login(sender, 'votreMotDePasse')
+        server.sendmail(sender, receiver, msg.as_string())
+        print("Email envoyé avec succès")
+except Exception as e:
+    print(f"Erreur : {e}")
+
+
+</code></pre><hr>
+<p>🚨 <strong>Attention :</strong> Ne jamais laisser vos mots de passe dans le code. Utilisez des <strong>variables d’environnement</strong> pour plus de sécurité.</p>
+<hr>
+<h2>3. Sécurité <a id="section3"></a></h2>
+<p>L'envoi d'emails en programmation nécessite de manipuler des informations sensibles comme les identifiants d'accès au serveur SMTP.<br>
+Comment sécuriser ses informations ?</p>
+<h3>3.1 Utilisation des variables d’environnement</h3>
+<p>Au lieu de stocker vos identifiants dans le code, stockez-les dans des fichiers d'environnement <code>.env</code> à bien mettre dans le <code>.gitignore</code>.</p>
+<h4>Exemple :</h4>
+<p>Dans Node.js :</p>
+<pre class="line-numbers"><code>
+
+javascript
+
+require('dotenv').config();
+
+const email = process.env.EMAIL;
+const password = process.env.PASSWORD;
+
+
+</code></pre><p>Dans votre fichier <code>.env</code> :</p>
+<pre class="line-numbers"><code>
+
+bash
+
+EMAIL=votreEmail@gmail.com
+PASSWORD=votreMotDePasse
+
+
+</code></pre><div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Liens</b></p>
+</div><div class="pl-8 mr-8">
+<p><a href="https://www.youtube.com/watch?v=C4cfTFglgJc">Variables d'environnement Node.js</a></p>
+</div></div>
+
+<h3>3.2 Utilisation de TLS/SSL</h3>
+<p>Pour protéger les données pendant leur transmission, il est crucial d'activer <strong>TLS</strong> ou <strong>SSL</strong> lorsque vous configurez votre serveur SMTP. Par exemple, Nodemailer et PHPMailer supportent ces protocoles nativement.</p>
+<hr>
+<h2>4. API d'envoi d'emails <a id="section4"></a></h2>
+<p>En plus de l'envoi via SMTP, on peut utiliser des <strong>API spécialisées</strong> pour simplifier l'envoi de mails à grande échelle. Des services comme <strong>SendGrid</strong>, <strong>Mailgun</strong>, <strong>Postmark</strong>, ou <strong>EmailJS</strong> permettent d'avoir des API fiables pour envoyer des emails.</p>
+<h4>Exemple avec EmailJS (en JavaScript) :</h4>
+<p><strong>EmailJS</strong> permet d'envoyer des emails directement depuis une application front-end, sans avoir besoin de serveur backend.</p>
+<ol>
+<li>Créez un compte sur <a href="https://www.emailjs.com/">EmailJS</a>.</li>
+<li>Configurez votre service email (par exemple Gmail) et créez un <strong>template</strong> dans l'interface EmailJS.</li>
+<li>Obtenez votre <strong>User ID</strong> et votre <strong>Service ID</strong>.</li>
+</ol>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Liens</b></p>
+</div><div class="pl-8 mr-8">
+<p><a href="https://www.youtube.com/watch?v=BgVjild0C9A">Tuto Email JS</a></p>
+</div></div>
+
+<h4>Exemple de code :</h4>
+<pre class="line-numbers"><code>
+
+html
+
+<head>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+  </script>
+  <script type="text/javascript">
+    (function(){
+        emailjs.init({
+          publicKey: "oMqq7O7XOuIBpqy1P",
+        });
+    })();
+  </script>
+  <script src="js/contact.js"></script>
+</head>
+
+<body>
+  <form>
+    <div>
+      <label for="message">Message</label>
+      <textarea name="message" id="message" placeholder="Mon message" required=""></textarea>
+    </div>
+    <div>
+      <label for="nom_prenom">Nom, Prénom</label>
+      <input type="text" name="nom_prenom" id="nom_prenom" placeholder="Mon nom et prénom" required="">
+    </div>
+    <div>
+      <label for="mail">Mail</label>
+      <input type="text" name="mail" id="mail" placeholder="Mon mail" required="">
+    </div>
+    <button type="button" onclick="send_mail()">ENVOYER</button>
+  </form>
+</body>
+
+
+</code></pre><pre class="line-numbers"><code>
+
+javascript
+
+// Script pour envoyer l'email avec EmailJS
+document.getElementById('emailForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  emailjs.init('YOUR_USER_ID'); // Remplacez par votre User ID
+
+  emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this)
+    .then(function() {
+      console.log('Email envoyé avec succès !');
+    }, function(error) {
+      console.log('Erreur dans l\'envoi de l\'email:', error);
+    });
+});
+function send_mail(){
+    let parametres = {
+        nom_prenom: document.getElementById("nom_prenom").value,
+        mail: document.getElementById("mail").value,
+        message: document.getElementById("message").value
+    };
+
+    emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', parametres).then(function() {
+        alert("Votre message a bien été envoyé !");
+    }).catch(function(error) {
+        console.error("Échec de l'envoi : ", error);
+        alert("Échec de l'envoi, veuillez réessayer.");
+    });    
+}
+
+
+</code></pre><p>🚨 <strong>Remarque :</strong> L'avantage d'EmailJS est qu'il permet d'envoyer des emails directement depuis le navigateur, évitant la configuration d'un serveur backend.</p>
+<hr>
+<h2>5. Conclusion <a id="section5"></a></h2>
+<p>Quand on veut envoyer des emails en programmation, l'important est de savoir sécuriser les informations du user.
+Ici, je ne parle pas des interactions avec le backend en cas d'une base de données avec plusieurs utilisateurs.</p>
+
+
+
+</article>
+
+        </main>
+
+
+        <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-center items-center">
+                    <p class="text-center">
+                        <span style="font-family: Consolas, sans-serif;">Do_<span style="color: #4a86e8">It</span></span> : Développement et Organisation en IT
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- MathJax import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">
+            window.MathJax = {
+                tex: {
+                inlineMath: [
+                    [
+                    '$', '$'
+                    ],
+                    [
+                    '\\(', '\\)'
+                    ]
+                ]
+                },
+                svg: {
+                fontCache: 'global'
+                }
+            };
+
+        MathJax
+            .startup
+            .document
+            .getMathItemsWithin(document.body);
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">
+            Prism.plugins.NormalizeWhitespace.setDefaults({
+                'remove-trailing': true,
+                'remove-indent': true,
+                'left-trim': true,
+                'right-trim': true,
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js">
+            document.addEventListener('DOMContentLoaded', () => {
+                Prism.highlightAll();
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,327 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>PostgreSQL</title>
+
+        <!-- Prismjs imports
+                - Prism core
+                - Prism line numbers
+                - Prism copy to clipboard
+                - Prism autoloader
+        -->
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+        <!-- Mermaid import and initialization -->
+        <script type="module" defer="">
+            import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/+esm';
+            mermaid.initialize({
+                startOnLoad: true,
+            });
+        </script>
+
+        <link href="/assets/stylesheets/main.css" rel="stylesheet">
+
+    </head>
+
+    <body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000">
+        <header class="border-b-2 border-gray-200 mb-4">
+        <div class="max-w-[1000px] mx-auto px-4">
+            <div class="min-h-[50px] flex justify-between items-center">
+                <a class="mx-2" href="/">Home</a>
+                <div class="flex items-center gap-4 sm:gap-6 ">
+                    <a class="" href="/cs">CS</a>
+                    <a class="" href="/pok">POK</a>
+                    <a class="" href="/mon">MON</a>
+                    <a class="" href="/projets">Projets</a>
+                    <a class="hidden sm:block" href="/promos">Promos</a>
+                    <a href="/search">
+                        <svg class="h-5 aspect-square" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+                        </svg>
+                    </a>
+                    <a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank">
+                        <svg class="h-5 aspect-square" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        </header>
+
+        <main class="max-w-[1000px] mx-auto px-4" data-pagefind-body="">
+            
+<article class="relative">
+<h1 class="mb-1">PostgreSQL</h1>
+<div class="mb-4">
+    
+        <div class="px-4 flex flex-wrap items-center">
+            
+                <div class="font-bold">Tags : </div>
+            
+            <ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags">
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">COURS</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">informatique</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">bases de données</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">serveur</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">postgresql</li>
+                
+
+            </ul>
+
+            
+            <div class="hidden" data-pagefind-meta="Type">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Auteurs : </div>
+            <ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs">
+                
+                    <li class="bg-blue-200 rounded-full px-2" data-pagefind-filter="Auteurs">BoxBoxJason</li>
+                
+            </ul>
+        </div>
+    
+
+    
+</div>
+
+
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Liens utiles</strong></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li><a href="https://www.postgresql.org/">PostgreSQL</a></li>
+</ul>
+</div></div>
+
+<h2>Introduction</h2>
+<p>PostgreSQL est un système de gestion de base de données relationnelles (DBMS) open source né en 1986. Il est reconnu pour sa robustesse, sa fiabilité, ses performances et sa conformité aux standards SQL.<br>
+Il a été créé pour être un remplaçant open source de Ingres, un autre système de gestion de base de données relationnelles. Il est aujourd'hui l'un des systèmes de gestion de base de données les plus populaires au monde, utilisé par de nombreuses entreprises et organisations pour stocker, gérer et analyser leurs données.</p>
+<h3>Avantages</h3>
+<p>Toutes ces propriétés en font un choix idéal pour les applications nécessitant une grande disponibilité, une grande fiabilité et une grande performance.</p>
+<ul>
+<li>Il permet notamment <strong>plusieurs connexions concurrentes</strong> et des <strong>transactions ACID</strong> (Atomicité, Cohérence, Isolation, Durabilité). Cela offre un énorme avantage par rapport à une base de données SQLite par exemple.</li>
+<li>Il est également <strong>très extensible</strong>, avec la possibilité d'ajouter des extensions et des types de données personnalisés.</li>
+<li>Le système de <strong>permissions</strong> et de <strong>sécurité</strong> est très complet, permettant de définir des rôles, des privilèges et des politiques de sécurité très finement.</li>
+<li>Il offre des possibilités de <strong>scaling</strong> <strong>horizontal</strong> et <strong>vertical</strong>, de <strong>réplication</strong>, de <strong>clustering</strong> et de <strong>partitionnement</strong>, ce qui en fait un choix populaire pour les applications web et les systèmes d'information.</li>
+<li>Il est <strong>open source</strong> et <strong>gratuit</strong>, ce qui en fait un choix économique pour les petites et moyennes entreprises.</li>
+</ul>
+<h3>Inconvénients</h3>
+<ul>
+<li>Il est <strong>plus complexe</strong> à installer car il nécessite de tourner en mode serveur.</li>
+<li>Il est <strong>plus lourd</strong> que SQLite, ce qui peut être un inconvénient pour les applications embarquées.</li>
+<li>Il peut-être <strong>moins rapide</strong> que SQLite pour des opérations de lecture simple, car il nécessite de passer par le réseau (qui peut être lente) pour accéder à la base de données.</li>
+</ul>
+<h3>License</h3>
+<p>C'est un logiciel libre distribué sous <strong>licence PostgreSQL</strong>, une licence open source similaire à la licence MIT. Cela veut dire que vous pouvez l'utiliser, le modifier et le distribuer librement.</p>
+<h2>Fonctionnement</h2>
+<p>PostgreSQL fonctionne en mode <strong>client-serveur</strong>. Cela signifie que le serveur PostgreSQL tourne en permanence sur une machine, et que les clients se connectent à ce serveur pour effectuer des opérations sur la base de données.</p>
+<h3>Fonctionnalités principales</h3>
+<ul>
+<li><strong>SQL</strong>: PostgreSQL supporte le langage SQL standard, ainsi que des extensions comme les fonctions stockées, les triggers, les vues, les procédures stockées, les transactions, les contraintes, les index,...</li>
+<li><strong>Data Types</strong>: PostgreSQL supporte de nombreux types de données standards
+<ul>
+<li><strong>Primitifs</strong>: Integer, Numeric, String, Boolean</li>
+<li><strong>Structurés</strong>: Date/Time, Array, Range / MultiRange, UUID</li>
+<li><strong>Documents</strong>: JSON, JSONB, XML, Hstore</li>
+<li><strong>Géométriques</strong>: Point, Segment, Cercle, Polygone</li>
+<li><strong>User Defined Data Types</strong>: PostgreSQL permet de définir des types de données personnalisés, notamment des structures de données complexes, des fonctions, des opérateurs,...</li>
+</ul>
+</li>
+<li><strong>Intégrité des données</strong>: PostgreSQL supporte les contraintes de clé primaire, de clé étrangère, d'unicité, de vérification, de non-nullité, de contrôle de référence, de contrôle de domaine,...</li>
+<li><strong>Concurrence &amp; Performance</strong>: PostgreSQL permet de paralleliser les requêtes, de gérer les index, de gérer les statistiques, de gérer les caches, de gérer les verrous, de gérer les transactions,...</li>
+<li><strong>Robustesse &amp; Disaster Recovery</strong>: PostgreSQL supporte les sauvegardes, les restaurations, les points de contrôle, les journaux de transactions, les réplications, les sauvegardes incrémentales, les sauvegardes différentielles,... Il offre aussi une fonctionnalité de WAL (Write Ahead Logging) pour garantir la cohérence des données lors d'un crash ou d'un fort nombre de requêtes.</li>
+<li><strong>Sécurité</strong>: PostgreSQL supporte les rôles, les privilèges, les politiques de sécurité, les audits, les logs, les connexions sécurisées, les connexions chiffrées, les connexions authentifiées,...</li>
+<li><strong>Extensibilité</strong>: PostgreSQL permet d'ajouter des extensions pour ajouter des fonctionnalités supplémentaires (PostGIS pour les données géographiques, pgcrypto pour le chiffrement, hstore pour le stockage de données semi-structurées,...).</li>
+</ul>
+<h3>Architecture</h3>
+<p>PostgreSQL est un système de gestion de base de données relationnelles (RDBMS) qui stocke les données dans des tables, qui sont des collections de lignes et de colonnes. Chaque table est définie par un schéma, qui définit les colonnes, les types de données, les contraintes, les index, les triggers, les vues, les procédures stockées,...</p>
+<pre class="mermaid" style="background-color: transparent;">
+architecture-beta
+    service users(clarity:users-solid)[Users]
+
+    group postgresql(cloud)[Cluster PostgreSQL]
+    group database(database)[Database 1] in postgresql
+    service table1(disk)[Table 1] in database
+    service table2(disk)[Table 2] in database
+    service schema[Schema 1] in database
+    service index[Index 1] in database
+
+    group database2(database)[Database 2] in postgresql
+
+    users:B --> T:table1
+</pre>
+<h2>Commandes</h2>
+<p>Voici quelques commandes utiles pour interagir avec PostgreSQL.</p>
+<ul>
+<li><code>psql</code>: Ouvre un terminal interactif pour interagir avec PostgreSQL.
+<ul>
+<li>le shell psql supporte toutes les commandes SQL standards, il faut bien penser à terminer les requêtes par un <code>;</code>.</li>
+<li><code>\l</code>: Liste les bases de données.</li>
+<li><code>\c &lt;database&gt;</code>: Se connecte à une base de données.</li>
+<li><code>\dt</code>: Liste les tables de la base de données.</li>
+<li><code>\d &lt;table&gt;</code>: Affiche la structure d'une table.</li>
+<li><code>\q</code>: Quitte le terminal psql.</li>
+</ul>
+</li>
+<li><strong>Création &amp; Suppression</strong>
+<ul>
+<li><code>createdb</code>: Crée une base de données PostgreSQL.</li>
+<li><code>dropdb</code>: Supprime une base de données PostgreSQL.</li>
+<li><code>createuser</code>: Crée un utilisateur PostgreSQL.</li>
+<li><code>dropuser</code>: Supprime un utilisateur PostgreSQL.</li>
+</ul>
+</li>
+<li><strong>Backup &amp; Restore</strong>:
+<ul>
+<li><code>pg_dump</code>: Sauvegarde une base de données PostgreSQL.</li>
+<li><code>pg_restore</code>: Restaure une base de données PostgreSQL.</li>
+</ul>
+</li>
+<li><strong>Gestion de l'instance</strong>:
+<ul>
+<li><code>pg_ctl</code>: Contrôle le serveur PostgreSQL.</li>
+<li><code>pg_isready</code>: Vérifie si le serveur PostgreSQL est prêt.</li>
+<li><code>pg_config</code>: Affiche la configuration de l'instance PostgreSQL.</li>
+</ul>
+</li>
+</ul>
+<h2>Utilisation sur aioli</h2>
+<p>Le cluster postgres est accessible sur la machine aioli par tous les utilisateurs via le socket unix <code>/var/run/postgresql/.s.PGSQL.5432</code>. Chaque utilisateur peut se connecter à la base de données qui porte le même nom que son compte, sans mot de passe.<br>
+Chaque utilisateur ne peut pas créer de nouvelles bases de données ou d'utilisateurs. Il ne peut que se connecter à sa propre base de données et faire ce qu'il veut dedans. En revanche, il n'a accès qu'en lecture seule aux bases de données des autres utilisateurs.</p>
+<h3>Connexion via terminal</h3>
+<p>Vous pouvez utiliser la commande <code>psql</code> pour interagir avec votre base de données. La commande vous envoie directement dans le shell psql de votre base de données.<br>
+Vous pouvez alors effectuer toutes les opérations SQL standards: créer des tables, insérer des données, mettre à jour des données, supprimer des données, supprimer des tables, créer des index, créer des vues, créer des procédures stockées,...</p>
+<h3>Connexion via programme</h3>
+<h4>Node.js</h4>
+<h5>Installation des dépendances</h5>
+<p>Pour se connecter à une base de données PostgreSQL depuis un programme Node.js, vous pouvez utiliser le module <code>pg</code> qui est un client PostgreSQL pour Node.js.<br>
+Additionnellement, vous pouvez utiliser <code>sequelize</code> qui est un ORM (Object-Relational Mapping) pour Node.js qui supporte PostgreSQL. Cela permet d'intéragir avec la base de données de manière plus abstraite, en utilisant des modèles et des requêtes SQL générées automatiquement.<br>
+Enfin, nous utiliserons dotenv qui nous permettra de charger les variables environnement système ou de les définir dans un fichier <code>.env</code>.</p>
+<p>L'installation de ces dépendances se fait via npm: <code>npm install --save pg sequelize dotenv</code>.</p>
+<h5>Connexion à la base de données</h5>
+<p>Pour se connecter à la base de données, vous devez créer une instance de <code>Sequelize</code> en lui passant les informations de connexion à la base de données.</p>
+<pre class="language-javascript line-numbers"><code>
+
+import { Sequelize } from 'sequelize';
+import dotenv from 'dotenv';
+
+// Importe les variables d'environnement depuis le fichier .env (la variable USER est déjà définie dans l'environnement de base d'aioli, pas besoin de la définir dans le fichier .env)
+dotenv.config();
+
+// Définition des variables de connexion
+const DBUSER = process.env.USER;
+const DBNAME = process.env.USER;
+
+// Création de l'instance Sequelize
+const sequelize = new Sequelize(DBNAME, DBUSER, null, {
+  dialect: 'postgres',
+  host: '/var/run/postgresql',
+  port: 5432,
+  logging: false,
+});
+
+// Connexion à la base de données
+(async () => {
+  try {
+    await sequelize.authenticate();
+    console.log('Connection has been established successfully.');
+  } catch (error) {
+    console.error('Unable to connect to the database:', error);
+  }
+})();
+
+// Exporte l'instance sequelize pour l'utiliser dans d'autres fichiers
+export default sequelize;
+
+
+</code></pre><p>Avec cette configuration, vous pouvez maintenant interagir avec votre base de données PostgreSQL depuis votre programme Node.js en appelant les méthodes de l'instance <code>sequelize</code>.</p>
+
+
+</article>
+
+        </main>
+
+
+        <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-center items-center">
+                    <p class="text-center">
+                        <span style="font-family: Consolas, sans-serif;">Do_<span style="color: #4a86e8">It</span></span> : Développement et Organisation en IT
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- MathJax import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">
+            window.MathJax = {
+                tex: {
+                inlineMath: [
+                    [
+                    '$', '$'
+                    ],
+                    [
+                    '\\(', '\\)'
+                    ]
+                ]
+                },
+                svg: {
+                fontCache: 'global'
+                }
+            };
+
+        MathJax
+            .startup
+            .document
+            .getMathItemsWithin(document.body);
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">
+            Prism.plugins.NormalizeWhitespace.setDefaults({
+                'remove-trailing': true,
+                'remove-indent': true,
+                'left-trim': true,
+                'right-trim': true,
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js">
+            document.addEventListener('DOMContentLoaded', () => {
+                Prism.highlightAll();
+            });
+        </script>
+    </body>
+</html>

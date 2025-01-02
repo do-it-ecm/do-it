@@ -1,0 +1,480 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Utilisation de Python pour manipuler des fichiers Word et PDF</title>
+
+        <!-- Prismjs imports
+                - Prism core
+                - Prism line numbers
+                - Prism copy to clipboard
+                - Prism autoloader
+        -->
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+        <!-- Mermaid import and initialization -->
+        <script type="module" defer="">
+            import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/+esm';
+            mermaid.initialize({
+                startOnLoad: true,
+            });
+        </script>
+
+        <link href="/assets/stylesheets/main.css" rel="stylesheet">
+
+    </head>
+
+    <body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000">
+        <header class="border-b-2 border-gray-200 mb-4">
+        <div class="max-w-[1000px] mx-auto px-4">
+            <div class="min-h-[50px] flex justify-between items-center">
+                <a class="mx-2" href="/">Home</a>
+                <div class="flex items-center gap-4 sm:gap-6 ">
+                    <a class="" href="/cs">CS</a>
+                    <a class="" href="/pok">POK</a>
+                    <a class="" href="/mon">MON</a>
+                    <a class="" href="/projets">Projets</a>
+                    <a class="hidden sm:block" href="/promos">Promos</a>
+                    <a href="/search">
+                        <svg class="h-5 aspect-square" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+                        </svg>
+                    </a>
+                    <a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank">
+                        <svg class="h-5 aspect-square" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        </header>
+
+        <main class="max-w-[1000px] mx-auto px-4" data-pagefind-body="">
+            
+<article class="relative">
+<h1 class="mb-1">Utilisation de Python pour manipuler des fichiers Word et PDF</h1>
+<div class="mb-4">
+    
+        <div class="px-4 flex flex-wrap items-center">
+            
+                <div class="font-bold">Tags : </div>
+            
+            <ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags">
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">MON</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">Python</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">Word</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">PDF</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">PyPDF2</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">Python-Docx</li>
+                
+
+            </ul>
+
+            
+            <div class="hidden" data-pagefind-meta="Type">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Auteurs : </div>
+            <ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs">
+                
+                    <li class="bg-blue-200 rounded-full px-2" data-pagefind-filter="Auteurs">Duc DANG VU</li>
+                
+            </ul>
+        </div>
+    
+
+    
+        <div class="absolute top-0 right-0">
+            <span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2" data-pagefind-filter="Année">
+                2023-2024
+            </span>
+        </div>
+    
+</div>
+
+        <p class="mb-4 text-lg">
+
+                Ce MON expliquera l'utilisation des bibliothèques PyPDF2 et Python-Docx pour manipuler des fichiers Word et PDF.
+
+        </p>
+
+
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/promos/2023-2024/Dang-Vu-Duc/">Duc DANG VU</a><span class="px-1">/</span><a href="/promos/2023-2024/Dang-Vu-Duc/mon/">MON de Duc DANG VU</a><span class="px-1">/</span><a href="/promos/2023-2024/Dang-Vu-Duc/mon/temps-3.1/">Utilisation de Python pour manipuler des fichiers Word et PDF</a>
+
+</div></div>
+
+
+
+
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p>Prérequis</p>
+</div><div class="pl-8 mr-8">
+<p>Connaissance basique de la programmation objet avec Python.</p>
+</div></div>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Note</b></p>
+</div><div class="pl-8 mr-8">
+<p>Tout les codes présentés sont disponibles dans mon <a href="https://github.com/do-it-ecm/do-it/tree/main/src/promos/2023-2024/Dang-Vu-Duc/mon/temps-3.1">dossier GitHub de temps 3.1</a></p>
+</div></div>
+<h2>Introduction</h2>
+<p>Les formats PDF et Word sont des formats très utilisés. Il peut être intéressant de pouvoir automatiser certaines tâches concernant ces formats, ou bien récupérer les données de ces documents dans des programmes Python. En effet, ces documents ont des encodages plus complexes qu'un simple fichier <em>.txt</em>, ce qui les rend difficile à manipuler sans bibliothèques adéquates. Ce MON présentera comment utiliser les bibliothèques <strong>PyPDF2</strong> et <strong>Python-Docx</strong> pour pouvoir manipuler de tels documents.</p>
+<p>Dans la suite, quelques lignes de code en Python seront présentées. Le résultat de l’exécution des lignes de code est indiqué juste après celles-ci, après 3 chevrons <code>&gt;&gt;&gt;</code></p>
+<p>Il faut commencer par installer ces bibliothèques, avec les commandes <code>pip install PyPDF2==1.26.0</code> et <code>pip install python-docx==0.8.10</code>.</p>
+<h2>Utilisation de PyPDF2</h2>
+<h3>Présentation des éléments de base du module</h3>
+<p>Nous allons commencer par présenter les éléments de base de cette bibliothèque. La première classe à connaître est la classe <strong>PdfFileReader</strong>. Les objets de cette classe permettent d'intégrer dans le code Python un document PDF. Ces objets ont différents attributs, correspondants à différentes caractéristiques du document en question. Elles ont également plusieurs méthodes pour effectuer des opérations sur le document.</p>
+<p>Dans la suite de cette section, nous nous appuierons sur deux documents PDF, enregistrés sous les noms de <em>PDF_test_1.pdf</em> et <em>PDF_test_2.pdf</em>. Ces documents sont des travaux que j'ai effectué lors de ma deuxième année.</p>
+<p>Pour ouvrir les documents PDF et les associer à des objets de la classe <strong>PdfFileReader</strong>, il faut d'abord les ouvrir avec la fonction <em>open</em>, en précisant en argument le paramètre <em>rb</em>, qui permet de lire en binaire le fichier. Ensuite, on créé l'objet en appellant la classe <strong>PdfFileReader</strong> du module <strong>PyPDF2</strong>.
+Une fois que l'on a cet objet, on peut récupérer ses attributs et utiliser les méthodes associées.</p>
+<pre class="language-python line-numbers"><code>
+
+pdfFile = open('PDF_test_2.pdf', 'rb')
+pdfReader = PyPDF2.PdfFileReader(pdfFile)
+print(pdfReader.numPages)
+>>> 6
+
+
+</code></pre><p>Dans l'exemple ci-dessus, on ouvre le fichier test numéro 2 et on récupère son nombre de pages.</p>
+<p>L'autre classe à connaître est la classe <strong>PageObject</strong>. Les objets de cette classe représentent les différentes pages du document, ainsi que leurs contenu. On récupère ces objets à partir d'un objet de la classe <strong>PdfFileReader</strong> grâce à la méthode <em>getPage</em>. En spécifiant le numéro de page que l'on veut récupérer (indexation commençant à 0), on peut récupérer un objet de la classe <strong>PageObject</strong>. Encore une fois, ces objets ont différents attributs et méthodes pour les manipuler, telle que par exemple la méthode <em>extractText()</em> qui permet d'extraire du texte de la page. Notons également la méthode <em>rotateClockwise</em>, qui prend en argument un des entiers 90, 180 ou 270, et qui permet d'effectuer une rotation de la page.</p>
+<pre class="language-python line-numbers"><code>
+
+page = pdfReader.getPage(2)
+print(page.extractText())
+>>> Compte-renduTPPollution
+MIE:Approchevariationnelleet
+
+Elements
+Cours:GuillaumeChiavassa
+Auteur:DucDANGVU
+CentraleMarseille
+2022-2023
+
+
+</code></pre><p>Notons que le texte renvoyé est loin d'être parfait. On remarque que certains élément manquent à l'appel. Cependant, ce texte est globalement conforme à ce qui est présent réellement dans le PDF.</p>
+<p>Enfin, la dernière classe importante de ce module est la classe <strong>PdfFileWriter</strong>. Les objets de cette classe permettent de créer des nouveaux fichiers PDF, à partir des classes précédemment présentées. Les méthodes importantes de cette classe sont les suivantes:</p>
+<ul>
+<li>La méthode <em>addPage</em>, qui permet d'ajouter une page au nouveau fichier PDF en spécifiant en argument un objet de la classe <strong>PageObject</strong></li>
+<li>La méthode <em>write</em>, qui prend en argument un fichier écrit en binaire et qui permet de sauvegarder sous format PDF le document associé à l'objet.</li>
+<li>La méthode <em>encrypt</em> permet de protéger le fichier PDF par un mot de passe, renseigné en argument de la méthode.</li>
+</ul>
+<h3>Utilisation de ces éléments</h3>
+<p>Pour appliquer ces connaissances, nous allons à présent créer une classe <strong>PDF_Tools</strong>. Les objets de cette classe pourront effectuer des opérations sur des fichiers PDF grâce à des méthodes qui utiliseront les éléments présentés ci-dessus.</p>
+<h4>Création de la méthode pour combiner des PDF</h4>
+<p>Cette méthode permettra de combiner plusieurs documents PDF, c'est-à-dire mettre les pages les une à la suite des autres. Elle prend en argument une liste contenant les noms des PDF à combiner ainsi que le nom du nouveau fichier PDF créé. Pour cela, on doit utiliser un objet de la classe <strong>PdfFileWriter</strong>, qui va permettre de construire le nouveau fichier PDF. On ajoute ensuite les pages (qui sont en fait des objets de la classe <strong>PageObject</strong>) une par une grâce à la méthode <em>addPage</em>, puis on sauvegarde le nouveau fichier grâce à la méthode <em>write</em>.</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Cliquer pour voir le code de la méthode <em>combine_pdf</em></p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-python line-numbers"><code>
+
+class PDF_Tools():
+  def combine_pdf(self, list_pdf: list, name_merged_file: str):
+    pdf_writer = PyPDF2.PdfFileWriter()
+    list_pdf_objects = []
+    for pdf_name in list_pdf:
+      pdf_file = open(pdf_name, 'rb')
+      list_pdf_objects.append(PyPDF2.PdfFileReader(pdf_file))
+    for pdf_object in list_pdf_objects:
+      for page_num in range(pdf_object.numPages):
+        page_object = pdf_object.getPage(page_num)
+        pdf_writer.addPage(page_object)
+    new_pdf = open(name_merged_file, 'wb')
+    pdf_writer.write(new_pdf)
+    new_pdf.close()
+
+
+</code></pre></div>
+</details>
+</div>
+<h4>Création de la méthode pour effectuer des rotations sur des pages</h4>
+<p>Cette méthode prend en argument le nom du fichier PDF à modifier, ainsi qu'une liste contenant les numéros de page sur lesquelles effectuer des rotations. Enfin, le dernier argument spécifie quelle rotation effectuer (90, 180 ou 270). Il suffit d'utiliser la méthode <em>rotateClockwise</em> de la classe <strong>PageObject</strong>, et de l'utiliser dans la boucle qui ajoute les pages une par une dans le nouveau fichier.</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Cliquer pour voir le code de la méthode <em>rotate_pages</em></p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-python line-numbers"><code>
+
+def rotate_pages(self, pdf_name: str, list_num_pages: list, rotation: int, name_new_file: str):
+      pdf_file = open(pdf_name, 'rb')
+      pdf_reader = PyPDF2.PdfFileReader(pdf_file)
+      pdf_writer = PyPDF2.PdfFileWriter()
+      for num_page in range(pdf_reader.numPages):
+        page_object = pdf_reader.getPage(num_page)
+        if num_page in list_num_pages:
+          page_object.rotateClockwise(rotation)
+        pdf_writer.addPage(page_object)
+      new_pdf = open(name_new_file, 'wb')
+      pdf_writer.write(new_pdf)
+      new_pdf.close()
+
+
+</code></pre></div>
+</details>
+</div>
+<p>Voici un exemple de l'utilisation de ce code. Si on crée un objet de la classe PDF_Tools (<code>test = PDF_Tools()</code>) et que l'on rentre la ligne de code <code>test.rotate_pages(&quot;PDF_test_1.pdf&quot;, [0,1,3], 180, &quot;Nouveau_PDF.pdf&quot;)</code>, on obtient le fichier PDF suivant:</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Dang-Vu-Duc/mon/temps-3.1/Image1.png" alt="Image1"></p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Dang-Vu-Duc/mon/temps-3.1/Image2.png" alt="Image2"></p>
+<p>Seules les pages numéro 1, 2 et 4 (indexées 0, 1 et 3) ont été tournées, ce qui est bien ce qu'on voulait.</p>
+<h4>Création de la méthode pour superposer des pages</h4>
+<p>Cette méthode prend argument un nom de fichier à modifier et un autre nom de fichier contenant l'image à superposer. Un autre paramètre est une liste contenant les numéros des pages que l'on veut modifier. On utilise la méthode <em>mergePage</em> de la classe <em>PageObject</em>, qui prend en argument un autre objet de la classe <em>PageObject</em> et qui superpose les deux pages.</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Cliquer pour voir le code de la méthode <em>overlay_pages</em></p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-python line-numbers"><code>
+
+def overlay_pages(self, pdf_name: str, pdf_name_overlay: str, list_num_pages: list, name_new_file: str):
+  pdf_file = open(pdf_name, 'rb')
+  pdf_reader = PyPDF2.PdfFileReader(pdf_file)
+  pdf_writer = PyPDF2.PdfFileWriter()
+  for num_page in range(pdf_reader.numPages):
+    if num_page not in list_num_pages:
+      page_object = pdf_reader.getPage(num_page)
+      pdf_writer.addPage(page_object)
+    else:
+      pdf_file_overlay = open(pdf_name_overlay, 'rb')
+      pdf_reader_overlay = PyPDF2.PdfFileReader(pdf_file_overlay)
+      page_overlay = pdf_reader_overlay.getPage(0)
+      page_object = pdf_reader.getPage(num_page)
+      page_overlay.mergePage(page_object)
+      pdf_writer.addPage(page_overlay)
+  new_pdf = open(name_new_file, 'wb')
+  pdf_writer.write(new_pdf)
+  new_pdf.close()
+
+
+</code></pre></div>
+</details>
+</div>
+<p>Pour tester cette fonction, on rentre la commande suivante: <code>test.overlay_pages(&quot;PDF_test_2.pdf&quot;, &quot;Logo_Centrale.pdf&quot;, [1, 2, 3, 4, 5], &quot;Nouveau_PDF3.pdf&quot;)</code>, et le fichier suivant est produit:</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Dang-Vu-Duc/mon/temps-3.1/Image3.png" alt="Image3"></p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Dang-Vu-Duc/mon/temps-3.1/Image4.png" alt="Image4"></p>
+<p>Le logo a bien été placé sur les pages qu'il fallait.</p>
+<h4>Création de la méthode pour protéger un PDF par un mot de passe</h4>
+<p>Cette méthode permet de crypter un fichier pdf avec un mot de passe, renseigné en argument de la méthode. Cette dernière utilise la méthode <em>encrypt</em> de la classe <strong>PdfFileWriter</strong>.</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Cliquer pour voir le code de la méthode <em>encrypt</em></p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-python line-numbers"><code>
+
+def encrypt(self, pdf_name: str, password: str, name_encrypted_file):
+    pdf_file = open(pdf_name, 'rb')
+    pdf_reader = PyPDF2.PdfFileReader(pdf_file)
+    pdf_writer = PyPDF2.PdfFileWriter()
+    for page_num in range(pdf_reader.numPages):
+      page_object = pdf_reader.getPage(page_num)
+      pdf_writer.addPage(page_object)
+    pdf_writer.encrypt(password)
+    new_pdf = open(name_encrypted_file, 'wb')
+    pdf_writer.write(new_pdf)
+    new_pdf.close()
+
+
+</code></pre></div>
+</details>
+</div>
+<h4>Création de la méthode pour réarranger les pages d'un PDF</h4>
+<p>Cette dernière méthode prend en argument le nom du fichier à modifier ainsi qu'une liste contenant le nouvel ordre des pages.</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Cliquer pour voir le code de la méthode <em>reorder</em></p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-python line-numbers"><code>
+
+def reorder(self, pdf_name: str, list_new_order: list, name_reordered_file: str):
+    pdf_file = open(pdf_name, 'rb')
+    pdf_reader = PyPDF2.PdfFileReader(pdf_file)
+    pdf_writer = PyPDF2.PdfFileWriter()
+    for num_page in list_new_order:
+      page_object = pdf_reader.getPage(num_page)
+      pdf_writer.addPage(page_object)
+    new_pdf = open(name_reordered_file, 'wb')
+    pdf_writer.write(new_pdf)
+    new_pdf.close()
+
+
+</code></pre></div>
+</details>
+</div>
+<h2>Utilisation de python-docx</h2>
+<p>Nous allons à présent explorer les possibilités qu'offre le module Python-docx. Pour charger un fichier Word avec ce module, il faut utiliser la commande: <code>doc = docx.Document(&quot;Word_test_1.docx&quot;)</code>. On pourra ensuite manipuler cet objet et utiliser ses attributs.</p>
+<p>Le texte d'un document Word est décomposé en paragraphes, qui se terminent à un retour à la ligne. Dans ces paragraphes, on y trouve des objets de la classe <strong>Runs</strong> qui correspondent à du texte de la même police. Par exemple, dans le texte suivant:</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Dang-Vu-Duc/mon/temps-3.1/Image5.png" alt="Image5"></p>
+<p>on y trouve 6 objets de la classe <strong>Runs</strong>. Chacun de ces objets ont des attributs que l'ont peut modifier. En voici une liste:</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Dang-Vu-Duc/mon/temps-3.1/Image6.png" alt="Image6">
+<em>Source: <a href="https://automatetheboringstuff.com/2e/chapter15/">Automate the boring stuff with Python</a></em></p>
+<p>On peut changer chacun de ces attributs en True ou False.</p>
+<p>L'attribut <em>paragraphs</em> de la classe <strong>Document</strong> permet de récupérer une liste de tout les paragraphes du documents. Chaque objet de la classe <strong>Paragraphs</strong> a un attribut <em>runs</em>, qui est une liste d'objets de la classe <strong>Runs</strong>.</p>
+<p>Une autre chose utile à faire est changer le style d'un paragraphe. Pour cela, on doit changer l'attribut <em>style</em> d'un objet <em>paragraph</em> et l'assigner à un nom de style. Le style de base se nomme &quot;Normal&quot;, mais il est possible d'en créer un autre directement depuis le logiciel Word, avec le raccourci Ctrl + Maj + S.</p>
+<p>En connaissant tout ces éléments, on peut changer facilement le contenu d'un document Word, ainsi que ses attributs de base tels que le soulignage, l'italique etc...</p>
+
+
+
+</article>
+
+        </main>
+
+
+        <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-center items-center">
+                    <p class="text-center">
+                        <span style="font-family: Consolas, sans-serif;">Do_<span style="color: #4a86e8">It</span></span> : Développement et Organisation en IT
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- MathJax import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">
+            window.MathJax = {
+                tex: {
+                inlineMath: [
+                    [
+                    '$', '$'
+                    ],
+                    [
+                    '\\(', '\\)'
+                    ]
+                ]
+                },
+                svg: {
+                fontCache: 'global'
+                }
+            };
+
+        MathJax
+            .startup
+            .document
+            .getMathItemsWithin(document.body);
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">
+            Prism.plugins.NormalizeWhitespace.setDefaults({
+                'remove-trailing': true,
+                'remove-indent': true,
+                'left-trim': true,
+                'right-trim': true,
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js">
+            document.addEventListener('DOMContentLoaded', () => {
+                Prism.highlightAll();
+            });
+        </script>
+    </body>
+</html>

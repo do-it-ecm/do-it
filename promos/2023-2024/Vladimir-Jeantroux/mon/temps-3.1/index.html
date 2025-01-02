@@ -1,0 +1,328 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Java tranquille et toi ?</title>
+
+        <!-- Prismjs imports
+                - Prism core
+                - Prism line numbers
+                - Prism copy to clipboard
+                - Prism autoloader
+        -->
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+        <!-- Mermaid import and initialization -->
+        <script type="module" defer="">
+            import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/+esm';
+            mermaid.initialize({
+                startOnLoad: true,
+            });
+        </script>
+
+        <link href="/assets/stylesheets/main.css" rel="stylesheet">
+
+    </head>
+
+    <body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000">
+        <header class="border-b-2 border-gray-200 mb-4">
+        <div class="max-w-[1000px] mx-auto px-4">
+            <div class="min-h-[50px] flex justify-between items-center">
+                <a class="mx-2" href="/">Home</a>
+                <div class="flex items-center gap-4 sm:gap-6 ">
+                    <a class="" href="/cs">CS</a>
+                    <a class="" href="/pok">POK</a>
+                    <a class="" href="/mon">MON</a>
+                    <a class="" href="/projets">Projets</a>
+                    <a class="hidden sm:block" href="/promos">Promos</a>
+                    <a href="/search">
+                        <svg class="h-5 aspect-square" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+                        </svg>
+                    </a>
+                    <a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank">
+                        <svg class="h-5 aspect-square" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        </header>
+
+        <main class="max-w-[1000px] mx-auto px-4" data-pagefind-body="">
+            
+<article class="relative">
+<h1 class="mb-1">Java tranquille et toi ?</h1>
+<div class="mb-4">
+    
+        <div class="px-4 flex flex-wrap items-center">
+            
+                <div class="font-bold">Tags : </div>
+            
+            <ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags">
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">MON</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">Java</li>
+                
+
+            </ul>
+
+            
+            <div class="hidden" data-pagefind-meta="Type">
+                
+                    
+                
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Auteurs : </div>
+            <ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs">
+                
+                    <li class="bg-blue-200 rounded-full px-2" data-pagefind-filter="Auteurs">Vladimir Jeantroux</li>
+                
+            </ul>
+        </div>
+    
+
+    
+        <div class="absolute top-0 right-0">
+            <span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2" data-pagefind-filter="Année">
+                2023-2024
+            </span>
+        </div>
+    
+</div>
+
+
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/promos/2023-2024/Vladimir-Jeantroux/">Vladimir Jeantroux</a><span class="px-1">/</span><a href="/promos/2023-2024/Vladimir-Jeantroux/mon/">MON de Vladimir Jeantroux</a><span class="px-1">/</span><a href="/promos/2023-2024/Vladimir-Jeantroux/mon/temps-3.1/">Java tranquille et toi ?</a>
+
+</div></div>
+
+
+
+
+<p>La 1ère année d'école et ses cours d'informatique me paraissent bien loins... Ce MON vise donc à me remettre à niveau sur Java pour ensuite aller plus loin. Java est populaire pour le développement d'applications web et mobiles, de logiciels côté serveur, d'applications de bureau et même de jeux vidéo. Java trouve également des applications dans des domaines scientifiques et techniques ainsi que dans les systèmes embarqués. Sa polyvalence en fait un choix privilégié pour une grande variété de projets informatiques à travers le monde.</p>
+<p>J'ai commencé par me refamiliariser avec la syntaxe en lisant le <a href="https://francoisbrucker.github.io/do-it/promos/2023-2024/Ouzoulias-Nicolas/mon/temps-1.1/">MON de Nicolas Ouzoulias</a>, puis j'ai ensuite suivi la formation en lige de Codecademy sur le Java intermédiaire. Ce MON fera un résumé de ce qui a été vu sur cette leçon.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Prérequis</b></p>
+</div><div class="pl-8 mr-8">
+<p>Pré-requis :
+Connaître la syntaxe de Java, et comprendre la notion de Programmation Orientée Objet.</p>
+</div></div>
+<h3>Input, Output</h3>
+<p>La première partie de ce cours parle d'output sur la console et d'input de l'utilisateur, soit les différentes fonctions print, lire et interpréter l'entrée de l'utilisateur, ainsi que lire des fichiers et même les créer pour écrire dedans.</p>
+<p>On a plusieurs méthodes pour print du texte sur Java : <code>System.out.print</code>, <code>System.out.println</code> et <code>System.out.printf</code>. La différence entre elles est que <code>println</code> crée un saut de ligne à la fin et <code>printf</code> permet de formatter le texte pour y inclure des variables avec le terme % suivi d'un caractère variant selon le type de variable (%s pour les chaînes de caractère, %d pour les entiers, etc.).</p>
+<p>Input :</p>
+<pre class="language-java line-numbers"><code>
+
+int nombre = 23
+System.out.printf("J'ai acheté %d pastèques",nombre)
+
+
+</code></pre><p>Output :</p>
+<pre class="line-numbers"><code>
+
+J'ai acheté 23 pastèques
+
+
+</code></pre><p>Les méthodes FileReader et FileWriter permettent respectivement de lire et de créer/écrire sur un fichier .txt.
+input and output (print, scanner). Elle doit être importées avant la fonction main, ainsi que l'exception <code>IOException</code>, qui est l'erreur qui apparaît lorsqu'un problème lié à l'input ou l'output survient (interruption d'une action input/output, impossibilité d'accéder à un fichier, ou d'écrire dedans,...). Cette partie m'a introduit à la gestion d'exceptions à l'aide de blocs try/catch. En effet, le développeur peut lui même gérer une exception dans son code, ce qui permet d'éviter que le programme crash au moment de la compilation ou de l'exécution.</p>
+<p>Par exemple :</p>
+<pre class="language-java line-numbers"><code>
+
+import java.io.FileReader;
+import java.io.IOException;
+
+public class Introduction {
+  public static void main(String[] args) {
+    String path = "/path/nul/et/faux/fichier.txt";
+    try {
+      FileReader reader = new FileReader(path);  
+      while (reader.ready()) {    //Tant qu'il y a un caractère à lire
+        System.out.print((char) reader.read());    
+      }    
+      reader.close();
+    } catch (IOException e) {
+      System.out.println("Exception IO, attention !");
+      System.out.println(e); //print l'exception en question
+    }
+  }
+}
+
+
+</code></pre><p>Output :</p>
+<pre class="line-numbers"><code>
+
+Exception IO, attention !
+java.io.FileNotFoundException: /path/nul/et/faux/fichier.txt (No such file or directory)
+
+
+</code></pre><p><strong>Note</strong> : pour exécuter un programme Java (soit un fichier .java), ne pas oublier de compiler le code avec <code>javac fichier.java</code>, et on l'exécute avec <code>java fichier</code>. On peut aussi compiler plusieurs fichiers en une même ligne en mettant leurs noms à la suite après <code>javac</code>.</p>
+<h3>Sérialisation, Désérialisation</h3>
+<p>Lors du développement d'un programme Java, on aura souvent besoin de sauvegarder l'état d'un objet pour pouvoir le stocker sur un fichier ou sur un réseau. Pour rendre un objet sérialisable, on l'indique au moment de définir la classe : il n'y a pas besoin d'implémenter de quelconque méthode spécifique à une classe pour activer la sérialisation.</p>
+<pre class="language-java line-numbers"><code>
+
+import java.io.Serializable;
+
+public class Person implements Serializable {
+  private String name;
+  private int age;
+  private static final long serialVersionUID =1L;
+} 
+
+
+</code></pre><p>La variable <code>serialVersionUID</code> est un identifiant unique de version pour une classe sérialisable. Elle permet de garantir la compatibilité de la classe entre plusieurs versions de logiciels, afin que l'objet soit (dé)sérialisé correctement.</p>
+<p>Sans se lancer dans des blocs de code interminables, on pourra ensuite transformer les objets qu'on aura créé avec un constructeur en chaîne de caractères sur un fichier .txt (créé pour l'occasion), et la désérialisation permettra de créer des copies de ces objets (donc stockés sur un emplacement mémoire différent des originaux).</p>
+<p>Par défaut, tous les champs d'un objet sont sérialisés, en excluant les champs statiques, car de toute manière un champ statique appartient à la classe et non à l'objet. On peut aussi utiliser des outils pour écrire et lire vus dans la partie précédente pour gérer et sérialiser des objets qui n'étaient pas définis comme tels au début !</p>
+<h3>Génériques</h3>
+<p>Java permet de définir ce qu'on appelle des génériques, permettant créer des classes, des interfaces et des méthodes capables de travailler avec différents types de données. C'est très utile si par exemple on a plusieurs classes ayant la même utilité, mais utilisant des données différentes. Les génériques sont un peu comme des templates de classe, des moules à partir desquels on peut rapidement créer la classe dont on a besoin.</p>
+<pre class="language-java line-numbers"><code>
+
+public class Boite<T> {
+    private T contenu;
+
+    public Boite(T contenu) {
+        this.contenu = contenu;
+    }
+
+    public T getContenu() {
+        return contenu;
+    }
+
+    public void setContenu(T contenu) {
+        this.contenu = contenu;
+    }
+}
+
+// Utilisation de la classe Boite avec un type générique
+Boite<String> boiteString = new Boite<>("Contenu de la boite");
+String contenu = boiteString.getContenu();
+System.out.println(contenu); // Affiche "Contenu de la boite"
+
+
+</String></T></code></pre><p>Le problème des génériques est qu'on ne peut pas utiliser des types primitifs comme arguments (int, boolean,...). Heureusement, Java fournit des classes dites &quot;Wrapper&quot; pour pouvoir utiliser ces types comme paramètres.</p>
+<pre class="language-java line-numbers"><code>
+
+// Incorrect 
+Boite<int> boiteInt = new Boite<>(56);
+
+//Correct
+Boite<Integer> boiteInt = new Boite<>(56);
+
+
+</Integer></int></code></pre><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Vladimir-Jeantroux/mon/temps-3.1/tableauwrapper.JPG" alt="Classes Wrapper" title="Tableau comportant les équivalents Wrapper pour les classes primitives de Java"></p>
+<p>&quot;Wrapper Classes for Primitive Data Types&quot;, Codecademy <a href="https://www.codecademy.com/courses/learn-intermediate-java/lessons/generics-java/exercises/java-generics-wrapper-classes">https://www.codecademy.com/courses/learn-intermediate-java/lessons/generics-java/exercises/java-generics-wrapper-classes</a></p>
+<p>On peut aussi créer des interfaces ou des méthodes génériques selon les besoins, et changer le nombre de paramètres.
+Exemple de méthode qui compare 2 objets et renvoie si ce sont des nombres ou non:</p>
+<pre class="language-java line-numbers"><code>
+
+public class Util {
+  public static <T, S=""> boolean sontNombres(T elem1, S elem2) {
+    return elem1 instanceof Number && elem2 instanceof Number; 
+  }
+}
+
+
+</T,></code></pre><p>Les génériques sont ainsi un outil puissant qui permet un code non surchargé, lisible et évolutif.</p>
+<h3>Collections</h3>
+<p>En Java, le framework des collections offre une structure organisée pour travailler avec des groupes d'objets, dépassant les limitations des tableaux avec leur taille fixe. Il comprend des interfaces et des classes implémentées pour différents types de structures de données, ainsi que des algorithmes pour effectuer des opérations courantes sur ces collections. On peut alors se concentrer sur la logique métier au lieu de l'implémentation bas niveau.</p>
+<p>Par exemple, le framework propose plusieurs implémentations de listes, comme <code>ArrayList</code> ou <code>LinkedList</code>, chacune ayant ses utilisations : <code>ArrayList</code> est plus couramment utilisée, mais <code>LinkedList</code> est plus pratique s'il y a beaucoup d'ajouts ou de suppression en début/fin de liste. On a aussi l'interface <code>Set</code>, collection d'objets qui ne permet pas de doublon.</p>
+<h2>Conclusion</h2>
+<p>Je n'ai pas pu finir la leçon par manque de temps, il reste encore les Threads à voir. Les quiz de la leçon que j'ai suivi étaient verrouillés derrière un abonnement, j'ai donc pratiqué en parallèle sur les exercices du site de W3School.
+Les notions abordées par ce cours étaient très intéressantes et j'ai surtout pu comprendre comment fonctionnaient certains aspects du langage. Les problèmes que j'ai rencontré sur ce site étaient les quiz cachés derrière les paywalls, mais chaque partie avait sa petite partie pratique, mais parfois le terminal inclus ne détectait pas certains problèmes avec le code, il faut donc être un peu vigilant.
+Je recommande tout de même la leçon pour ceux qui veulent aller plus loin, car elle était très claire et compréhensive. Il faut cependant bien parler anglais, j'ai eu du mal à comprendre quelques concepts techniques en anglais tout au long de la leçon.</p>
+<h2>Bibliographie</h2>
+<ul>
+<li>Learn Intermediate Java, Codecademy <a href="https://www.codecademy.com/courses/learn-intermediate-java/informationals/welcome-to-learn-intermediate-java">https://www.codecademy.com/courses/learn-intermediate-java/informationals/welcome-to-learn-intermediate-java</a></li>
+<li>Documentation de Java <a href="https://docs.oracle.com/en/java/">https://docs.oracle.com/en/java/</a></li>
+<li>Exercices de W3School (sur les sujets abordés par la leçon de Codecademy) <a href="https://www.w3schools.com/java/">https://www.w3schools.com/java/</a></li>
+</ul>
+<h2>Autres MON sur Java</h2>
+<ul>
+<li><a href="https://francoisbrucker.github.io/do-it/promos/2023-2024/Ouzoulias-Nicolas/mon/temps-1.1/">&quot;Petite initiation au Java et à la Programmation Orientée Objet&quot; par Nicolas Ouzoulias</a></li>
+<li><a href="https://francoisbrucker.github.io/do-it/promos/2023-2024/Agathe-Rabachou/mon/temps-3.2/">&quot;Initiation au Java&quot; par Agathe Rabachou</a></li>
+</ul>
+
+
+
+</article>
+
+        </main>
+
+
+        <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-center items-center">
+                    <p class="text-center">
+                        <span style="font-family: Consolas, sans-serif;">Do_<span style="color: #4a86e8">It</span></span> : Développement et Organisation en IT
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- MathJax import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">
+            window.MathJax = {
+                tex: {
+                inlineMath: [
+                    [
+                    '$', '$'
+                    ],
+                    [
+                    '\\(', '\\)'
+                    ]
+                ]
+                },
+                svg: {
+                fontCache: 'global'
+                }
+            };
+
+        MathJax
+            .startup
+            .document
+            .getMathItemsWithin(document.body);
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">
+            Prism.plugins.NormalizeWhitespace.setDefaults({
+                'remove-trailing': true,
+                'remove-indent': true,
+                'left-trim': true,
+                'right-trim': true,
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js">
+            document.addEventListener('DOMContentLoaded', () => {
+                Prism.highlightAll();
+            });
+        </script>
+    </body>
+</html>

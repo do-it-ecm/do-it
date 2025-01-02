@@ -1,0 +1,268 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Conception SI</title>
+
+        <!-- Prismjs imports
+                - Prism core
+                - Prism line numbers
+                - Prism copy to clipboard
+                - Prism autoloader
+        -->
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+        <!-- Mermaid import and initialization -->
+        <script type="module" defer="">
+            import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/+esm';
+            mermaid.initialize({
+                startOnLoad: true,
+            });
+        </script>
+
+        <link href="/assets/stylesheets/main.css" rel="stylesheet">
+
+    </head>
+
+    <body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000">
+        <header class="border-b-2 border-gray-200 mb-4">
+        <div class="max-w-[1000px] mx-auto px-4">
+            <div class="min-h-[50px] flex justify-between items-center">
+                <a class="mx-2" href="/">Home</a>
+                <div class="flex items-center gap-4 sm:gap-6 ">
+                    <a class="" href="/cs">CS</a>
+                    <a class="" href="/pok">POK</a>
+                    <a class="" href="/mon">MON</a>
+                    <a class="" href="/projets">Projets</a>
+                    <a class="hidden sm:block" href="/promos">Promos</a>
+                    <a href="/search">
+                        <svg class="h-5 aspect-square" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+                        </svg>
+                    </a>
+                    <a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank">
+                        <svg class="h-5 aspect-square" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        </header>
+
+        <main class="max-w-[1000px] mx-auto px-4" data-pagefind-body="">
+            
+<article class="relative">
+<h1 class="mb-1">Conception SI</h1>
+<div class="mb-4">
+    
+        <div class="px-4 flex flex-wrap items-center">
+            
+                <div class="font-bold">Tags : </div>
+            
+            <ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags">
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">COURS</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">management</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">si</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">conception</li>
+                
+
+            </ul>
+
+            
+            <div class="hidden" data-pagefind-meta="Type">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Auteurs : </div>
+            <ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs">
+                
+                    <li class="bg-blue-200 rounded-full px-2" data-pagefind-filter="Auteurs">Laetitia PIET</li>
+                
+                    <li class="bg-blue-200 rounded-full px-2" data-pagefind-filter="Auteurs">BoxBoxJason</li>
+                
+            </ul>
+        </div>
+    
+
+    
+</div>
+
+
+<h2>Enjeux de l'organistation</h2>
+<h3>Front office</h3>
+<p>Il s'agit de l'ensemble des logiciels que le client voit directement. C'est un ensemble d'interfaces graphiques qui permettent de communiquer avec le client. C'est le point de contact entre l'entreprise et le client.
+Il se compose par exemple de:</p>
+<ul>
+<li>Forces de vente</li>
+<li>Service client</li>
+<li>Marketing automation</li>
+<li>E-commerce</li>
+</ul>
+<h3>Back office</h3>
+<p>Il s'agit de l'ensemble des logiciels qui ne sont pas visibles par le client. C'est l'ensemble des logiciels qui permettent de gérer l'entreprise. Il se compose par exemple de:</p>
+<ul>
+<li>Finance</li>
+<li>Ventes</li>
+<li>Supply</li>
+<li>Production</li>
+<li>RH</li>
+</ul>
+<h2>Approche Customer Centric</h2>
+<p>Il y a régulièrement des expériences entreprise-client chaotiques. Cela génère de la frustration chez les clients mais auss ichez les employés. Cela engendre une forte attrtion. Le coût opérationnel pour l'entreprise est démultiplié.</p>
+<p>D'un autre côté il y a des entreprises qui sont appréciées de leurs clients. Cela permet de fidéliser les clients avec des expériences uniques. Et surtout les bons workflows augmentent l'efficacité des employés ainsi que les revenus de l'entreprise.</p>
+<p>Une approche &quot;Customer Centric&quot; consiste à placer le client au centre de tout ce que l'organisation réalise.</p>
+<table>
+<thead>
+<tr></tr>
+</thead>
+<tbody>
+<tr>
+<td>Pour le client</td>
+<td>Anticiper ses besoins</td>
+</tr>
+<tr>
+<td>Pour l'entreprise</td>
+</tr>
+</tbody>
+</table>
+<h3>Schema classique</h3>
+<p>Le client a généralement toujours accès à un conseiller de manière rapide. Ce conseiller est à même de répondre à la plupart des demandes simples. En revanche, passé un certain niveau de complexité, c'est le flou total pour le conseiller et le client. Il est alors nécessaire pour le client de s'investir lui même dans la recherche de la solution à son problème.</p>
+<pre class="mermaid" style="background-color: transparent;">
+graph LR
+    A[Client non satisfait] --> B[Client non fidèle]
+    B --> C[Out of business]
+</pre>
+<p>En moyenne, 1 client sur 3 quitte une marque qu'il aime après 1 seule mauvaise expérience.
+Le coût d'acquisition d'un nouveau client est entre 5 et 25 fois plus élevé que le coût de fidélisation d'un client existant.</p>
+<h3>Challenges</h3>
+<p>Il y a 3 enjeux communs qu'une organisation doit adresser pour être customer centric:</p>
+<ol>
+<li>Obtenir l'adhésion des équipes et en créer une culture</li>
+<li>Passer d'une approche <strong>Product Centric</strong> à une approche <strong>Customer Centric</strong></li>
+<li></li>
+</ol>
+<h4>Passer au delà des silos de données</h4>
+<h4>Obtenir l'adhésion des équipes et en créer une culture</h4>
+<p>Pour obtenir l'adhésion des équipes, il faut s'adresser les bonnes questions:</p>
+<ul>
+<li>En quoi l'introduction de ce nouveau produit profitera-t-elle au client ?</li>
+<li>Comment ce nouveau système de back-office va-t-il créer un moyen plus facile et plus intelligent d'intéragir avec le client ?</li>
+<li>Comment ce nouveau processus éliminera-t-il les frictions inutiles subies par nos clients ?</li>
+</ul>
+<h4>Passer d'une approche <strong>Product Centric</strong> à une approche <strong>Customer Centric</strong></h4>
+<p>Généralement les entreprises sont organisées par produit. Cela crée des silos de données. Il est nécessaire de passer d'une approche <strong>Product Centric</strong> à une approche <strong>Customer Centric</strong>.<br>
+Cela passe par la dimunition du nombre d'interlocuteurs pour le client. Il est nécessaire de créer une vue unique du client.\</p>
+<h3>Enjeux Métiers et SI</h3>
+<table>
+<thead>
+<tr>
+<th>Enjeux métiers</th>
+<th>Enjeux SI</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Alignement des métiers</strong> sur des objectifs communs</td>
+<td><strong>Gouvernance des données clients</strong> dans un contexte multi-métieers et multi-pays</td>
+</tr>
+<tr>
+<td><strong>Définition des services à forte valeur ajoutée</strong> (vente,marketing,service)</td>
+<td><strong>Mise en oeuvre progressive du socle technologique</strong> adapté aux cas d'usages prioritaires</td>
+</tr>
+<tr>
+<td><strong>Accompagnement au changement</strong> (développement de la transversalité, de nouveaux modèles économiques)</td>
+<td><strong>Approche par expérimentation</strong></td>
+</tr>
+<tr>
+<td><strong>Pilotage par la valeur générée</strong></td>
+<td><strong>Urbanisation du système d'information</strong> (orchestration des flux, interopérabilité des applications / plateformes)</td>
+</tr>
+</tbody>
+</table>
+<p>Cela permet la définition d'un référentiel client unique.</p>
+<h2>Bien connaître son client</h2>
+<h3>Amélioration de la connaissance</h3>
+<h4>Centraliser les données clients</h4>
+<p>La vision 360 permet de <strong>visualiser toutes les informations sur les lcient, quelel que soit la provenance de ces données</strong>. Il est pour cela nécessaire d'éliminer les silos de données dans l'entreprise.</p>
+<h4>Catégoriser et cibler</h4>
+
+
+</article>
+
+        </main>
+
+
+        <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-center items-center">
+                    <p class="text-center">
+                        <span style="font-family: Consolas, sans-serif;">Do_<span style="color: #4a86e8">It</span></span> : Développement et Organisation en IT
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- MathJax import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">
+            window.MathJax = {
+                tex: {
+                inlineMath: [
+                    [
+                    '$', '$'
+                    ],
+                    [
+                    '\\(', '\\)'
+                    ]
+                ]
+                },
+                svg: {
+                fontCache: 'global'
+                }
+            };
+
+        MathJax
+            .startup
+            .document
+            .getMathItemsWithin(document.body);
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">
+            Prism.plugins.NormalizeWhitespace.setDefaults({
+                'remove-trailing': true,
+                'remove-indent': true,
+                'left-trim': true,
+                'right-trim': true,
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js">
+            document.addEventListener('DOMContentLoaded', () => {
+                Prism.highlightAll();
+            });
+        </script>
+    </body>
+</html>

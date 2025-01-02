@@ -1,0 +1,361 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Création d&#39;une app web avec React</title>
+
+        <!-- Prismjs imports
+                - Prism core
+                - Prism line numbers
+                - Prism copy to clipboard
+                - Prism autoloader
+        -->
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+        <!-- Mermaid import and initialization -->
+        <script type="module" defer="">
+            import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/+esm';
+            mermaid.initialize({
+                startOnLoad: true,
+            });
+        </script>
+
+        <link href="/assets/stylesheets/main.css" rel="stylesheet">
+
+    </head>
+
+    <body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000">
+        <header class="border-b-2 border-gray-200 mb-4">
+        <div class="max-w-[1000px] mx-auto px-4">
+            <div class="min-h-[50px] flex justify-between items-center">
+                <a class="mx-2" href="/">Home</a>
+                <div class="flex items-center gap-4 sm:gap-6 ">
+                    <a class="" href="/cs">CS</a>
+                    <a class="" href="/pok">POK</a>
+                    <a class="" href="/mon">MON</a>
+                    <a class="" href="/projets">Projets</a>
+                    <a class="hidden sm:block" href="/promos">Promos</a>
+                    <a href="/search">
+                        <svg class="h-5 aspect-square" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+                        </svg>
+                    </a>
+                    <a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank">
+                        <svg class="h-5 aspect-square" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        </header>
+
+        <main class="max-w-[1000px] mx-auto px-4" data-pagefind-body="">
+            
+<article class="relative">
+<h1 class="mb-1">Création d&#39;une app web avec React</h1>
+<div class="mb-4">
+    
+        <div class="px-4 flex flex-wrap items-center">
+            
+                <div class="font-bold">Tag : </div>
+            
+            <ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags">
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">POK</li>
+                
+
+            </ul>
+
+            
+            <div class="hidden" data-pagefind-meta="Type">
+                
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Auteurs : </div>
+            <ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs">
+                
+                    <li class="bg-blue-200 rounded-full px-2" data-pagefind-filter="Auteurs">Guillaume OLIANA</li>
+                
+            </ul>
+        </div>
+    
+
+    
+        <div class="absolute top-0 right-0">
+            <span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2" data-pagefind-filter="Année">
+                2024-2025
+            </span>
+        </div>
+    
+</div>
+
+        <p class="mb-4 text-lg">
+
+                Un POK autour de React.js pour la création d'une application web de gestion de tâches style to-do list.
+
+        </p>
+
+
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/promos/2024-2025/Oliana-Guillaume/">OLIANA Guillaume</a><span class="px-1">/</span><a href="/promos/2024-2025/Oliana-Guillaume/pok/">POK de Guillaume OLIANA</a><span class="px-1">/</span><a href="/promos/2024-2025/Oliana-Guillaume/pok/temps-2/">Création d&#39;une app web avec React</a>
+
+</div></div>
+
+
+
+
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Prérequis</b></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li>Connaissances de base en JavaScript.</li>
+<li>Familiarité avec React.js (components, props, hooks).</li>
+<li>Notions de base en HTML et CSS pour le styling.</li>
+</ul>
+</div></div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Liens</b></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li><a href="https://reactjs.org/docs/getting-started.html">Documentation React.js</a></li>
+<li><a href="https://tailwindcss.com/">CSS Utility Framework (Tailwind)</a></li>
+<li><a href="https://firebase.google.com/docs/auth">Firebase Authentication</a></li>
+<li><a href="https://firebase.google.com/docs/firestore">Firestore</a></li>
+<li><a href="https://stackblitz.com/edit/vite-mwbmhvcj?file=main.js">Stackblitz setup</a></li>
+<li><a href="">Lien vers le repo Github</a></li>
+</ul>
+</div></div>
+
+<h2>Contexte du Projet</h2>
+<p>J'ai entrepris de créer une application de gestion de tâches, un projet basique mais qui permet selon mes recherches d'acquérir les bases.  L'idée était de développer une application web qui soit à la fois légère, fonctionnelle et agréable à utiliser. Je n'ai pas vraiment atteint ce dernier objectif mais le sprint 2 me permettra d'aller plus loin dans le front end.</p>
+<p>A noter que j'ai utilisé partiellement l'environnement de développement Stackblitz qui permet de faire tourner des &quot;server-side sorftware&quot; directement dans le web browser. Une fois les test sur Firebase faits et validés j'ai travaillé en local sur ma machine sur VSCode.</p>
+<h3>Horodatage</h3>
+<p>Mon parcours de développement s'est étalé sur plusieurs sessions de travvail :</p>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Heures passées</th>
+<th>Activités</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>01/11/2024</td>
+<td>2h</td>
+<td>Réflexion sur l'architecture, premiers paramétrages</td>
+</tr>
+<tr>
+<td>02/11/2024</td>
+<td>3h</td>
+<td>Création des premiers composants de liste</td>
+</tr>
+<tr>
+<td>05/11/2024</td>
+<td>2h</td>
+<td>Exploration et intégration de Firebase</td>
+</tr>
+<tr>
+<td>07/11/2024</td>
+<td>3h</td>
+<td>Développement du formulaire d'ajout de tâches</td>
+</tr>
+<tr>
+<td>29/11/2024</td>
+<td>3h</td>
+<td>Mise en place des filtres et de la logique de catégories</td>
+</tr>
+<tr>
+<td>01/12/2024</td>
+<td>2h</td>
+<td>&quot;Raffinement&quot; l'interface utilisateur</td>
+</tr>
+<tr>
+<td>03/12/2024</td>
+<td>3h</td>
+<td>Stylisation et harmonisation visuelle</td>
+</tr>
+<tr>
+<td>05/12/2024</td>
+<td>2h</td>
+<td>Tests, débogage et derniers ajustements</td>
+</tr>
+</tbody>
+</table>
+<h2>Parcours de Développement</h2>
+<h3>Choix Technologiques</h3>
+<p>Après quelques réflexions, j'ai opté pour une stack moderne :</p>
+<ul>
+<li><strong>React.js</strong> : Pour sa flexibilité et sa réactivité</li>
+<li><strong>Tailwind CSS</strong> : Afin de gagner en rapidité de développement et découvrir ce qu'était Tailwind.</li>
+<li><strong>Firebase</strong> : Pour gérer l'authentification et le stockage des données facilement, je ne voulais pas développer le &quot;backend&quot; de zéro par moi même, le but de ce POK est de découvrir le front.</li>
+</ul>
+<h3>Étapes de Réalisation</h3>
+<h4>Initialisation et Configuration</h4>
+<p>Les premiers jours ont été consacrés à mettre en place l'environnement de développement. J'ai configuré Vite pour avoir un projet React et j'ai intégré Tailwind CSS pour le design.</p>
+<h4>Développement des Composants</h4>
+<p>La construction des composants a été progressive mais la structure a été établie dès le début:</p>
+<ul>
+<li>J'ai commencé par créer <code>TodoList</code> et <code>TodoItem</code> pour visualiser les tâches</li>
+<li>Puis j'ai développé <code>TodoForm</code> pour permettre l'ajout de nouvelles tâches</li>
+<li><code>CategoryFilter</code> ensuite permet de filtrer les tâches par catégorie</li>
+<li>Enfin, <code>Auth</code> pour permettre de créer des utilisateurs, gérer l'authentification.</li>
+</ul>
+<h4>Intégration de Firebase</h4>
+<p>L'ajout de Firebase a été un tournant crucial. Il m'a permis de mettre en place une authentification sécurisée rapidement sans me préoccuper du système d'authentification.</p>
+<p><strong>Comme je l'ai developpé dans mon MON2.1</strong>, l'utilisation de Firebase permet de développer un système d'authentification sans trop de mal de façon rapide et pratique pour ne pas s'attarder sur cette tâche.</p>
+<h4>Fonctionnalités Implémentées dans le Code</h4>
+<h5>Authentification Firebase :</h5>
+<p>Gestion de l'inscription et de la connexion des utilisateurs via Firebase Authentication.
+Utilisation des fonctions pour vérifier si un utilisateur est déjà connecté (persistance des sessions).
+Alternance entre les modes &quot;Connexion&quot; et &quot;Créer un compte&quot; via une logique conditionnelle dans l'interface.</p>
+<h5>Gestion des tâches :</h5>
+<p>Ajout d'une tâche avec des champs tels que :</p>
+<ul>
+<li>Titre</li>
+<li>Catégorie</li>
+<li>Niveau de priorité</li>
+<li>Date et heure</li>
+</ul>
+<p>Les données saisies dans le formulaire sont validées avant d'être enregistrées.</p>
+<h5>Stockage Firebase Firestore :</h5>
+<p>Les tâches créées par l'utilisateur sont enregistrées dans Firestore.
+Chaque tâche est associée à l'utilisateur connecté grâce à l'ID unique de celui-ci.</p>
+<h5>Affichage des tâches :</h5>
+<p>Les tâches récupérées depuis Firestore sont affichées dynamiquement dans une liste.
+La liste est triée ou filtrée selon des critères comme la date ou la priorité.</p>
+<h5>Mise à jour et suppression des tâches :</h5>
+<p>Fonctionnalité pour éditer les détails d'une tâche existante.
+Suppression d'une tâche directement depuis l'interface, avec une synchronisation en temps réel avec Firestore.</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Oliana-Guillaume/pok/temps-2/image-2.png" alt="alt text"></p>
+<h5>Structure du Frontend :</h5>
+<p>Le frontend est conçu en React.
+Utilisation de composants pour organiser le code (ex. : TaskList, TaskForm, LoginForm).</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Oliana-Guillaume/pok/temps-2/image.png" alt="alt text"></p>
+<h5>Backend Firebase :</h5>
+<p>Firestore est utilisé pour gérer la base de données en temps réel.
+Les règles de sécurité Firestore assurent que chaque utilisateur accède uniquement à ses propres tâches.</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Oliana-Guillaume/pok/temps-2/image-1.png" alt="alt text"></p>
+<h2>Défis Rencontrés</h2>
+<p>Le développement n'a pas été un long fleuve tranquille. J'ai dû :</p>
+<ul>
+<li>Gérer la synchronisation entre le frontend et Firestore</li>
+<li>Prendre en main React et Tailwind</li>
+<li>Créer une interface utilisateur sympathique (qui était un des objectifs principaux que je m'étais donné pour découvrir le frontend)</li>
+</ul>
+<h2>Apprentissages Clés</h2>
+<p>Ce projet m'a permis de :</p>
+<ul>
+<li>Approfondir mes compétences en React (qui étaient proches de zéro)</li>
+<li>Comprendre l'écosystème Firebase (j'ai développé plus en profondeur ce sujet dans mon MON2.1)</li>
+<li>Maîtriser Tailwind CSS (maîtriser les bases et aller un peu plus loin avec des tutoriels Youtube, du genre ajouter des confettis)</li>
+<li>Appréhender une approche composant pour le développement web (c'est mon premier projet web avec React)</li>
+</ul>
+<h2>Perspectives pour le SPRINT 2 :</h2>
+<p>Pour les prochaines versions, j'envisage :</p>
+<ol>
+<li>Ajouter des notifications</li>
+<li>Implémenter un système de sous-tâches</li>
+<li>Améliorer le design responsive</li>
+<li>Ajouter une barre de progression des tâches.</li>
+<li>Utiliser un formulaire pour ajouter des tâches (laisser seulement un bouton &quot;Ajouter une tâche&quot; sur la page)</li>
+</ol>
+<h1>SPRINT 2 :</h1>
+<h2>Amélioration de l'UI de la page de login</h2>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Oliana-Guillaume/pok/temps-2/image-3.png" alt="alt text"></p>
+<p>Rien de bien compliqué ici, j'ai retravaillé la partie signup/login que je n'avais pas pris le temps de rendre esthétiquement potable au sprint 1.</p>
+<h2>Implémentation d'un formulaire pour créer une tâche</h2>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Oliana-Guillaume/pok/temps-2/image-4.png" alt="alt text"></p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Oliana-Guillaume/pok/temps-2/image-5.png" alt="alt text"></p>
+<h2>Ajout d'une barre de progression d'accomplissement des tâches</h2>
+<p>Cette barre de progression est globale et les filtres ne s'y applique pas pour le moment.</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Oliana-Guillaume/pok/temps-2/image-6.png" alt="alt text"></p>
+<h1>Conclusion</h1>
+<p>En conclusion ce projet m'a permis de découvrir plus en profondeur le front avec l'implémentation de fonctionnalités simples. L'utilisation de firebase m'a fait gagné énormément de temps et éviter beaucoup de prises de tête sur la logique à découvrir pour gérer un backend.</p>
+
+
+
+</article>
+
+        </main>
+
+
+        <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-center items-center">
+                    <p class="text-center">
+                        <span style="font-family: Consolas, sans-serif;">Do_<span style="color: #4a86e8">It</span></span> : Développement et Organisation en IT
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- MathJax import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">
+            window.MathJax = {
+                tex: {
+                inlineMath: [
+                    [
+                    '$', '$'
+                    ],
+                    [
+                    '\\(', '\\)'
+                    ]
+                ]
+                },
+                svg: {
+                fontCache: 'global'
+                }
+            };
+
+        MathJax
+            .startup
+            .document
+            .getMathItemsWithin(document.body);
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">
+            Prism.plugins.NormalizeWhitespace.setDefaults({
+                'remove-trailing': true,
+                'remove-indent': true,
+                'left-trim': true,
+                'right-trim': true,
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js">
+            document.addEventListener('DOMContentLoaded', () => {
+                Prism.highlightAll();
+            });
+        </script>
+    </body>
+</html>

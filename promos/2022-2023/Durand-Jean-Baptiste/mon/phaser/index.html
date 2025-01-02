@@ -1,0 +1,443 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Phaser et CI sur Github</title>
+
+        <!-- Prismjs imports
+                - Prism core
+                - Prism line numbers
+                - Prism copy to clipboard
+                - Prism autoloader
+        -->
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+        <!-- Mermaid import and initialization -->
+        <script type="module" defer="">
+            import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/+esm';
+            mermaid.initialize({
+                startOnLoad: true,
+            });
+        </script>
+
+        <link href="/assets/stylesheets/main.css" rel="stylesheet">
+
+    </head>
+
+    <body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000">
+        <header class="border-b-2 border-gray-200 mb-4">
+        <div class="max-w-[1000px] mx-auto px-4">
+            <div class="min-h-[50px] flex justify-between items-center">
+                <a class="mx-2" href="/">Home</a>
+                <div class="flex items-center gap-4 sm:gap-6 ">
+                    <a class="" href="/cs">CS</a>
+                    <a class="" href="/pok">POK</a>
+                    <a class="" href="/mon">MON</a>
+                    <a class="" href="/projets">Projets</a>
+                    <a class="hidden sm:block" href="/promos">Promos</a>
+                    <a href="/search">
+                        <svg class="h-5 aspect-square" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+                        </svg>
+                    </a>
+                    <a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank">
+                        <svg class="h-5 aspect-square" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        </header>
+
+        <main class="max-w-[1000px] mx-auto px-4" data-pagefind-body="">
+            
+<article class="relative">
+<h1 class="mb-1">Phaser et CI sur Github</h1>
+<div class="mb-4">
+    
+        <div class="px-4 flex flex-wrap items-center">
+            
+                <div class="font-bold">Tags : </div>
+            
+            <ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags">
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">MON</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">Phaser</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">Game Engine</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">Github Actions</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">Github Pages</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">Javascript</li>
+                
+
+            </ul>
+
+            
+            <div class="hidden" data-pagefind-meta="Type">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Auteurs : </div>
+            <ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs">
+                
+                    <li class="bg-blue-200 rounded-full px-2" data-pagefind-filter="Auteurs">Jean-Baptiste Durand</li>
+                
+            </ul>
+        </div>
+    
+
+    
+        <div class="absolute top-0 right-0">
+            <span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2" data-pagefind-filter="Année">
+                2022-2023
+            </span>
+        </div>
+    
+</div>
+
+
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/promos/2022-2023/Durand-Jean-Baptiste/">Jean-Baptiste Durand</a><span class="px-1">/</span><a href="/promos/2022-2023/Durand-Jean-Baptiste/mon/">MON Jean-Baptiste</a><span class="px-1">/</span><a href="/promos/2022-2023/Durand-Jean-Baptiste/mon/phaser/">Phaser et CI sur Github</a>
+
+</div></div>
+
+
+
+
+<!-- début résumé -->
+<p>Phaser - Game Engine + Github CI</p>
+<!-- fin résumé -->
+<p><a href="https://jean-baptiste-dp.github.io/PhaserEscapeRoom/">Lien du jeu</a>
+<a href="https://github.com/Jean-Baptiste-DP/PhaserEscapeRoom">Lien du github</a></p>
+<h2 id="toc"> Table des matières </h2>
+<ul>
+<li><a href="#toc">Table des matières</a></li>
+<li><a href="#h1">Choix de la technologie</a></li>
+<li><a href="#h2">Hébergement sur Github</a>
+<ul>
+<li><a href="#h2-1">Actions</a></li>
+<li><a href="#h2-2">Clé de déploiement</a>
+<ul>
+<li><a href="#h2-2-1">Access Token</a></li>
+<li><a href="#h2-2-2">Secrets</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#h3">Présentation de Phaser</a>
+<ul>
+<li><a href="#h3-1">Physique (<em>Physics</em>)</a>
+<ul>
+<li><a href="#h3-1-1">Arcade</a></li>
+<li><a href="#h3-1-1">Matter</a></li>
+</ul>
+</li>
+<li><a href="#h3-2">Scène (<em>Scene</em>)</a></li>
+<li><a href="#h3-3">Joueur (<em>Sprite</em>)</a></li>
+<li><a href="#h3-4">Carte (<em>Tilemap</em>)</a></li>
+</ul>
+</li>
+<li><a href="#liens">Liens Utiles</a></li>
+</ul>
+<h2 id="h1">Choix de la technologie</h2>
+<p>Je me suis renseigné sur 4 différents moteurs de jeu :</p>
+<ul>
+<li><a href="https://unity.com/">Unity</a> :
+<ul>
+<li>Code en C# et UnityScript (JS)</li>
+<li>Fait tourner des jeux pour Desktop, mobile et console</li>
+</ul>
+</li>
+<li><a href="https://www.unrealengine.com/en-US">Unreal Engine</a> :
+<ul>
+<li>Code en C++ et Blueprint</li>
+<li>Fait tourner des jeux pour Desktop, mobile et console</li>
+</ul>
+</li>
+<li><a href="https://godotengine.org/">Godot</a> :
+<ul>
+<li>Code en GDScript (Python) et C++</li>
+<li>Fait tourner des jeux pour Desktop, mobile et console</li>
+</ul>
+</li>
+<li><a href="https://phaser.io/">Phaser</a> :
+<ul>
+<li>Code en Javascript</li>
+<li>Fait tourner des jeux pour web (HTML5)</li>
+</ul>
+</li>
+</ul>
+<p>Je me suis tourné vers Phaser car il permettait d'être disponible en static sur un navigateur. Ce qui, combiné avec <a href="https://pages.github.com/">Github Pages</a>, permet d'avoir mon jeu hébergé directement par Github sans trop de difficultés.</p>
+<h2 id="h2"> Hébergement sur Github</h2>
+<h3 id="h2-1">Actions</h3>
+<p>Github propose d'<strong>héberger gratuitement un site static</strong> (comportant seulement des pages HTML, avec CSS et JS, mais sans serveur), c'est ce qui permet notamment d'héberger le <strong>site de Do_It</strong>. Pour cela, Github a besoin d'une branche sur laquelle est toute l'infrastructure statique du site.</p>
+<p>Pour éviter d'avoir à chaque fois à mettre le site static sur une branche, on peut utiliser les <a href="https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions#:~:text=GitHub%20Actions%20is%20a%20continuous,merged%20pull%20requests%20to%20production.">Github Actions</a> qui est une routine, exécutée sur une machine de Github.</p>
+<p>Voici l'action github que j'ai mis en place, avec en dessous les informations sur les différentes fonctionnalités :</p>
+<pre class="language-text line-numbers"><code>
+
+name: Build
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          publish_dir: ./static
+          github_token: ${{ secrets.DEPLOY_KEY }}
+
+
+</code></pre><ul>
+<li><strong>Name</strong> permet de facilement retrouver l'action si on en a plusieurs</li>
+<li><strong>on</strong> est l'élément déclencheur de l'action, ici l'action est effectuée quand des commits sont push sur la branche <em>main</em></li>
+<li><strong>workflow_dispatch</strong> permet de lancer l'action manuellement depuis l'onglet <strong>Actions</strong> de github</li>
+<li><strong>jobs</strong> est l'ensemble des actions à effectuer</li>
+<li><strong>runs-on</strong> le code étant exécuté sur une machine de Github, on a la possibilité de choisir sur quelle OS va faire tourner notre code</li>
+<li><strong>actions/checkout</strong> est une action permettant à la machine de Github, de pouvoir accéder à notre code (permet aussi d'avoir accès à d'autres repo Github si nécessaire)</li>
+<li><strong>peaceiris/actions-gh-pages</strong> est une action permettant de publier sur la branche <strong>gh-pages</strong> le contenu d'un dossier (ici le dossier <em>static</em>). La machine de Github n'ayant pas les droit de modifier notre projet, il faut lui fournir un mot de passe d'accès en écriture de notre projet, d'où le <em>${{ secrets.DEPLOY_KEY }}</em></li>
+</ul>
+<h3 id="h2-2">Clé de déploiement</h3>
+<p>Bien évidement, nous n'allons pas donner aux machines de Github notre mot de passe de connexion à notre compte Github. Il faut donc trouver un moyen de donner l'accès à notre projet en évitant de se faire voler notre mot de passe.</p>
+<h4 id="h2-2-1">Access token</h4>
+<p>Github nous permet d'avoir des mots de passes ayant des accès restreints sur notre compte. On peut choisir d'avoir un accès en écriture seulement sur un projet ou autre.</p>
+<p>Pour cela :</p>
+<p>Settings (celui de votre compte, pas du repo) -&gt; Developer Settings -&gt; Personal Access Token</p>
+<p>Vous pouvez ensuite choisir les droits de votre clé.
+Il faut faire attention à ne pas donner plus de droits que nécessaire.
+Donner une date d'expiration de la clé et supprimer les clés inutiles.</p>
+<p><a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token">Documentation officielle</a></p>
+<h4 id="h2-2-2">Secrets</h4>
+<p>Un secret est une variable qui est stockée de manière sécurisée par Github et qui peut être transmise lors de l'exécution d'actions. Un secret peut être un token d'accès (comme dans ce projet), ou par exemple l'url d'un serveur distant sur lequel déployer notre code (comme on a pu le faire sur Gitlab dans le cours AWS/Docker).</p>
+<p><a href="https://docs.github.com/en/actions/security-guides/encrypted-secrets">Documentation officielle</a></p>
+<h2 id="h3">Présentation de Phaser</h2>
+<p>Phaser est un moteur de jeu open source, dont le code source se trouve <a href="https://github.com/photonstorm/phaser/tree/v3.55.2">ici</a>.</p>
+<p>Pour installer Phaser, il faut mettre, dans un fichier html, la balise :</p>
+<pre class="language-html line-numbers"><code>
+
+<script src="//cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser.min.js"></script>
+
+
+</code></pre><p>Le reste du code sera dans un fichier js, ou dans une autre balise <em>script</em>.</p>
+<p>Phaser a une énorme bibliothèque d'exemples, pour voir une mise en application de chaque fonctionnalités, et un fichier API complet. Il est important de s'y référer pour voir comment implémenter une des fonctionnalités.</p>
+<p><a href="https://labs.phaser.io/index.html?dir=&amp;q=">exemples</a></p>
+<p><a href="https://photonstorm.github.io/phaser3-docs/index.html">API</a></p>
+<h3 id="h3-1">Physique (<i>Physics</i>)</h3>
+<p>Phaser a 2 models de physique implémentée <strong>Arcade</strong> et <strong>Matter</strong></p>
+<p>Le choix de la physique est quelque chose de primordial car il influencera les fonctionnalités de votre application.</p>
+<p>Les méthodes des objets ne sont pas les mêmes dans différents cas.</p>
+<h4 id="h3-1-1">Arcade</h4>
+<p>La physique <strong>Arcade</strong> est une physique plus simple, qui est faite pour mettre en place un projet rapidement.</p>
+<p>C'est plus simple de le prendre en main. Par contre la détections des éléments extérieurs (blocks) n'est pas implémentée ce qui peut-être limitant.</p>
+<div class="allButtonGestionProjet">
+  <a href="./phaser-build/?id=arcade" class="buttonGestionProjet">
+    <span><b class="hoverUnderline">Exemple</b></span>
+  </a>
+</div>
+<h4 id="h3-1-2">Matter</h4>
+<p>La physique <strong>Matter</strong> essai de se rapprocher au plus proche de la réalité, en ayant une implémentation de mécanique : il y a des frottements, il est possible de pousser des objets etc.</p>
+<p>Il y a une variété plus importante d'objet qu'on peut créer.</p>
+<div class="allButtonGestionProjet">
+  <a href="./phaser-build/?id=matter" class="buttonGestionProjet">
+    <span><b class="hoverUnderline">Exemple</b></span>
+  </a>
+</div>
+<h3 id="h3-2">Scène (<i>Scene</i>)</h3>
+<p>La scène est l'élément principal de Phaser, c'est lui qui va s'occuper de précharger les images d'initier les components et de faire tourner le jeu.</p>
+<p>On doit créer une classe qui hérite de <em>Phaser.Scene</em>.</p>
+<p>On peut créer 3 méthodes :</p>
+<ul>
+<li><em>preload</em></li>
+<li><em>create</em></li>
+<li><em>update</em></li>
+</ul>
+<p>Méthodes utilisées pour charger les images (<em>preload</em>), initialiser les éléments du jeu (<em>create</em>), et effectuer des actions à chaque tick du jeu (<em>update</em>).</p>
+<h3 id="h3-3">Joueur (<i>Sprite</i>)</h3>
+<p>Un Sprite est un objet animé du jeu, il peut être contrôlé par le joueur ou par d'autres éléments du jeu. Il est créé à partir d'une image.</p>
+<div class="allButtonGestionProjet">
+  <a href="./phaser-build/?id=sprite" class="buttonGestionProjet">
+    <span><b class="hoverUnderline">Exemple</b></span>
+  </a>
+</div>
+<h3 id="h3-4">Carte (<i>Tilemap</i>)</h3>
+<p>La carte du jeu peut-être générée en plaçant des bloques un par un ou en utilisant une Tilemap qui va contenir toutes les informations pour créer la map.</p>
+<p>La carte peut être composée de plusieurs couches, dont des touches qui créent des collisions ou non. C'est pratique pour générer des décors de fond, et les blocks avec lesquels notre personnage va interagir.</p>
+<div class="allButtonGestionProjet">
+  <a href="./phaser-build/?id=map" class="buttonGestionProjet">
+    <span><b class="hoverUnderline">Exemple</b></span>
+  </a>
+</div>
+<h2 id="h4">Mon point de vue</h2>
+<p><strong>Points positifs</strong> 👍</p>
+<ul>
+<li>Phaser est très bien documenté avec un très grand nombre d'exemples différents.</li>
+<li>Il n'y a pas besoin d'installer de logiciel ou autre.</li>
+</ul>
+<p><strong>Points négatifs</strong> 👎</p>
+<ul>
+<li>Il vaut mieux s'adapter à Phaser que essayer que suivre à la lettre ce qu'on a comme idée (contrôle limité sur les détails de bas niveau).</li>
+<li>Il n'est pas aisé d'avoir un projet organisé en différents fichier. J'ai fait en sorte de séparer le code du joueur du code global, mais ce n'a pas été facile. Donc il n'est pas trop possible de faire des gros projets.</li>
+<li>Il n'y a pas de réel cours, il y a une explication du &quot;Hello World!&quot;, puis l'utilisateur est encouragé à aller voir les différents exemples.</li>
+</ul>
+<h2 id="liens">Liens Utiles </h2>
+<p><strong>Mon projet</strong></p>
+<ul>
+<li><a href="https://jean-baptiste-dp.github.io/PhaserEscapeRoom/">Lien du jeu</a></li>
+<li><a href="https://github.com/Jean-Baptiste-DP/PhaserEscapeRoom">Lien du github</a></li>
+</ul>
+<p><strong>Github</strong></p>
+<ul>
+<li><a href="https://pages.github.com/">Github Pages</a></li>
+<li><a href="https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions#:~:text=GitHub%20Actions%20is%20a%20continuous,merged%20pull%20requests%20to%20production.">Github Actions</a></li>
+<li><a href="https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token">Github Access Token</a></li>
+<li><a href="https://docs.github.com/en/actions/security-guides/encrypted-secrets">Github Secrets</a></li>
+</ul>
+<p><strong>Phaser</strong></p>
+<ul>
+<li><a href="https://phaser.io/">Site Web</a></li>
+<li><a href="https://labs.phaser.io/">Bibliothèque d'exemples</a></li>
+<li><a href="https://photonstorm.github.io/phaser3-docs/index.html">API</a></li>
+</ul>
+<style>
+  a.buttonGestionProjet{
+    display: flex;
+    position: relative;
+    height: 40px;
+    width: 150px;
+    background-color: rgb(22,163,74);
+    border-radius: 15px;
+    text-align: center;
+    justify-content: center;
+    align-items:center;
+    border: 4px white solid;
+    outline: 4px rgb(22,163,74) solid;
+    text-decoration: none;
+    transition: transform 0.3s cubic-bezier(.12,-0.91,.85,1.86);
+  }
+  a.buttonGestionProjet:hover{
+    transform: scale(1.1);
+  }
+  a.buttonGestionProjet span{
+    display: block;
+    color: white;
+  }
+  div.allButtonGestionProjet{
+    display:flex;
+    flex-direction:row;
+    justify-content: space-around;
+  }
+  .hoverUnderline{
+    position:relative;
+  }
+  a.buttonGestionProjet .hoverUnderline::after{
+    content:"";
+    position: absolute;
+    bottom:0;
+    left:0;
+    height: 0.125em;
+    width: 0;
+    background-color:white;
+    transition: all 0.6s;
+  }
+  a.buttonGestionProjet:hover .hoverUnderline::after{
+    width:100%;
+  }
+</style>
+
+
+
+</article>
+
+        </main>
+
+
+        <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-center items-center">
+                    <p class="text-center">
+                        <span style="font-family: Consolas, sans-serif;">Do_<span style="color: #4a86e8">It</span></span> : Développement et Organisation en IT
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- MathJax import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">
+            window.MathJax = {
+                tex: {
+                inlineMath: [
+                    [
+                    '$', '$'
+                    ],
+                    [
+                    '\\(', '\\)'
+                    ]
+                ]
+                },
+                svg: {
+                fontCache: 'global'
+                }
+            };
+
+        MathJax
+            .startup
+            .document
+            .getMathItemsWithin(document.body);
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">
+            Prism.plugins.NormalizeWhitespace.setDefaults({
+                'remove-trailing': true,
+                'remove-indent': true,
+                'left-trim': true,
+                'right-trim': true,
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js">
+            document.addEventListener('DOMContentLoaded', () => {
+                Prism.highlightAll();
+            });
+        </script>
+    </body>
+</html>

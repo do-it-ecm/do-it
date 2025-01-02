@@ -1,0 +1,327 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>POK 3 - données et risques</title>
+
+        <!-- Prismjs imports
+                - Prism core
+                - Prism line numbers
+                - Prism copy to clipboard
+                - Prism autoloader
+        -->
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+        <!-- Mermaid import and initialization -->
+        <script type="module" defer="">
+            import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/+esm';
+            mermaid.initialize({
+                startOnLoad: true,
+            });
+        </script>
+
+        <link href="/assets/stylesheets/main.css" rel="stylesheet">
+
+    </head>
+
+    <body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000">
+        <header class="border-b-2 border-gray-200 mb-4">
+        <div class="max-w-[1000px] mx-auto px-4">
+            <div class="min-h-[50px] flex justify-between items-center">
+                <a class="mx-2" href="/">Home</a>
+                <div class="flex items-center gap-4 sm:gap-6 ">
+                    <a class="" href="/cs">CS</a>
+                    <a class="" href="/pok">POK</a>
+                    <a class="" href="/mon">MON</a>
+                    <a class="" href="/projets">Projets</a>
+                    <a class="hidden sm:block" href="/promos">Promos</a>
+                    <a href="/search">
+                        <svg class="h-5 aspect-square" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+                        </svg>
+                    </a>
+                    <a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank">
+                        <svg class="h-5 aspect-square" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        </header>
+
+        <main class="max-w-[1000px] mx-auto px-4" data-pagefind-body="">
+            
+<article class="relative">
+<h1 class="mb-1">POK 3 - données et risques</h1>
+<div class="mb-4">
+    
+        <div class="px-4 flex flex-wrap items-center">
+            
+                <div class="font-bold">Tags : </div>
+            
+            <ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags">
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">POK</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">data</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">cybersécurité</li>
+                
+
+            </ul>
+
+            
+            <div class="hidden" data-pagefind-meta="Type">
+                
+                    
+                
+                    
+                
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Auteurs : </div>
+            <ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs">
+                
+                    <li class="bg-blue-200 rounded-full px-2" data-pagefind-filter="Auteurs">Schultz Mathis</li>
+                
+            </ul>
+        </div>
+    
+
+    
+        <div class="absolute top-0 right-0">
+            <span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2" data-pagefind-filter="Année">
+                2023-2024
+            </span>
+        </div>
+    
+</div>
+
+        <p class="mb-4 text-lg">
+
+                Le but de ce POK est d'analyser les risques de la data
+
+        </p>
+
+
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/promos/2023-2024/Mathis_Schultz/">Schultz Mathis</a><span class="px-1">/</span><a href="/promos/2023-2024/Mathis_Schultz/pok/">POK de Schultz Mathis</a><span class="px-1">/</span><a href="/promos/2023-2024/Mathis_Schultz/pok/temps-3/">POK 3 - données et risques</a>
+
+</div></div>
+
+
+
+
+<h2 id="h1"> Introduction </h2>
+<p>Le but de ce pok est de s'intéresser aux enjeux de cybersécurité au travers d'une approche sociétale.
+J'ai commencé par une introduction à la cybercriminalité sur <a href="https://openclassrooms.com/fr/courses/8028761-decouvrez-lunivers-de-la-cybersecurite">Open Classroom 1</a>, que j'ai complété avec des recherches de documentations et quelques informations du cours de cybersécurité du temps 3.
+Pour le second sprint j'ai aussi prévu un cours de cryptographie pour entrer plus profondément dans le sujet via <a href="https://openclassrooms.com/fr/courses/1757741-securisez-vos-donnees-avec-la-cryptographie">Open Classroom 2</a>.</p>
+<h2 id="toc"> Table des matières </h2>
+<ul>
+<li><a href="#h1">Introduction</a></li>
+<li><a href="#toc">Table des matières</a></li>
+<li><a href="#sprint">Organisation des sprints</a></li>
+<li><a href="#h2">Sprint 1</a></li>
+<li><a href="#h3">Sprint 2</a></li>
+<li><a href="#h4">Conclusion</a></li>
+<li><a href="#liens">Liens utiles</a></li>
+</ul>
+<h2 id="sprint"> Organisation des sprints </h2>
+<p><strong>Objectif du premier sprint</strong></p>
+<ul>
+<li>Histoire de la cybercriminalité. (le rôle de la Russie et la stratégie actuelle)</li>
+<li>État actuel de la cybercriminalité. (les méthodes utilisées, une course sans fin ?)</li>
+<li>Chiffrer son impact. (économique, social, politique et environnemental ?)</li>
+</ul>
+<p><strong>Objectif du second sprint</strong></p>
+<ul>
+<li>Les stratégies des géants du numérique (l'inter-connectivité, la complexification et la centralisation de la data)</li>
+<li>Les bonnes pratiques des développeurs.</li>
+<li>Les bonnes pratiques des utilisateurs.</li>
+</ul>
+<h2 id="h2"> Sprint 1 </h2>
+<p><strong>Histoire de la cybercriminalité.</strong></p>
+<p><strong>État actuel de la cybercriminalité. (les méthodes utilisées, une course sans fin ?)</strong></p>
+<ul>
+<li>L'homme, le maillon faible de la sécurité ?</li>
+</ul>
+<p>Les géants d'internet qui ont pour coeur de métier l'IT ne sont pas épargné, voici un aperçu de l'histoire d'Uber, qui illustre la faiblesse de l'homme dans la cybersécurité :</p>
+<p>Dans une conversation avec le chercheur en cybersécurité Corben Leo, le hacker a révélé avoir obtenu l’accès aux systèmes de Uber à l’aide d’identifiants de connexion obtenus auprès d’un employé grâce à l’ingénierie sociale. Il s’est fait passer par un membre de l’équipe IT de l’entreprise afin de piéger sa victime.</p>
+<p>C’est ce qui lui a permis d’accèder à un VPN interne de l’entreprise, puis de trouver les scripts PowerShell sur l’intranet d’Uber contenant les identifiants de gestion d’accès. Il a ainsi pu infiltrer les comptes AWS et G Suite.</p>
+<p>Le 19 septembre 2022, Uber a précisé que le hacker a en fait acheté le mot de passe d’un sous-traitant sur le Dark Web. Les identifiants du sous-traitant en question auraient été exposés par un malware ayant infecté son laptop.</p>
+<p>Le cybercriminel aurait ensuite tenté à plusieurs reprises de se connecter au compte. Toutefois, grâce à l’authentification à deux facteurs, le sous-traitant recevait une requête d’approbation à chaque tentative et bloquait l’accès en refusant. Malheureusement, il a finalement accepté l’une des requêtes et le hacker a pu se connecter.</p>
+<ul>
+<li>le chiffrement RSA : pilier fragile d'internet</li>
+</ul>
+<p>Le chiffrage RSA est utilisé dans de nombreux domaines numériques au quotidien. À titre d’exemple, les protocoles de communication HTTPS (Hypertext Transfer Protocol Secure) ou encore les certificats SSL sont la plupart du temps sécurisés à l’aide d’un chiffrage RSA. Un système de chiffrement RSA permet également d’encoder les emails ou messages d’une boîte de messagerie, des données d’images ou même un disque dur. Sans la clé de chiffrement RSA nécessaire, il serait trop long de décoder ces données, même avec la puissance de calcul la plus élevée qui soit. Ce processus est donc considéré comme étant relativement sécurisé.</p>
+<p>Le principal problème de ce système réside dans la simplicité théorique à le décoder. En effet, la protection réside sur le fait que le temps de calcul est trop long pour être réalisé actuellement. Cependant, une méthode utilisé pour outrepasser ce système est d'accumuler un grand nombre de communication chiffrer et de les stocker pour plus tard, lorsque la technologie sera suffisamment rapide pour les décoder. On pourrait penser que le temps que cela se produise, l'information sera obsolète. Cependant, des informations tels que les données bancaires, données personnelles ou mot de passe sont souvent utilisé longtemps.</p>
+<ul>
+<li>Le rôle des ordinateurs quantiques</li>
+</ul>
+<p>Le rôle des ordinateurs quantique pourrait mettre fin au chiffrement RSA. En effet, suite aux différents concours de chiffrement, il a été démontré que des algorithmes quantiques peuvent décoder très rapidement le chiffrement RSA via notamment l'algorithme de SHOR.<br>
+Il faut tout de même noter que ces ordinateurs ne sont pas encore industrialisable à cause des contraintes de température des supraconducteur. De plus, de nouvelle méthode de chiffrement sont déjà prête pour être mise en place si les ordinateurs quantique se répande.</p>
+<p><strong>Chiffrer son impact. (économique, social, politique et environnemental ?)</strong></p>
+<ul>
+<li>Le rôle des cryptomonaies</li>
+</ul>
+<p>Le montant des cyberattaque via ransomware en 2023 a simplement atteint 1,1 milliards de dollars en cryptomonaies. En effet, les cryptomonaies ont un gros avantage, elles sont difficile à tracer, et ne sont pas sous la tutelle d'une banque étatique, donc impossible à inspecter.</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Mathis_Schultz/pok/temps-3/image.png" alt="Montant des ransomwares"></p>
+<ul>
+<li>La data, un nerf de la guerre ?</li>
+</ul>
+<p>Les nouvelles entreprises sont pour beaucoup des services internet : Amazon, Uber Eats, Tik Tok, Cloud. Elles ont toutes en commun une stratégie basée sur la donnée, qui consiste à toucher le publique le plus large possible et à collecter un maximum de données. Certains vont se servir des données pour améliorer leur service via des suggestion ou plus simplement vendre les données. Ces données sont normalement anonymisée pour être vendu. Ainsi, on peut collecter énormément de données légalement sur internet. Jusque là il n'y a pas de faille majeur de sécurité. Cependant, si l'entreprise qui vend les données subit une attaque qui permet de faire le lien entre un profil et une personne on peut facilement se retrouver avec une gigantesque base de données qui n'est plus anonyme. De plus, si cela se réalise sur une entreprise, via l'interconnectivité des services &quot;se connecter avec mon compte google&quot;, alors on peut acheter les données d'un autre service et être capable de le recouper à notre base de données.</p>
+<ul>
+<li>La data, au coeur des débats politiques et les Fakenews.</li>
+</ul>
+<p>Comment est-ce que ces données peuvent-elles avoir autant de valeur ?<br>
+Il y a tout d'abord l'utilisation du ciblage publicitaire à des fins moralement discutable. Comme par exemple mettre en avant un dictateur, soutenir une guerre, favoriser un candidat à des élections en montrant des fakenews nuisant aux adversaires.<br>
+La seconde problématique réside dans les attaques au phishing : nous recevons régulièrement des mails de A..maZ00n3 ou Chr0noppost, qui ne ressemble à rien. Cependant si vous commencez à ajouter &quot;Bonjour Mathis Schultz&quot; puis des recommendations d'article que j'ai vraiment consulté, ainsi qu'une promotion en or, une &quot;vente flash&quot;. ou alors si le mail indique mon numéro client ? Mes chiffres de sécurité sociale ? Il est raisonnable de penser qu'une grande part de la population se fasse avoir.</p>
+<h2 id="h3"> Sprint 2 </h2>
+<p><strong>Les stratégies des géants du numérique (l'inter-connectivité, la complexification et la centralisation de la data)</strong></p>
+<ul>
+<li>Des Objets toujours plus connecté</li>
+</ul>
+<p>Les objets connectés sont au coeur des stratégies marketing des géants d'internet :
+Amazon propose Alexa, l'assistant connecté capable de contrôler les objets connectés. Ces objets peuvent être directement supporté par Amazon ou alors connecté à la main en créant des routines pour Alexa. Orange propose aussi des solution pour la maison connecté, que ce soit pour gérer les verrouillage des portes, les éclairages, les panneaux solaires ou autre. La stratégie d'Apple repose entièrement sur l'inter-connectivité des services. Cela à de grand intérêt comme par exemple pouvoir accéder à ses caméra à distance, verrouiller la porte électromagnétiquement à distance. Cependant cela comporte plusieurs risques majeurs :</p>
+<ul>
+<li>
+<p>Le premier extrêmement critique, facile à imaginer : le piratage du système de contrôle qui donnerai à l'attaquant un accès complet au système. Ce cas n'est pas impossible mais il faut de gros moyen pour s'en prendre à Amazon.</p>
+</li>
+<li>
+<p>Le second, beaucoup plus fréquent est de s'en prendre au maillon faible du réseau : la caméra acheter pour 50€ qui marche en wifi ? ou même la brosse à dent électrique qui permet de mesurer que votre enfant se brosse suffisamment les dents. Le point commun de ces deux objets est qu'il ne sont pas conçu pour être sécurisé. Le problème est qu'ils vont avoir accès au wifi via des protocoles non-sécurisé voir complètement obsolète. Ils vont permettre à l'attaquant de pénétrer dans le réseau en se faisant passer pour celui ci et vont obtenir des droits qui pourraient être néfaste.</p>
+</li>
+<li>
+<p>Des systèmes impossible à sonder (IA) ?</p>
+</li>
+</ul>
+<p>La complexification des systèmes les rends de plus en plus dur à sonder. Personne ne sait comment chat GPT arrive à un résultat. Il ne se base pas sur une base de vérité que l'on peut retracer via l'accès au source comme le permettent les moteurs de recherche plus traditionnel. Le problème majeur en terme de sécurité est qu'il n'est pas impossible de trouver des moyens de sonder la données que connaît l'IA sans en avoir le droit. Il y a une bataille perpétuel entre les administrateurs des IA qui modèrent les droits des IA et les utilisateurs qui trouvent des moyens de faire sortir l'IA de ces règles. Je fais notamment référence au premier prompt qui permettait à Chat GPT de dire des propos racistes ou d'expliquer la recette d'explosif en lui expliquant que c'était dans le cadre de la recherche scientifique.</p>
+<ul>
+<li>Qui utilise et possède de la donnée ?</li>
+</ul>
+<p>Les acteurs de la données comme Amazon travail quotidiennement pour l'accumuler. Cela se fait notamment via des stratégie de pricing très faible, en effet pour quelques euros par mois on peut stocker énormément sur le cloud. Cela sert bien évidemment à la publicité sur internet qui a un impact énorme sur les utilisateurs mais aussi pour les propagandes. Mention spécial pour les pubs de tourisme dans un pays du proche orient qui souhaite maintenir le soutien Européen pendant les massacres au sud de son territoire. Ou pour des élections présidentielles américaines.<br>
+Au delà des pubs, nos données servent aussi à l’entraînement des IA sans avoir un consentement particulier de la part de l'utilisateur. Ainsi ces données collecté massivement deviennent des enjeux majeurs, et les infrastructures sont régulièrement la proie des hackeurs.</p>
+<ul>
+<li>Cloud VS On premise</li>
+</ul>
+<p>Présenté par Datadog, les avantages des solution cloud sont multiples, on peut mettre en place un ensemble de traces, de metrics ou de logs pour analyser d'une part le système mais aussi les préférences utilisateurs. Ces solutions sont facilement extensibles probablement moins impactante environnementalement parlant si les sociétés partagent la ressource. Elle nécessite bien moins de compétence puisque le système est en partie géré par des acteurs comme AWS ou Datadog qui fournissent la compétence technique. Cependant, ces entités deviennent donc des cibles et même s'ils ne sont que rarement hacké (2016 il me semble la dernière fois que Datadog a eu un soucis majeur - date à confirmer) lorsque cela arrive ce n'est pas un service qui est piraté avec quelques utilisateurs mais bien un ensemble d'entreprise qui regroupe un nombre certain d'utilisateur.</p>
+<p>Les solutions on Premise pour les petites entreprises sont plus onéreuses à installer et à sécuriser mais limite la criticité d'une attaque.</p>
+<ul>
+<li>Payer ? Un moyen de se soustraire à la donnée ?</li>
+</ul>
+<p>Malheureusement le fait de payer pour des services ne soustrait pas l'utilisateur des logs ou autre collecte de données. En effet, les services payant comme Netflix analyse nos données pour proposer du contenu ou même pour savoir quel film financer. Leurs algorithmes sont en phase de test pour l'analyse et l'écriture de script afin d'optimiser leur dépense. Ce service est bien évidemment source de débat sur le travail des écrivains. D'autre entreprise comme Microsoft qui nous fait payer des licenses une centaine d'euros collecte gracieusement nos données (les confrères en font tout autant).</p>
+<p><strong>Les bonnes pratiques des développeurs.</strong></p>
+<ul>
+<li>Des systèmes orienté sécurité</li>
+</ul>
+<p>La création de système doit se faire en suivant un ensemble de règle afin de limiter les risques, bien évidemment il y a des règles de cryptographie ou de protection de la données qu'il est nécessaire de suivre mais même plus simplement le fait d'utiliser des outils qui soient à jour et toujours supporté. En effet, une fois qu'une faille est découverte, si le système n'est pas maintenu à jour et que les technologies utilisés sont obsolète, il y aura toujours quelqu'un qui finira par s'attaquer au système.</p>
+<ul>
+<li>La modération de la data</li>
+</ul>
+<p>La collecte de données est un outil intéressant pour comprendre et améliorer un service, collecter les préférences des utilisateurs permet de proposer du contenu adapter, mais est-ce vraiment une pratique acceptable éthiquement ? Ne devrait-il pas y avoir un voile qui limite ce qui est accessible pour une plateforme ? Dois-je vraiment donner mon nom, numéro de téléphone et mail pour être un client fidèle ? Ne serait il pas plus raisonnable de limiter cela à un pseudo ou nom si la personne le souhaite ? Qu'apporte le fait de donner son numéro au client ? De plus, la collecte des numéros permet en cas de brèche dans un service de contacter les utilisateurs en se faisant passer pour l'entreprise. Il est donc nécessaire que les entreprises ou l'état modère la collecte de données.</p>
+<ul>
+<li>La protection de l'utilisateur</li>
+</ul>
+<p>Si l'entreprise collecte de la données, il est nécessaire qu'elle soit protégé. Cela passe par des méthodes d'anonymisations, le fait de séparer les données bancaires, d'écarter le nom de l'utilisateur de ses préférences.</p>
+<p><strong>Les bonnes pratiques des utilisateurs.</strong></p>
+<ul>
+<li>les gestionnaires de mdp ? Une vraie solution ?</li>
+</ul>
+<p>Les gestionnaires de mot de passe sont des outils redoutable pour sécuriser l'ensemble de ses applications. En effet, il génère des mots de passes trop complexe pour être piraté individuellement. De plus, en proposant des mots de passes pré-enregistré pour des services il nous mette la puce à l'oreille lorsque le mot de passe n'est pas prérempli. Cependant, il y a deux points clés à garder en tête, tout d'abord, le mot de passe de ces applications doit être très sécurisé car il contient les clés de tout vos services y compris le mail de récupération en cas de problème. Ainsi, ces services sont les cibles des hackeurs puisqu'ils deviennent stratégique.</p>
+<ul>
+<li>La double authentification</li>
+</ul>
+<p>Ce système est sûrement le plus désagréable à utiliser puisqu'il vous demande un effort supplémentaire mais c'est le plus sécurisé puisqu'il limite le pouvoir d'un mot de passe sur un service. Il existe différentes manières de le mettre en place. Soit via une clé externe (clé usb notamment) ou alors via la signature d'un appareil ou d'une application.</p>
+<ul>
+<li>Le rôle des VPN ?</li>
+</ul>
+<p>Les VPN sont un système de protection supplémentaire, son objectif va être d'encrypter la communication entre vous et un serveur intermédiaire afin d'éviter que quelqu'un puisse intercepter vos requêtes à mi-chemin. Ils sont donc indispensable dans des environnement non sécurisé (aéroport ou réseau wifi gratuit). Ces solutions sont de plus mise en place dans les entreprises afin de permettre aux employés de se connecter au service de l'entreprise depuis l'extérieur. Ce sont des services performant mais pas invincible.</p>
+<h2 id="h4"> Conclusion </h2>
+<p>Pour moi, le plus important en cybersécurité est de comprendre que c'est une course technologique sans fin entre la défense et l'attaque qui à un coût financier et environnemental considérable. Rien dans le système n'est inviolable mais l'objectif est d'avoir quelque chose de suffisamment long et coûteux à attaquer pour que ce ne soit pas rentable pour l'attaquant de s'en prendre à vous. Les ressources ci dessous donne des détails sur l'ensemble des technologies, des bonnes pratiques ou même des choses à faire en cas de problème, section que je n'ai pas développé ici.</p>
+<h2 id="liens"> Liens utiles </h2>
+<p>● Le site de l’<a href="https://cyber.gouv.fr">ANSSI</a> avec des ressources en français, et en particulier le guide d’hygiène informatique, utile pour connaître les sujets de sécurité les plus critiques à mettre en œuvre pour une organisation, ou tout document de la catégorie bonnes pratiques ;
+● Le site <a href="https://www.cybermalveillance.gouv.fr">cybermalveillance.gouv.fr</a> fournit des conseils et des informations pour se protéger contre les cyberattaques et savoir y réagir ;
+● Le site de l’<a href="https://www.enisa.europa.eu">ENISA</a> avec des ressources disponibles en français et de nombreuses langues européennes ;
+● Le site du <a href="https://www.ncsc.gov.uk">NCSC</a> avec des ressources disponibles uniquement en anglais ;
+● Le site du <a href="https://ccb.belgium.be/fr">CCB</a> avec des ressources disponibles en français et anglais ;
+● Le site du <a href="https://www.cisa.gov">CISA</a> avec des ressources disponibles uniquement en anglais.
+<a href="https://openclassrooms.com/fr/courses/8028761-decouvrez-lunivers-de-la-cybersecurite">Open Classroom 1</a>
+<a href="https://openclassrooms.com/fr/courses/1757741-securisez-vos-donnees-avec-la-cryptographie">Open Classroom 2</a></p>
+
+
+
+</article>
+
+        </main>
+
+
+        <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-center items-center">
+                    <p class="text-center">
+                        <span style="font-family: Consolas, sans-serif;">Do_<span style="color: #4a86e8">It</span></span> : Développement et Organisation en IT
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- MathJax import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">
+            window.MathJax = {
+                tex: {
+                inlineMath: [
+                    [
+                    '$', '$'
+                    ],
+                    [
+                    '\\(', '\\)'
+                    ]
+                ]
+                },
+                svg: {
+                fontCache: 'global'
+                }
+            };
+
+        MathJax
+            .startup
+            .document
+            .getMathItemsWithin(document.body);
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">
+            Prism.plugins.NormalizeWhitespace.setDefaults({
+                'remove-trailing': true,
+                'remove-indent': true,
+                'left-trim': true,
+                'right-trim': true,
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js">
+            document.addEventListener('DOMContentLoaded', () => {
+                Prism.highlightAll();
+            });
+        </script>
+    </body>
+</html>

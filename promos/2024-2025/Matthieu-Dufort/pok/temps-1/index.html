@@ -1,0 +1,560 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Structuration d&#39;une base de données</title>
+
+        <!-- Prismjs imports
+                - Prism core
+                - Prism line numbers
+                - Prism copy to clipboard
+                - Prism autoloader
+        -->
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+        <!-- Mermaid import and initialization -->
+        <script type="module" defer="">
+            import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/+esm';
+            mermaid.initialize({
+                startOnLoad: true,
+            });
+        </script>
+
+        <link href="/assets/stylesheets/main.css" rel="stylesheet">
+
+    </head>
+
+    <body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000">
+        <header class="border-b-2 border-gray-200 mb-4">
+        <div class="max-w-[1000px] mx-auto px-4">
+            <div class="min-h-[50px] flex justify-between items-center">
+                <a class="mx-2" href="/">Home</a>
+                <div class="flex items-center gap-4 sm:gap-6 ">
+                    <a class="" href="/cs">CS</a>
+                    <a class="" href="/pok">POK</a>
+                    <a class="" href="/mon">MON</a>
+                    <a class="" href="/projets">Projets</a>
+                    <a class="hidden sm:block" href="/promos">Promos</a>
+                    <a href="/search">
+                        <svg class="h-5 aspect-square" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+                        </svg>
+                    </a>
+                    <a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank">
+                        <svg class="h-5 aspect-square" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        </header>
+
+        <main class="max-w-[1000px] mx-auto px-4" data-pagefind-body="">
+            
+<article class="relative">
+<h1 class="mb-1">Structuration d&#39;une base de données</h1>
+<div class="mb-4">
+    
+        <div class="px-4 flex flex-wrap items-center">
+            
+                <div class="font-bold">Tags : </div>
+            
+            <ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags">
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">POK</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">Base de données</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">Novice</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">Pony</li>
+                
+
+            </ul>
+
+            
+            <div class="hidden" data-pagefind-meta="Type">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Auteurs : </div>
+            <ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs">
+                
+                    <li class="bg-blue-200 rounded-full px-2" data-pagefind-filter="Auteurs">Matthieu Dufort</li>
+                
+            </ul>
+        </div>
+    
+
+    
+        <div class="absolute top-0 right-0">
+            <span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2" data-pagefind-filter="Année">
+                2024-2025
+            </span>
+        </div>
+    
+</div>
+
+        <p class="mb-4 text-lg">
+
+                POK traitant des bases de données en général ainsi que de la façon d'en construire une.
+
+        </p>
+
+
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/promos/2024-2025/Matthieu-Dufort/">Matthieu Dufort</a><span class="px-1">/</span><a href="/promos/2024-2025/Matthieu-Dufort/pok/">POK de Matthieu Dufort</a><span class="px-1">/</span><a href="/promos/2024-2025/Matthieu-Dufort/pok/temps-1/">Structuration d&#39;une base de données</a>
+
+</div></div>
+
+
+
+
+<p>Ce POK a pour but de retracer toute la conception d'une base de données, en partant de sa définition pour ensuite la visualiser et l'organiser. Il se séparera en deux parties : une plus théorique et une partie pratique.</p>
+<h2>Tâches</h2>
+<ul>
+<li>Définition et utilisation d'une base de données</li>
+<li>Format d'une base de données</li>
+<li>Representations possibles</li>
+<li>Bonnes pratiques dans l'architecture</li>
+<li>Création d'une base de données en python sur un cas pratique</li>
+<li>Exploitation rapide de cette base</li>
+<li>Révision du SQL sur cette base</li>
+</ul>
+<h3>Sprints</h3>
+<p>Le but final de ce POK est d'avoir une bonne connsaissance sur la création de base de données pertinente et scalable.</p>
+<h4>Sprint 1</h4>
+<ul>
+<li>[x] Définir d'une base de données ainsi que son utilisation et l'intérêt</li>
+<li>[x] Définir le Format et les éléments qui constituent la base</li>
+<li>[x] Aborder les représentations possibles d'une base de données</li>
+<li>[x] Définir des bonnes pratiques pour créer une base de données</li>
+<li>[x] Définir Les façons de garantir la fiabilité d'une base pour éviter un rattrapage</li>
+</ul>
+<h4>Sprint 2</h4>
+<ul>
+<li>[x] Imaginer une entreprise fictive pour travailler dessus</li>
+<li>[x] Etudier et représenter les données qu'elle traite</li>
+<li>[x] Imaginer et construire en diagramme sa base de données</li>
+<li>[x] Construire la base de données à l'aide de python</li>
+<li>[x] Exploiter rapidement la base de données en faisant des requêtes dessus</li>
+</ul>
+<h3>Horodatage</h3>
+<p>Toutes les séances et le nombre d'heure que l'on y a passé.</p>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Heures passées</th>
+<th>Indications</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mercredi 11/09</td>
+<td>4h</td>
+<td>Définition base de données + début structures des bases + un peu d'histoire + trouver un exemple</td>
+</tr>
+<tr>
+<td>Mardi 16/09</td>
+<td>5h30</td>
+<td>fin structure base + structures transactionnels, mise au propre du markdown + fiabilité + relecture</td>
+</tr>
+<tr>
+<td>Mercredi 17/09</td>
+<td>2h</td>
+<td>Représentation d'une base + Définir les bonnes pratiques + Bilan sprint</td>
+</tr>
+<tr>
+<td>Samedi 12/10</td>
+<td>4h</td>
+<td>Etudier, représenter la base</td>
+</tr>
+<tr>
+<td>Lundi 14/10</td>
+<td>4h</td>
+<td>Construire la base de donnée</td>
+</tr>
+<tr>
+<td>Mardi 14/10</td>
+<td>2h</td>
+<td>Exploiter la base de données</td>
+</tr>
+<tr>
+<td><strong>TOTAL</strong></td>
+<td><strong>21h30</strong></td>
+</tr>
+</tbody>
+</table>
+<h1>Contenu</h1>
+<h2>Introduction générale</h2>
+<p>Dans ce POK, nous allons étudier dans toutes ses dimensions les bases de données. Le but est de mieux comprendre leur architecture et leur fonctionnement afin de les rendre plus optimales et évolutives pour l'avenir d'une entreprise.</p>
+<p>Pour ce POK, nous allons travailler dans le cadre d'une entreprise fictive de <strong>construction de bâtiment</strong>. Nous allons ensuite développer tous les aspects de la base de données en l'orientant sur cette entreprise afin d'imaginer leur architecture, leur fonctionnement...</p>
+<h1>Premier Sprint</h1>
+<h2>Définition générale d'une base de données</h2>
+<p>Une base de données est un moyen de stockage digital qui permet de stocker des informations ou des données. Elle peut avoir différentes structures globales que nous aborderons plus en détail dans la partie sur la structure :</p>
+<ul>
+<li><strong>Structuré</strong> : Organisation précise permettant de bien identifier chaque type de données pour chacun des utilisateurs.</li>
+<li><strong>Semi-Structuré</strong> : Organisation intermédiaire entre une structure complète et une base sans structure.</li>
+<li><strong>Brute</strong> : Un ensemble de données sans structure (informations mélangées sans catégorie).</li>
+</ul>
+<p>Une base de données est manipulable et modifiable ; on peut ajouter des données, en supprimer et en modifier en fonction des besoins d'un utilisateur. Une base de données est visionnable mais peut avoir des règles de sécurité qui restreignent la vue des utilisateurs.</p>
+<p>Pour les données sensibles, une base est soumise aux conditions du RGPD.</p>
+<p>Si plusieurs bases de données fonctionnent en collection, on parle de banque de données.</p>
+<h2>Présentation de l'entreprise exemple fictive</h2>
+<p>L'entreprise exemple fictive que nous allons utiliser tout au long de l'exercice se nomme <strong>BatiBase</strong>. C'est une entreprise qui travaille dans le secteur du bâtiment en faisant du génie civil. Elle intervient sur de grands chantiers partout en France et ne possède actuellement pas de système digital 🥵. En effet, elle s'est développée très vite après sa création et n'a pas eu le temps de mettre à jour ses systèmes. Il faut donc urgemment y remédier !</p>
+<p>Pour cela, BatiBase a fait appel à nous afin de construire leur base de données. Ils ne connaissent pas bien les bases de données et nous laissent donc libre choix sur tout, tant que cela couvre leur activité et que la base est scalable. Nous allons donc devoir choisir un modèle d'architecture et le construire en suivant les recommandations d'experts.</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Matthieu-Dufort/pok/temps-1/logoBatiBase.png" alt="logo BatiBase"><em>(ChatGPT)</em></p>
+<h2>Utilisation d'une base de données</h2>
+<p>Elle est utilisée dans le monde digital pour conserver des données sur des personnes physiques, morales, ainsi que sur des objets, etc.</p>
+<p>Elle permet à la personne qui collecte les données d'analyser des comportements, de savoir qui sont ses clients, etc. Les exemples d'utilisation sont infinis.</p>
+<p>Pour notre entreprise de construction, la base de données est nécessaire afin de contrôler plusieurs choses :</p>
+<ul>
+<li>Les clients</li>
+<li>Les fournisseurs de matériaux</li>
+<li>Les matériaux</li>
+<li>Les chantiers</li>
+<li>Les outils</li>
+<li>Les employés</li>
+</ul>
+<p>La base de données va permettre de stocker tout ceci en les liant afin de savoir où se situent chacune des parties prenantes.</p>
+<h2>Intérêt d'une base de donnée</h2>
+<p>L'intérêt principal d'utiliser une base de données est qu'elle permet de centraliser toutes les informations d'une entreprise afin de faciliter la communication et l'échange d'informations. Il n'est donc plus nécessaire, par exemple, d'appeler tous les chefs de chantier pour savoir où se trouve un camion, car son utilisation sera stockée dans la base.</p>
+<p>De plus, tout le monde peut se connecter à une base de données à tout moment. Cela permet de gagner un temps considérable et d'améliorer l'efficacité, car les données sont disponibles pour tous.</p>
+<p>Cela permet aussi de sécuriser les données avec des processus communs en installant des pare-feu pour l'entreprise dans son ensemble, plutôt que d'utiliser des solutions locales comme Google Drive dans une agence ou Microsoft dans une autre. Toutes les données seront protégées et contrôlées de façon homogène. Il est alors également possible de faire des sauvegardes pour éviter la perte d'une feuille de calcul.</p>
+<p>Enfin, cela permet de centraliser le système à l'échelle de l'entreprise et non plus département par département, agence par agence. BatiBase n'a aujourd'hui aucun moyen de réfléchir à l'échelle de la France et ne peut donc pas se baser sur des KPI solides pour suivre la croissance.</p>
+<h2>Structure des bases</h2>
+<p>Pour le choix de la structure de la base de données de BatiBase, nous allons d'abord étudier les modèles possibles :</p>
+<h3>Base de données relationnelle</h3>
+<p>Ce modèle de données date de 1960 et a été proposé par Edgar Frank Codd.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Information</b></p>
+</div><div class="pl-8 mr-8">
+<p>Edgar Frank Codd était un informaticien britannique chez IBM qui a reçu le prix Turing pour son système de base de données. Ce prix est attribué chaque année à une personne sélectionnée pour sa contribution à la communauté informatique.</p>
+</div></div>
+<p>Monsieur Codd est parti du constat que les bases de données traditionnelles ne permettaient pas de représenter et d'exploiter correctement les liens entre les objets. Pour changer cela, il organise les informations des bases sous forme de tableaux à deux dimensions : les lignes sont les enregistrements et les colonnes sont les attributs.</p>
+<p>On utilise essentiellement le SQL pour exploiter ces données, car le SQL est basé sur l'algèbre relationnelle, qui permet d'effectuer des jonctions entre les objets à l'aide de clés.</p>
+<p>Ce système atteint cependant ses limites pour les très grandes entreprises, car il se base sur les propriétés ACID <em>(voir structure transactionnelle)</em>.</p>
+<p>Voici un schéma de cette représentation :</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Matthieu-Dufort/pok/temps-1/RDBMS_structure.png" alt="Schéma de la base relationnelle"><em>(File : RDBMS structure.png - Wikimedia Commons, 2010)</em></p>
+<p>On observe bien le procédé de stockage sous forme de tableau. On peut aussi voir le fonctionnement plus classique d'une base de données avec les processus qui se déroulent dans une instance et qui sont ensuite reportés sur le disque de la base tout en conservant des logs.</p>
+<h3>Base de données NoSQL</h3>
+<p>Cette architecture est née suite à un problème de quantité de données et de gestion multiple. En effet, certaines entreprises (Google, Facebook, Amazon, etc.) ont commencé à avoir des besoins de gestion de données en quantité astronomique, et un modèle de données relationnelles sur un serveur ne peut pas répondre à ces besoins en raison de limites comme les règles ACID ou le besoin de travailler sur de nombreux serveurs en même temps. Il en est alors résulté ce modèle qui se base davantage sur la quantité de données que sur leur organisation. On retrouve donc un modèle à une dimension avec souvent des tableaux associatifs (une clé et une valeur) et des millions d'entrées par jour.</p>
+<p>On peut citer les systèmes de base de données de Google : BigTable ; Amazon : Dynamo ; LinkedIn : Voldemort ; Facebook : HBase.</p>
+<p>Si l'on se penche sur le fonctionnement de LinkedIn, par exemple, on retrouve un système de clé qui s'associe à un index, lui-même associé à la clé et à la valeur, comme sur le schéma ci-dessous :</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Matthieu-Dufort/pok/temps-1/tableHachage.png" alt="Table de Hachage"><em>(File : HASHTB08.svg — Wikimedia Commons, s. d.)</em></p>
+<p>Le tableau n'a alors pas d'ordre et l'on retrouve l'index très rapidement pour ensuite accéder au reste. Ceci permet de gagner en efficacité et en temps tout en permettant la répartition des données sur différents serveurs. Pour constituer ce genre de tableau, on utilise des fonctions de hachage que l'on doit définir de sorte à éviter les duplicats et à garantir que deux clés n'aient pas le même index.</p>
+<h3>Base de données orientée document</h3>
+<p>Une base de données orientée document est une base de données semi-structurée qui stocke les données par collection présentant des propriétés et des types différents. Les données sont donc organisées par groupe, et le principal désavantage est qu'elles ne sont pas organisées entre elles. Cependant, la flexibilité de cette base la rend très utile pour stocker des données hétérogènes. Ce modèle répond donc très bien aux demandee d'agilité actuelles.</p>
+<h3>Base de données orientée Graph</h3>
+<p>Cette base a une organisation sous la forme de graphique où chaque entité correspond à un nœud, et les entités sont liées entre elles par des branches. Le but de ce type de base de données est de représenter les données de façon interconnectée. L'avantage principal de ce modèle est qu'il permet de fouiller en profondeur dans des bases sans avoir à utiliser une infinité de jointures. Cette base permet aux utilisateurs de se promener dans le graphique facilement pour passer d'un enregistrement à un autre. On peut associer cela aux connexions des réseaux sociaux où les personnes se connectent entre elles.</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Matthieu-Dufort/pok/temps-1/BDDorientegraph.png" alt="Base de donnée orientée graph"><em>(Vauquier, 2022)</em></p>
+<h2>Structure transactionnelle</h2>
+<p>Une transaction est l'action de passer une donnée d'un endroit à l'autre (cela comprend l'envoi, le trajet, la réception et la création de la donnée au nouvel endroit).</p>
+<h3>ACID</h3>
+<p>ACID (<strong>Atomicité</strong>, <strong>Cohérence</strong>, <strong>Isolation</strong>, <strong>Durabilité</strong>) correspond a des propriétés de base de données sur les transactions.</p>
+<p>Propriétés :</p>
+<ul>
+<li><em>Atomicité</em> : Il faut que la transaction doit soit arriver à son endroit final, soit être conservée dans l'endroit initial. Il ne peut y avoir ni perte ni modification si la transaction n'aboutit pas.</li>
+<li><em>Cohérence</em> : Garantie que même si des actions sont effectuées en simultané, les données restent cohérentes, accessibles à tous et sans doublon partout.</li>
+<li><em>Isolation</em> : Une transaction concernant un enregistrement peut nécessiter que la transaction précédente sur le même enregistrement soit réalisée avant de s'exécuter.</li>
+<li><em>Durabilité</em> : Toutes les transactions validées sont conservées, même en cas de panne du système.</li>
+</ul>
+<p>Ces règles peuvent rendre le procédé lourd pour une entreprise gérant des milliards de données chaque jour, car la cohérence constante ne peut pas être maintenue tout en conservant la vitesse de transaction.</p>
+<p>Elles sont cependant nécessaires pour garantir une absence totale d'erreur, et c'est pourquoi on retrouve ce système dans les banques, par exemple, pour la gestion des comptes.</p>
+<h3>BASE</h3>
+<p>BASE est l'oppossé de ACID : <strong>basically available</strong>, <strong>soft state</strong>, <strong>eventually consistent</strong> (fondamentalement disponible, état souple et finalement cohérent)</p>
+<p>Propriétés :</p>
+<ul>
+<li><em>Fondamentalement disponible</em> : La validation des transactions peut se faire simultanément pour plusieurs utilisateurs sans avoir à attendre que la précédente soit terminée.</li>
+<li><em>Etat souple</em> : Il peut exister des états de transition si un enregistrement est modifié par plusieurs personnes en même temps. La transaction se fera lorsque tout le monde aura terminé.</li>
+<li><em>Finalement cohérent</em> : La cohérence est respectée lorsque toutes les transactions simultanées sur un enregistrement sont terminées.</li>
+</ul>
+<p>Ces règles sont beaucoup plus souples que les règles ACID et sont, par exemple, utilisées par des sites de commerce en ligne : plusieurs personnes peuvent commander un produit en même temps, et le stock sera modifié plus tard.</p>
+<p>La flexibilité, la performance, l'évolutivité et la synchronisation sont beaucoup plus chronophages et demandeuses en termes de puissance pour les systèmes ACID que pour les systèmes BASE. Cependant, le traitement ACID, plus rigide, permet de garantir une absence totale d'erreur.</p>
+<h2>Représentations possibles d'une base de données</h2>
+<h3>Diagramme entité-relation</h3>
+<p>Dans ce type de diagramme, il existe les objets, leurs associations et les attributs. Il peut être utilisé pour représenter une base de données, mais aussi une organisation d'entreprise ou autre. Les objets sont sous forme de carrés, et leur façon d'interagir ensemble passe par un losange représentant leur lien. On peut ensuite ajouter des attributs sur les objets en utilisant des ronds.</p>
+<p>On précise dans ce modèle le type de lien entre les objets (1, n), (n, 1), (n, n).</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Matthieu-Dufort/pok/temps-1/ER_Diagram.png" alt="Diagramme entité relation"><em>(Database-design — Diagrammes de Modèle D’entité-relation Dans Visio, s. d.)</em></p>
+<h3>Diagramme de structure de données</h3>
+<p>Ce diagramme est apparenté au modèle entité-association, mais il est plus focalisé sur la représentation des bases de données. Ce diagramme se concentre sur les liens entre les éléments à l'intérieur des entités, et non plus sur les entités en général.</p>
+<p>Il utilise une convention bien précise pour définir les liens entre les éléments. Il est possible de personaliser ces liens en simplifiant en utilisant la convention précédente de (1, n), (n, 1), (n, n) :</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Matthieu-Dufort/pok/temps-1/FlecheType.png" alt="Lien entre les éléments"><em>(Qu’est-ce Qu’un Diagramme Entité-association ? , s. d.)</em></p>
+<p>Ce qui permet d'aboutir à des diagrammes très précis qui permettent de bien comprendre la conception de la base de données. Il peut être intéressant de commencer par un diagramme entité-relation avant de passer à ce type de diagramme pour bien illustrer tous les procédés et liens facilement, puis se pencher ensuite sur le côté plus technique.</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Matthieu-Dufort/pok/temps-1/DiagrammeStructure.png" alt="Diagramme de Strucure de donnée"><em>(Qu’est-ce Qu’un Diagramme Entité-association ? , s. d.)</em></p>
+<h3>Arbre de données</h3>
+<p>Cette représentation permet de montrer la hiérarchie qu'il existe entre des objets. On peut l'utiliser pour représenter tout ce qui découle d'un certain objet des diagrammes précédents ou plus directement pour une base particulièrement centrée sur un objet.</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Matthieu-Dufort/pok/temps-1/arbre_1.png" alt="Diagramme en arbre"><em>(Structures de Données Hiérarchiques : Les Arbres, s. d.)</em></p>
+<h2>Bonnes pratiques pour la réalisation d'un base</h2>
+<p>Pour une base de données bien réalisée, il est essentiel d'éviter les données erronées qui falsifient par la suite l'utilisation de la base. Il faut donc garantir la fiabilité des données avec les méthodes du paragraphe suivant.</p>
+<p>Pour une bonne conception d'architecture, il est recommandé de se centrer sur les objets afin d'organiser proprement les informations. Il faut ensuite bien considérer et créer tous les liens nécessaires aux utilisateurs entre les objets en utilisant une clé unique. En effet, une base bien conçue doit permettre aux utilisateurs d'accéder à toutes les informations dont ils ont besoin à tout moment. Il est donc important de bien comprendre tous les processus d'une entreprise avant de concevoir leur base de données.</p>
+<p>Il faut ensuite penser à l'utilisation directe de la base avec les procédés de reporting, etc.</p>
+<h2>Garantir la fiabilité de la donnée</h2>
+<p>Pour garantir la fiabilité des données, il existe plusieurs façons de pousser un utilisateur à remplir les champs dans un format particulier.</p>
+<p>En premier, il faut garantir <strong>l'unicité des données</strong>. Pour cela, il faut que chaque enregistrement de la base ait un ID ou une clé unique. Il est également nécessaire d'appliquer des règles d'identification des doublons. Pour cela, il faut protéger la base au niveau de l'instance avec :</p>
+<ul>
+<li>Il est possible de demander une vérification (par exemple, pour la création d'un compte).</li>
+<li>Il est possible d'appliquer des règles de détection automatique qui, basées sur certains critères, peuvent supprimer les enregistrements doublons ou envoyer une alerte au gestionnaire de la base.</li>
+<li>Il est aussi possible de créer des validations en se basant sur de nombreux critères pour le même enregistrement (nom, numéro, date de naissance, ville, etc.).</li>
+</ul>
+<p>Ensuite, il faut garantir le <strong>bon remplissage des champs</strong> demandés. Pour cela, l'interface utilisateur peut déjà être d'une grande aide, par exemple avec des suggestions grises sur le format à remplir ou encore la fragmentation du remplissage (sélection du code de pays pour le numéro de téléphone dans un menu déroulant, puis champ pour le numéro).</p>
+<p>Au-delà de l'interface utilisateur, il est aussi possible de créer au niveau de l'instance des règles de validation n'autorisant que certains formats pour valider, ou encore d'ajouter des automatismes qui corrigent les données avant leur création dans la base.</p>
+<p>Il existe encore d'autres façons de procéder, plus spécifiques à certains champs (comme l'utilisation d'une API Google Maps pour rechercher et remplir les champs d'adresse), mais étant très spécifiques, nous les verrons au cas par cas lors de la création de la base de données dans le sprint 2.</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Bilan sprint 1</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<p>Pour ce Sprint, j'ai sous-estimé le temps passé sur cette première phase d'analyse générale des bases de données. En effet, je suis vite tombé sur beaucoup plus d'informations que je ne pensais. J'ai beaucoup apprécié découvrir l'histoire des bases de données évoluant en même temps que les besoins et les avancées technologiques, mais je me suis donc un peu perdu là-dedans en apprenant beaucoup de choses pas forcément très utiles dans la réalisation de ce POK, mais intéressantes pour la culture. J'ai aussi dû faire une étape du sprint 2 afin d'être plus concret dans la partie 1 du sprint 1. Ceci va par contre me permettre de rester dans les temps pour faire le sprint 2, je l'espère, sur 10h.</p>
+<p>J'ai aussi mal réparti mon temps en travaillant dessus beaucoup au dernier moment, ce qui a fait un sprint un peu lourd.</p>
+</div>
+</details>
+</div>
+<h1>Second Sprint</h1>
+<h2>Analyse des données fictives de BatiBase</h2>
+<p>L'entreprise BatiBase est une entreprise de construction classique qui a besoin de gérer plusieurs choses liées entre elles :</p>
+<ul>
+<li>Les clients</li>
+<li>Les fournisseurs de matériaux</li>
+<li>Les commandes</li>
+<li>Les matériaux (le stock)</li>
+<li>Les chantiers</li>
+<li>Les outils et machines</li>
+<li>Les employés</li>
+<li>Les compétences</li>
+</ul>
+<p>Cela va nous permettre de créer une première base qui pourra bien sûr être améliorée par la suite.</p>
+<p>Ces objets sont tous liés entre eux afin de pouvoir bien gérer les informations.</p>
+<p>Les clients seront liés aux chantiers pour permettre au chef de chantier de communiquer avec eux si besoin, grâce à leurs informations sur leur fiche client dans la base.</p>
+<p>Les fournisseurs de matériaux seront liés aux matériaux et aux commandes. En effet, cela permettra de savoir qui a fourni quels matériaux en cas de problème, mais aussi de pouvoir commander des matériaux.</p>
+<p>L'objet commande permet de demander quelque chose au fournisseur. Une fois la commande passée, le matériau commandé entre en stock réel. L'objet commande sera donc lié au matériau, en plus de son lien avec le fournisseur. On peut aussi ajouter un lien avec le chantier afin de savoir pour quel chantier la commande est passée.</p>
+<p>Comme vu précédemment, les matériaux sont liés aux fournisseurs et aux chantiers.</p>
+<p>Les chantiers sont liés aux clients, aux matériaux, aux outils, mais aussi aux employés. Cela permet de savoir qui travaille où et avec quels outils.</p>
+<p>Les outils sont liés aux chantiers, et il en est de même pour les employés.</p>
+<p>Enfin, les compétences permettront de choisir les employés nécessaires en fonction de leurs expériences, pour la bonne réalisation d'un chantier. Chaque matériau et machine nécessitent des compétences pour pouvoir les utiliser. Tous ces objets seront donc liés entre eux.</p>
+<p>Ainsi, nous allons pouvoir créer une première représentation de la base sous forme de diagramme entité-relation, puis de diagramme de structure de données.</p>
+<h2>Représentation en diagramme entité relation</h2>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Matthieu-Dufort/pok/temps-1/ERBati.png" alt="BatiBase entité relation"><em>(Diagramme entité relation de la société BatiBase)</em></p>
+<p>Ce diagramme permet d'avoir déjà un premier bon aperçu du fonctionnement de la base de données pour ensuite entrer dans le détail.</p>
+<p>Réaliser ce diagramme permet aussi de prendre conscience des manquements ou des erreurs potentiels dans les liens. C'est en faisant ce diagramme que j'ai pu observer l'absence d'un objet liant les machines aux employés pour savoir quel ouvrier peut conduire quelle machine. L'objet compétence permet donc de créer ce lien.</p>
+<p>Nous allons maintenant pouvoir entrer dans le détail.</p>
+<h2>Représentation en diagramme de structure de données</h2>
+<p>Pour réaliser ce diagramme, nous allons commencer à réfléchir a tous les champs de chaque objet.</p>
+<p>Pour faire cela, j'ai décidé d'utiliser le site <a href="https://dbdiagram.io/d">dbdiagram</a>. Je n'ai jamais utilisé ce site. Cependant grâce à la <a href="https://dbml.dbdiagram.io/docs">documentation</a> et aux exemples en ligne j'ai pu le prendre en main rapidement. Il permet de faire un rendu propre d'une base de données afin de pouvoir la construire ensuite rapidement.</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Matthieu-Dufort/pok/temps-1/SDBati.png" alt="BatiBase structure de données"><em>(Diagramme de structure de données de la société BatiBase)</em></p>
+<p>Le code de ce schéma est retrouvable <a href="DataBaseFile.zip">ici</a>.</p>
+<p>Le but de ce schéma est de pouvoir visualiser tous les liens, les clés et les champs de la base de données afin de pouvoir la construire. Ce schéma permet aussi de transmettre au futur équipe qui travailleront dessus un plan clair du fonctionnement de la base afin de pouvoir la faire évoluer en cas de besoin.</p>
+<h2>Construction de la base de données</h2>
+<p>Pour télécharger le fichier python complet : <a href="PythonFile.zip">Fichier python base de donnée</a></p>
+<p>Pour construire cette base de données, j'ai choisi d'utiliser python avec sa library Pony de base de données car je n'ai pour l'instant eu que l'occasion d'en construire en no-code (Airtable, Salesforce ...). Je souhaitais donc en construire une en partant un peu plus de zéro. Pour cela, j'ai utilisé la <a href="https://ponyorm.readthedocs.io/en/latest/firststeps.html">documentation</a>. J'ai donc construit ma base de données en commençant par faire le model de données.</p>
+<p>J'ai donc créé chacun des objets en utilisant des lignes de la forme :</p>
+<pre class="language-python line-numbers"><code>
+
+class Material(db.Entity):
+    material_id = orm.PrimaryKey(int , auto = True)
+    name = orm.Required(str)
+    type = orm.Required(str)
+    price = orm.Required(float)
+    description = orm.Required(str)
+    created_at = orm.Required(str)
+    skills = orm.Required(Skill)
+    Order = orm.Set("Order")
+
+
+</code></pre><p>Chacun des champs de l'objet est défini avec un type de façon obligatoire car l'on souhaite que tous les champs soient remplis. Pour créer des liens entre les objets, il faut les définir avec le type de l'objet que l'on veut lier et utiliser la fonction set sur l'objet lié.</p>
+<p>Pour une relation en many to many, pony créer automatiquement l'objet intérmédiaire et il suffit de définir sur chacun des objets à lié l'autre objet en utilisant la fonction <em>set</em> sur les deux.</p>
+<p>Ensuite, j'ai créé la base de données à l'aide du model défini précédement :</p>
+<pre class="language-python line-numbers"><code>
+
+from pony import orm
+from DataModel import Tool, Employee, Supplier, Order, Skill, Client, Material, ConstructionSite, db
+ 
+db.bind('sqlite', 'database.sqlite', create_db=True)
+orm.sql_debug(True)
+db.generate_mapping(create_tables=True)
+
+
+</code></pre><p>Grâce a ceci, la table se créer et l'on va pouvoir surveiller les requètes SQL graçe au mode debug. Ainsi, avant les réponses dans le terminal de commande, j'obtiens les requètes effectuées.</p>
+<h2>Création de données dans la base</h2>
+<p>Maintenant, je vais créer de la donnée dans la base afin d'être sur de son bon fonctionnement pour pouvoir intéragir avec :</p>
+<pre class="language-python line-numbers"><code>
+
+    ConstructionSite1 = ConstructionSite(
+        name="Maison4", 
+        address='Rue des patates', 
+        type="Maison", 
+        comment='Réparation cuisine', 
+        created_at="14/10/2024", 
+        status="En cours"
+    )
+
+    ConstructionSite1.clients.add(Client1)
+    ConstructionSite1.tools.add(Tool1)
+    ConstructionSite1.employees.add(Employee1)
+
+    db.commit() 
+
+
+</code></pre><p>J'ai aussi créé chacun des autres objets en utilisant toujours la typographie NomDeLaClasse1. Une fois tous les liens et les champs remplis, il faut insérer le tout dans la base afin de créer la data avec la fonction <em>commit</em></p>
+<p>Il est temps d'intéragir avec pour vérifier le bon fonctionnement !</p>
+<h2>Intéraction avec la base de données</h2>
+<p>Pour intéragir avec la base de donnée, il est possible d'utiliser du language python :</p>
+<pre class="language-python line-numbers"><code>
+
+from pony import orm
+from DataModel import db, Client
+
+db.bind('sqlite', 'database.sqlite', create_db=True)
+db.generate_mapping()
+
+with orm.db_session:
+    client = Client.get(first_name='Patrick', last_name='Oudi')
+
+    if client:
+        print(f"{client.first_name} {client.last_name}, Email: {client.email}")
+    else:
+        print("Le client n'existe pas")
+
+
+</code></pre><p>Grâce à ceci, on obtient bien le client cherché avec ses informations. Il est aussi possible de faire des requètes légèrement plus technique :</p>
+<pre class="language-python line-numbers"><code>
+
+with orm.db_session:
+    sql = """
+    SELECT o.order_id, o.created_at, o.price, o.currency, 
+           s.name AS supplier_name, s.phone_number AS supplier_phone
+    FROM "Order" AS o
+    JOIN "Supplier" AS s ON o.supplier = s.supplier_id
+    """
+
+    result = db.execute(sql)
+
+    for row in result:
+        print(f"Order ID: {row[0]}, Created At: {row[1]}, Price: {row[2]}, Currency: {row[3]}, "
+              f"Supplier: {row[4]}, Phone: {row[5]}")
+
+
+</code></pre><div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Bilan sprint 1</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<p>Pour ce Sprint, j'ai réussi a plutôt bien répartir mon temps mais je ne suis pas allé aussi loin que je le souhaitais. J'ai cependant rempli l'essentiel de mes objectifs et j'ai pu apprendre a maitriser la bibliothèque Pony pour gérer les bases de données. J'ai découvert une autre façon de les gérer qui est quand même moins visuel et intuitive que du no code mais tout autant intéressante. Je reste un peu sur ma fin sur l'utilisation de la base car je n'ai pas eu assez de temps pour vraiment plonger dedans et jouer avec. Cependant, je pense avoir bien compris le fonctionnement.</p>
+<p>Globalement sur ce POK je pense avoir vraiment approndi le sujet dans sa globalité comme je le voulais. En effet je travail avec beaucoup de base de données mais je n'ai jamais pris le temps de connaitre leur fonctionnement et d'apprendre à les représenter.</p>
+</div>
+</details>
+</div>
+
+
+
+</article>
+
+        </main>
+
+
+        <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-center items-center">
+                    <p class="text-center">
+                        <span style="font-family: Consolas, sans-serif;">Do_<span style="color: #4a86e8">It</span></span> : Développement et Organisation en IT
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- MathJax import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">
+            window.MathJax = {
+                tex: {
+                inlineMath: [
+                    [
+                    '$', '$'
+                    ],
+                    [
+                    '\\(', '\\)'
+                    ]
+                ]
+                },
+                svg: {
+                fontCache: 'global'
+                }
+            };
+
+        MathJax
+            .startup
+            .document
+            .getMathItemsWithin(document.body);
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">
+            Prism.plugins.NormalizeWhitespace.setDefaults({
+                'remove-trailing': true,
+                'remove-indent': true,
+                'left-trim': true,
+                'right-trim': true,
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js">
+            document.addEventListener('DOMContentLoaded', () => {
+                Prism.highlightAll();
+            });
+        </script>
+    </body>
+</html>

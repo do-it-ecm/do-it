@@ -1,0 +1,538 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Jeu de mémory pokémon en javascript</title>
+
+        <!-- Prismjs imports
+                - Prism core
+                - Prism line numbers
+                - Prism copy to clipboard
+                - Prism autoloader
+        -->
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+        <!-- Mermaid import and initialization -->
+        <script type="module" defer="">
+            import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/+esm';
+            mermaid.initialize({
+                startOnLoad: true,
+            });
+        </script>
+
+        <link href="/assets/stylesheets/main.css" rel="stylesheet">
+
+    </head>
+
+    <body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000">
+        <header class="border-b-2 border-gray-200 mb-4">
+        <div class="max-w-[1000px] mx-auto px-4">
+            <div class="min-h-[50px] flex justify-between items-center">
+                <a class="mx-2" href="/">Home</a>
+                <div class="flex items-center gap-4 sm:gap-6 ">
+                    <a class="" href="/cs">CS</a>
+                    <a class="" href="/pok">POK</a>
+                    <a class="" href="/mon">MON</a>
+                    <a class="" href="/projets">Projets</a>
+                    <a class="hidden sm:block" href="/promos">Promos</a>
+                    <a href="/search">
+                        <svg class="h-5 aspect-square" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+                        </svg>
+                    </a>
+                    <a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank">
+                        <svg class="h-5 aspect-square" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        </header>
+
+        <main class="max-w-[1000px] mx-auto px-4" data-pagefind-body="">
+            
+<article class="relative">
+<h1 class="mb-1">Jeu de mémory pokémon en javascript</h1>
+<div class="mb-4">
+    
+        <div class="px-4 flex flex-wrap items-center">
+            
+                <div class="font-bold">Tags : </div>
+            
+            <ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags">
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">POK</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">vert</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">web</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">jeu</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">site</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">javascript</li>
+                
+
+            </ul>
+
+            
+            <div class="hidden" data-pagefind-meta="Type">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Auteurs : </div>
+            <ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs">
+                
+                    <li class="bg-blue-200 rounded-full px-2" data-pagefind-filter="Auteurs">Lola Perdrix</li>
+                
+            </ul>
+        </div>
+    
+
+    
+        <div class="absolute top-0 right-0">
+            <span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2" data-pagefind-filter="Année">
+                2024-2025
+            </span>
+        </div>
+    
+</div>
+
+        <p class="mb-4 text-lg">
+
+                Réalisation d'un site web sur lequel on peut jouer au mémory.
+
+        </p>
+
+
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/promos/2024-2025/Lola-Perdrix/">Lola Perdrix</a><span class="px-1">/</span><a href="/promos/2024-2025/Lola-Perdrix/pok/">POK de Lola Perdrix</a><span class="px-1">/</span><a href="/promos/2024-2025/Lola-Perdrix/pok/temps-2/">Jeu de mémory pokémon en javascript</a>
+
+</div></div>
+
+
+
+
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Prérequis</b></p>
+</div><div class="pl-8 mr-8">
+<p>Bases de HTML, CSS, et Javascript. Il y a beaucoup de MON à ce sujet.</p>
+</div></div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Liens</b></p>
+</div><div class="pl-8 mr-8">
+<p><a href="https://francoisbrucker.github.io/cours_informatique/cours/web/">Cours de Développement Web</a></p>
+</div></div>
+
+<p>L'objectif de ce POK est de reprendre le site web que j'avais commencé à développer pendant le cours de dev web de 2A là où il en était resté. Je souhaite améliorer le style tout en refaisant la mécanique du jeu en javascript.</p>
+<p>Il existe un autre POK sur le sujet, <a href="https://francoisbrucker.github.io/do-it/promos/2023-2024/William%20Lalanne/pok/temps-1/">celui de William Lalanne</a>, en revanche je n'ai pas trouvé tant de points communs entre nos deux façons de faire, je ne me suis donc pas vraiment appuyé dessus mais cela peut constituer une ressource complémentaire.</p>
+<h2>Lien vers le code du site</h2>
+<p>Le code est accessible ici : <a href="https://github.com/lolapdx/memory-game/tree/main">memory game repository</a></p>
+<p>Ou vous pouvez accéder directement au site pour y jouer : <a href="https://lolapdx.github.io/memory-game/index.html">mon site de mémory</a></p>
+<h2>Planning</h2>
+<h3>Sprint 1</h3>
+<p>Reprendre le legacy code, remettre en marche le front.</p>
+<ul>
+<li>[x] Se remettre en mémoire le cours de devweb (ça remonte)</li>
+<li>[x] Remettre à mon goût les pages existantes (html/css)</li>
+<li>[x] Remettre les liaisons et faire l'affichage de la grille de jeu</li>
+</ul>
+<h3>Sprint 2</h3>
+<p>Refaire la mécanique du jeu, gestion des données</p>
+<ul>
+<li>[ ] Constituer une base d'images et de questions pour le jeu</li>
+<li>[ ] Faire une partie back pour la gestion de cette base (?)</li>
+<li>[ ] Faire fonctionner le jeu avec javascript</li>
+</ul>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Note</b></p>
+</div><div class="pl-8 mr-8">
+<p>Mon objectif n'est pas forcément de faire un site magnifique mais fonctionnel pour qu'on puisse y jouer de manière assez plaisante. Ayant déjà la structre du site (pas forcément très complexe cela dit), je souhaite donc ne pas perdre trop de temps sur le style si je vois que cela semble plus chronophage que prévu. Je me concentrerai donc plus sur les fonctionnalités de la page.</p>
+</div></div>
+<h2>Introduction</h2>
+<p>Je suis repartie du projet de groupe réalisé en 2e année avec M. Brucker. J'avais un sentiment d'inachevé et cela me motivait à réapprendre à manipuler le javascript. Cela dit, j'ai perdu la majeure partie du projet et n'ai pu récupérer que la structure du site avec le style (c'est déjà ça de gagné).</p>
+<p>Voici à quoi ressemble ce que j'ai pu récupérer du projet, ce qui constituera mon point de départ :</p>
+<table>
+<thead>
+<tr>
+<th>Page d'accueil</th>
+<th>Page mémory</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Lola-Perdrix/pok/temps-2/html_depart.jpg" alt="site"></td>
+<td><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Lola-Perdrix/pok/temps-2/jeu_depart.jpg" alt="site"></td>
+</tr>
+</tbody>
+</table>
+<h2>Premier Sprint</h2>
+<h3>Horodatage</h3>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Heures passées</th>
+<th>Indications</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Jeudi 31 octobre</td>
+<td>10min</td>
+<td>Récupération du projet</td>
+</tr>
+<tr>
+<td>Samedi 2 novembre</td>
+<td>2h</td>
+<td>Remémoration du cours de dev web</td>
+</tr>
+<tr>
+<td>Mercredi 6 novembre</td>
+<td>1h30</td>
+<td>Reprise du code, changement du style</td>
+</tr>
+<tr>
+<td>Jeudi 7 novembre</td>
+<td>1h</td>
+<td>tutos grille</td>
+</tr>
+<tr>
+<td>Lundi 11 novembre</td>
+<td>2h</td>
+<td>Affichage de la grille</td>
+</tr>
+<tr>
+<td>Lundi 11 novembre</td>
+<td>30min</td>
+<td>Génération des id pokémons de la grille</td>
+</tr>
+<tr>
+<td>Mardi 12 novembre</td>
+<td>1h30</td>
+<td>Tests pour affichage des images (et intensive recherche d'erreur)</td>
+</tr>
+<tr>
+<td>Mardi 12 novembre</td>
+<td>1h</td>
+<td>Modifications style et rédaction</td>
+</tr>
+<tr>
+<td>lundi 18 novembre</td>
+<td>20min</td>
+<td>Affichage des images</td>
+</tr>
+</tbody>
+</table>
+<h3>Style</h3>
+<p>Après m'être remise la tête dans le cours de 2e année pour me rappeler comment html et css marchent, j'ai commencé par changer le style du site pour le mettre à mon goût et surtout pour l'adapter à mon nouveau thème qui sera les pokémon.</p>
+<table>
+<thead>
+<tr>
+<th>Nouvelle page d'accueil</th>
+<th>Nouvelle page de jeu</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Lola-Perdrix/pok/temps-2/accueil_style.jpg" alt="style"></td>
+<td><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Lola-Perdrix/pok/temps-2/jeu_style.jpg" alt="style"></td>
+</tr>
+</tbody>
+</table>
+<h3>Grille</h3>
+<p>Ensuite pour ce premer sprint j'ai voulu réaliser l'<strong>affichage de la grille</strong>. J'ai choisi de garder les deux options déjà présentes (grille 4x4 et 6x6) pour garder le choix de la diffculté.</p>
+<p>Je me suis rappelée que la manière utilisée pour cette tâche il y a deux ans était un peu complexe pour pas grand chose, j'ai donc essayé de trouver de meilleures pratiques en cherchant un peu sur le net comment je pourrais faire. J'ai décidé d'en faire un petit mix.</p>
+<p>J'ai procédé avec deux classes de conteneur pour mes tuiles, de type <code>display : grid</code>, en différenciant le <code>grid-template</code> pour adapter le format, la taille des tuiles et leur nombre, et ai travaillé pas mal de temps sur la disposition de celles-ci pour que ce soit joli dans les deux cas. Je l'affiche au click des boutons avec une fonction javascript et j'obtiens :</p>
+<table>
+<thead>
+<tr>
+<th>4x4</th>
+<th>6x6</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Lola-Perdrix/pok/temps-2/4x4.jpg" alt="style"></td>
+<td><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Lola-Perdrix/pok/temps-2/6x6.jpg" alt="style"></td>
+</tr>
+</tbody>
+</table>
+<h3>Emplacement des pokémon et affichage des images</h3>
+<p>Pour constituer ensuite mon jeu de mémory, plusieurs options s'offrent à moi. J'ai décidé de m'appuyer sur les attributs des tuiles pour constituer mon mécanisme. Celui-ci repose sur une fonction qui s'activera au click de chaque tuile.</p>
+<p>Lors de la création de chacune de mes tuiles, je vais lui attribuer un attribut 'tile-id' qui contiendra le numéro du pokémon qu'elle représente. J'ai donc fait une fonction qui génère une liste aléatoire de paires de pokémons et les attribue ensuite à mes tuiles.</p>
+<p>Sur la fin du sprint, j'ai également réussi à afficher l'image du pokémon correspondant à l'id de la tuile sur le click de celle-ci. J'ai cru ne pas pouvoir y arriver à cause de quelques soucis de débuggage, mais j'y suis parvenue !</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Note</b></p>
+</div><div class="pl-8 mr-8">
+<p>J'ai eu des soucis liés à priori au cache de mon ordinateur, problème résolu en passant par un serveur local pour afficher le site (<code>python -m http.server 3000</code>).</p>
+</div></div>
+<p>Voilà où j'en suis donc à la fin du premier sprint :</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Lola-Perdrix/pok/temps-2/affichage_image.jpg" alt="image"></p>
+<h3>Conclusion Sprint 1</h3>
+<p>Cela m'a beaucoup motivée de reprendre ce projet et de refaire un peu de développement web. Je pensais mieux me rappeler des bases d'HTML et de CSS ; mais j'ai finalement du y consacrer plus de temps que prévu. Au contraire, j'ai repris le coup de main assez facilement sur javascript qui me faisait un peu peur, donc j'ai réussi à équilibrer les tâches et produire un résultat satisfaisant par rapport à mes attentes, malgré les inévitables bugs rencontrés.</p>
+<h2>Second Sprint</h2>
+<h3>Réajustement du sprint planning</h3>
+<p>Refaire la mécanique du jeu, gestion des données</p>
+<ul>
+<li>[ ] Constituer une base <s>d'images et de</s> questions pour le jeu</li>
+<li>[ ] <s>Faire une partie back</s> <em><strong>Pas besoin</strong></em></li>
+<li>[x] Réaliser la mécanique du jeu</li>
+<li>[x] <em><strong>+Effet de retournement des tuiles</strong></em></li>
+<li>[x] <em><strong>+Ajouter la mécanique de question de validation</strong></em></li>
+<li>[x] <em><strong>+Reset / Fin de partie</strong></em></li>
+</ul>
+<p>Je n'ai pas eu à réaliser une base de questions car j'ai modifié mon système de validation des paires.</p>
+<h3>Horodatage Sprint 2</h3>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Heures passées</th>
+<th>Indications</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Jeudi 21 novembre</td>
+<td>1h</td>
+<td>Reprise du code du sprint 1 pour le rendre plus propre et adopter de meilleures pratiques (travailler avec des éléments etc.)</td>
+</tr>
+<tr>
+<td>Vendredi 22 novembre</td>
+<td>1h</td>
+<td>Effet de retournement des cartes</td>
+</tr>
+<tr>
+<td>Samedi 23 novembre</td>
+<td>1h</td>
+<td>Mécanique du jeu au plus simple</td>
+</tr>
+<tr>
+<td></td>
+<td>1h30</td>
+<td>Ajouts de fonctionalités pour améliorer la mécanique (pas évident)</td>
+</tr>
+<tr>
+<td></td>
+<td>30min</td>
+<td>Gestion de la fin de partie</td>
+</tr>
+<tr>
+<td>Dimanche 24 novembre</td>
+<td>1h</td>
+<td>Ajouts des autres choix de difficulté et style des boutons</td>
+</tr>
+<tr>
+<td></td>
+<td>30min</td>
+<td>Recherches et tests pour créer des inputs</td>
+</tr>
+<tr>
+<td>Mercredi 27 novembre</td>
+<td>3h30</td>
+<td>Mise en place du niveau initiate (pas évident)</td>
+</tr>
+<tr>
+<td>Lundi 02 décembre</td>
+<td>30min</td>
+<td>Dernières modifications, optimisation</td>
+</tr>
+</tbody>
+</table>
+<h3>Retournement des cartes</h3>
+<p>Pour avoir un effet joli et un ressenti de jeu sympathique, je tenais à retourner les cartes d'une manière fluide comme dans si on le faisait en vrai. Pour cela j'ai utilisé les animations CSS. Je me suis aidée de quelques tutos sur internet car j'avais du mal à comprendre le principe au début :</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=OV8MVmtgmoY">CSS Flip Card Effect</a></li>
+<li><a href="https://www.youtube.com/watch?v=Pt--CNYQmaQ">Effet de Flip Card CSS</a> (globalement la même chose en français)</li>
+<li><a href="https://youtu.be/tRT8gJDLXfc?si=GnQsGgAyhydZZL6i">3D Flip Card Effect On Click Using HTML CSS | CSS Flip Card</a></li>
+</ul>
+<p>J'ai repris quelques unes de ces méthodes en les personnalisant à mon site et en essayant de garder les éléments les plus simples.</p>
+<p>Malheureusement je n'ai pas réussi à comprendre comment fonctionnait le retournement de cartes dans l'autre sens (quand deux cartes ne matchent pas). C'est donc une fonctionnalité que j'ai laissé finalement de côté (sinon, j'allais y passer des heures...).</p>
+<h3>Mécanique du jeu</h3>
+<p>Pour réaliser la mécanique du jeu, il fallait surtout que je porte mon attenion sur :</p>
+<ul>
+<li>La sauvegarde de la carte retournée en premier et de celle retournée en deuxième, et leur comparaison.</li>
+<li>Le retournement des mauvaises paires après un délai.</li>
+<li>Les cartes déjà retournées ne peuvent pas servir à constituer d'autres paires.</li>
+<li>On ne peut pas cliquer deux fois de suite sur une même carte.</li>
+<li>On ne peut pas cliquer sur d'autres cartes le temps qu'une mauvaise paire se retourne.
+<ul>
+<li>Ce dernier point m'a pris beaucoup plus de temps que les autres, je cherchais absolument à empêcher le click sur les autres élements de la page sans succès. J'ai du finalement changer de stratégie en passant par une variable qui empêche l'éxecution de la fonction tant qu'elle n'a pas la bonne valeur. Mais j'ai mis du temps à trouver...</li>
+</ul>
+</li>
+</ul>
+<p>Pour réaliser la mécanique, je me suis aussi inspirée de quelques tutos, par exemple :</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=bznJPt4t_4s&amp;t=1006s">Learn the JavaScript DOM With This Project - Memory Game</a>, celui qui m'a le plus servi je pense</li>
+<li><a href="https://youtu.be/M0egyNvsN-Y?feature=shared">How to Create Memory Game in JavaScript</a></li>
+<li><a href="https://youtu.be/dqqxkrKhfS4?feature=shared">Memory Game Javascript Project | HTML, CSS, Javascript</a></li>
+</ul>
+<p>Cela m'a donné les guidelines pour réaliser le jeu et j'ai ensuite essayé au maximum de refaire tout moi-même. C'est pour cela que ça a pris un peu de temps malgré les similitudes.</p>
+<p>J'ai aussi ajouté à la fin de la partie une petite animation pour nous féliciter et nous proposer de rejouer.</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Lola-Perdrix/pok/temps-2/congrats.jpg" alt="image de victoire"></p>
+<h3>Implémentation du niveau initié</h3>
+<p>Mon idée était de réaliser un autre mode de difficulté dans lequel le joueur devrait répondre à une question dès qu'il retourne une paire pour pouvoir la valider. Finalement, à la place des questions, j'ai voulu faire deviner au joueur la génération du pokémon de la paire retournée. Si le joueur devine bien, il valide la paire, sinon la paire est retournée et le joueur doit retenter la paire (s'il se souvient où elle était...).</p>
+<p>Pour implémenter ce système, j'ai rencontré <strong>deux grandes difficultés :</strong></p>
+<ul>
+<li>L'affichage des inputs où l'utilisateur doit rentrer sa réponse.</li>
+<li>Permettre &quot;d'attendre&quot; la réponse de l'utilisateur pour poursuivre la mécanique du jeu.</li>
+</ul>
+<p>Pour le deuxième point j'avais de vagues souvenirs de l'utilisation des <strong>fonctions asynchrones et des systèmes de promesses</strong> que j'ai du creuser un bon moment avant de pouvoir l'utiliser ici. Ces vidéos m'ont aidée :</p>
+<ul>
+<li><a href="https://youtu.be/li7FzDHYZpc?si=lMXmFcFSBecveqW5">Javascript Promises vs Async Await EXPLIQUÉ (en 5 minutes)</a></li>
+<li><a href="https://youtu.be/spvYqO_Kp9Q?si=8G5HON0rrkSJrB2p">Async Await vs. Promises - JavaScript Tutorial for beginners</a></li>
+<li><a href="https://youtu.be/TnhCX0KkPqs?si=F5cc_ZwpgwZura7h">JavaScript Promises -- Tutorial for Beginners</a></li>
+</ul>
+<p>Je n'ai vraiment pas tout regardé en entier, je recherchais surtout des explications du concept et des exemples de codes (en complétant avec d'autres sites et documentations sur javascript jusqu'à trouver ce qu'il me fallait).</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Lola-Perdrix/pok/temps-2/initiate.jpg" alt="niveau initiate"></p>
+<h3>Conclusion Sprint 2</h3>
+<p>Durant ce sprint, j'avais réduit la quantité de travail en décidant de faire un site uniquement statique et me débarrassant de l'élaboration de questions de validation. C'était une bonne décision ! Au terme de ce deuxième sprint, je dispose d'un jeu fonctionnel, sans bugs.</p>
+<p>En revanche, je me suis rendue compte à la toute fin d'un petit soucis : le site n'était pas du tout responsive... et ne s'affichait pas bien sur les autres ordinateurs. J'ai corrigé ce défaut dans la partie bonus, car c'était essentiel d'avoir ce point là de réglé.</p>
+<p>Je suis également consciente que mon code est probablement loin d'être optimal, et j'ai trouvé ça difficile de savoir se positionner vis-à-vis des pratiques à adopter ou non dans le code en travaillant en autonomie, sans expérience, et avec &quot;peu&quot; de temps.</p>
+<p>Sinon, les plus grosses difficultées que j'ai rencontrées étaient situées au niveau de l'empêchement du click, l'affichage de l'input box, le style des boutons, les animations des cartes, et l'attente de la réponse de l'utilisateur. J'ai mis beaucoup de temps à trouver des solutions utiles à mes problèmes sur internet malgré la quantité d'infos.</p>
+<p>Enfin, il me reste donc quelques fonctionnalités que j'ai laissées de côté pour pouvoir finir à temps : le responsive, le chronomètre, et le niveau expert. C'est une petite déception mais je suis quand même contente de tout ce que j'ai réussi à produire.</p>
+<h2>BONUS : améliorations</h2>
+<p>En bonus, c'est-à-dire au delà des 20h du projet, j'ai passé quelques heures en plus pour améliorer le code et surtout pour implémenter le responsive et le niveau expert que je n'avais pas eu le temps de faire. Pourtant, ce n'était pas si compliqué une fois le niveau initié de fait.</p>
+<p>Le principe de ce mode est de valider la paire en devinant le numéro du pokédex du pokemon retourné. Le public est sans doute plus restreint, sans pour autant être inexistant...</p>
+<p>Ensuite, quelques modifications, les règles du jeu ainsi que le header.</p>
+<table>
+<thead>
+<tr>
+<th>Début de la partie</th>
+<th>Version initié</th>
+<th>Version expert</th>
+<th>Jeu gagné !</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Lola-Perdrix/pok/temps-2/final.jpg" alt="initialisation"></td>
+<td><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Lola-Perdrix/pok/temps-2/final_initiate.jpg" alt="niveau initiate"></td>
+<td><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Lola-Perdrix/pok/temps-2/final_expert.jpg" alt="niveau expert"></td>
+<td><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Lola-Perdrix/pok/temps-2/final_congrats.jpg" alt="final"></td>
+</tr>
+</tbody>
+</table>
+<p>C'est seulement à cette étape que j'ai compris qu'il fallait que fasse la partie responsive du site, mais désormais ça marche bien !</p>
+<p>Il manque donc juste le chronomètre désormais... Mais mon site me plaît bien comme ça.</p>
+<h2>Sources</h2>
+<ul>
+<li><a href="https://www.w3schools.com/">w3school</a></li>
+<li><a href="https://francoisbrucker.github.io/cours_informatique/cours/web/">Cours de Développement Web</a></li>
+<li><a href="https://www.youtube.com/watch?v=OV8MVmtgmoY">CSS Flip Card Effect</a></li>
+<li><a href="https://www.youtube.com/watch?v=Pt--CNYQmaQ">Effet de Flip Card CSS</a></li>
+<li><a href="https://youtu.be/tRT8gJDLXfc?si=GnQsGgAyhydZZL6i">3D Flip Card Effect On Click Using HTML CSS | CSS Flip Card</a></li>
+<li><a href="https://www.youtube.com/watch?v=bznJPt4t_4s&amp;t=1006s">Learn the JavaScript DOM With This Project - Memory Game</a></li>
+<li><a href="https://youtu.be/M0egyNvsN-Y?feature=shared">How to Create Memory Game in JavaScript</a></li>
+<li><a href="https://youtu.be/dqqxkrKhfS4?feature=shared">Memory Game Javascript Project | HTML, CSS, Javascript</a></li>
+<li><a href="https://youtu.be/li7FzDHYZpc?si=lMXmFcFSBecveqW5">Javascript Promises vs Async Await EXPLIQUÉ (en 5 minutes)</a></li>
+<li><a href="https://youtu.be/spvYqO_Kp9Q?si=8G5HON0rrkSJrB2p">Async Await vs. Promises - JavaScript Tutorial for beginners</a></li>
+<li><a href="https://youtu.be/TnhCX0KkPqs?si=F5cc_ZwpgwZura7h">JavaScript Promises -- Tutorial for Beginners</a></li>
+</ul>
+
+
+
+</article>
+
+        </main>
+
+
+        <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-center items-center">
+                    <p class="text-center">
+                        <span style="font-family: Consolas, sans-serif;">Do_<span style="color: #4a86e8">It</span></span> : Développement et Organisation en IT
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- MathJax import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">
+            window.MathJax = {
+                tex: {
+                inlineMath: [
+                    [
+                    '$', '$'
+                    ],
+                    [
+                    '\\(', '\\)'
+                    ]
+                ]
+                },
+                svg: {
+                fontCache: 'global'
+                }
+            };
+
+        MathJax
+            .startup
+            .document
+            .getMathItemsWithin(document.body);
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">
+            Prism.plugins.NormalizeWhitespace.setDefaults({
+                'remove-trailing': true,
+                'remove-indent': true,
+                'left-trim': true,
+                'right-trim': true,
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js">
+            document.addEventListener('DOMContentLoaded', () => {
+                Prism.highlightAll();
+            });
+        </script>
+    </body>
+</html>

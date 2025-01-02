@@ -1,0 +1,445 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Dark Kitchen - BackEnd</title>
+
+        <!-- Prismjs imports
+                - Prism core
+                - Prism line numbers
+                - Prism copy to clipboard
+                - Prism autoloader
+        -->
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+        <!-- Mermaid import and initialization -->
+        <script type="module" defer="">
+            import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/+esm';
+            mermaid.initialize({
+                startOnLoad: true,
+            });
+        </script>
+
+        <link href="/assets/stylesheets/main.css" rel="stylesheet">
+
+    </head>
+
+    <body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000">
+        <header class="border-b-2 border-gray-200 mb-4">
+        <div class="max-w-[1000px] mx-auto px-4">
+            <div class="min-h-[50px] flex justify-between items-center">
+                <a class="mx-2" href="/">Home</a>
+                <div class="flex items-center gap-4 sm:gap-6 ">
+                    <a class="" href="/cs">CS</a>
+                    <a class="" href="/pok">POK</a>
+                    <a class="" href="/mon">MON</a>
+                    <a class="" href="/projets">Projets</a>
+                    <a class="hidden sm:block" href="/promos">Promos</a>
+                    <a href="/search">
+                        <svg class="h-5 aspect-square" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+                        </svg>
+                    </a>
+                    <a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank">
+                        <svg class="h-5 aspect-square" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        </header>
+
+        <main class="max-w-[1000px] mx-auto px-4" data-pagefind-body="">
+            
+<article class="relative">
+<h1 class="mb-1">Dark Kitchen - BackEnd</h1>
+<div class="mb-4">
+    
+        <div class="px-4 flex flex-wrap items-center">
+            
+                <div class="font-bold">Tags : </div>
+            
+            <ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags">
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">POK</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">temps 2</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">BackEnd</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">Node.js</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">Express.js</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">MongoDB</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">API REST</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">Dark Kitchen</li>
+                
+
+            </ul>
+
+            
+            <div class="hidden" data-pagefind-meta="Type">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Auteurs : </div>
+            <ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs">
+                
+                    <li class="bg-blue-200 rounded-full px-2" data-pagefind-filter="Auteurs">Sofiane Ouadda</li>
+                
+            </ul>
+        </div>
+    
+
+    
+        <div class="absolute top-0 right-0">
+            <span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2" data-pagefind-filter="Année">
+                2024-2025
+            </span>
+        </div>
+    
+</div>
+
+        <p class="mb-4 text-lg">
+
+                Développement du BackEnd pour le site de ma Dark Kitchen en utilisant Node.js, Express.js, MongoDB et des API REST pour gérer les produits, le panier et les commandes.
+
+        </p>
+
+
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/promos/2024-2025/Ouadda-Sofiane/">Sofiane Ouadda</a><span class="px-1">/</span><a href="/promos/2024-2025/Ouadda-Sofiane/pok/">POKs Sofiane Ouadda</a><span class="px-1">/</span><a href="/promos/2024-2025/Ouadda-Sofiane/pok/temps-2/">Dark Kitchen - BackEnd</a>
+
+</div></div>
+
+
+
+
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Prérequis</b></p>
+</div><div class="pl-8 mr-8">
+<p><strong>Pré-requis :</strong></p>
+<ul>
+<li>Connaissances de base en JavaScript.</li>
+<li>Familiarité avec Node.js et npm.</li>
+<li>Notions d’API REST et de bases de données comme MongoDB.</li>
+</ul>
+</div></div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Liens</b></p>
+</div><div class="pl-8 mr-8">
+<p><a href="https://github.com/SofianeOuadda/dark-kitchen-backend">GitHub Backend Dark Kitchen</a></p>
+</div></div>
+
+<h1>POK 2 - Dark Kitchen - BackEnd</h1>
+<p>Ce POK détaille le développement du backend pour le site <strong>Dark Kitchen</strong>. Il comprend la mise en place d'une <strong>API REST</strong>, la connexion à une base de données <strong>MongoDB</strong> et des fonctionnalités essentielles côté serveur.</p>
+<h2>Objectifs principaux</h2>
+<ol>
+<li>Construire une API REST avec <strong>Node.js</strong> et <strong>Express.js</strong> pour gérer les produits, commandes et le panier.</li>
+<li>Intégrer <strong>MongoDB</strong> comme base de données pour stocker les informations de manière persistante.</li>
+<li>Refactoriser et structurer le code pour une meilleure maintenabilité.</li>
+<li>Rendre le backend fonctionnel pour intégration avec le frontend.</li>
+</ol>
+<h2>Plan d'action</h2>
+<h3>1. Initialisation du projet</h3>
+<ul>
+<li><strong>Tâches :</strong>
+<ul>
+<li>Initialiser un projet Node.js avec <code>npm init</code>.</li>
+<li>Installer les dépendances principales : <code>express</code>, <code>mongoose</code>, <code>dotenv</code>.</li>
+<li>Configurer un fichier <code>.env</code> pour stocker les variables sensibles comme le port et l’URI MongoDB.</li>
+<li>Créer un serveur Express.js fonctionnel qui écoute sur un port donné.</li>
+</ul>
+</li>
+</ul>
+<h3>2. Connexion à MongoDB</h3>
+<ul>
+<li>
+<p><strong>Tâches :</strong></p>
+<ul>
+<li>Créer un cluster MongoDB sur MongoDB Atlas.</li>
+<li>Configurer la connexion entre le serveur Node.js et MongoDB à l’aide de <code>mongoose</code>.</li>
+<li>Définir les schémas et modèles pour :
+<ul>
+<li><strong>Produits</strong> (nom, description, prix, image).</li>
+<li><strong>Users</strong> (nom, eamil, passwords).</li>
+</ul>
+</li>
+<li>Ajouter des données de test pour les produits.</li>
+</ul>
+<h3>3. Création des routes API REST</h3>
+</li>
+<li>
+<p><strong>Tâches :</strong></p>
+<ul>
+<li>Implémenter les routes suivantes :
+<ul>
+<li><code>GET /api/products</code> : Liste tous les produits.</li>
+<li><code>GET /api/products/:id</code> : Détaille un produit spécifique.</li>
+<li><code>POST /api/products/</code> : Création un produit spécifique.</li>
+<li><code>PUT /api/products/:id</code> : Update un produit spécifique.</li>
+<li><code>DELETE /api/products/:id</code> : Suprimer un produit spécifique.</li>
+<li><code>POST /api/login</code> : Se connecter</li>
+<li><code>POST /api/register</code> : Créaction d'un nouveau compte</li>
+</ul>
+</li>
+<li>Structurer les routes pour qu'elles utilisent les méthodes <strong>CRUD</strong> associées.</li>
+</ul>
+</li>
+</ul>
+<h3>4. Refactorisation et modularisation du code</h3>
+<ul>
+<li><strong>Tâches :</strong>
+<ul>
+<li>Organiser le projet en modules :
+<ul>
+<li><code>routes/</code> : Fichiers pour les routes (<code>products.js</code>, <code>auth.js</code>).</li>
+<li><code>controllers/</code> : Logique métier séparée des routes.</li>
+<li><code>models/</code> : Définition des schémas <strong>Mongoose</strong>.</li>
+</ul>
+</li>
+<li>Ajouter un fichier <code>utils/</code> pour des fonctions utilitaires (exemple : formatage des données).</li>
+</ul>
+</li>
+</ul>
+<h3>5. Ajout des données et validation simple</h3>
+<ul>
+<li><strong>Tâches :</strong>
+<ul>
+<li>Ajouter des produits par défaut via un script ou directement dans MongoDB.</li>
+<li>Vérifier que les produits sont bien récupérés via les routes <code>GET /api/products</code> et <code>GET /api/products/:id</code>.</li>
+</ul>
+</li>
+</ul>
+<h3>6. Intégration du Backend avec le Frontend</h3>
+<ul>
+<li><strong>Tâches :</strong>
+<ul>
+<li>Connecter le frontend en <strong>Vue.js</strong> avec l'API backend en utilisant <strong>Axios</strong> ou <strong>Fetch</strong> pour effectuer des appels API.</li>
+<li>Tester les appels aux différentes routes API (produits, users) depuis le frontend pour vérifier que les données sont correctement affichées et manipulées.</li>
+<li>Implémenter des actions sur le frontend comme l'ajout de produits au panier via l'API <code>POST /api/cart</code> et l'affichage des produits depuis <code>GET /api/products</code>.</li>
+<li>Vérifier que les pages du frontend, comme le panier et le menu, interagissent correctement avec le backend pour mettre à jour les données de manière dynamique.</li>
+</ul>
+</li>
+</ul>
+<h2>Sprints de développement</h2>
+<h3>Sprint 1 : Initialisation et serveur Express</h3>
+<ul>
+<li><strong>Objectif :</strong> Créer un serveur <strong>Express.js</strong> fonctionnel.</li>
+<li><strong>Tâches</strong> :
+<ul>
+<li>[x] Initialisation du projet et installation des dépendances.</li>
+<li>[x] Configuration du serveur avec <strong>express</strong>.</li>
+</ul>
+</li>
+</ul>
+<h2>Sprint 2 : Connexion à MongoDB et création des modèles</h2>
+<ul>
+<li><strong>Objectif :</strong> Configurer MongoDB et définir les schémas des données.</li>
+<li><strong>Tâches</strong> :
+<ul>
+<li>[x] Création du cluster MongoDB.</li>
+<li>[x] Connexion avec <strong>mongoose</strong>.</li>
+<li>[x] Création des modèles <strong>Product</strong> et <strong>Users</strong>.</li>
+<li>[x] Ajout de données de test pour les produits.</li>
+</ul>
+</li>
+</ul>
+<h3>Sprint 3 : Développement des routes API</h3>
+<ul>
+<li><strong>Objectif :</strong> Implémenter les fonctionnalités principales de l’API.</li>
+<li><strong>Tâches</strong> :
+<ul>
+<li>[x] Routes pour les produits (<code>GET</code>, <code>POST</code>, <code>PUT</code>, <code>DELETE</code>).</li>
+<li>[x] Routes pour les commandes (<code>POST</code>).</li>
+<li>[x] Validation basique des données entrantes.</li>
+</ul>
+</li>
+</ul>
+<h3>Sprint 4 : Refactorisation et modularisation</h3>
+<ul>
+<li><strong>Objectif :</strong> Organiser le projet pour faciliter la maintenance et les futures évolutions.</li>
+<li><strong>Tâches</strong> :
+<ul>
+<li>[x] Séparation des routes, modèles dans des dossiers dédiés.</li>
+<li>[x] Structuration du code en modules clairs (<code>routes/</code>, <code>models/</code>).</li>
+</ul>
+</li>
+</ul>
+<h3>Sprint 5 : Ajout des données et validation simple</h3>
+<ul>
+<li><strong>Objectif :</strong> Ajouter des données de test et vérifier le fonctionnement des routes API.</li>
+<li><strong>Tâches</strong> :
+<ul>
+<li>[x] Ajout manuel ou via script des produits par défaut.</li>
+<li>[ ] Validation des données récupérées avec <strong>Postman</strong>.</li>
+</ul>
+</li>
+</ul>
+<h3>Sprint 6 : Intégration du Backend avec le Frontend</h3>
+<ul>
+<li><strong>Objectif :</strong> Assurer la communication entre le frontend <strong>Vue.js</strong> et le backend <strong>Node.js</strong> via des API.</li>
+<li><strong>Tâches</strong> :
+<ul>
+<li>[x] Implémentation des appels API pour récupérer les produits.</li>
+<li>[x] Vérification de l'affichage dynamique des produits dans le frontend.</li>
+<li>[x] Tester connexion/l'enregistrement d'un user et ajout à la base de donnée.</li>
+</ul>
+</li>
+</ul>
+<h1>Horodateur</h1>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Heures passées</th>
+<th>Indications</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>01/11</td>
+<td>1H</td>
+<td>Initialisation du projet et configuration Node.js</td>
+</tr>
+<tr>
+<td>01/11</td>
+<td>3H</td>
+<td>Mise en place de MongoDB et connexion</td>
+</tr>
+<tr>
+<td>02/11</td>
+<td>2H</td>
+<td>Création des modèles de données (User, Product)</td>
+</tr>
+<tr>
+<td>07/11</td>
+<td>2H</td>
+<td>Développement des routes API pour l'authentification</td>
+</tr>
+<tr>
+<td>07/12</td>
+<td>3H</td>
+<td>Création du middleware d'authentification JWT</td>
+</tr>
+<tr>
+<td>08/12</td>
+<td>3H</td>
+<td>Tests manuels des routes et ajustements</td>
+</tr>
+<tr>
+<td>12/11</td>
+<td>4H</td>
+<td>Intégration des produits dynamiques au backend</td>
+</tr>
+<tr>
+<td>14/11</td>
+<td>4H</td>
+<td>Connexion du frontend au backend (authentification et produits)</td>
+</tr>
+</tbody>
+</table>
+
+
+
+</article>
+
+        </main>
+
+
+        <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-center items-center">
+                    <p class="text-center">
+                        <span style="font-family: Consolas, sans-serif;">Do_<span style="color: #4a86e8">It</span></span> : Développement et Organisation en IT
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- MathJax import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">
+            window.MathJax = {
+                tex: {
+                inlineMath: [
+                    [
+                    '$', '$'
+                    ],
+                    [
+                    '\\(', '\\)'
+                    ]
+                ]
+                },
+                svg: {
+                fontCache: 'global'
+                }
+            };
+
+        MathJax
+            .startup
+            .document
+            .getMathItemsWithin(document.body);
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">
+            Prism.plugins.NormalizeWhitespace.setDefaults({
+                'remove-trailing': true,
+                'remove-indent': true,
+                'left-trim': true,
+                'right-trim': true,
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js">
+            document.addEventListener('DOMContentLoaded', () => {
+                Prism.highlightAll();
+            });
+        </script>
+    </body>
+</html>

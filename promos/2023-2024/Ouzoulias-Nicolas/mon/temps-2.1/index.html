@@ -1,0 +1,356 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Faire les backs : partie 1 </title>
+
+        <!-- Prismjs imports
+                - Prism core
+                - Prism line numbers
+                - Prism copy to clipboard
+                - Prism autoloader
+        -->
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+        <!-- Mermaid import and initialization -->
+        <script type="module" defer="">
+            import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/+esm';
+            mermaid.initialize({
+                startOnLoad: true,
+            });
+        </script>
+
+        <link href="/assets/stylesheets/main.css" rel="stylesheet">
+
+    </head>
+
+    <body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000">
+        <header class="border-b-2 border-gray-200 mb-4">
+        <div class="max-w-[1000px] mx-auto px-4">
+            <div class="min-h-[50px] flex justify-between items-center">
+                <a class="mx-2" href="/">Home</a>
+                <div class="flex items-center gap-4 sm:gap-6 ">
+                    <a class="" href="/cs">CS</a>
+                    <a class="" href="/pok">POK</a>
+                    <a class="" href="/mon">MON</a>
+                    <a class="" href="/projets">Projets</a>
+                    <a class="hidden sm:block" href="/promos">Promos</a>
+                    <a href="/search">
+                        <svg class="h-5 aspect-square" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+                        </svg>
+                    </a>
+                    <a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank">
+                        <svg class="h-5 aspect-square" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        </header>
+
+        <main class="max-w-[1000px] mx-auto px-4" data-pagefind-body="">
+            
+<article class="relative">
+<h1 class="mb-1">Faire les backs : partie 1 </h1>
+<div class="mb-4">
+    
+        <div class="px-4 flex flex-wrap items-center">
+            
+                <div class="font-bold">Tag : </div>
+            
+            <ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags">
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">MON</li>
+                
+
+            </ul>
+
+            
+            <div class="hidden" data-pagefind-meta="Type">
+                
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Auteurs : </div>
+            <ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs">
+                
+                    <li class="bg-blue-200 rounded-full px-2" data-pagefind-filter="Auteurs">Nicolas Ouzoulias</li>
+                
+            </ul>
+        </div>
+    
+
+    
+        <div class="absolute top-0 right-0">
+            <span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2" data-pagefind-filter="Année">
+                2023-2024
+            </span>
+        </div>
+    
+</div>
+
+        <p class="mb-4 text-lg">
+
+                Un MON pour découvrir le back d'un site web : partie 1
+
+        </p>
+
+
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/promos/2023-2024/Ouzoulias-Nicolas/">Nicolas OUZOULIAS</a><span class="px-1">/</span><a href="/promos/2023-2024/Ouzoulias-Nicolas/mon/">MON de Nicolas Ouzoulias</a><span class="px-1">/</span><a href="/promos/2023-2024/Ouzoulias-Nicolas/mon/temps-2.1/">Faire les backs : partie 1 </a>
+
+</div></div>
+
+
+
+
+<h2>Objectifs</h2>
+<p>Ce premier MON du temps 2 a pour objectif de m'initinier à la partie back d'un site Web pour m'aider dans la réalisation des sites web de mon POK et du projet 3A.</p>
+<p>Pour cela je vais suivre les cours de monsieur Brucker sur son site internet ainsi que les  sources qu'il recommande.</p>
+<h2>I. Initiation théorique à JavaScript</h2>
+<p>Pour bien utiliser Node.js je dois me mettre à niveau en JavaScript. Grâce au projet 3A et aux cours d'info de Do_It j'ai pu expérimenter quelques fois ce langage mais j'ai encore beaucoup trop de lacunes et trop peu de connaissances. Je vais donc tout d'abord revoir les bases de ce langage pour mieux appréhender Node.js et toute la partie back.</p>
+<p>JavaScript peut être utilisé en <em>front</em> et en <em>back</em> :</p>
+<ul>
+<li><em>front</em> : c'est le côté <strong>client</strong>, JS permet de rendre la page plus dynamique et de permettre à ce dernier d'interagir plus profondément avec le site</li>
+<li><em>back</em> : c'est le côté <strong>serveur</strong>, JS permet de travailler avec des environnements comme Node.js afin de gérer tout ce qui est base de données par exemple.</li>
+</ul>
+<p>Tout comme Python, JS est un langage interprété et le code va donc s'exécuter de haut en bas en renvoyant le résultat immédiatement. Contrairement par exemple au C et au C++ qui sont compilés en langage assembleur pour ensuite être exécuté par l'ordinateur.</p>
+<p>Le script JS se lie avec le code HTML grâce à cette ligne de code :</p>
+<pre class="language-html line-numbers"><code>
+
+<script src="script.js"></script>
+
+
+</code></pre><p>Le fonctionnement et la syntaxe de JS sont globalement assez semblables à Python et c'est donc assez facile de prendre en main ces aspects du langage. On y retrouve de multiples similitudes :</p>
+<ul>
+<li>l'utilisation de variables</li>
+</ul>
+<pre class="language-js line-numbers"><code>
+
+let myVariable = 12 //déclaration de la variable
+my variable = 14 //modification de la variable
+
+const myConst = "Daniel" //déclaration d'une constante
+
+
+</code></pre><ul>
+<li>la programmation orientée objet</li>
+</ul>
+<pre class="language-js line-numbers"><code>
+
+let monPC = {
+  marque: "Dell",
+  gamme: "XPS",
+  couleur: "gris",
+  annee: "2021"
+}
+
+let maMarque = monPC.marque //appel à une propriété
+
+
+</code></pre><ul>
+<li>les conditions et boucles</li>
+</ul>
+<pre class="language-js line-numbers"><code>
+
+if (condition){
+  ...
+}else{
+  ...
+}
+
+for (let i = 0; i<5; i++){
+  ...}
+
+let i = 0
+while(i<5){
+  ...}
+
+
+</code></pre><p>Le grand intérêt du JS est le lien avec les langages HTML et CSS. Il permet :</p>
+<ul>
+<li><strong>d'ajouter des balises</strong></li>
+<li><strong>d'en supprimer</strong></li>
+<li><strong>de les modifier</strong></li>
+</ul>
+<p>Pour cela il faut tout d'abord récupérer les éléments d'une page Web grâce aux diverses méthodes</p>
+<pre class="language-js line-numbers"><code>
+
+let baliseZone = document.getElementById("zone"); //pour récupérer un élément particulier
+
+let baliseZoneSpan = document.querySelector("#zone span"); //pour récupérer seulement un type parmi un groupe parent (comme un div par exemple)
+
+let listeInputRadio = document.querySelectorAll(".zoneChoix input"); //pour récupérer tous les inputs du groupe parent zoneChoix
+
+
+</code></pre><p>Afin d'avoir une page plus dynamique il faut programmer de <strong>manière événementielle</strong>. Les événements peuvent être : un clic de la souris, une frappe d'un clavier, un bouton coché, ...
+Ces derniers sont écoutés grâce à <em>addEventListener</em> puis utilisés à l'aide d'une fonction <em>=&gt;</em></p>
+<pre class="language-js line-numbers"><code>
+
+monBouton.addEventListener("click", () => {
+    console.log("Vous avez cliqué sur le bouton")
+});
+
+
+</code></pre><h2>II. La pratique</h2>
+<p>Afin de mettre en pratique ces différents aspects principaux du code, j'ai suivi l'exercice d'un cours OpenClassRoom pour mettre en place une application en ligne pour apprendre à taper des mots plus vite.</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Ouzoulias-Nicolas/mon/temps-2.1/images/appli1.png" alt="Appli"></p>
+<p>Le cours proposait cette mise en page avec les codes HTML/CSS correspondant. J'ai décidé de le recréer moi-même afin de pratiquer ces langages et de m'améliorer.</p>
+<p>Les objectifs principaux du script JS étaient de :</p>
+<ul>
+<li>vérifier que le mot écrit est le bon et de faire augmenter le score</li>
+<li>faire fonctionner le bouton &quot;Valider&quot; pour changer de mot proposé et effacer la zone d'input</li>
+<li>changer entre une phrase et un mot proposé grâce aux boutons radio</li>
+<li>afficher un popup pour partager notre score</li>
+</ul>
+<p>Début de la fonction pour lancer le jeu :</p>
+<pre class="language-js line-numbers"><code>
+
+function lancerJeu() {
+  initAddEventListenerPopup()
+  let score = 0
+  let i = 0
+  let listeProposition = listeMots
+
+  let btnValiderMot = document.getElementById("btnValiderMot")
+  let inputEcriture = document.getElementById("inputEcriture")
+
+  afficherProposition(listeProposition[i])
+
+  // Gestion de l'événement click sur le bouton "valider"
+  btnValiderMot.addEventListener("click", () => {
+      if (inputEcriture.value === listeProposition[i]) {
+          score++
+      }
+      i++
+      afficherResultat(score, i)
+      inputEcriture.value = ''
+      if (listeProposition[i] === undefined) {
+          afficherProposition("Le jeu est fini")
+          btnValiderMot.disabled = true
+      } else {
+          afficherProposition(listeProposition[i])
+      }
+  })
+
+
+</code></pre><p>En plus de cela j'ai effectué des exercices en ligne pour continuer d'améliorer mes réflexes en JS et apprendre plus de fonctionnalités. Les sites utilisés sont dans les sources après la conclusion.</p>
+<h2>III. Quelques principes importants pour le back</h2>
+<h3>Le JSON</h3>
+<p>Pour la manipulation de données et l'échange entre un serveur et un site web le <strong>JSON</strong> est le format le plus fréquemment utilisé. Il permet de représenter textuellement des objets, des tableaux ou encore des scalaires JS.</p>
+<p>Les données en format texte sous JSON sont dites <strong>sérialisées</strong>. La fonction <code>JSON.stringify()</code> permet de sérialiser une donnée en chaine de caractère.</p>
+<h3>Le DOM</h3>
+<p>Les éléments HTML qui peuvent être récupérés par les méthodes vues précédemment représentent le <strong>DOM</strong> <em>(Document Object Model)</em>. L'arbre DOM est composé de <strong>noeuds</strong> reliés entre eux par des <strong>branches</strong>. Ce schéma provenant du cours sur OpenClassRoom résumer relativement bien la structure DOM :</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Ouzoulias-Nicolas/mon/temps-2.1/images/ArbreDOM.png" alt="DOM"></p>
+<p><em>image venant de : <a href="https://openclassrooms.com/fr/courses/7696886-apprenez-a-programmer-avec-javascript/8205925-recuperez-un-element-d-une-page-web">https://openclassrooms.com/fr/courses/7696886-apprenez-a-programmer-avec-javascript/8205925-recuperez-un-element-d-une-page-web</a></em></p>
+<h3>Les API</h3>
+<p>Les API <em>(Application Programming Interface)</em> sont des interfaces qui permettent de <strong>récupérer</strong> et <strong>d'échanger</strong> des données entre deux applications.</p>
+<h3>Le JavaScript asynchrone</h3>
+<p>Des fonctions longues et coûteuses en ressources de calcul peut totalement bloquer l'exécution du reste du site. Pour contrer cela la programmation asynchrone a été développée permettant d'<strong>exécuter du code en parallèle.</strong></p>
+<p>Les <strong>fonctions de rappel</strong> (ou <em>callback</em>) ont initié la mise en place de fonctions asynchrone en JS. Ces dernières représentent simplement <em>l'imbrication de fonctions</em>, c'est à dire quand une fonction est en argument d'une autre. Cette méthode rend cependant le code difficile à lire et facilement compréhensible.</p>
+<p>Les API asynchrones se basent donc désormais sur le système de <em><strong>promesse</strong></em> .</p>
+<p>Une <strong>promesse</strong> représente l'état de l'opération d'une fonction asynchrone. Il existe trois états différents :</p>
+<ul>
+<li><em>pending</em> : la fonction a été initiée mais pas encore terminée : la promesse est <strong>en cours</strong></li>
+<li><em>fulfilled</em> : la fonction a été terminée et s'est bien exécutée : la promesse est donc <strong>validée</strong></li>
+<li><em>rejected</em> : contrairement à <em>fulfilled</em>, cette fois-ci la fonction a échouée : la promesse est <strong>rompue</strong>.</li>
+</ul>
+<h3>L'API <code>fetch()</code></h3>
+<p>La fonction <code>fetch()</code> permet d'envoyer des <strong>requêtes HTTP</strong> et de <strong>récupérer des données</strong> sous forme d'une promesse. Elle prend comme argument un URL des ressources à récupérer et renvoie une promesse avec la réponse.</p>
+<h3>Les réponses d'une promesse</h3>
+<p>Une fois une promesse faite il faut pouvoir l'interpréter. Pour cela on utilise deux méthodes : <code>then()</code> et <code>catch()</code>.</p>
+<p>La première permet de traiter les <strong>promesses validées</strong> tandis que la seconde est utilisées pour les <strong>promesses rompues</strong>.</p>
+<h2>Conclusion</h2>
+<p>Ce MON était initialement prévu pour faire du Node.js et du Express mais je me suis vite rendu compte que j'avais trop de lacunes sur de nombreux points majeurs de dev web et notamment en JavaScript. Je suis désormais bien plus à l'aise avec ce langage et avec les points précédemment présentés. Je n'ai pas pu énormément pratiquer ces derniers mais je compte le faire au début de mon prochain MON.</p>
+<h3>Sources</h3>
+<p><em>La théorie :</em></p>
+<ul>
+<li><a href="https://developer.mozilla.org/fr/docs/Web/JavaScript">https://developer.mozilla.org/fr/docs/Web/JavaScript</a></li>
+<li><a href="https://francoisbrucker.github.io/cours_informatique/cours/web/javascript-bases/">https://francoisbrucker.github.io/cours_informatique/cours/web/javascript-bases/</a></li>
+<li><a href="https://openclassrooms.com/fr/courses/7696886-apprenez-a-programmer-avec-javascript">https://openclassrooms.com/fr/courses/7696886-apprenez-a-programmer-avec-javascript</a></li>
+<li><a href="https://www.oracle.com/fr/database/what-is-json/#:~:text=Le%20JavaScript%20Object%20Notation%20">https://www.oracle.com/fr/database/what-is-json/#:~:text=Le JavaScript Object Notation </a></li>
+</ul>
+<p><em>Les exercices pratiqués pour le JS :</em></p>
+<ul>
+<li><a href="https://www.gchagnon.fr/cours/dhtml/exercices.html#t2">https://www.gchagnon.fr/cours/dhtml/exercices.html#t2</a></li>
+<li><a href="https://aymeric-auberton.fr/academie/js/exercices">https://aymeric-auberton.fr/academie/js/exercices</a></li>
+</ul>
+
+
+
+</article>
+
+        </main>
+
+
+        <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-center items-center">
+                    <p class="text-center">
+                        <span style="font-family: Consolas, sans-serif;">Do_<span style="color: #4a86e8">It</span></span> : Développement et Organisation en IT
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- MathJax import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">
+            window.MathJax = {
+                tex: {
+                inlineMath: [
+                    [
+                    '$', '$'
+                    ],
+                    [
+                    '\\(', '\\)'
+                    ]
+                ]
+                },
+                svg: {
+                fontCache: 'global'
+                }
+            };
+
+        MathJax
+            .startup
+            .document
+            .getMathItemsWithin(document.body);
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">
+            Prism.plugins.NormalizeWhitespace.setDefaults({
+                'remove-trailing': true,
+                'remove-indent': true,
+                'left-trim': true,
+                'right-trim': true,
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js">
+            document.addEventListener('DOMContentLoaded', () => {
+                Prism.highlightAll();
+            });
+        </script>
+    </body>
+</html>

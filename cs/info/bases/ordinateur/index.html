@@ -1,0 +1,296 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Fondamentaux de l&#39;ordinateur</title>
+
+        <!-- Prismjs imports
+                - Prism core
+                - Prism line numbers
+                - Prism copy to clipboard
+                - Prism autoloader
+        -->
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+        <!-- Mermaid import and initialization -->
+        <script type="module" defer="">
+            import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/+esm';
+            mermaid.initialize({
+                startOnLoad: true,
+            });
+        </script>
+
+        <link href="/assets/stylesheets/main.css" rel="stylesheet">
+
+    </head>
+
+    <body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000">
+        <header class="border-b-2 border-gray-200 mb-4">
+        <div class="max-w-[1000px] mx-auto px-4">
+            <div class="min-h-[50px] flex justify-between items-center">
+                <a class="mx-2" href="/">Home</a>
+                <div class="flex items-center gap-4 sm:gap-6 ">
+                    <a class="" href="/cs">CS</a>
+                    <a class="" href="/pok">POK</a>
+                    <a class="" href="/mon">MON</a>
+                    <a class="" href="/projets">Projets</a>
+                    <a class="hidden sm:block" href="/promos">Promos</a>
+                    <a href="/search">
+                        <svg class="h-5 aspect-square" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+                        </svg>
+                    </a>
+                    <a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank">
+                        <svg class="h-5 aspect-square" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        </header>
+
+        <main class="max-w-[1000px] mx-auto px-4" data-pagefind-body="">
+            
+<article class="relative">
+<h1 class="mb-1">Fondamentaux de l&#39;ordinateur</h1>
+<div class="mb-4">
+    
+        <div class="px-4 flex flex-wrap items-center">
+            
+                <div class="font-bold">Tags : </div>
+            
+            <ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags">
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">COURS</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">informatique</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">hardware</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">software</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">OS</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">fondamentaux</li>
+                
+
+            </ul>
+
+            
+            <div class="hidden" data-pagefind-meta="Type">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Auteurs : </div>
+            <ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs">
+                
+                    <li class="bg-blue-200 rounded-full px-2" data-pagefind-filter="Auteurs">François Brucker</li>
+                
+                    <li class="bg-blue-200 rounded-full px-2" data-pagefind-filter="Auteurs">BoxBoxJason</li>
+                
+            </ul>
+        </div>
+    
+
+    
+</div>
+
+
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Liens utiles</strong></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li><a href="https://francoisbrucker.github.io/cours_informatique/cours/syst%C3%A8me/architecture-ordinateur/">Cours Architecture Ordinateur</a></li>
+</ul>
+</div></div>
+
+<h2>Théorème fondamental de l'ingéniérie logicielle</h2>
+<p>On peut régler tous les problèmes en ajoutant une <strong>couche d'indirection</strong>. Autrement dit,<br>
+Si le passage d'un état A à un état B est complexe, on peut établir un état intermédiaire C, pour lequel la transition de A à C et de C à B est plus simple.</p>
+<pre class="mermaid" style="background-color: transparent;">
+graph LR
+    A[A] -->|Complexe| B[B]
+
+    AA[A] -->|Simple| CC[C]
+    CC -->|Simple| BB[B]
+</pre>
+<h2>Architecture ordinateur</h2>
+<pre class="mermaid" style="background-color: transparent;">
+architecture-beta
+    service users(clarity:users-solid)[Utilisateurs]
+
+    group computer(server)[Computer]
+    service software(cloud)[Software] in computer
+    service os(database)[Operating System] in computer
+    service hardware(disk)[Hardware] in computer
+
+    users:B <--> T:software
+    software:R <--> L:os
+    os:R <--> L:hardware
+</pre>
+<h3>Hardware</h3>
+<p>L'Hardware est la partie matérielle de l'ordinateur, c'est-à-dire les composants physiques qui lui permettent de fonctionner.<br>
+Il comprend:</p>
+<ul>
+<li>Le processeur (CPU)</li>
+<li>La mémoire (RAM)</li>
+<li>Le disque dur (HDD/SSD)</li>
+<li>La carte mère</li>
+<li>Les périphériques (clavier, souris, écran, etc.)</li>
+<li>Carte graphique</li>
+<li>Carte réseau</li>
+<li>Péripériques de stockage (clé USB, disque dur externe, etc.)</li>
+</ul>
+<h3>Software</h3>
+<p>Le Software est la partie logicielle de l'ordinateur, c'est-à-dire les programmes et les données qui permettent à l'ordinateur de fonctionner.<br>
+D'un point de vue système, les logiciels que l'on peut appeler <strong>process</strong> ont besoin d'accéder:</p>
+<ul>
+<li>Au processeur pour effectuer les différentes opérations (calculs, déplacements de données, ...)</li>
+<li>A la mémoire pour stocker les données et les instructions</li>
+<li>Aux périphériques pour communiquer avec l'utilisateur ou d'autres systèmes</li>
+</ul>
+<h3>Operating System</h3>
+<p>Un système d'exploitation est un (ensemble de) programme(s) qui permettent de gérer les ressources matérielles de l'ordinateur et de fournir une interface entre l'utilisateur et le matériel.<br>
+Le but d'un système d'exploitation est double:</p>
+<ul>
+<li>Permettre d'utiliser les périphériques de l'ordinateur grâce à des <strong>pilotes</strong></li>
+<li>Permettre l'éxécution de programmes grâce à un <strong>kernel</strong>
+<ul>
+<li>De façon concurrente grâce à des <strong>threads</strong></li>
+<li>De façon sécurisée, les programmes ne peuvent pas accéder à la mémoire d'autres programmes</li>
+</ul>
+</li>
+</ul>
+<p>Le système d'exploitation est séparé en plusieurs couches:</p>
+<ul>
+<li><strong>Kernel</strong> qui gère les appels systèmes, l'ordonnancement des process, la communication entre les process, le matériel et le kernel</li>
+<li><strong>Interfaces logicielles</strong> permettant d'accéder aux périphériques</li>
+<li><strong>Daemons</strong> qui sont des programmes qui tournent en arrière-plan</li>
+</ul>
+<h4>Kernel</h4>
+<p>Un système d'exploitation n'est pas un bloc monolithique, il est composé de plusieurs parties, dont le <strong>kernel</strong>.</p>
+<p>Le kernel est la partie centrale du système d'exploitation qui gère les ressources matérielles (processeur, mémoire, périphériques) et les interactions logicielles (processus, threads, fichiers). Il gère également les appels système, qui permettent aux programmes d'interagir avec le matériel. Il est aussi responsable de la gestion des processus.</p>
+<p>Le kernel a un accès matériel et un contrôle total sur la machine. Il est par conséquent le plus critique et le plus sensible des composants du système d'exploitation. Il est par principe le plus petit possible pour minimiser les risques de bugs et de failles de sécurité.</p>
+<h3>Interface logicielle</h3>
+<p>Une <strong>interface logicielle</strong> est un ensemble de fonctions, de procédures ou de méthodes qui permettent à un programme d'interagir avec un périphérique matériel ou un autre logiciel.</p>
+<p>Les interfaces logicielles sont utilisées pour abstraire la complexité des interactions matérielles et logicielles, permettant aux développeurs de créer des applications sans avoir à se soucier des détails de bas niveau. Elles fournissent un moyen standardisé et simplifié d'accéder aux fonctionnalités des périphériques, en masquant les spécificités de leur implémentation.</p>
+<h4>Daemon</h4>
+<p>Un <strong>daemon</strong> est un programme informatique qui s'exécute en arrière-plan, sans interaction directe avec l'utilisateur. Les daemons sont souvent utilisés pour des tâches de maintenance, de surveillance ou de gestion des ressources. Ils peuvent être lancés au démarrage du système et s'exécuter en continu, prêts à répondre à des événements spécifiques.<br>
+Les daemons sont des interfaces comme les autres, la plupart du temps exécutés par l'utilisateur root, car ils nécessitent des privilèges élevés pour accéder à certaines ressources système.</p>
+<h2>UEFI</h2>
+<p>L'UEFI (Unified Extensible Firmware Interface) est un logiciel sur la carte mère qui est lancé dès l'allumage de l'ordinateur.<br>
+Il est en charge de la <strong>vérification</strong>, la <strong>synchronisation</strong>, et éventuellement la <strong>configuration</strong> des composants matériels de l'ordinateur.<br>
+Il est également responsable de déterminer le dispositif de démarrage (disque dur, clé USB, CD-ROM, etc.) et de lancer le système d'exploitation.</p>
+<p>Elle remplace l'ancien BIOS (Basic Input/Output System) et offre de nombreuses améliorations en termes de performances, de sécurité et de fonctionnalités.</p>
+<h3>UEFI manager</h3>
+<p>L'UEFI manager est une interface graphique qui permet de lire et de configurer les paramètres de l'UEFI, de gérer les périphériques de démarrage, de mettre à jour le micrologiciel (firmware) de la carte mère, installer des pilotes, etc.<br>
+On y accède généralement en appuyant sur une touche spécifique au démarrage de l'ordinateur (par exemple, F2, F10, F12, ESC).</p>
+<h3>Boot</h3>
+<p>Le processus de démarrage d'un ordinateur consiste à charger le système d'exploitation en mémoire pour permettre à l'utilisateur d'interagir avec l'ordinateur.<br>
+Il consiste en plusieurs étapes:</p>
+<ol>
+<li>Mise sous tension de l'ordinateur.</li>
+<li>L'UEFI initialise le matériel (la carte mère, les disques durs, la mémoire, ...) et vérifie que les périphériques connectés sont reconnus et fonctionnels.</li>
+<li>Pour chaque périphérique de démarrage, l'UEFI recherche un chargeur d'amorçage (bootloader) qui permet de lancer le système d'exploitation, s'il n'y en a pas, il passe au périphérique suivant.</li>
+</ol>
+<h2>Lexique</h2>
+<ul>
+<li><strong>BIOS</strong>: Basic Input/Output System, ancien logiciel de démarrage des ordinateurs, remplacé par l'UEFI</li>
+<li><strong>UEFI</strong>: Unified Extensible Firmware Interface, logiciel de démarrage moderne offrant des fonctionnalités avancées</li>
+<li><strong>Firmware</strong>: Logiciel intégré dans un composant matériel, comme le micrologiciel de la carte mère</li>
+<li><strong>Périphérique de démarrage</strong>: Dispositif (disque dur, clé USB, CD-ROM) à partir duquel l'ordinateur démarre</li>
+<li><strong>Interface graphique</strong>: Environnement visuel permettant d'interagir avec un système informatique</li>
+<li><strong>Pilote</strong>: Logiciel permettant à un système d'exploitation de communiquer avec un périphérique matériel</li>
+<li><strong>Micrologiciel</strong>: Logiciel intégré dans un composant matériel, comme le BIOS ou l'UEFI</li>
+<li><strong>Thread</strong>: Fil d'exécution, unité de base d'un processus permettant l'exécution simultanée de plusieurs tâches</li>
+<li><strong>Kernel</strong>: Noyau, partie centrale du système d'exploitation gérant les ressources matérielles et les interactions logicielles</li>
+<li><strong>Shell</strong>: Interface en ligne de commande permettant d'interagir avec le système d'exploitation</li>
+<li><strong>Bootloader</strong>: Chargeur d'amorçage, logiciel permettant de lancer le système d'exploitation au démarrage de l'ordinateur</li>
+<li><strong>Concurrent</strong>: Le début d'un process est entre le début et la fin d'un autre process</li>
+<li><strong>Parallel</strong>: Qui se déroule en même temps que d'autres opérations, mais sur des ressources différentes</li>
+</ul>
+
+
+</article>
+
+        </main>
+
+
+        <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-center items-center">
+                    <p class="text-center">
+                        <span style="font-family: Consolas, sans-serif;">Do_<span style="color: #4a86e8">It</span></span> : Développement et Organisation en IT
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- MathJax import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">
+            window.MathJax = {
+                tex: {
+                inlineMath: [
+                    [
+                    '$', '$'
+                    ],
+                    [
+                    '\\(', '\\)'
+                    ]
+                ]
+                },
+                svg: {
+                fontCache: 'global'
+                }
+            };
+
+        MathJax
+            .startup
+            .document
+            .getMathItemsWithin(document.body);
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">
+            Prism.plugins.NormalizeWhitespace.setDefaults({
+                'remove-trailing': true,
+                'remove-indent': true,
+                'left-trim': true,
+                'right-trim': true,
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js">
+            document.addEventListener('DOMContentLoaded', () => {
+                Prism.highlightAll();
+            });
+        </script>
+    </body>
+</html>

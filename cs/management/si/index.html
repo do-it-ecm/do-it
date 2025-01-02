@@ -1,0 +1,459 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Management des Systèmes d&#39;Information</title>
+
+        <!-- Prismjs imports
+                - Prism core
+                - Prism line numbers
+                - Prism copy to clipboard
+                - Prism autoloader
+        -->
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+        <!-- Mermaid import and initialization -->
+        <script type="module" defer="">
+            import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/+esm';
+            mermaid.initialize({
+                startOnLoad: true,
+            });
+        </script>
+
+        <link href="/assets/stylesheets/main.css" rel="stylesheet">
+
+    </head>
+
+    <body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000">
+        <header class="border-b-2 border-gray-200 mb-4">
+        <div class="max-w-[1000px] mx-auto px-4">
+            <div class="min-h-[50px] flex justify-between items-center">
+                <a class="mx-2" href="/">Home</a>
+                <div class="flex items-center gap-4 sm:gap-6 ">
+                    <a class="" href="/cs">CS</a>
+                    <a class="" href="/pok">POK</a>
+                    <a class="" href="/mon">MON</a>
+                    <a class="" href="/projets">Projets</a>
+                    <a class="hidden sm:block" href="/promos">Promos</a>
+                    <a href="/search">
+                        <svg class="h-5 aspect-square" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+                        </svg>
+                    </a>
+                    <a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank">
+                        <svg class="h-5 aspect-square" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        </header>
+
+        <main class="max-w-[1000px] mx-auto px-4" data-pagefind-body="">
+            
+<article class="relative">
+<h1 class="mb-1">Management des Systèmes d&#39;Information</h1>
+<div class="mb-4">
+    
+        <div class="px-4 flex flex-wrap items-center">
+            
+                <div class="font-bold">Tags : </div>
+            
+            <ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags">
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">COURS</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">management</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">si</li>
+                
+
+            </ul>
+
+            
+            <div class="hidden" data-pagefind-meta="Type">
+                
+                    
+                
+                    
+                
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Auteurs : </div>
+            <ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs">
+                
+                    <li class="bg-blue-200 rounded-full px-2" data-pagefind-filter="Auteurs">Laetitia PIET</li>
+                
+                    <li class="bg-blue-200 rounded-full px-2" data-pagefind-filter="Auteurs">BoxBoxJason</li>
+                
+            </ul>
+        </div>
+    
+
+    
+</div>
+
+
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Liens utiles</strong></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li><a href="/do-it/documents/management/MSI_INTRO.pdf">Slides Cours d'introduction MSI</a></li>
+</ul>
+</div></div>
+
+<h2>Définitions</h2>
+<h3>Définition fonctionnelle</h3>
+<p><strong><u>Schema de principe d'un SI:</u></strong></p>
+<pre class="mermaid" style="background-color: transparent;">
+graph LR;
+  A[Système d'Information]
+  B(Personnel) --> A
+  C(Matériel) --> A
+  D(Logiciels & Procédures) --> A
+  E(Données) --> A
+  A --> F(Communiquer des informations)
+  A --> G(Stocker des informations)
+  A --> H(Traiter des informations)
+  A --> I(Acquérir des informations)
+</pre>
+<p>Un système d’information est un ensemble organisé de ressources permettant d’acquérir, de traiter, de stocker
+et de diffuser des informations dans et entre des organisations. Il est finalisé pour répondre à des objectifs.</p>
+<p><strong>Niveaux de définition:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Niveau</th>
+<th>Caractéristiques</th>
+<th>Exemples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Individuel</td>
+<td>Utilsié par un individu à son poste de travail. N'implique pas qu'il a été implementé ni conçu par l'individu</td>
+<td>Tableur Excel</td>
+</tr>
+<tr>
+<td>Collectif</td>
+<td>Plusieurs individus utilisent le même système d'information (une fonction, un service, un groupe)</td>
+<td>Système de gestion des commandes</td>
+</tr>
+<tr>
+<td>Organisationnel</td>
+<td>Concerne et est accessible à l'ensemble de l'organisation</td>
+<td>Système de messagerie électronique globale</td>
+</tr>
+<tr>
+<td>Inter-organisationnel</td>
+<td>Des organisations identiques s'entendent pour échanger et traiter par des voies automatiques, des informations d'intérêt commun</td>
+<td>EDI (Echange de données informatisées)</td>
+</tr>
+</tbody>
+</table>
+<h3>Définition analytique</h3>
+<p>Un système d’information est un système d’acteurs sociaux qui mémorisent et transforment des représentations via des technologies de l’information
+et des modes opératoires.<br>
+<em>(d’après R.Reix et F. Rowe, 2002)</em></p>
+<p>Il existe 3 dimensions dans un SI:</p>
+<ol>
+<li><strong>Dimension informationnelle</strong>: Le SI produit des représentations de l'information</li>
+<li><strong>Dimension technologique</strong>: Le SI se construit à partir de technologies physiques et logicielles de l'information</li>
+<li><strong>Dimension organisationnelle</strong>: Le SI est un élément des processus et de la structure de l'organisation</li>
+</ol>
+<h4>Dimension informationnelle</h4>
+<p>«Tout système d’information concerne un individu, pourvu d’un profil psychologique donné, confronté à un problème décisionnel précis, dans un contexte organisationnel déterminé. Il y a nécessité d’éléments de décision perçus au travers d’un mode de représentation propre au décideur. » <em>R.O. Mason, J.-L. Mitroff (1975), Management Science, vol.19 n°6, p.475.</em></p>
+<h5>Relation entre données, informations et connaissances</h5>
+<p><u>Schema simplifié:</u></p>
+<pre class="mermaid" style="background-color: transparent;">
+graph LR;
+  A(Signal) -->|Mesure par un capteur| B(Donnée)
+  B -->|Interprétation| C(Information)
+</pre>
+<p>L'information est une donnée interprétée par un individu ou un système. Elle est le résultat d'un traitement de données. Elle est utile pour la prise de décision.</p>
+<h5>Critères d'évaluation d'un SI</h5>
+<pre class="mermaid" style="background-color: transparent;">
+graph RL;
+  A(Pertinence)
+
+  A <--> B[<b>Complétude</b>]
+  A <--> C[<b>Finesse</b><br><small>Accroît la pertinence<br>mais attention aux effets<br>sur l'accessibilité</small>]
+  A <--> D[<b>Actualité</b><br><small>La réductions des délais<br>accroît la pertinence<br>mais effets pervers<br>sur le volume</small>]
+  A <--> E[<b>Ponctualité</b><br><small>Respect des limites<br>de temps des processus<br>d'utilisation</small>]
+  A <--> F[<b>Forme & Richesse</b>]
+  A <--> G[[<b>Accessibilité</b><br><small>Déterminant majeur de l'utilisation effective</small>]]
+  A <--> H[<b>Exactitude</b><br><small>Qualité des données<br>et des informations</small>]
+  A <--> I[<b>Fiabilité</b><br><small>Degré de confiance<br>dans la source</small>]
+</pre>
+<p>Il faut rester vigilant, un système d'information générant une quantité massive de données à faible coût risque de produire des informations inutiles et de saturer les utilisateurs.</p>
+<h3>Dimension technologique</h3>
+<p>Un SI est un système qui utilise des technologies de l'information au sein d'une architecture technique</p>
+<ul>
+<li>Réseaux</li>
+<li>Serveurs</li>
+<li>Ordinateurs (stations de travail)</li>
+<li>Logiciels</li>
+<li>Bases de données</li>
+<li>Automates</li>
+</ul>
+<p>La technologie est à la fois une ressource et une contrainte pour l’exécution des tâches par les utilisateurs. Il faut s'assurer que cette technologie est <strong>adaptée aux besoins</strong> des utilisateurs.<br>
+Ainsi, le système d'information est en <strong>amélioration continue</strong> (réalisée par les acteurs décideurs, concepteurs et utilisateurs)</p>
+<ol>
+<li>Au départ planifiée à la conception</li>
+<li>Spontanée en fonction des retours et des besoins des utilisateurs</li>
+</ol>
+<p>Il faut toujours garder en tête que la technologie n'est pas une fin en soi, c'est son <strong>appropriation</strong> par les utilisateurs qui en fait un outil efficace.</p>
+<h3>Dimension organisationnelle</h3>
+<p>Un SI est un système qui supporte les <strong>processus de travail</strong> et la <strong>structure d’une organisation</strong>. Le SI de l'entreprise porte les deux aspects:</p>
+<ul>
+<li>Le fonctionnement de l'organisation, le déroulement des processus de travail, à l'intérieur et aux frontières de l'organisation</li>
+<li>La structure de l'organisation, qui concerne les caractéristiques stables de toute l'organisation<br>
+Un SI est un élément clé, <em>essentiel</em> au <strong>fonctionnement</strong> ainsi qu'à la <strong>structure</strong> de l'organisation.</li>
+</ul>
+<h4>Processus</h4>
+<p>Un processus est un ensemble d’activités et de tâches corrélées et synchronisées qui :</p>
+<ul>
+<li>A un objectif clair et précis rattaché, directement ou indirectement, au métier et aux activités de l ’entreprise</li>
+<li>Consomme des ressources et produit des résultats</li>
+</ul>
+<p><strong><u>Schema de principe d'un processus:</u></strong></p>
+<pre class="mermaid" style="background-color: transparent;">
+graph LR;
+  A(Evénement) --> B(Activité)
+  B --> C(Résultat)
+</pre>
+<p><strong><u>Catégories de processus:</u></strong></p>
+<pre class="mermaid" style="background-color: transparent;">
+graph TD;
+  A[<b>Processus opérationnels</b><br><small>coeur de métier</small>]
+  B[<b>Processus de pilotage</b><br><small>management</small>]
+  C[<b>Processus de soutien</b><br><small>support</small>]
+</pre>
+<h4>Structure</h4>
+<p>La construction de tout SI implique des choix déterminants quant à la conception de l’organisation :</p>
+<ul>
+<li>Choix relatifs au partage d’informations entre les acteurs
+<ul>
+<li>Répartition du pouvoir décisionnel et des responsabilités (degré de décentralisation)</li>
+<li>Division du travail (degré de spécialisation)</li>
+</ul>
+</li>
+<li>Choix relatifs au contenu des représentations et aux technologies de communication
+<ul>
+<li>Pertinence des informations pour quoi ? Pour qui ?</li>
+<li>Moyens de coordination</li>
+</ul>
+</li>
+<li>Choix relatifs au degré de formalisation et d’automatisation des processus de travail
+<ul>
+<li>Niveau de contrôle et d’autonomie des acteurs</li>
+<li>Degré de standardisation / flexibilité</li>
+</ul>
+</li>
+</ul>
+<h4>Modèles de l'utilisateur modèle</h4>
+<p>L'organisation effectue des choix qui déterminent le fonctionnement du SI et la capacité qu'aura ses utilisateurs à s'approprier le SI.
+Elle peut choisir un modèle coercitif ou habilitant. Dans le premier cas, l'utilisateur modèle est passif, il ne peut rien faire d'autre qu'utiliser le SI, dans le second cas, il est actif et peut participer à l'évolution du SI.</p>
+<h5>Modèle coercitif</h5>
+<table>
+<thead>
+<tr>
+<th><strong>Caractéristiques des formalisations coercitives</strong></th>
+<th><strong>Vision de l'utilisateur modèle</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Impossibilité de réparer</strong></td>
+<td>Ne doit pas intervenir par lui même lorsque la formalisation s'avère inutilisable, endommagée, ou mal adaptée aux circonstances</td>
+</tr>
+<tr>
+<td><strong>Rigidité</strong></td>
+<td>Ne doit pas pouvoir modifier l'outil par lui même</td>
+</tr>
+<tr>
+<td><strong>Opacité Interne</strong></td>
+<td>Ne doit pas comprendre le fonctionnement interne de l'outil, doit seulement suivre les indications données</td>
+</tr>
+<tr>
+<td><strong>Opacité Globale</strong></td>
+<td>Ne doit pas comprendre le fonctionnement du système dans lequel l'outil s'insère et opère</td>
+</tr>
+<tr>
+<td><strong>Non participation au design</strong></td>
+<td>Ne doit pas être associé au design de l'outil</td>
+</tr>
+<tr>
+<td><strong>Non participation à l'implémentation</strong></td>
+<td>Ne doit pas être associé à l'implémentation de l'outil</td>
+</tr>
+</tbody>
+</table>
+<h5>Modèle habilitant</h5>
+<table>
+<thead>
+<tr>
+<th><strong>Caractéristiques des formalisations habilitantes</strong></th>
+<th><strong>Vision de l'utilisateur modèle</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Réparation</strong></td>
+<td>Peut intervenir pour réparer l'outil, le modifier, l'adapter aux circonstances</td>
+</tr>
+<tr>
+<td><strong>Flexibilité</strong></td>
+<td>Peut ignorer, remettre en cause, modifier l'outil pour l'adapter à ses besoins</td>
+</tr>
+<tr>
+<td><strong>Transparence interne</strong></td>
+<td>Peut comprendre le fonctionnement interne de l'outil pour l'aider à le modifier</td>
+</tr>
+<tr>
+<td><strong>Transparence globale</strong></td>
+<td>Peut comprendre le fonctionnement du système dans lequel l'outil s'insère et opère</td>
+</tr>
+<tr>
+<td><strong>Participation au design</strong></td>
+<td>Capable de participer au design de l'outil car est source d'information utile</td>
+</tr>
+<tr>
+<td><strong>Participation à l'implémentation</strong></td>
+<td>Capable de participer à l'implémentation de l'outil car est source d'information utile</td>
+</tr>
+</tbody>
+</table>
+<h3>Classification des SI</h3>
+<img src="/do-it/img/management/classification_si.png" alt="Classification des SI" class="img-big-img mx-auto">
+<h2>Enjeux</h2>
+<p>Via leur SI, les entreprises s’insèrent plus intensivement dans une mondialisation agitée</p>
+<pre class="mermaid" style="background-color: transparent;">
+graph TD;
+  A[<b>Nouvelles opportunités</b><br><small>couplés à l’internet, les S.I participent<br> à l’abaissement important des coûts de transaction<br> et favorisent l’accès aux marchés et aux ressources</small>]
+  B[<b>Nouvelles incertitudes</b>s<br><small>la dématérialisation de nombreux biens<br>et services bouleverse les règles établies<br>dans de nombreux secteurs économiques</small>]
+</pre>
+<h3>Des évolutions majeures et des défis constants</h3>
+<h4>Technologiques</h4>
+<ul>
+<li><strong>Big Data et analyse de données massives</strong></li>
+<li><strong>Cloud computing</strong></li>
+<li><strong>Mobilité</strong></li>
+<li><strong>Intelligence artificielle</strong></li>
+<li><strong>XaaS (Everything as a Service)</strong></li>
+</ul>
+<h4>Organisationnels</h4>
+<ul>
+<li><strong>Horizontalisation des organisations</strong></li>
+<li><strong>Collaboration</strong></li>
+<li><strong>Externalisation des activités</strong></li>
+<li><strong>Réactivité et agilité</strong></li>
+<li><strong>Nouvelles pratiques managériales</strong></li>
+</ul>
+<h2>Management des SI</h2>
+<p>« Les SI ne doivent pas être simplement considérés comme une ressource de support, mais comme une ressource stratégique capable de donner un avantage concurrentiel durable à l’entreprise qui saura les utiliser. » (<em>Porter, 1985</em>)</p>
+<h3>Enjeux du management des SI</h3>
+<ul>
+<li>Interne
+<ul>
+<li><strong>Alignement stratégique</strong></li>
+<li><strong>Création de valeur</strong></li>
+<li><strong>Gestion des risques</strong></li>
+<li><strong>Gestion des ressources</strong></li>
+<li><strong>Gestion de la performance</strong></li>
+<li><strong>Gestion des processus</strong></li>
+</ul>
+</li>
+<li>Externe
+<ul>
+<li><strong>Conquête de nouveaux marchés</strong></li>
+<li><strong>Amélioration de la relation client</strong></li>
+<li><strong>Fidélisation des clients</strong></li>
+<li><strong>Innovation</strong></li>
+</ul>
+</li>
+</ul>
+<h3>Usages des SI</h3>
+<ul>
+<li>Automatisation des tâches</li>
+<li>Aide à la décision</li>
+<li>Communication</li>
+<li>Gestion des connaissances</li>
+<li>Collaboration</li>
+<li>Innovation</li>
+</ul>
+
+
+</article>
+
+        </main>
+
+
+        <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-center items-center">
+                    <p class="text-center">
+                        <span style="font-family: Consolas, sans-serif;">Do_<span style="color: #4a86e8">It</span></span> : Développement et Organisation en IT
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- MathJax import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">
+            window.MathJax = {
+                tex: {
+                inlineMath: [
+                    [
+                    '$', '$'
+                    ],
+                    [
+                    '\\(', '\\)'
+                    ]
+                ]
+                },
+                svg: {
+                fontCache: 'global'
+                }
+            };
+
+        MathJax
+            .startup
+            .document
+            .getMathItemsWithin(document.body);
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">
+            Prism.plugins.NormalizeWhitespace.setDefaults({
+                'remove-trailing': true,
+                'remove-indent': true,
+                'left-trim': true,
+                'right-trim': true,
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js">
+            document.addEventListener('DOMContentLoaded', () => {
+                Prism.highlightAll();
+            });
+        </script>
+    </body>
+</html>

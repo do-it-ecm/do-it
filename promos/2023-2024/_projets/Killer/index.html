@@ -1,0 +1,591 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Killer</title>
+
+        <!-- Prismjs imports
+                - Prism core
+                - Prism line numbers
+                - Prism copy to clipboard
+                - Prism autoloader
+        -->
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+        <!-- Mermaid import and initialization -->
+        <script type="module" defer="">
+            import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/+esm';
+            mermaid.initialize({
+                startOnLoad: true,
+            });
+        </script>
+
+        <link href="/assets/stylesheets/main.css" rel="stylesheet">
+
+    </head>
+
+    <body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000">
+        <header class="border-b-2 border-gray-200 mb-4">
+        <div class="max-w-[1000px] mx-auto px-4">
+            <div class="min-h-[50px] flex justify-between items-center">
+                <a class="mx-2" href="/">Home</a>
+                <div class="flex items-center gap-4 sm:gap-6 ">
+                    <a class="" href="/cs">CS</a>
+                    <a class="" href="/pok">POK</a>
+                    <a class="" href="/mon">MON</a>
+                    <a class="" href="/projets">Projets</a>
+                    <a class="hidden sm:block" href="/promos">Promos</a>
+                    <a href="/search">
+                        <svg class="h-5 aspect-square" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+                        </svg>
+                    </a>
+                    <a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank">
+                        <svg class="h-5 aspect-square" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        </header>
+
+        <main class="max-w-[1000px] mx-auto px-4" data-pagefind-body="">
+            
+<article class="relative">
+<h1 class="mb-1">Killer</h1>
+<div class="mb-4">
+    
+        <div class="px-4 flex flex-wrap items-center">
+            
+                <div class="font-bold">Tag : </div>
+            
+            <ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags">
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">PROJET</li>
+                
+
+            </ul>
+
+            
+            <div class="hidden" data-pagefind-meta="Type">
+                
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Auteurs : </div>
+            <ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs">
+                
+                    <li class="bg-blue-200 rounded-full px-2" data-pagefind-filter="Auteurs">BELAAZIZ Khaoula</li>
+                
+                    <li class="bg-blue-200 rounded-full px-2" data-pagefind-filter="Auteurs">RIOUAL Lucas</li>
+                
+                    <li class="bg-blue-200 rounded-full px-2" data-pagefind-filter="Auteurs">SALAME Omar</li>
+                
+                    <li class="bg-blue-200 rounded-full px-2" data-pagefind-filter="Auteurs">JEANTROUX Vladimir</li>
+                
+            </ul>
+        </div>
+    
+
+    
+        <div class="absolute top-0 right-0">
+            <span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2" data-pagefind-filter="Année">
+                2023-2024
+            </span>
+        </div>
+    
+</div>
+
+
+
+
+
+<p>L'objectif du projet est de créer une application mobile permettant de jouer au jeu du Killer.</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Début du projet</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<h2>Description du projet</h2>
+<h3>Présentation du jeu du Killer</h3>
+<p>Le jeu du Killer est un jeu qui se joue en arrière-plan d'une soirée/évènement. L'objectif est d'être le dernier survivant de l'assemblée.  Au début de la partie, chaque joueur se voit remettre une cible (un autre joueur) et une action à faire faire. Si un joueur réussit à faire l'action à sa cible, ce dernier meurt et transmet sa cible et son action à son tueur.</p>
+<p>Il existe différentes règles du Killer qui change la façon de tuer quelqu'un. Par exemple, un joueur peut tuer quelqu'un seulement si il n'y a pas de témoin.</p>
+<h3>Application web déjà existantes :</h3>
+<ul>
+<li><a href="https://killerparty.app/">https://killerparty.app/</a> : pas de géneration d'actions</li>
+<li><a href="https://jeudukiller.fr/join_game">https://jeudukiller.fr/join_game</a> : Seulement un mode de jeu</li>
+</ul>
+<h3>L'application</h3>
+<p>L'application permettra de jouer au jeu du killer facilement et rapidement, sans aucune préparation.</p>
+<p>Ce qu'apporte l'application :</p>
+<ul>
+<li>Pas besoin de refléchir à des actions</li>
+<li>Distribution automatique des cibles et des actions</li>
+<li>Possibilité de jouer à différents modes de jeu</li>
+</ul>
+<h3>Les différents mode de jeu</h3>
+<p>L'application proposera différents mode de jeu :</p>
+<ul>
+<li>Le mode normal (avec les gages)</li>
+<li>Le mode mot (il faut faire dire un mot à sa cible)</li>
+<li>Le mode grand groupe (100 personnes)</li>
+<li>Mode personnalisé (avec des gages personnalisé)</li>
+<li>Autre mode ?</li>
+</ul>
+<p>Le créateur de la partie pourra paramétrer sa partie comme il le souhaite :</p>
+<ul>
+<li>Possibilité de mettre un timer</li>
+<li>Choisir une thématique</li>
+<li>Possibilité de changer son action</li>
+<li>Possibilité de connaître sa cible ou pas</li>
+</ul>
+<p>Dans le cas où l'organisateur choisit de rendre la cible non explicite, les participants ne connaitrons pas leur cible. Ils auront simplement des indices sur leur cibles. Ces indices seront remplis par les participants à l'aide d'un formulaire en amont de la partie.</p>
+<h2>Objectif à atteindre</h2>
+<p>Créer un site web avec une meilleur expérience utilisateur, qui permet de jouer le jeu &quot;Killer&quot; en différents modes. Les modes principaux visés comme objectifs sont :
+- Mode Normal (actions)
+- Mode Mots
+- Mode Team Building
+- Mode Personnalisable</p>
+</div>
+</details>
+</div>
+<h1>Présentation du projet</h1>
+<h3>Le jeu du Killer</h3>
+<p><strong>KILLER</strong> est une adaptation mobile innovante du jeu de société classique joué en groupe, où l'astuce, la stratégie et la discrétion sont les clés de la survie. Conçu pour dynamiser les rencontres sociales, <strong>KILLER</strong> transforme chaque participant en un chasseur astucieux, avec pour mission de &quot;tuer&quot; sa cible en accomplissant un gage spécifique, sans se faire démasquer.</p>
+<p>Dans <strong>KILLER</strong>, chaque joueur reçoit secrètement le nom d'une autre personne du groupe à &quot;tuer&quot;, ainsi qu'une mission ou un gage particulier à réaliser à l'encontre de sa cible. Les missions sont conçues pour être exécutées discrètement lors d'interactions sociales, rendant le jeu parfait pour les fêtes, les rassemblements ou comme un moyen ludique de briser la glace.</p>
+<h3>But et règles du jeu</h3>
+<p>Le but ultime est de rester le dernier &quot;en vie&quot;, en &quot;tuant&quot; le plus de cibles possibles. Pour réussir, les joueurs doivent réaliser leur gage sans éveiller les soupçons de leur cible, tout en restant vigilants à ne pas se faire &quot;tuer&quot; par leur propre chasseur. La discrétion est essentielle : révéler son identité de tueur ou échouer dans sa mission peut entraîner l'élimination du joueur.</p>
+<ul>
+<li>Être le dernier en jeu,</li>
+<li>ou Éliminer le plus grand nombre de joueurs,</li>
+<li>ou les deux à la fois (c'est encore mieux !)</li>
+</ul>
+<p>Normalement le jeu est destiné à n’importe qui entre 15 et 99 ans et peut se jouer à n’importante où.</p>
+<h3>Déroulement classique du Jeu</h3>
+<ol>
+<li>Avant de commencer
+<ol>
+<li>L’organisateur se munira de papier et d'un crayon.</li>
+<li>Il établira une liste claire de tous les participants, en plaçant les noms les uns sous les autres selon un ordre déterminé : chaque joueur aura pour mission d'&quot;éliminer&quot; la personne listée juste après lui (et le dernier sur la liste aura pour cible le premier).</li>
+<li>L’organisateur doit confier à chaque joueur une “MISSION”, qu’il doit faire faire à sa cible.</li>
+</ol>
+</li>
+<li>Attribution des missions
+L’organisateur doit distribuer secrètement une  &quot;MISSION&quot; à chaque participant en indiquant le nom de sa victime. Il leur fait comprendre qu'il n'est pas encore temps de passer à l'acte.</li>
+<li>Lancement officiel
+L’organisateur doit réunir tous les joueurs et leurs communiquer les informations suivantes :
+<ol>
+<li>
+<p>→ La partie prend fin à &quot;tel&quot; moment ou lorsqu'il ne reste plus qu'un joueur en jeu. Le dernier survivant ainsi que le joueur ayant réalisé le plus de &quot;meurtres&quot; seront déclarés grands vainqueurs.</p>
+<p>NB : Il peut également envisager de récompenser le tueur le plus rapide, le plus théâtral, le plus rusé…</p>
+</li>
+</ol>
+</li>
+</ol>
+<p><strong>NB : KILLER</strong> est un jeu de stratégie et d'esprit : ici, le &quot;meurtre&quot; est purement symbolique. Les joueurs doivent faire preuve d'intelligence et de finesse pour réussir leurs missions.
+Il est essentiel de jouer dans le respect des autres : pas de blessures, pas de violence physique, pas de larmes, et certainement pas de chaos.</p>
+<h3>Notre application mobile</h3>
+<p>L'application mobile <strong>KILLER</strong> simplifie l'organisation et l'exécution du jeu. Les joueurs s'inscrivent sur l'application, un hôte crée la partie, et les participants rejoignent via un code unique. Une fois la partie lancée, chaque joueur reçoit sa cible et son gage directement sur son appareil.</p>
+<p>Les avantages de notre application sont :</p>
+<ul>
+<li>Permettre à l’organisateur de jouer au jeu</li>
+<li>Faciliter la préparation et le déroulement du jeu</li>
+<li>Fournir une vaste base de données de gages, organisés par thème ou type d'événement, prêts à être mis en œuvre.</li>
+</ul>
+<h1>Organisations et étapes clés</h1>
+<h3>Design Thinking</h3>
+<p>Au tout début de notre projet, avant même de commencer le développement, nous avons organisé des ateliers de design thinking. Ces sessions ont été cruciales pour définir les fondations de notre projet, en mettant un accent particulier sur la compréhension de nos utilisateurs finaux. À l'aide des principes et techniques issus de nos cours d'UX, nous avons créé plusieurs personas, représentant les archétypes de nos utilisateurs cibles.</p>
+<p>À la suite de nos ateliers de design thinking et de l'analyse des personas, nous avons tiré des conclusions sur le type d’application que nous voulons développer. Notre objectif est de développer un jeu de soirée destiné principalement à un public jeune, âgé de 18 à 30 ans. L'aspect le plus distinctif de notre application réside dans sa facilité et rapidité de mise en place d'une partie, ainsi que dans la simplicité de son organisation. Nous voulons que notre jeu encourage non seulement l'amusement mais aussi l'échange et la possibilité de rencontrer de nouvelles personnes lors des soirées. Cela signifie que l'interface utilisateur doit être intuitive, éliminant toute barrière technique qui pourrait entraver la spontanéité et la fluidité de ces interactions. De plus, un point crucial de notre conception est de permettre à l'organisateur de la soirée de participer pleinement au jeu, assurant ainsi que personne ne soit laissé de côté et que tous les participants puissent profiter pleinement de l'expérience.</p>
+<p>Ces ateliers ont définit plus ou moins le scope de notre projet. Ce qui nous a aidé dans la prochaine étape de déterminer les fonctionnalités clés de notre application avec des sessions de brainstorming.</p>
+<h3>Brainstorming</h3>
+<p>Suite à une session de brainstorming, nous avons collectivement identifié et évalué toutes les fonctionnalités nécessaires pour notre projet, une étape cruciale dans la définition du scope. Chaque fonctionnalité a été notée en termes de difficulté de réalisation et de priorité, en alignement avec notre charte de projet et nos objectifs. La distinction entre les éléments essentiels et les fonctionnalités optionnelles ou secondaires est essentielle pour affiner le scope de notre projet. Cela a facilité la gestion des taches.</p>
+<p>Voici le tableau récapitulatif des fonctionnalités envisagées au début du projet:</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Fonctionnalités</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<table>
+<thead>
+<tr>
+<th>Fonctionnalité</th>
+<th>Description</th>
+<th>Priorité</th>
+<th>Difficulté</th>
+<th>Page</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Création d’une partie</td>
+<td>Btn pour créer une partie</td>
+<td>5/5</td>
+<td>5/5</td>
+<td>Page d’accueil</td>
+</tr>
+<tr>
+<td>Rejoindre une partie</td>
+<td>Btn pour rejoindre une partie existante (⇒ Entrer un code, mettre son nom)</td>
+<td>5/5</td>
+<td>5/5</td>
+<td>Page d’accueil</td>
+</tr>
+<tr>
+<td>Accéder aux règles du jeu</td>
+<td>Ouvre une page d’aide qui liste les différents modes de jeu et les règles associées</td>
+<td>1/5</td>
+<td>2/5</td>
+<td>Page d’accueil</td>
+</tr>
+<tr>
+<td>Section “à propos”</td>
+<td>Section de texte listant les CGU, le contexte et les créateurs de l’appli</td>
+<td>1/5</td>
+<td>1/5</td>
+<td>Page d’accueil</td>
+</tr>
+<tr>
+<td>S’identifier</td>
+<td>Création de compte/connexion (sauvegarder des presets)</td>
+<td>1/5</td>
+<td>5/5</td>
+<td>Page d’accueil</td>
+</tr>
+<tr>
+<td>Case “je ne bois pas”</td>
+<td>Paramètre qui permet de définir si on peut recevoir un gage impliquant de la consommation d’alcool ou non</td>
+<td></td>
+<td></td>
+<td>Page d’accueil</td>
+</tr>
+<tr>
+<td>Choisir une thématique</td>
+<td>Le créateur de la partie choisit la thématique qui définit les gages (donc prédéfinis) de la soirée.</td>
+<td>3/5</td>
+<td>3/5</td>
+<td>Page de paramétrage de la partie</td>
+</tr>
+<tr>
+<td>Case “soirée alcoolisée”</td>
+<td>Le créateur peut choisir d’exclure ou non les gages liés à la consommation d’alcool de la “pool” de gages</td>
+<td></td>
+<td></td>
+<td>Page de paramétrage de la partie</td>
+</tr>
+<tr>
+<td>Possibilité de Reset les gages</td>
+<td>Acceder à un système de vote dans le jeu pour reset les gages si trop de personne sont bloqués</td>
+<td>1/5</td>
+<td>5/5</td>
+<td>Page de paramétrage de la partie</td>
+</tr>
+<tr>
+<td>Sauvegarder/Charger un preset</td>
+<td>Si le créateur a un compte, il peut sauvegarder ou charger des paramètres de partie</td>
+<td>1/5</td>
+<td>3/5</td>
+<td>Page de paramétrage de la partie</td>
+</tr>
+<tr>
+<td>Ajouter des gages personnalisées</td>
+<td>L’utilisateur peut ajouter à la liste des gages à faire</td>
+<td>2/5</td>
+<td>3/5</td>
+<td>Page de paramétrage de la partie</td>
+</tr>
+<tr>
+<td>Créer un timer</td>
+<td>A la fin du timer la personne avec  le plus de kill gagne la partie</td>
+<td>2/5</td>
+<td>3/5</td>
+<td>Page de paramétrage de la partie</td>
+</tr>
+<tr>
+<td>Lancer la partie</td>
+<td>L’hôte peut lancer la partie</td>
+<td>5/5</td>
+<td></td>
+<td>Page de paramétrage de la partie</td>
+</tr>
+<tr>
+<td>Notifications et Alerte</td>
+<td>Pour vérifier si la cible est morte + pour annoncer le nombre des derniers participants restants + Annoncer un reset</td>
+<td>5/5</td>
+<td>3/5</td>
+<td>Notification</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Attribution des gages et des cibles (automatiquement)</td>
+<td>L’application va attribuer à chaque joueur une cible et un gage, de façon à ce qu’un joueur ne puisse pas tomber sur lui-même comme cible. (boucle)</td>
+<td>5/5</td>
+<td>5/5</td>
+<td>Après le lancement de la partie</td>
+</tr>
+<tr>
+<td>Voir tout le monde dans un salon</td>
+<td></td>
+<td></td>
+<td></td>
+<td>Page d’attente</td>
+</tr>
+<tr>
+<td>afficher les infos dans le salon</td>
+<td>Nombre de joueurs, Thématique, Fin de partie</td>
+<td>2/5</td>
+<td>2/5</td>
+<td>Page d’attente</td>
+</tr>
+<tr>
+<td>Pouvoir lancer le jeu (hôte)</td>
+<td></td>
+<td>5/5</td>
+<td>5/5</td>
+<td>Page d’attente</td>
+</tr>
+<tr>
+<td>Possibilité d’ajouter un participant (au milieu du jeu)</td>
+<td>Ajouter un nœud dans les relations</td>
+<td>1/5</td>
+<td>2/5</td>
+<td>Page de la partie (Hôte)</td>
+</tr>
+<tr>
+<td>Possibilité de supprimer un participant</td>
+<td>Si un joueur part de la soirée, l’hôte doit être capable de l’éjecter de la partie pour le bon déroulement du jeu. La cible et le gage de la personne déconnectée seront alors transférés à son tueur.</td>
+<td>3/5</td>
+<td>3/5</td>
+<td>Page de partie</td>
+</tr>
+<tr>
+<td>Voir sa cible</td>
+<td></td>
+<td>5/5</td>
+<td></td>
+<td>Page de partie</td>
+</tr>
+<tr>
+<td>voir son gage</td>
+<td>(cacher cette information derrière une confirmation pour éviter les révélations accidentelles)</td>
+<td>5/5</td>
+<td></td>
+<td>Page de partie</td>
+</tr>
+<tr>
+<td>Tuer sa cible</td>
+<td></td>
+<td>5/5</td>
+<td></td>
+<td>Page de partie</td>
+</tr>
+<tr>
+<td>Voter pour reset les gages</td>
+<td></td>
+<td>2</td>
+<td>5/5</td>
+<td>Page de la partie</td>
+</tr>
+<tr>
+<td>Confirmer qu’on est mort</td>
+<td>La cible recevra une notification “Etes vous mort ?” et si elle confirme, verra qui était son tueur et son gage.</td>
+<td>5/5</td>
+<td>5/5</td>
+<td>Page de la partie</td>
+</tr>
+<tr>
+<td>Voir les participants restants quand on est mort</td>
+<td></td>
+<td>2/5</td>
+<td>4/5</td>
+<td>Autre page ?</td>
+</tr>
+</tbody>
+</table>
+</div>
+</details>
+</div>
+<h3>Développement</h3>
+<p>Pour la phase de développement de notre projet, nous avons continué à travailler avec Notion pour la gestion des tâches, permettant ainsi une organisation et une collaboration efficace au sein de notre équipe. Grâce à Notion, nous avons pu lister toutes les tâches nécessaires à la réalisation de notre projet, en attribuant à chacune un statut précis qui reflète son avancement : &quot;Non commencé&quot;, &quot;En cours&quot;, et &quot;Terminé&quot;.</p>
+<p>Cette approche nous a permis de maintenir une visibilité claire sur le progrès de chaque aspect du projet, facilitant ainsi la communication et assurant que nous sommes alignés sur les priorités et les échéances. Le suivi du statut des tâches via Notion a également contribué à une gestion de projet plus dynamique, permettant des ajustements en temps réel pour répondre aux changements de scope.</p>
+<table>
+<tbody>
+<tr>
+<td style="text-align:center"><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//_projets/Killer/taches.png" width="760" height="650"></td>
+<td style="text-align:center"><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//_projets/Killer/taches2.png" width="700" height="550"></td>
+</tr>
+<tr>
+<td style="text-align:center"><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//_projets/Killer/taches3.png" width="700" height="550"></td>
+<td style="text-align:center"><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//_projets/Killer/taches4.png" width="760" height="650"></td>
+</tr>
+</tbody>
+</table>
+<h1>Evolution de la maquette et du design</h1>
+<p>La conception de notre projet a évolué à travers plusieurs phases avant d'atteindre le rendu final présenté dans la section suivante. Le processus de design a commencé dès la troisième semaine du premier temps. Nous avons sélectionné une palette de couleurs, optant pour des tons sombres afin de capturer l'atmosphère mystérieuse du jeu.</p>
+<p>Toutefois, après avoir assisté aux cours sur l'UX et l'UI design, nous avons remis en question notre conception initiale. À ce stade, une portion significative du développement front-end de l'application était déjà en cours, ce qui a rendu la révision du design particulièrement ardue. Nous avions une vision claire et détaillée de l'agencement des pages de l'application, et il était donc difficile de se pencher sur de nouvelles alternatives pour la palette de couleurs et le style général.</p>
+<p>L'intégration des enseignements de l'UI/UX design a été source de confusion ; une partie du code était déjà écrite, et modifier le design à ce stade signifiait recommencer une grande partie du travail. Voici quelques exemples des orientations que les cours d'UI design ont inspirées :</p>
+<img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//_projets/Killer/exploration_design.png" width="100%">
+<img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//_projets/Killer/choix_couleurs.png" width="100%">
+<p>Finalement, après consultation et réflexion avec notre tuteur, M. Préa Pascal, nous avons décidé de conserver la structure originale et la palette de couleurs que nous avions initialement choisies :</p>
+<img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//_projets/Killer/maquette.png" width="100%">
+<p>Des ajustements ont été apportés progressivement au développement des pages tout au long des deux derniers temps, au fur et à mesure qu'on teste l'application.</p>
+<p>Vous pouvez accéder à notre maquette et notre espace de brainstorming en cliquant sur : <a href="https://www.figma.com/file/2LV3DAZ3pRUwxTUauOtV6E/Killer?type=design&amp;node-id=0%3A1&amp;mode=design&amp;t=Ohbx9IIjUQS3iSxp-1">KILLER</a>.</p>
+<h1>Développement de l’application</h1>
+<h3>Choix techniques</h3>
+<p>Pour le développement de l’application, nous avons choisi de partir sur ces technologies :</p>
+<ul>
+<li><strong>Mongo DB</strong> pour la base de donnée</li>
+<li><strong>Node.js</strong> avec Express pour le backend</li>
+<li><strong>React Native</strong> pour le frontend</li>
+</ul>
+<p>Nous avons choisi d’utiliser <strong>Mongo Db</strong> car c’est une base de donnée No SQL qui permet de créer des bases de données facilement sans commande SQL. De plus Mongo DB permet d’héberger notre base de donnée sur leur serveur, ce qui simplifie la configuration.</p>
+<p>Ensuite, nous avons choisi <strong>Node.js</strong> car c’est une technologie que nous avions utilisé pour certains MON. De plus Node.js utilise du Javascript, comme React Native.
+Enfin, <strong>React Native</strong> nous permet de développer des applications mobiles natives et cross platform (compatible avec IOS et ANDROID avec un seul code source). Il existe également Flutter mais nous avons préféré partir sur React Native car on ce Framework est très similaire à React.js.</p>
+<p>De plus, pour la communication entre les joueurs, nous utilisons <a href="http://socket.io/">Socket.IO</a>.</p>
+<p><a href="http://Socket.IO">Socket.IO</a> est une bibliothèque JavaScript pour permettre la communication temps réel bidirectionnelle entre un client et un serveur.</p>
+<p><a href="http://Socket.IO">Socket.IO</a> utilise WebSocket comme protocole de transport lorsque cela est possible, et bascule automatiquement sur d'autres techniques comme le long polling lorsque WebSocket n'est pas disponible. Cela permet à Socket Io de fonctionner dans tous les environnements</p>
+<p>La bibliothèque est composée de deux parties : une partie cliente, et une partie serveur qui s'exécute dans un environnement Node.js. Les deux parties communiquent ensemble pour permettre l'envoi et la réception de messages en temps réel.</p>
+<h3>Résultat</h3>
+<table>
+<tbody>
+<tr>
+<td style="text-align:center"><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//_projets/Killer/HomeScreen.jpg" width="250"></td>
+<td style="text-align:center"><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//_projets/Killer/SettingScreen.jpg" width="250"></td>
+<td style="text-align:center"><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//_projets/Killer/SalonScreen.jpg" width="250"></td>
+</tr>
+<tr>
+<td style="text-align:center"><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//_projets/Killer/GameScreen.jpg" width="250"></td>
+<td style="text-align:center"><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//_projets/Killer/StatPerso.jpg" width="250"></td>
+<td style="text-align:center"><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//_projets/Killer/Classement.jpg" width="250"></td>
+</tr>
+</tbody>
+</table>
+<img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//_projets/Killer/Historique.jpg" width="250">
+<h1>Analyse des écarts et difficultés</h1>
+<h3><strong>Les écarts par rapport à la vision initiale</strong></h3>
+<p>Etant donné que nous avons défini et explicité le but de l’application et son public cible, le projet n’a pas eu de revirement majeur en cours de route. Tout au long du projet on s’est tout de même posé la question du gagnant : Est-il celui qui a le plus tué ? Ou alors celui qui survit le plus longtemps ? Nous avons finalement formé un compromis : le gagnant est celui qui reste le dernier en lice, mais en cas d’égalité (par exemple si le temps imparti est écoulé), alors les derniers survivants seront départagés sur leur nombre de victimes.</p>
+<p>Il y a aussi eu des remaniements dans les priorités du projet : par exemple, bien qu’initialement nous voulions implémenter un système d’authentification en se faisant un compte sur l’appli, nous avons pensé que la procédure serait trop fastidieuse. On veut quelque chose d’accessible à un public aussi large que possible, et mettre une étape supplémentaire pour lancer une partie peut former une barrière d’entrée.  Peut-être que sur le long terme, se connecter serait une possibilité pour pouvoir enregistrer des gages customisés par exemple, mais toujours présenté comme optionnel.</p>
+<h3>Difficultés principales</h3>
+<p>La principale difficulté lors du développement était de trouver un moyen pour faire en sorte que le joueur reste dans la partie même si l’appli est fermée ou tuée. L’ajout d’animations sur React Native était aussi un gros obstacle à franchir.</p>
+<p>Difficultés principales rencontrées lors du développement :</p>
+<ul>
+<li>Faire en sorte que le joueur ne soit pas exclu de la parti si l’appli est fermée ou tuée</li>
+<li>Implémenter des animations</li>
+<li>Fermeture totale d’une partie</li>
+<li>Notifications Push</li>
+<li>Ajout de gages</li>
+</ul>
+<p>On a bien sûr eu des difficultés purement techniques, mais l’une des plus grosses montagnes à gravir n’avait rien à voir avec une fonctionnalité à implémenter ou un bug.</p>
+<p>En effet, le thème central du jeu tourne autour des gages. S’ils ne sont pas drôles, le jeu est inintéressant, et s’il ne sont pas assez variés, on s’en lasse vite. Il faut aussi qu’ils soient atteignables, sans être trop faciles, ou évidents à deviner pour la cible. Bien que cette partie ne soit pas technique en soi, il a fallu dédier un temps non-négligeable pour trouver les gages, même pour un événement aussi court que le barbecue. Si on laisse aux joueurs la possibilité de changer de gage, il faut prévoir bien plus de gages que de personnes, ce qui devient difficile avec des parties de plusieurs dizaines de personnes.</p>
+<p>Si on veut aller plus loin dans le développement du jeu dans le but de le déployer sur les stores, il faudra réfléchir à plusieurs centaines de gages initialement, donc devoir trouver assez de gages pour le barbecue nous a donné un aperçu de cette tâche gargantuesque.</p>
+<h1>Bilan et suite</h1>
+<p>Finalement, l’application Killer est parfaitement jouable dans son état actuel, et permet d’organiser et gérer une partie du début à la fin. En ce qui concerne ce que l’on a appris du projet, nous avons pu mettre en application des outils de gestion de projet, afin de travailler efficacement en groupe, et mener à bien le projet. En effet, pour la plupart d’entre nous, nous avons pas eu l’occasion ou la présence d’esprit d’utiliser ces outils dans nos projets des années précédentes. Pour d’autres, c’était aussi notre première expérience de développement mobile, voire de développement en général : React Native, tests, utilisation de Github… En particulier pour Github, nous avons été confronté à des problèmes qu’on ne pourrait pas rencontrer lorsqu’on met à jour son POK ou MON car nous travaillions tous sur tous les fichiers du jeu.</p>
+<p>“Mince, je viens de pull depuis Github et je viens d’écraser tous les modifs que j’avais faites…”</p>
+<p>Le but suprême sur le long terme serait de rendre cette application commercialisable.</p>
+<p>Dans l’immédiat, l’objectif serait de corriger les bugs communs qui pourraient rester, ainsi qu’implémenter toutes les fonctionnalités définies au début du projet. Il faudrait ajouter beaucoup de gages, et remanier la base de données de manière à attribuer des tags à chaque gage, et ainsi les activer ou non en fonction du thème choisi par le créateur de la partie.</p>
+<p>Bien sûr, il y aurait aussi toutes les étapes administratives/fonctionnelles : modalités de téléchargement de l’app sur le Play/App Store, accord de confidentialité utilisateur, et toutes les étapes administratives liées à gagner de l’argent via l’application, éventuellement.</p>
+<p>Les repository Github du projet sont disponibles ici :</p>
+<ul>
+<li>Front end : <a href="https://github.com/LucasRioual/Killer">https://github.com/LucasRioual/Killer</a></li>
+<li>Back end : <a href="https://github.com/LucasRioual/Killer-back">https://github.com/LucasRioual/Killer-back</a></li>
+</ul>
+
+
+
+</article>
+
+        </main>
+
+
+        <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-center items-center">
+                    <p class="text-center">
+                        <span style="font-family: Consolas, sans-serif;">Do_<span style="color: #4a86e8">It</span></span> : Développement et Organisation en IT
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- MathJax import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">
+            window.MathJax = {
+                tex: {
+                inlineMath: [
+                    [
+                    '$', '$'
+                    ],
+                    [
+                    '\\(', '\\)'
+                    ]
+                ]
+                },
+                svg: {
+                fontCache: 'global'
+                }
+            };
+
+        MathJax
+            .startup
+            .document
+            .getMathItemsWithin(document.body);
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">
+            Prism.plugins.NormalizeWhitespace.setDefaults({
+                'remove-trailing': true,
+                'remove-indent': true,
+                'left-trim': true,
+                'right-trim': true,
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js">
+            document.addEventListener('DOMContentLoaded', () => {
+                Prism.highlightAll();
+            });
+        </script>
+    </body>
+</html>
