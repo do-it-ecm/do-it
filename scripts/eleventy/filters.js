@@ -23,7 +23,7 @@ export default function (eleventyConfig) {
 
     eleventyConfig.addFilter("getYearFromUrl", (url) => {
         const consideredYear = url.split("/")[2];
-        const yearRegex = /^(\d{4}-\d{4}|\d{2}XX-\d{2}YY)$/;
+        const yearRegex = /^(\d{4}-\d{4})$/;
         return yearRegex.test(consideredYear) ? consideredYear : undefined;
     });
 
