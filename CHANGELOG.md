@@ -25,6 +25,8 @@ All notable changes to the Do-It website will be documented in this file
 - Now using git submodules to manage the promotion repositories.
 - Moved most of the scripts to the `scripts/` directory to make the root directory cleaner.
 - Updated the GitHub workflows to force compliance checks before pushing to the repository.
+- Frontend modules are no longer imported from local files, but from CDNs (only jsDelivr for now, there is no fallback).
+- Sort the node dependencies in the `package.json` file, a lot of them were unecessarely in the dependencies instead of devDependencies.
 
 ### Deprecated
 
