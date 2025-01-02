@@ -7,6 +7,7 @@ eleventyImport:
 eleventyExcludeFromCollections: true
 
 eleventyComputed:
+  year: "{{ page.url | getYearFromUrl }}"
   tags:
     - "{{ page.url | getYearFromUrl }}"
     - "index"
@@ -14,8 +15,6 @@ eleventyComputed:
   title: "{{ category }} {{ page.url | getYearFromUrl }}"
   resume: "{{ category }} de la Promotion {{ page.url | getYearFromUrl }}"
 ---
-
-{% set year = page.url | getYearFromUrl %}
 
 <div class="my-3 px-2 p-1 border-solid border-2 rounded relative">
     <div class="text-3xl mb-3">
@@ -25,12 +24,10 @@ eleventyComputed:
     <ul class="flex flex-wrap not-prose list-none text-sm my-1 mx-0 px-1 gap-1 md:gap-2 lg:gap-3">
         {% for student in collections.index | sort(attribute='data.authors') %}
             {% set categoryMatches = false %}
-            {% set promoMatches = false %}
+            {% set promoMatches = student.data.year == year %}
             {% for tag in student.data.tags %}
                 {% if tag == category %}
                     {% set categoryMatches = true %}
-                {% elif tag == year %}
-                    {% set promoMatches = true %}
                 {% endif %}
             {% endfor %}
             {% if categoryMatches and promoMatches %}
@@ -63,15 +60,8 @@ eleventyComputed:
             <div class="group:block group-open:block hidden">
                 <ul class="grid md:grid-cols-2 auto-rows-max not-prose list-none my-1 mx-0 px-1 gap-1">
                     {% for article in collections[category] | sort %}
-                        {% set yearMatch = false %}
-                        {% set tempsMatch = false %}
-                        {% for tag in article.data.tags %}
-                            {% if tag == year %}
-                                {% set yearMatch = true %}
-                            {% elif tag == "temps " ~ temps %}
-                                {% set tempsMatch = true %}
-                            {% endif %}
-                        {% endfor %}
+                        {% set yearMatch = article.data.year == year %}
+                        {% set tempsMatch = article.data.temps == temps %}
                         {% if tempsMatch and yearMatch %}
                             <li class="m-3 p-3 border-solid border-2 rounded relative flex flex-col">
                                 <div class="text-lg mb-3">

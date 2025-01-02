@@ -1,10 +1,11 @@
 ---
 layout: layout/post.njk
 
+tags:
+  - "PROJET"
+
 eleventyComputed:
-  tags:
-    - "{{ page.url | getYearFromUrl }}"
-    - "PROJET"
---- 
- 
+  year: "{{ page.url | getYearFromUrl }}"
+---
+
 {{ content | safe }}
