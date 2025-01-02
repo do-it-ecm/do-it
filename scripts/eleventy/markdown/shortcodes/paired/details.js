@@ -1,4 +1,4 @@
-import { escapeHtml } from "markdown-it/lib/common/utils.mjs";
+import { escapeHtml } from "./utils.js";
 
 export default function (eleventyConfig) {
 

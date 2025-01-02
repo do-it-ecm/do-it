@@ -1,4 +1,6 @@
-import { escapeHtml } from "markdown-it/lib/common/utils.mjs";
+export function escapeHtml(code) {
+    return "\n\n" + code + "\n\n";
+}
 
 export function template(content, arg) {
     let component = "";

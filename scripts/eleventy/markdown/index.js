@@ -5,7 +5,7 @@
 import markdownIt from "markdown-it";
 import markdownItAttrs from "markdown-it-attrs";
 import markdownItMultimdTable from "markdown-it-multimd-table";
-import { escapeHtml } from "markdown-it/lib/common/utils.mjs";
+import { escapeHtml } from "./shortcodes/paired/utils.js";
 
 export default function (eleventyConfig) {
     let markdownItLibrary = markdownIt({
