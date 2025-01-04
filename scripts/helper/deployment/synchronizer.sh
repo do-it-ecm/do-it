@@ -7,7 +7,6 @@ LOG_FILE="${LOG_DIRECTORY}/synchronizer.log"
 
 mkdir -p ${LOG_DIRECTORY}
 
-
 # Function to prepend a formatted timestamp
 log_with_timestamp() {
   while IFS= read -r line; do

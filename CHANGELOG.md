@@ -15,6 +15,7 @@ All notable changes to the Do-It website will be documented in this file
 - CC0-1.0 License was added to the repository.
 - A new `CHANGELOG.md` file was added to document all the changes made to the website.
 - Added prism.js plugins: `line-numbers`, `copy-to-clipboard`, `toolbar`, `show-language`, `normalize-whitespace`
+- Build time rewrite of the media URLs (images, videos, etc.) to use the GitHub raw URL instead of the local path.
 
 ### Changed
 
@@ -32,7 +33,7 @@ All notable changes to the Do-It website will be documented in this file
 
 - Nothing other than HTML, CSS, and JS are present in the output directory. That means you have to reference the images and other assets using absolute URLs.
 
-## [ Eleventy 3.0 upgrade - Do-It 2.0.0] - 2024-11-06
+## [Eleventy 3.0 upgrade - Do-It 2.0.0] - 2024-11-06
 
 ### Added
 
