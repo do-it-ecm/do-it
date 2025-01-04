@@ -16,6 +16,8 @@ All notable changes to the Do-It website will be documented in this file
 - A new `CHANGELOG.md` file was added to document all the changes made to the website.
 - Added prism.js plugins: `line-numbers`, `copy-to-clipboard`, `toolbar`, `show-language`, `normalize-whitespace`
 - Build time rewrite of the media URLs (images, videos, etc.) to use the GitHub raw URL instead of the local path.
+- Added courses to the cs directory and made it a submodule.
+- Added a sidebar navigation to the courses to make it easier to discover the courses.
 
 ### Changed
 

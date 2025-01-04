@@ -10,6 +10,95 @@ eleventyComputed:
     title: "{{ title | safe }}"
 ---
 
+<style>
+.nested {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden; /* Ensure content doesn't show outside */
+    pointer-events: none; /* Prevent interaction with hidden links */
+    transition: opacity 0.8s ease-out, max-height 0.8s ease-out;
+    margin-left: 1em; /* Indent for nested items */
+}
+
+.nested.active {
+    max-height: fit-content;
+    opacity: 1;
+    pointer-events: auto; /* Allow interaction when active */
+}
+
+.toggle-button {
+    margin-left: 0.5em;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: inherit;
+    transform: rotate(0deg);
+    transition: transform 0.8s ease-out;
+}
+
+.toggle-button.active {
+    transform: rotate(90deg);
+}
+</style>
+
+<script>
+    const SIDEBAR_STATE_KEY = "sidebarState";
+
+    function toggleFold(button) {
+        // Find the closest parent <li> and its corresponding nested <ul>
+        const listItem = button.closest('li');
+        const nestedList = listItem.querySelector('.nested');
+
+        if (nestedList) {
+            const isActive = nestedList.classList.toggle('active'); // Toggle the 'active' class
+            button.classList.toggle('active', isActive); // Toggle button rotation
+            saveSidebarState();
+        }
+    }
+
+    function saveSidebarState() {
+        const state = {};
+        const nestedLists = document.querySelectorAll('.sidebar-navigation .nested');
+        nestedLists.forEach((list, index) => {
+            state[index] = list.classList.contains('active');
+        });
+        localStorage.setItem(SIDEBAR_STATE_KEY, JSON.stringify(state));
+    }
+
+    function restoreSidebarState() {
+        const state = JSON.parse(localStorage.getItem(SIDEBAR_STATE_KEY));
+        if (!state) return;
+
+        const nestedLists = document.querySelectorAll('.sidebar-navigation .nested');
+        nestedLists.forEach((list, index) => {
+            if (state[index]) {
+                list.classList.add('active');
+                const button = list.parentNode.querySelector('.toggle-button'); // Correctly locate the button
+                if (button) {
+                    button.classList.add('active'); // Rotate the button
+                }
+            }
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        restoreSidebarState();
+    });
+</script>
+
+<aside class="fixed top-[50px] left-0 w-full lg:w-1/4 h-[calc(100vh-35px)] bg-white p-4 overflow-y-auto border-r-2 border-gray-200"
+    style="max-width: calc((100vw - 1000px) / 2 - 35px);">
+    <nav>
+        <h2 class="font-bold text-2xl mb-2">Cours</h2>
+        <ul class="sidebar-navigation space-y-2">
+            {% from 'macros/render-navigation.njk' import renderNavigation %}
+            {% for category in courses.sidebar %}
+                {{ renderNavigation(category) }}
+            {% endfor %}
+        </ul>
+    </nav>
+</aside>
+
 <article class="relative">
 <h1  {% if tags or authors %}class="mb-1"{% endif %}>{{ title }}</h1>
 <div {% if tags or authors %}class="mb-4"{% endif %}>

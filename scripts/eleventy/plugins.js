@@ -2,7 +2,6 @@
  * Eleventy configuration for plugins (build time)
  */
 
-import { execSync } from "child_process";
 import path from "path";
 import { EleventyRenderPlugin, EleventyHtmlBasePlugin } from "@11ty/eleventy";
 import eleventyNavigationPlugin from "@11ty/eleventy-navigation";
@@ -22,9 +21,15 @@ export default function (eleventyConfig) {
 
     // PostHTML URL transforms (convert relative URLs to raw github URLs)
     if (process.env.NODE_ENV === "production") {
+        // Raw GitHub URL constants
         const RAW_GITHUB_BASE = "https://raw.githubusercontent.com";
+        // Repositories owner
         const GITHUB_REPO_OWNER = "do-it-ecm";
+        // Regex to match promo paths (and extract the promo year and relative path)
         const IS_PROMO_PATH = /src\/promos\/(\d{4}-\d{4})(\/?.*)?/;
+        // Regex to match the CS paths (and extract the relative path)
+        const IS_CS_PATH = /src\/cs\/(.*)/;
+        // Commit ref to use for all submodules
         const COMMIT_REF = "refs/heads/main"; // Don't bother finding the commit ref for each submodule, just use main
 
         function mediaUrlTransform(context) {
@@ -48,8 +53,15 @@ export default function (eleventyConfig) {
                             const relativePath = promoMatch[2] ? promoMatch[2].replace(/\/$/, "") : "";
                             remoteUrl = `${RAW_GITHUB_BASE}/${GITHUB_REPO_OWNER}/promo-${promoYear}/${COMMIT_REF}/${relativePath}/${path.basename(url)}`;
                         } else {
-                            const relativePath = path.relative(baseDir, absoluteDirPath);
-                            remoteUrl = `${RAW_GITHUB_BASE}/${GITHUB_REPO_OWNER}/do-it/${COMMIT_REF}/${relativePath}/${path.basename(url)}`;
+                            const csMatch = absoluteDirPath.match(IS_CS_PATH);
+                            if (csMatch) {
+                                // CS path
+                                const relativePath = csMatch[1];
+                                remoteUrl = `${RAW_GITHUB_BASE}/${GITHUB_REPO_OWNER}/courses/${COMMIT_REF}/${relativePath}/${path.basename(url)}`;
+                            } else {
+                                const relativePath = path.relative(baseDir, absoluteDirPath);
+                                remoteUrl = `${RAW_GITHUB_BASE}/${GITHUB_REPO_OWNER}/do-it/${COMMIT_REF}/${relativePath}/${path.basename(url)}`;
+                            }
                         }
 
                         return remoteUrl;

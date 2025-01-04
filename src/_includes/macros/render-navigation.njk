@@ -1,0 +1,18 @@
+{% macro renderNavigation(item) %}
+<li>
+    <div class="flex justify-between items-center w-10/12 mx-auto transition-all duration-500 hover:bg-gray-200 p-1 rounded-md"
+        style="background-color: {% if item.backgroundColor %}{{ item.backgroundColor }}{% else %}white{% endif %};">
+        <a {% if item.path %}href="/cs/{{ item.path }}"{% endif %} class="flex-1 text-left pr-2 text-lg">{{ item.title }}</a>
+        {% if item.children and item.children | length > 0 %}
+            <button class="toggle-button flex-shrink-0 text-xl font-bold leading-none align-middle" onclick="toggleFold(this)">&gt;</button>
+        {% endif %}
+    </div>
+    {% if item.children and item.children | length > 0 %}
+        <ul class="nested">
+            {% for child in item.children %}
+                {{ renderNavigation(child) }}
+            {% endfor %}
+        </ul>
+    {% endif %}
+</li>
+{% endmacro %}
