@@ -26,11 +26,11 @@ eleventyComputed:
             {# Gestion des tags #}
             <div class="hidden" data-pagefind-meta="Type">
                 {% for tag in tags %}
-                    {% if tag == "mon" %}
+                    {% if tag == "MON" %}
                         <span data-pagefind-filter="Type">MON</span>
-                    {% elseif tag == "pok" %}
+                    {% elseif tag == "POK" %}
                         <span data-pagefind-filter="Type">POK</span>
-                    {% elseif tag == 'cs' %}
+                    {% elseif tag == 'COURS' %}
                         <span data-pagefind-filter="Type">CS</span>
                     {% endif %}
                 {% endfor %}
