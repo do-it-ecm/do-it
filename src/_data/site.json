@@ -1,4 +1,9 @@
 {
     "url": "https://do-it.aioli.ec-m.fr",
-    "source": "https://github.com/do-it-ecm/do-it"
+    "source": "https://github.com/do-it-ecm/do-it",
+    "colors": {
+        "info": "#93c47d",
+        "mgt": "#a9c6f4",
+        "gp": "#f5cfcf"
+    }
 }

@@ -1,0 +1,166 @@
+{
+    "sidebar": [
+        {
+            "title": "Informatique",
+            "backgroundColor": "#93c47d",
+            "children": [
+                {
+                    "title": "Bases",
+                    "children": [
+                        {
+                            "title": "Git",
+                            "path": "info/bases/git"
+                        },
+                        {
+                            "title": "Linux",
+                            "path": "info/bases/linux"
+                        },
+                        {
+                            "title": "Ordinateur",
+                            "path": "info/bases/ordinateur"
+                        }
+                    ]
+                },
+                {
+                    "title": "Dev",
+                    "children": [
+                        {
+                            "title": "Web",
+                            "children": [
+                                {
+                                    "title": "Fullstack",
+                                    "path": "info/dev/web/fullstack"
+                                },
+                                {
+                                    "title": "WebSocket",
+                                    "path": "info/dev/web/websocket"
+                                }
+                            ]
+                        },
+                        {
+                            "title": "Bash",
+                            "path": "info/dev/bash"
+                        },
+                        {
+                            "title": "Java",
+                            "path": "info/dev/java"
+                        },
+                        {
+                            "title": "Low Code",
+                            "path": "info/dev/low_code"
+                        }
+                    ]
+                },
+                {
+                    "title": "Ops",
+                    "children": [
+                        {
+                            "title": "SSH",
+                            "path": "info/ops/ssh"
+                        },
+                        {
+                            "title": "aioli",
+                            "path": "info/ops/aioli"
+                        },
+                        {
+                            "title": "PostgreSQL",
+                            "path": "info/ops/postgres"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "Management",
+            "backgroundColor": "#a9c6f4",
+            "children": [
+                {
+                    "title": "SI",
+                    "children": [
+                        {
+                            "title": "Management",
+                            "path": "management/si/management"
+                        },
+                        {
+                            "title": "Audit",
+                            "path": "management/si/audit"
+                        },
+                        {
+                            "title": "Conception SI",
+                            "path": "management/si/conception"
+                        }
+                    ]
+                },
+                {
+                    "title": "Agilité",
+                    "children": [
+                        {
+                            "title": "Gestion Agile",
+                            "path": "management/agile/gdp"
+                        },
+                        {
+                            "title": "SCRUM",
+                            "path": "management/agile/scrum"
+                        },
+                        {
+                            "title": "Cristal Clear",
+                            "path": "management/agile/cristal_clear"
+                        },
+                        {
+                            "title": "Autres méthodes agiles",
+                            "path": "management/agile/methodes_agiles"
+                        }
+                    ]
+                },
+                {
+                    "title": "Sobriété Numérique",
+                    "children": [
+                        {
+                            "title": "Sobriété Numérique",
+                            "path": "management/sobriete/numerique"
+                        },
+                        {
+                            "title": "Accessibilité Numérique",
+                            "path": "management/sobriete/accessibilite"
+                        },
+                        {
+                            "title": "Fresque du Numérique",
+                            "path": "management/sobriete/fresque_numerique"
+                        },
+                        {
+                            "title": "Impacts du Numérique",
+                            "path": "management/sobriete/impacts"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "title": "Gestion & Modélisation Projet",
+            "backgroundColor": "#f5cfcf",
+            "children": [
+                {
+                    "title": "Service Design",
+                    "path": "gestion_modelisation/service_design"
+                },
+                {
+                    "title": "Gestion de Projet",
+                    "path": "gestion_modelisation/gdp"
+                },
+                {
+                    "title": "UI/UX",
+                    "path": "gestion_modelisation/uiux"
+                }
+            ]
+        },
+        {
+            "title": "Tronc Commun",
+            "children": [
+                {
+                    "title": "Conduite du Changement",
+                    "path": "tronc_commun/change_management"
+                }
+            ]
+        }
+    ]
+}
