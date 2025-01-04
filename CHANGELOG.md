@@ -30,10 +30,11 @@ All notable changes to the Do-It website will be documented in this file
 - Updated the GitHub workflows to force compliance checks before pushing to the repository.
 - Frontend modules are no longer imported from local files, but from CDNs (only jsDelivr for now, there is no fallback).
 - Sort the node dependencies in the `package.json` file, a lot of them were unecessarely in the dependencies instead of devDependencies.
+- Tailwind CSS now outputs a minified CSS file (it was not minified before).
 
 ### Deprecated
 
-- Nothing other than HTML, CSS, and JS are present in the output directory. That means you have to reference the images and other assets using absolute URLs.
+- Nothing other than HTML, CSS, and JS are present in the output directory. That means you have to reference the images and other assets using absolute URLs. (The rewrite is done at build time automatically)
 
 ## [Eleventy 3.0 upgrade - Do-It 2.0.0] - 2024-11-06
 
