@@ -35,17 +35,16 @@ export default function (eleventyConfig) {
         function mediaUrlTransform(context) {
             const urlsOptions = {
                 eachURL: function (url, attr, tagName) {
+                    let remoteUrl = url;
                     if (url.includes("://")) {
-                        return url; // Don't transform external URLs
+                        // Don't transform external URLs
                     } else if (url.startsWith("/")) { // Absolute url, unused at the time of writing and somewhat annoying to deal with, skip for now
-                        console.log(`Skipping absolute URL: ${url}`);
-                        return url;
+                        remoteUrl`${RAW_GITHUB_BASE}/${GITHUB_REPO_OWNER}/do-it/${COMMIT_REF}/src${url}`;
                     } else { // Hopefully valid relative URL
                         const baseDir = process.cwd();
                         const absoluteDirPath = path.dirname(path.resolve(baseDir, path.dirname(context.inputPath), url));
 
                         const promoMatch = absoluteDirPath.match(IS_PROMO_PATH);
-                        let remoteUrl = "";
                         if (promoMatch) {
                             // Promo path
                             const promoYear = promoMatch[1];
@@ -64,8 +63,8 @@ export default function (eleventyConfig) {
                             }
                         }
 
-                        return remoteUrl;
                     }
+                    return remoteUrl;
                 },
                 filter: {
                     img: { src: true, srcset: true },

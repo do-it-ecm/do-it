@@ -6,6 +6,7 @@ import collectionsConfig from "./scripts/eleventy/collections.js";
 import postCompilation from "./scripts/eleventy/post-build.js";
 import setupPlugins from "./scripts/eleventy/plugins.js";
 import setupIgnore from "./scripts/eleventy/ignore.js";
+import setupTransforms from "./scripts/eleventy/transforms.js";
 
 export default function (eleventyConfig) {
 
@@ -18,6 +19,7 @@ export default function (eleventyConfig) {
   assetsConfig(eleventyConfig);
   setupIgnore(eleventyConfig);
   filtersConfig(eleventyConfig);
+  setupTransforms(eleventyConfig);
   collectionsConfig(eleventyConfig);
   postCompilation(eleventyConfig); // tailwind and search
 
