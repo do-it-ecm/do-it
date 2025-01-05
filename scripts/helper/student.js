@@ -94,8 +94,8 @@ Les lien utiles pour la compréhension de celui-ci.
 
 Quelques phrases permettant de connaître, sans jargon ni blabla, le contenu de ce MON. On oubliera pas de donner :
 
-- le niveau et les prérequis nécessaires en utilisant la balise [prerequis](/cs/contribuer-au-site/#prerequis)
-- les autres POK & MON en rapport en utilisant la balise [lien](/cs/contribuer-au-site/#lien)
+- le niveau et les prérequis nécessaires en utilisant la balise [prerequis](/contribuer/shortcodes/#prerequis)
+- les autres POK & MON en rapport en utilisant la balise [lien](/contribuer/shortcodes/#lien)
 
 ## Contenu
 
@@ -130,8 +130,8 @@ Les lien utiles pour la compréhension de celui-ci.
 
 Quelques phrases permettant de connaître, sans jargon ni blabla, le contenu de ce POK. On oubliera pas de donner :
 
-- le niveau et les prérequis nécessaires en utilisant la balise [prerequis](/cs/contribuer-au-site/#prerequis)
-- les autres POK & MON en rapport en utilisant la balise [lien](/cs/contribuer-au-site/#lien)
+- le niveau et les prérequis nécessaires en utilisant la balise [prerequis](/contribuer/shortcodes/#prerequis)
+- les autres POK & MON en rapport en utilisant la balise [lien](/contribuer/shortcodes/#lien)
 
 ## Tâches
 
