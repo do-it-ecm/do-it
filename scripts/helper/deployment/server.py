@@ -12,9 +12,27 @@ from subprocess import Popen, PIPE
 from os import path, chdir
 from json import loads, JSONDecodeError
 from socket import AF_INET6
+import hashlib
+import hmac
 
 # Global variable custom update script
 UPDATE_SCRIPT = None
+# GitHub repo owner (can be changed through CLI)
+GITHUB_REPO_OWNER = 'do-it-ecm'
+# GitHub repo (can be changed through CLI)
+GITHUB_REPO = 'do-it'
+# GitHub branch (can be changed through CLI)
+GITHUB_BRANCH = 'gh-pages'
+# Secret token (Can be changed through CLI, not setting it causes the server to accept all requests)
+SECRET_TOKEN = None
+
+
+
+class HTTPError(Exception):
+    def __init__(self, status_code: int, detail: str):
+        self.status_code = status_code
+        self.detail = detail
+        super().__init__(self.detail)
 
 
 def startHttpServer(directory: str, host: str, port: int):
@@ -48,19 +66,60 @@ class IPv6HTTPServer(HTTPServer):
 
 
 class CustomHandler(SimpleHTTPRequestHandler):
+
+    def verifySignature(self):
+        """
+        Verify that the payload was sent from GitHub by validating SHA256.
+
+        :param request: The request object to extract the payload and headers from
+
+        :return: The parsed body of the request
+        :throws HTTPError: If the signature header is missing or the signatures don't match
+        :throws JSONDecodeError: If the payload is not a valid JSON
+        """
+        # Retrieve the signature header and the payload
+        signature_header = self.headers.get('X-Hub-Signature-256')
+        payload_body = self.rfile.read(int(self.headers.get('Content-Length', 0))).decode('utf-8')
+
+        # Raise an error if the secret token is set and the signature header is not
+        if SECRET_TOKEN is not None:
+            if not signature_header:
+                raise HTTPError(status_code=401, detail="Could not verify the request signature")
+
+            # Compute and compare the expected signature to the received one
+            hash_object = hmac.new(SECRET_TOKEN.encode('utf-8'), msg=payload_body.encode('utf-8'), digestmod=hashlib.sha256)
+            expected_signature = "sha256=" + hash_object.hexdigest()
+            if not hmac.compare_digest(expected_signature, signature_header):
+                raise HTTPError(status_code=403, detail="Request signatures didn't match!")
+
+        try:
+            parsed_body = loads(payload_body)
+        except JSONDecodeError:
+            raise HTTPError(status_code=400, detail="Invalid JSON payload")
+
+        return parsed_body
+
+
     def do_POST(self):
         """
         Handle POST requests and parse JSON payload
         """
         try:
-            # Read and parse JSON payload
-            content_length = int(self.headers.get('Content-Length', 0))
-            post_data = self.rfile.read(content_length).decode('utf-8')
-            print(f"Raw POST data: {post_data}")
+            # Verify the signature of the request and retrieve the JSON data
+            request_body = self.verifySignature()
 
-            # Attempt to parse the JSON data
-            json_data = loads(post_data)
-            print(f"Received JSON data: {json_data}")
+            # Check if the JSON data contains the expected keys
+            if not all(key in request_body for key in ('repository', 'ref')):
+                self.send_response(400)
+                self.end_headers()
+                self.wfile.write(b"Invalid JSON data, expected keys: 'repository', 'ref'")
+                return
+
+            # Check if the push corresponds to the expected git repo owner / git repo and branch
+            if request_body['repository'].get('full_name') != f"{GITHUB_REPO_OWNER}/{GITHUB_REPO}":
+                raise HTTPError(status_code=400, detail=f"GitHub repository does not match, expected {GITHUB_REPO_OWNER}/{GITHUB_REPO}, got {request_body['repository'].get('full_name')}")
+            elif request_body['ref'] != f"refs/heads/{GITHUB_BRANCH}":
+                raise HTTPError(status_code=400, detail=f"GitHub branch does not match, expected {GITHUB_BRANCH}, got {request_body['ref']}")
 
             if UPDATE_SCRIPT is not None:
                 # Run the custom update script
@@ -70,12 +129,14 @@ class CustomHandler(SimpleHTTPRequestHandler):
             self.send_response(200)
             self.end_headers()
             self.wfile.write(b"JSON data received successfully.")
-        except JSONDecodeError as e:
-            # Handle JSON parsing errors
-            self.send_response(400)
+        except HTTPError as e:
+            print(f"HTTP error: {e.detail}")
+            # Handle HTTP errors
+            self.send_response(e.status_code)
             self.end_headers()
-            self.wfile.write(f"Invalid JSON: {e}".encode('utf-8'))
+            self.wfile.write(e.detail.encode('utf-8'))
         except Exception as e:
+            print(f"Unexpected error: {e}")
             # Handle other exceptions
             self.send_response(500)
             self.end_headers()
@@ -107,6 +168,18 @@ def defineParser() -> ArgumentParser:
     # Host (bind) argument (optional, default to the IPv6 any address), defines the host to bind to
     parser.add_argument("--host", default="::", help="The host to bind to")
 
+    # GitHub repo owner argument (optional, default to 'do-it-ecm'), defines the GitHub repo owner
+    parser.add_argument("--github-repo-owner", default=GITHUB_REPO_OWNER, help="The GitHub repo owner")
+
+    # GitHub repo argument (optional, default to 'do-it'), defines the GitHub repo
+    parser.add_argument("--github-repo", default=GITHUB_REPO, help="The GitHub repo")
+
+    # GitHub branch argument (optional, default to 'gh-pages'), defines the GitHub branch
+    parser.add_argument("--github-branch", default=GITHUB_BRANCH, help="The GitHub branch where the push are expected to come from")
+
+    # Secret token argument (optional, default to None), defines the secret token to check
+    parser.add_argument("--secret-token", default=SECRET_TOKEN, help="The secret token to check in the request headers")
+
     return parser
 
 
@@ -128,6 +201,20 @@ def processArguments(parser: ArgumentParser) -> Namespace:
     else:
         global UPDATE_SCRIPT
         UPDATE_SCRIPT = args.update_script
+
+    global GITHUB_REPO_OWNER
+    GITHUB_REPO_OWNER = args.github_repo_owner
+
+    global GITHUB_REPO
+    GITHUB_REPO = args.github_repo
+
+    global GITHUB_BRANCH
+    GITHUB_BRANCH = args.github_branch
+
+    global SECRET_TOKEN
+    SECRET_TOKEN = args.secret_token
+
+    print(f"GitHub repository: {GITHUB_REPO_OWNER}/{GITHUB_REPO} on branch {GITHUB_BRANCH}")
 
     return args
 
