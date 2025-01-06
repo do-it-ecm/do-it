@@ -38,12 +38,15 @@ export default function (eleventyConfig) {
                     let remoteUrl = url;
                     if (url.includes("://")) {
                         // Don't transform external URLs
-                    } else if (url.startsWith("/")) { // Absolute url, just append the repo name
-                        remoteUrl = `${RAW_GITHUB_BASE}/${GITHUB_REPO_OWNER}/do-it/${COMMIT_REF}/src${url}`;
                     } else { // Hopefully valid relative URL
                         const baseDir = process.cwd();
-                        const absoluteDirPath = path.dirname(path.resolve(baseDir, path.dirname(context.inputPath), url));
-
+                        let absoluteDirPath = "";
+                        if (url.startsWith("/")) {
+                            url = url.slice(1);
+                            absoluteDirPath = path.dirname(path.resolve(baseDir, "src", url));
+                        } else {
+                            absoluteDirPath = path.dirname(path.resolve(baseDir, path.dirname(context.inputPath), url));
+                        }
                         const promoMatch = absoluteDirPath.match(IS_PROMO_PATH);
                         if (promoMatch) {
                             // Promo path
