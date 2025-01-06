@@ -18,10 +18,12 @@ resume: "Guide de rédaction en Markdown pour le site Do-It"
 
 {% lien "**Liens utiles**" %}
 - [Cours Markdown - François Brucker](https://francoisbrucker.github.io/cours_informatique/tutoriels/format-markdown/)
+- [Guide des extensions apportées par Eleventy](../extensions)
 - [Guide ShortCodes pour le site](../shortcodes)
+- [Guide de contribution au site](../)
 - [Documentation du site (anglais)](https://github.com/do-it-ecm/do-it/blob/main/README.md)
 - [Guide de contribution complet (anglais)](https://github.com/do-it-ecm/do-it/blob/main/CONTRIBUTING.md)
-- [Guide de contribution au site](../)
+
 {% endlien %}
 
 
@@ -330,7 +332,7 @@ if __name__ == "__main__":
 
 ## Autres guides
 
-- [Guide des extensions markdown Eleventy](../extensions)
+- [Guide des extensions apportées par Eleventy](../extensions)
 - [Guide ShortCodes pour le site](../shortcodes)
 - [Guide de contribution au site](../)
 - [Documentation du site (anglais)](https://github.com/do-it-ecm/do-it/blob/main/README.md)

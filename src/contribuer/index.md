@@ -17,7 +17,7 @@ resume: "Guide de contribution au site Do-It"
 - [Documentation du site (anglais)](https://github.com/do-it-ecm/do-it/blob/main/README.md)
 - [Guide de contribution complet (anglais)](https://github.com/do-it-ecm/do-it/blob/main/CONTRIBUTING.md)
 - [Guide Markdown pour le site](./markdown)
-- [Guide des extensions apportées au Markdown](./extensions)
+- [Guide des extensions apportées par Eleventy](./extensions)
 - [Guide des Shortcodes](./shortcodes)
 - [Cours Markdown - François Brucker](https://francoisbrucker.github.io/cours_informatique/tutoriels/format-markdown/)
 {% endlien %}
@@ -188,6 +188,6 @@ Pour que le site reste **cohérent** et **lisible**, il est recommandé de suivr
 
 - [Guide de contribution Markdown](./markdown)
 - [Guide des Shortcodes](./shortcodes)
-- [Guide des extensions apportées au Markdown](./extensions)
+- [Guide des extensions apportées par Eleventy](./extensions)
 - [Documentation du site (anglais)](https://github.com/do-it-ecm/do-it/blob/main/README.md)
 - [Guide de contribution complet (anglais)](https://github.com/do-it-ecm/do-it/blob/main/CONTRIBUTING.md)
