@@ -38,7 +38,7 @@ export default function (eleventyConfig) {
                     let remoteUrl = url;
                     if (url.includes("://")) {
                         // Don't transform external URLs
-                    } else if (url.startsWith("/")) { // Absolute url, unused at the time of writing and somewhat annoying to deal with, skip for now
+                    } else if (url.startsWith("/")) { // Absolute url, just append the repo name
                         remoteUrl = `${RAW_GITHUB_BASE}/${GITHUB_REPO_OWNER}/do-it/${COMMIT_REF}/src${url}`;
                     } else { // Hopefully valid relative URL
                         const baseDir = process.cwd();
