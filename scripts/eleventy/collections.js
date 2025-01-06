@@ -3,7 +3,7 @@
  */
 
 export default function (eleventyConfig) {
-    const TAGS_TO_OVERRIDE = ["PROMO", "HOME", "POK", "MON", "PROJET", "index"];
+    const TAGS_TO_OVERRIDE = ["PROMO", "HOME", "POK", "MON", "PROJET", "GUIDE", "index"];
 
     for (const tag of TAGS_TO_OVERRIDE) {
         eleventyConfig.addCollection(tag, (collection) => {
