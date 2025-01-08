@@ -70,9 +70,7 @@ jobs:
           key: npm-cache-${{ env.NODE_VERSION }}-${{ github.ref_name }}
 
       - name: Build
-        run: |
-          npm run build-github
-          npm run build-tailwind
+        run: npm run build-github
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
