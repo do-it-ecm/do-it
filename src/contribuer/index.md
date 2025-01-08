@@ -68,7 +68,7 @@ Si vous avez déjà un directory élève, n'allez pas en créer un autre. Vous p
 
 ### Ajouter un POK
 
-Pour ajouter / éditer un POK, il suffit d'aller éditer le fichier `src/promos/<VOTRE_PROMOTION/<VOTRE_DIRECTORY_ELEVE/pok/temps-<TEMPS/index.md`{.fichier}.
+Pour ajouter / éditer un POK, il suffit d'aller éditer le fichier `src/promos/VOTRE_PROMOTION/VOTRE_DIRECTORY_ELEVE/pok/temps-TEMPS/index.md`{.fichier}.
 
 Il faut seulement s'assurer que le fichier contient son entête avec:
 - Le layout **POK** (layout/pok.njk) à utiliser
