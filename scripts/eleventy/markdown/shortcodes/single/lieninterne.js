@@ -1,6 +1,6 @@
 import { DateTime } from "luxon";
 
-export default async function (eleventyConfig) {
+export default function (eleventyConfig) {
 
     eleventyConfig.addShortcode('lieninterne', function (url, dateFormat = "dd/MM/yyyy") {
 

@@ -8,6 +8,11 @@ export default function (eleventyConfig) {
     "src/**/*.{txt,edi,csv,json,pdf,zip}",
     "src/**/*.{webm,mov,mp4,ogv}",
   ];
+
+  eleventyConfig.addPassthroughCopy({
+    'src/assets/img/logo/favicon.ico': 'favicon.ico',
+  });
+
   if (process.env.NODE_ENV !== "production") {
     PASS_THROUGH_GLOBS.forEach((glob) => {
       eleventyConfig.addPassthroughCopy(glob);
