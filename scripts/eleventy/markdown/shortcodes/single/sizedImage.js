@@ -1,4 +1,4 @@
-export default function sizedImage(eleventyConfig) {
+export default function (eleventyConfig) {
 
     eleventyConfig.addShortcode('sizedImage', (src, alt, type = 'img', center = "true") => {
         const classMap = {
