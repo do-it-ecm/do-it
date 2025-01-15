@@ -34,6 +34,8 @@ Thank you for your interest in contributing to Do-It! We welcome all contributio
 1. Clone the repository and create a new branch:
     - `git clone --recurse-submodules https://github.com/do-it-ecm/do-it.git`
     - `cd do-it`
+    - `git submodule foreach "git checkout main"`
+    - `git submodule foreach "git pull origin main"`
     - `npm install`
     - `git checkout -b <MY_BRANCH_NAME>`
 2. Make your changes and checkout how they look:
