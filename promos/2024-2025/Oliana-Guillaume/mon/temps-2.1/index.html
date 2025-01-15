@@ -1,0 +1,198 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Introduction à Firebase</title><link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet"><link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet"><link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet"><link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon"><link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png"><script type="module" defer="">import mermaid from"https://cdn.jsdelivr.net/npm/mermaid/+esm";mermaid.initialize({startOnLoad:!0})</script><link href="/assets/stylesheets/main.css" rel="stylesheet"></head><body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000"><header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white"><div class="max-w-[1000px] mx-auto px-4"><div class="min-h-[50px] flex justify-between items-center"><a class="mx-2" href="/">Home</a><div class="flex items-center gap-4 sm:gap-6"><a class="" href="/cs">CS</a> <a class="" href="/pok">POK</a> <a class="" href="/mon">MON</a> <a class="" href="/projets">Projets</a> <a class="hidden sm:block" href="/promos">Promos</a> <a href="/search"><svg class="h-5 aspect-square" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path></svg> </a><a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank"><svg class="h-5 aspect-square" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg></a></div></div></div></header><main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body=""><article class="relative"><h1 class="mb-1">Introduction à Firebase</h1><div class="mb-4"><div class="px-4 flex flex-wrap items-center"><div class="font-bold">Tags :</div><ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags"><li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">MON</li><li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">Firebase</li><li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">Backend</li><li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">JavaScript</li><li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">Database</li><li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">HTML/CSS</li></ul><div class="hidden" data-pagefind-meta="Type"><span data-pagefind-filter="Type">MON</span></div></div><div class="px-4 flex flex-wrap items-center"><div class="font-bold">Auteurs :</div><ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs"><li class="bg-blue-200 rounded-full px-2" data-pagefind-filter="Auteurs">OLIANA Guillaume</li></ul></div><div class="absolute top-0 right-0"><span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2" data-pagefind-filter="Année">2024-2025</span></div></div><p class="mb-4 text-lg">Un MON pour découvrir Firebase, comprendre ses fonctionnalités, et réaliser une mini-application d'authentification en JavaScript Vanilla avec une base de données.</p><div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100"><svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path></svg><div class="pl-8 mr-8"><a href="/promos/2024-2025/Oliana-Guillaume/">OLIANA Guillaume</a><span class="px-1">/</span><a href="/promos/2024-2025/Oliana-Guillaume/mon/">MON de OLIANA Guillaume</a><span class="px-1">/</span><a href="/promos/2024-2025/Oliana-Guillaume/mon/temps-2.1/">Introduction à Firebase</a></div></div><div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100"><svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg><div class="pl-8 mb-2 mr-8"><p><b>Prérequis</b></p></div><div class="pl-8 mr-8"><p>Avoir des notions de base en programmation HTML et JavaScript. Pas besoin de connaître Firebase ou les bases de données à l'avance.</p></div></div><div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100"><svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path></svg><div class="pl-8 mb-2 mr-8"><p><b>Liens</b></p></div><div class="pl-8 mr-8"><p>Quelques liens utiles pour en savoir plus :</p><ul><li><a href="https://firebase.google.com/docs">Documentation Firebase</a></li><li><a href="https://firebase.google.com/start">Introduction à Firebase (Guide officiel)</a></li><li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript">MDN Web Docs - JavaScript</a></li></ul></div></div><hr><h1>Sommaire : Découverte de Firebase et Projet Pratique</h1><h2>1. Comprendre Firebase</h2><ul><li><strong>1.1 C'est quoi Firebase ?</strong></li><li><strong>1.2 Ses principales fonctionnalités</strong></li><li><strong>1.3 Pourquoi l’utiliser et dans quels cas ?</strong></li></ul><h2>2. Passer à la pratique</h2><ul><li><strong>2.1 Configurer Firebase pour votre projet</strong></li><li><strong>2.2 Développer une mini-app d'authentification avec base de données</strong></li><li><strong>2.3 Ce que vous obtenez à la fin (et la suite possible)</strong></li></ul><hr><h1>1. Comprendre Firebase</h1><h2>1.1 C'est quoi Firebase ?</h2><p>Firebase, c’est un outil proposé par Google qui permet aux développeurs de se concentrer sur la création de leur application sans devoir gérer un serveur complexe. En gros, ça permet de ne pas se casser la tête à gérer soit même un serveur, c'est pratique, surtout quand on sait pas faire. Plus concrètement, c’est ce qu’on appelle une plateforme <strong>&quot;Backend-as-a-Service&quot; (BaaS)</strong>. En résumé, tout ce qui est backend (base de données, gestion des utilisateurs, stockage de fichiers) est déjà prêt, vous n’avez qu’à l’utiliser.</p><div style="display:flex;flex-direction:column;align-items:center;margin:20px"><a href="https://www.youtube.com/watch?v=p9pgI3Mg-So"><img src="https://img.youtube.com/vi/p9pgI3Mg-So/hqdefault.jpg" alt="Miniature de la vidéo" width="560"></a><h2>Vidéo explicative complète du fonctionnement de Firebase</h2></div><h3>Pourquoi c’est génial ?</h3><ul><li><strong>Facile à démarrer</strong> : En quelques clics, votre projet est configuré.</li><li><strong>Pas besoin de serveur</strong> : Pas besoin d’acheter, configurer, et maintenir un serveur.</li><li><strong>Flexible et scalable</strong> : Parfait pour les petits projets, mais ça peut aussi gérer des millions d’utilisateurs.</li></ul><hr><h3>1.2 Les principaux outils proposés par Firebase</h3><p>Firebase est une plateforme complète de services cloud qui permet aux développeurs de créer, gérer et faire évoluer leurs applications rapidement, sans avoir besoin de gérer une infrastructure complexe. Voici les outils les plus populaires qu’elle propose, accompagnés d’exemples concrets.</p><hr><h4>1.2.1 Firebase Authentication</h4><p><strong>Description :</strong> Firebase Authentication est un service qui permet de gérer facilement l'inscription, la connexion et la gestion des utilisateurs. Il prend en charge plusieurs méthodes d'authentification :</p><ul><li>Email et mot de passe.</li><li>Authentification via fournisseurs tiers (Google, Facebook, Twitter, GitHub, etc.).</li><li>Connexion anonyme.</li><li>Téléphone/SMS.</li></ul><p><strong>Cas d’utilisation :</strong></p><ul><li>Une application de réseau social où les utilisateurs peuvent se connecter avec leurs comptes Google ou Facebook.</li><li>Une plateforme de commerce en ligne nécessitant une inscription pour gérer les commandes.</li></ul><p><strong>Exemple concret :</strong> Imaginons une application de recettes. Firebase Auth permettrait aux utilisateurs de créer un compte avec leur email pour enregistrer leurs recettes favorites. Comme on va le voir ensuite, c'est facile à mettre en place, et c'est un gain de temps considérable pour le développeur qui ne voudrait pas se casser la tête à configurer le systeme d'authentification lui-même, ou tout simplement qui n'aurait pas les compétences pour le faire (mon cas).</p><hr><h4>1.2.2 Cloud Firestore (Base de données NoSQL)</h4><p><strong>Description :</strong> Cloud Firestore est une base de données NoSQL entièrement managée qui synchronise les données en temps réel entre les utilisateurs et le backend. Ses fonctionnalités incluent :</p><ul><li>Structure en <strong>documents</strong> et <strong>collections</strong>, ce qui la rend flexible et facile à organiser.</li><li>Synchronisation en temps réel.</li><li>Requêtes complexes, tri et filtres.</li></ul><p><strong>Cas d’utilisation :</strong></p><ul><li>Une application de chat où les messages s’affichent instantanément.</li><li>Une application de gestion de tâches où les modifications sont synchronisées en temps réel entre plusieurs appareils.</li></ul><p><strong>Exemple concret :</strong> Dans une application de tableau blanc collaboratif, Firebase Firestore pourrait stocker les dessins et les positions des éléments. Dès qu'un utilisateur dessine, les autres voient les changements instantanément.</p><hr><h4>1.2.3 Firebase Hosting</h4><p><strong>Description :</strong> Firebase Hosting est un service d'hébergement rapide et sécurisé pour les applications web. Il est conçu pour déployer facilement des fichiers HTML, CSS, JavaScript et autres actifs.</p><p><strong>Cas d’utilisation :</strong></p><ul><li>Déploiement d'une Progressive Web App (PWA) ou d’un site vitrine.</li><li>Hébergement d'un projet de portfolio pour développeur.</li></ul><p><strong>Exemple concret :</strong> Un développeur front-end peut utiliser Firebase Hosting pour déployer son portfolio en quelques secondes, bénéficiant ainsi d’un SSL gratuit pour sécuriser son site.</p><hr><h4>1.2.4 Cloud Functions</h4><p><strong>Description :</strong> Cloud Functions permet d'exécuter du code backend (Node.js) sans gérer de serveur. Ces fonctions s’exécutent en réponse à des événements (par exemple, ajout d’un document dans Firestore) ou via des appels HTTP.</p><p><strong>Cas d’utilisation :</strong></p><ul><li>Automatisation d'envoi d'email lorsqu'un utilisateur s'inscrit.</li><li>Traitement de paiements en ligne via une intégration avec Stripe.</li></ul><p><strong>Exemple concret :</strong> Dans une application de réservation d’hôtel, une Cloud Function pourrait envoyer un email de confirmation lorsqu'une réservation est ajoutée dans Firestore.</p><hr><h4>1.2.5 Firebase Realtime Database</h4><p><strong>Description :</strong> Firebase Realtime Database est une base de données NoSQL qui permet de synchroniser les données en temps réel entre les clients et le serveur. Contrairement à Firestore, elle stocke les données sous forme de JSON.</p><p><strong>Cas d’utilisation :</strong></p><ul><li>Une application de suivi GPS en temps réel.</li><li>Une application de gestion d’inventaire où les stocks se mettent à jour instantanément.</li></ul><p><strong>Exemple concret :</strong> Dans une application de suivi de taxis, la Firebase Realtime Database pourrait afficher les positions des taxis en temps réel sur une carte.</p><hr><h4>1.2.6 Firebase Storage</h4><p><strong>Description :</strong> Firebase Storage permet de stocker et de servir des fichiers volumineux (images, vidéos, documents) de manière sécurisée. Il s’intègre parfaitement avec Firebase Authentication pour gérer les permissions.</p><p><strong>Cas d’utilisation :</strong></p><ul><li>Une application de gestion de documents où les utilisateurs peuvent uploader des fichiers PDF.</li><li>Une application de partage de photos entre amis.</li></ul><p><strong>Exemple concret :</strong> Dans une application de réseau social, Firebase Storage peut être utilisé pour stocker les photos de profil et les images partagées par les utilisateurs.</p><hr><h4>1.2.7 Firebase Analytics</h4><p><strong>Description :</strong> Firebase Analytics est un outil puissant pour analyser le comportement des utilisateurs dans une application. Il fournit des rapports détaillés sur l’engagement, les événements personnalisés, et les performances.</p><p><strong>Cas d’utilisation :</strong></p><ul><li>Analyse de l'utilisation des fonctionnalités d’une application mobile.</li><li>Suivi des clics sur les publicités dans une application de jeux.</li></ul><p><strong>Exemple concret :</strong> Une application de fitness pourrait utiliser Firebase Analytics pour suivre quelles séances d'entraînement sont les plus populaires et ajuster les futures fonctionnalités.</p><hr><h4>1.2.8 Firebase Crashlytics</h4><p><strong>Description :</strong> Firebase Crashlytics est un outil de gestion des bugs. Il permet de détecter les crashs en temps réel, d’analyser leurs causes et d’envoyer des rapports détaillés.</p><p><strong>Cas d’utilisation :</strong></p><ul><li>Détection de crashs dans une application mobile après une mise à jour majeure.</li><li>Surveillance d'une application en production pour identifier les bugs critiques.</li></ul><p><strong>Exemple concret :</strong> Dans une application de livraison, Crashlytics peut signaler un bug où l’application plante lorsqu’un utilisateur tente de suivre sa commande.</p><hr><h4>1.2.9 Firebase Performance Monitoring</h4><p><strong>Description :</strong> Firebase Performance Monitoring aide à identifier les goulots d’étranglement dans les performances d’une application, que ce soit au niveau du réseau ou du rendu d’interface.</p><p><strong>Cas d’utilisation :</strong></p><ul><li>Optimisation des temps de chargement dans une application web.</li><li>Analyse des performances réseau dans une application mobile.</li></ul><p><strong>Exemple concret :</strong> Une application de streaming vidéo pourrait utiliser Firebase Performance Monitoring pour repérer des temps de latence élevés lors du chargement des vidéos.</p><hr><h4>1.2.10 Firebase Test Lab</h4><p><strong>Description :</strong> Firebase Test Lab est un outil de test qui permet d'exécuter des tests automatisés sur des appareils réels hébergés dans le cloud.</p><p><strong>Cas d’utilisation :</strong></p><ul><li>Tester la compatibilité d'une application mobile sur différentes versions d’Android.</li><li>Identifier des bugs spécifiques à certains modèles de téléphones.</li></ul><p><strong>Exemple concret :</strong> Un développeur peut s’assurer qu'une application de jeu fonctionne correctement sur tous les principaux appareils Android avant une mise en production.</p><hr><h3>Conclusion de cette section</h3><p>Firebase est une boîte à outils complète, allant de l’authentification des utilisateurs à l’analyse des performances. Ces services permettent aux développeurs de se concentrer sur le développement des fonctionnalités de leur application sans se soucier de l’infrastructure ou des outils complexes.</p><p>Dans la prochaine section, nous mettrons en pratique certains de ces outils en construisant une mini-application JavaScript avec Firebase comme backend.</p><h1>2. Passer à la pratique</h1><p>On va maintenant utiliser Firebase pour créer une mini-application où les utilisateurs peuvent s’inscrire et se connecter. Le tout, directement en <strong>JavaScript Vanilla</strong>, sans frameworks complexes.</p><hr><h2>2.1 Configurer Firebase pour votre projet</h2><ol><li><p><strong>Créez un projet Firebase</strong></p><ul><li>Allez sur <a href="https://console.firebase.google.com">Firebase Console</a>.</li><li>Cliquez sur &quot;Add Project&quot;, donnez-lui un nom, et suivez les étapes.</li></ul></li><li><p><strong>Ajoutez une application web</strong></p><ul><li>Une fois le projet créé, cliquez sur &quot;Add App&quot; et choisissez &quot;Web&quot;.</li><li>Firebase vous donnera un objet de configuration comme celui-ci :<pre class="language-javascript line-numbers"><code>
+
+const firebaseConfig = {
+  apiKey: "votre-api-key",
+  authDomain: "votre-projet.firebaseapp.com",
+  projectId: "votre-projet",
+  storageBucket: "votre-projet.appspot.com",
+  messagingSenderId: "1234567890",
+  appId: "1:1234567890:web:abcdef123456"
+};
+
+
+</code></pre></li></ul></li><li><p><strong>Activez l’authentification par email/mot de passe</strong></p><ul><li>Allez dans &quot;Authentication&quot; &gt; &quot;Sign-in Method&quot;.</li><li>Activez &quot;Email/Password&quot;.</li></ul></li></ol><hr><h2>2.2 Développer une mini-app d'authentification</h2><h3>Étape 1 : Installez Vite</h3><p>Pour lancer notre projet rapidement, on utilise <strong>Vite</strong> Vite est un outil qui permet de démarrer rapidement un projet JavaScript. Pour l’installer :</p><pre class="language-bash line-numbers"><code>
+
+npm create vite@latest mon-firebase-app --template vanilla
+cd mon-firebase-app
+npm install firebase
+
+
+
+</code></pre><p>On a donc directement la structure de projet suivante :</p><div style="display:flex;flex-direction:column;align-items:center;margin:20px"><img src="https://raw.githubusercontent.com/do-it-ecm/do-it/refs/heads/main/src/home/guillaumeoliana/Pictures/Screenshots/Screenshot_from_2024-11-17_18-11-42.png"><h2>Structure du folder créé par Vite</h2></div><p>On va ensuite effectuer deux commandes que Vite nous demande d'éxecuter, à savoir :</p><pre class="language-bash line-numbers"><code>
+
+npm install
+npm run dev
+
+
+</code></pre><p>On peut ainsi voir les modifications que l'on effectue dans le code s'appliquer directement dans la fenetre de notre navigateur en suivant le lien donné.</p><p>On peut alors commencer à configurer notre projet.</p><p>Pour cela j'ai créé un <strong>dossier firebase.js</strong> dans lequel je stock toutes les informations relatives à mon API.</p><pre class="language-js line-numbers"><code>
+
+import { initializeApp } from 'firebase/app';
+import { getAuth } from 'firebase/auth';
+
+const firebaseConfig = {
+  apiKey: "AIzaSyDptMsBobEywN9M4xiwR_ymgj5g7oRq4_E",
+  authDomain: "mon-firebase-383b2.firebaseapp.com",
+  projectId: "mon-firebase-383b2",
+  storageBucket: "mon-firebase-383b2.firebasestorage.app",
+  messagingSenderId: "391346329108",
+  appId: "1:391346329108:web:f9f75211b473ea43d1b901",
+  measurementId: "G-HQTDVRH3NZ"
+};
+
+const app = initializeApp(firebaseConfig);
+export const auth = getAuth(app);
+
+
+</code></pre><p>Je viens ensuite créer mon fichier html <strong>index.html</strong> :</p><pre class="language-html line-numbers"><code>
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Firebase Auth</title>
+    <link rel="stylesheet" href="/style.css">
+  </head>
+  <body>
+    <div id="app">
+      <div id="auth-container">
+        <h1>Authentication</h1>
+        <form id="auth-form">
+          <input type="email" id="email" placeholder="Email" required="">
+          <input type="password" id="password" placeholder="Password" required="">
+          <button type="submit" id="signup">Sign Up</button>
+          <button type="button" id="signin">Sign In</button>
+        </form>
+      </div>
+      <div id="welcome-container" style="display:none">
+        <h1>Welcome <span id="user-name"></span>!</h1>
+        <button id="logout">Logout</button>
+      </div>
+    </div>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
+
+
+</code></pre><p>Ensuite, nous allons écrire la logique de notre &quot;application&quot; dans le dossier <strong>main.js</strong> :</p><pre class="language-js line-numbers"><code>
+
+
+import { 
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+  onAuthStateChanged
+} from 'firebase/auth';
+import { auth } from './firebase.js';
+
+const authForm = document.getElementById('auth-form');
+const authContainer = document.getElementById('auth-container');
+const welcomeContainer = document.getElementById('welcome-container');
+const userNameSpan = document.getElementById('user-name');
+const signupButton = document.getElementById('signup');
+const signinButton = document.getElementById('signin');
+const logoutButton = document.getElementById('logout');
+
+const handleAuth = async (e, isSignUp) => {
+  e.preventDefault();
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+
+  try {
+    if (isSignUp) {
+      await createUserWithEmailAndPassword(auth, email, password);
+    } else {
+      await signInWithEmailAndPassword(auth, email, password);
+    }
+  } catch (error) {
+    alert(error.message);
+  }
+};
+
+signupButton.addEventListener('click', (e) => handleAuth(e, true));
+signinButton.addEventListener('click', (e) => handleAuth(e, false));
+logoutButton.addEventListener('click', () => signOut(auth));
+
+onAuthStateChanged(auth, (user) => {
+  if (user) {
+    authContainer.style.display = 'none';
+    welcomeContainer.style.display = 'block';
+    userNameSpan.textContent = user.email.split('@')[0];
+  } else {
+    authContainer.style.display = 'block';
+    welcomeContainer.style.display = 'none';
+    authForm.reset();
+  }
+});
+
+
+</code></pre><p>Dans le détail, on va venir récupérer les informations dans les input que l'on a défini dans notre fichier <strong>index.html</strong>, et tout simplement utiliser les recettes magiques de firebase pour créer un utilisateur ou se connecter si l'utilisateur existe déjà.</p><p>Reste encore le fichier <strong>css</strong> et la page d'authentification sera prête :</p><pre class="language-css line-numbers"><code>
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f0f2f5;
+}
+
+#app {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+h1 {
+  text-align: center;
+  color: #1a73e8;
+  margin-bottom: 2rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+input {
+  padding: 0.8rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 1rem;
+}
+
+button {
+  padding: 0.8rem;
+  border: none;
+  border-radius: 4px;
+  background-color: #1a73e8;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+button:hover {
+  background-color: #1557b0;
+}
+
+#welcome-container {
+  text-align: center;
+}
+
+#logout {
+  background-color: #dc3545;
+}
+
+#logout:hover {
+  background-color: #bb2d3b;
+}
+
+
+</code></pre><p>Une fois sign up, on voit ensuite l'utilisateur apparaitre dans notre <strong>database firestore</strong> sur la page de notre projet <strong>firebase</strong>.</p><p>C'est très facile à mettre en place et permet de gagner beaucoup de temps pour la création d'une maquette fonctionnelle pour un projet (comme le projet 3A au hasard).</p><p>On a ici explorer qu'une infime partie des possibilités offertes par firebase utilisé comme backend, mais en restant seulement sur le sujet de l'authentification, on peut également parametrer l'authentification et l'inscription par des service tiers comme google, facebook, etc, et ce toujours de façon rapide et simple.</p><div style="display:flex;flex-direction:column;align-items:center;margin:20px"><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Oliana-Guillaume/mon/temps-2.1/image.png"><h2>Sign up/ Sign in page</h2></div><div style="display:flex;flex-direction:column;align-items:center;margin:20px"><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Oliana-Guillaume/mon/temps-2.1/image-1.png"><h2>When logged in, it displays the user name from the email adress</h2></div><h1>Conclusion</h1><hr><p>On a ainsi découvert firebase, ses possibilités, et créé rapidement un systeme d'authentification et de gestion de la base de données des utilisateurs sans se soucier une seule fois d'un quelconque serveur.</p></article></main><footer class="min-h-[50px] border-t-2 border-gray-200 mt-4"><div class="max-w-[1000px] mx-auto px-4"><div class="min-h-[50px] flex justify-center items-center"><p class="text-center">{% title %} : Développement et Organisation en IT</p></div></div></footer><script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">window.MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]]},svg:{fontCache:"global"}},document.addEventListener("DOMContentLoaded",(()=>{MathJax.typeset()}))</script><script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">Prism.plugins.NormalizeWhitespace.setDefaults({"remove-trailing":!0,"remove-indent":!0,"left-trim":!0,"right-trim":!0})</script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script></body></html>

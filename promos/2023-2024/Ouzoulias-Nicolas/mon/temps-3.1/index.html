@@ -1,0 +1,411 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Découverte du langage R</title>
+
+        <!-- Prismjs imports
+                - Prism core
+                - Prism line numbers
+                - Prism copy to clipboard
+                - Prism autoloader
+        -->
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png">
+
+        <!-- Mermaid import and initialization -->
+        <script type="module" defer="">
+            import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/+esm';
+            mermaid.initialize({
+                startOnLoad: true,
+            });
+        </script>
+
+        <link href="/assets/stylesheets/main.css" rel="stylesheet">
+
+    </head>
+
+    <body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000">
+        <header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-between items-center">
+                    <a class="mx-2" href="/">Home</a>
+                    <div class="flex items-center gap-4 sm:gap-6 ">
+                        <a class="" href="/cs">CS</a>
+                        <a class="" href="/pok">POK</a>
+                        <a class="" href="/mon">MON</a>
+                        <a class="" href="/projets">Projets</a>
+                        <a class="hidden sm:block" href="/promos">Promos</a>
+                        <a href="/search">
+                            <svg class="h-5 aspect-square" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+                            </svg>
+                        </a>
+                        <a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank">
+                            <svg class="h-5 aspect-square" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body="">
+            
+<article class="relative">
+<h1 class="mb-1">Découverte du langage R</h1>
+<div class="mb-4">
+    
+        <div class="px-4 flex flex-wrap items-center">
+            
+                <div class="font-bold">Tag : </div>
+            
+            <ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags">
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">MON</li>
+                
+
+            </ul>
+
+            
+            <div class="hidden" data-pagefind-meta="Type">
+                
+                    
+                        <span data-pagefind-filter="Type">MON</span>
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Auteurs : </div>
+            <ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs">
+                
+                    <li class="bg-blue-200 rounded-full px-2" data-pagefind-filter="Auteurs">Nicolas Ouzoulias</li>
+                
+            </ul>
+        </div>
+    
+
+    
+        <div class="absolute top-0 right-0">
+            <span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2" data-pagefind-filter="Année">
+                2023-2024
+            </span>
+        </div>
+    
+</div>
+
+        <p class="mb-4 text-lg">
+
+                Mon 5ème MON pour découvrir et apprendre à manipuler le langage R
+
+        </p>
+
+
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/promos/2023-2024/Ouzoulias-Nicolas/">Nicolas OUZOULIAS</a><span class="px-1">/</span><a href="/promos/2023-2024/Ouzoulias-Nicolas/mon/">MON de Nicolas Ouzoulias</a><span class="px-1">/</span><a href="/promos/2023-2024/Ouzoulias-Nicolas/mon/temps-3.1/">Découverte du langage R</a>
+
+</div></div>
+
+
+
+
+<h2>Objectifs</h2>
+<p>A travers ce MON je vais m'initier au langage R pour l'analyse de données. Pour cela je vais tout d'abord voir la théorie à travers des cours en ligne pour ensuite l'appliquer à un exemple précis afin de manipuler moi même.</p>
+<h2>Initiation théorique à R</h2>
+<p>R est un langage informatique <strong>orienté objet</strong> et <strong>interprété</strong> principalement conçu pour le traitement et l'analyse de données. Son utilisation peut également être plus poussée et permettre  de réaliser du machin learning.</p>
+<p>Le langage est associé à un IDE (<em>Integrated Development Environment</em>) : <strong>RStudio</strong> pour faciliter son utilisation.</p>
+<h3>Syntaxe</h3>
+<p>Pour stocker une variable on utilise le symbole <code>&lt;-</code> :</p>
+<pre class="language-r line-numbers"><code>
+
+x <- 1000
+
+
+</code></pre><p>La manipulation mathématique d'une variable se fait ensuite traditionnellement comme en python :</p>
+<pre class="language-r line-numbers"><code>
+
+x <- x + 5
+y <- x*3
+z <- sqrt(y)
+
+
+</code></pre><p>Il est également possible de créer des fonctions :</p>
+<pre class="language-r line-numbers"><code>
+
+calculer_moyenne <- function(liste) {
+  somme <- sum(liste)
+  nombre_elements <- length(liste)
+  moyenne <- somme / nombre_elements
+  return(moyenne)
+}
+
+moyenne_resultat <- calculer_moyenne(c(4, 7, 9, 12, 5))
+print(moyenne_resultat)
+
+
+</code></pre><p>Une autre façon d'écrire les opérations existe avec l'opérateur <code>|&gt;</code> :</p>
+<pre class="language-r line-numbers"><code>
+
+12 |> log(base = 10) |> sqrt() |> exp()
+# = exp(sqrt(log(12, base = 10)))
+
+
+</code></pre><h4>Les vecteurs et matrices</h4>
+<p>Une liste, ou vecteur, s'écrit à l'aide de la fonction <code>c()</code> :</p>
+<pre class="language-r line-numbers"><code>
+
+noms <- c("Benjamin", "Daniel", "Emma", "Romuald", "Tom", "Bastien", "Alice", "Martin", "Léa", "Dimitri")
+
+
+</code></pre><p>Des opérations peuvent être effectuées directement sur les vecteurs (concaténation, opérations mathématiques, conversion, comparaison,...)</p>
+<p>Par prolongement on peut utiliser des matrices avec la syntaxe suivante :</p>
+<pre class="language-r line-numbers"><code>
+
+# Création d'une matrice
+matrice_exemple <- matrix(c(10, 20, 30, 40, 50, 60), nrow = 3, ncol = 2, byrow = TRUE)
+
+
+</code></pre><pre class="language-css line-numbers"><code>
+
+     [,1] [,2]
+[1,]   10   20
+[2,]   30   40
+[3,]   50   60
+
+
+</code></pre><h3>Organisation d'un projet</h3>
+<p>Les projets d'analyse de données reposent sur plusieurs documents :</p>
+<ul>
+<li>le code</li>
+<li>la documentation</li>
+<li>la data</li>
+<li>les images</li>
+<li>...</li>
+</ul>
+<p>On structure donc un projet sous forme de  <em><strong>Working directory</strong></em>. Cela permet de communiquer avec d'autres fichiers plus facilement sans avoir à préciser les emplacements complets de ces derniers. De plus cela permet de lier un projet R avec <em><strong>Github</strong></em> plus facilement car il ne va pas dépendre de l'ordinateur utilisé.</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Ouzoulias-Nicolas/mon/temps-3.1/Images/structure_projet.png" alt="structuration projet"></p>
+<p><em>from</em> <a href="https://openclassrooms.com/fr/courses/8248096-initiez-vous-a-r-pour-lanalyse-de-donnees/8309117-creez-votre-premier-projet-dans-r">https://openclassrooms.com/fr/courses/8248096-initiez-vous-a-r-pour-lanalyse-de-donnees/8309117-creez-votre-premier-projet-dans-r</a></p>
+<ul>
+<li>
+<p><strong>data</strong>  et éventuellement  <strong>data_raw</strong>  . Les données d’origine seront enregistrées dans le sous-dossier  <strong>data_raw</strong>  . Il ne faut jamais réenregistrer dessus, les données doivent être conservées telles quelles. Les données modifiées seront enregistrées dans le sous-dossier  <strong>data</strong>  .</p>
+</li>
+<li>
+<p><strong>img</strong>  permet d’enregistrer au même endroit tous les graphiques ou images générés.</p>
+</li>
+<li>
+<p><strong>doc</strong>  pour conserver la documentation, les rapports générés…</p>
+</li>
+</ul>
+<h3>Utilisation d'un fichier externe</h3>
+<p>Le plus important pour traiter des données est de pouvoir les extraire et les analyser à partir d'un fichier externe. Pour cela il faut tout d'abord importer</p>
+<h4>CSV</h4>
+<p>On utilise la fonction <code>read.csv()</code> :</p>
+<pre class="language-r line-numbers"><code>
+
+table <- read.csv("table.csv", sep = ";") 
+#ou
+table <- read.csv2("table.csv") 
+# .csv2 utilise par défaut un séparateur ";"
+
+
+</code></pre><h4>Excel</h4>
+<p>Pour un fichier qui n'est pas texte il faut tout d'abord importer le type de fichier, par exemple ici <em><strong>readxl</strong></em> :</p>
+<pre class="language-r line-numbers"><code>
+
+library(readxl)
+
+salaire <- read_excel("data_raw/salaire.xlsx", sheet = "T1", range="B10:F352", col_names = c("SSOC 2020",	"Occupation",	"Number Covered",	"Basic  Wage", "Gross  Wage"
+))
+
+
+</code></pre><p>Ici on rentre plus de paramètres :</p>
+<ul>
+<li><em>sheet</em> : pour sélectionner la feuille sur laquelle on travaille</li>
+<li><em>range</em> : pour sélectionner seulement la partie des données qui nous intéressent</li>
+<li><em>col_names</em> : pour insérer des titres aux colonnes (l'argument doit être un vecteur)</li>
+</ul>
+<p>Une fois la table importée on lit et on modifie les données avec :</p>
+<pre class="language-r line-numbers"><code>
+
+table[65, 1] <- 65
+table[65, "tri"] <- 65
+table$tri[65] <- 65
+
+
+</code></pre><p>Ici les trois écritures permettent d'écrire la valeur 65 à la ligne 65 de la colonne 1 dont le titre est &quot;tri&quot;. Le $ permet de descendre d’un niveau et les tableaux sont traités comme des assemblages de colonnes.</p>
+<p>De la même manière, on peut sélectionner toutes les lignes de plusieurs colonnes en ne mettant rien avant la virgule, et les colonnes d’intérêt listées après.</p>
+<pre class="language-r line-numbers"><code>
+
+# avec le nom des colonnes
+mixite_groupe_edf_fr <- mixite_groupe_edf[, c("tri", "annee", "perimetre_juridique", "perimetre_spatial", "indicateur", "valeur_de_l_indicateur", "unite", "methode_de_consolidation")]
+
+# ou la position des colonnes
+mixite_groupe_edf_fr <- mixite_groupe_edf[, c(1:3, 5, 7, 9, 10, 12)]
+
+
+</code></pre><h3>Les graphiques</h3>
+<p>Il est possible de créer un très grand nombre de graphes différents grâce à R :</p>
+<ul>
+<li><em>plot()</em> : la <strong>fonction générique</strong> qui s'adapte avec ses arguments</li>
+<li><em>barplot()</em> : pour un graphique à barre</li>
+<li><em>pie()</em> : pour un graphique camembert</li>
+<li><em>hist()</em> : pour un histogramme</li>
+<li>...</li>
+</ul>
+<h2>Application</h2>
+<p>A travers les cours j'ai suivi des petits exemples et exercice mais j'ai voulu appliquer la théorie à un autre groupe de données pour manipuler moi même. J'ai donc choisi de travailler sur un sujet que j'apprécie particulièrement : l'esport de <em>League of Legends</em> et plus particulièrement le plus grand joueur au monde <strong>Faker</strong>.</p>
+<p>J'ai ainsi trouvé en ligne une data base <em>csv</em> qui regroupait toutes les parties professionnelles qui ont été jouées depuis 2014 à travers les ligues et tournois principaux.</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Ouzoulias-Nicolas/mon/temps-3.1/Images/projetdataLoL.png" alt="projet data LoL"></p>
+<p>Il y avait un <em>data frame</em> par an, je les ai donc tous importés puis filtrés pour ne garder que les parties du joueur qui m'intéresse avant de concaténer les <em>data frames</em> filtrées en un seul.</p>
+<p>A partir de là j'ai pu manipuler les data et afficher moi-même diverses statistiques comme le taux de victoire, l'avantage en or, ...</p>
+<p>Je met ici quelques exemples sans trop m'attarder dans les détails et les explications.</p>
+<h3>Kill par an</h3>
+<pre class="language-r line-numbers"><code>
+
+#Calcul kill par an 
+kill_year <- aggregate(kills ~ year, data = tableFaker10ans, sum)
+
+#Création graphique à barres
+barplot(kill_year$kills, names.arg = kill_year$year, 
+        col = "skyblue", main = "Nombre de kills de Faker par an", 
+        xlab = "Année", ylab = "Kills")
+
+
+</code></pre><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Ouzoulias-Nicolas/mon/temps-3.1/Images/kill_an_faker.png" alt="kill par an"></p>
+<h3>K/D/A global et par champion</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Exercice</b></p>
+</div><div class="pl-8 mr-8">
+<p>K/D/A = kill/deats/assists (les statistiques principales d'une joueur dans une partie)</p>
+</div></div>
+<h4>Global</h4>
+<pre class="language-r line-numbers"><code>
+
+taux_victoire <- mean(tableFaker10ans$result)
+KDA <- (sum(tableFaker10ans$kills) + sum(tableFaker10ans$assists))/(sum(tableFaker10ans$deaths))
+
+
+</code></pre><pre class="language-r line-numbers"><code>
+
+sprintf("%.2f%%", taux_victoire * 100)
+  [1] "66.75%"
+
+print(KDA)
+  [1] 4.17038
+
+
+</code></pre><h4>Par champion (joués minimum 10 fois)</h4>
+<pre class="language-r line-numbers"><code>
+
+library(dplyr)
+
+# Nombre de parties jouées par champion
+games_champion <- tableFaker10ans %>%
+  group_by(champion) %>%
+  summarize(parties_jouees = n())
+
+# Champions joués 10 fois ou plus
+champion_10plus <- games_champion %>%
+  filter(parties_jouees >= 10)
+
+# Taux de victoire pour chaque champion
+winrate_champion <- tableFaker10ans %>%
+  filter(champion %in% champion_10plus$champion) %>%
+  group_by(champion) %>%
+  summarize(winrate = mean(result))
+
+# Affichage top 3
+top_3_champions <- winrate_champion %>%
+  arrange(desc(winrate)) %>%
+  head(3)
+
+top_3_champions <- merge(top_3_champions, games_champion, by = "champion", all.x = TRUE)%>%
+  arrange(desc(winrate))
+
+print(top_3_champions)
+
+
+</code></pre><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Ouzoulias-Nicolas/mon/temps-3.1/Images/top3winrate.png" alt="resultat print top_3_champions"></p>
+<h2>Conclusion</h2>
+<p>R est un très bon outil pour l'analyse de data en très grand nombre, pour l'appication aux matchs compétitifs de <em>League of Legends</em> les data en <em>csv</em> s'étendaient sur des dizaines de milliers de lignes et pourtant les calculs et l'affichage de résultats se sont fait très rapidement.</p>
+<p>La prise en main est également assez facile si on a déjà des bases en python car je trouve que les langages se ressemblent beaucoup.</p>
+<h3>Sources</h3>
+<p>Cours théoriques suivis :</p>
+<ul>
+<li><a href="https://bookdown.org/ael/rexplor/chap1.html">https://bookdown.org/ael/rexplor/chap1.html</a></li>
+<li><a href="https://openclassrooms.com/fr/courses/8248096-initiez-vous-a-r-pour-lanalyse-de-donnees">https://openclassrooms.com/fr/courses/8248096-initiez-vous-a-r-pour-lanalyse-de-donnees</a></li>
+<li>MON de Benoit Béguier également sur R sans GalèR juste <a href="https://francoisbrucker.github.io/do-it/promos/2023-2024/Beguier-Benoit/mon/temps-1.1/">ici</a></li>
+</ul>
+<p>Data LoL :</p>
+<ul>
+<li><a href="https://oracleselixir.com/tools/downloads">https://oracleselixir.com/tools/downloads</a></li>
+<li><a href="https://gol.gg/players/player-stats/48/season-ALL/split-ALL/tournament-ALL/">https://gol.gg/players/player-stats/48/season-ALL/split-ALL/tournament-ALL/</a></li>
+</ul>
+
+
+
+</article>
+
+        </main>
+
+
+        <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-center items-center">
+                    <p class="text-center">
+                        {% title %} : Développement et Organisation en IT
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- MathJax import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">
+            window.MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']], // Delimiters for inline math
+                    displayMath: [['$$', '$$'], ['\\[', '\\]']] // Delimiters for block math
+                },
+                svg: {
+                    fontCache: 'global' // Use global font cache for SVG output
+                }
+            };
+            document.addEventListener('DOMContentLoaded', () => {
+                MathJax.typeset(); // Ensures MathJax processes the content after the page loads
+            });
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">
+            Prism.plugins.NormalizeWhitespace.setDefaults({
+                'remove-trailing': true,
+                'remove-indent': true,
+                'left-trim': true,
+                'right-trim': true,
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script>
+    </body>
+</html>

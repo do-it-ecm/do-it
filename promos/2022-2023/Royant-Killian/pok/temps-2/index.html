@@ -1,0 +1,327 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>[POK] Find the Key (temps 2)</title><link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet"><link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet"><link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet"><link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon"><link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png"><script type="module" defer="">import mermaid from"https://cdn.jsdelivr.net/npm/mermaid/+esm";mermaid.initialize({startOnLoad:!0})</script><link href="/assets/stylesheets/main.css" rel="stylesheet"></head><body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000"><header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white"><div class="max-w-[1000px] mx-auto px-4"><div class="min-h-[50px] flex justify-between items-center"><a class="mx-2" href="/">Home</a><div class="flex items-center gap-4 sm:gap-6"><a class="" href="/cs">CS</a> <a class="" href="/pok">POK</a> <a class="" href="/mon">MON</a> <a class="" href="/projets">Projets</a> <a class="hidden sm:block" href="/promos">Promos</a> <a href="/search"><svg class="h-5 aspect-square" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path></svg> </a><a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank"><svg class="h-5 aspect-square" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg></a></div></div></div></header><main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body=""><article class="relative"><h1 class="mb-1">[POK] Find the Key (temps 2)</h1><div class="mb-4"><div class="px-4 flex flex-wrap items-center"><div class="font-bold">Tags :</div><ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags"><li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">POK</li><li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">JavaScript</li><li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">NodeJS</li><li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">Express</li><li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">Serveur distant</li></ul><div class="hidden" data-pagefind-meta="Type"><span data-pagefind-filter="Type">POK</span></div></div><div class="px-4 flex flex-wrap items-center"><div class="font-bold">Auteurs :</div><ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs"><li class="bg-blue-200 rounded-full px-2" data-pagefind-filter="Auteurs">Killian ROYANT</li></ul></div><div class="absolute top-0 right-0"><span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2" data-pagefind-filter="Année">2022-2023</span></div></div><div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100"><svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path></svg><div class="pl-8 mr-8"><a href="/promos/2022-2023/Royant-Killian/">Killian Royant</a><span class="px-1">/</span><a href="/promos/2022-2023/Royant-Killian/pok/">Les POK de Killian</a><span class="px-1">/</span><a href="/promos/2022-2023/Royant-Killian/pok/temps-2/">[POK] Find the Key (temps 2)</a></div></div><p><strong>Find The Key</strong> est un jeu que j'ai développé durant mon S7. Le but est de trouver la clé placée aléatoirement sur un plateau puis de la ramener à la base en évitant les monstres. Il est codé en HTML/CSS/JS pur. Le desing a été réalisé depuis Adobe XD.</p><p>Le temps 2 est consacré à l'<strong>ajout d'une partie back-end</strong> avec NodeJS et Express et au <strong>déploiement sur un serveur distant</strong>.</p><div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100"><svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path></svg><div class="pl-8 mb-2 mr-8"><p><strong>Ressources</strong></p></div><div class="pl-8 mr-8"><ul><li><a href="https://github.com/royantk/FindTheKey">Le Github du POK</a></li><li><a href="https://github.com/royantk/FindTheKey/blob/backend/app.js">Le fichier de l'API</a></li><li><a href="http://cerfeuil.ovh1.ec-m.fr/">Résultat serveur distant (front)</a></li><li><a href="http://node.cerfeuil.ovh1.ec-m.fr/">Résultat serveur distant (API)</a></li></ul></div></div><h2>Introduction</h2><p><strong>Find The Key</strong> est un jeu que j'ai développé durant mon S7. Le but est de trouver la clé placée aléatoirement sur un plateau puis de la ramener à la base en évitant les monstres.</p><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2022-2023/refs/heads/main//Royant-Killian/pok/temps-2/FindTheKey.png" alt="Image Find The Key"></p><p>Durant le temps 1, j'ai eu l'occasion de résoudre les problèmes de compatibilité du site ainsi que de recréer la structure du HTML/CSS pour rendre l'application responsive. Le temps 2 sera consacré à l'<strong>ajout d'une partie back-end</strong> avec NodeJS et Express et au <strong>déploiement sur un serveur distant</strong>.</p><h3>Objectif du temps 2 - Déployer sur un serveur distant</h3><p>Mes objectifs à l'occasion de la deuxième partie de ce POK sont les suivants :</p><ul><li>Créer une partie <strong>back-end</strong> (API) pour générer le contenu des cases et sauvegarder les scores des joueurs (ATTENTION : UTILISER ORM (ex : sequelize))</li><li>Déployer le site et l'API sur un <strong>serveur distant</strong></li></ul><h3>Planning</h3><p>Pour mener à bien ce projet, j'ai décidé de m'organiser en <strong>4 étapes principales</strong> traitant les parties <strong>back</strong> (en rouge), <strong>serveur</strong> (en vert) et adaptation du <strong>front</strong> (en bleu).</p><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2022-2023/refs/heads/main//Royant-Killian/pok/temps-2/planning.png" alt="Image planning"></p><p>On peut retrouver le détail du temps prévu et passé sur chaque étape dans le tableau ci-dessous :</p><table><thead><tr><th><strong>To-do</strong></th><th><strong>Temps passé</strong></th><th><strong>Temps prévu</strong></th></tr></thead><tbody><tr><td>Mise en ligne (test) version front sur serveur distant</td><td>1 h</td><td>1 h</td></tr><tr><td>Préparation du back</td><td>7 h</td><td>4 h</td></tr><tr><td>Création de l’API</td><td>8 h</td><td>5 h</td></tr><tr><td>Création interface front/back</td><td>1 h</td><td>4 h</td></tr><tr><td>Création écran scores</td><td>0 h</td><td>4 h</td></tr><tr><td>Mise en ligne du back sur le serveur distant (API)</td><td>3 h</td><td>2 h</td></tr><tr><td><strong>Total</strong></td><td><strong>20 h</strong></td><td><strong>20 h</strong></td></tr></tbody></table><p><em>(mis à jour le 24/01/2022)</em></p><h3>Résultats</h3><div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100"><svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg><div class="pl-8 mb-2 mr-8"><p><strong>Résultats</strong></p></div><div class="pl-8 mr-8"><p>Comme on peut le voir, j'ai <strong>dépassé</strong> le temps prévu pour la partie <strong>back</strong>. Cela est dû au fait que j'ai dû <strong>apprendre</strong> à utiliser NodeJS, Express et Sequelize et <strong>adapter</strong> mon code frontend à un environnement backend. Je n'ai ainsi pas pu réaliser l'écran des scores ni adapter correctement le front pour utiliser l'API.</p><p>J'ai néanmoins <strong>réussi</strong> à mettre en ligne la version front du jeu sur un serveur distant et à créer une API sur le serveur distant permettant de générer le contenu des cases. Il reste donc à créer la route qui permet de gérer le déplacement et adapter le front à l'API.</p><p>Pour utiliser l'API, il faut envoyer une requête <strong>POST</strong> à l'adresse suivante : <a href="http://node.cerfeuil.ovh1.ec-m.fr/newGame">http://node.cerfeuil.ovh1.ec-m.fr/newGame</a>. Il faut envoyer une requête incluant un <strong>body</strong> contenant la taille du plateau souhaité. Par exemple, pour un plateau de 4x4, il faut envoyer le body suivant :</p><pre class="language-json line-numbers"><code>
+
+{
+  "size": 4
+}
+
+
+</code></pre><p>Cette requête renverra alors un objet JSON contenant le plateau. Cette requête renverra toutes les cases mais <strong>uniquement le type des cases découvertes</strong>. Le vrai contenu des cases est néanmoins stocké en bases de données. Voici un aperçu d'une réponse :</p><pre class="language-json line-numbers"><code>
+
+{
+    "success": true,
+    "message": "New game created successfully",
+    "data": {
+        "game": {
+            "playerHasKey": false,
+            "id": 3,
+            "playerLives": 3,
+            "playerX": 0,
+            "playerY": 2,
+            "updatedAt": "2023-01-24T21:00:50.846Z",
+            "createdAt": "2023-01-24T21:00:50.846Z"
+        },
+        "cases": [
+            {
+                "id": 33,
+                "x": 0,
+                "y": 0,
+                "visibleType": "hidden",
+                "etat": "hidden",
+                "createdAt": "2023-01-24T21:00:50.915Z",
+                "updatedAt": "2023-01-24T21:00:50.915Z",
+                "gameId": 3
+            } // ... 15 autres cases
+        ]
+    }
+}
+
+
+</code></pre><p>Le code de l'API est disponible sur le <a href="https://github.com/royantk/FindTheKey/blob/backend/app.js">Github du POK</a></p></div></div><h2>Mise en place</h2><p>Je détaille ci-dessous les différentes étapes que j'ai pu réaliser à l'aide d'explications générales applicables à un grand nombre de projets.</p><h3>Mise en ligne (test) version front sur serveur distant</h3><p>Pour commencer, j'ai décidé de <strong>mettre en ligne</strong> la version front du jeu sur un serveur distant. J'ai donc utilisé le service <a href="https://www.ovh.com/fr/">OVH</a> pour créer un serveur et y déployer le site. Je présente ci-dessous comment créer un serveur OVH, ce que je n'ai pas fais en pratique car j'ai utilisé le serveur OVH1 de Centrale.</p><h4>Connexion au serveur</h4><p>Pour se connecter au serveur, il faut utiliser le <strong>protocole SSH</strong>. J'ai utilisé le terminal de mon ordinateur pour me connecter au serveur. Pour cela, il faut utiliser la commande suivante :</p><pre class="language-bash line-numbers"><code>
+
+ssh username@adresse_serveur
+
+
+</code></pre><p>On peut alors entrer le mot de passe du serveur pour se connecter. Pour ne pas avoir à entrer le mot de passe à chaque fois, il est possible de créer une <strong>clé SSH</strong>. Pour cela, il faut utiliser la commande suivante :</p><pre class="language-bash line-numbers"><code>
+
+ssh-keygen
+
+
+</code></pre><p>On peut alors entrer le chemin de la clé et le mot de passe. Une fois la clé créée, il faut l'<strong>ajouter au serveur</strong> avec la commande suivante :</p><pre class="language-bash line-numbers"><code>
+
+ssh-copy-id username@adresse_serveur
+
+
+</code></pre><h4>Navigation dans le serveur</h4><p>Pour vérifier que la connexion est bien établie, on peut utiliser la commande suivante pour <strong>afficher le contenu du dossier courant</strong> :</p><pre class="language-bash line-numbers"><code>
+
+ls
+
+
+</code></pre><p>Pour <strong>se déplacer dans un dossier</strong>, on peut utiliser la commande suivante :</p><pre class="language-bash line-numbers"><code>
+
+cd nom_dossier
+
+
+</code></pre><p>On peut aussi <strong>créer un nouveau dossier</strong> avec la commande suivante :</p><pre class="language-bash line-numbers"><code>
+
+mkdir nom_dossier
+
+
+</code></pre><p>Enfin, pour <strong>supprimer un dossier</strong>, on peut utiliser la commande suivante :</p><pre class="language-bash line-numbers"><code>
+
+rm -r nom_dossier
+
+
+</code></pre><h4>Déploiement du site</h4><p>Pour <strong>déployer</strong> le site sur le serveur, on peut utiliser la commande suivante :</p><pre class="language-bash line-numbers"><code>
+
+scp -r chemin_dossier username@adresse_serveur:/chemin_dossier
+
+
+</code></pre><p>On peut alors entrer le mot de passe du serveur pour déployer le site. Pour vérifier que le site est bien déployé, on peut se rendre sur le navigateur et entrer l'adresse IP du serveur.</p><h3>Préparation du back</h3><p>Pour préparer le back, j'ai décidé de <strong>créer un projet Node.js</strong> avec la commande suivante :</p><pre class="language-bash line-numbers"><code>
+
+npm init
+
+
+</code></pre><p>On peut alors entrer les informations demandées. Une fois le projet créé, on peut <strong>installer les dépendances</strong> comme, par exemple, Express avec la commande suivante :</p><pre class="language-bash line-numbers"><code>
+
+npm install express
+
+
+</code></pre><p>J'ai ensuite <strong>créé un fichier</strong> <code>index.js</code> pour créer mon API. Pour commencer, j'ai utilisé l'exemple tiré de la documentation d'Express ci-dessous qui permet d'afficher un message dans le navigateur :</p><pre class="language-javascript line-numbers"><code>
+
+const express = require('express');
+const app = express();
+const port = 3000;
+
+app.get('/', (req, res) => {
+  res.send('Hello World!');
+});
+
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`);
+});
+
+
+</code></pre><p>On pourra ensuite <strong>lancer le serveur Node.js</strong> avec la commande suivante :</p><pre class="language-bash line-numbers"><code>
+
+node index.js
+
+
+</code></pre><p>On pourra alors se rendre sur le navigateur et entrer l'adresse suivante pour voir afficher le message <strong>Hello World!</strong> :</p><pre class="language-bash line-numbers"><code>
+
+http://localhost:3000
+
+
+</code></pre><h3>Mise en ligne (test) version back sur serveur distant</h3><h4>Importation du fichier <code>index.js</code> dans le serveur</h4><p>Pour importer le fichier <code>index.js</code> dans le serveur, on peut utiliser la commande suivante :</p><pre class="language-bash line-numbers"><code>
+
+scp index.js username@adresse_serveur:/chemin_dossier
+
+
+</code></pre><p>On peut également utiliser un outil tel que <a href="https://filezilla-project.org/">FileZilla</a> pour importer le fichier <code>index.js</code> dans le serveur via l'interface graphique.</p><h4>Installation de Node.js sur le serveur</h4><p>On peut ensuite <strong>se connecter au serveur</strong> avec la commande suivante :</p><pre class="language-bash line-numbers"><code>
+
+ssh username@adresse_serveur
+
+
+</code></pre><p>On peut alors entrer le mot de passe du serveur. Une fois connecté, on peut ensuite <strong>installer Node.js</strong> avec la commande suivante :</p><pre class="language-bash line-numbers"><code>
+
+sudo apt install nodejs
+
+
+</code></pre><p>On peut ensuite <strong>installer npm</strong> avec la commande suivante :</p><pre class="language-bash line-numbers"><code>
+
+sudo apt install npm
+
+
+</code></pre><p>Pour vérifier que Node.js et npm sont bien installés, on peut utiliser les commandes suivantes :</p><pre class="language-bash line-numbers"><code>
+
+node -v
+npm -v
+
+
+</code></pre><p>On pourra ensuite installer les <strong>dépendances</strong> du projet avec la commande suivante :</p><pre class="language-bash line-numbers"><code>
+
+npm install express
+
+
+</code></pre><h4>Lancement du serveur</h4><p>On peut ensuite <strong>lancer le serveur</strong> avec la commande suivante :</p><pre class="language-bash line-numbers"><code>
+
+node index.js
+
+
+</code></pre><p>On peut alors se rendre sur le navigateur et entrer l'adresse suivante :</p><pre class="language-bash line-numbers"><code>
+
+http://adresse_serveur:3000
+
+
+</code></pre><p>On peut alors voir le message <strong>Hello World!</strong>.</p><p>Pour <strong>arrêter le serveur</strong>, on peut effectuer la combinaison de touches <code>Ctrl + C</code>.</p><h4>Laisser le serveur tourner en arrière-plan</h4><p>Après avoir lancé le serveur, on remarque que celui-ci s'arrête dès que l'on quitte la connexion SSH. Il est donc nécessaire de <strong>laisser le serveur tourner en arrière-plan</strong>.</p><p>Pour <strong>laisser le serveur tourner en arrière-plan</strong>, on peut utiliser un outil tel que <a href="https://doc.ubuntu-fr.org/screen">screen</a> qui permet de lancer des programmes en arrière-plan. On peut créer un screen avec la commande suivante :</p><pre class="language-bash line-numbers"><code>
+
+screen -S nom_du_screen
+
+
+</code></pre><p>On peut alors relancer le serveur avec la commande suivante :</p><pre class="language-bash line-numbers"><code>
+
+node index.js
+
+
+</code></pre><p>Enfin, on pourra <strong>quitter le screen</strong> avec le raccourci <code>Ctrl + A + D</code>.</p><p>Le serveur continuera alors de tourner en arrière-plan.</p><p>Pour <strong>revenir sur le screen</strong> et arrêter le serveur, on utilisera la commande suivante :</p><pre class="language-bash line-numbers"><code>
+
+screen -r nom_du_screen
+
+
+</code></pre><p>On pourra enfin <strong>arrêter le serveur</strong> avec <code>Ctrl + C</code>.</p><h3>Création de l'API</h3><p>Pour créer l'API nécessaire au projet, j'ai utilisé Node.js et Express accompagnés d'une base de données PostgreSQL.</p><h4>Création de la base de données</h4><p>Pour <strong>créer la base de données</strong>, on peut utiliser la commande suivante :</p><pre class="language-bash line-numbers"><code>
+
+createdb nom_base_de_donnees
+
+
+</code></pre><p>On pourra alors s'en servir dans notre fichier <code>index.js</code>. Nous devons ensuite installer les diverses <strong>dépendances</strong> nécessaires à la base de données et à l'API avec la commande suivante :</p><pre class="language-bash line-numbers"><code>
+
+npm install express sequelize pg body-parser
+
+
+</code></pre><h4>Configuration de la connexion à la base de données</h4><p>On commence par importer les dépendances nécessaires à la connexion à la base de données :</p><pre class="language-javascript line-numbers"><code>
+
+const express = require('express');
+const Sequelize = require('sequelize');
+const bodyParser = require('body-parser');
+
+
+</code></pre><p>On peut ensuite <strong>créer la connexion</strong> à la base de données :</p><pre class="language-javascript line-numbers"><code>
+
+const sequelize = new Sequelize("postgres://<username>:<password>@<host>:<port>/<database>");
+
+
+</database></port></host></password></username></code></pre><p>On peut alors <strong>tester la connexion</strong> à la base de données avec le code suivant :</p><pre class="language-javascript line-numbers"><code>
+
+sequelize.authenticate().then(() => {
+    console.log('Connection has been established successfully.');
+}).catch(err => {
+    console.error('Unable to connect to the database:', err);
+});
+
+
+</code></pre><h4>Création du modèle</h4><p>On peut ensuite <strong>créer le modèle</strong> de la base de données avec le code suivant :</p><pre class="language-javascript line-numbers"><code>
+
+const User = sequelize.define('user', {
+    id: {
+        type: Sequelize.INTEGER,
+        primaryKey: true,
+        autoIncrement: true
+    },
+    username: {
+        type: Sequelize.STRING,
+        allowNull: false
+    },
+    password: {
+        type: Sequelize.STRING,
+        allowNull: false
+    }
+});
+
+
+</code></pre><p>On peut ensuite <strong>créer la table</strong> dans la base de données avec le code suivant :</p><pre class="language-javascript line-numbers"><code>
+
+User.sync().then(() => {
+    console.log('Table created');
+});
+
+
+</code></pre><h4>Création des routes</h4><p>On peut ensuite <strong>créer les routes</strong> de l'API avec le code suivant :</p><pre class="language-javascript line-numbers"><code>
+
+app.get('/users', (req, res) => {
+    User.findAll().then(users => {
+        res.json(users);
+    });
+});
+
+app.get('/users/:id', (req, res) => {
+    User.findById(req.params.id).then(user => {
+        res.json(user);
+    });
+});
+
+app.post('/users', (req, res) => {
+    User.create(req.body).then(user => {
+        res.json(user);
+    });
+});
+
+app.put('/users/:id', (req, res) => {
+    User.update(req.body, {
+        where: {
+            id: req.params.id
+        }
+    }).then(() => {
+        res.json(req.body);
+    });
+});
+
+app.delete('/users/:id', (req, res) => {
+    User.destroy({
+        where: {
+            id: req.params.id
+        }
+    }).then(() => {
+        res.json(req.params.id);
+    });
+});
+
+
+</code></pre><p>On peut ensuite <strong>lancer le serveur</strong> avec la commande suivante :</p><pre class="language-bash line-numbers"><code>
+
+node index.js
+
+
+</code></pre><p>On peut alors se rendre sur le navigateur et entrer l'adresse suivante :</p><pre class="language-bash line-numbers"><code>
+
+http://adresse_serveur:3000/users
+
+
+</code></pre><p>On peut alors voir la liste des utilisateurs.</p><h3>Connexion de l'API au projet</h3><p>On peut ensuite <strong>modifier le projet</strong> pour qu'il puisse se connecter à l'API. Pour cela, on va utiliser la méthode <code>fetch()</code> de JavaScript qui permet de faire des requêtes HTTP.</p><p>On peut commencer par <strong>créer un fichier</strong> <code>api.js</code> qui contiendra les fonctions permettant de se connecter à l'API. On peut ensuite <strong>créer les fonctions</strong> permettant de se connecter à l'API :</p><pre class="language-javascript line-numbers"><code>
+
+export function getUsers() {
+    return fetch('http://adresse_serveur:3000/users').then(response => response.json());
+}
+
+export function getUser(id) {
+    return fetch('http://adresse_serveur:3000/users/' + id).then(response => response.json());
+}
+
+export function createUser(user) {
+    return fetch('http://adresse_serveur:3000/users', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(user)
+    }).then(response => response.json());
+}
+
+export function updateUser(user) {
+    return fetch('http://adresse_serveur:3000/users/' + user.id, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(user)
+    }).then(response => response.json());
+}
+
+export function deleteUser(id) {
+    return fetch('http://adresse_serveur:3000/users/' + id, {
+        method: 'DELETE'
+    }).then(response => response.json());
+}
+
+
+</code></pre><p>On peut ensuite <strong>modifier le fichier</strong> <code>index.js</code> pour qu'il puisse se connecter à l'API. On peut commencer par <strong>importer les fonctions</strong> permettant de se connecter à l'API :</p><pre class="language-javascript line-numbers"><code>
+
+import { getUsers, getUser, createUser, updateUser, deleteUser } from './api.js';
+
+
+</code></pre><p>On pourra alors utiliser les fonctions de l'API dans le fichier <code>index.js</code>. On peut par exemple <strong>afficher la liste des utilisateurs</strong> avec le code suivant :</p><pre class="language-javascript line-numbers"><code>
+
+getUsers().then(users => {
+    console.log(users);
+});
+
+
+</code></pre><p><a href="../">&lt;-- Retour</a></p></article></main><footer class="min-h-[50px] border-t-2 border-gray-200 mt-4"><div class="max-w-[1000px] mx-auto px-4"><div class="min-h-[50px] flex justify-center items-center"><p class="text-center">{% title %} : Développement et Organisation en IT</p></div></div></footer><script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">window.MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]]},svg:{fontCache:"global"}},document.addEventListener("DOMContentLoaded",(()=>{MathJax.typeset()}))</script><script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">Prism.plugins.NormalizeWhitespace.setDefaults({"remove-trailing":!0,"remove-indent":!0,"left-trim":!0,"right-trim":!0})</script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script></body></html>

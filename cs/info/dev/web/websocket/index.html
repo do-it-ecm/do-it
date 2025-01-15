@@ -1,0 +1,772 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>WebSocket</title>
+
+        <!-- Prismjs imports
+                - Prism core
+                - Prism line numbers
+                - Prism copy to clipboard
+                - Prism autoloader
+        -->
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png">
+
+        <!-- Mermaid import and initialization -->
+        <script type="module" defer="">
+            import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/+esm';
+            mermaid.initialize({
+                startOnLoad: true,
+            });
+        </script>
+
+        <link href="/assets/stylesheets/main.css" rel="stylesheet">
+
+    </head>
+
+    <body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000">
+        <header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-between items-center">
+                    <a class="mx-2" href="/">Home</a>
+                    <div class="flex items-center gap-4 sm:gap-6 ">
+                        <a class="" href="/cs">CS</a>
+                        <a class="" href="/pok">POK</a>
+                        <a class="" href="/mon">MON</a>
+                        <a class="" href="/projets">Projets</a>
+                        <a class="hidden sm:block" href="/promos">Promos</a>
+                        <a href="/search">
+                            <svg class="h-5 aspect-square" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+                            </svg>
+                        </a>
+                        <a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank">
+                            <svg class="h-5 aspect-square" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body="">
+            
+<style>
+.nested {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden; /* Ensure content doesn't show outside */
+    pointer-events: none; /* Prevent interaction with hidden links */
+    transition: opacity 0.8s ease-out, max-height 0.8s ease-out;
+    margin-left: 1em; /* Indent for nested items */
+}
+
+.nested.active {
+    max-height: fit-content;
+    opacity: 1;
+    pointer-events: auto; /* Allow interaction when active */
+}
+
+.toggle-button {
+    margin-left: 0.5em;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: inherit;
+    transform: rotate(0deg);
+    transition: transform 0.8s ease-out;
+}
+
+.toggle-button.active {
+    transform: rotate(90deg);
+}
+
+/* Only show burger on small screens */
+@media (max-width: 1500px) {
+  #burger-button {
+    display: block;
+  }
+
+  #sidebar {
+    max-width: 100vw !important; /* Ensure it fits the viewport width */
+    transform: translateX(-100%); /* Initially hide the sidebar off-screen */
+    transition: transform 0.3s ease-in-out; /* Add smooth animation */
+  }
+
+  #sidebar.open {
+    transform: translateX(0); /* Slide in the sidebar when open */
+  }
+}
+
+/* Hide burger and ensure sidebar is static on larger screens */
+@media (min-width: 1501px) {
+  #burger-button {
+    display: none;
+  }
+
+  #sidebar {
+    transform: none; /* Static position for larger screens */
+    max-width: none; /* Remove any width restriction */
+  }
+}
+</style>
+
+<script>
+    const SIDEBAR_STATE_KEY = "sidebarState";
+
+    function toggleFold(button) {
+        // Find the closest parent <li> and its corresponding nested <ul>
+        const listItem = button.closest('li');
+        const nestedList = listItem.querySelector('.nested');
+
+        if (nestedList) {
+            const isActive = nestedList.classList.toggle('active'); // Toggle the 'active' class
+            button.classList.toggle('active', isActive); // Toggle button rotation
+            saveSidebarState();
+        }
+    }
+
+    function saveSidebarState() {
+        const state = {};
+        const nestedLists = document.querySelectorAll('.sidebar-navigation .nested');
+        nestedLists.forEach((list, index) => {
+            state[index] = list.classList.contains('active');
+        });
+        localStorage.setItem(SIDEBAR_STATE_KEY, JSON.stringify(state));
+    }
+
+    function restoreSidebarState() {
+        const state = JSON.parse(localStorage.getItem(SIDEBAR_STATE_KEY));
+        if (!state) return;
+
+        const nestedLists = document.querySelectorAll('.sidebar-navigation .nested');
+        nestedLists.forEach((list, index) => {
+            if (state[index]) {
+                list.classList.add('active');
+                const button = list.parentNode.querySelector('.toggle-button'); // Correctly locate the button
+                if (button) {
+                    button.classList.add('active'); // Rotate the button
+                }
+            }
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        restoreSidebarState();
+    });
+</script>
+
+<button id="burger-button" class="fixed z-11 top-2 left-2 z-50 p-2 bg-gray-200 rounded-md block lg:hidden hidden" onclick="toggleSidebar()">☰</button>
+
+<aside id="sidebar" class="fixed top-[50px] z-10 left-0 w-full lg:w-1/4 h-[calc(100vh-35px)] bg-white p-4 overflow-y-auto border-r-2 border-gray-200 transform -translate-x-full transition-transform duration-300 lg:transform-none lg:transition-none" style="max-width: calc((100vw - 1000px) / 2 - 35px);">
+    <nav>
+        <h2 class="font-bold text-2xl mb-2">Cours</h2>
+        <ul class="sidebar-navigation space-y-2">
+            
+            
+                
+<li>
+    <div class="flex justify-between items-center w-10/12 mx-auto transition-all duration-500 hover:bg-gray-200 p-1 rounded-md bg-info">
+        <a class="flex-1 text-left pr-2 text-lg">Informatique</a>
+        
+            <button class="toggle-button flex-shrink-0 text-xl font-bold leading-none align-middle" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="flex justify-between items-center w-10/12 mx-auto transition-all duration-500 hover:bg-gray-200 p-1 rounded-md bg-white">
+        <a class="flex-1 text-left pr-2 text-lg">Bases</a>
+        
+            <button class="toggle-button flex-shrink-0 text-xl font-bold leading-none align-middle" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="flex justify-between items-center w-10/12 mx-auto transition-all duration-500 hover:bg-gray-200 p-1 rounded-md bg-white">
+        <a href="/cs/info/bases/git" class="flex-1 text-left pr-2 text-lg">Git</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="flex justify-between items-center w-10/12 mx-auto transition-all duration-500 hover:bg-gray-200 p-1 rounded-md bg-white">
+        <a href="/cs/info/bases/linux" class="flex-1 text-left pr-2 text-lg">Linux</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="flex justify-between items-center w-10/12 mx-auto transition-all duration-500 hover:bg-gray-200 p-1 rounded-md bg-white">
+        <a href="/cs/info/bases/ordinateur" class="flex-1 text-left pr-2 text-lg">Ordinateur</a>
+        
+    </div>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+            
+                
+<li>
+    <div class="flex justify-between items-center w-10/12 mx-auto transition-all duration-500 hover:bg-gray-200 p-1 rounded-md bg-white">
+        <a class="flex-1 text-left pr-2 text-lg">Dev</a>
+        
+            <button class="toggle-button flex-shrink-0 text-xl font-bold leading-none align-middle" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="flex justify-between items-center w-10/12 mx-auto transition-all duration-500 hover:bg-gray-200 p-1 rounded-md bg-white">
+        <a class="flex-1 text-left pr-2 text-lg">Web</a>
+        
+            <button class="toggle-button flex-shrink-0 text-xl font-bold leading-none align-middle" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="flex justify-between items-center w-10/12 mx-auto transition-all duration-500 hover:bg-gray-200 p-1 rounded-md bg-white">
+        <a href="/cs/info/dev/web/fullstack" class="flex-1 text-left pr-2 text-lg">Fullstack</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="flex justify-between items-center w-10/12 mx-auto transition-all duration-500 hover:bg-gray-200 p-1 rounded-md bg-white">
+        <a href="/cs/info/dev/web/websocket" class="flex-1 text-left pr-2 text-lg">WebSocket</a>
+        
+    </div>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+            
+                
+<li>
+    <div class="flex justify-between items-center w-10/12 mx-auto transition-all duration-500 hover:bg-gray-200 p-1 rounded-md bg-white">
+        <a href="/cs/info/dev/bash" class="flex-1 text-left pr-2 text-lg">Bash</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="flex justify-between items-center w-10/12 mx-auto transition-all duration-500 hover:bg-gray-200 p-1 rounded-md bg-white">
+        <a href="/cs/info/dev/java" class="flex-1 text-left pr-2 text-lg">Java</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="flex justify-between items-center w-10/12 mx-auto transition-all duration-500 hover:bg-gray-200 p-1 rounded-md bg-white">
+        <a href="/cs/info/dev/low_code" class="flex-1 text-left pr-2 text-lg">Low Code</a>
+        
+    </div>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+            
+                
+<li>
+    <div class="flex justify-between items-center w-10/12 mx-auto transition-all duration-500 hover:bg-gray-200 p-1 rounded-md bg-white">
+        <a class="flex-1 text-left pr-2 text-lg">Ops</a>
+        
+            <button class="toggle-button flex-shrink-0 text-xl font-bold leading-none align-middle" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="flex justify-between items-center w-10/12 mx-auto transition-all duration-500 hover:bg-gray-200 p-1 rounded-md bg-white">
+        <a href="/cs/info/ops/ssh" class="flex-1 text-left pr-2 text-lg">SSH</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="flex justify-between items-center w-10/12 mx-auto transition-all duration-500 hover:bg-gray-200 p-1 rounded-md bg-white">
+        <a href="/cs/info/ops/aioli" class="flex-1 text-left pr-2 text-lg">aioli</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="flex justify-between items-center w-10/12 mx-auto transition-all duration-500 hover:bg-gray-200 p-1 rounded-md bg-white">
+        <a href="/cs/info/ops/postgres" class="flex-1 text-left pr-2 text-lg">PostgreSQL</a>
+        
+    </div>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+            
+                
+<li>
+    <div class="flex justify-between items-center w-10/12 mx-auto transition-all duration-500 hover:bg-gray-200 p-1 rounded-md bg-mgt">
+        <a class="flex-1 text-left pr-2 text-lg">Management</a>
+        
+            <button class="toggle-button flex-shrink-0 text-xl font-bold leading-none align-middle" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="flex justify-between items-center w-10/12 mx-auto transition-all duration-500 hover:bg-gray-200 p-1 rounded-md bg-white">
+        <a class="flex-1 text-left pr-2 text-lg">SI</a>
+        
+            <button class="toggle-button flex-shrink-0 text-xl font-bold leading-none align-middle" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="flex justify-between items-center w-10/12 mx-auto transition-all duration-500 hover:bg-gray-200 p-1 rounded-md bg-white">
+        <a href="/cs/management/si/management" class="flex-1 text-left pr-2 text-lg">Management</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="flex justify-between items-center w-10/12 mx-auto transition-all duration-500 hover:bg-gray-200 p-1 rounded-md bg-white">
+        <a href="/cs/management/si/audit" class="flex-1 text-left pr-2 text-lg">Audit</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="flex justify-between items-center w-10/12 mx-auto transition-all duration-500 hover:bg-gray-200 p-1 rounded-md bg-white">
+        <a href="/cs/management/si/conception" class="flex-1 text-left pr-2 text-lg">Conception SI</a>
+        
+    </div>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+            
+                
+<li>
+    <div class="flex justify-between items-center w-10/12 mx-auto transition-all duration-500 hover:bg-gray-200 p-1 rounded-md bg-white">
+        <a class="flex-1 text-left pr-2 text-lg">Agilité</a>
+        
+            <button class="toggle-button flex-shrink-0 text-xl font-bold leading-none align-middle" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="flex justify-between items-center w-10/12 mx-auto transition-all duration-500 hover:bg-gray-200 p-1 rounded-md bg-white">
+        <a href="/cs/management/agile/gdp" class="flex-1 text-left pr-2 text-lg">Gestion Agile</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="flex justify-between items-center w-10/12 mx-auto transition-all duration-500 hover:bg-gray-200 p-1 rounded-md bg-white">
+        <a href="/cs/management/agile/scrum" class="flex-1 text-left pr-2 text-lg">SCRUM</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="flex justify-between items-center w-10/12 mx-auto transition-all duration-500 hover:bg-gray-200 p-1 rounded-md bg-white">
+        <a href="/cs/management/agile/cristal_clear" class="flex-1 text-left pr-2 text-lg">Cristal Clear</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="flex justify-between items-center w-10/12 mx-auto transition-all duration-500 hover:bg-gray-200 p-1 rounded-md bg-white">
+        <a href="/cs/management/agile/methodes_agiles" class="flex-1 text-left pr-2 text-lg">Autres méthodes agiles</a>
+        
+    </div>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+            
+                
+<li>
+    <div class="flex justify-between items-center w-10/12 mx-auto transition-all duration-500 hover:bg-gray-200 p-1 rounded-md bg-white">
+        <a class="flex-1 text-left pr-2 text-lg">Sobriété Numérique</a>
+        
+            <button class="toggle-button flex-shrink-0 text-xl font-bold leading-none align-middle" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="flex justify-between items-center w-10/12 mx-auto transition-all duration-500 hover:bg-gray-200 p-1 rounded-md bg-white">
+        <a href="/cs/management/sobriete/numerique" class="flex-1 text-left pr-2 text-lg">Sobriété Numérique</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="flex justify-between items-center w-10/12 mx-auto transition-all duration-500 hover:bg-gray-200 p-1 rounded-md bg-white">
+        <a href="/cs/management/sobriete/accessibilite" class="flex-1 text-left pr-2 text-lg">Accessibilité Numérique</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="flex justify-between items-center w-10/12 mx-auto transition-all duration-500 hover:bg-gray-200 p-1 rounded-md bg-white">
+        <a href="/cs/management/sobriete/fresque_numerique" class="flex-1 text-left pr-2 text-lg">Fresque du Numérique</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="flex justify-between items-center w-10/12 mx-auto transition-all duration-500 hover:bg-gray-200 p-1 rounded-md bg-white">
+        <a href="/cs/management/sobriete/impacts" class="flex-1 text-left pr-2 text-lg">Impacts du Numérique</a>
+        
+    </div>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+            
+                
+<li>
+    <div class="flex justify-between items-center w-10/12 mx-auto transition-all duration-500 hover:bg-gray-200 p-1 rounded-md bg-gp">
+        <a class="flex-1 text-left pr-2 text-lg">Gestion &amp; Modélisation Projet</a>
+        
+            <button class="toggle-button flex-shrink-0 text-xl font-bold leading-none align-middle" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="flex justify-between items-center w-10/12 mx-auto transition-all duration-500 hover:bg-gray-200 p-1 rounded-md bg-white">
+        <a href="/cs/gestion_modelisation/service_design" class="flex-1 text-left pr-2 text-lg">Service Design</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="flex justify-between items-center w-10/12 mx-auto transition-all duration-500 hover:bg-gray-200 p-1 rounded-md bg-white">
+        <a href="/cs/gestion_modelisation/gdp" class="flex-1 text-left pr-2 text-lg">Gestion de Projet</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="flex justify-between items-center w-10/12 mx-auto transition-all duration-500 hover:bg-gray-200 p-1 rounded-md bg-white">
+        <a href="/cs/gestion_modelisation/uiux" class="flex-1 text-left pr-2 text-lg">UI/UX</a>
+        
+    </div>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+            
+                
+<li>
+    <div class="flex justify-between items-center w-10/12 mx-auto transition-all duration-500 hover:bg-gray-200 p-1 rounded-md bg-white">
+        <a class="flex-1 text-left pr-2 text-lg">Tronc Commun</a>
+        
+            <button class="toggle-button flex-shrink-0 text-xl font-bold leading-none align-middle" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="flex justify-between items-center w-10/12 mx-auto transition-all duration-500 hover:bg-gray-200 p-1 rounded-md bg-white">
+        <a href="/cs/tronc_commun/change_management" class="flex-1 text-left pr-2 text-lg">Conduite du Changement</a>
+        
+    </div>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+            
+        </ul>
+    </nav>
+</aside>
+
+<article class="relative">
+<h1 class="mb-1">WebSocket</h1>
+<div class="mb-4">
+    
+        <div class="px-4 flex flex-wrap items-center">
+            
+                <div class="font-bold">Tags : </div>
+            
+            <ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags">
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">COURS</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">informatique</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">développement</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">web</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">websocket</li>
+                
+
+            </ul>
+
+            
+            <div class="hidden" data-pagefind-meta="Type">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Auteurs : </div>
+            <ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs">
+                
+                    <li class="bg-blue-200 rounded-full px-2" data-pagefind-filter="Auteurs">Loïck Goupil-Hallay</li>
+                
+            </ul>
+        </div>
+    
+
+    
+</div>
+
+
+<h2>Introduction</h2>
+<p><strong>WebSocket</strong> est un <strong>protocole de communication</strong> qui permet une communication <strong>bidirectionnelle</strong> et en <strong>temps réel</strong> entre un client et un serveur web. Il est conçu pour être implémenté dans les navigateurs et les serveurs web, mais il peut être utilisé par n'importe quelle application client/serveur. Cela permet de créer des fonctionnalités web en temps réel, telles que des jeux multijoueurs, des applications de chat en direct et des tableaux de bord en temps réel.</p>
+<h2>Principe</h2>
+<p>WebSocket établit une <strong>connexion persistante</strong> entre le client et le serveur via le protocole <strong>TCP</strong>. Une fois la connexion établie, les deux parties peuvent envoyer des messages de manière <strong>asynchrone</strong>. Cela permet une communication en temps réel entre le client et le serveur.<br>
+Les ports utilisés par WebSocket sont normalement les ports 80 (HTTP) ou 443 (HTTPS), ce qui facilite leur intégration avec les serveurs web existants.</p>
+<p>WebSocket permet le stream de messages s'appuyant sur TCP (qui ne le supporte pas nativement, il ne fait que des streams de bytes sans notion de message).\</p>
+<h3>Compatibilité HTTP</h3>
+<p>Le standard RFC 6455 de WebSocket garantit une <strong>compatibilité avec HTTP</strong>. Cela signifie qu'il peut fonctionner sur les mêmes ports que HTTP et qu'il supporte les proxies et intermédiaires (pare-feu, reverse proxy) qui peuvent être configurés pour autoriser le trafic WebSocket.<br>
+Cette compatibilité est assurée par le <strong>handshake</strong> initial qui utilise le <strong>HTTP Upgrade header</strong> pour passer de HTTP à WebSocket.</p>
+<h3>Schema de connexion</h3>
+<pre class="mermaid" style="background-color: transparent;">
+sequenceDiagram
+    participant Client
+    participant Serveur
+    Client->>Serveur: Handshake
+    Serveur->>Client: Handshake (HTTP upgrade)
+    Client<<-->>Serveur: Connexion Persistance (WebSocket)
+    Serveur<<-->>Client: Messages
+    Serveur<<-->>Client: Fin de connexion
+</pre>
+<h2>Avantages</h2>
+<ul>
+<li><strong>Communication bidirectionnelle</strong> : Les clients et les serveurs peuvent envoyer des messages de manière asynchrone.</li>
+<li><strong>Temps réel</strong> : Les messages sont envoyés instantanément, ce qui permet une latence minimale.</li>
+<li><strong>Compatibilité HTTP</strong> : WebSocket est compatible avec HTTP, ce qui facilite son intégration avec les serveurs web existants. Cela permet également de contourner les restrictions de pare-feu et de proxy qui bloquent souvent les connexions non HTTP avec des serveurs distants.</li>
+<li><strong>Faible Overhead</strong> : WebSocket utilise une connexion persistante, ce qui réduit la surcharge du protocole de communication.</li>
+</ul>
+<h2>Limitations</h2>
+<ul>
+<li><strong>Sécurité</strong> : WebSocket peut être vulnérable aux attaques de type <strong>Cross-Site WebSocket Hijacking (CSWSH)</strong>. Il est important de mettre en place des mesures de sécurité pour protéger les connexions WebSocket.</li>
+<li><strong>Complexité</strong> : La mise en place de connexions WebSocket peut être plus complexe que les connexions HTTP traditionnelles. Il est important de bien comprendre le fonctionnement de WebSocket pour éviter les erreurs de conception.</li>
+</ul>
+
+
+</article>
+
+<script>
+let lastScrollY = window.scrollY;
+
+function toggleSidebar() {
+    document.getElementById('sidebar').classList.toggle('open');
+}
+
+window.addEventListener('scroll', () => {
+    const burger = document.getElementById('burger-button');
+    const sidebar = document.getElementById('sidebar');
+    const currentScroll = window.scrollY;
+    // Hide the burger button if max width is reached
+    if (window.innerWidth > 1500) {
+        burger.style.display = 'none';
+    } else if (currentScroll < 10 || currentScroll < lastScrollY) {
+        burger.style.display = 'block';
+    } else if (!sidebar || !sidebar.classList.contains('open')) {
+        burger.style.display = 'none';
+    }
+
+    lastScrollY = currentScroll;
+});
+</script>
+
+        </main>
+
+
+        <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-center items-center">
+                    <p class="text-center">
+                        {% title %} : Développement et Organisation en IT
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- MathJax import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">
+            window.MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']], // Delimiters for inline math
+                    displayMath: [['$$', '$$'], ['\\[', '\\]']] // Delimiters for block math
+                },
+                svg: {
+                    fontCache: 'global' // Use global font cache for SVG output
+                }
+            };
+            document.addEventListener('DOMContentLoaded', () => {
+                MathJax.typeset(); // Ensures MathJax processes the content after the page loads
+            });
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">
+            Prism.plugins.NormalizeWhitespace.setDefaults({
+                'remove-trailing': true,
+                'remove-indent': true,
+                'left-trim': true,
+                'right-trim': true,
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script>
+    </body>
+</html>

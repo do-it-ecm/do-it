@@ -1,0 +1,2024 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Ouais Benoît fait son site Internet</title>
+
+        <!-- Prismjs imports
+                - Prism core
+                - Prism line numbers
+                - Prism copy to clipboard
+                - Prism autoloader
+        -->
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png">
+
+        <!-- Mermaid import and initialization -->
+        <script type="module" defer="">
+            import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/+esm';
+            mermaid.initialize({
+                startOnLoad: true,
+            });
+        </script>
+
+        <link href="/assets/stylesheets/main.css" rel="stylesheet">
+
+    </head>
+
+    <body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000">
+        <header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-between items-center">
+                    <a class="mx-2" href="/">Home</a>
+                    <div class="flex items-center gap-4 sm:gap-6 ">
+                        <a class="" href="/cs">CS</a>
+                        <a class="" href="/pok">POK</a>
+                        <a class="" href="/mon">MON</a>
+                        <a class="" href="/projets">Projets</a>
+                        <a class="hidden sm:block" href="/promos">Promos</a>
+                        <a href="/search">
+                            <svg class="h-5 aspect-square" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+                            </svg>
+                        </a>
+                        <a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank">
+                            <svg class="h-5 aspect-square" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body="">
+            
+<article class="relative">
+<h1 class="mb-1">Ouais Benoît fait son site Internet</h1>
+<div class="mb-4">
+    
+        <div class="px-4 flex flex-wrap items-center">
+            
+                <div class="font-bold">Tags : </div>
+            
+            <ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags">
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">POK</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">Spotify</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">Playlist</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">HTML</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">CSS</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">API</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">JavaScript</li>
+                
+
+            </ul>
+
+            
+            <div class="hidden" data-pagefind-meta="Type">
+                
+                    
+                        <span data-pagefind-filter="Type">POK</span>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Auteurs : </div>
+            <ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs">
+                
+                    <li class="bg-blue-200 rounded-full px-2" data-pagefind-filter="Auteurs">Benoit BEGUIER</li>
+                
+            </ul>
+        </div>
+    
+
+    
+        <div class="absolute top-0 right-0">
+            <span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2" data-pagefind-filter="Année">
+                2023-2024
+            </span>
+        </div>
+    
+</div>
+
+        <p class="mb-4 text-lg">
+
+                Je vais dans ce POK créer mon site Internet permettant à l'utilisateur d'analyser ses goûts musicaux, en utilisant l'API de Spotify.
+
+        </p>
+
+
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/promos/2023-2024/Beguier-Benoit/">Benoit BEGUIER</a><span class="px-1">/</span><a href="/promos/2023-2024/Beguier-Benoit/pok/">POK de Benoit Beguier</a><span class="px-1">/</span><a href="/promos/2023-2024/Beguier-Benoit/pok/temps-2/">Ouais Benoît fait son site Internet</a>
+
+</div></div>
+
+
+
+
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Prérequis</b></p>
+</div><div class="pl-8 mr-8">
+<p><strong>Niveau :</strong> débutant
+<strong>Prérequis :</strong></p>
+<ul>
+<li>Bases de développement Web (HTML et CSS)</li>
+<li>Des prérequis en utilisation d'API peuvent être un plus mais ne sont pas indispensables</li>
+</ul>
+</div></div>
+<p>Pour la réalisation de ce cours, je me réfèrerais aux sources listées ci-dessous :</p>
+<ul>
+<li><em>Créez votre site web avec HTML5 et CSS3.</em> OpenClassrooms. Accessible <a href="https://openclassrooms.com/fr/courses/1603881-creez-votre-site-web-avec-html5-et-css3">ici</a>.</li>
+<li>Developer Mozilla. Accessible <a href="https://developer.mozilla.org/fr/">ici</a>.</li>
+<li><em>Web API</em>, Spotify. Accessible <a href="https://developer.spotify.com/documentation/web-api">ici</a>.</li>
+</ul>
+<h2>Sommaire</h2>
+<ol>
+<li>Objectifs du Sprint 1</li>
+<li>Objectifs du Sprint 2</li>
+<li>Maquette Figma</li>
+<li>Création des pages du site en HTML et en CSS</li>
+<li>Retour d'expérience du Sprint 1</li>
+<li>Objectifs du Sprint 2 rationnalisés</li>
+<li>Documentation sur l'API Spotify</li>
+<li>Mise en pratique</li>
+<li>Appel à l'API</li>
+<li>Récupérer le top artiste et genres de l'utilisateur</li>
+<li>Retour d'expérience du Sprint 2</li>
+</ol>
+<p>Le but de ce POK est de mettre en pratique mon MON1.2 sur le développement web. Je souhaite créer un site web fonctionnel, qui utilise l'API de Spotify. Ce site permettrait à l'utilisateur de connecter son compte Spotify personnel, et en retour afficher une analyse de ses goûts musicaux.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Exercice</b></p>
+</div><div class="pl-8 mr-8">
+<p>&quot;Analyser les goûts musicaux de l'utilisateur&quot; : ça veut dire quoi concrètement ?</p>
+</div></div>
+<p>Il y a une multitude d'analyses possibles à partir d'un compte Spotify.
+Concrètement j'aimerais proposer les fonctionnalités suivantes :</p>
+<ul>
+<li>
+<p>Afficher une liste des principaux genres de musique que l'utilisateur écoute</p>
+<ul>
+<li>Si possible, afficher un graphique des genres écoutés en fonction de l'heure de la journée. Cela pourrait (et je dis bien pourrait) potentiellement mettre en avant une tendance de l'utilisateur : par exemple des musiques mouvementées à haut <em>bpm</em> (<em>beats per minute</em>) en fin d'après-midi lors de sa séance de sport.</li>
+</ul>
+</li>
+<li>
+<p>Afficher le Top 5 des musiques écoutées depuis le début de l'année par l'utilisateur</p>
+</li>
+<li>
+<p>Afficher des graphiques décomposant les musiques écoutées par l'utilisateur selon des paramètres définis dans la suite du POK.</p>
+</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beguier-Benoit/pok/temps-2/Music-features.jpg" alt="features">
+Ces graphiques prennent en ordonnée des paramètres tels que le tempo, la dançabilité</p>
+<ul>
+<li>En bonus, effectuer une analyse en composantes principales (ACP, <em>PCA</em> en anglais) des musiques écoutées par l'utilisateur, et afficher le spectre d'écoute (<em>cf.</em> image ci-dessous). Vous pourrez trouver <a href="https://fr.wikipedia.org/wiki/Analyse_en_composantes_principales">ici</a> la documentation sur l'ACP.</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beguier-Benoit/pok/temps-2/spectre.jpg" alt="spectre">
+Illustration du type de graphique que je souhaite afficher.</p>
+<h2>Objectifs du Sprint 1</h2>
+<p>Voici les objectifs que je me suis fixé :</p>
+<ul>
+<li>Créer une maquette esthétique sur Figma (★☆☆☆☆, <strong>2 heures estimées</strong>)</li>
+<li>Créer un logo pour mon site Web (★☆☆☆☆, <strong>0 heure 30 estimée</strong>)</li>
+<li>Créer la page d'accueil en HTML (★☆☆☆☆, <strong>1 heure 30 estimée</strong>)</li>
+<li>Créer le fichier CSS sur le header (★★☆☆☆, <strong>2 heures estimées</strong>)</li>
+<li>Créer le fichier CSS sur le body de l'accueil (★★☆☆☆, <strong>2 heures estimées</strong>)</li>
+<li>Créer la page FAQ en HTML (★☆☆☆☆, <strong>0 heure 30 estimée</strong>)</li>
+<li>Créer le fichier CSS associé à la page FAQ (★☆☆☆☆, <strong>0 heure 30 estimée</strong>)</li>
+<li>Créer la page principale en HTML (★☆☆☆☆, <strong>0 heure 30 estimée</strong>)</li>
+<li>Créer le fichier CSS associé à la page principale (★☆☆☆☆, <strong>0 heure 30 estimée</strong>)</li>
+</ul>
+<p>TOTAL : 10 heures</p>
+<p>Les étoiles correspondent au niveau de difficulté de l'objectif dans mon référentiel de débutant en DevWeb.</p>
+<h2>Objectifs du Sprint 2</h2>
+<p>Voici les gros objectifs que je me suis fixé :</p>
+<ul>
+<li>Lier l'API de Spotify avec mon site</li>
+<li>Travailler sur les différentes fonctionnalités d'affichage de données de l'utlisateur en lien avec son compte Spotify</li>
+</ul>
+<p>Ces objectifs servent de fil conducteur pour la logique de mon POK, les objectifs précis seront détailles à la fin du Sprint 1.</p>
+<h2>Maquette Figma</h2>
+<p>Avant de partir dans tous les sens, il est nécessaire de cadrer le projet en amont. Mon but est d'offrir à l'utilisateur une expérience simple et personnalisée.</p>
+<p>Je choisis en premier lieu une interface simple et épurée. Afin de rappeler la proximité de mon service avec Spotify, je conserve en couleur secondaire la couleur du logo Spotify : #1ED760.</p>
+<p>Je crée aussi un logo se basant sur la forme ronde du logo Spotify, mais en y incluant un rappel de statistiques au travers des courbes de tendances. Je choisis ainsi le nom de mon service : <strong>Spotistats</strong>.</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beguier-Benoit/pok/temps-2/Allonge.png" alt="Logo"></p>
+<p>Je choisis ensuite le type de boutons de ma page Web. Je télécharge les icones sur le site <a href="https://www.flaticon.com/">Flaticon</a>. J'utilise le pack d'icônes <a href="https://www.flaticon.com/authors/icongeek26/outline?author_id=296&amp;type=standard"><em>Outline</em></a> créé par Icongeek26.</p>
+<p>Je définis les composantes de mes pages :</p>
+<ul>
+<li>les boutons seront des rectangles de 330px*65px, avec des bords arrondis de 38px.</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beguier-Benoit/pok/temps-2/Group-1.png" alt="bouton"></p>
+<ul>
+<li>le header fait 1440px*120px, de couleur #25242F, avec une ombre portée grise.</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beguier-Benoit/pok/temps-2/Header.png" alt="Header"></p>
+<ul>
+<li>la page fait 1440px*1024px (dimension Desktop), de couleur #25242F qui rappelle le mode sombre sur Spotify. Les titres de section sont écrits avec la police Gotham de couleur #1ED760, tandis que le corps de texte est blanc en Roboto Light de 25px.</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beguier-Benoit/pok/temps-2/Accueil.png" alt="Accueil"></p>
+<p>Ma maquette Figma est accessible <a href="https://www.figma.com/file/Rx2sAj4SSzLNnZjNFwKq6O/Spotistats?type=design&amp;node-id=0%3A1&amp;mode=design&amp;t=T7OGaQuYW9phVxnz-1">ici</a>.</p>
+<h2>Création des pages du site en HTML et en CSS</h2>
+<p>Rien de très intéressant à ajouter dans cette partie, si ce n'est que je vais transformer la maquette Figma en HTML et en CSS.</p>
+<p>Voici le résultat pour la page d'accueil :
+<img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beguier-Benoit/pok/temps-2/AccueilHtml.png" alt="Accueil"></p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Cliquez pour afficher le <strong>code HTML</strong> de la page d'accueil</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-html line-numbers"><code>
+
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <title>Accueil - Spotistats 📈</title>
+        <link href="styles.css" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <header>
+            <img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beguier-Benoit/pok/temps-2/Allonge.png" class="logo" width="15%" height="60%">
+            <a class="FAQ" href="FAQ.html">FAQ</a>
+            <button class="Connexion">
+                <img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beguier-Benoit/pok/temps-2/Spotify_black.png" width="38" height="39">
+                <span class="ButtonText">S’identifier avec Spotify</span>
+            </button>
+        </header>
+
+        <div class="container">
+            <img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beguier-Benoit/pok/temps-2/chart-up_1.png" class="arrow">
+            <div class="column">
+                <h1> Toutes vos statistiques.</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                    Sit amet dictum sit amet justo donec. Dolor sed viverra ipsum nunc aliquet 
+                    bibendum enim facilisis. Erat imperdiet sed euismod nisi porta. Viverra 
+                    accumsan in nisl nisi scelerisque eu ultrices. In vitae turpis massa sed elementum. 
+                    Pretium aenean pharetra magna ac placerat vestibulum. Quis vel eros donec ac odio tempor. 
+                    Felis donec et odio pellentesque diam volutpat commodo. Et tortor consequat id porta nibh
+                    venenatis.
+                </p>
+            </div>
+        </div>
+
+        <div class="container2">
+            <div class="column2">
+                <h1> Analysez vos goûts musicaux.</h1>
+                <p class="parap2">Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                    Sit amet dictum sit amet justo donec. Dolor sed viverra ipsum nunc aliquet 
+                    bibendum enim facilisis. Erat imperdiet sed euismod nisi porta. Viverra 
+                    accumsan in nisl nisi scelerisque eu ultrices. In vitae turpis massa sed elementum. 
+                    Pretium aenean pharetra magna ac placerat vestibulum. Quis vel eros donec ac odio tempor. 
+                    Felis donec et odio pellentesque diam volutpat commodo. Et tortor consequat id porta nibh
+                    venenatis.
+                </p>
+            </div>
+            <img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beguier-Benoit/pok/temps-2/sound_1.png" class="sound">
+        </div>
+        
+    </body>
+</html>
+
+
+</code></pre></div>
+</details>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Cliquez pour afficher le <strong>code CSS</strong> de la page d'accueil</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-css line-numbers"><code>
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #25242F;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #25242F;
+    height: 90px;
+    padding: 0 30px;
+    box-shadow: 0 4px 17px rgba(81, 95, 95, 0.25);
+}
+
+.logo {
+    margin-right: 30px;
+}
+
+.FAQ {
+    order: 1;
+    font-size: 25px;
+    font-weight: bolder;
+    font-family: 'Roboto', sans-serif;
+    color: #FFFFFF;
+    text-decoration: none;
+    justify-content: center;
+    margin-left: 520px;
+}
+
+button.Connexion {
+    order: 2;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    text-align: right;
+    font-size: 25px;
+    font-weight: bolder;
+    background-color: #1ed760;
+    font-family: 'Roboto', sans-serif;
+    border: none;
+    border-radius: 38px;
+    width: 360px;
+    height: 55px;
+    margin-left: 30px;
+}
+
+.ButtonText {
+    margin-right: 18px;
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+button.Connexion img {
+    margin-right: 10px;
+}
+
+button:hover {
+    box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.5);
+}
+
+@font-face {
+    font-family: 'Gotham-Bold';
+    src: url('Spotify-Font/Gotham-Bold.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content:flex-start;
+    align-self: center;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+    margin-left: 70px;
+    width: 650px;
+    margin-right: 50px;
+}
+
+h1 {
+    font-family: 'Gotham-Bold', sans-serif;
+    font-size: 40px;
+    color: #1ed760;
+    margin-bottom: 10px;
+}
+
+p {
+    font-family: 'Roboto', sans-serif;
+    color: #FFFFFF;
+    font-size: large;
+    width: 600px;
+    text-align: justify;
+}
+
+.arrow {
+    width: 41.6%;
+    height: 41.4%;
+    margin-top: 70px;
+}
+
+.sound {
+    width: 55%;
+    height: 55%;
+    margin-top: 30px;
+}
+
+.container2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-self: center;
+}
+
+.column2 {
+    display: flex;
+    flex-direction: column;
+    margin-top: 0px;
+    margin-left: 50px;
+    margin-right: 30px;
+    width: 950px;
+}
+
+.parap2{
+    width:950px;
+}
+
+
+
+</code></pre></div>
+</details>
+</div>
+<p>Le seul problème est qu'au scroll, le header est aussi scrollé. J'ai décidé de mettre un <code>position: fixed;</code> pour régler ce problème, mais cela décale toutes mes marges. Pour l'instant, je décide de rester comme ça.</p>
+<h3>Apparition du pop-up de connexion</h3>
+<p>Et oui, il faut pouvoir se connecter à son compte Spotify pour accéder aux fonctionnalités de mon super site. Le bouton Connexion n'est à l'heure actuelle pas encore cliquable.</p>
+<p>Pour ce faire, j'avais deux solutions : de l'HTML pur ou du JavaScript. J'opte pour la deuxième option sur les conseil de <a href="https://www.instagram.com/william.lalanne/">William Lalanne</a>. Je ne suis pas spécialement familier du langage, mais après quelques explications et quelques recherches, je comprends la philosophie des variables et des fonctions, qui ressemblent pas mal à Python.</p>
+<p>Il y a deux parties à prendre en compte :</p>
+<ul>
+<li>lorsque le bouton est cliqué, il faut faire apparaître un pop-up demandant à l'utilisateur l'adresse e-mail associée à son compte Spotify et son mot de passe.</li>
+<li>un écran noir doit aussi apparaître en-dessous du pop-up afin de faciliter la différienciation des fenêtres.</li>
+</ul>
+<p>J'ai donc réalisé ces fonctionnalités. J'ai rajouté dans l'HTML un petit script qui permet d'effacer à chaque <em>refresh</em> les données précédentes contenues dans les champs à remplir.
+J'ai aussi mis en forme le texte du mot de passe pour qu'il soit crypté.</p>
+<p>Petit regret : j'ai eu la flemme de créer une box pour la position de la croix dans le <em>content</em>, je l'ai fait à la position absolue, peut-être que je regretterai après.</p>
+<p>Deuxième petit regret (décidément) : pour l'instant, il n'y a que le bouton fermer qui ferme le pop-up, il faudrait rajouter la possibilité de cliquer autre part.</p>
+<p>A noter que la page ne fait rien avec l'e-mail et le mot de passe, cela viendra dans le Sprint 2 en utilisant l'API.</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Cliquez pour afficher le <strong>code HTML</strong> de la page d'accueil avec le pop-up</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-html line-numbers"><code>
+
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <title>Accueil - Spotistats 📈</title>
+        <link href="styles.css" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+        <script>
+            window.onload = function () {
+                // Réinitialiser les champs input lors du chargement de la page
+                var emailInput = document.getElementById('email');
+                var mdpInput = document.getElementById('mdp');
+
+                if (emailInput && mdpInput) {
+                    emailInput.value = '';
+                    mdpInput.value = '';
+                }
+            };
+        </script>
+    </head>
+    <body>
+        <header>
+            <img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beguier-Benoit/pok/temps-2/Allonge.png" class="logo" width="15%" height="60%">
+            <a class="FAQ" href="FAQ.html">FAQ</a>
+            <button onclick="afficherEcran_noir()" class="Connexion">
+                <img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beguier-Benoit/pok/temps-2/Spotify_black.png" width="38" height="39">
+                <span class="ButtonText">S’identifier avec Spotify</span>
+            </button>
+        </header>
+
+        <div class="container">
+            <img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beguier-Benoit/pok/temps-2/chart-up_1.png" class="arrow">
+            <div class="column">
+                <h1> Toutes vos statistiques.</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                    Sit amet dictum sit amet justo donec. Dolor sed viverra ipsum nunc aliquet 
+                    bibendum enim facilisis. Erat imperdiet sed euismod nisi porta. Viverra 
+                    accumsan in nisl nisi scelerisque eu ultrices. In vitae turpis massa sed elementum. 
+                    Pretium aenean pharetra magna ac placerat vestibulum. Quis vel eros donec ac odio tempor. 
+                    Felis donec et odio pellentesque diam volutpat commodo. Et tortor consequat id porta nibh
+                    venenatis.
+                </p>
+            </div>
+        </div>
+
+        <div class="container2">
+            <div class="column2">
+                <h1> Analysez vos goûts musicaux.</h1>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+                    Sit amet dictum sit amet justo donec. Dolor sed viverra ipsum nunc aliquet 
+                    bibendum enim facilisis. Erat imperdiet sed euismod nisi porta. Viverra 
+                    accumsan in nisl nisi scelerisque eu ultrices. In vitae turpis massa sed elementum. 
+                    Pretium aenean pharetra magna ac placerat vestibulum. Quis vel eros donec ac odio tempor. 
+                    Felis donec et odio pellentesque diam volutpat commodo. Et tortor consequat id porta nibh
+                    venenatis.
+                </p>
+            </div>
+            <img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beguier-Benoit/pok/temps-2/sound_1.png" class="sound">
+        </div>
+        
+        <div id="ecran_noir" class="ecran_noir">
+            <div class="ecran_noir-content">
+                <span class="close" onclick="fermerEcran_noir()">&times;</span>
+                <label for="email">Adresse e-mail liée à votre compte Spotify :</label>
+                <input type="email" id="email" name="email" required="">
+                <label for="mdp">Mot de passe :</label>
+                <input type="password" id="mdp" name="mdp" required="">
+                <button class="check_id" onclick="submitForm()">Connexion</button>
+            </div>
+        </div>
+    
+        <script>
+            function afficherEcran_noir() {
+                var ecran_noir = document.getElementById('ecran_noir');
+                ecran_noir.style.display = 'block';
+            }
+    
+            function fermerEcran_noir() {
+                var ecran_noir = document.getElementById('ecran_noir');
+                ecran_noir.style.display = 'none';
+            }
+    
+            function submitForm() {
+                var emailValue = document.getElementById('email').value;
+                var mdpValue = document.getElementById('mdp').value;
+        
+                fermerEcran_noir()
+            }
+        </script>
+
+    </body>
+</html>
+
+
+</code></pre></div>
+</details>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Cliquez pour afficher le <strong>code CSS</strong> de la page d'accueil avec le pop-up</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-css line-numbers"><code>
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #25242F;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #25242F;
+    height: 90px;
+    padding: 0 30px;
+    box-shadow: 0 4px 17px rgba(81, 95, 95, 0.25);
+}
+
+.logo {
+    margin-right: 30px;
+}
+
+.FAQ {
+    order: 1;
+    font-size: 25px;
+    font-weight: bolder;
+    font-family: 'Roboto', sans-serif;
+    color: #FFFFFF;
+    text-decoration: none;
+    justify-content: center;
+    margin-left: 520px;
+}
+
+button.Connexion {
+    order: 2;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    text-align: right;
+    font-size: 25px;
+    font-weight: bolder;
+    background-color: #1ed760;
+    font-family: 'Roboto', sans-serif;
+    border: none;
+    border-radius: 38px;
+    width: 360px;
+    height: 55px;
+    margin-left: 30px;
+    cursor:pointer;
+}
+
+.ButtonText {
+    margin-right: 18px;
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+button.Connexion img {
+    margin-right: 10px;
+}
+
+button:hover {
+    box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.5);
+}
+
+@font-face {
+    font-family: 'Gotham-Bold';
+    src: url('Spotify-Font/Gotham-Bold.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content:flex-start;
+    align-self: center;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+    margin-left: 70px;
+    width: 650px;
+    margin-right: 50px;
+}
+
+h1 {
+    font-family: 'Gotham-Bold', sans-serif;
+    font-size: 40px;
+    color: #1ed760;
+    margin-bottom: 10px;
+}
+
+p {
+    font-family: 'Roboto', sans-serif;
+    color: #FFFFFF;
+    font-size: large;
+    width: 600px;
+    text-align: justify;
+}
+
+.arrow {
+    width: 41.6%;
+    height: 41.4%;
+    margin-top: 70px;
+}
+
+.sound {
+    width: 55%;
+    height: 55%;
+    margin-top: 30px;
+}
+
+.container2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-self: center;
+}
+
+.column2 {
+    display: flex;
+    flex-direction: column;
+    margin-top: 0px;
+    margin-left: 50px;
+    margin-right: 30px;
+    width: 950px;
+}
+
+.parap2{
+    width:950px;
+}
+
+.ecran_noir {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.ecran_noir-content {
+    background-color: #25242F;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 10px;
+    width: 50%;
+    color: #FFFFFF;
+    font-family: 'Gotham-Bold', sans-serif;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+
+.check_id {
+    background-color: #1ed760;
+    color: #FFFFFF;
+    border: none;
+    padding: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Gotham-Bold', sans-serif;
+}
+
+button:hover {
+    background-color: #149754; /* Changement de couleur au survol */
+}
+
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 140px;
+    right: 320px;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+</code></pre></div>
+</details>
+</div>
+<p>Je vais maintenant créer la page FAQ, ce qui devrait être assez rapide.</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Cliquez pour afficher le <strong>code HTML</strong> de la page FAQ</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-html line-numbers"><code>
+
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <title>FAQ - Spotistats ❓</title>
+        <link href="stylesFAQ.css" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+        <script>
+            window.onload = function () {
+                var emailInput = document.getElementById('email');
+                var mdpInput = document.getElementById('mdp');
+    
+                if (emailInput && mdpInput) {
+                    emailInput.value = '';
+                    mdpInput.value = '';
+                }
+            };
+        </script>
+    </head>
+    <body>
+        <header>
+            <img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beguier-Benoit/pok/temps-2/Allonge.png" class="logo" width="15%" height="60%">
+            <a class="FAQ" href="FAQ.html">FAQ</a>
+            <button onclick="afficherEcran_noir()" class="Connexion">
+                <img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beguier-Benoit/pok/temps-2/Spotify_black.png" width="38" height="39">
+                <span class="ButtonText">S’identifier avec Spotify</span>
+            </button>
+        </header>
+        <h1>Pourquoi dois-je me connecter à mon compte Spotify ?</h1>
+        <p>La connexion à votre compte Spotify est nécessaire afin d'avoir accès à vos données d'écoute.
+            L'accès à vos données permet l'analyse de vos goûts musicaux.
+        </p>
+        <h1>Que faites-vous de mes données de connexion Spotify ?</h1>
+        <p>Vos données de connexion ne sont pas stockées mais seulement utilisées par notre service.
+            Nous validons l'authentification grâce à l'API Spotify, qui elle se charge d'évaluer 
+            la corrélation entre votre adresse mail et le mot de passe indiqué.
+        </p>
+        <h1>Est-il possible de regarder les données de quelqu'un d'autre ?</h1>
+        <p>Pour des raisons de sécurité, il n'est pas possible de consulter les analyse Spotistats
+            d'un autre individu. En effet, nous certifions l'authentification personnelle et la privatisation 
+            de chaque résultat.
+        </p>
+        <h1>Sera-t'il possible dans l'avenir d'effectuer l'analyse sur Deezer ?</h1>
+        <p>Ce n'est pas d'actualité pour le moment. Sinon on aura un problème de nom.</p>
+    </body>
+
+
+
+</html></code></pre></div>
+</details>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Cliquez pour afficher le <strong>code CSS</strong> de la page FAQ</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-css line-numbers"><code>
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #25242F;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #25242F;
+    height: 90px;
+    padding: 0 30px;
+    box-shadow: 0 4px 17px rgba(81, 95, 95, 0.25);
+}
+
+.logo {
+    margin-right: 30px;
+}
+
+.FAQ {
+    order: 1;
+    font-size: 25px;
+    font-weight: bolder;
+    font-family: 'Roboto', sans-serif;
+    color: #FFFFFF;
+    text-decoration: none;
+    justify-content: center;
+    margin-left: 520px;
+}
+
+button.Connexion {
+    order: 2;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    text-align: right;
+    font-size: 25px;
+    font-weight: bolder;
+    background-color: #1ed760;
+    font-family: 'Roboto', sans-serif;
+    border: none;
+    border-radius: 38px;
+    width: 360px;
+    height: 55px;
+    margin-left: 30px;
+    cursor:pointer;
+}
+
+.ButtonText {
+    margin-right: 18px;
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+button.Connexion img {
+    margin-right: 10px;
+}
+
+button:hover {
+    box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.5);
+}
+
+@font-face {
+    font-family: 'Gotham-Bold';
+    src: url('Spotify-Font/Gotham-Bold.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+h1 {
+    font-family: 'Gotham-Bold', sans-serif;
+    font-size: 40px;
+    color: #1ed760;
+    margin-bottom: 0px;
+    margin-left: 40px;
+}
+
+p{
+    font-family: 'Gotham', sans-serif;
+    color:#FFFFFF;
+    font-size:20px;
+    margin-left: 40px;
+    margin-right:40px;    
+}
+
+.ecran_noir {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.ecran_noir-content {
+    background-color: #25242F;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 10px;
+    width: 50%;
+    color: #FFFFFF;
+    font-family: 'Gotham-Bold', sans-serif;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+}
+
+.check_id {
+    background-color: #1ed760;
+    color: #FFFFFF;
+    border: none;
+    padding: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: 'Gotham-Bold', sans-serif;
+}
+
+button:hover {
+    background-color: #149754;
+}
+
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 140px;
+    right: 320px;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+</code></pre></div>
+</details>
+</div>
+<p>Je n'ai pas eu le temps de faire la page principale car les autres m'ont pris plus de temps. Cependant, j'ai déjà défini tous les styles que j'utilise et cela me prendra beaucoup plus de temps.</p>
+<h2>Retour d'expérience du Sprint 1</h2>
+<p>J'ai finalisé presque tous les objectifs que je m'étais fixé, à l'exception de la page principale en HTML et CSS. Je le ferai donc au Sprint 2.
+J'ai effectué une autre tâche à la place : le pop-up de connexion en JavaScript, cela m'a pris une heure et demi, donc je respecte le planning qui m'était fixé.
+Pas de point dur particulier.</p>
+<h2>Objectifs du Sprint 2 rationnalisés</h2>
+<p>Voici les objectifs que je me suis fixé pour le Sprint 2 :</p>
+<ul>
+<li>Créer la page principale en HTML et y définir les styles en CSS (★☆☆☆☆, <strong>1 heure estimée</strong>)</li>
+<li>Documentation sur les API de Spotify, leur intégration et leurs features (★☆☆☆☆, <strong>2 heures estimées</strong>)</li>
+<li>Lier l'API de Spotify avec mon bouton Connexion (★★★☆☆, <strong>2 heures estimées</strong>)</li>
+<li>Comprendre comment récupérer les données de l'utilisateur qui s'est connecté (★★★☆☆, <strong>2 heures estimées</strong>)</li>
+<li>Rechercher les visualisations de données musicales existantes, et lesquelles sont pertinentes dans mon cas (★☆☆☆☆, <strong>0 heure 30 estimée</strong>)</li>
+<li>Déterminer quelle technologie utiliser pour la visualisation (★☆☆☆☆, <strong>0 heure 30 estimée</strong>)</li>
+<li>Réaliser une première visualisation des données de l'utilisateur, sous une forme à préciser (★★★☆☆, <strong>2 heures estimées</strong>)</li>
+</ul>
+<p>C'est possible que je ne puisse pas effectuer la partie de connexion avec l'API. Les objectifs suivants sont décorrélés ce qui me permettra d'avancer dans tous les cas.</p>
+<h2>Sprint 2</h2>
+<p>Création de la page principale; c'est-à-dire la page d'analyse de l'utilisateur, en HTML et en CSS.</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Cliquez pour afficher le <strong>code HTML</strong> de la page Analyse</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-html line-numbers"><code>
+
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <title>Analyse - Spotistats ✅</title>
+        <link href="stylesAnalyse.css" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <header>
+            <a href="Accueil.html" style="width: 15%; height: 60%;">
+                <img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beguier-Benoit/pok/temps-2/Allonge.png" class="logo" width="100%" height="100%">
+            </a>
+            <a class="FAQ" href="FAQ.html">FAQ</a>
+            <button onclick="afficherEcran_noir()" class="Connexion">
+                <img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beguier-Benoit/pok/temps-2/image-1.png" width="38" height="39">
+                <span class="ButtonText">Nicolas Ouzouliasse</span>
+            </button>
+        </header>
+
+        <div class="container">
+            <div class="column">
+                <h1> Votre overview.</h1>
+                <p>
+                <li>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </li> 
+                <li>
+                    Sit amet dictum sit amet justo donec. Dolor sed viverra ipsum nunc aliquet 
+                    ibendum enim facilisis.
+                </li>
+                <li>
+                    Erat imperdiet sed euismod nisi porta. Viverra accumsan in nisl nisi scelerisque eu 
+                    ultrices.
+                    In vitae turpis massa sed elementum.
+                </li>
+                <li>Pretium aenean pharetra magna ac placerat vestibulum. Quis vel eros 
+                    donec ac odio tempor.</li>
+                <li>Felis donec et odio pellentesque diam volutpat commodo. 
+                    Et tortor consequat id porta nibh venenatis.</li>  
+                </p>
+            </div>
+            <img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beguier-Benoit/pok/spectre.jpg" class="spectre">
+        </div>
+
+        <div class="container2">
+            <img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beguier-Benoit/pok/Music-features.jpg" class="graphe">
+            <div class="column2">
+                <h1> Vos goûts musicaux.</h1>
+                <p><li>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </li> 
+                <li>
+                    Sit amet dictum sit amet justo donec. Dolor sed viverra ipsum nunc aliquet 
+                    ibendum enim facilisis.
+                </li>
+                <li>
+                    Erat imperdiet sed euismod nisi porta. Viverra accumsan in nisl nisi scelerisque eu 
+                    ultrices.
+                    In vitae turpis massa sed elementum.
+                </li>
+                <li>Pretium aenean pharetra magna ac placerat vestibulum. Quis vel eros 
+                    donec ac odio tempor.</li>
+                <li>Felis donec et odio pellentesque diam volutpat commodo. 
+                    Et tortor consequat id porta nibh venenatis.</li>
+                </p>
+            </div>
+            
+        </div>
+        
+ 
+
+    </body>
+</html>
+
+
+
+</code></pre></div>
+</details>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Cliquez pour afficher le <strong>code CSS</strong> de la page Analyse</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-css line-numbers"><code>
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #25242F;
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #25242F;
+    height: 90px;
+    padding: 0 30px;
+    box-shadow: 0 4px 17px rgba(81, 95, 95, 0.25);
+}
+
+.logo {
+    margin-right: 30px;
+}
+
+.FAQ {
+    order: 1;
+    font-size: 25px;
+    font-weight: bolder;
+    font-family: 'Roboto', sans-serif;
+    color: #FFFFFF;
+    text-decoration: none;
+    justify-content: center;
+    margin-left: 520px;
+}
+
+button.Connexion {
+    order: 2;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    text-align: right;
+    font-size: 25px;
+    font-weight: bolder;
+    background-color: #dee0f6;
+    font-family: 'Roboto', sans-serif;
+    border: none;
+    border-radius: 38px;
+    width: 330px;
+    height: 55px;
+    margin-left: 30px;
+    cursor:pointer;
+}
+
+.ButtonText {
+    margin-right: 18px;
+    margin-left: 10px;
+    font-weight: bold;
+}
+
+button.Connexion img {
+    margin-right: 10px;
+}
+
+button:hover {
+    box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.5);
+}
+
+@font-face {
+    font-family: 'Gotham-Bold';
+    src: url('Spotify-Font/Gotham-Bold.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    justify-content:flex-start;
+    align-self: center;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+    margin-left: 70px;
+    width: 660px;
+    margin-right: 50px;
+}
+
+h1 {
+    font-family: 'Gotham-Bold', sans-serif;
+    font-size: 40px;
+    color: #1ed760;
+    margin-bottom: 10px;
+    margin-left: 40px;
+}
+
+p {
+    font-family: 'Roboto', sans-serif;
+    color: #FFFFFF;
+    font-size: large;
+    width: 650px;
+    text-align: justify;
+    margin-right: 0px;
+}
+
+li {
+    font-family: 'Roboto', sans-serif;
+    color: #FFFFFF;
+    font-size: large;
+    width: 650px;
+    text-align: justify;
+    margin-right: 0px;
+    margin-left:40px;
+}
+
+.spectre {
+    width: 30%;
+    height: 30%;
+    margin-top: 70px;
+    margin-left: 40px;
+    margin-right: 40px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+
+.graphe{
+    width: 45%;
+    height: 45%;
+    margin-top: 120px;
+    margin-left: 40px;
+    border-radius: 15px;
+}
+
+.container2 {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-self: center;
+}
+
+.column2 {
+    display: flex;
+    flex-direction: column;
+    margin-top: 0px;
+    margin-left: 40px;
+    margin-right: 30px;
+    width: 950px;
+}
+
+
+</code></pre></div>
+</details>
+</div>
+<h3>Documentation sur l'API Spotify</h3>
+<p>Je vais vraisemblablement devoir adapter mon code HTML d'authentification pour qu'il utilise le système d'authentification de l'API. Je vais devoir créer un fichier .JS permettant de gérer cette fonctionnalité. Spotify dispose d'une interface destinée aux développeurs permettant d'avoir accès à des ressources très utiles : plusieurs explications et tutoriels, mais aussi de créer une App fournissant les <em>Client ID</em> and <em>Client Secret</em> permettant <em>in fine</em> d'accéder à un <em>access token</em>.
+L'<em>access token</em> est un string qui contient les informations d'identification et les autorisations qui peuvent être utilisées pour accéder à une ressource donnée (par exemple, artistes ou albums) ou aux données de l'utilisateur (par exemple son profil).</p>
+<p>Pour résumer, voici la logique que je vais suivre pour mener à bien mon projet :</p>
+<ul>
+<li>
+<p>Créer une app sur le <a href="https://developer.spotify.com/dashboard/create">Dashboard Spotify</a>
+<img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beguier-Benoit/pok/temps-2/Dashboard.png" alt="Dashboard"></p>
+</li>
+<li>
+<p>Récupérer le <em>Client ID</em> et le <em>Client Secret</em></p>
+</li>
+<li>
+<p>Demander un <em>access token</em></p>
+</li>
+<li>
+<p>A partir de l'<em>access token</em>, écrire les requêtes nécessaires pour récupérer les données de l'utilisateur.</p>
+</li>
+<li>
+<p>Appeler l'API</p>
+</li>
+</ul>
+<h3>Mise en pratique</h3>
+<p>Une fois l'app créée, je peux récupérer le <em>Client ID</em> directement dans les paramètres de l'app :
+<img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beguier-Benoit/pok/temps-2/ClientID.png" alt="ID"></p>
+<p>et aussi le <em>Client Secret</em> :
+<img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beguier-Benoit/pok/temps-2/ClientSecret.png" alt="Secret"></p>
+<p>Une fois que ces codes ont été récupérés, il est possible de faire une requête en <a href="https://curl.se/">cURL</a> (un outil de ligne de commande en open source) pour obtenir l'<em>Access Token</em>.</p>
+<pre class="language-shell line-numbers"><code>
+
+curl -X POST "https://accounts.spotify.com/api/token" \
+     -H "Content-Type: application/x-www-form-urlencoded" \
+     -d "grant_type=client_credentials&client_id=70b7021a56234ecda100b97df93*****&client_secret=a5191ccecc734218b92f879346*****"
+
+
+
+</code></pre><p>Je n'ai jamais réussi à installer cUrl, donc en modifiant les commandes pour pouvoir les exécuter dans PowerShell, j'obtiens:</p>
+<pre class="language-shell line-numbers"><code>
+
+Invoke-RestMethod -Uri "https://accounts.spotify.com/api/token" -Method Post `
+>>     -Headers @{
+>>         "Content-Type" = "application/x-www-form-urlencoded"
+>>     } `
+>>     -Body @{
+>>         "grant_type"    = "client_credentials"
+>>         "client_id"     = "70b7021a56234ecda100b97df9******"
+>>         "client_secret" = "a5191ccecc734218b92f879346******"
+>>     } 
+    
+access_token
+------------
+BQBf8bmbQ36w84jhmPm6zyN7CuzaekzLF6bwVCpgpiQO-RgRfPssBD198d49BRQiO6sLyADRMaRVfjpzsknWo6JLYta4ZkaK*****... 
+
+
+</code></pre><p>J'ai ainsi l'<em>Access token</em> qui me permet d'interagir avec l'API.</p>
+<p>Je vais maintenant m'attacher à appeler l'API dans un programme JavaScript, afin que lorsque l'utilisateur se connecte avec son compte, des informations basiques apparaissent.
+Il est important de rappeler que pour l'instant, je n'ai créé que du <strong>Front-End</strong>. Je vais créer à l'aide de <a href="https://github.com/vitejs/vite">Vite</a> un serveur de développement.</p>
+<pre class="language-shell line-numbers"><code>
+
+npm create vite@latest spotistats -- --template vanilla
+
+cd spotistats
+npm install
+npm run dev 
+
+
+</code></pre><p>Dans le fichier index.html créé par cette commande Vite, j'ai inséré le contenu de la page Analyse.html, et j'ai fait référence à un script JS que l'on créera ensuite. J'ai ensuite modifié son contenu pour en faire une page dynamique et non statique : par exemple, le nom dans la box en haut à droite doit être celui de la personne connectée et non un string 'Nicolas Ouzouliasse'. J'utilise pour cela des attributs <em>id</em> tels que <code>&lt;span id=&quot;displayName&quot;&gt;</code> qui seront obtenus avec le script JS et l'appel à l'API.</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Cliquez pour afficher le <strong>code HTML</strong> de la page Analyse</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-html line-numbers"><code>
+
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <title>Analyse - Spotistats ✅</title>
+        <link href="stylesAnalyse.css" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+        <script src="src/script.js" type="module"></script>
+    </head>
+    <body>
+        <header>
+            <a href="Accueil.html" style="width: 15%; height: 60%;">
+                <img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beguier-Benoit/pok/temps-2/Allonge.png" class="logo" width="100%" height="100%">
+            </a>
+            <a class="FAQ" href="FAQ.html">FAQ</a>
+            <button onclick="afficherEcran_noir()" class="Connexion">
+                <span id="avatar" width="38" height="39"></span>
+                <span class="ButtonText"><span id="displayName"></span></span>
+            </button>
+        </header>
+
+        <div class="container">
+            <div class="column">
+                <h1> Votre overview.</h1>
+                <p>
+                <li>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </li> 
+                <li>
+                    Sit amet dictum sit amet justo donec. Dolor sed viverra ipsum nunc aliquet 
+                    ibendum enim facilisis.
+                </li>
+                <li>
+                    Erat imperdiet sed euismod nisi porta. Viverra accumsan in nisl nisi scelerisque eu 
+                    ultrices.
+                    In vitae turpis massa sed elementum.
+                </li>
+                <li>Pretium aenean pharetra magna ac placerat vestibulum. Quis vel eros 
+                    donec ac odio tempor.</li>
+                <li>Felis donec et odio pellentesque diam volutpat commodo. 
+                    Et tortor consequat id porta nibh venenatis.</li>  
+                </p>
+            </div>
+            <img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beguier-Benoit/pok/spectre.jpg" class="spectre">
+        </div>
+
+        <div class="container2">
+            <img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beguier-Benoit/pok/Music-features.jpg" class="graphe">
+            <div class="column2">
+                <h1> Vos goûts musicaux.</h1>
+                <p><li>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                    sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </li> 
+                <li>
+                    Sit amet dictum sit amet justo donec. Dolor sed viverra ipsum nunc aliquet 
+                    ibendum enim facilisis.
+                </li>
+                <li>
+                    Erat imperdiet sed euismod nisi porta. Viverra accumsan in nisl nisi scelerisque eu 
+                    ultrices.
+                    In vitae turpis massa sed elementum.
+                </li>
+                <li>Pretium aenean pharetra magna ac placerat vestibulum. Quis vel eros 
+                    donec ac odio tempor.</li>
+                <li>Felis donec et odio pellentesque diam volutpat commodo. 
+                    Et tortor consequat id porta nibh venenatis.</li>
+                </p>
+            </div>
+            
+        </div>
+        
+ 
+
+    </body>
+</html>
+
+
+
+</code></pre></div>
+</details>
+</div>
+<h3>Appel à l'API</h3>
+<p>Nous souhaitons maintenant appeler l'API, de manière automatique dans le script JS.
+Extrait de la documentation <a href="https://developer.spotify.com/">Spotify</a> :</p>
+<ul>
+<li>&quot;Lorsque la page se charge, nous vérifions s'il y a un code dans le string de requête de rappel</li>
+<li>S'il n'y a pas de code, nous redirigerons l'utilisateur vers la page d'autorisation de Spotify.</li>
+<li>Une fois que l'utilisateur a autorisé l'application, Spotify le redirige vers notre application et nous lisons le code dans le string de requête.</li>
+<li>Nous utiliserons ce code pour demander un <em>access token</em> à l'API de Spotify</li>
+<li>Nous utiliserons l'<em>access token</em> pour appeler l'API Web afin d'obtenir les données du profil de l'utilisateur.&quot;</li>
+</ul>
+<p>Je ne pourrais pas expliquer d'une manière plus claire. Pour vérifier l'authenticité de notre requête, nous générons un code unique, appelé <em>PKCE verifier</em> qui est stocké en local et qui va subir une transformation, un <em>hash</em> avec un algorithme. C'est ce code transformé qui va être envoyé dans la <em>user authorization request</em>.</p>
+<p>J'ai aussi ajouté plusieurs fonctions grâce à la documentation :</p>
+<ul>
+<li><code>redirectToAuthCodeFlow(clientId)</code>, qui permet de rediriger l'utilisateur à la page d'autorisation Spotify</li>
+<li><code>getAccessToken(clientId, code)</code>, qui <em>challenge</em> le token généré</li>
+<li><code>fetchProfile(token)</code>, qui appelle l'API et utilise la méthode GET pour obtenir les données d'intérêt</li>
+<li><code>populateUI(profile)</code>, qui permet de récupérer et de remplir les données d'intérêt.</li>
+</ul>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Cliquez pour afficher le <strong>code JavaScript</strong> du script d'appel à l'API</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-shell line-numbers"><code>
+
+const clientId = "70b7021a56234ecda100b97df932edec";
+const params = new URLSearchParams(window.location.search);
+const code = params.get("code");
+
+
+function generateCodeVerifier(length) {
+    let text = '';
+    let possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+    for (let i = 0; i < length; i++) {
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+    }
+    return text;
+}
+
+async function generateCodeChallenge(codeVerifier) {
+    const data = new TextEncoder().encode(codeVerifier);
+    const digest = await window.crypto.subtle.digest('SHA-256', data);
+    return btoa(String.fromCharCode.apply(null, [...new Uint8Array(digest)]))
+        .replace(/\+/g, '-')
+        .replace(/\//g, '_')
+        .replace(/=+$/, '');
+}
+
+if (!code) {
+    redirectToAuthCodeFlow(clientId);
+} else {
+    const accessToken = await getAccessToken(clientId, code);
+    const profile = await fetchProfile(accessToken);
+    populateUI(profile);
+}
+
+export async function redirectToAuthCodeFlow(clientId) {
+    const verifier = generateCodeVerifier(128);
+    const challenge = await generateCodeChallenge(verifier);
+
+    localStorage.setItem("verifier", verifier);
+
+    const params = new URLSearchParams();
+    params.append("client_id", clientId);
+    params.append("response_type", "code");
+    params.append("redirect_uri", "http://localhost:5173/callback");
+    params.append("scope", "user-read-private user-read-email");
+    params.append("code_challenge_method", "S256");
+    params.append("code_challenge", challenge);
+
+    document.location = `https://accounts.spotify.com/authorize?${params.toString()}`;
+}
+
+export async function getAccessToken(clientId, code) {
+    const verifier = localStorage.getItem("verifier");
+
+    const params = new URLSearchParams();
+    params.append("client_id", clientId);
+    params.append("grant_type", "authorization_code");
+    params.append("code", code);
+    params.append("redirect_uri", "http://localhost:5173/callback");
+    params.append("code_verifier", verifier);
+
+    const result = await fetch("https://accounts.spotify.com/api/token", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: params
+    });
+
+    const { access_token } = await result.json();
+    return access_token;
+}
+
+async function fetchProfile(token) {
+    const result = await fetch("https://api.spotify.com/v1/me", {
+        method: "GET", headers: { Authorization: `Bearer ${token}` }
+    });
+
+    return await result.json();
+}
+
+function populateUI(profile) {
+    document.getElementById("displayName").innerText = profile.display_name;
+    if (profile.images[0]) {
+        const profileImage = new Image(200, 200);
+        profileImage.src = profile.images[0].url;
+        document.getElementById("avatar").appendChild(profileImage);
+        document.getElementById("imgUrl").innerText = profile.images[0].url;
+    }
+    document.getElementById("id").innerText = profile.id;
+    document.getElementById("email").innerText = profile.email;
+    document.getElementById("uri").innerText = profile.uri;
+    document.getElementById("uri").setAttribute("href", profile.external_urls.spotify);
+    document.getElementById("url").innerText = profile.href;
+    document.getElementById("url").setAttribute("href", profile.href);
+}
+
+
+</code></pre></div>
+</details>
+</div>
+<p>Après exécution d'un rapide <code>npm run dev</code> dans la console, j'obtiens le résultat suivant :
+<img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beguier-Benoit/pok/temps-2/Accepter.png" alt="cc">
+<img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beguier-Benoit/pok/temps-2/Connected.png" alt="connexion"></p>
+<p>Au-delà du CSS qui est absent, j'obtiens bien la page d'authentification de Spotify appelée par l'API, et je suis effectivement redirigé ensuite vers la bonne page avec ma photo de profil et mon prénom récupérés sur mon compte Spotify.</p>
+<h3>Recherche des visualisations de données musicales existantes, et lesquelles sont pertinentes dans mon cas</h3>
+<p>Je choisis d'abord, comme annoncé en préambule, de visualiser les genres de musiques écoutés par l'utilisateur sur un graphique. J'aimerais aussi afficher les 5 artistes favoris de l'utilisateur.</p>
+<p>Enfin, la visualisation des paramètres des musiques pourrait être affiché de telle sorte :
+<img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beguier-Benoit/pok/temps-2/Music-features.jpg" alt="alt">
+Source de l'image : Researchgate</p>
+<h3>Récupérer le top artiste et genres de l'utilisateur</h3>
+<p>Pour récupérer le top artiste et genres de l'utilisateur, la méthode précédente ne suffit pas : ce ne sont pas des <em>datas</em> remplies dans son profil, mais des <em>datas</em> qu'il faut extraire de manière dynamique avec une méthode <em>GET()</em>. Je modifie donc le script Javascript et je rajoute dans le code HTML une liste pour afficher les 5 top artistes.</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Cliquez pour afficher le <strong>code JavaScript</strong> du script d'appel à l'API avec les Top</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-shell line-numbers"><code>
+
+const clientId = "70b7021a56234ecda100b97df932edec";
+const params = new URLSearchParams(window.location.search);
+const code = params.get("code");
+
+function generateCodeVerifier(length) {
+    let text = '';
+    let possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+    for (let i = 0; i < length; i++) {
+        text += possible.charAt(Math.floor(Math.random() * possible.length));
+    }
+    return text;
+}
+
+async function generateCodeChallenge(codeVerifier) {
+    const data = new TextEncoder().encode(codeVerifier);
+    const digest = await window.crypto.subtle.digest('SHA-256', data);
+    return btoa(String.fromCharCode.apply(null, [...new Uint8Array(digest)]))
+        .replace(/\+/g, '-')
+        .replace(/\//g, '_')
+        .replace(/=+$/, '');
+}
+
+async function fetchTopArtists(token) {
+    const apiUrl = 'https://api.spotify.com/v1/me/top/artists?time_range=medium_term&limit=5&offset=0';
+
+    const result = await fetch(apiUrl, {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+        },
+    });
+
+    return await result.json();
+}
+
+async function fetchTopTracks(token) {
+    const apiUrl = 'https://api.spotify.com/v1/me/top/tracks?time_range=medium_term&limit=5&offset=0';
+
+    const result = await fetch(apiUrl, {
+        method: 'GET',
+        headers: {
+            'Authorization': `Bearer ${token}`,
+        },
+    });
+
+    return await result.json();
+}
+
+if (!code) {
+    redirectToAuthCodeFlow(clientId);
+} else {
+    const accessToken = await getAccessToken(clientId, code);
+    const profile = await fetchProfile(accessToken);
+    const topArtists = await fetchTopArtists(accessToken);
+    const topTracks = await fetchTopTracks(accessToken);
+
+    populateUI(profile, topArtists, topTracks);
+}
+
+export async function redirectToAuthCodeFlow(clientId) {
+    const verifier = generateCodeVerifier(128);
+    const challenge = await generateCodeChallenge(verifier);
+
+    localStorage.setItem("verifier", verifier);
+
+    const params = new URLSearchParams();
+    params.append("client_id", clientId);
+    params.append("response_type", "code");
+    params.append("redirect_uri", "http://localhost:5173/callback");
+    params.append("scope", "user-read-private user-read-email");
+    params.append("code_challenge_method", "S256");
+    params.append("code_challenge", challenge);
+
+    document.location = `https://accounts.spotify.com/authorize?${params.toString()}`;
+}
+
+export async function getAccessToken(clientId, code) {
+    const verifier = localStorage.getItem("verifier");
+
+    const params = new URLSearchParams();
+    params.append("client_id", clientId);
+    params.append("grant_type", "authorization_code");
+    params.append("code", code);
+    params.append("redirect_uri", "http://localhost:5173/callback");
+    params.append("code_verifier", verifier);
+
+    const result = await fetch("https://accounts.spotify.com/api/token", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: params
+    });
+
+    const { access_token } = await result.json();
+    return access_token;
+}
+
+async function fetchProfile(token) {
+    const result = await fetch("https://api.spotify.com/v1/me", {
+        method: "GET", headers: { Authorization: `Bearer ${token}` }
+    });
+
+    return await result.json();
+}
+
+function populateUI(profile, topArtists) {
+    document.getElementById("displayName").innerText = profile.display_name;
+
+    if (profile.images[0]) {
+        const profileImage = new Image(200, 200);
+        profileImage.src = profile.images[0].url;
+        document.getElementById("avatar").appendChild(profileImage);
+        document.getElementById("imgUrl").innerText = profile.images[0].url;
+    }
+
+    document.getElementById("id").innerText = profile.id;
+    document.getElementById("email").innerText = profile.email;
+    document.getElementById("uri").innerText = profile.uri;
+    document.getElementById("uri").setAttribute("href", profile.external_urls.spotify);
+    document.getElementById("url").innerText = profile.href;
+    document.getElementById("url").setAttribute("href", profile.href);
+
+    if (topArtists && topArtists.items) {
+        const topArtistsList = document.getElementById("topArtistsList");
+        topArtistsList.innerHTML = ""; 
+
+        topArtists.items.forEach(artist => {
+            const listItem = document.createElement("li");
+            listItem.innerText = artist.name;
+            topArtistsList.appendChild(listItem);
+        });
+    }
+
+    if (topTracks && topTracks.items) {
+        const topTracksList = document.getElementById("topTracksList");
+        topTracksList.innerHTML = "";
+
+        topTracks.items.forEach(track => {
+            const listItem = document.createElement("li");
+            listItem.innerText = `${track.name} - ${track.artists.map(artist => artist.name).join(', ')}`;
+            topTracksList.appendChild(listItem);
+        });
+    }
+}
+
+
+
+</code></pre></div>
+</details>
+</div>
+<p>et on adapte le code HTML pour intégrer les réponses de l'API : <code>topTracksList</code> et <code>topArtistsList</code>.</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Cliquez pour afficher le <strong>code HTML</strong> adapté avec les Tops</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-shell line-numbers"><code>
+
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <title>Analyse - Spotistats ✅</title>
+        <link href="stylesAnalyse.css" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+        <script src="src/script.js" type="module"></script>
+    </head>
+    <body>
+        <header>
+            <a href="Accueil.html" style="width: 15%; height: 60%;">
+                <img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beguier-Benoit/pok/temps-2/Allonge.png" class="logo" width="100%" height="100%">
+            </a>
+            <a class="FAQ" href="FAQ.html">FAQ</a>
+            <button class="Connexion">
+                <span id="avatar" width="38" height="39"></span>
+                <span class="ButtonText"><span id="displayName"></span></span>
+            </button>
+        </header>
+
+        <div class="container">
+            <div class="column">
+                <h1> Votre top 5 des artistes les plus écoutés.</h1>
+                <p>
+                    </p><ul id="topArtistsList"></ul> 
+                <p></p>
+            </div>
+            <img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beguier-Benoit/pok/spectre.jpg" class="spectre">
+        </div>
+
+        <div class="container2">
+            <img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beguier-Benoit/pok/Music-features.jpg" class="graphe">
+            <div class="column2">
+                <h1> Votre top 5 des musiques les plus écoutées.</h1>
+                <p></p><ul id="topTracksList"></ul>
+                <p></p>
+            </div>
+            
+        </div>
+        
+    </body>
+</html>
+
+
+
+</code></pre></div>
+</details>
+</div>
+<p>Quand je lance l'API, j'obtiens maintenant mon TOP artiste et musique. La photo de profil a disparu, c'est un petit bug sur lequel je m'attarderai après. Le CSS est aussi à adapter, mais ce n'est pas le but de mon projet.</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beguier-Benoit/pok/temps-2/Analyse1.png" alt="alt">
+<img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beguier-Benoit/pok/temps-2/Analyse2.png" alt="alt"></p>
+<h2>Retour d'expérience du Sprint 2</h2>
+<p>J'ai réussi à lier l'API Spotify avec mon front-end pour permettre à l'utilisateur de s'identifier, et d'arriver sur une page qui <em>display</em> ses informations personnalisées et ses top artistes/musiques. C'est globalement l'idée que j'avais de mon POK.
+Par contre je n'ai pas eu le temps de m'attarder sur la visualisation des données car la partie API m'a pris beaucoup plus de temps que prévu.</p>
+<p>Bilan du temps passé :</p>
+<ul>
+<li>Créer la page principale en HTML et y définir les styles en CSS (★☆☆☆☆, <strong>1 heure estimée</strong>, 1 heure réelle)</li>
+<li>Documentation sur les API de Spotify, leur intégration et leurs features (★☆☆☆☆, <strong>2 heures estimées</strong>, 2 heures réelles)</li>
+<li>Lier l'API de Spotify avec mon bouton Connexion (★★★☆☆, <strong>2 heures estimées</strong>, 4 heures réelles)</li>
+<li>Comprendre comment récupérer les données de l'utilisateur qui s'est connecté (★★★☆☆, <strong>2 heures estimées</strong>, 3 heures réelles)</li>
+<li>Rechercher les visualisations de données musicales existantes, et lesquelles sont pertinentes dans mon cas (★☆☆☆☆, <strong>0 heure 30 estimée</strong>, 0h30 réelle)</li>
+<li>Déterminer quelle technologie utiliser pour la visualisation (★☆☆☆☆, <strong>0 heure 30 estimée</strong>)</li>
+<li>Réaliser une première visualisation des données de l'utilisateur, sous une forme à préciser (★★★☆☆, <strong>2 heures estimées</strong>)</li>
+</ul>
+
+
+
+</article>
+
+        </main>
+
+
+        <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-center items-center">
+                    <p class="text-center">
+                        {% title %} : Développement et Organisation en IT
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- MathJax import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">
+            window.MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']], // Delimiters for inline math
+                    displayMath: [['$$', '$$'], ['\\[', '\\]']] // Delimiters for block math
+                },
+                svg: {
+                    fontCache: 'global' // Use global font cache for SVG output
+                }
+            };
+            document.addEventListener('DOMContentLoaded', () => {
+                MathJax.typeset(); // Ensures MathJax processes the content after the page loads
+            });
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">
+            Prism.plugins.NormalizeWhitespace.setDefaults({
+                'remove-trailing': true,
+                'remove-indent': true,
+                'left-trim': true,
+                'right-trim': true,
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script>
+    </body>
+</html>
