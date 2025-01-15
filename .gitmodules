@@ -1,12 +1,16 @@
 [submodule "src/promos/2022-2023"]
 	path = src/promos/2022-2023
 	url = https://github.com/do-it-ecm/promo-2022-2023.git
+	branch = main
 [submodule "src/promos/2023-2024"]
 	path = src/promos/2023-2024
 	url = https://github.com/do-it-ecm/promo-2023-2024.git
+	branch = main
 [submodule "src/promos/2024-2025"]
 	path = src/promos/2024-2025
 	url = https://github.com/do-it-ecm/promo-2024-2025.git
+	branch = main
 [submodule "src/cs"]
 	path = src/cs
 	url = https://github.com/do-it-ecm/courses.git
+	branch = main
