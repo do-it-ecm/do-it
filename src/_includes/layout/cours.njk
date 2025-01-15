@@ -41,7 +41,7 @@ eleventyComputed:
 }
 
 /* Only show burger on small screens */
-@media (max-width: 1024px) {
+@media (max-width: 1500px) {
   #burger-button {
     display: block;
   }
@@ -58,7 +58,7 @@ eleventyComputed:
 }
 
 /* Hide burger and ensure sidebar is static on larger screens */
-@media (min-width: 1025px) {
+@media (min-width: 1501px) {
   #burger-button {
     display: none;
   }
@@ -209,7 +209,7 @@ window.addEventListener('scroll', () => {
     const sidebar = document.getElementById('sidebar');
     const currentScroll = window.scrollY;
     // Hide the burger button if max width is reached
-    if (window.innerWidth > 1024) {
+    if (window.innerWidth > 1500) {
         burger.style.display = 'none';
     } else if (currentScroll < 10 || currentScroll < lastScrollY) {
         burger.style.display = 'block';
