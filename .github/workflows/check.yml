@@ -39,6 +39,7 @@ jobs:
         run: |
           git submodule sync
           git submodule update --init --recursive
+          git submodule foreach "git fetch origin main && git reset --hard origin/main"
 
       # Cache Git Submodules
       - name: Cache Git Submodules

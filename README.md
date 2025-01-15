@@ -54,6 +54,8 @@ If you don't have npm installed, you can follow the installation workflow using 
 ```bash
 git clone --recurse-submodules https://github.com/do-it-ecm/do-it.git
 cd do-it
+git submodule foreach "git checkout main"
+git submodule foreach "git pull origin main"
 npm install
 ```
 
