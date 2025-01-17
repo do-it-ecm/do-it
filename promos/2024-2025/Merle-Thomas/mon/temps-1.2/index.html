@@ -1,0 +1,907 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Developpement FrontEnd en Javascript</title>
+
+        <!-- Prismjs imports
+                - Prism core
+                - Prism line numbers
+                - Prism copy to clipboard
+                - Prism autoloader
+        -->
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png">
+
+        <!-- Mermaid import and initialization -->
+        <script type="module" defer="">
+            import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/+esm';
+            mermaid.initialize({
+                startOnLoad: true,
+            });
+        </script>
+
+        <link href="/assets/stylesheets/main.css" rel="stylesheet">
+
+    </head>
+
+    <body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000">
+        <header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-between items-center">
+                    <a class="mx-2" href="/">Home</a>
+                    <div class="flex items-center gap-4 sm:gap-6 ">
+                        <a class="" href="/cs">CS</a>
+                        <a class="" href="/pok">POK</a>
+                        <a class="" href="/mon">MON</a>
+                        <a class="" href="/projets">Projets</a>
+                        <a class="hidden sm:block" href="/promos">Promos</a>
+                        <a href="/search">
+                            <svg class="h-5 aspect-square" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+                            </svg>
+                        </a>
+                        <a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank">
+                            <svg class="h-5 aspect-square" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body="">
+            
+<article class="relative">
+<h1 class="mb-1">Developpement FrontEnd en Javascript</h1>
+<div class="mb-4">
+    
+        <div class="px-4 flex flex-wrap items-center">
+            
+                <div class="font-bold">Tags : </div>
+            
+            <ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags">
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">MON</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">Developpement FrontEnd</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">JavaScript</li>
+                
+
+            </ul>
+
+            
+            <div class="hidden" data-pagefind-meta="Type">
+                
+                    
+                        <span data-pagefind-filter="Type">MON</span>
+                    
+                
+                    
+                
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Auteurs : </div>
+            <ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs">
+                
+                    <li class="bg-blue-200 rounded-full px-2" data-pagefind-filter="Auteurs">Thomas Merle</li>
+                
+            </ul>
+        </div>
+    
+
+    
+        <div class="absolute top-0 right-0">
+            <span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2" data-pagefind-filter="Année">
+                2024-2025
+            </span>
+        </div>
+    
+</div>
+
+        <p class="mb-4 text-lg">
+
+                Ce MON a pour objectif de m'initier au language JavaScript pour coder le FrontEnd de mon 1er site de DarkKitchen. Pour ce faire, j'ai suivi les cours de Mr Brucker de développement Web sur le site do-it ainsi que les MON des élèves des années précédentes. J'ai également suivi le tutoriel W3School qui est accompagné de petits exercices sur un éditeur en ligne. La plus grande partie du MON a été passé sur le suivi d'un tutoriel javascrip-koans, dont le code a été téléchargé sur GitHub et qui propose d'apprendre la language JavaScript à partir d'une série d'exercices de code à trous qui doivent passer différents tests.
+
+        </p>
+
+
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/promos/2024-2025/Merle-Thomas/">Thomas Merle</a><span class="px-1">/</span><a href="/promos/2024-2025/Merle-Thomas/mon/">MONs de Thomas Merle</a><span class="px-1">/</span><a href="/promos/2024-2025/Merle-Thomas/mon/temps-1.2/">Developpement FrontEnd en Javascript</a>
+
+</div></div>
+
+
+
+
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Prérequis</b></p>
+</div><div class="pl-8 mr-8">
+<p>Languages HTML/CSS</p>
+</div></div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Liens</b></p>
+</div><div class="pl-8 mr-8">
+<p><a href="https://www.w3schools.com/js/default.asp"><code>W3School</code></a>
+<a href="https://francoisbrucker.github.io/do-it/promos/2024-2025/Merle-Thomas/mon/temps-1.1/"><code>MON1: HTML/CSS</code></a>
+<a href="https://francoisbrucker.github.io/do-it/promos/2024-2025/Merle-Thomas/pok/temps-1/"><code>POK1: Asian Fried Rice - FrontEnd</code></a></p>
+</div></div>
+
+<p>Quelques phrases permettant de connaître, sans jargon ni blabla, le contenu de ce MON. On oubliera pas de donner :</p>
+<ul>
+<li>le niveau et les prérequis nécessaires en utilisant la balise <a href="/contribuer/shortcodes/#prerequis"><code>prerequis</code></a></li>
+<li>les autres POK &amp; MON en rapport en utilisant la balise <a href="/contribuer/shortcodes/#lien"><code>lien</code></a></li>
+</ul>
+<h2>Table des matières<a name="table-des-matières"></a></h2>
+<ul>
+<li><a href="#table-des-mati%C3%A8res">Table des matières</a></li>
+<li><a href="#contenu">Contenu</a></li>
+<li><a href="#pr%C3%A9sentation-du-tutoriel-javascript-koans">Présentation du tutoriel javascript-koans</a>
+<ul>
+<li><a href="#1-g%C3%A9n%C3%A9ralit%C3%A9s">1. Généralités</a></li>
+<li><a href="#2-running-the-koans">2. Running the koans</a></li>
+<li><a href="#3-premier-exemple-dexercice--aboutarrays-compl%C3%A9t%C3%A9">3. Premier exemple d'exercice : AboutArrays complété</a></li>
+<li><a href="#4-2%C3%A8me-exemple-dexercice--aboutfunctions-compl%C3%A9t%C3%A9">4. 2ème exemple d'exercice : AboutFunctions complété</a></li>
+<li><a href="#5-3%C3%A8me-exemple-dexercice--aboutobjects-non-compl%C3%A9t%C3%A9">5. 3ème exemple d'exercice : AboutObjects non complété</a></li>
+<li><a href="#6-passage-des-tests">6. Passage des tests</a></li>
+</ul>
+</li>
+<li><a href="#tutoriel-w3school-js">Tutoriel W3School JS</a>
+<ul>
+<li><a href="#1-variables">1. Variables</a></li>
+<li><a href="#2-objets">2. Objets</a></li>
+<li><a href="#3-classes">3. Classes</a></li>
+</ul>
+</li>
+<li><a href="#horodateur">Horodateur</a></li>
+</ul>
+<h2>Contenu</h2>
+<h2>Présentation du tutoriel javascript-koans<a name="présentation-du-tutoriel-javascript-koans"></a></h2>
+<h3><span style="color: blue">1. Généralités<a name="1-généralités"></a></span></h3>
+<p>Basé sur le tutoriel de Edgecase <a href="http://github.com/edgecase/ruby_koans">Ruby koans</a>, l'objectif des koans Javascript est d'enseigner la programmation Javascript par le biais de <strong>tests</strong> et de <strong>code à trous</strong>.</p>
+<p>Lien vers le code :
+<a href="http://github.com/edgecase/javascript-koans">JavaScript koans</a></p>
+<p>Lors de la première execution, une erreur d'exécution apparaît, ainsi qu'une indication qui montre où l'erreur s'est produite. L'objectif est de faire disparaître l'erreur dans le code. En corrigeant chaque erreur, je vais apprendre une notion particulière sur le langage Javascript et la programmation fonctionnelle en général.</p>
+<p>Le tutoriel d'apprentissage Javascript commence dans le fichier <em>koans/AboutExpects.js</em>. Ces premiers koans sont assez simples au départ! Au fur et à mesure que je progresse dans les koans, de plus en plus de syntaxe Javascript est introduite, ce qui m'a permis de résoudre des problèmes de plus en plus compliqués et d'utiliser des techniques plus avancées.</p>
+<h3><span style="color: blue">2. Running the koans<a name="2-running-the-koans"></a></span></h3>
+<p>Pour compléter les exercices et visualiser le passage des tests, il suffit de <strong>RUN</strong> le fichier <em>KoansRunnner.html</em> dans le navigateur du système, ici <strong>Google Chrome</strong>. Pour ce faire j'ai dû télécharger l'extension <strong>RunServer</strong> de VsCode.</p>
+<p>La première erreur se trouve dans <em>koans/AboutExpects.js</em>. Je l'ai corrigé et ai lancé le premier test. A chaque complétion, il suffit de rafraîchir le navigateur pour voir si on passe les tests ou non, jusqu'à ce que tous les tests deviennent verts.</p>
+<p>Le gestionnaire de tests utilisé est <a href="http://jasmine.github.io/">Jasmine</a> avec un visualiseur de rapport personnalisé.</p>
+<h3><span style="color: blue">3. Premier exemple d'exercice : AboutArrays complété<a name="3-premier-exemple-dexercice--aboutarrays-complété"></a></span></h3>
+<pre class="line-numbers"><code>
+
+describe("About Arrays", function() {
+
+  //We shall contemplate truth by testing reality, via spec expectations.
+  it("should create arrays", function() {
+    var emptyArray = [];
+    expect(typeof(emptyArray)).toBe("object"); //A mistake? - http://javascript.crockford.com/remedial.html
+    expect(emptyArray.length).toBe(0);
+
+    var multiTypeArray = [0, 1, "two", function () { return 3; }, {value1: 4, value2: 5}, [6, 7]];
+    expect(multiTypeArray[0]).toBe(0);
+    expect(multiTypeArray[2]).toBe('two');
+    expect(multiTypeArray[3]()).toBe(3);
+    expect(multiTypeArray[4].value1).toBe(4);
+    expect(multiTypeArray[4]["value2"]).toBe(5);
+    expect(multiTypeArray[5][0]).toBe(6);
+  });
+
+  it("should understand array literals", function () {
+    var array = [];
+    expect(array).toEqual([]);
+
+    array[0] = 1;
+    expect(array).toEqual([1]);
+
+    array[1] = 2;
+    expect(array).toEqual([1, 2]);
+
+    array.push(3);
+    expect(array).toEqual([1, 2, 3]);
+  });
+
+  it("should understand array length", function () {
+    var fourNumberArray = [1, 2, 3, 4];
+
+    expect(fourNumberArray.length).toBe(4);
+    fourNumberArray.push(5, 6);
+    expect(fourNumberArray.length).toBe(6);
+
+    var tenEmptyElementArray = new Array(10);
+    expect(tenEmptyElementArray.length).toBe(10);
+
+    tenEmptyElementArray.length = 5;
+    expect(tenEmptyElementArray.length).toBe(5);
+  });
+
+  it("should slice arrays", function () {
+    var array = ["peanut", "butter", "and", "jelly"];
+
+    expect(array.slice(0, 1)).toEqual(['peanut']);
+    expect(array.slice(0, 2)).toEqual(['peanut', 'butter']);
+    expect(array.slice(2, 2)).toEqual([]);
+    expect(array.slice(2, 20)).toEqual(['and', 'jelly']);
+    expect(array.slice(3, 0)).toEqual([]);
+    expect(array.slice(3, 100)).toEqual(['jelly']);
+    expect(array.slice(5, 1)).toEqual([]);
+  });
+
+  it("should know array references", function () {
+    var array = [ "zero", "one", "two", "three", "four", "five" ];
+
+    function passedByReference(refArray) {
+        refArray[1] = "changed in function";
+    }
+    passedByReference(array);
+    expect(array[1]).toBe('changed in function');
+
+    var assignedArray = array;
+    assignedArray[5] = "changed in assignedArray";
+    expect(array[5]).toBe('changed in assignedArray');
+
+    var copyOfArray = array.slice();
+    copyOfArray[3] = "changed in copyOfArray";
+    expect(array[3]).toBe('three');
+  });
+
+  it("should push and pop", function () {
+    var array = [1, 2];
+    array.push(3);
+
+    expect(array).toEqual([1, 2, 3]);
+
+    var poppedValue = array.pop();
+    expect(poppedValue).toBe(3);
+    expect(array).toEqual([1, 2]);
+  });
+
+  it("should know about shifting arrays", function () {
+    var array = [1, 2];
+
+    array.unshift(3);
+    expect(array).toEqual([3, 1, 2]);
+
+    var shiftedValue = array.shift();
+    expect(shiftedValue).toEqual(3);
+    expect(array).toEqual([1, 2]);
+  });
+});
+
+
+</code></pre><h3><span style="color: blue">4. 2ème exemple d'exercice : AboutFunctions complété<a name="4-2ème-exemple-dexercice--aboutfunctions-complété"></a></span></h3>
+<pre class="line-numbers"><code>
+
+describe("About Functions", function() {
+
+  it("should declare functions", function() {
+
+    function add(a, b) {
+      return a + b;
+    }
+
+    expect(add(1, 2)).toBe(3);
+  });
+
+  it("should know internal variables override outer variables", function () {
+    var message = "Outer";
+
+    function getMessage() {
+      return message;
+    }
+
+    function overrideMessage() {
+      var message = "Inner";
+      return message;
+    }
+
+    expect(getMessage()).toBe('Outer');
+    expect(overrideMessage()).toBe('Inner');
+    expect(message).toBe('Outer');
+  });
+
+  it("should have lexical scoping", function () {
+    var variable = "top-level";
+    function parentfunction() {
+      var variable = "local";
+      function childfunction() {
+        return variable;
+      }
+      return childfunction();
+    }
+    expect(parentfunction()).toBe('local');
+  });
+
+  it("should use lexical scoping to synthesise functions", function () {
+
+    function makeMysteryFunction(makerValue)
+    {
+      var newFunction = function doMysteriousThing(param)
+      {
+        return makerValue + param;
+      };
+      return newFunction;
+    }
+
+    var mysteryFunction3 = makeMysteryFunction(3);
+    var mysteryFunction5 = makeMysteryFunction(5);
+
+    expect(mysteryFunction3(10) + mysteryFunction5(5)).toBe(23);
+  });
+
+  it("should allow extra function arguments", function () {
+
+    function returnFirstArg(firstArg) {
+      return firstArg;
+    }
+
+    expect(returnFirstArg("first", "second", "third")).toBe('first');
+
+    function returnSecondArg(firstArg, secondArg) {
+      return secondArg;
+    }
+
+    expect(returnSecondArg("only give first arg")).toBe(undefined);
+
+    function returnAllArgs() {
+      var argsArray = [];
+      for (var i = 0; i < arguments.length; i += 1) {
+        argsArray.push(arguments[i]);
+      }
+      return argsArray.join(",");
+    }
+
+    expect(returnAllArgs("first", "second", "third")).toBe('first,second,third');
+  });
+
+  it("should pass functions as values", function () {
+
+    var appendRules = function (name) {
+      return name + " rules!";
+    };
+
+    var appendDoubleRules = function (name) {
+      return name + " totally rules!";
+    };
+
+    var praiseSinger = { givePraise: appendRules };
+    expect(praiseSinger.givePraise("John")).toBe('John rules!');
+
+    praiseSinger.givePraise = appendDoubleRules;
+    expect(praiseSinger.givePraise("Mary")).toBe('Mary totally rules!');
+
+  });
+});
+
+
+</code></pre><h3><span style="color: blue">5. 3ème exemple d'exercice : AboutObjects non complété<a name="5-3ème-exemple-dexercice--aboutobjects-non-complété"></a></span></h3>
+<pre class="line-numbers"><code>
+
+describe("About Objects", function () {
+
+  describe("Properties", function () {
+    var megalomaniac;
+
+    beforeEach(function () {
+       megalomaniac = {  mastermind: "Joker", henchwoman: "Harley" };
+    });
+
+    it("should confirm objects are collections of properties", function () {
+      expect(megalomaniac.mastermind).toBe(FILL_ME_IN);
+    });
+
+    it("should confirm that properties are case sensitive", function () {
+      expect(megalomaniac.henchwoman).toBe(FILL_ME_IN);
+      expect(megalomaniac.henchWoman).toBe(FILL_ME_IN);
+    });
+  });
+
+
+  it("should know properties that are functions act like methods", function () {
+    var megalomaniac = {
+      mastermind : "Brain",
+      henchman: "Pinky",
+      battleCry: function (noOfBrains) {
+        return "They are " + this.henchman + " and the" +
+          Array(noOfBrains + 1).join(" " + this.mastermind);
+      }
+    };
+
+    var battleCry = megalomaniac.battleCry(4);
+    expect(FILL_ME_IN).toMatch(battleCry);
+  });
+
+  it("should confirm that when a function is attached to an object, 'this' refers to the object", function () {
+    var currentDate = new Date();
+    var currentYear = (currentDate.getFullYear());
+    var megalomaniac = {
+      mastermind: "James Wood",
+      henchman: "Adam West",
+      birthYear: 1970,
+      calculateAge: function () {
+        return currentYear - this.birthYear;
+      }
+    };
+
+    expect(currentYear).toBe(FILL_ME_IN);
+    expect(megalomaniac.calculateAge()).toBe(FILL_ME_IN);
+  });
+
+  describe("'in' keyword", function () {
+    var megalomaniac;
+    beforeEach(function () {
+      megalomaniac = {
+        mastermind: "The Monarch",
+        henchwoman: "Dr Girlfriend",
+        theBomb: true
+      };
+    });
+
+    it("should have the bomb", function () {
+
+      var hasBomb = "theBomb" in megalomaniac;
+
+      expect(hasBomb).toBe(FILL_ME_IN);
+    });
+
+    it("should not have the detonator however", function () {
+
+      var hasDetonator = "theDetonator" in megalomaniac;
+
+      expect(hasDetonator).toBe(FILL_ME_IN);
+    });
+  });
+
+  it("should know that properties can be added and deleted", function () {
+    var megalomaniac = { mastermind : "Agent Smith", henchman: "Agent Smith" };
+
+    expect("secretary" in megalomaniac).toBe(FILL_ME_IN);
+
+    megalomaniac.secretary = "Agent Smith";
+    expect("secretary" in megalomaniac).toBe(FILL_ME_IN);
+
+    delete megalomaniac.henchman;
+    expect("henchman" in megalomaniac).toBe(FILL_ME_IN);
+  });
+
+
+  it("should use prototype to add to all objects", function () {
+      function Circle(radius)
+      {
+        this.radius = radius;
+      }
+
+      var simpleCircle = new Circle(10);
+      var colouredCircle = new Circle(5);
+      colouredCircle.colour = "red";
+
+      expect(simpleCircle.colour).toBe(FILL_ME_IN);
+      expect(colouredCircle.colour).toBe(FILL_ME_IN);
+
+      Circle.prototype.describe = function () {
+        return "This circle has a radius of: " + this.radius;
+      };
+
+      expect(simpleCircle.describe()).toBe(FILL_ME_IN);
+      expect(colouredCircle.describe()).toBe(FILL_ME_IN);
+  });
+});
+
+
+</code></pre><h3><span style="color: blue">6. Passage des tests<a name="6-passage-des-tests"></a></span></h3>
+<p>Voici comment se présente la page de passage des tests pour suivre notre avancée dans le tutoriel :</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Merle-Thomas/mon/temps-1.2/test-js-koans.png" alt="Tests js-koans"></p>
+<h2>Tutoriel W3School JS<a name="tutoriel-w3school-js"></a></h2>
+<p>Comme pour les languages HTML et CSS, j'ai utilisé le tutoriel W3School pour apprendre les bases de JS. J'ai suivi les cours puis réalisé chaque exercices de chaque partie grâce à l'éditeur de code en ligne. Ces tutoriels sont vraiment bien fiat pour ceux qui veulent apprendre les bases des languages du FrontEnd, même s'ils sont très longs car traitent de toutes les notions de chaque language, donc difficile de faire le tri sur ce dont on a besoin dès le départ de l'apprentissage.</p>
+<h3><span style="color: blue">1. Variables<a name="1-variables"></a></span></h3>
+<p>Les variables en JS peuvent être déclarées selon 4 possibilités :</p>
+<ul>
+<li>automatiquement</li>
+<li>utilisant <code>var</code></li>
+<li>utilisant <code>const</code></li>
+<li>utilisant <code>let</code></li>
+</ul>
+<p>Comment choisir parmi ces possibilités ?</p>
+<ol>
+<li>Il faut toujours déclaré ses varaiables</li>
+<li>Toujours utiliser <code>const</code> si la variables est fixe</li>
+<li>Toujours utiliser <code>const</code> si le type de variable est fixe (Arrays and Objects)</li>
+<li>Utiliser seulement ``letv` si on ne peut utiliser <em>const</em></li>
+<li>Utiliser <em>var</em> seulement pour les anciens navigateurs.</li>
+</ol>
+<p>Toutes les variables en JS sont définis par des identificateurs qui sont uniques. On peut leur donner des noms court (x ou y) ou des noms plus descriptifs comme <code>age</code>, <code>titre</code>, <code>couleur</code> etc.</p>
+<p>Voici un tableau récapitulant les utilisation des différrents types de déclarations de variables :</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Scope</th>
+<th>Redeclare</th>
+<th>Reassign</th>
+<th>Hoisted</th>
+<th>Binds this</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>var</code></td>
+<td>No</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>let</code></td>
+<td>Yes</td>
+<td>No</td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+</tr>
+<tr>
+<td><code>const</code></td>
+<td>Yes</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<h3><span style="color: blue">2. Objets<a name="2-objets"></a></span></h3>
+<p>En JS, on utlise des objets qui possèdent plusieurs propriétés que l'on définit et on peut ensuite accéder à ces propriétés. Prenons l'exemple d'une voiture comme dans le tutoriel :</p>
+<pre class="line-numbers"><code>
+
+const car = {
+  "name": "Fiat",
+  "model": "500",
+  "weight":800,
+  "color": "white"
+};
+
+
+</code></pre><p>L'objet car possède 4 propriétés : name, model, weight et color.</p>
+<p>Il est également possible de créer un objet et y ajouter ses propriétés :</p>
+<pre class="line-numbers"><code>
+
+// Create an Object
+const car = {};
+
+// Add Properties
+car.name= "Fiat";
+car.model= "500";
+car.weight= 800;
+car.color= "white"
+
+
+</code></pre><p>En utilisant le mot clé <code>new Object ()</code> cela donne :</p>
+<pre class="line-numbers"><code>
+
+// Create an Object
+const car = new Object{};
+
+// Add Properties
+car.name= "Fiat";
+car.model= "500";
+car.weight= 800;
+car.color= "white"
+
+
+</code></pre><p>Il est possible ensuite d'accéder au différentes propriétés de l'objet de la manière suivante :</p>
+<pre class="line-numbers"><code>
+
+objectName.propertyName
+objectName["propertyName"]
+
+
+</code></pre><p>Ou d'utiliser le mot clé <em>let</em> :</p>
+<pre class="line-numbers"><code>
+
+let weight = car.weight;
+let weigjt = car["weight"];
+let weight = car[x];
+
+
+</code></pre><p>Il est possible d'ajouter et d'en supprimer des nouvelles propriétés à tous les objets :</p>
+<pre class="line-numbers"><code>
+
+//Add property
+car.launch = "2015";
+
+//Delete property
+delete car.weight;
+
+
+</code></pre><p>Les objets possèdent des propriétés mais également des <strong>Méthodes</strong>, ce sont des actions réalisées par les objets qui sont définies comme des fonctions et stockées sous forme de propriétés de l'objet :</p>
+<pre class="line-numbers"><code>
+
+const car = {
+  "name": "Fiat",
+  "model": "500",
+  "weight":800,
+  "color": "white"
+  modelName : function() {
+    return this.name + " " + this.model};
+};
+
+
+</code></pre><p>En JS, les objets ne sont pas figés et leurs propriétés peuvent être modifiées :</p>
+<pre class="line-numbers"><code>
+
+//Create an Object
+const car = {
+  "name": "Fiat",
+  "model": "500",
+  "weight":800,
+  "color": "white";
+
+// Create a copy
+const x= car ;
+
+// Change Color in both
+x.color = "blue";
+};
+
+
+</code></pre><p>Il y a plusieurs façon d'afficher un Objet en JS :</p>
+<ul>
+<li>On affiche les propriétés de l'objet par nom</li>
+</ul>
+<pre class="line-numbers"><code>
+
+//Create an Object
+const car = {
+  "name": "Fiat",
+  "model": "500",
+  "weight":800,
+  "color": "white";
+};
+// Display Properties
+document.getElementById("demo").innerHTML =
+car.name + "," + car.model + "," + car.color;
+
+
+</code></pre><ul>
+<li>On affiche les propriétés de l'objet dans une boucle</li>
+</ul>
+<pre class="line-numbers"><code>
+
+//Create an Object
+const car = {
+  "name": "Fiat",
+  "model": "500",
+  "weight":800,
+  "color": "white";
+};
+// Build a Text
+let text = "";
+for (let x in car) {
+  text += car[x] + " ";
+};
+// Display Properties
+document.getElementById("demo").innerHTML=text;
+
+
+</code></pre><ul>
+<li>On affiche l'objet à l'aide de <code>Object.values()</code></li>
+</ul>
+<pre class="line-numbers"><code>
+
+//Create an Object
+const car = {
+  "name": "Fiat",
+  "model": "500",
+  "weight":800,
+  "color": "white";
+};
+// Create an Array
+const myArray = Object.values(car);
+
+// Display the Array
+document.getElementById("demo").innerHTML = myArray;
+
+
+</code></pre><h3><span style="color: blue">3. Classes<a name="3-classes"></a></span></h3>
+<p>Il est souvent utile de créer plusieurs objets du même type. Pour créer un type d'objet, nous utilisons une fonction constructeur d'objet. Il est considéré comme une bonne pratique de nommer les fonctions constructeur avec une première lettre majuscule.</p>
+<pre class="line-numbers"><code>
+
+function Car(name, model, weight, color) {
+  this.name = name;
+  this.model = model;
+  this.weight = weight;
+  this.color = color;
+}
+
+
+</code></pre><p>Dans la fonction constructeur, thisn'a aucune valeur. La valeur de <code>this</code> deviendra le nouvel objet lorsqu'un nouvel objet est créé.
+Nous pouvons maintenant l'utiliser <code>new car()</code> pour créer de nombreux nouveaux objets <code>Car</code> :</p>
+<pre class="line-numbers"><code>
+
+const FatherCar = new car("Audi", "Q7", 1500, "black");
+const GrandFatherCar = new car("Renaud", "408", 900, "grey");
+const myCar = new car("Lamborghini", "Aventador", 2000, "orange");
+
+
+</code></pre><p>Une valeur donnée à une propriété sera une valeur par défaut pour tous les objets créés par le constructeur :</p>
+<pre class="line-numbers"><code>
+
+function Car(name, model, weight, color) {
+  this.name = name;
+  this.model = model;
+  this.weight = weight;
+  this.color = color;
+  this.launch = "2015";
+}
+
+
+</code></pre><p>Une fonction constructeur peut également avoir des <strong>méthodes</strong>, qu'il est possible d'ajouter à n'importe quel objet :</p>
+<pre class="line-numbers"><code>
+
+FatherCar.changeModel = function (model) {
+  this.model = model;
+}
+
+
+</code></pre><p>La nouvelle méthode sera ajoutée à FatherCar, et pas à d'autres objets car.</p>
+<p>Néanmoins, il est impossible d'ajouter une nouvelle méthode à une fonction constructeur d’objet avec la même méthode, cela nous renverra une erreur du type <strong>TypeError: FatherCar.changeModel is not a function</strong>. L'ajout d'une nouvelle méthode doit être effectué sur le prototype de la fonction constructeur :</p>
+<pre class="line-numbers"><code>
+
+Car.prototype.changeModel = function (model) {
+  this.model = model;
+}
+FatherCar.changeModel("RS Q7");
+
+
+</code></pre><p>La fonction <code>changeModel()</code> attribue la valeur du model à la propriété de la <code>Car model</code>, en remplaçant this par <code>FatherCar</code>.</p>
+<p>JS dispose de constructeurs intégrés pour tous les objets communs :</p>
+<pre class="line-numbers"><code>
+
+new Object()   // A new Object object
+new Array()    // A new Array object
+new Map()      // A new Map object
+new Set()      // A new Set object
+new Date()     // A new Date object
+new RegExp()   // A new RegExp object
+new Function() // A new Function object
+
+
+</code></pre><h2>Horodateur<a name="horodateur"></a></h2>
+<p>Toutes les séances et le nombre d'heure que l'on y a passé.</p>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Heures passées</th>
+<th>Indications</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>12/09</td>
+<td>0,5H</td>
+<td>Discussion avec Sofiane pour trouver le tutoriel à suivre, téléchargment et prise en main du code</td>
+</tr>
+<tr>
+<td>13/09</td>
+<td>1H</td>
+<td>Exercice 1 : AboutExpects</td>
+</tr>
+<tr>
+<td>13/09</td>
+<td>1H</td>
+<td>Exercice 2 : AboutArrays</td>
+</tr>
+<tr>
+<td>13/09</td>
+<td>1H</td>
+<td>Exercice 3 : AboutFunctions</td>
+</tr>
+<tr>
+<td>20/09</td>
+<td>1H</td>
+<td>Exercice 4 : AboutHigherOrderFunctions</td>
+</tr>
+<tr>
+<td>20/09</td>
+<td>1H</td>
+<td>Exercice 5 : AboutInheritance</td>
+</tr>
+<tr>
+<td>20/09</td>
+<td>1H</td>
+<td>Exercice 5 : AboutMutability</td>
+</tr>
+<tr>
+<td>20/09</td>
+<td>1H</td>
+<td>Exercice 6 : AboutObjects</td>
+</tr>
+<tr>
+<td>05/10</td>
+<td>2H</td>
+<td>Tuto W3School : Variables, Objets, Classes en JS</td>
+</tr>
+<tr>
+<td>09/10</td>
+<td>1H</td>
+<td>Tuto W3School : Constructeurs en JS</td>
+</tr>
+</tbody>
+</table>
+
+
+
+</article>
+
+        </main>
+
+
+        <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-center items-center">
+                    <p class="text-center">
+                        ©2025 <b><span style="font-family: Consolas, sans-serif;">Do_<span style="color: #4a86e8">It</span></span></b> - Développement, Management et Gestion de projets en IT
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- MathJax import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">
+            window.MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']], // Delimiters for inline math
+                    displayMath: [['$$', '$$'], ['\\[', '\\]']] // Delimiters for block math
+                },
+                svg: {
+                    fontCache: 'global' // Use global font cache for SVG output
+                }
+            };
+            document.addEventListener('DOMContentLoaded', () => {
+                MathJax.typeset(); // Ensures MathJax processes the content after the page loads
+            });
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">
+            Prism.plugins.NormalizeWhitespace.setDefaults({
+                'remove-trailing': true,
+                'remove-indent': true,
+                'left-trim': true,
+                'right-trim': true,
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script>
+    </body>
+</html>

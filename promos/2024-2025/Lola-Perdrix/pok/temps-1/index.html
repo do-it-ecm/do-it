@@ -1,0 +1,347 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Étude statistique des Pokémons avec les outils Excel</title><link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet"><link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet"><link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet"><link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon"><link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png"><script type="module" defer="">import mermaid from"https://cdn.jsdelivr.net/npm/mermaid/+esm";mermaid.initialize({startOnLoad:!0})</script><link href="/assets/stylesheets/main.css" rel="stylesheet"></head><body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000"><header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white"><div class="max-w-[1000px] mx-auto px-4"><div class="min-h-[50px] flex justify-between items-center"><a class="mx-2" href="/">Home</a><div class="flex items-center gap-4 sm:gap-6"><a class="" href="/cs">CS</a> <a class="" href="/pok">POK</a> <a class="" href="/mon">MON</a> <a class="" href="/projets">Projets</a> <a class="hidden sm:block" href="/promos">Promos</a> <a href="/search"><svg class="h-5 aspect-square" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path></svg> </a><a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank"><svg class="h-5 aspect-square" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg></a></div></div></div></header><main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body=""><article class="relative"><h1 class="mb-1">Étude statistique des Pokémons avec les outils Excel</h1><div class="mb-4"><div class="px-4 flex flex-wrap items-center"><div class="font-bold">Tags :</div><ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags"><li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">POK</li><li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">Excel</li><li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">vert</li><li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">données</li></ul><div class="hidden" data-pagefind-meta="Type"><span data-pagefind-filter="Type">POK</span></div></div><div class="px-4 flex flex-wrap items-center"><div class="font-bold">Auteurs :</div><ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs"><li class="bg-blue-200 rounded-full px-2" data-pagefind-filter="Auteurs">Lola Perdrix</li></ul></div><div class="absolute top-0 right-0"><span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2" data-pagefind-filter="Année">2024-2025</span></div></div><p class="mb-4 text-lg">Prise en main des outils d'Excel pour la gestion et l'analyse d'un dataset à travers la réalisation d'un rapport d'analyse statistique complet sur les Pokémons</p><div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100"><svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path></svg><div class="pl-8 mr-8"><a href="/promos/2024-2025/Lola-Perdrix/">Lola Perdrix</a><span class="px-1">/</span><a href="/promos/2024-2025/Lola-Perdrix/pok/">POK de Lola Perdrix</a><span class="px-1">/</span><a href="/promos/2024-2025/Lola-Perdrix/pok/temps-1/">Étude statistique des Pokémons avec les outils Excel</a></div></div><div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100"><svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg><div class="pl-8 mb-2 mr-8"><p><b>Prérequis</b></p></div><div class="pl-8 mr-8"><p>Prérequis : Quelques bases d'Excel</p></div></div><div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100"><svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path></svg><div class="pl-8 mb-2 mr-8"><p><b>Liens</b></p></div><div class="pl-8 mr-8"><ul><li>MON de Lola Bourdon : <a href="https://francoisbrucker.github.io/do-it/promos/2023-2024/Lola-Bourdon/mon/temps-1.2/">Excel - repartir sur de bonnes bases</a></li><li>OpenClassrooms : <a href="https://openclassrooms.com/fr/courses/7168336-maitrisez-les-fondamentaux-dexcel">Maîtrisez les fondamentaux d'Excel</a></li></ul></div></div><h2>Objectif</h2><p>L'objectif est de prendre en main les outils mis à disposition par Excel pour étudier une base de données, de sa structuration à sa visualisation. Pour cela, je souhaite réaliser une étude statistique complète à partir de datasets sur les Pokémons, l'objectif final étant de produire un rapport descriptif complet sous Excel en utilisant au maximum les outils Excel disponibles.</p><h2>Tâches</h2><h3>Sprint 1</h3><ul><li>[x] Téléchargement et import de mon dataset dans Excel (estimé 10min, réalisé 10min)</li><li>[x] Recherche documentaire sur les fonctionnalités d'Excel qui vont m'être utiles, choix des sources, apprentissage théorique (estimé 2h, réalisé 1h30)</li><li>[x] Mise en forme et nettoyage des données (estimé 1h, réalisation 4h30)</li><li>[x] Définition de problématiques / questions cibles (estimé 30min, réalisation 15min)</li><li>[x] Analyse de la première génération, réponse à chaque question définie (estimé 4h, réalisation 2h30)</li><li>[ ] Visualisation des résultats en comparant les différents outils (estimé 2h30, pas réalisé)</li></ul><h3>Sprint 2</h3><ul><li>[ ] Apprentissage VBA</li><li>[ ] Macro répétant l'analyse pour les autres générations</li><li>[ ] Réaliser le rapport final</li><li>[ ] Étudier des techniques avancées pour embellir le tout</li><li>[ ] Tester d'autres datasets en étudiant l'adaptabilité</li><li>[ ] Comparer avec d'autres logiciels</li></ul><p>à réajuster à la fin du 1er sprint</p><h3>Horodatage</h3><table><thead><tr><th>Date</th><th>Heures passées</th><th>Indications</th></tr></thead><tbody><tr><td>Jeudi 12/09 matin</td><td>15 min</td><td>Téléchargement des datasets</td></tr><tr><td>Jeudi 12/09 aprem</td><td>1h30</td><td>Import des datasets, OpenClassroom, exploration des fonctions Excel</td></tr><tr><td></td><td>3h30</td><td>Préparation du dataset</td></tr><tr><td>Vendredi 13/09 aprem</td><td>1h</td><td>Fin de la préparation du dataset</td></tr><tr><td>Dimanche 15/09 aprem</td><td>15 min</td><td>Définition des questions cibles</td></tr><tr><td>Lundi 16/09 aprem</td><td>3h30</td><td>Analyse des données</td></tr></tbody></table><h2>Premier Sprint</h2><h3>Téléchargement des datasets</h3><p>J'ai commencé par téléchager mes datasets sur <a href="https://www.kaggle.com/datasets?search=pokemon">Kaggle</a>, qui est une plateforme dédiée à la Data Science et mettant à disposition de nombreux datasets pour apprendre (gratuit).</p><p>J'ai choisi deux datasets à étudier pour l'instant, en me basant sur les informations fournies par celles-ci : liste exhaustive des Pokémons, types, attributs de combat...</p><div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100"><svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path></svg><div class="pl-8 mb-2 mr-8"><p><b>Liens</b></p></div><div class="pl-8 mr-8"><ul><li><a href="https://www.kaggle.com/code/jonathanbouchet/pokemon-battles/input?select=pokemon.csv">pokemon.csv</a></li><li><a href="https://www.kaggle.com/code/jonathanbouchet/pokemon-battles/input?select=combats.csv">combats.csv</a></li></ul></div></div><h3>Import du dataset dans Excel</h3><p>J'ai utilisé la fonction &quot;Convertir&quot; de Excel pour mettre en forme les données brutes de mon fichier csv :</p><table><thead><tr><th>Avant</th><th>Après</th></tr></thead><tbody><tr><td><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Lola-Perdrix/pok/temps-1/Conversion_dataset.jpg" alt="image"></td><td><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Lola-Perdrix/pok/temps-1/Dataset_converti.jpg" alt="image"></td></tr></tbody></table><p><em><strong>Je répète l'opération pour les autres datasets au format csv.</strong></em></p><h3>Recherche de sources et apprentissage &quot;théorique&quot;</h3><p>Lors de mon dernier stage, j'avais pris l'intiative de me former sur les bases d'Excel en suivant la formation d'Open Classrooms <a href="https://openclassrooms.com/fr/courses/7168336-maitrisez-les-fondamentaux-dexcel">Maîtriser les fondamentaux d'Excel</a>, que j'ai alors relue rapidement pour me rafraîchir la mémoire. Je me suis ensuite surtout basée sur la formation suivante <a href="https://openclassrooms.com/fr/courses/7139456-perfectionnez-vous-sur-excel">Perfectionnez-vous sur Excel</a> en passant plus vite sur quelques points qui n'étaient pas utiles à mon POK, ou qui le seront pour le prochain sprint.</p><p>Ensuite, j'ai eu la bonne (ou mauvaise) idée d'étudier la liste des fonctions directement sur Excel, parcourant les différents types de fonctions, leurs variables, leur résultat, pour avoir une meilleure idée finalement de ce qui est à ma disposition (car on ne sait jamais vraiment tout ce qui existe).</p><p>Puis je n'ai pas voulu perdre trop de temps avec cette partie car j'ai pensé que le meilleur moyen d'apprendre était de commencer à travailler sur mon fichier directement.</p><div class="quote relative drop-shadow py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100"><svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg><div class="pl-8 mb-2 mr-8"><p><b>Note</b></p></div><div class="pl-8 mr-8"><p>Remarque : J'aurais effectivement du passer à cette étape plus rapidement car cela s'est révélé plus efficace et m'aurait fait gagner du temps...</p></div></div><h3>Préparation du dataset</h3><p>Je pensais que le dataset que j'avais choisi serait facile à préparer car il m'avait l'air déjà bien structuré. Finalement, il s'est révélé être un excellent exemple pour m'apprendre à nettoyer / structurer / préparer mes données avec Excel !</p><p>Voici les problèmes principaux auxquels j'ai du faire face lors de la préparation des données :</p><ul><li><strong>Problème n°1 : les méga évolutions</strong></li></ul><p>Dans un objectif de pouvoir associer les pokémon à leur numéro d'identification unique du pokédex (ce qui n'était pas le cas dans le dataset importé, les pokémon étant dans l'ordre mais les nombres ne correspondant pas forcément à leur numéro de pokédex), j'ai remarqué premièrement qu'il fallait que j'enlève les lignes correspondant à des méga évolutions.</p><p>Pour cela, j'ai utilisé la formule :</p><p><code>=ESTNUM(CHERCHE(&quot;Méga &quot;;B2))</code></p><p>qui me dit alors si oui ou non le nom de mon pokémon contient &quot;Méga &quot;, il ne me reste alors plus qu'à supprimer toutes les lignes où c'est le cas.</p><div class="quote relative drop-shadow py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100"><svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg><div class="pl-8 mb-2 mr-8"><p><b>Note</b></p></div><div class="pl-8 mr-8"><p>Attention à ne pas oublier l'espace après &quot;Méga&quot;, sinon de pauvres pokémon comme Méganium et Yanméga se retrouvent supprimmés et on met du temps à s'en rendre compte et à revenir en arrière...</p></div></div><ul><li><strong>Problème n°2 : La pluricité des formes</strong></li></ul><p>Certains pokémon possèdent plusieurs formes alternatives ou des formes régionales, qui apparaissent dans mon dataset contre ma volonté. Par exemple : Ratata d'Alola, Kyurem Dark, Kyurem White,...</p><p>Pour les enlever, j'ai utilisé les formules :</p><p><code>=SIERREUR(GAUCHE(B2;TROUVE(&quot; &quot;;B2;1));B2)</code> + <code>SUPPRESPACE(B2)</code></p><p>pour récupérer le premier mot de la cellule, puis je supprime les doublons.</p><p>Même problème à droite : Heat Rotom, Wash Rotom, Frost Rotom...</p><p><code>=SIERREUR(DROITE(B2;NBCAR(B2)-TROUVE(&quot; &quot;;B2;1));B2)</code> + <code>SUPPRESPACE(B2)</code></p><p>Mais je me suis rendue comtpe que certains pokémon pouvaient avoir le même dernier mot dans son nom et ne pas être le même pokémon pour autant... Je ne pouvais également pas prédire les cellules restées vides, ainsi que des pokémon dont le nom était au milieu d'autres mots, bref, ne voulant pas éterniser mon POK sur cette partie difficile, j'ai décidé de finaliser la structure de la colonne &quot;name&quot; à la main en modifiant directement les cellules posant problème (il n'en restait plus beaucoup), jusqu'à ce que j'en ai le bon nombre et qu'ils correspondent tous bien à leur numéro de pokédex.</p><ul><li><strong>Problème n°3 : et si je veux les noms des Pokémons en français ?</strong></li></ul><p>Je voulais pouvoir avoir les noms en français car ils me sont plus familiers et je me suis dit que c'était l'occasion d'apprendre à faire une jointure de tables.</p><p>J'ai dû faire un copier-coller de <a href="https://www.pokepedia.fr/Liste_des_Pok%C3%A9mon_dans_l%27ordre_du_Pok%C3%A9dex_National">cette page internet</a> à défaut de trouver un dataset en français, puis ai utilisé la fonction <code>RECHERCHEV</code> pour faire correspondre les noms anglais avec les noms français dans mon tableau principal.</p><p><code>=RECHERCHEV(&quot;B2&quot;;'fr-en'!A:B:;2;FAUX)</code></p><h4>Dataset prêt pour l'analyse</h4><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Lola-Perdrix/pok/temps-1/Dataset_pret.jpg" alt="image"></p><div class="quote relative drop-shadow py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100"><svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg><div class="pl-8 mb-2 mr-8"><p><b>Note</b></p></div><div class="pl-8 mr-8"><p>Remarque : J'ai largement sous-estimé le temps que nécessiterait la préparation du dataset car le texte était plutôt mal formaté et je découvrais toujours une nouvelle source d'erreur, qui n'était pas toujours évidente à régler lors du premier essai...</p></div></div><h3>Choix des questions cibles</h3><ul><li>[x] Quelle est la répartition des types ?</li><li>[x] Quelle part de pokémon légendaire ?</li><li>[x] Est-ce que chaque type présente des forces et des faiblesses caractéristiques ?</li><li>[x] Est-ce que les pokémon légendaires sont forcément plus forts ?</li><li>[x] Est-ce un avantage de posséder deux types plutôt qu'un seul ?</li><li>[x] Quels pokémon détiennent les records pour chaque attribut ?</li><li>[ ] Quels sont les pokémon les moins bons et les meilleurs par type ? =&gt; à faire</li><li>[ ] Faire une table des types à partir des combats =&gt; à faire si temps</li><li>[ ] Les attributs de combat sont-ils bien répartis ? (distributions) =&gt; à faire si temps</li></ul><p>Ainsi que l'évolution des réponses à ces questions au fil des générations : ces tendances évoluent-elles ? =&gt; Deuxième sprint.</p><h3>Analyse du dataset</h3><ul><li><strong>Répartition des types</strong></li></ul><p>J'ai utilisé la formule :</p><p><code>= NB.SI($D$2:$E$152;C157)</code></p><p>avec la liste des types dans la colonne C, le type 1 en colonne D, et le type 2 en colonne E.</p><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Lola-Perdrix/pok/temps-1/Tableau_repartition.jpg" alt="image"></p><p>Ce qui donne visuellement :</p><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Lola-Perdrix/pok/temps-1/Graphe_repartition_type.jpg" alt="image"></p><p>graphe dans lequel je souhaite intégrer encore la proportion de légendaires ainsi que la proportion de pokémon à un seul type.</p><ul><li><strong>Caractéristiques par type</strong></li></ul><p>J'ai calculé pour chaque type la moyenne de chaque attribut de combat avec la formule :</p><p><code>=(SOMME.SI($D$2:$D$152;$C172;F$2:F$152)+SOMME.SI($E$2:$E$152;$C172;F$2:F$152))/$D172</code></p><p>qui je l'admets n'est pas très compréhensible telle quelle, mais je peux faire néanmoins la remarque que le bon positionnement des dollars dans ma formule m'a permis de l'étirer dans tous les sens pour remplir ce tableau avec seulement celle-ci :</p><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Lola-Perdrix/pok/temps-1/Tableau_carac_type.jpg" alt="image"></p><p>Ce qui peut donner visuellement ceci bien que je me concentrerai sur la visualisation au prochain sprint :</p><table><thead><tr><th style="text-align:center">Tous les types ensemble</th><th style="text-align:center">Filtrage dans la source de données</th><th style="text-align:center">Graphique dynamique avec filtre associé</th></tr></thead><tbody><tr><td style="text-align:center"><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Lola-Perdrix/pok/temps-1/Graphe_carac_type.jpg" alt="image"></td><td style="text-align:center"><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Lola-Perdrix/pok/temps-1/Graphe_carac_type_filtre.jpg" alt="image"></td><td style="text-align:center"><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Lola-Perdrix/pok/temps-1/Graphe_dynamique.jpg" alt="image"></td></tr></tbody></table><ul><li><strong>Est-ce que les pokémon légendaires sont forcément les plus forts ?</strong></li></ul><p>Grâce à des méthodes semblables, je mets une condition sur l'attribut légendaire, et je calcule la moyenne de la statistique totale pour la comparer avec celle des non-légendaires.</p><ul><li><strong>Est-ce un avantage de posséder deux types plutôt qu'un seul ?</strong></li></ul><p>Je compte le nombre de types, et je calcule la moyenne de la statistique totale pour les pokémon avec 1 type et pour 2 types.</p><ul><li><strong>Les pokémon détenant les records</strong></li></ul><p>Pour cette question j'utilise les fonctions <code>INDEX</code>, <code>EQUIV</code>, <code>MIN</code> et <code>MAX</code> combinées, sur chaque attribut.</p><p><code>=INDEX(Mes_Pokémons;EQUIV(MIN(F1:F152);F1:F152;0);3)</code> <code>=INDEX(Mes_Pokémons;EQUIV(MAX(F1:F152);F1:F152;0);3)</code></p><p>et j'ai finalement regroupé ces résultats dans ces tableaux.</p><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Lola-Perdrix/pok/temps-1/Tableaux_sup.jpg" alt="image"></p><div class="quote relative drop-shadow py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100"><svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg><div class="pl-8 mb-2 mr-8"><p><b>Note</b></p></div><div class="pl-8 mr-8"><p>Remarque : Je n'ai pas vraiment eu le temps que je souhaitais pour optimiser et finir l'analyse des données et il me reste encore des manipulations à faire avant de passer aux autres générations. L'estimation de la durée des tâches a été le principal souci sur ce premier sprint.</p></div></div><h3>Retour Sprint 1</h3><p>Le principal défi de ce premier sprint a été l'estimation de la durée des tâches à effectuer : alors que l'analyse était peut-être faisable plus rapidement, la préparation du dataset m'a pris beaucoup plus de temps que prévu et me retarde sur le prochain sprint que j'ai dû réajuster. De plus, lorsque l'on apprend en tatônnant face aux problèmes rencontrés, la vitesse de résolution est étonnament très variable car on peut passer à côté de réponses évidentes en voulant faire trop complexe...</p><h2>Second Sprint</h2><h3>Ajustement</h3><ul><li>[x] <em><strong>Fin de l'analyse</strong></em></li><li>[x] <s>Apprentissage VBA</s> -&gt; en même temps que la réalisation</li><li>[x] Faire une macro répétant l'analyse pour chaque autre génération</li><li>[ ] Réaliser le rapport final avec toutes les données réunies</li><li>[ ] <em><strong>si temps : ajoutez les statistiques laissées pour non prioritaire</strong></em></li><li>[ ] <s>Étudier des techniques avancées pour embellir le tout</s></li><li>[ ] <s>Tester d'autres dataset en étudiant l'adaptabilité</s> -&gt; J'aurais assez de quoi m'occuper...</li><li>[ ] <s>Comparer avec d'autres logiciels</s> -&gt; idem</li></ul><h3>Horodatage Sprint 2</h3><table><thead><tr><th>Date</th><th>Heures passées</th><th>Indications</th></tr></thead><tbody><tr><td>Mercredi 25/09 matin</td><td>30 min</td><td>Fin de l'analyse (abandon d'une question)</td></tr><tr><td>Jeudi 26/09 matin</td><td>1h</td><td>Inititation VBA</td></tr><tr><td>Jeudi 26/09 aprem</td><td>3h30</td><td>Tests non concluants</td></tr><tr><td>Vendredi 27/09 aprem</td><td>2h</td><td>Calcul du tableau par type</td></tr><tr><td>Samedi 28/09 aprem</td><td>1h30</td><td>Quelques fonctions par ci par là</td></tr><tr><td>Dimanche 29/09 aprem</td><td>1h30</td><td>Réunion de toutes les fonctions</td></tr></tbody></table><h3>Fin de l'analyse</h3><p>Au début du sprint, j'ai pris le temps de me repencher sur l'analyse que je n'avais pas terminée complètement pour l'affiner avant de passer à la suite.</p><p>J'ai uniquement eu le temps de rajouter les meilleurs et les pires pokémon par type dans mon tableau, à l'aide d'une formule plutôt complexe (peut être aurai-je pu faire plus simple ?) que voici :</p><p><code>=INDEX(Mes_Pokemons,EQUIV(MIN(SIERREUR(AGREGAT(15,6,1/((R &amp; nb_lignes &amp; C4=RC[-10]))*R2C6:R &amp; nb_lignes &amp; C6,1),1000),IFERROR(AGGREGATE(15,6,1/((R2C5:R &amp; nb_lignes &amp; C5=RC[-10]))*R2C6:R &amp; nb_lignes &amp; C6,1),1000)),R2C6:R &amp; nb_lignes &amp; C6*((R2C5:R &amp; nb_lignes &amp; C5=RC[-10])+(R2C4:R &amp; nb_lignes &amp; C4=RC[-10])),0)+1,3)</code></p><div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100"><svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg><div class="pl-8 mb-2 mr-8"><p><b>Information</b></p></div><div class="pl-8 mr-8"><p>A noter que si la formule dans la cellule contient des conditions matricielles (ce qui était le cas ici pour inclure un filtre avancé), il faut valider en appuyant sur les touches <code>CTRL + Maj + Entrée</code> pour ne pas avoir d'erreur <code>VALEUR?</code> qui s'affiche (j'aurais aimé trouver cette information plus tôt...).</p></div></div><p>Ce qui donne ceci pour la génération 1 :</p><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Lola-Perdrix/pok/temps-1/fin_analyse.jpg" alt="records"></p><h3>Macro VBA</h3><p>Mon idée ici était d'apprendre à coder en VBA tout en créant une automatisation de mon analyse pour chaque génération de pokémon souhaitée.</p><p>J'ai conscience que dans mon cas d'étude, ce n'était pas forcément utile car un simple copier-coller des formules aurait rapidement fait l'affaire, mais j'ai appris à travers ce travail les bases du langages et me suis familiarisée avec certaines manipulations donc je pense que ce fut quand même très utile !</p><h4>Automatisation 1 : Création d'une nouvelle page pour la génération voulue</h4><p>La premire étape du parcours utilisateur que je me suis imaginé serait de pouvoir choisir un numéro de génération en lançant la macro (depuis n'importe quelle page), et que cela me renvoie sur une nouvelle page située à la fin des autres pages contenant la liste des pokémon filtrée sur la génération demandée.</p><p>Pour cela j'ai utilisé la fonction AdvancedFilter de Excel.</p><div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none"><details class="group"><summary class="list-none py-0.5"><svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg> <svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg><div class="pl-8 font-bold inline-block group-open:select-text"><p>Code de la procédure FeuillesParGen()</p></div><svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path></svg></summary><div class="mx-8 pb-2 cursor-auto select-text"><pre class="language-vb line-numbers"><code>
+
+  Sub FeuillesParGen()
+  
+    'Je récupère le numéro de la génération que je veux
+    Dim gen As Integer
+    gen = Application.InputBox(prompt:="Enter a generation number", Type:=1)
+    
+    Dim name As String
+    name = "Gen" & gen
+    
+    'Je supprimme l'ancienne feuille SI elle existe
+    Application.DisplayAlerts = False
+    On Error Resume Next
+    Worksheets(name).Delete
+    Err.Clear
+    
+    'J'ajoute la nouvelle
+    Application.DisplayAlerts = True
+    Sheets.Add(After:=Sheets(Sheets.Count)).name = name
+    
+    'Je copie dessus mon tableau de pokémon filtré sur la gen en question
+    Worksheets("pokemon_formaté").Range("P2").Value = gen
+    Worksheets("pokemon_formaté").Range("A:N").AdvancedFilter _
+        Action:=xlFilterCopy, CriteriaRange:=Worksheets("pokemon_formaté").Range("P1:P2"), CopyToRange:=ActiveSheet.Range("A1"), Unique:=False
+            
+End Sub
+
+
+</code></pre></div></details></div><table><thead><tr><th style="text-align:center">Input côté utilisateur</th><th style="text-align:center">Résultat sur une autre feuille</th></tr></thead><tbody><tr><td style="text-align:center"><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Lola-Perdrix/pok/temps-1/inputbox.jpg" alt="image"></td><td style="text-align:center"><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Lola-Perdrix/pok/temps-1/gen2.jpg" alt="image"></td></tr></tbody></table><h4>Automatisation 2 : Ajout de la colonne &quot;NB type&quot;</h4><p>J'ai voulu ici rajouter une colonne à mon dataset qui contiendrait le nombre de types que chaque pokémon possède. Pour cette fonction j'ai testé la méthode de l'enregistrement de la macro : on démarre l'enregistrement, on effectue les opérations que l'on souhaite directement sur le classeur, puis on l'arrête et tout s'est transcrit en code automatiquement.</p><p>J'ai ensuite remanié légérement le code pour le rendre plus lisible et pour l'adapter à toutes mes générations qui ne font pas la même longueur.</p><div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none"><details class="group"><summary class="list-none py-0.5"><svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg> <svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg><div class="pl-8 font-bold inline-block group-open:select-text"><p>Code de la procédure affiche_nb_type</p></div><svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path></svg></summary><div class="mx-8 pb-2 cursor-auto select-text"><pre class="language-vb line-numbers"><code>
+
+  Sub affiche_nb_type(nb_lignes As Integer)
+    
+    Range("O1").FormulaR1C1 = "NB type"
+    Range("O2").Select
+    Selection.FormulaR1C1 = "=IF(ISBLANK(RC[-10]),1,2)"
+    Selection.AutoFill Destination:=Range("O2:O" & nb_lignes)
+    
+End Sub
+
+
+</code></pre></div></details></div><div class="quote relative drop-shadow py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100"><svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg><div class="pl-8 mb-2 mr-8"><p><b>Note</b></p></div><div class="pl-8 mr-8"><p>Cette fonctionnalité s'avère bien pratique dans ce cas précis où je l'ai utilisé, mais je ne pouvais pas l'utiliser partout pour plusieurs soucis d'adaptabilité, donc il fallait quand même savoir coder !</p></div></div><h4>Automatisation 3 : Initialisation du tableau d'anlyse</h4><p>Même si ce n'est pas la représentation optimale, par manque de temps, j'ai choisi de représenter le tableau d'analyse par type tel que je l'avais créé lors du premier sprint. Cela facilitait le code dans un premier temps, puis je verrais d'éventuelles améliorations après le second sprint.</p><p>Cette partie a juste nécessité d'apprendre à manipuler les références et les formats des cellules, ainsi que les boucles for et for each en VBA.</p><div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none"><details class="group"><summary class="list-none py-0.5"><svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg> <svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg><div class="pl-8 font-bold inline-block group-open:select-text"><p>Code de la procédure initialisation_tableau</p></div><svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path></svg></summary><div class="mx-8 pb-2 cursor-auto select-text"><pre class="language-vb line-numbers"><code>
+
+  Sub initialisation_tableau(nb_lignes As Integer, ind As Integer)
+    
+    'Style de la 1e ligne
+    Range("C" & ind & ":L" & ind).Font.Bold = True
+    Range("C" & ind & ":L" & ind).Interior.ColorIndex = 36
+    
+    '3 premières colonnes manuelles
+    Range("C" & ind).Value = "Type"
+    Range("D" & ind).Value = "Nombre"
+    Range("E" & ind).Value = "Nombre de légendaires"
+    
+    'Moyennes reprises des attributs de la 1e ligne du dataset
+    Dim rg As Range
+    For Each rg In Range("F1:L1")
+        Cells(ind, rg.Column).Value = "Moyenne de " & rg.Value
+    Next rg
+    
+    'Deux dernières lignes que je sais pas faire pour l'instant
+        'Range("M170").Value = "Pire pokémon"
+        'Range("N170").Value = "Meilleur pokémon"
+    
+    Dim types As Variant
+    types = Array("Poison", "Water", "Normal", "Flying", "Grass", "Ground", "Psychic", "Bug", "Fire", "Rock", "Electric", "Fighting", "Fairy", "Ice", "Dragon", "Ghost", "Steel", "Dark")
+    
+    'J'attribue chaque type à une ligne de mon tableau
+    For i = 0 To 17
+        Range("C" & (i + ind + 1)).Value = types(i)
+    Next i
+        
+End Sub
+
+
+</code></pre></div></details></div><h4>Automatisation 4 : Calcul des valeurs</h4><p>Je remplis à présent mon tableau d'anlyse avec les bonnes valeurs : pour cela j'ai repris les formules que j'avais écrites dans le sprint 1 et les ai adaptées en VBA, puis intégrées dans des boucles.</p><div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none"><details class="group"><summary class="list-none py-0.5"><svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg> <svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg><div class="pl-8 font-bold inline-block group-open:select-text"><p>Code de la procédure calcul_valeurs</p></div><svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path></svg></summary><div class="mx-8 pb-2 cursor-auto select-text"><pre class="language-vb line-numbers"><code>
+
+Sub calcul_valeurs(nb_lignes As Integer, ind As Integer)
+    
+    'On remplit les nombres
+    For l = ind + 1 To ind + 18
+        Range("D" & l) = WorksheetFunction.CountIf(Range("D2:E" & nb_lignes), Range("C" & l))
+        Range("E" & l) = WorksheetFunction.CountIfs(Range("D2:D" & nb_lignes), Range("C" & l), Range("N2:N" & nb_lignes), "VRAI") + WorksheetFunction.CountIfs(Range("E2:E" & nb_lignes), Range("C" & l), Range("N2:N" & nb_lignes), "VRAI")
+        'Le compte des légendaires ne marche pas (soucis sur la condition true) à réparer
+    Next
+        
+    'On remplit les moyennes
+    Dim col As Variant
+    col = Array("F", "G", "H", "I", "J", "K", "L")
+ 
+    For l = ind + 1 To ind + 18
+        For Each c In col
+            Range(c & l) = (WorksheetFunction.SumIf(Range("D2:D" & nb_lignes), Range("C" & l), Range(c & "2:" & c & nb_lignes)) + WorksheetFunction.SumIf(Range("E2:E" & nb_lignes), Range("C" & l), Range(c & "2:" & c & nb_lignes))) / Range("D" & l).Value
+        Next
+    Next
+        
+    'Meilleur et pire pokémon : à trouver car formule trop complexe
+    
+End Sub
+
+
+</code></pre></div></details></div><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Lola-Perdrix/pok/temps-1/tableau_types_gen2.jpg" alt="image"></p><h4>Automatisation 5 : Création d'un graphe</h4><p>Ne me restant plus beaucoup de temps à accorder à la visualisation de mes données dans la macro, j'ai décidé d'écourter l'analyse des données incomplète pour avoir au moins un résultat de graphique avec VBA.</p><p>J'ai tenté la réalisation du graphique radar représentant les comparaisons des différents types sur chaque atribut, mais me suis rendue compte que ce graphe était d'une complexité trop grande (du moins pour commencer), et me suis vite retrouvée dans l'impasse. J'ai donc décidé de faire uniquement le graphe de la répartition des types :</p><div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none"><details class="group"><summary class="list-none py-0.5"><svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg> <svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg><div class="pl-8 font-bold inline-block group-open:select-text"><p>Code de la procédure graphe</p></div><svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path></svg></summary><div class="mx-8 pb-2 cursor-auto select-text"><pre class="language-vb line-numbers"><code>
+
+Sub graphe(ind As Integer)
+
+    Dim graph As ChartObject
+    Set graph = ActiveSheet.ChartObjects.Add(Left:=100, Width:=500, Top:=17 * ind, Height:=400)
+    graph.Chart.SetSourceData Source:=ActiveSheet.Range("C" & ind & ":D" & ind + 18)
+    graph.Chart.ChartType = xlBarStacked
+    graph.Chart.ChartTitle.Text = "Répartition des types"
+    
+End Sub
+
+
+</code></pre></div></details></div><p>Ce graphique comporte les paramètres élémentaires dont j'avais besoin mais je pourrais le peaufiner plus tard pour le rendre plus joli.</p><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Lola-Perdrix/pok/temps-1/Graphe_rep_auto.jpg" alt="image"></p><h4>Réunion de toutes les procédures en une</h4><p>J'ai simplement regroupé toutes les procédures créés en une seule pour n'avoir à cliquer que sur un seul bouton pour avoir toute l'analyse :</p><div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none"><details class="group"><summary class="list-none py-0.5"><svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg> <svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg><div class="pl-8 font-bold inline-block group-open:select-text"><p>Code de la procédure globale AnalyseParGen</p></div><svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path></svg></summary><div class="mx-8 pb-2 cursor-auto select-text"><pre class="language-vb line-numbers"><code>
+
+Sub AnalyseParGen()
+
+    'Je crée la nouvelle feuille
+    FeuillesParGen
+    
+    'Je récupère le nombre de pokémon sur la nouvelle feuille active
+    Dim nb_lignes As Integer
+    nb_lignes = WorksheetFunction.CountA(Range("A:A"))
+    
+    'Je définis l'endroit où je place mes calculs
+    Dim ind As Integer
+    ind = nb_lignes + 5
+    
+    'J'affiche le nombre de types
+    affiche_nb_type nb_lignes
+    
+    'J'initialise mon tableau par type
+    initialisation_tableau nb_lignes, ind
+    
+    'Je rajoute mes valeurs calculées à l'intérieur
+    calcul_valeurs nb_lignes, ind
+    
+    'Je trie du plus grand au plus petit
+
+    Range("D141").Select
+    Selection.AutoFilter
+    ActiveWorkbook.Worksheets("Gen3").AutoFilter.Sort.SortFields.Clear
+    ActiveWorkbook.Worksheets("Gen3").AutoFilter.Sort.SortFields.Add Key:=Range( _
+        "D141:D159"), SortOn:=xlSortOnValues, Order:=xlAscending, DataOption:= _
+        xlSortNormal
+    With ActiveWorkbook.Worksheets("Gen3").AutoFilter.Sort
+        .Header = xlYes
+        .MatchCase = False
+        .Orientation = xlTopToBottom
+        .SortMethod = xlPinYin
+        .Apply
+    End With
+    
+    'Je trace le graphique de répartition des types
+    graphe ind
+    
+    
+End Sub
+
+
+</code></pre></div></details></div><h3>Conclusion Sprint 2</h3><p>Il est clair qu'un petit soucis s'est opéré au niveau de l'estimation du temps des tâches, car à la fin du sprint 2, je suis loin d'être arrivée là où je l'imaginais.</p><ul><li><p>Premièrement, j'ai pris du <strong>retard sur le sprint 1</strong> en sous-estimant le temps que nécessiterait la structuration des données. C'est un retard que j'ai du un peu rattraper au début du sprint 2.</p></li><li><p>Puis le deuxième problème est que j'ai probablement surestimé mes capacités à appliquer ce que j'ai appris sur VBA à mon cas particulier : j'ai passé <strong>beaucoup de temps (trop) à débugger des choses dont je ne savais même pas si elles étaient utiles ou pas</strong>.</p></li><li><p>Le troisième problème est que j'ai peut-être voulu faire trop compliqué pour l'instant : j'ai été <strong>très rapidement bloquée dès lors que je voulais faire des graphes</strong> (j'aurais quand même pu mais j'ai vu que cela me prendrait beaucoup trop de temps) alors j'ai du abandonner la dernière partie sur la visualisation des données automatisée (je ne suis même pas sûre que cette partie était si intéressante que ça à automatiser).</p></li></ul><p>Mais il n'empêche qu'avec tous ces problèmes cela m'a permis de me plonger <strong>à fond dans la réflexion</strong> et de découvrir <strong>beaucoup de fonctionnalités de VBA</strong> ce qui était finalement le <strong>but</strong> du POK ! J'ai appris énormément de choses à travers ces deux premiers sprints qui me seront forcément utiles, et j'ai décidé de continuer à parfaire mon fichier sur mon temps libre pour m'approcher quand même de ce que je voulais faire.</p><h2>Pour aller plus loin : sur mon temps personnel</h2><h3>Amélioration du code et débuggage</h3><p>Première chose à améliorer était la <strong>lisibilité du code</strong> et de refaire <strong>certaines fonctions qui ne marchaient pas</strong> comme celle qui devait <strong>compter le nombre de légendaires</strong> : il m'était impossible d'utiliser la formule COUNTIF avec pour condition des cellules contenant <code>true</code> et <code>false</code> peu importe comment je les remaniais... il existe peut-être une solution, mais je me suis débrouillée en faisant une fonction certes plus longue mais qui cette fois marche :</p><div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none"><details class="group"><summary class="list-none py-0.5"><svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg> <svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg><div class="pl-8 font-bold inline-block group-open:select-text"><p>Code de la procédure nombre_légendaire</p></div><svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path></svg></summary><div class="mx-8 pb-2 cursor-auto select-text"><pre class="language-vb line-numbers"><code>
+
+Sub nombre_legendaire(nb_lignes As Integer, poktype As String, ligne As Integer)
+
+    'Définir les variables
+    Dim leg As Variant
+    Dim compteur As Integer
+    compteur = 0
+    
+    For l = 2 To nb_lignes:
+        leg = Range("N" & l).Value
+        If leg Then
+            If (Range("D" & l) = poktype Or Range("E" & l) = poktype) Then
+                compteur = compteur + 1
+            End If
+        End If
+    Next
+    
+    Range("E" & ligne).Value = compteur
+
+End Sub
+
+
+</code></pre></div></details></div><p>Puis j'ai utilisé le même principe pour écrire la fonction qui permet de <strong>comparer les moyennes de points totales pour les légendaires ou non</strong>, que je n'avais pas eu le temps de faire (de toute façon ça n'allait pas marcher tel que je l'avais commencé).</p><div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none"><details class="group"><summary class="list-none py-0.5"><svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg> <svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg><div class="pl-8 font-bold inline-block group-open:select-text"><p>Code de la procédure influence_legendaire</p></div><svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path></svg></summary><div class="mx-8 pb-2 cursor-auto select-text"><pre class="language-vb line-numbers"><code>
+
+Sub influence_legendaire(nb_lignes As Integer, ind3 As Integer)
+    
+    'Style
+    With Range("J" & ind3)
+        .Font.Bold = True
+        .Interior.ColorIndex = 50
+        .Value = "Influence légendaire"
+    End With
+    
+    With Range("K" & ind3)
+        .Font.Bold = True
+        .Interior.ColorIndex = 36
+        .Value = "Moyenne TOTAL"
+    End With
+    
+    Range("J" & ind3 + 1) = "Légendaires"
+    Range("J" & ind3 + 2) = "Normaux"
+    Range("J" & ind3 & ":K" & ind3 + 2).Borders.Weight = xlThick
+    
+    'On calcule les valeurs
+
+    'Définir les variables
+    Dim leg As Variant
+    Dim compteur As Integer
+    compteur = 0
+    Dim total As Double
+    total = 0
+    
+    For l = 2 To nb_lignes:
+        leg = Range("N" & l).Value
+        If leg Then
+            compteur = compteur + 1
+            total = total + Range("F" & l).Value
+        End If
+    Next
+    
+    Range("K" & ind3 + 1).Value = WorksheetFunction.Round(total / compteur, 0)
+    Range("K" & ind3 + 2).Value = WorksheetFunction.Round((WorksheetFunction.Sum(Range("F2:F" & nb_lignes)) - total) / (nb_lignes - 1 - compteur), 0)
+
+End Sub
+
+
+</code></pre></div></details></div><p>De même, j'ai ensuite fait la fonction similaire qui devait permettre de <strong>comparer les moyennes de points totales pour des pokémon possédant 1 type ou 2 types</strong>.</p><div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none"><details class="group"><summary class="list-none py-0.5"><svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg> <svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg><div class="pl-8 font-bold inline-block group-open:select-text"><p>Code de la procédure influence_type</p></div><svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path></svg></summary><div class="mx-8 pb-2 cursor-auto select-text"><pre class="language-vb line-numbers"><code>
+
+Sub influence_type(nb_lignes As Integer, ind3 As Integer)
+    
+    'Style
+    With Range("G" & ind3)
+        .Font.Bold = True
+        .Interior.ColorIndex = 50
+        .Value = "Influence nb type"
+    End With
+    
+    With Range("H" & ind3)
+        .Font.Bold = True
+        .Interior.ColorIndex = 36
+        .Value = "Moyenne TOTAL"
+    End With
+    
+    Range("G" & ind3 + 1).Value = "1 type"
+    Range("G" & ind3 + 2).Value = "2 types"
+    
+    Range("G" & ind3 & ":H" & ind3 + 2).Borders.Weight = xlThick
+    
+    'On remplit les valeurs
+    Range("H" & ind3 + 1).Value = WorksheetFunction.Round(WorksheetFunction.SumIf(Range("O2:O" & nb_lignes), 1, Range("F2:F" & nb_lignes)) / WorksheetFunction.CountIf(Range("O2:O" & nb_lignes), 1), 0)
+    Range("H" & ind3 + 2).Value = WorksheetFunction.Round(WorksheetFunction.SumIf(Range("O2:O" & nb_lignes), 2, Range("F2:F" & nb_lignes)) / WorksheetFunction.CountIf(Range("O2:O" & nb_lignes), 2), 0)
+    
+
+End Sub
+
+
+</code></pre></div></details></div><p>Enfin, j'ai également rajouté l'automatisation du calcul du tableau des <strong>pokémon à chaque fois meilleurs et pires pour chaque attribut</strong>, qui existait déjà à la fin du premier sprint.</p><div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none"><details class="group"><summary class="list-none py-0.5"><svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg> <svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg><div class="pl-8 font-bold inline-block group-open:select-text"><p>Code de la procédure records</p></div><svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path></svg></summary><div class="mx-8 pb-2 cursor-auto select-text"><pre class="language-vb line-numbers"><code>
+
+Sub records(nb_lignes As Integer, ind2 As Integer)
+
+    'Reprise des attributs de la 1e ligne du dataset
+    Dim rg As Range
+    For Each rg In Range("F1:L1")
+        Cells(ind2, rg.Column).Value = rg.Value
+    Next rg
+    
+    'Style
+    With Range("E" & ind2)
+        .Font.Bold = True
+        .Interior.ColorIndex = 50
+        .Value = "Pokemon records"
+    End With
+    
+    With Range("F" & ind2 & ":L" & ind2)
+        .Font.Bold = True
+        .Interior.ColorIndex = 36
+    End With
+
+    Range("E" & ind2 & ":L" & ind2 + 2).Borders.Weight = xlThick
+    
+    'titre des lignes
+    Range("E" & ind2 + 1).Value = "Meilleur"
+    Range("E" & (ind2 + 2)).Value = "Moins bon"
+    
+    'On remplit les pokémon
+    Dim col As Variant
+    col = Array("F", "G", "H", "I", "J", "K", "L")
+ 
+    For Each C In col
+        Range(C & ind2 + 1) = WorksheetFunction.Index(Range("A1:O" & nb_lignes), WorksheetFunction.Match(WorksheetFunction.Max(Range(C & "1:" & C & nb_lignes)), Range(C & "1:" & C & nb_lignes), 0), 3)
+        Range(C & ind2 + 2) = WorksheetFunction.Index(Range("A1:O" & nb_lignes), WorksheetFunction.Match(WorksheetFunction.Min(Range(C & "1:" & C & nb_lignes)), Range(C & "1:" & C & nb_lignes), 0), 3)
+    Next
+
+End Sub
+
+
+</code></pre></div></details></div><p>En ce qui concerne les meilleurs pokémon et pires pokémon pour chaque type, étant donné la complexité déjà rencontrée sans VBA, je ne m'y suis pas aventurée (peut-être que si un petit peu mais j'ai du vite renoncer).</p><p>Après <strong>amélioration du design</strong> des tableaux créés et <strong>ajout des dernières fonctions</strong> mentionnées, voici ce que l'on obtenait lors de l'activation de la macro :</p><div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none"><details class="group"><summary class="list-none py-0.5"><svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg> <svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg><div class="pl-8 font-bold inline-block group-open:select-text"><p>Voir code</p></div><svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path></svg></summary><div class="mx-8 pb-2 cursor-auto select-text"><pre class="language-vb line-numbers"><code>
+
+Sub AnalyseParGen()
+
+    'Je crée la nouvelle feuille
+    FeuillesParGen
+    
+    'Je récupère le nombre de pokémon sur la nouvelle feuille active
+    Dim nb_lignes As Integer
+    nb_lignes = WorksheetFunction.CountA(Range("A:A"))
+    
+    'Je définis l'endroit où je place mes calculs
+    Dim ind As Integer
+    ind = nb_lignes + 5
+    
+    Dim ind2 As Integer
+    ind2 = ind + 20
+    
+    Dim ind3 As Integer
+    ind3 = ind2 + 4
+    
+    'J'affiche le nombre de types
+    affiche_nb_type nb_lignes
+    
+    'J'initialise mon tableau par type
+    initialisation_tableau nb_lignes, ind
+    
+    'Je rajoute mes valeurs calculées à l'intérieur
+    calcul_valeurs nb_lignes, ind
+    
+    'Je trie du plus grand au plus petit
+    tri ind
+
+    'Je trace le graphique de répartition des types
+    graphe ind
+    
+    'Je mets les pokémon records
+    records nb_lignes, ind2
+    
+    'Je mets l'influence du type
+    influence_type nb_lignes, ind3
+    
+    'Influence du nomre de legendaires
+    influence_legendaire nb_lignes, ind3
+    
+End Sub
+
+
+</code></pre></div></details></div><table><thead><tr><th style="text-align:center">étape 1</th><th style="text-align:center">Résultat</th></tr></thead><tbody><tr><td style="text-align:center"><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Lola-Perdrix/pok/temps-1/exemple_macro.jpg" alt="image"></td><td style="text-align:center"><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Lola-Perdrix/pok/temps-1/resultat_macro.jpg" alt="image"></td></tr></tbody></table><h3>Création du rapport d'une génération</h3><p>Une fois arrivée là, le travail ne semble toujours pas fini. Il reste en effet à faire des visualisations pour les autres générations que je n'ai pas réussi à automatiser, mais surtout je voulais pouvoir <strong>regrouper toutes mes analyses en un seul endroit qui me ferait une sorte de résumé de la génération</strong>.</p><p>Par manque de temps, je l'ai donc fait manuellement sur la première génération.</p><h4>Import photos pokémon</h4><p>Pour faire un visuel sympathique, je tenais à introduire des photos de pokémon sur mon rapport final. J'ai donc téléchargé un dossier contenant des photos de chaque pokémon très pratique car le nom de l'image se résume au numéro de pokédex de chaque pokémon (correspondant aussi à mes index dans Excel).</p><p>Vous pouvez retrouver les images ici : <a href="https://www.kaggle.com/datasets/kvpratama/pokemon-images-dataset">pokemon images</a></p><p>J'ai rajouté des lignes dans mon tableau pour indiquer les numéros de pokédex de chaque pokémon &quot;record&quot; pour pouvoir ensuite retrouver plus facilement leur image dans le dossier et importer toutes les photos.</p><h4>Assemblage</h4><p>Pour cette étape finale j'ai donc usé de ma créativité afin de faire quelque chose de joli avec tous les éléments à ma disposition.</p><p>Voici le résultat final pour la génération 1 :</p><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Lola-Perdrix/pok/temps-1/feuille1.jpg" alt="image"> <img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Lola-Perdrix/pok/temps-1/feuille2.jpg" alt="image"></p><h2>Conclusion POK</h2><p>Ce fut un POK beaucoup plus long à faire que prévu mais j'y ai pris <strong>beaucoup de plaisir</strong> ce qui m'a permis de rester <strong>investie</strong> tout du long même si les résultats vis-à-vis du planning étaient <strong>décevants</strong>.</p><p>Il y a encore du travail, des fonctions qui ne marchent pas, des visualisations à automatiser, des codes à optimiser...</p><p>Je suis peut-être pas passée par les bons chemins, j'ai utilisé des méthodes plutôt naïves, je boucle plein de fois sur toute la liste des pokémon, mais je suis quand même contente d'avoir produit ça étant donné le niveau d'où je suis partie.</p><h2>Sources</h2><ul><li>Openclassrooms : <a href="https://openclassrooms.com/fr/courses/7139456-perfectionnez-vous-sur-excel">Perfectionnez vous sur Excel</a></li><li>Excel-pratique : <a href="https://excel-pratique.com/fr/vba/">VBA</a></li><li>Support Microsoft : <a href="https://learn.microsoft.com/fr-fr/">Microsoft</a></li></ul></article></main><footer class="min-h-[50px] border-t-2 border-gray-200 mt-4"><div class="max-w-[1000px] mx-auto px-4"><div class="min-h-[50px] flex justify-center items-center"><p class="text-center">©2025 <b><span style="font-family:Consolas,sans-serif">Do_<span style="color:#4a86e8">It</span></span></b> - Développement, Management et Gestion de projets en IT</p></div></div></footer><script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">window.MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]]},svg:{fontCache:"global"}},document.addEventListener("DOMContentLoaded",(()=>{MathJax.typeset()}))</script><script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">Prism.plugins.NormalizeWhitespace.setDefaults({"remove-trailing":!0,"remove-indent":!0,"left-trim":!0,"right-trim":!0})</script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script></body></html>
