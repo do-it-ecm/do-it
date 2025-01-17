@@ -2,6 +2,10 @@
 
 Welcome to the Do-It 3 static website generator. This repository contains the source code and scripts for the Do-It 3 website.
 
+<div style="display: flex; justify-content: center; align-items: center;">
+  <img src="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png" alt="Do-It Logo" style="width: 200px; image-rendering: pixelated;">
+</div>
+
 ## Table of Contents <span id="table-of-contents"></span>
 
 - [Do-It 3](#do-it-3)
