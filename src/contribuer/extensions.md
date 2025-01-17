@@ -172,6 +172,13 @@ Par exemple, pour un bouton stylisé :
     Hello !
 </div>
 
+#### Couleurs
+
+Nous disposons de 3 couleurs standardisées dans notre style TailWindCSS:
+- <span class="bg-info">info</span> : `#93c47d`
+- <span class="bg-mgt">mgt</span> : `#a9c6f4`
+- <span class="bg-gp">gp</span> : `#f5cfcf`
+
 ## Plugins Eleventy
 
 ### Eleventy Navigation
