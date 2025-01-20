@@ -42,28 +42,28 @@ eleventyComputed:
 
 /* Only show burger on small screens */
 @media (max-width: 1500px) {
-  #burger-button {
+  #course-burger-button {
     display: block;
   }
 
-  #sidebar {
+  #course-sidebar {
     max-width: 100vw !important; /* Ensure it fits the viewport width */
     transform: translateX(-100%); /* Initially hide the sidebar off-screen */
     transition: transform 0.3s ease-in-out; /* Add smooth animation */
   }
 
-  #sidebar.open {
+  #course-sidebar.open {
     transform: translateX(0); /* Slide in the sidebar when open */
   }
 }
 
 /* Hide burger and ensure sidebar is static on larger screens */
 @media (min-width: 1501px) {
-  #burger-button {
+  #course-burger-button {
     display: none;
   }
 
-  #sidebar {
+  #course-sidebar {
     transform: none; /* Static position for larger screens */
     max-width: none; /* Remove any width restriction */
   }
@@ -71,7 +71,7 @@ eleventyComputed:
 </style>
 
 <script>
-    const SIDEBAR_STATE_KEY = "sidebarState";
+    const SIDEBAR_STATE_KEY = "courseSidebarState";
 
     function toggleFold(button) {
         // Find the closest parent <li> and its corresponding nested <ul>
@@ -113,18 +113,36 @@ eleventyComputed:
     document.addEventListener("DOMContentLoaded", () => {
         restoreSidebarState();
     });
+
+let lastScrollYCourses = window.scrollY;
+
+function toggleCourseSidebar() {
+    document.getElementById('course-sidebar').classList.toggle('open');
+}
+
+window.addEventListener('scroll', () => {
+    const burger = document.getElementById('course-burger-button');
+    const sidebar = document.getElementById('course-sidebar');
+    const currentScroll = window.scrollY;
+    // Hide the burger button if max width is reached
+    if (window.innerWidth > 1500) {
+        burger.style.display = 'none';
+    } else if (currentScroll < 10 || currentScroll < lastScrollYCourses) {
+        burger.style.display = 'block';
+    } else if (!sidebar || !sidebar.classList.contains('open')) {
+        burger.style.display = 'none';
+    }
+
+    lastScrollYCourses = currentScroll;
+});
 </script>
 
-<button
-  id="burger-button"
-  class="fixed z-11 top-2 left-2 z-50 p-2 bg-gray-200 rounded-md block lg:hidden hidden"
-  onclick="toggleSidebar()"
->☰</button>
+<button id="course-burger-button"class="fixed z-11 top-[50px] left-2 z-50 p-2 bg-gray-200 rounded-md block lg:hidden hidden" onclick="toggleCourseSidebar()">☰</button>
 
-<aside id="sidebar" class="fixed top-[50px] z-10 left-0 w-full lg:w-1/4 h-[calc(100vh-35px)] bg-white p-4 overflow-y-auto border-r-2 border-gray-200 transform -translate-x-full transition-transform duration-300 lg:transform-none lg:transition-none"
+<aside id="course-sidebar" class="fixed top-[50px] z-10 left-0 w-full lg:w-1/4 h-[calc(100vh-35px)] bg-white p-4 overflow-y-auto border-r-2 border-gray-200 transform -translate-x-full transition-transform duration-300 lg:transform-none lg:transition-none"
     style="max-width: calc((100vw - 1000px) / 2 - 35px);">
     <nav>
-        <h2 class="font-bold text-2xl mb-2">Cours</h2>
+        <article><h2>Cours</h2></article>
         <ul class="sidebar-navigation space-y-2">
             {% from 'macros/render-navigation.njk' import renderNavigation %}
             {% for category in courses.sidebar %}
@@ -196,27 +214,3 @@ eleventyComputed:
 {{ content | safe }}
 
 </article>
-
-<script>
-let lastScrollY = window.scrollY;
-
-function toggleSidebar() {
-    document.getElementById('sidebar').classList.toggle('open');
-}
-
-window.addEventListener('scroll', () => {
-    const burger = document.getElementById('burger-button');
-    const sidebar = document.getElementById('sidebar');
-    const currentScroll = window.scrollY;
-    // Hide the burger button if max width is reached
-    if (window.innerWidth > 1500) {
-        burger.style.display = 'none';
-    } else if (currentScroll < 10 || currentScroll < lastScrollY) {
-        burger.style.display = 'block';
-    } else if (!sidebar || !sidebar.classList.contains('open')) {
-        burger.style.display = 'none';
-    }
-
-    lastScrollY = currentScroll;
-});
-</script>

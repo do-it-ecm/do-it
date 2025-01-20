@@ -17,6 +17,10 @@ eleventyExcludeFromCollections: ["HOME"]
 resume: "Liste des shortcodes eleventy disponibles pour améliorer vos visuels."
 ---
 
+{% sommaire %}
+[[toc]]
+{% endsommaire %}
+
 {% lien "**Liens utiles**" %}
 - [Guide Markdown pour le site](../markdown)
 - [Guide des extensions apportées par Eleventy](../extensions)
@@ -70,6 +74,21 @@ Vous pouvez appliquer n'importe quelle balise HTML pour le titre et le contenu d
 Le titre de la balise est toujours optionnel. Mais s'il est présent il est **obligatoirement** entre " " (chaîne de caractères).\
 Si vous voulez placer un titre vide, vous devez mettre des guillemets vides : `""`.
 {% endattention %}
+
+### Paired Shortcode `sommaire`
+
+Permet d'ajouter une barre de navigation sur le côté droit de votre contenu. La barre est pliable / dépliable pour les petits écrans.\
+Ce shortcode peut être agrémenté du contenu **&#36;&#123;toc&#125;** ou **&#91;toc&#93;** ou **&#91;&#91;toc&#93;&#93;** ou **&#91;&#91;&#95;toc&#95;&#93;&#93;** pour générer automatiquent une table des matières.
+
+```markdown
+&#123;% sommaire "**Titre du sommaire**" %&#125;
+&#36;&#123;toc&#125;
+&#123;% endsommaire %&#125;
+```
+
+{% sommaire %}
+[[toc]]
+{% endsommaire %}
 
 ### Paired Shortcode `note`
 

@@ -16,6 +16,10 @@ eleventyExcludeFromCollections: ["HOME"]
 resume: "Guide de rédaction en Markdown pour le site Do-It"
 ---
 
+{% sommaire %}
+[[toc]]
+{% endsommaire %}
+
 {% lien "**Liens utiles**" %}
 - [Cours Markdown - François Brucker](https://francoisbrucker.github.io/cours_informatique/tutoriels/format-markdown/)
 - [Guide des extensions apportées par Eleventy](../extensions)
@@ -25,17 +29,6 @@ resume: "Guide de rédaction en Markdown pour le site Do-It"
 - [Guide de contribution complet (anglais)](https://github.com/do-it-ecm/do-it/blob/main/CONTRIBUTING.md)
 
 {% endlien %}
-
-
-## Sommaire
-
-- [HTML](#html)
-- [Titres](#titres)
-- [Texte](#texte)
-- [Liens](#liens)
-- [Images & Vidéos](#images-videos)
-- [Tables](#tables)
-- [Code](#code)
 
 Pour rédiger en Markdown, il faut connaître les bases de ce langage de balisage léger.
 

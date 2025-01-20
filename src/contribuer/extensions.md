@@ -138,6 +138,19 @@ L'équation \(y = ax + b\) est une équation linéaire.
 
 L'équation \\(y = ax + b\\) est une équation linéaire.
 
+### markdown-it-anchor
+
+[markdown-it-anchor](https://www.npmjs.com/package/markdown-it-anchor) est un plugin Eleventy qui permet de **générer des ancres** pour les titres de vos pages.\
+Il s'agit de petits **#** cliquables qui permettent de **naviguer rapidement** dans la page. et d'être selectionnable dans l'URL / en Javascript.
+
+### markdown-it-toc-done-right
+
+[markdown-it-toc-done-right](https://www.npmjs.com/package/markdown-it-toc-done-right) est un plugin Eleventy qui permet de **générer une table des matières** pour vos pages.\
+La table des matières est générée à partir des **titres de vos pages** et permet de **naviguer rapidement** dans la page.\
+La table des matières est **responsive** et s'adapte à la taille de l'écran.
+
+Pour la faire apparaître, il suffit d'utiliser le placeholder &#36;&#123;toc&#125; qui sera **remplacé au build** par la table des matières.
+
 ### Pagefind
 
 [Pagefind](https://pagefind.app/)
