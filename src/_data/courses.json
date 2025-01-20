@@ -69,6 +69,10 @@
                         {
                             "title": "PostgreSQL",
                             "path": "info/ops/postgres"
+                        },
+                        {
+                            "title": "Réseaux",
+                            "path": "info/ops/reseaux"
                         }
                     ]
                 }
