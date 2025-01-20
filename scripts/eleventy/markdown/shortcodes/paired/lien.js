@@ -11,6 +11,6 @@ export default async function (eleventyConfig) {
 </svg>
 ${template(content, arg)}
 </div>
-`
-  })
-};
+`;
+  });
+}
