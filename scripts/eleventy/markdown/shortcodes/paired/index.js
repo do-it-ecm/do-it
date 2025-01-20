@@ -11,8 +11,9 @@ import setupExercice from "./exercice.js";
 import setupChemin from "./chemin.js";
 import setupPrerequis from "./prerequis.js";
 import setupLien from "./lien.js";
-export default function (eleventyConfig) {
+import setupSommaire from "./sommaire.js";
 
+export default function (eleventyConfig) {
     setupInfo(eleventyConfig);
     setupAttention(eleventyConfig);
     setupNote(eleventyConfig);
@@ -22,5 +23,5 @@ export default function (eleventyConfig) {
     setupChemin(eleventyConfig);
     setupPrerequis(eleventyConfig);
     setupLien(eleventyConfig);
-
+    setupSommaire(eleventyConfig);
 }

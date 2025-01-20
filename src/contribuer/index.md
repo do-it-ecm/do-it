@@ -13,6 +13,10 @@ tags:
 resume: "Guide de contribution au site Do-It"
 ---
 
+{% sommaire %}
+[[toc]]
+{% endsommaire %}
+
 {% lien "**Liens utiles**" %}
 - [Documentation du site (anglais)](https://github.com/do-it-ecm/do-it/blob/main/README.md)
 - [Guide de contribution complet (anglais)](https://github.com/do-it-ecm/do-it/blob/main/CONTRIBUTING.md)

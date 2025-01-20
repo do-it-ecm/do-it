@@ -5,6 +5,8 @@
 import markdownIt from "markdown-it";
 import markdownItAttrs from "markdown-it-attrs";
 import markdownItMultimdTable from "markdown-it-multimd-table";
+import markdownItAnchor from "markdown-it-anchor";
+import markdownItTocDoneRight from "markdown-it-toc-done-right";
 import { escapeHtml } from "./shortcodes/paired/utils.js";
 
 export default function (eleventyConfig) {
@@ -38,6 +40,17 @@ export default function (eleventyConfig) {
             headerless: true,
             multibody: true,
             aotolabel: true,
+        }).use(markdownItAnchor, {
+            permalink: true,
+            permalinkBefore: true,
+            permalinkSymbol: "#",
+            level: [1, 2, 3, 4, 5, 6],
+        }).use(markdownItTocDoneRight, {
+            containerClass: "toc",
+            listClass: "toc-list",
+            itemClass: "toc-item",
+            linkClass: "toc-link",
+            level: [1, 2, 3, 4, 5, 6],
         });
 
     eleventyConfig.addFilter("md", function (content = "") {
