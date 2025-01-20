@@ -16,6 +16,10 @@ eleventyExcludeFromCollections: ["HOME"]
 resume: "Guide des extensions apportées par Eleventy pour améliorer vos visuels."
 ---
 
+{% sommaire %}
+[[toc]]
+{% endsommaire %}
+
 {% lien "**Liens utiles**" %}
 - [Guide Markdown pour le site](../markdown)
 - [Guide ShortCodes pour le site](../shortcodes)
