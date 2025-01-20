@@ -5,7 +5,6 @@ export default function (eleventyConfig) {
   eleventyConfig.addPairedShortcode('details', (content, arg = '<b>Détails</b>') => {
 
     return `
-
 <div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none">
 <details class="group">
 <summary class="list-none py-0.5">
@@ -28,7 +27,6 @@ ${escapeHtml(content)}
 
 </details>
 </div>
-`
+`;
   });
-};
-
+}

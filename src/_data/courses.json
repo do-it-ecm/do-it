@@ -18,6 +18,10 @@
                         {
                             "title": "Ordinateur",
                             "path": "info/bases/ordinateur"
+                        },
+                        {
+                            "title": "Structures de données",
+                            "path": "info/bases/structures_donnees"
                         }
                     ]
                 },
@@ -111,6 +115,10 @@
                             "path": "management/agile/methodes_agiles"
                         }
                     ]
+                },
+                {
+                    "title": "Cyber",
+                    "path": "management/cyber"
                 },
                 {
                     "title": "Sobriété Numérique",

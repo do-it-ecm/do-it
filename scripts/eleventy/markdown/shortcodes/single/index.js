@@ -7,7 +7,6 @@ import setupLienInterne from "./lieninterne.js";
 import setupTitle from "./title.js";
 import setupCurrentYear from "./currentyear.js";
 
-
 export default function (eleventyConfig) {
     setupSizedImage(eleventyConfig);
     setupLienInterne(eleventyConfig);
