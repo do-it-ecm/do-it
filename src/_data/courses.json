@@ -21,7 +21,16 @@
                         },
                         {
                             "title": "Structures de données",
-                            "path": "info/bases/structures_donnees"
+                            "children": [
+                                {
+                                    "path": "info/bases/struct_donnees/linkedlist",
+                                    "title": "Listes Chaînées"
+                                },
+                                {
+                                    "path": "info/bases/struct_donnees/arbres_dict",
+                                    "title": "Arbres et Dictionnaires"
+                                }
+                            ]
                         }
                     ]
                 },
@@ -122,7 +131,13 @@
                 },
                 {
                     "title": "Cyber",
-                    "path": "management/cyber"
+                    "path": "management/cyber",
+                    "children": [
+                        {
+                            "title": "CyberSécurité - Crises",
+                            "path": "management/cyber/crise"
+                        }
+                    ]
                 },
                 {
                     "title": "Sobriété Numérique",
