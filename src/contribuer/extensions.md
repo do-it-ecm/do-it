@@ -137,7 +137,7 @@ Pour une équation inline, il suffit de mettre le code LaTeX entre `\(` et `\)`.
 Par exemple, pour une équation en ligne :
 
 ```markdown
-L'équation \(y = ax + b\) est une équation linéaire.
+L'équation \\(y = ax + b\\) est une équation linéaire.
 ```
 
 L'équation \\(y = ax + b\\) est une équation linéaire.
