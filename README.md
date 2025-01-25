@@ -19,7 +19,6 @@ Welcome to the Do-It 3 static website generator. This repository contains the so
   - [Maintainance](#maintainance)
     - [Maintainers](#maintainers)
     - [Updating](#updating)
-  - [License](#license)
   - [Troubleshooting](#troubleshooting)
     - [Windows](#windows)
   - [Contributors](#contributors)
@@ -77,7 +76,7 @@ You can use `npm run serve-nav` to serve the website with the navigation bar. It
 ## Important Links <span id="important-links"></span>
 
 - [Do-It 3 Repository on GitHub](https://github.com/do-it-ecm/do-it)
-- [Do-It 3 Website](https://do-it.aioli.ec-m.fr/)
+- [Do-It 3 Website](https://cumin.aioli.ec-m.fr/)
 - [Eleventy Documentation](https://www.11ty.dev/docs/)
 
 ## Contributing <span id="contributing"></span>
@@ -114,11 +113,6 @@ This process requires corresponding privileges on the GitHub organization and th
 1. Make sure the corresponding promotion repository is present in the `src/promos/` directory.
 2. Make sure you have the permissions to push on the promotion repository.
 3. Run the `npm run init-student` script and follow the instructions.
-
-## License <span id="license"></span>
-
-This project is licensed under the Creative Commons Zero v1.0 Universal License - see the [LICENSE](./LICENSE) file for details.
-That means you can use the code for any purpose, including commercial purposes, without asking for permission. You can also modify the code as you wish. The only restriction is that you cannot hold the authors liable. You can read more about the license [here](https://creativecommons.org/publicdomain/zero/1.0/).
 
 ## Troubleshooting <span id="troubleshooting"></span>
 

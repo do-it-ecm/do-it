@@ -52,7 +52,7 @@ URL du site : [{{ site.url }}]({{ site.url }})
 
 ```json
 {
-    "url": "https://do-it.aioli.ec-m.fr",
+    "url": "https://cumin.aioli.ec-m.fr",
     "source": "https://github.com/do-it-ecm/do-it",
     "colors": {
         "info": "#93c47d",
