@@ -16,6 +16,11 @@ export function runComplianceChecks() {
     const incorrectPlacement = validateMediaPlacement(SOURCE_DIR);
     const invalidFileStructure = validateStudentsFileStructure(SOURCE_DIR);
 
+    if (incorrectPlacement.length) {
+        console.error(`WARNING: The following files were detected as media because they do not end with '.md' and are placed in the wrong directory, please move them to an assets directory:`);
+        incorrectPlacement.forEach(path => console.error(`    - ${path}`));
+    }
+
     if (invalidPaths.length) {
         console.error('The following files or directories have invalid names (must be alphanumeric characters, upper or lower, dashes, underscores or dots):');
         invalidPaths.forEach(path => console.error(`    - ${path}`));
@@ -23,10 +28,6 @@ export function runComplianceChecks() {
     if (filesTooLarge.length) {
         console.error(`The following media files are too large (maximum size is ${Math.floor(MAX_MEDIA_SIZE / 1024 / 1024)}MB):`);
         filesTooLarge.forEach(path => console.error(`    - ${path}`));
-    }
-    if (incorrectPlacement.length) {
-        console.error(`WARNING: The following files were detected as media because they do not end with '.md' and are placed in the wrong directory, please move them to an assets directory:`);
-        incorrectPlacement.forEach(path => console.error(`    - ${path}`));
     }
     if (invalidFileStructure.length) {
         console.error('The following student directories have an invalid file structure:');
