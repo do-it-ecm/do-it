@@ -19,7 +19,6 @@ Welcome to the Do-It 3 static website generator. This repository contains the so
   - [Maintainance](#maintainance)
     - [Maintainers](#maintainers)
     - [Updating](#updating)
-  - [License](#license)
   - [Troubleshooting](#troubleshooting)
     - [Windows](#windows)
   - [Contributors](#contributors)
@@ -103,7 +102,7 @@ If you want to add a new promotion or student, you can use the helper scripts pr
 
 This process requires corresponding privileges on the GitHub organization and the GitHub repository.
 
-1. Create a remote repository on GitHub with a README file and a license file (CC0-1.0) in the main branch.
+1. Create a remote repository on GitHub with a README file in the main branch.
 2. Add the new repository to the list of allowed repositories for DO_IT_UPDATE_TOKEN secret in the [GitHub repository settings](https://github.com/organizations/do-it-ecm/settings/secrets/actions/DO_IT_UPDATE_TOKEN)
 3. Run the `npm run init-promotion` script and follow the instructions.
 
@@ -114,11 +113,6 @@ This process requires corresponding privileges on the GitHub organization and th
 1. Make sure the corresponding promotion repository is present in the `src/promos/` directory.
 2. Make sure you have the permissions to push on the promotion repository.
 3. Run the `npm run init-student` script and follow the instructions.
-
-## License <span id="license"></span>
-
-This project is licensed under the Creative Commons Zero v1.0 Universal License - see the [LICENSE](./LICENSE) file for details.
-That means you can use the code for any purpose, including commercial purposes, without asking for permission. You can also modify the code as you wish. The only restriction is that you cannot hold the authors liable. You can read more about the license [here](https://creativecommons.org/publicdomain/zero/1.0/).
 
 ## Troubleshooting <span id="troubleshooting"></span>
 
