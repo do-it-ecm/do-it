@@ -52,12 +52,12 @@ URL du site : [{{ site.url }}]({{ site.url }})
 
 ```json
 {
-    "url": "https://cumin.aioli.ec-m.fr",
-    "source": "https://github.com/do-it-ecm/do-it",
+    "url": "{{ site.url }}",
+    "source": "{{ site.source }}",
     "colors": {
-        "info": "#93c47d",
-        "mgt": "#a9c6f4",
-        "gp": "#f5cfcf"
+        "info": "{{ site.colors.info }}",
+        "mgt": "{{ site.colors.mgt }}",
+        "gp": "{{ site.colors.gp }}"
     }
 }
 ```
