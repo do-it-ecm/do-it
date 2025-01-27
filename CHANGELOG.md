@@ -27,7 +27,7 @@ All notable changes to the Do-It website will be documented in this file
 - A new `CHANGELOG.md` file was added to document all the changes made to the website.
 
 #### Deployment
-- The website is now hosted on **aioli** at [https://cumin.aioli.ec-m.fr/](https://cumin.aioli.ec-m.fr/).
+- The website is now hosted on **aioli** at [https://do-it.aioli.ec-m.fr/](https://do-it.aioli.ec-m.fr/).
 - Python scrip to start a server and serve the website in production.
 - Auto update of server when pushing to build (gh-pages) branch.
 

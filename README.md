@@ -76,7 +76,7 @@ You can use `npm run serve-nav` to serve the website with the navigation bar. It
 ## Important Links <span id="important-links"></span>
 
 - [Do-It 3 Repository on GitHub](https://github.com/do-it-ecm/do-it)
-- [Do-It 3 Website](https://cumin.aioli.ec-m.fr/)
+- [Do-It 3 Website](https://do-it.aioli.ec-m.fr/)
 - [Eleventy Documentation](https://www.11ty.dev/docs/)
 
 ## Contributing <span id="contributing"></span>
