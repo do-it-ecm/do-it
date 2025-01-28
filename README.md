@@ -76,7 +76,7 @@ You can use `npm run serve-nav` to serve the website with the navigation bar. It
 ## Important Links <span id="important-links"></span>
 
 - [Do-It 3 Repository on GitHub](https://github.com/do-it-ecm/do-it)
-- [Do-It 3 Website](https://cumin.aioli.ec-m.fr/)
+- [Do-It 3 Website](https://do-it.aioli.ec-m.fr/)
 - [Eleventy Documentation](https://www.11ty.dev/docs/)
 
 ## Contributing <span id="contributing"></span>
@@ -102,7 +102,7 @@ If you want to add a new promotion or student, you can use the helper scripts pr
 
 This process requires corresponding privileges on the GitHub organization and the GitHub repository.
 
-1. Create a remote repository on GitHub with a README file and a license file (CC0-1.0) in the main branch.
+1. Create a remote repository on GitHub with a README file in the main branch.
 2. Add the new repository to the list of allowed repositories for DO_IT_UPDATE_TOKEN secret in the [GitHub repository settings](https://github.com/organizations/do-it-ecm/settings/secrets/actions/DO_IT_UPDATE_TOKEN)
 3. Run the `npm run init-promotion` script and follow the instructions.
 
