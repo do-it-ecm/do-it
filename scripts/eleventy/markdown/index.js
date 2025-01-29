@@ -41,9 +41,10 @@ export default function (eleventyConfig) {
             multibody: true,
             aotolabel: true,
         }).use(markdownItAnchor, {
-            permalink: true,
-            permalinkBefore: true,
-            permalinkSymbol: "#",
+            permalink: markdownItAnchor.permalink.linkInsideHeader({
+                symbol: "",
+                placement: 'before'
+            }),
             level: [1, 2, 3, 4, 5, 6],
         }).use(markdownItTocDoneRight, {
             containerClass: "toc",
