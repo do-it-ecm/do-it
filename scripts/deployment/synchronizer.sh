@@ -1,8 +1,8 @@
 #!/bin/sh
 
-DO_IT_PATH="${HOME}/.do-it/do-it"
+DO_IT_PATH="/opt/do-it/do-it"
 REMOTE_BRANCH="gh-pages"
-LOG_DIRECTORY="${HOME}/.do-it/logs"
+LOG_DIRECTORY="/opt/do-it/logs"
 LOG_FILE="${LOG_DIRECTORY}/synchronizer.log"
 
 mkdir -p ${LOG_DIRECTORY}

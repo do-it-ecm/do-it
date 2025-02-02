@@ -2,6 +2,18 @@
 
 All notable changes to the Do-It website will be documented in this file
 
+## [Deployment Upgrade - Do-It 3.1.0] - 2025-02-02
+
+### Added
+
+- Gzip compression is now enabled on production buildon the server to reduce the size of the files sent to the client.
+- Containerized the website using Docker to make it easier to deploy and maintain. The image is in the GitHub Container Registry.
+- Upgraded and optimized nginx configuration to improve the performance of the website.
+
+### Changed
+
+- Pagefind is now only created for the production build to reduce the build time.
+
 ## [Scaling Update - Do-It 3.0.0] - 2025-01-13
 
 ### Added
