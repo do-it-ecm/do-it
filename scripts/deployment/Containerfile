@@ -13,7 +13,9 @@ RUN apk update && \
     apk add --no-cache nginx git python3 && \
     rm -rf /var/cache/apk/* && \
     rm -f /etc/nginx/http.d/default.conf && \
-    (crontab -l 2>/dev/null; echo "*/15 * * * * sh /opt/do-it/jobs/synchronizer.sh") | crontab -
+    echo "#!/bin/sh" > /etc/periodic/15min/synchronizer && \
+    echo "/opt/do-it/jobs/synchronizer.sh" >> /etc/periodic/15min/synchronizer && \
+    chmod 750 /etc/periodic/15min/synchronizer
 
 COPY --chown=root:root --chmod=750 ./entrypoint.sh /entrypoint.sh
 COPY --chown=root:root --chmod=650 ./nginx.conf /etc/nginx/nginx.conf
