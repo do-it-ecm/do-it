@@ -12,6 +12,7 @@ from subprocess import Popen, PIPE
 from json import loads, JSONDecodeError
 import hashlib
 import hmac
+from os import path, makedirs
 
 class HTTPError(Exception):
     def __init__(self, status_code: int, detail: str):
@@ -131,6 +132,10 @@ def main():
     parser.add_argument('--log-file', required=True, help='Path to the log file (default: server.log)')
 
     args = parser.parse_args()
+
+    # Create log directory if it does not exist
+    log_dir = path.dirname(args.log_file)
+    makedirs(log_dir, exist_ok=True)
 
     # Configure logging
     logging.basicConfig(
