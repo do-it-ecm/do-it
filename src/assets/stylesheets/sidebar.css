@@ -1,0 +1,38 @@
+@layer components {
+  .course-sidebar-item-toggle-button {
+    @apply ml-2 cursor-pointer bg-none border-none text-inherit transform-[rotate(0deg)] transition-transform ease-out duration-800;
+  }
+
+  .course-sidebar-item-toggle-button.active {
+    @apply transform-[rotate(90deg)];
+  }
+
+  .nested {
+    @apply max-h-0 opacity-0 overflow-hidden pointer-events-none ml-4 transition-opacity duration-800 ease-out transition-all;
+  }
+
+  .nested.active {
+    @apply max-h-fit opacity-100 pointer-events-auto;
+  }
+
+  .sidebar {
+    @apply fixed z-10 top-[50px] w-screen md:w-1/4 max-w-screen bg-white p-4 overscroll-contain overflow-y-auto transform transition-transform duration-300 border-gray-200 ease-in-out h-[calc(100vh-35px)] 2xl:max-w-[calc((100vw-1000px)/2-35px)] min-w-80 top-[50px] 2xl:transform-none 2xl:transition-none 2xl:translate-x-0;
+  }
+
+  .sidebar.open {
+    @apply !translate-x-0;
+  }
+
+  .sidebar-burger-button {
+    @apply fixed top-[50px] z-20 p-2 bg-gray-200 rounded-md block 2xl:hidden cursor-pointer;
+  }
+
+  .course-sidebar-item {
+    @apply flex justify-between items-center w-5/6 mx-auto py-1.5 px-1 rounded-md hover:bg-gray-200;
+  }
+
+  .course-sidebar-item-toggle-button {
+    @apply p-2 shrink-0 text-xl font-bold leading-none items-center justify-center;
+  }
+
+}

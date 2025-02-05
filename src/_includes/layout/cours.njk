@@ -10,66 +10,6 @@ eleventyComputed:
     title: "{{ title | safe }}"
 ---
 
-<style>
-.nested {
-    max-height: 0;
-    opacity: 0;
-    overflow: hidden; /* Ensure content doesn't show outside */
-    pointer-events: none; /* Prevent interaction with hidden links */
-    transition: opacity 0.8s ease-out, max-height 0.8s ease-out;
-    margin-left: 1em; /* Indent for nested items */
-}
-
-.nested.active {
-    max-height: fit-content;
-    opacity: 1;
-    pointer-events: auto; /* Allow interaction when active */
-}
-
-.toggle-button {
-    margin-left: 0.5em;
-    cursor: pointer;
-    background: none;
-    border: none;
-    color: inherit;
-    transform: rotate(0deg);
-    transition: transform 0.8s ease-out;
-}
-
-.toggle-button.active {
-    transform: rotate(90deg);
-}
-
-/* Only show burger on small screens */
-@media (max-width: 1500px) {
-  #course-burger-button {
-    display: block;
-  }
-
-  #course-sidebar {
-    max-width: 100vw !important; /* Ensure it fits the viewport width */
-    transform: translateX(-100%); /* Initially hide the sidebar off-screen */
-    transition: transform 0.3s ease-in-out; /* Add smooth animation */
-  }
-
-  #course-sidebar.open {
-    transform: translateX(0); /* Slide in the sidebar when open */
-  }
-}
-
-/* Hide burger and ensure sidebar is static on larger screens */
-@media (min-width: 1501px) {
-  #course-burger-button {
-    display: none;
-  }
-
-  #course-sidebar {
-    transform: none; /* Static position for larger screens */
-    max-width: none; /* Remove any width restriction */
-  }
-}
-</style>
-
 <script>
     const SIDEBAR_STATE_KEY = "courseSidebarState";
 
@@ -102,7 +42,7 @@ eleventyComputed:
         nestedLists.forEach((list, index) => {
             if (state[index]) {
                 list.classList.add('active');
-                const button = list.parentNode.querySelector('.toggle-button'); // Correctly locate the button
+                const button = list.parentNode.querySelector('.course-sidebar-item-toggle-button'); // Correctly locate the button
                 if (button) {
                     button.classList.add('active'); // Rotate the button
                 }
@@ -125,7 +65,7 @@ window.addEventListener('scroll', () => {
     const sidebar = document.getElementById('course-sidebar');
     const currentScroll = window.scrollY;
     // Hide the burger button if max width is reached
-    if (window.innerWidth > 1500) {
+    if (window.innerWidth > 1536) {
         burger.style.display = 'none';
     } else if (currentScroll < 10 || currentScroll < lastScrollYCourses) {
         burger.style.display = 'block';
@@ -137,20 +77,17 @@ window.addEventListener('scroll', () => {
 });
 </script>
 
-<button id="course-burger-button"class="fixed z-11 top-[50px] left-2 z-50 p-2 bg-gray-200 rounded-md block lg:hidden hidden" onclick="toggleCourseSidebar()">☰</button>
+<button id="course-burger-button" class="sidebar-burger-button left-2" onclick="toggleCourseSidebar()">☰</button>
 
-<aside id="course-sidebar" class="fixed top-[50px] z-10 left-0 w-full lg:w-1/4 h-[calc(100vh-35px)] bg-white p-4 overflow-y-auto border-r-2 border-gray-200 transform -translate-x-full transition-transform duration-300 lg:transform-none lg:transition-none"
-    style="max-width: calc((100vw - 1000px) / 2 - 35px);">
-    <nav>
-        <article><h2>Cours</h2></article>
-        <ul class="sidebar-navigation space-y-2">
-            {% from 'macros/render-navigation.njk' import renderNavigation %}
-            {% for category in courses.sidebar %}
-                {{ renderNavigation(category) }}
-            {% endfor %}
-        </ul>
-    </nav>
-</aside>
+<nav id="course-sidebar" class="sidebar left-0 border-r-2 -translate-x-full 2xl:translate-x-0">
+    <article><h2>Cours</h2></article>
+    <ul class="sidebar-navigation space-y-2">
+        {% from 'macros/render-navigation.njk' import renderNavigation %}
+        {% for category in courses.sidebar %}
+            {{ renderNavigation(category) }}
+        {% endfor %}
+    </ul>
+</nav>
 
 <article class="relative">
 <h1  {% if tags or authors %}class="mb-1"{% endif %}>{{ title }}</h1>

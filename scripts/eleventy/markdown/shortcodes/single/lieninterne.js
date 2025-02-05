@@ -29,7 +29,7 @@ export default function (eleventyConfig) {
                     <a href="${resolvedUrl}">${title}</a>
                 </div>
                 <span class="line-clamp-3">${résumé}</span>
-                <div class="flex flex-wrap flex-row flex-grow justify-between items-end not-prose list-none mt-3 mb-1 mx-0 px-1 gap-1">
+                <div class="flex flex-wrap flex-row grow justify-between items-end not-prose list-none mt-3 mb-1 mx-0 px-1 gap-1">
                     <div class="flex-1">
                         <span class="bg-blue-200 rounded-full p-2">${authors}</span>
                     </div>
