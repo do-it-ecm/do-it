@@ -9,7 +9,7 @@ export default function (eleventyConfig) {
     // Post build TailwindCSS
     eleventyConfig.on('eleventy.after', () => {
         console.log("Post build TailwindCSS");
-        execSync(`tailwindcss -i ./src/assets/stylesheets/main.css -o ./dist/assets/stylesheets/main.css --minify`);
+        execSync(`tailwindcss -i ./src/assets/stylesheets/main.css -o ./dist/assets/stylesheets/main.css --minify --postcss`);
     });
 
     if (process.env.NODE_ENV === "production") {
