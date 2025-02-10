@@ -1,0 +1,661 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Développement d&#39;une application de gestion des tâches avec PyQt</title><link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet"><link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet"><link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet"><link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon"><link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png"><script type="module" defer="">import mermaid from"https://cdn.jsdelivr.net/npm/mermaid/+esm";mermaid.initialize({startOnLoad:!0})</script><link href="/assets/stylesheets/main.css" rel="stylesheet"></head><body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000"><header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white"><div class="max-w-[1000px] mx-auto px-4"><div class="min-h-[50px] flex justify-between items-center"><a class="mx-2" href="/">Home</a><div class="flex items-center gap-4 sm:gap-6"><a class="" href="/cs">CS</a> <a class="" href="/pok">POK</a> <a class="" href="/mon">MON</a> <a class="" href="/projets">Projets</a> <a class="hidden sm:block" href="/promos">Promos</a> <a href="/search"><svg class="h-5 aspect-square" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path></svg> </a><a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank"><svg class="h-5 aspect-square" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg></a></div></div></div></header><main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body=""><article class="relative"><h1 class="mb-1">Développement d&#39;une application de gestion des tâches avec PyQt</h1><div class="mb-4"><div class="px-4 flex flex-wrap items-center"><div class="font-bold">Tags :</div><ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags"><li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">POK</li><li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">PyQt</li><li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">Qt</li><li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">Python</li><li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">SQLite</li></ul><div class="hidden" data-pagefind-meta="Type"><span data-pagefind-filter="Type">POK</span></div></div><div class="px-4 flex flex-wrap items-center"><div class="font-bold">Auteurs :</div><ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs"><li class="bg-blue-200 rounded-full px-2" data-pagefind-filter="Auteurs">Serigne Mbaye Sy AMAR</li></ul></div><div class="absolute top-0 right-0"><span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2" data-pagefind-filter="Année">2024-2025</span></div></div><p class="mb-4 text-lg">Ce POK vise à créer une application graphique de gestion des taches avec PyQt, où je vais apprendre à concevoir une interface utilisateur, y intégrer une base de données SQLite pour gérer des données dynamiques Personnaliser l'apparence avec des styles QSS.</p><div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100"><svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path></svg><div class="pl-8 mr-8"><a href="/promos/2024-2025/Amar-Mbaye/">Serigne Mbaye Sy AMAR</a><span class="px-1">/</span><a href="/promos/2024-2025/Amar-Mbaye/pok/">POK de Serigne Mbaye Sy AMAR</a><span class="px-1">/</span><a href="/promos/2024-2025/Amar-Mbaye/pok/temps-3/">Développement d&#39;une application de gestion des tâches avec PyQt</a></div></div><div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100"><svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg><div class="pl-8 mb-2 mr-8"><p><b>Prérequis</b></p></div><div class="pl-8 mr-8"><ul><li>Une bonne base en python</li><li>Base en SQL</li></ul></div></div><div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100"><svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path></svg><div class="pl-8 mb-2 mr-8"><p><b>Liens</b></p></div><div class="pl-8 mr-8"><ul><li><a href="https://do-it.aioli.ec-m.fr/promos/2023-2024/Dang-Vu-Duc/mon/temps-1.1/">MON de Duc</a></li><li><a href="https://do-it.aioli.ec-m.fr/promos/2023-2024/Dang-Vu-Duc/pok/temps-1/">POK de Duc</a></li></ul></div></div><h3 id="objectifs-principaux" tabindex="-1"><a class="header-anchor" href="#objectifs-principaux"></a> Objectifs principaux</h3><ol><li><p><strong>Créer une interface utilisateur avec PyQt</strong>, permettant la gestion de tableaux et de cartes dynamiques.</p></li><li><p><strong>Implémenter la base de données SQLite</strong> pour assurer la conservation des données entre les sessions.</p></li><li><p><strong>Ajouter du design</strong> à l’aide de QSS pour la personnalisation des interfaces.</p></li></ol><hr><h3 id="recueil-des-besoins" tabindex="-1"><a class="header-anchor" href="#recueil-des-besoins"></a> Recueil des besoins</h3><div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none"><details class="group"><summary class="list-none py-0.5"><svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg> <svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg><div class="pl-8 font-bold inline-block group-open:select-text"><p>Détails du recueil des besoins</p></div><svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path></svg></summary><div class="mx-8 pb-2 cursor-auto select-text"><table><thead><tr><th>Étape</th><th>Résultat attendu</th><th>Difficultés rencontrées</th></tr></thead><tbody><tr><td><strong>Identification personnelle des besoins</strong></td><td>Définir les fonctionnalités principales en tant qu'utilisateur (ajout de tableaux, gestion des cartes).</td><td>Risque de vouloir tout intégrer dès le départ et de dépasser le cadre d’un projet MVP (produit minimum viable).</td></tr><tr><td><strong>Analyse des outils existants</strong></td><td>Étudier Trello et d’autres outils similaires pour s’inspirer des fonctionnalités essentielles.</td><td>Difficulté à rester focalisé sur les fonctionnalités indispensables sans ajouter des options superflues.</td></tr><tr><td><strong>Étude des contraintes techniques</strong></td><td>Vérifier si les outils techniques choisis (par exemple PyQt et SQLite) peuvent répondre efficacement aux besoins.</td><td>Découverte des limites techniques comme la gestion des performances avec des widgets complexes sous PyQt.</td></tr><tr><td><strong>Prototypage rapide</strong></td><td>Concevoir une interface simple et fonctionnelle pour tester rapidement mes idées.</td><td>Adapter rapidement les designs en fonction des tests et des ajustements nécessaires.</td></tr></tbody></table></div></details></div><div class="quote relative drop-shadow py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100"><svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg><div class="pl-8 mb-2 mr-8"><p><b>Note</b></p></div><div class="pl-8 mr-8"><p>Les fonctionnalités minimales identifiées incluent la gestion de tableaux dynamiques et la possibilité d’ajouter et modifier des cartes associées.</p></div></div><h4 id="fondements" tabindex="-1"><a class="header-anchor" href="#fondements"></a> Fondements</h4><ul><li><p>Je veux une interface simple, sans besoin de connexion à un serveur distant.</p></li><li><p>La gestion des cartes et des tableaux doit rester rapide et réactive.</p></li><li><p>Le design doit être uniforme.</p></li></ul><hr><h3 id="monitoring-du-projet" tabindex="-1"><a class="header-anchor" href="#monitoring-du-projet"></a> Monitoring du projet</h3><h4 id="back-log-et-organisation-par-sprints" tabindex="-1"><a class="header-anchor" href="#back-log-et-organisation-par-sprints"></a> Back-log et organisation par sprints</h4><p>Chaque sprint répond à une <strong>question principale</strong>.</p><h3 id="sprint-1-%3A-comment-utiliser-pyqt-pour-cr%C3%A9er-une-interface-fonctionnelle-%3F" tabindex="-1"><a class="header-anchor" href="#sprint-1-%3A-comment-utiliser-pyqt-pour-cr%C3%A9er-une-interface-fonctionnelle-%3F"></a> Sprint 1 : <strong>Comment utiliser PyQt pour créer une interface fonctionnelle ?</strong></h3><p><strong>Objectifs :</strong></p><ol><li><p>Étudier PyQt et comprendre ses composants de base.</p></li><li><p>Concevoir une interface simple permettant de visualiser des tableaux.</p></li><li><p>Commencer l’intégration de styles via QSS.</p></li></ol><p><strong>Backlog :</strong></p><ul><li><p>[x] Lire les POK et MON de Duc ainsi que documentation officielle de PyQt et effectuer des exercices pratiques.</p></li><li><p>[x] Développer une maquette avec des <code>QVBoxLayout</code> pour organiser les tableaux.</p></li><li><p>[x] Créer un premier prototype fonctionnel permettant d’afficher des widgets dynamiquement.</p></li><li><p>[x] Étudier et intégrer des styles basiques avec QSS.</p></li></ul><div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none"><details class="group"><summary class="list-none py-0.5"><svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg> <svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg><div class="pl-8 font-bold inline-block group-open:select-text"><p>Détails des activités du Sprint 1</p></div><svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path></svg></summary><div class="mx-8 pb-2 cursor-auto select-text"><table><thead><tr><th>Date</th><th>Heures passées</th><th>Indications</th></tr></thead><tbody><tr><td>16/01/2025</td><td>3.0h</td><td>Lecture et exercices sur PyQt (widgets de base).</td></tr><tr><td>16/01/2025</td><td>1.5h</td><td>Exploration des styles via QSS.</td></tr><tr><td>17/01/2025</td><td>2.0h</td><td>Design des tableaux avec QVBoxLayout.</td></tr><tr><td>18/01/2025</td><td>1.5h</td><td>Étude des signaux et slots.</td></tr><tr><td>18/01/2025</td><td>2.0h</td><td>Création de l'interface principale.</td></tr></tbody></table><p><strong>Total du sprint 1 :</strong> 10h.</p></div></details></div><h4 id="activit%C3%A9s-r%C3%A9alis%C3%A9es" tabindex="-1"><a class="header-anchor" href="#activit%C3%A9s-r%C3%A9alis%C3%A9es"></a> Activités réalisées</h4><ol><li><strong>Étude et expérimentation des composants de PyQt</strong></li></ol><p>Découverte des <strong>widgets</strong> et de leur rôle dans la construction d'interfaces graphiques.</p><p><strong>Widgets étudiés sont</strong> :</p><ul><li><p><code>QWidget</code> qui est le conteneur de base.</p></li><li><p><code>QPushButton</code> qui sont les boutons interactifs.</p></li><li><p><code>QLabel</code> qui affiche les textes et les images.</p></li></ul><p><strong>Objectif :</strong> Comprendre comment assembler ces widgets pour structurer une interface.</p><div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none"><details class="group"><summary class="list-none py-0.5"><svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg> <svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg><div class="pl-8 font-bold inline-block group-open:select-text"><p>Exemple - Création de widgets de base</p></div><svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path></svg></summary><div class="mx-8 pb-2 cursor-auto select-text"><p>Voici comment configurer un bouton et un label dans une interface :</p><pre class="language-python line-numbers"><code>
+
+
+button = QPushButton("Cliquez-moi")
+
+label = QLabel("Bienvenue dans PyQt")
+
+layout = QVBoxLayout()
+
+layout.addWidget(button)
+
+layout.addWidget(label)
+
+widget.setLayout(layout)
+
+
+
+</code></pre><p>Ce code crée une fenêtre simple avec un bouton et un label empilés verticalement.</p></div></details></div><ol><li><strong>Création d’un layout structuré pour afficher des tableaux</strong></li></ol><ul><li><p>Utilisation de <code>QHBoxLayout</code> pour organiser les widgets horizontalement (exemple : plusieurs tableaux).</p></li><li><p>Mise en place d’un <strong>conteneur</strong> qui permet d’ajouter ou de supprimer des widgets.</p></li></ul><div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none"><details class="group"><summary class="list-none py-0.5"><svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg> <svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg><div class="pl-8 font-bold inline-block group-open:select-text"><p>Exemple - Organisation de widgets avec QHBoxLayout</p></div><svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path></svg></summary><div class="mx-8 pb-2 cursor-auto select-text"><pre class="language-python line-numbers"><code>
+
+
+layout = QHBoxLayout()
+
+button1 = QPushButton("Tableau 1")
+
+button2 = QPushButton("Tableau 2")
+
+layout.addWidget(button1)
+
+layout.addWidget(button2)
+
+widget.setLayout(layout)
+
+
+
+</code></pre><p>Chaque bouton représente un tableau dans l’interface utilisateur.</p></div></details></div><ol><li><strong>Gestion des événements utilisateur avec les signaux et slots</strong></li></ol><ul><li>Connexion des actions utilisateur aux fonctions Python via des <strong>signaux</strong>.</li></ul><p>Exemple : Ajouter un tableau lorsqu’un bouton est cliqué.</p><div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none"><details class="group"><summary class="list-none py-0.5"><svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg> <svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg><div class="pl-8 font-bold inline-block group-open:select-text"><p>Exemple - Connexion d’un bouton à une action</p></div><svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path></svg></summary><div class="mx-8 pb-2 cursor-auto select-text"><pre class="language-python line-numbers"><code>
+
+
+button.clicked.connect(self.ajouter_tableau)
+
+def ajouter_tableau(self):
+
+print("Un nouveau tableau a été ajouté !")
+
+
+
+</code></pre><p>Lorsque le bouton est cliqué, la fonction <code>ajouter_tableau</code> est déclenchée.</p></div></details></div><ol><li><strong>Apprentissage et application des styles QSS</strong></li></ol><ul><li><p>Utilisation de QSS pour personnaliser l’apparence des boutons, labels, et arrière-plans.</p></li><li><p>Définition d’un fichier <code>main.qss</code> pour centraliser les styles.</p></li></ul><div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none"><details class="group"><summary class="list-none py-0.5"><svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg> <svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg><div class="pl-8 font-bold inline-block group-open:select-text"><p>Exemple - Stylisation avec QSS</p></div><svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path></svg></summary><div class="mx-8 pb-2 cursor-auto select-text"><p>Fichier QSS pour personnaliser un bouton :</p><pre class="language-css line-numbers"><code>
+
+
+QPushButton {
+
+background-color: #0079BF;
+
+color: white;
+
+border-radius: 5px;
+
+}
+
+QPushButton:hover {
+
+background-color: #026AA7;
+
+}
+
+
+
+</code></pre><p>Le bouton change de couleur lorsque la souris passe dessus.</p></div></details></div><hr><div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none"><details class="group"><summary class="list-none py-0.5"><svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg> <svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg><div class="pl-8 font-bold inline-block group-open:select-text"><p>Ce que j'ai appris avec PyQt et les layouts</p></div><svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path></svg></summary><div class="mx-8 pb-2 cursor-auto select-text"><ol><li><strong>Composants de base PyQt :</strong></li></ol><ul><li><p><strong>QWidget</strong>, le composant de base pour créer une fenêtre ou un conteneur.</p></li><li><p><strong>QHBoxLayout</strong>, permet d’organiser les widgets horizontalement, ce qui est idéal pour une interface basée sur des ligne, comme Trello.</p></li><li><p><strong>QPushButton</strong> et <strong>QLabel</strong>, utilisés pour les interactions utilisateur de base.</p></li></ul><ol start="2"><li><strong>Gestion des layouts :</strong></li></ol><ul><li><p>Si on utilise un <code>QVBoxLayout</code> imbriqué dans un <code>QHBoxLayout</code>, on peut organiser efficacement des colonnes dynamiques, par exemple pour afficher des listes de cartes sous forme de tableaux.</p></li><li><p>Les marges et les espacements (<code>setContentsMargins</code>, <code>setSpacing</code>) permettent d'ajuster précisément l'apparence.</p></li></ul><ol start="3"><li><strong>Signaux et slots :</strong></li></ol><ul><li><p>Les signaux comme <code>clicked</code> permettent de connecter un bouton à une action spécifique.</p></li><li><p>Les slots facilitent la gestion des interactions sans complexifier le code.</p></li></ul><p><strong>Ressources utilisées :</strong></p><ul><li><p><strong>POK et Mon de Duc</strong> pour comprendre comment structurer les interfaces de manière modulaire (lien au niveau des sources).</p></li><li><p><strong>Vidéos YouTube sur PyQt</strong> pour les démonstrations pratiques des layouts et widgets (lien, voir la partie sources).</p></li></ul></div></details></div><hr><h3 id="analyse-post-mortem" tabindex="-1"><a class="header-anchor" href="#analyse-post-mortem"></a> Analyse post-mortem</h3><ul><li><p><strong>Points forts :</strong> Maîtrise des bases de PyQt et de QSS, premier prototype fonctionnel.</p></li><li><p><strong>Points faibles :</strong> Temps sous-estimé pour la personnalisation des styles.</p></li><li><p><strong>Amélioration :</strong> Prévoir un temps supplémentaire pour ajuster le design.</p></li></ul><div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100"><svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg><div class="pl-8 mb-2 mr-8"><p>Objectif clé réussi</p></div><div class="pl-8 mr-8"><p>Comprendre comment organiser et structurer une interface graphique avec PyQt.</p></div></div><div class="quote relative drop-shadow py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100"><svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg><div class="pl-8 mb-2 mr-8"><p><b>Note</b></p></div><div class="pl-8 mr-8"><p>Les connaissances acquises dans ce sprint serviront de base pour intégrer des fonctionnalités dans les sprints futurs.</p></div></div><hr><div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none"><details class="group"><summary class="list-none py-0.5"><svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg> <svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg><div class="pl-8 font-bold inline-block group-open:select-text"><p>Livrable du sprint 1</p></div><svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path></svg></summary><div class="mx-8 pb-2 cursor-auto select-text"><p>La page de connexion:</p><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Amar-Mbaye/pok/temps-3/bienv.png" alt="image"></p><p>La première page:</p><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Amar-Mbaye/pok/temps-3/inte.png" alt="image"></p></div></details></div><h2 id="sources-%3A" tabindex="-1"><a class="header-anchor" href="#sources-%3A"></a> Sources :</h2><div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100"><svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path></svg><div class="pl-8 mb-2 mr-8"><p><b>Liens</b></p></div><div class="pl-8 mr-8"><ul><li><a href="https://doc.qt.io/qtforpython-6/">Documentation officielle PyQt</a></li><li><a href="https://do-it.aioli.ec-m.fr/promos/2023-2024/Dang-Vu-Duc/mon/temps-1.1/">MON de Duc</a></li><li><a href="https://do-it.aioli.ec-m.fr/promos/2023-2024/Dang-Vu-Duc/pok/temps-1/">POK de Duc</a></li><li><a href="https://www.youtube.com/watch?v=SfeqGZ_x9kc">PyQt5 tutorial - login Form</a></li></ul></div></div><!--
+### Sprint 2 : **Comment intégrer une base de données SQLite et gérer les événements utilisateur ?**
+
+**Objectifs :**
+
+1. Implémenter une base de données SQLite pour persister les données des tableaux et cartes.
+
+2. Permettre la création, suppression et modification des tableaux par l’utilisateur.
+
+3. Intégrer une gestion des cartes dans chaque tableau.
+
+**Backlog :**
+
+- [x] Configurer SQLite pour stocker les données des tableaux et cartes.
+
+- [x] Ajouter des fonctionnalités pour créer, supprimer et modifier des tableaux.
+
+- [x] Gérer les cartes dynamiquement dans les tableaux.
+
+- [x] Finaliser les styles QSS pour uniformiser l’expérience utilisateur.
+
+- [ ] Implémenter des tests pour vérifier la cohérence des données.
+
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+
+
+Détails des activités du Sprint 2
+
+
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+
+
+
+
+| Date | Heures passées | Indications |
+
+|--------------|----------------|-----------------------------------------------|
+
+| 19/01/2025 | 2.0h | Configuration de la base SQLite. |
+
+| 20/01/2025 | 2.5h | Gestion dynamique des tableaux. |
+
+| 21/01/2025 | 3.0h | Gestion des cartes dans les tableaux. |
+
+| 22/01/2025 | 2.5h | Tests unitaires et ajustements des styles. |
+
+**Total du sprint 2 :** 10h.
+
+
+
+
+</div>
+
+</details>
+</div>
+
+
+**Réponse à la question :**
+
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+
+
+Ce que j'ai appris avec SQLite et les événements utilisateur
+
+
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+
+
+
+
+1. **Base de données SQLite :**
+
+- Créer une table pour les tableaux (`CREATE TABLE boards`) et une table pour les cartes associées (`CREATE TABLE cards`).
+
+- Utilisation des relations entre tableaux et cartes via une clé étrangère (`board_id` dans la table `cards`).
+
+- Gestion des opérations CRUD (Create, Read, Update, Delete) pour manipuler les données dynamiquement.
+
+2. **Gestion des signaux et événements utilisateur :**
+
+- Utilisation des signaux `clicked` pour connecter les boutons d’ajout et suppression aux actions correspondantes.
+
+- Implémentation de slots personnalisés pour mettre à jour l'interface et la base de données simultanément.
+
+3. **Stylisation via QSS :**
+
+- Amélioration de l’esthétique de l’application avec des styles comme :
+
+```css
+
+QPushButton {
+
+background-color: #0079BF;
+
+color: white;
+
+border-radius: 3px;
+
+}
+
+QPushButton:hover {
+
+background-color: #026AA7;
+
+}
+
+```
+
+- Simplification du design en regroupant les styles dans un fichier unique `main.qss`.
+
+**Ressources utilisées :**
+
+- **POK et Mon de Duc** pour structurer la gestion des données dans un projet logiciel.
+
+- **Vidéos YouTube sur SQLite avec PyQt** pour la configuration des bases de données.
+
+
+
+
+</div>
+
+</details>
+</div>
+
+
+
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+</svg>
+<div class="pl-8 mb-2 mr-8">
+
+<b>Attention</b>
+
+</div><div class="pl-8 mr-8">
+
+
+
+Lors de la suppression d’un tableau, il est important de supprimer également toutes les cartes associées dans la base de données pour éviter les incohérences.
+
+
+
+</div></div>
+
+
+---
+
+### Analyse post-mortem
+
+#### Sprint 1
+
+- **Points forts :** Maîtrise des bases de PyQt et de QSS, premier prototype fonctionnel.
+
+- **Points faibles :** Temps sous-estimé pour la personnalisation des styles.
+
+- **Amélioration :** Prévoir un temps supplémentaire pour ajuster le design.
+
+#### Sprint 2
+
+- **Points forts :** Bonne avancée dans la gestion des données et la persistance avec SQLite.
+
+- **Points faibles :** La gestion des cartes a été plus complexe que prévu.
+
+- **Amélioration :** Intégrer des tests unitaires dès le début pour détecter les incohérences.
+
+---
+
+### Livrable final
+
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+
+
+Fonctionnalités principales
+
+
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+
+
+
+
+1. **Gestion des tableaux** : Ajouter, modifier et supprimer des tableaux.
+
+2. **Gestion des cartes** : Ajouter, déplacer et supprimer des cartes dans les tableaux.
+
+3. **Persistance des données** : Les données sont stockées dans une base SQLite.
+
+4. **Interface personnalisée** : Utilisation de QSS pour un design moderne et uniforme.
+
+
+
+
+</div>
+
+</details>
+</div>
+
+
+---
+
+### Conclusions méthodologiques
+
+1. **Prototypage rapide** : Le recours à un prototype initial a permis d’identifier rapidement les problèmes techniques.
+
+2. **Planification par sprints** : Décomposer le projet en sprints avec des questions précises a permis de garder le cap sur les objectifs.
+
+3. **Documentation continue** : Noter les décisions techniques et les problématiques rencontrées a simplifié l’intégration des fonctionnalités.
+
+
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+</svg>
+<div class="pl-8 mb-2 mr-8">
+
+<b>Note</b>
+
+</div><div class="pl-8 mr-8">
+
+
+
+Les retours utilisateurs après le premier prototype ont été très utiles pour affiner le design et les fonctionnalités principales.
+
+
+
+</div></div>
+
+
+---
+
+### Pistes d'amélioration
+
+- Automatiser les tests pour éviter des bugs liés à la gestion des événements utilisateur.
+
+- Explorer davantage les fonctionnalités avancées de PyQt comme les animations ou les graphiques.
+
+- Ajouter une fonctionnalité de "drag and drop" pour déplacer les cartes entre les tableaux.
+
+---
+
+Si vous avez d'autres éléments spécifiques à inclure ou des détails à approfondir, faites-le-moi savoir !
+
+---
+
+### Sprint 1 : **Créer une interface fonctionnelle et ergonomique avec PyQt**
+
+**Durée :** 10 heures
+
+**Objectifs spécifiques :**
+
+1. Étudier et comprendre les concepts fondamentaux de PyQt.
+
+2. Créer une interface de base pour afficher les tableaux.
+
+3. Apprendre et intégrer les styles QSS pour personnaliser l’apparence.
+
+---
+
+
+
+### Sprint 2 : **Ajouter une base de données SQLite et gérer les interactions**
+
+**Durée :** 10 heures
+
+**Objectifs spécifiques :**
+
+1. Ajouter une base de données SQLite pour stocker les données des tableaux et cartes.
+
+2. Créer des fonctionnalités d’ajout, suppression, et modification.
+
+3. Synchroniser les données entre l’interface utilisateur et la base de données.
+
+---
+
+#### Activités réalisées
+
+1. **Configuration de SQLite pour stocker les données (2 heures)**
+
+- Création de deux tables : une pour les tableaux (`boards`) et une pour les cartes associées (`cards`).
+
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+
+
+Exemple - Structure des tables SQLite
+
+
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+
+
+
+
+- **Table des tableaux** :
+
+```sql
+
+CREATE TABLE boards (
+
+id INTEGER PRIMARY KEY,
+
+title TEXT NOT NULL
+
+);
+
+```
+
+- **Table des cartes** :
+
+```sql
+
+CREATE TABLE cards (
+
+id INTEGER PRIMARY KEY,
+
+title TEXT NOT NULL,
+
+board_id INTEGER,
+
+FOREIGN KEY (board_id) REFERENCES boards (id)
+
+);
+
+```
+
+Les deux tables sont liées par la clé étrangère `board_id`.
+
+
+
+
+</div>
+
+</details>
+</div>
+
+
+2. **Connexion entre PyQt et SQLite (3 heures)**
+
+- Utilisation de `sqlite3` pour interagir avec la base de données.
+
+- Insertion et récupération des données dynamiquement.
+
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+
+
+Exemple - Insérer des données dans SQLite
+
+
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+
+
+
+
+```python
+
+conn = sqlite3.connect('database.db')
+
+cursor = conn.cursor()
+
+cursor.execute("INSERT INTO boards (title) VALUES (?)", ("Tableau 1",))
+
+conn.commit()
+
+conn.close()
+
+```
+
+Ce code insère un tableau nommé "Tableau 1" dans la base de données.
+
+
+
+
+</div>
+
+</details>
+</div>
+
+
+3. **Gestion des événements utilisateur (2 heures)**
+
+- Implémentation d’une fonction pour afficher dynamiquement les tableaux depuis SQLite.
+
+- Chaque tableau est représenté par un bouton.
+
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+
+
+Exemple - Charger les tableaux depuis SQLite
+
+
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+
+
+
+
+```python
+
+def charger_tableaux(self):
+
+self.layout.clear() # Nettoyer le layout
+
+tableaux = self.db.get_boards() # Récupérer les tableaux depuis SQLite
+
+for tableau in tableaux:
+
+bouton = QPushButton(tableau['title']) # Créer un bouton pour chaque tableau
+
+self.layout.addWidget(bouton) # Ajouter le bouton au layout
+
+```
+
+Les tableaux sont affichés dynamiquement en fonction des données présentes dans SQLite.
+
+
+
+
+</div>
+
+</details>
+</div>
+
+
+4. **Finalisation des styles et tests (3 heures)**
+
+- Ajustement des styles pour les rendre cohérents.
+
+- Tests des fonctionnalités principales (ajout, suppression, et modification).
+
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+
+
+Exemple - Personnalisation avancée avec QSS
+
+
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+
+
+
+
+```css
+
+QPushButton#delete-button {
+
+background-color: #EB5A46;
+
+color: white;
+
+}
+
+QPushButton#delete-button:hover {
+
+background-color: #CF513D;
+
+}
+
+```
+
+Le style distingue visuellement les boutons de suppression des autres actions.
+
+
+
+
+</div>
+
+</details>
+</div>
+
+
+---
+
+### Analyse finale
+
+#### Points forts :
+
+1. PyQt a permis une création rapide d'une interface graphique fonctionnelle.
+
+2. SQLite a facilité la gestion et la persistance des données.
+
+3. Les styles QSS ont amélioré l’apparence de l’application.
+
+#### Points faibles :
+
+1. Le temps consacré à l’apprentissage des signaux et slots a été légèrement sous-estimé.
+
+#### Pistes d’amélioration :
+
+- Ajouter des tests unitaires pour valider automatiquement les fonctionnalités.
+
+- Explorer des fonctionnalités avancées de PyQt, comme le **drag-and-drop** pour déplacer les cartes entre les tableaux.
+
+---
+
+  --></article></main><footer class="min-h-[50px] border-t-2 border-gray-200 mt-4"><div class="max-w-[1000px] mx-auto px-4"><div class="min-h-[50px] flex justify-center items-center"><p class="text-center">©2025 <b><span style="font-family:Consolas,sans-serif">Do_<span style="color:#4a86e8">It</span></span></b> - Développement, Management et Gestion de projets en IT</p></div></div></footer><script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">window.MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]]},svg:{fontCache:"global"}},document.addEventListener("DOMContentLoaded",(()=>{MathJax.typeset()}))</script><script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">Prism.plugins.NormalizeWhitespace.setDefaults({"remove-trailing":!0,"remove-indent":!0,"left-trim":!0,"right-trim":!0})</script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script></body></html>

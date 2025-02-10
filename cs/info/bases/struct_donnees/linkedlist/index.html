@@ -1,0 +1,369 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Structures de données - Liste Chaînée</title><link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet"><link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet"><link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet"><link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon"><link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png"><script type="module" defer="">import mermaid from"https://cdn.jsdelivr.net/npm/mermaid/+esm";mermaid.initialize({startOnLoad:!0})</script><link href="/assets/stylesheets/main.css" rel="stylesheet"></head><body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000"><header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white"><div class="max-w-[1000px] mx-auto px-4"><div class="min-h-[50px] flex justify-between items-center"><a class="mx-2" href="/">Home</a><div class="flex items-center gap-4 sm:gap-6"><a class="" href="/cs">CS</a> <a class="" href="/pok">POK</a> <a class="" href="/mon">MON</a> <a class="" href="/projets">Projets</a> <a class="hidden sm:block" href="/promos">Promos</a> <a href="/search"><svg class="h-5 aspect-square" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path></svg> </a><a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank"><svg class="h-5 aspect-square" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg></a></div></div></div></header><main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body=""><script>const SIDEBAR_STATE_KEY="courseSidebarState";function toggleFold(e){const t=e.closest("li").querySelector(".nested");if(t){const s=t.classList.toggle("active");e.classList.toggle("active",s),saveSidebarState()}}function saveSidebarState(){const e={};document.querySelectorAll(".sidebar-navigation .nested").forEach(((t,s)=>{e[s]=t.classList.contains("active")})),localStorage.setItem(SIDEBAR_STATE_KEY,JSON.stringify(e))}function restoreSidebarState(){const e=JSON.parse(localStorage.getItem(SIDEBAR_STATE_KEY));if(!e)return;document.querySelectorAll(".sidebar-navigation .nested").forEach(((t,s)=>{if(e[s]){t.classList.add("active");const e=t.parentNode.querySelector(".course-sidebar-item-toggle-button");e&&e.classList.add("active")}}))}document.addEventListener("DOMContentLoaded",(()=>{restoreSidebarState()}));let lastScrollYCourses=window.scrollY;function toggleCourseSidebar(){document.getElementById("course-sidebar").classList.toggle("open")}window.addEventListener("scroll",(()=>{const e=document.getElementById("course-burger-button"),t=document.getElementById("course-sidebar"),s=window.scrollY;window.innerWidth>1536?e.style.display="none":s<10||s<lastScrollYCourses?e.style.display="block":t&&t.classList.contains("open")||(e.style.display="none"),lastScrollYCourses=s}))</script><button id="course-burger-button" class="sidebar-burger-button left-2" onclick="toggleCourseSidebar()">☰</button><nav id="course-sidebar" class="sidebar left-0 border-r-2 -translate-x-full 2xl:translate-x-0"><article><h2>Cours</h2></article><ul class="sidebar-navigation space-y-2"><li><div class="course-sidebar-item hover:bg-gray-200 bg-info"><a class="flex-1 text-left pr-2 text-lg">Informatique</a> <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button></div><ul class="nested"><li><div class="course-sidebar-item hover:bg-gray-200 bg-white"><a class="flex-1 text-left pr-2 text-lg">Bases</a> <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button></div><ul class="nested"><li><div class="course-sidebar-item hover:bg-gray-200 bg-white"><a href="/cs/info/bases/git" class="flex-1 text-left pr-2 text-lg">Git</a></div></li><li><div class="course-sidebar-item hover:bg-gray-200 bg-white"><a href="/cs/info/bases/linux" class="flex-1 text-left pr-2 text-lg">Linux</a></div></li><li><div class="course-sidebar-item hover:bg-gray-200 bg-white"><a href="/cs/info/bases/ordinateur" class="flex-1 text-left pr-2 text-lg">Ordinateur</a></div></li><li><div class="course-sidebar-item hover:bg-gray-200 bg-white"><a class="flex-1 text-left pr-2 text-lg">Structures de données</a> <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button></div><ul class="nested"><li><div class="course-sidebar-item hover:bg-gray-200 bg-white"><a href="/cs/info/bases/struct_donnees/linkedlist" class="flex-1 text-left pr-2 text-lg">Listes Chaînées</a></div></li><li><div class="course-sidebar-item hover:bg-gray-200 bg-white"><a href="/cs/info/bases/struct_donnees/arbres_dict" class="flex-1 text-left pr-2 text-lg">Arbres et Dictionnaires</a></div></li></ul></li></ul></li><li><div class="course-sidebar-item hover:bg-gray-200 bg-white"><a class="flex-1 text-left pr-2 text-lg">Dev</a> <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button></div><ul class="nested"><li><div class="course-sidebar-item hover:bg-gray-200 bg-white"><a class="flex-1 text-left pr-2 text-lg">Web</a> <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button></div><ul class="nested"><li><div class="course-sidebar-item hover:bg-gray-200 bg-white"><a href="/cs/info/dev/web/fullstack" class="flex-1 text-left pr-2 text-lg">Fullstack</a></div></li><li><div class="course-sidebar-item hover:bg-gray-200 bg-white"><a href="/cs/info/dev/web/websocket" class="flex-1 text-left pr-2 text-lg">WebSocket</a></div></li></ul></li><li><div class="course-sidebar-item hover:bg-gray-200 bg-white"><a href="/cs/info/dev/bash" class="flex-1 text-left pr-2 text-lg">Bash</a></div></li><li><div class="course-sidebar-item hover:bg-gray-200 bg-white"><a href="/cs/info/dev/java" class="flex-1 text-left pr-2 text-lg">Java</a></div></li><li><div class="course-sidebar-item hover:bg-gray-200 bg-white"><a href="/cs/info/dev/low_code" class="flex-1 text-left pr-2 text-lg">Low Code</a></div></li></ul></li><li><div class="course-sidebar-item hover:bg-gray-200 bg-white"><a class="flex-1 text-left pr-2 text-lg">Ops</a> <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button></div><ul class="nested"><li><div class="course-sidebar-item hover:bg-gray-200 bg-white"><a href="/cs/info/ops/ssh" class="flex-1 text-left pr-2 text-lg">SSH</a></div></li><li><div class="course-sidebar-item hover:bg-gray-200 bg-white"><a href="/cs/info/ops/aioli" class="flex-1 text-left pr-2 text-lg">aioli</a></div></li><li><div class="course-sidebar-item hover:bg-gray-200 bg-white"><a href="/cs/info/ops/postgres" class="flex-1 text-left pr-2 text-lg">PostgreSQL</a></div></li><li><div class="course-sidebar-item hover:bg-gray-200 bg-white"><a href="/cs/info/ops/reseaux" class="flex-1 text-left pr-2 text-lg">Réseaux</a></div></li></ul></li></ul></li><li><div class="course-sidebar-item hover:bg-gray-200 bg-mgt"><a class="flex-1 text-left pr-2 text-lg">Management</a> <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button></div><ul class="nested"><li><div class="course-sidebar-item hover:bg-gray-200 bg-white"><a class="flex-1 text-left pr-2 text-lg">SI</a> <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button></div><ul class="nested"><li><div class="course-sidebar-item hover:bg-gray-200 bg-white"><a href="/cs/management/si/management" class="flex-1 text-left pr-2 text-lg">Management</a></div></li><li><div class="course-sidebar-item hover:bg-gray-200 bg-white"><a href="/cs/management/si/audit" class="flex-1 text-left pr-2 text-lg">Audit</a></div></li><li><div class="course-sidebar-item hover:bg-gray-200 bg-white"><a href="/cs/management/si/conception" class="flex-1 text-left pr-2 text-lg">Conception SI</a></div></li></ul></li><li><div class="course-sidebar-item hover:bg-gray-200 bg-white"><a class="flex-1 text-left pr-2 text-lg">Agilité</a> <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button></div><ul class="nested"><li><div class="course-sidebar-item hover:bg-gray-200 bg-white"><a href="/cs/management/agile/gdp" class="flex-1 text-left pr-2 text-lg">Gestion Agile</a></div></li><li><div class="course-sidebar-item hover:bg-gray-200 bg-white"><a href="/cs/management/agile/scrum" class="flex-1 text-left pr-2 text-lg">SCRUM</a></div></li><li><div class="course-sidebar-item hover:bg-gray-200 bg-white"><a href="/cs/management/agile/cristal_clear" class="flex-1 text-left pr-2 text-lg">Cristal Clear</a></div></li><li><div class="course-sidebar-item hover:bg-gray-200 bg-white"><a href="/cs/management/agile/methodes_agiles" class="flex-1 text-left pr-2 text-lg">Autres méthodes agiles</a></div></li></ul></li><li><div class="course-sidebar-item hover:bg-gray-200 bg-white"><a href="/cs/management/cyber" class="flex-1 text-left pr-2 text-lg">Cyber</a> <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button></div><ul class="nested"><li><div class="course-sidebar-item hover:bg-gray-200 bg-white"><a href="/cs/management/cyber/crise" class="flex-1 text-left pr-2 text-lg">CyberSécurité - Crises</a></div></li></ul></li><li><div class="course-sidebar-item hover:bg-gray-200 bg-white"><a class="flex-1 text-left pr-2 text-lg">Sobriété Numérique</a> <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button></div><ul class="nested"><li><div class="course-sidebar-item hover:bg-gray-200 bg-white"><a href="/cs/management/sobriete/numerique" class="flex-1 text-left pr-2 text-lg">Sobriété Numérique</a></div></li><li><div class="course-sidebar-item hover:bg-gray-200 bg-white"><a href="/cs/management/sobriete/accessibilite" class="flex-1 text-left pr-2 text-lg">Accessibilité Numérique</a></div></li><li><div class="course-sidebar-item hover:bg-gray-200 bg-white"><a href="/cs/management/sobriete/fresque_numerique" class="flex-1 text-left pr-2 text-lg">Fresque du Numérique</a></div></li><li><div class="course-sidebar-item hover:bg-gray-200 bg-white"><a href="/cs/management/sobriete/impacts" class="flex-1 text-left pr-2 text-lg">Impacts du Numérique</a></div></li></ul></li></ul></li><li><div class="course-sidebar-item hover:bg-gray-200 bg-gp"><a class="flex-1 text-left pr-2 text-lg">Gestion &amp; Modélisation Projet</a> <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button></div><ul class="nested"><li><div class="course-sidebar-item hover:bg-gray-200 bg-white"><a href="/cs/gestion_modelisation/service_design" class="flex-1 text-left pr-2 text-lg">Service Design</a></div></li><li><div class="course-sidebar-item hover:bg-gray-200 bg-white"><a href="/cs/gestion_modelisation/gdp" class="flex-1 text-left pr-2 text-lg">Gestion de Projet</a></div></li><li><div class="course-sidebar-item hover:bg-gray-200 bg-white"><a href="/cs/gestion_modelisation/uiux" class="flex-1 text-left pr-2 text-lg">UI/UX</a></div></li></ul></li><li><div class="course-sidebar-item hover:bg-gray-200 bg-white"><a class="flex-1 text-left pr-2 text-lg">Tronc Commun</a> <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button></div><ul class="nested"><li><div class="course-sidebar-item hover:bg-gray-200 bg-white"><a href="/cs/tronc_commun/change_management" class="flex-1 text-left pr-2 text-lg">Conduite du Changement</a></div></li></ul></li></ul></nav><article class="relative"><h1 class="mb-1">Structures de données - Liste Chaînée</h1><div class="mb-4"><div class="px-4 flex flex-wrap items-center"><div class="font-bold">Tags :</div><ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags"><li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">COURS</li><li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">structures de données</li><li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">algorithmique</li><li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">informatique</li><li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">liste chaînée</li></ul><div class="hidden" data-pagefind-meta="Type"></div></div><div class="px-4 flex flex-wrap items-center"><div class="font-bold">Auteurs :</div><ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs"><li class="bg-blue-200 rounded-full px-2" data-pagefind-filter="Auteurs">Pascal Prea</li><li class="bg-blue-200 rounded-full px-2" data-pagefind-filter="Auteurs">Loïck Goupil-Hallay</li></ul></div></div><script>let lastScrollYSummary=window.scrollY;function toggleSummarySidebar(){document.getElementById("toc-sidebar").classList.toggle("open")}window.addEventListener("scroll",(()=>{const t=document.getElementById("toc-burger-button"),e=document.getElementById("toc-sidebar"),l=window.scrollY;window.innerWidth>1536?t.style.display="none":l<10||l<lastScrollYSummary?t.style.display="block":e&&e.classList.contains("open")||(t.style.display="none"),lastScrollYSummary=l}))</script><p><button id="toc-burger-button" class="sidebar-burger-button right-2" onclick="toggleSummarySidebar()">☰</button></p><nav id="toc-sidebar" class="sidebar right-0 border-l-2 translate-x-full 2xl:translate-x-0"><h2>Sommaire</h2><nav class="toc"><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#pointeurs">Pointeurs</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#int%C3%A9r%C3%AAt">Intérêt</a></li><li class="toc-item"><a class="toc-link" href="#pointeur-nul">Pointeur nul</a></li><li class="toc-item"><a class="toc-link" href="#op%C3%A9rateur-new">Opérateur new</a></li><li class="toc-item"><a class="toc-link" href="#affectation">Affectation</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#structure-de-donn%C3%A9es">Structure de données</a></li><li class="toc-item"><a class="toc-link" href="#liste-cha%C3%AEn%C3%A9e">Liste chaînée</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#fonction-recherche">Fonction recherche</a></li><li class="toc-item"><a class="toc-link" href="#fonction-supprimer">Fonction supprimer</a></li><li class="toc-item"><a class="toc-link" href="#fonction-ins%C3%A9rer">Fonction insérer</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#liste-doublement-cha%C3%AEn%C3%A9e">Liste doublement chaînée</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#fonction-recherche-1">Fonction recherche</a></li><li class="toc-item"><a class="toc-link" href="#fonction-supprimer-1">Fonction supprimer</a></li><li class="toc-item"><a class="toc-link" href="#fonction-ins%C3%A9rer-1">Fonction insérer</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#liste-circulaire">Liste circulaire</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#fonction-recherche-2">Fonction recherche</a></li><li class="toc-item"><a class="toc-link" href="#fonction-supprimer-2">Fonction supprimer</a></li><li class="toc-item"><a class="toc-link" href="#fonction-ins%C3%A9rer-2">Fonction insérer</a></li><li class="toc-item"><a class="toc-link" href="#inverser">Inverser</a></li></ol></li></ol></nav></nav><h2 id="pointeurs" tabindex="-1"><a class="header-anchor" href="#pointeurs"></a> Pointeurs</h2><p>Les pointeurs sont des variables qui contiennent l'adresse d'une autre variable (dans la mémoire). Ils permettent de manipuler des données sans les copier. Il s'agit d'un concept fondamental en programmation <strong>bas niveau</strong></p><h3 id="int%C3%A9r%C3%AAt" tabindex="-1"><a class="header-anchor" href="#int%C3%A9r%C3%AAt"></a> Intérêt</h3><ol><li>L'intérêt premier des pointeurs est de pouvoir manipuler des objets potentiellement complexes en <strong>économisant de la mémoire</strong>.</li><li>Un pointeur permet de <strong>modifier une variable</strong> en dehors de la fonction qui l'a créée. (Au lieu de modifier une copie de la variable)</li></ol><h3 id="pointeur-nul" tabindex="-1"><a class="header-anchor" href="#pointeur-nul"></a> Pointeur nul</h3><p>Il existe un pointeur spécial appelé <strong>pointeur nul</strong> qui ne pointe sur aucune adresse mémoire. Généralement il se nomme <code>nil</code>, <code>null</code>, <code>nullptr</code>, <code>None</code>, <code>NULL</code> ou bien d'autres valeurs selon le langage de programmation.</p><h3 id="op%C3%A9rateur-new" tabindex="-1"><a class="header-anchor" href="#op%C3%A9rateur-new"></a> Opérateur new</h3><p>L'opérateur <code>new</code> permet de réserver de la mémoire pour une variable (créer la variable) et de retourner l'adresse mémoire de cette variable. Il est utiliser pour créer un pointeur ainsi que sa variable associée dynamiquement.</p><h3 id="affectation" tabindex="-1"><a class="header-anchor" href="#affectation"></a> Affectation</h3><p>L'affectation d'un pointeur se fait en lui donnant l'adresse de la variable à laquelle il doit pointer. L'opérateur <code>&amp;</code> permet généralement de récupérer l'adresse d'une variable.</p><p>Il est possible de libérer la mémoire d'un pointeur avec un opérateur <code>delete</code> ou <code>free</code> selon le langage de programmation. Ainsi on peut réaffecter un pointeur à une autre adresse mémoire. Et surtout éviter les <strong>fuites de mémoire</strong>.</p><h2 id="structure-de-donn%C3%A9es" tabindex="-1"><a class="header-anchor" href="#structure-de-donn%C3%A9es"></a> Structure de données</h2><p>Une structure de données est une manière d'<strong>organiser et de stocker</strong> des données dans un ordinateur pour qu'elles puissent être utilisées efficacement.<br>Il s'agit d'un concept fondamental en informatique et en algorithmique. Les structures de données obéissent à des <strong>règles précises</strong> pour garantir une utilisation optimale des ressources. Il est nécessaire d'avoir une approche <strong>mathématique</strong> pour comprendre les structures de données. Il existe de nombreuses structures de données qui sont adaptées à des usages spécifiques.</p><h2 id="liste-cha%C3%AEn%C3%A9e" tabindex="-1"><a class="header-anchor" href="#liste-cha%C3%AEn%C3%A9e"></a> Liste chaînée</h2><p>Une liste chaînée est une structure de données qui permet de stocker une séquence d'éléments. Chaque élément est stocké dans un <strong>nœud</strong> qui contient une (ou plusieurs) donnée et un pointeur vers le nœud suivant.<br>Généralement une liste chaînée est représentée par son premier nœud qui est appelé <strong>head</strong> (tête).</p><pre class="language-c line-numbers"><code>
+
+// Définition d'un nœud
+typedef struct Node {
+    int data;
+    struct Node *suivant;
+} Node;
+
+// Fonction de création d'un nœud
+Node* creerNode(int data) {
+    Node *n = (Node*)malloc(sizeof(Node));
+    n->data = data;
+    n->suivant = NULL;
+    return n;
+}
+
+// Définition d'une liste chaînée
+typedef struct ListeChainee {
+    Node *head;
+} ListeChainee;
+
+
+</code></pre><h3 id="fonction-recherche" tabindex="-1"><a class="header-anchor" href="#fonction-recherche"></a> Fonction recherche</h3><p>La fonction recherche permet de vérifier si un élément est présent dans la structure.</p><pre class="language-c line-numbers"><code>
+
+// Fonction de recherche d'un élément dans une liste chaînée (itérative)
+bool recherche(int x, Node *debut) {
+    // itérateur qui parcourt la liste
+    Node *explorer = debut;
+    bool present = false;
+    while (explorer != NULL && !present) {
+        if (explorer->data == x) {
+            // Match trouvé
+            present = true;
+        } else {
+            // On passe au nœud suivant
+            explorer = explorer->suivant;
+        }
+    }
+    return present;
+}
+
+// Fonction de recherche d'un élément dans une liste chaînée (récursive)
+bool rechercheRecursive(int x, Node *debut) {
+    bool present = false;
+    if (debut == NULL) {
+        // Fin de la liste
+        present = false;
+    } else if (debut->data == x) {
+        // Match trouvé
+        present = true;
+    } else {
+        // On passe au nœud suivant
+        present = rechercheRecursive(x, debut->suivant);
+    }
+    return present;
+}
+
+
+</code></pre><h3 id="fonction-supprimer" tabindex="-1"><a class="header-anchor" href="#fonction-supprimer"></a> Fonction supprimer</h3><p>La fonction supprimer permet de retirer un élément de la structure de données.</p><pre class="language-c line-numbers"><code>
+
+// Fonction de suppression d'un élément dans une liste chaînée (itérative)
+// On passe un pointeur de pointeur pour pouvoir modifier le début de la liste
+void supprimer(int x, Node **debut) {
+    // itérateur qui parcourt la liste
+    Node *explorer = *debut;
+    // itérateur décalé d'un nœud
+    Node *precedent = NULL;
+    if (explorer != NULL) {
+        // Cas particulier où l'élément à supprimer est en tête
+        if (explorer->data == x) {
+            *debut = explorer->suivant;
+            free(explorer);
+        } else {
+            explorer = debut->suivant;
+            precedent = debut;
+            while (explorer != NULL) {
+                if (explorer->data == x) {
+                    // On supprime le nœud courant
+                    precedent->suivant = explorer->suivant;
+                    free(explorer);
+                }
+                // On passe au nœud suivant
+                precedent = explorer;
+                explorer = explorer->suivant;
+            }
+        }
+    }
+}
+
+// Fonction de suppression d'un élément dans une liste chaînée (récursive)
+// On passe un pointeur de pointeur pour pouvoir modifier le début de la liste
+void supprimerRecursive(int x, Node **debut) {
+    if (debut != NULL && *debut != NULL) {
+        if ((*debut)->data == x) {
+            Node *temp = *debut;
+            *debut = (*debut)->suivant;
+            free(temp);
+            supprimerRecursive(x, debut);
+        } else {
+            supprimerRecursive(x, &(*debut)->suivant);
+        }
+
+    }
+}
+
+
+</code></pre><h3 id="fonction-ins%C3%A9rer" tabindex="-1"><a class="header-anchor" href="#fonction-ins%C3%A9rer"></a> Fonction insérer</h3><p>La fonction insérer permet d'ajouter un élément dans la structure de données.<br>Pour une liste chaînée, on peut insérer un élément en tête ou en queue.</p><pre class="language-c line-numbers"><code>
+
+// Fonction d'insertion d'un élément dans une liste chaînée, insère en queue
+// On passe un pointeur de pointeur pour pouvoir modifier le début de la liste
+void insertionQueue(int x, Node **debut) {
+    Node *nouveau = creerNode(x);
+    if (*debut == NULL) {
+        // Cas particulier où la liste est vide
+        *debut = nouveau;
+    } else {
+        // itérateur qui parcourt la liste
+        Node *explorer = *debut;
+        while (explorer->suivant != NULL) {
+            // On passe au nœud suivant
+            explorer = explorer->suivant;
+        }
+        // On insère le nouveau nœud en queue
+        explorer->suivant = nouveau;
+    }
+}
+
+// Fonction d'insertion d'un élément dans une liste chaînée, insère en tête
+// On passe un pointeur de pointeur pour pouvoir modifier le début de la liste
+void insertionTete(int x, Node **debut) {
+    Node *nouveau = creerNode(x);
+    // On insère le nouveau nœud en tête
+    nouveau->suivant = *debut;
+    *debut = nouveau;
+}
+
+
+</code></pre><h2 id="liste-doublement-cha%C3%AEn%C3%A9e" tabindex="-1"><a class="header-anchor" href="#liste-doublement-cha%C3%AEn%C3%A9e"></a> Liste doublement chaînée</h2><p>Une liste doublement chaînée est une liste chaînée où chaque nœud possède un pointeur vers le nœud précédent et le nœud suivant.<br>Cela permet de parcourir la liste dans les deux sens.<br>Généralement une liste doublement chaînée est représentée par son premier nœud qui est appelé <strong>head</strong> (tête) et son dernier nœud qui est appelé <strong>tail</strong> (queue).</p><pre class="language-c line-numbers"><code>
+
+// Définition d'un nœud
+typedef struct Node {
+    int data;
+    struct Node *precedent;
+    struct Node *suivant;
+} Node;
+
+// Fonction de création d'un nœud
+Node* creerNode(int data) {
+    Node *n = (Node*)malloc(sizeof(Node));
+    n->data = data;
+    n->precedent = NULL;
+    n->suivant = NULL;
+    return n;
+}
+
+// Définition d'une liste doublement chaînée
+typedef struct ListeDoublementChainee {
+    Node *head;
+    Node *tail;
+} ListeDoublementChainee;
+
+
+</code></pre><h3 id="fonction-recherche-1" tabindex="-1"><a class="header-anchor" href="#fonction-recherche-1"></a> Fonction recherche</h3><p>La fonction recherche permet de vérifier si un élément est présent dans la structure. Cela ne change pas par rapport à une liste chaînée.</p><pre class="language-c line-numbers"><code>
+
+// Fonction de recherche d'un élément dans une liste doublement chaînée (itérative)
+bool recherche(int x, Node *debut) {
+    // itérateur qui parcourt la liste
+    Node *explorer = debut;
+    bool present = false;
+    while (explorer != NULL && !present) {
+        if (explorer->data == x) {
+            // Match trouvé
+            present = true;
+        } else {
+            // On passe au nœud suivant
+            explorer = explorer->suivant;
+        }
+    }
+    return present;
+}
+
+// Fonction de recherche d'un élément dans une liste doublement chaînée (récursive)
+bool rechercheRecursive(int x, Node *debut) {
+    bool present = false;
+    if (debut == NULL) {
+        // Fin de la liste
+        present = false;
+    } else if (debut->data == x) {
+        // Match trouvé
+        present = true;
+    } else {
+        // On passe au nœud suivant
+        present = rechercheRecursive(x, debut->suivant);
+    }
+    return present;
+}
+
+
+</code></pre><h3 id="fonction-supprimer-1" tabindex="-1"><a class="header-anchor" href="#fonction-supprimer-1"></a> Fonction supprimer</h3><p>La fonction supprimer permet de retirer un élément de la structure de données. A la différence d'une liste chaînée, il faut éventuellement mettre à jour plusieurs pointeurs. De plus, on n'a plus besoin de garder un pointeur sur le nœud précédent.</p><pre class="language-c line-numbers"><code>
+
+// Fonction de suppression d'un élément dans une liste doublement chaînée (itérative)
+// On passe un pointeur de pointeur pour pouvoir modifier le début de la liste
+void supprimer(int x, Node **debut) {
+    if (*debut != NULL) {
+        // itérateur qui parcourt la liste
+        Node *explorer = *debut;
+        while (explorer != NULL) {
+            if (explorer->data == x) {
+                // On change le pointeur du nœud précédent
+                if (explorer->precedent != NULL) {
+                    explorer->precedent->suivant = explorer->suivant;
+                }
+                // On change le pointeur du nœud suivant
+                if (explorer->suivant != NULL) {
+                    explorer->suivant->precedent = explorer->precedent;
+                }
+                // On supprime le nœud courant
+                free(explorer);
+            }
+            // On passe au nœud suivant
+            explorer = explorer->suivant;
+        }
+    }
+}
+
+
+</code></pre><h3 id="fonction-ins%C3%A9rer-1" tabindex="-1"><a class="header-anchor" href="#fonction-ins%C3%A9rer-1"></a> Fonction insérer</h3><p>La fonction insérer permet d'ajouter un élément dans la structure de données.<br>Pour une liste doublement chaînée, on peut insérer un élément en tête ou en queue.</p><pre class="language-c line-numbers"><code>
+
+// Fonction d'insertion d'un élément dans une liste doublement chaînée, insère en queue
+// On passe un pointeur de pointeur pour pouvoir modifier la fin de la liste
+void insertionQueue(int x, Node **fin) {
+    Node *nouveau = creerNode(x);
+    if (*fin == NULL) {
+        // Cas particulier où la liste est vide
+        *fin = nouveau;
+    } else {
+        // On insère le nouveau nœud en queue
+        (*fin)->suivant = nouveau;
+        nouveau->precedent = *fin;
+        *fin = nouveau;
+    }
+}
+
+// Fonction d'insertion d'un élément dans une liste doublement chaînée, insère en tête
+// On passe un pointeur de pointeur pour pouvoir modifier le début de la liste
+void insertionTete(int x, Node **debut) {
+    Node *nouveau = creerNode(x);
+    if (*debut == NULL) {
+        // Cas particulier où la liste est vide
+        *debut = nouveau;
+    } else {
+        // On insère le nouveau nœud en tête
+        (*debut)->precedent = nouveau;
+        nouveau->suivant = *debut;
+        *debut = nouveau;
+    }
+}
+
+
+</code></pre><h2 id="liste-circulaire" tabindex="-1"><a class="header-anchor" href="#liste-circulaire"></a> Liste circulaire</h2><p>Une liste circulaire est une liste chaînée où le dernier nœud pointe vers le premier nœud.<br>Cela permet de parcourir la liste de manière infinie.<br>Il n'y a pas de notion de début ou de fin dans une liste circulaire.</p><pre class="language-c line-numbers"><code>
+
+// Définition d'un nœud
+typedef struct Node {
+    int data;
+    struct Node *suivant;
+} Node;
+
+// Fonction de création d'un nœud
+Node* creerNode(int data) {
+    Node *n = (Node*)malloc(sizeof(Node));
+    n->data = data;
+    n->suivant = NULL;
+    return n;
+}
+
+// Définition d'une liste circulaire
+typedef struct ListeCirculaire {
+    Node *head;
+} ListeCirculaire;
+
+
+</code></pre><h3 id="fonction-recherche-2" tabindex="-1"><a class="header-anchor" href="#fonction-recherche-2"></a> Fonction recherche</h3><p>La fonction recherche permet de vérifier si un élément est présent dans la structure. Cette fonction est similaire à celle d'une liste chaînée, sauf pour la condition d'arrêt.</p><pre class="language-c line-numbers"><code>
+
+// Fonction de recherche d'un élément dans une liste circulaire (itérative)
+bool recherche(int x, Node *debut) {
+    // itérateur qui parcourt la liste
+    bool present = false;
+    if (debut != NULL) {
+        Node *explorer = debut;
+        do {
+            if (explorer->data == x) {
+                // Match trouvé
+                present = true;
+            } else {
+                // On passe au nœud suivant
+                explorer = explorer->suivant;
+            }
+        } while (explorer != debut && !present);
+    }
+    return present;
+}
+
+
+</code></pre><h3 id="fonction-supprimer-2" tabindex="-1"><a class="header-anchor" href="#fonction-supprimer-2"></a> Fonction supprimer</h3><p>La fonction supprimer permet de retirer un élément de la structure de données. Cette fonction est similaire à celle d'une liste chaînée, sauf pour la condition d'arrêt.</p><pre class="language-c line-numbers"><code>
+
+// Fonction de suppression d'un élément dans une liste circulaire (itérative)
+// On passe un pointeur de pointeur pour pouvoir modifier le début de la liste
+void supprimer(int x, Node **debut) {
+    if (*debut != NULL) {
+        // itérateur qui parcourt la liste
+        Node *explorer = *debut;
+        Node *precedent = NULL;
+        do {
+            if (explorer->data == x) {
+                // On supprime le nœud courant
+                if (precedent != NULL) {
+                    precedent->suivant = explorer->suivant;
+                    free(explorer);
+                }
+            }
+            // On passe au nœud suivant
+            precedent = explorer;
+            explorer = explorer->suivant;
+        } while (explorer != *debut);
+    }
+}
+
+
+</code></pre><h3 id="fonction-ins%C3%A9rer-2" tabindex="-1"><a class="header-anchor" href="#fonction-ins%C3%A9rer-2"></a> Fonction insérer</h3><p>La fonction insérer permet d'ajouter un élément dans la structure de données. On insère généralement juste après le nœud courant.</p><pre class="language-c line-numbers"><code>
+
+// Fonction d'insertion d'un élément dans une liste circulaire, insère après le nœud courant
+// On passe un pointeur de pointeur pour pouvoir modifier le début de la liste
+void insertion(int x, Node **debut) {
+    Node *nouveau = creerNode(x);
+    if (*debut == NULL) {
+        // Cas particulier où la liste est vide
+        *debut = nouveau;
+        (*debut)->suivant = *debut;
+    } else {
+        // On insère le nouveau nœud après le nœud courant
+        nouveau->suivant = (*debut)->suivant;
+        (*debut)->suivant = nouveau;
+    }
+}
+
+
+</code></pre><h3 id="inverser" tabindex="-1"><a class="header-anchor" href="#inverser"></a> Inverser</h3><p>La fonction inverser permet de renverser l'ordre des nœuds de la liste circulaire.<br>On utilise 3 pointeurs qui se suivent pour inverser les pointeurs des nœuds.</p><pre class="language-c line-numbers"><code>
+
+// Fonction d'inversion de l'ordre des nœuds dans une liste circulaire
+void inverser(Node *debut) {
+    if (debut != NULL) {
+        // itérateur qui parcourt la liste
+        Node *explorer = debut;
+        Node *precedent = NULL;
+        Node *suivant = NULL;
+        do {
+            // On sauvegarde le nœud suivant
+            suivant = explorer->suivant;
+            // On inverse le pointeur du nœud courant
+            explorer->suivant = precedent;
+            // On passe au nœud suivant
+            precedent = explorer;
+            explorer = suivant;
+        } while (explorer != debut);
+    }
+}
+
+
+</code></pre></article></main><footer class="min-h-[50px] border-t-2 border-gray-200 mt-4"><div class="max-w-[1000px] mx-auto px-4"><div class="min-h-[50px] flex justify-center items-center"><p class="text-center">©2025 <b><span style="font-family:Consolas,sans-serif">Do_<span style="color:#4a86e8">It</span></span></b> - Développement, Management et Gestion de projets en IT</p></div></div></footer><script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">window.MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]]},svg:{fontCache:"global"}},document.addEventListener("DOMContentLoaded",(()=>{MathJax.typeset()}))</script><script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">Prism.plugins.NormalizeWhitespace.setDefaults({"remove-trailing":!0,"remove-indent":!0,"left-trim":!0,"right-trim":!0})</script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script></body></html>

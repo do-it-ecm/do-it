@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>React intermédiaire</title>
+
+        <!-- Prismjs imports
+                - Prism core
+                - Prism line numbers
+                - Prism copy to clipboard
+                - Prism autoloader
+        -->
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png">
+
+        <!-- Mermaid import and initialization -->
+        <script type="module" defer="">
+            import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/+esm';
+            mermaid.initialize({
+                startOnLoad: true,
+            });
+        </script>
+
+        <link href="/assets/stylesheets/main.css" rel="stylesheet">
+
+    </head>
+
+    <body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000">
+        <header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-between items-center">
+                    <a class="mx-2" href="/">Home</a>
+                    <div class="flex items-center gap-4 sm:gap-6 ">
+                        <a class="" href="/cs">CS</a>
+                        <a class="" href="/pok">POK</a>
+                        <a class="" href="/mon">MON</a>
+                        <a class="" href="/projets">Projets</a>
+                        <a class="hidden sm:block" href="/promos">Promos</a>
+                        <a href="/search">
+                            <svg class="h-5 aspect-square" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+                            </svg>
+                        </a>
+                        <a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank">
+                            <svg class="h-5 aspect-square" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body="">
+            
+<article class="relative">
+<h1 class="mb-1">React intermédiaire</h1>
+<div class="mb-4">
+    
+        <div class="px-4 flex flex-wrap items-center">
+            
+                <div class="font-bold">Tag : </div>
+            
+            <ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags">
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">MON</li>
+                
+
+            </ul>
+
+            
+            <div class="hidden" data-pagefind-meta="Type">
+                
+                    
+                        <span data-pagefind-filter="Type">MON</span>
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Auteurs : </div>
+            <ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs">
+                
+                    <li class="bg-blue-200 rounded-full px-2" data-pagefind-filter="Auteurs">Nicolas BERT</li>
+                
+            </ul>
+        </div>
+    
+
+    
+        <div class="absolute top-0 right-0">
+            <span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2" data-pagefind-filter="Année">
+                2022-2023
+            </span>
+        </div>
+    
+</div>
+
+
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/promos/2022-2023/Bert-Nicolas/">Nicolas BERT</a><span class="px-1">/</span><a href="/promos/2022-2023/Bert-Nicolas/mon/">MONs</a><span class="px-1">/</span><a href="/promos/2022-2023/Bert-Nicolas/mon/temps-3.2/">React intermédiaire</a>
+
+</div></div>
+
+
+
+
+<!-- début résumé -->
+<p>React intermédiaire (Temps 3)</p>
+<!-- fin résumé -->
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Prérequis</b></p>
+</div><div class="pl-8 mr-8">
+<p><strong>Niveau :</strong> débutant/intermédiaire
+<strong>Prérequis :</strong></p>
+<ul>
+<li>Connaître le contexte de développement frontend</li>
+<li>Connaître les bases de React</li>
+</ul>
+</div></div>
+<p>Pour ce MON, j'ai choisi de travailler avec React afin de maîtriser un peu mieux ce framework.</p>
+<h2 id="apprentissage-de-react-%2B-mini-projet" tabindex="-1"><a class="header-anchor" href="#apprentissage-de-react-%2B-mini-projet"></a> Apprentissage de React + mini-projet</h2>
+<p>J'ai d'abord commencé par lire la <a href="https://fr.reactjs.org/">documentation de React</a> ainsi que les autres MON relatifs à React. Ayant déjà fait beaucoup de Vue.js durant mon SSE l'année passée, les frameworks se ressemblant beaucoup, il n'a pas été très difficile de se lancé dans les bases de React.</p>
+<p>Pour mettre en pratique ces apprentissages, j'ai voulu utiliser une API externe et implémenter quelques composants pour afficher les informations exposées par cette API. J'ai choisi une API sur l'univers des Pokémon. <a href="https://api-pokemon-fr.vercel.app/">https://api-pokemon-fr.vercel.app/</a>.</p>
+<h3 id="design-de-la-carte-info" tabindex="-1"><a class="header-anchor" href="#design-de-la-carte-info"></a> Design de la carte info</h3>
+<p>J'ai commencé par créer un composant visant à afficher les informations relatives à un pokémon. Mes compétences en design étant très mauvaises, je suis resté sur quelque chose de simple esthétiquement.</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2022-2023/refs/heads/main//Bert-Nicolas/mon/temps-3.2/feurisson.png" alt="Feurisson"></p>
+<p>Ici vous pouvez voir le nom du pokémon, son type, ses caractéristiques représentées sous forme de graphique avec <a href="https://www.chartjs.org/">chart.js</a>, etc...  Le bouton &quot;Click !&quot; permet d'afficher un autre pokémon de manière aléatoire. Lors de l'affichage d'un pokémon, l'appel API pour le pokémon suivant est également effectué et l'image est préchargée afin de gagner en fluidité. Ainsi lorsque l'on appuie sur le bouton &quot;Click !&quot;, le pokémon préalablement chargé devient le pokémon affiché et un autre pokémon est de nouveau préchargé dans le but d'un nouvel appui sur le bouton.</p>
+<h3 id="fonctionnalit%C3%A9-de-recherche-par-nom" tabindex="-1"><a class="header-anchor" href="#fonctionnalit%C3%A9-de-recherche-par-nom"></a> Fonctionnalité de recherche par nom</h3>
+<p>J'ai également implémenté une deuxième carte permettant cette fois-ci de rechercher un pokémon par son nom puis d'afficher ses caractéristiques.</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2022-2023/refs/heads/main//Bert-Nicolas/mon/temps-3.2/metalosse_search.png" alt="Metalosse"></p>
+<p>Ici, vous avez la possibilité d'écrire le nom d'un pokémon puis de cliquer dessus parmi les choix proposés pour afficher ses informations dans la carte à gauche. Les suggestions sous la barre de saisie sont actualisées automatiquement en fonction de ce que vous écrivez.</p>
+<p>Ce mini-projet a également été pour moi l'occasion de me remettre un peu au CSS (fini TailwindCSS...). Tout ça dans l'optique de me familiariser davantage avec l'environnement de développement que je vais utiliser en TFE.</p>
+<p>Le lien du dépôt Github : <a href="https://github.com/nbert71/pokemon-react">https://github.com/nbert71/pokemon-react</a></p>
+<h2 id="les-diff%C3%A9rents-hooks-de-react" tabindex="-1"><a class="header-anchor" href="#les-diff%C3%A9rents-hooks-de-react"></a> Les différents hooks de React</h2>
+<p>Pour compléter ce MON, j'ai voulu m'informer sur tous les différents hooks React qui existent et faire en quelques sortes une synthèse qui puisse être utilisable par d'autres.</p>
+<p><em>Source : <a href="https://fr.reactjs.org/docs/hooks-intro.html">https://fr.reactjs.org/docs/hooks-intro.html</a></em></p>
+<h3 id="qu'est-ce-qu'un-hook-%3F" tabindex="-1"><a class="header-anchor" href="#qu'est-ce-qu'un-hook-%3F"></a> Qu'est-ce qu'un hook ?</h3>
+<p>Les hooks ont été introduits avec la version 16.8 de React dans le but de bénéficier d'un état local de d'autres fonctionnalités sans avoir à écrire de classes.</p>
+<p>Les hooks sont des fonctions qui permettent de &quot;se brancher&quot; sur la gestion d'état local et le cycle de vie de React depuis des components &quot;fonctions&quot;. Ils ne fonctionnent pas dans les components &quot;classes&quot;.</p>
+<p>Nous allons désormais voir la liste des hooks prédéfinis par React qui sont les plus utilisés :</p>
+<h3 id="usestate" tabindex="-1"><a class="header-anchor" href="#usestate"></a> useState</h3>
+<p>Le hook <code>useState</code> est probablement un des plus simples. Il permet de définir une variable d'état locale au component.</p>
+<p>Pour un component &quot;Fonction&quot; :</p>
+<pre class="language-js line-numbers"><code>
+
+import React, { useState } from 'react';
+
+function Example() {
+// Déclare une nouvelle variable d'état, que l'on va appeler « count »
+const [count, setCount] = useState(0);
+
+return (
+    <div>
+    <p>Vous avez cliqué {count} fois</p>
+    <button onClick="{()" ==""> setCount(count + 1)}>
+        Cliquez ici
+    </button>
+    </div>
+);
+}
+
+
+</code></pre><p>Son équivalent pour un component &quot;Classe&quot; :</p>
+<pre class="language-js line-numbers"><code>
+
+class Example extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      count: 0
+    };
+  }
+
+  render() {
+    return (
+      <div>
+        <p>Vous avez cliqué {this.state.count} fois</p>
+        <button onClick="{()" ==""> this.setState({ count: this.state.count + 1 })}>
+          Cliquez ici
+        </button>
+      </div>
+    );
+  }
+}
+
+
+</code></pre><p>On adopte la syntaxe <code>[myVariable, setMyVariable]</code> en <a href="https://fr.wikipedia.org/wiki/Camel_case">camelCase</a> pour plus de clarté. En utilisant <code>useState</code>, on récupère donc une variable dont l'état est réactif et une fonction pour modifier cette variable et par la même occasion &quot;re-render&quot; le component. La valeur passée en paramètre de <code>useState</code> correspond à la valeur  de la variable lors de l'initialisation du component. Dans l'exemple avec les classes, on utilise une seule variable qui est de type objet et qui s'appelle state et on la modifie avec setState en lui spécifiant un attribut.</p>
+<h3 id="useeffect" tabindex="-1"><a class="header-anchor" href="#useeffect"></a> useEffect</h3>
+<p>Le hook <code>useEffect</code>permet l'exécution d'effets de bord dans les components fonctions. Il permet d'indiquer à React que notre composant doit exécuter quelque chose après chaque affichage. React enregistre la fonction passée en argument (appelée &quot;effet&quot;) et l'appellera plus tard après avoir mis à jour le DOM.</p>
+<pre class="language-js line-numbers"><code>
+
+import React, { useState, useEffect } from 'react';
+
+function Example() {
+  const [count, setCount] = useState(0);
+
+  // Similaire à componentDidMount et componentDidUpdate :
+  useEffect(() => {
+    // Met à jour le titre du document via l’API du navigateur
+    document.title = `Vous avez cliqué ${count} fois`;
+  });
+
+  return (
+    <div>
+      <p>Vous avez cliqué {count} fois</p>
+      <button onClick="{()" ==""> setCount(count + 1)}>
+        Cliquez ici
+      </button>
+    </div>
+  );
+}
+
+
+</code></pre><p>Il également possible d'ajouter une liste de dépendances à notre <code>useEffect</code>afin de lui indiquer de s'exécuter uniquement que si certaines variables changent afin d'éviter de surcharger.</p>
+<pre class="language-js line-numbers"><code>
+
+useEffect(() => {
+  document.title = `Vous avez cliqué ${count} fois`;
+}, [count]); // N’exécute l’effet que si count a changé
+
+
+</code></pre><h3 id="usecontext" tabindex="-1"><a class="header-anchor" href="#usecontext"></a> useContext</h3>
+<p>Ce hook permet de récupérer la valeur du contexte. Un contexte peut être identifié à un state défini dans les components parents ou de manière global à l'application. Par exemple, pour gérer un dark mode.</p>
+<pre class="language-js line-numbers"><code>
+
+const themes = {
+  light: {
+    foreground: "#000000",
+    background: "#eeeeee"
+  },
+  dark: {
+    foreground: "#ffffff",
+    background: "#222222"
+  }
+};
+
+const ThemeContext = React.createContext(themes.light);
+
+function App() {
+  return (
+    <ThemeContext.Provider value="{themes.dark}">
+      <Toolbar>
+    </Toolbar></ThemeContext.Provider>
+  );
+}
+
+function Toolbar(props){
+  return (
+    <div>
+      <ThemedButton>
+    </ThemedButton></div>
+  );
+}
+
+function ThemedButton() {
+  const theme = useContext(ThemeContext);
+  return (
+    <button style="{{" background:="" theme.background,="" color:="" theme.foreground="" }}="">
+      Je suis stylé par le contexte de thème !
+    </button>
+  );
+}
+
+
+
+</code></pre><h3 id="autres-..." tabindex="-1"><a class="header-anchor" href="#autres-..."></a> Autres ...</h3>
+<p>Les autres hooks existants ne sont que des variantes spécifiques à ceux déjà présentés.</p>
+<ul>
+<li><code>useReducer</code> permet de gérer un state avec en plus un reducer, il s'agit d'une fonction que l'on définit et qui est plus complexe que le simple setter définit dans le <code>useState</code> et permet d'inclure plus de logique. Voici un exemple :</li>
+</ul>
+<pre class="language-js line-numbers"><code>
+
+const initialState = {count: 0};
+
+function reducer(state, action) {
+  switch (action.type) {
+    case 'increment':
+      return {count: state.count + 1};
+    case 'decrement':
+      return {count: state.count - 1};
+    default:
+      throw new Error();
+  }
+}
+
+function Counter() {
+  const [state, dispatch] = useReducer(reducer, initialState);
+  return (
+    <>
+      Total : {state.count}
+      <button onClick="{()" ==""> dispatch({type: 'decrement'})}>-</button>
+      <button onClick="{()" ==""> dispatch({type: 'increment'})}>+</button>
+    </>
+  );
+}
+
+
+</code></pre><ul>
+<li><code>useRef</code> permet de récupérer et modifier un élement du DOM.</li>
+</ul>
+<pre class="language-js line-numbers"><code>
+
+function TextInputWithFocusButton() {
+  const inputEl = useRef(null);
+  const onButtonClick = () => {
+    // `current` fait référence au champ textuel monté dans le DOM
+    inputEl.current.focus();
+  };
+  return (
+    <>
+      <input ref="{inputEl}" type="text">
+      <button onClick="{onButtonClick}">Donner le focus au champ</button>
+    </>
+  );
+}
+
+
+</code></pre><p>Pour plus d'informations : <a href="https://fr.reactjs.org/docs/hooks-reference.html">https://fr.reactjs.org/docs/hooks-reference.html</a></p>
+
+
+
+</article>
+
+        </main>
+
+        <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-center items-center">
+                    <p class="text-center">
+                        ©2025 <b><span style="font-family: Consolas, sans-serif;">Do_<span style="color: #4a86e8">It</span></span></b> - Développement, Management et Gestion de projets en IT
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- MathJax import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">
+            window.MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']], // Delimiters for inline math
+                    displayMath: [['$$', '$$'], ['\\[', '\\]']] // Delimiters for block math
+                },
+                svg: {
+                    fontCache: 'global' // Use global font cache for SVG output
+                }
+            };
+            document.addEventListener('DOMContentLoaded', () => {
+                MathJax.typeset(); // Ensures MathJax processes the content after the page loads
+            });
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">
+            Prism.plugins.NormalizeWhitespace.setDefaults({
+                'remove-trailing': true,
+                'remove-indent': true,
+                'left-trim': true,
+                'right-trim': true,
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script>
+    </body>
+</html>

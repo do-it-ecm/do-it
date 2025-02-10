@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Google Apps Script - Gestion &amp; suivi de Paiements</title>
+
+        <!-- Prismjs imports
+                - Prism core
+                - Prism line numbers
+                - Prism copy to clipboard
+                - Prism autoloader
+        -->
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png">
+
+        <!-- Mermaid import and initialization -->
+        <script type="module" defer="">
+            import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/+esm';
+            mermaid.initialize({
+                startOnLoad: true,
+            });
+        </script>
+
+        <link href="/assets/stylesheets/main.css" rel="stylesheet">
+
+    </head>
+
+    <body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000">
+        <header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-between items-center">
+                    <a class="mx-2" href="/">Home</a>
+                    <div class="flex items-center gap-4 sm:gap-6 ">
+                        <a class="" href="/cs">CS</a>
+                        <a class="" href="/pok">POK</a>
+                        <a class="" href="/mon">MON</a>
+                        <a class="" href="/projets">Projets</a>
+                        <a class="hidden sm:block" href="/promos">Promos</a>
+                        <a href="/search">
+                            <svg class="h-5 aspect-square" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+                            </svg>
+                        </a>
+                        <a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank">
+                            <svg class="h-5 aspect-square" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body="">
+            
+<article class="relative">
+<h1 class="mb-1">Google Apps Script - Gestion &amp; suivi de Paiements</h1>
+<div class="mb-4">
+    
+        <div class="px-4 flex flex-wrap items-center">
+            
+                <div class="font-bold">Tags : </div>
+            
+            <ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags">
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">MON</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">temps 3</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">Apps Script</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">Google Sheet</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">Google Docs</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">Automatisations</li>
+                
+
+            </ul>
+
+            
+            <div class="hidden" data-pagefind-meta="Type">
+                
+                    
+                        <span data-pagefind-filter="Type">MON</span>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Auteurs : </div>
+            <ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs">
+                
+                    <li class="bg-blue-200 rounded-full px-2" data-pagefind-filter="Auteurs">Isée Maroni</li>
+                
+            </ul>
+        </div>
+    
+
+    
+        <div class="absolute top-0 right-0">
+            <span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2" data-pagefind-filter="Année">
+                2024-2025
+            </span>
+        </div>
+    
+</div>
+
+        <p class="mb-4 text-lg">
+
+                Découvrir les bases de Apps Script pour automatiser l'envoie de certificats chaque trimestre nécessaire à la réception des paiements et le suivi
+
+        </p>
+
+
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/promos/2024-2025/Isee-Maroni/">Isée Maroni</a><span class="px-1">/</span><a href="/promos/2024-2025/Isee-Maroni/mon/">MON de Isée Maroni</a><span class="px-1">/</span><a href="/promos/2024-2025/Isee-Maroni/mon/temps-3.1/">Google Apps Script - Gestion &amp; suivi de Paiements</a>
+
+</div></div>
+
+
+
+
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Prérequis</b></p>
+</div><div class="pl-8 mr-8">
+<p>Aucun</p>
+</div></div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Liens</b></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li><a href="https://drive.google.com/drive/folders/1OblmFFQ12JwEWJjg4Qubddl3eAxdpAna?usp=sharing"><code>Drive du projet</code></a></li>
+<li><a href="https://docs.google.com/spreadsheets/d/1eEKEn1KX_vBrW6po_FRRw5K27mNP0Zit1ZvLuVNVU6E/edit?usp=sharing"><code>Google Sheet du projet</code></a></li>
+</ul>
+</div></div>
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>💡 MON en lien</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<ul>
+<li><a href="https://do-it.aioli.ec-m.fr/promos/2024-2025/Adinolfi-Mathis/mon/temps-2.1/"><code>MON 2.1 de Mathis ADINOLFI : Création d'un EDT automatique avec Sheet et Appscript</code></a></li>
+<li><a href="https://do-it.aioli.ec-m.fr/promos/2024-2025/Matthieu-Dufort/mon/temps-2.1/"><code>MON 2.1 de Matthieu DUFORT : Automatisation avec Google App Script</code></a></li>
+</ul>
+</div>
+</details>
+</div>
+<p>L’objectif de ce MON est de me former à Google Apps Script afin d’automatiser les interactions entre Google Sheets, Google Docs, et Google Drive, tout en gérant l’envoi d’emails pour des tâches récurrentes et identiques. Cette démarche vise à optimiser les workflows et à réduire le temps consacré aux tâches répétitives.</p>
+<script>
+let lastScrollYSummary = window.scrollY;
+
+function toggleSummarySidebar() {
+    document.getElementById('toc-sidebar').classList.toggle('open');
+}
+
+window.addEventListener('scroll', () => {
+    const burger = document.getElementById('toc-burger-button');
+    const sidebar = document.getElementById('toc-sidebar');
+    const currentScroll = window.scrollY;
+    // Hide the burger button if max width is reached
+    if (window.innerWidth > 1536) {
+        burger.style.display = 'none';
+    } else if (currentScroll < 10 || currentScroll < lastScrollYSummary) {
+        burger.style.display = 'block';
+    } else if (!sidebar || !sidebar.classList.contains('open')) {
+        burger.style.display = 'none';
+    }
+
+    lastScrollYSummary = currentScroll;
+});
+</script>
+<p><button id="toc-burger-button" class="sidebar-burger-button right-2" onclick="toggleSummarySidebar()">☰</button></p>
+<nav id="toc-sidebar" class="sidebar right-0 border-l-2 translate-x-full 2xl:translate-x-0">
+<h2>Sommaire</h2>
+<nav class="toc"><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#contexte"> Contexte</a></li><li class="toc-item"><a class="toc-link" href="#premiers-pas"> Premiers Pas</a></li><li class="toc-item"><a class="toc-link" href="#l'interface-utilisateur"> L&#39;interface utilisateur</a></li><li class="toc-item"><a class="toc-link" href="#edition-des-certificats"> Edition des certificats</a></li><li class="toc-item"><a class="toc-link" href="#s%C3%A9lection-des-trimestres-%C3%A0-traiter-et-envoi-des-mails"> Sélection des trimestres à traiter et envoi des mails</a></li><li class="toc-item"><a class="toc-link" href="#annexe-%3A-exemple-de-logger"> Annexe : Exemple de Logger</a></li></ol></nav></nav>
+<h2 id="contexte" tabindex="-1"><a class="header-anchor" href="#contexte"></a> Contexte</h2>
+<p>La mise en situation s’inspire d’une problématique rencontrée lors d’un précédent stage. Un centre de formation, appelé &quot;MON3.1-Académie&quot;, propose des formations en alternance, où les élèves suivent un contrat de professionnalisation ou d’apprentissage au sein d’entreprises partenaires. Le financement des formations est assuré par les OPCO affiliés aux entreprises concernées, tels qu’Atlas, Afdas ou Akto. Ces organismes règlent les frais de formation à la fin de chaque trimestre, après réception de la confirmation de la présence de chaque élève à l’ensemble de ses heures de formation.</p>
+<p>Chaque trimestre, le processus reste identique et comprend les étapes suivantes pour chaque élève :</p>
+<ul>
+<li>Vérification de la présence à toutes les heures de formation.</li>
+<li>Génération d’un certificat de présence.</li>
+<li>Envoi du certificat à l’OPCO.</li>
+<li>Suivi du virement correspondant.
+Cette procédure, très répétitive et impliquant de nombreuses lignes de données, est sujette aux erreurs.</li>
+</ul>
+<p>En cas de retard accumulé sur l’année précédente, il devient crucial de prioriser les envois. Par exemple, il peut être nécessaire d’organiser l’envoi par vagues, en traitant d’abord toutes les demandes du deuxième trimestre 2024. Une fois les paiements reçus, les demandes des troisième et quatrième trimestres peuvent être envoyées progressivement. Ce mécanisme garantit une gestion plus fluide et évite les retards supplémentaires.</p>
+<h2 id="premiers-pas" tabindex="-1"><a class="header-anchor" href="#premiers-pas"></a> Premiers Pas</h2>
+<p>Pour découvrir les premières fonctionnalités utiles d'APPS Script, ainsi qu'un aperçu des diverses applications possibles, j'ai visionné cette vidéo.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Liens</b></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li><a href="https://www.youtube.com/watch?v=peE-2UrqEbI"><code>Google Apps Script Comment ça marche ?</code></a> de <em>Bande de Codeurs</em></li>
+</ul>
+</div></div>
+
+<h2 id="l'interface-utilisateur" tabindex="-1"><a class="header-anchor" href="#l'interface-utilisateur"></a> L'interface utilisateur</h2>
+<p>La première étape consistait à construire une feuille Google Sheets pour gérer et suivre les informations décrites précédemment dans le contexte.</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Isee-Maroni/mon/temps-3.1/GSheet1.png" alt="GSheet1"></p>
+<ul>
+<li>En vert : les lignes correspondant aux paiements déjà reçus.</li>
+<li>En blanc : les lignes représentant les paiements encore en attente à ce jour.</li>
+</ul>
+<p><em>Première automatisation</em></p>
+<p>Lorsqu’un paiement est reçu et ajouté dans la colonne &quot;Somme reçue&quot;, si celui-ci est complet, la ligne correspondante passe automatiquement en vert.</p>
+<p>Cette étape m'a également permis de découvrir l'utilisation des <em>Logger</em>, un outil pratique pour consigner des traces dans le Journal d'exécution. (cf <em>Annexe</em>)</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>function onEdit(e)</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="line-numbers"><code>
+
+function onEdit(e) {
+  if (!e) return;
+  Logger.log("Événement onEdit déclenché.");
+
+  var sheet = e.source.getActiveSheet();
+  var range = e.range;
+  var row = range.getRow();
+  var col = range.getColumn();
+
+  // Récupère les noms des colonnes dans la première ligne
+  var headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
+
+  // Trouve les indices des colonnes "Tarif" et "Somme reçue"
+  var tarifIndex = headers.indexOf("Tarif") + 1; // +1 car index commence à 0
+  var sommeRecueIndex = headers.indexOf("Somme reçue") + 1;
+
+  if (tarifIndex === 0 || sommeRecueIndex === 0) {
+    Logger.log("Les colonnes 'Tarif' ou 'Somme reçue' sont introuvables.");
+    return;
+  }
+
+  // Vérifie si l'édition concerne l'une des deux colonnes
+  if (col === tarifIndex || col === sommeRecueIndex) {
+    var valueTarif = sheet.getRange(row, tarifIndex).getValue();
+    var valueSommeRecue = sheet.getRange(row, sommeRecueIndex).getValue();
+    var rangeToCheck = sheet.getRange(row, 1, 1, sheet.getLastColumn());
+
+    Logger.log(`Valeur Tarif : ${valueTarif}, Valeur Somme reçue : ${valueSommeRecue}`);
+
+    if (valueTarif === valueSommeRecue && valueTarif !== "") {
+      rangeToCheck.setBackground("lightgreen"); // Colore la ligne en vert
+      Logger.log(`Les valeurs sont identiques`);
+    } else {
+      rangeToCheck.setBackground(null); // Réinitialise la couleur
+      Logger.log("Les valeurs ne sont pas identiques ou sont vides.");
+    }
+  }
+}
+
+
+</code></pre></div>
+</details>
+</div>
+<h2 id="edition-des-certificats" tabindex="-1"><a class="header-anchor" href="#edition-des-certificats"></a> Edition des certificats</h2>
+<p>L'étape suivante consiste à générer des certificats personnalisés pour chaque élève en s'appuyant sur :</p>
+<ul>
+<li>Un template de certificat, disponible dans Google Drive.</li>
+<li>Les informations personnelles enregistrées dans la feuille Google Sheets.
+Ce processus permet d'automatiser la création des certificats, en intégrant directement les données spécifiques à chaque élève depuis le GSheet dans le modèle.</li>
+</ul>
+<p>Voici 2 versions successives du template :</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Isee-Maroni/mon/temps-3.1/Template1.png" alt="Template1">
+<img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Isee-Maroni/mon/temps-3.1/Template2.png" alt="Template2"></p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>fillTemplate(row)</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="line-numbers"><code>
+
+
+
+function fillTemplate(row) {
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+
+   // Récupérer les noms des colonnes (première ligne)
+  var headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
+
+    // Identifier l'index de la colonne "ID_Certificats"
+  var certIdIndex = headers.indexOf("ID Certificats");
+  if (certIdIndex === -1) {
+    Logger.log("La colonne 'ID Certificats' est introuvable.");
+    return;
+  }
+
+  // Récupère les données de la ligne
+  var data = sheet.getRange(row, 1, 1, sheet.getLastColumn()).getValues()[0];
+
+  // Identifier les colonnes "Trimestre" et autres nécessaires
+  var trimestreIndex = headers.indexOf("Trimestre"); // Pas besoin de +1 ici pour un tableau 0-indexé
+  if (trimestreIndex === -1) {
+    Logger.log("La colonne 'Trimestre' est introuvable.");
+    return;
+  }
+
+  // Valeur du trimestre
+  var trimestreValue = data[trimestreIndex];
+
+  // Mappage des trimestres aux mois
+  var trimestreToMois = {
+    "T1": ["Janvier", "Février", "Mars"],
+    "T2": ["Avril", "Mai", "Juin"],
+    "T3": ["Juillet", "Août", "Septembre"],
+    "T4": ["Octobre", "Novembre", "Décembre"]
+  };
+
+  // Mois correspondant au trimestre
+  var mois = trimestreToMois[trimestreValue];
+  if (!mois) {
+    Logger.log(`Trimestre invalide ou absent pour la ligne ${row}`);
+    return;
+  }
+
+  // Remplacez par l'ID de votre modèle Google Docs
+  var templateId = "1Sgm1bQ69L1flDFVxyc3Pf-0t5tF4pKQV3hwd-oDpn28";
+  var templateFile = DriveApp.getFileById(templateId);
+
+  var newDoc = templateFile.makeCopy(`Certif MON ${trimestreValue} 2024 - ${row}`);
+
+  var doc = DocumentApp.openById(newDoc.getId());
+
+  var body = doc.getBody();
+
+  // Remplacement des balises {{Mois1}}, {{Mois2}}, {{Mois3}}
+  body.replaceText("{{Mois1}}", mois[0]);
+  body.replaceText("{{Mois2}}", mois[1]);
+  body.replaceText("{{Mois3}}", mois[2]);
+
+  body.replaceText("{{Date du jour}}", Utilities.formatDate(new Date(), Session.getScriptTimeZone(), "dd MMMM yyyy"));
+
+
+  // Remplacer les balises dynamiquement
+  for (var i = 0; i < headers.length; i++) {
+    var columnName = headers[i]; // Nom de la colonne (ex: "Prénom")
+    var placeholder = `{{${columnName}}}`; // Balise attendue dans le modèle
+    var value = data[i] || ""; // Valeur de la cellule correspondante
+    body.replaceText(placeholder, value);
+  }
+
+  doc.saveAndClose();
+
+  // Ajouter l'URL du document créé dans la colonne 'ID_Certificats'
+  var docUrl = newDoc.getUrl();
+  sheet.getRange(row, certIdIndex + 1).setValue(docUrl); // +1 car les indices commencent à 0
+  Logger.log(`URL du document ajouté à la ligne ${row}: ${docUrl}`);
+
+}
+
+
+
+
+</code></pre></div>
+</details>
+</div>
+<h2 id="s%C3%A9lection-des-trimestres-%C3%A0-traiter-et-envoi-des-mails" tabindex="-1"><a class="header-anchor" href="#s%C3%A9lection-des-trimestres-%C3%A0-traiter-et-envoi-des-mails"></a> Sélection des trimestres à traiter et envoi des mails</h2>
+<p>La dernière étape consistait à rendre le lancement du script accessible directement depuis l'interface utilisateur. Pour cela, un menu personnalisé a été créé, accessible dès l'ouverture de la feuille Google Sheets. Ce menu permet de :</p>
+<ul>
+<li>Sélectionner les trimestres à traiter.</li>
+<li>Lancer l'envoi de l'édition des certificats (script <em>processTrimestre(trimestre)</em>).</li>
+</ul>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>onOpen()</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="line-numbers"><code>
+
+function onOpen() {
+
+  helloWorldAlert();
+
+  var ui = SpreadsheetApp.getUi();
+  ui.createMenu("Envoie des certificats")
+    .addItem('Say hello', 'helloWorldAlert')
+    //.addItem('Lancer les T2', 'processTrimestre')
+    .addItem('Lancer le traitement', 'showTrimestreDialog')
+    .addToUi();
+
+}
+
+
+</code></pre></div>
+</details>
+</div>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Isee-Maroni/mon/temps-3.1/MenuPersonnalise.png" alt="MenuPersonnalise"></p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Isee-Maroni/mon/temps-3.1/SelectionTrimestre.png" alt="SelectionTrimestre"></p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>showTrimestreDialog()</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="line-numbers"><code>
+
+function showTrimestreDialog() {
+  var ui = SpreadsheetApp.getUi();
+  var response = ui.prompt(
+    'Sélection du Trimestre',
+    'Entrez le trimestre jusqu\'auquel traiter les lignes (T1, T2, T3 ou T4) :',
+    ui.ButtonSet.OK_CANCEL
+  );
+
+  // Vérifiez si l'utilisateur a cliqué sur "OK"
+  if (response.getSelectedButton() === ui.Button.OK) {
+    var trimestre = response.getResponseText().toUpperCase();
+
+    if (['T1', 'T2', 'T3', 'T4'].includes(trimestre)) {
+      processTrimestre(trimestre); // Appelez le traitement des trimestres
+
+    } else {
+      ui.alert('Trimestre invalide. Veuillez entrer T1, T2, T3 ou T4.');
+    }
+  } else {
+    ui.alert('Opération annulée.');
+  }
+}
+
+
+</code></pre></div>
+</details>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>processTrimestre(trimestre)</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="line-numbers"><code>
+
+function processTrimestre(trimestre) {
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  var headers = sheet.getRange(1, 1, 1, sheet.getLastColumn()).getValues()[0];
+  var trimestreIndex = headers.indexOf("Trimestre") + 1; // Colonne "Trimestre"
+
+  // Parcours des lignes
+  var lastRow = sheet.getLastRow();
+  for (var row = 2; row <= lastRow; row++) {
+    var rowTrimestre = sheet.getRange(row, trimestreIndex).getValue(); // Trimestre de la ligne
+    var bgColor = sheet.getRange(row, 1).getBackground(); // Couleur de la ligne (colonne 1)
+    var isNotGreen = bgColor !== "#90ee90"; // Vérifie si ce n'est pas vert
+    var isNotOrange = bgColor !== "#ffa500"; // Vérifie si ce n'est pas orange
+
+    if (['T1', 'T2', 'T3', 'T4'].includes(rowTrimestre) &&
+        isNotGreen &&
+        isNotOrange) {
+      if (rowTrimestre <= trimestre) {
+        Logger.log(`Traitement de la ligne ${row} pour le trimestre ${rowTrimestre}`);
+        fillTemplate(row); // Remplit le certificat
+        SendEmail(row);
+        sheet.getRange(row, 1, 1, sheet.getLastColumn()).setBackground("#ffa500"); // Colore en orange
+      }
+    } else {
+      Logger.log(`Ligne ${row} ignorée (Trimestre: ${rowTrimestre}, Couleur: ${bgColor})`);
+    }
+  }
+}
+
+
+</code></pre></div>
+</details>
+</div>
+<p>Les certificats de réalisation sont ensuite envoyés par mail aux OPCO correspondants. Les adresses e-mail nécessaires sont répertoriées dans la deuxième feuille du classeur. Le script prévoit également :  e titre du mail,  ’objet, le corps du texte personnalisé pour chaque destinataire.</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>SendEmail(row)</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="line-numbers"><code>
+
+function SendEmail(row) {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var sheetData = ss.getActiveSheet(); // Feuille principale
+  var sheetEmails = ss.getSheetByName("Adresses_OPCO"); // Feuille des adresses OPCO
+
+  if (!sheetEmails) {
+    Logger.log("La feuille 'Adresses_OPCO' est introuvable.");
+    return;
+  }
+
+  // Récupérer les noms des colonnes (première ligne)
+  var headers = sheetData.getRange(1, 1, 1, sheetData.getLastColumn()).getValues()[0];
+  var opcoIndex = headers.indexOf("OPCO");
+  var certIdIndex = headers.indexOf("ID Certificats");
+  var trimestreIndex = headers.indexOf("Trimestre"); // Pas besoin de +1 ici pour un tableau 0-indexé
+
+  if (opcoIndex === -1 || certIdIndex === -1) {
+    Logger.log("Les colonnes 'OPCO' ou 'ID Certificats' sont introuvables.");
+    return;
+  }
+
+  // Récupérer les données de la ligne
+  var data = sheetData.getRange(row, 1, 1, sheetData.getLastColumn()).getValues()[0];
+  var opco = data[opcoIndex];
+  var certUrl = data[certIdIndex];
+  var trimestreValue = data[trimestreIndex];
+
+
+  if (!opco || !certUrl) {
+    Logger.log(`Aucune URL ou OPCO trouvé pour la ligne ${row}.`);
+    return;
+  }
+
+  // Charger les adresses e-mail depuis la feuille des e-mails
+  var emailData = sheetEmails.getRange(2, 1, sheetEmails.getLastRow() - 1, 2).getValues();
+  var emailMap = {};
+  emailData.forEach(row => {
+    emailMap[row[0]] = row[1]; // row[0] = OPCO, row[1] = Adresse Mail
+  });
+
+  if (!emailMap[opco]) {
+    Logger.log(`Aucune adresse e-mail trouvée pour l'OPCO '${opco}'.`);
+    return;
+  }
+
+  // Préparer l'envoi de l'e-mail
+  var email = emailMap[opco];
+  var subject = `Certificat de réalisation - ${trimestreValue} 2024 - ${opco}`;
+  var bodyText = `Bonjour,\n\nVeuillez trouver en pièce jointe le certificat de réalisation correspondant à l'OPCO ${opco}.\n\nCordialement,\nMON3.1-Entreprise.`;
+
+  try {
+    var fileId = certUrl.match(/[-\w]{25,}/)[0]; // Extraire l'ID du fichier depuis l'URL
+    var file = DriveApp.getFileById(fileId);
+
+    // Envoyer l'e-mail avec le certificat attaché
+    MailApp.sendEmail({
+      to: email,
+      subject: subject,
+      body: bodyText,
+      attachments: [file.getAs(MimeType.PDF)]
+    });
+
+    Logger.log(`E-mail envoyé à ${email} avec le certificat de l'OPCO '${opco}'.`);
+  } catch (e) {
+    Logger.log(`Erreur lors de l'envoi de l'e-mail : ${e.message}`);
+  }
+}
+
+
+</code></pre></div>
+</details>
+</div>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Isee-Maroni/mon/temps-3.1/Mail.png" alt="Mail"></p>
+<p>Une fois le mail contenant les certificats envoyé, la ligne correspondante est mise en orange, indiquant qu’elle est en attente de validation. Lors de la réception du paiement, elle passe automatiquement en vert.</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Isee-Maroni/mon/temps-3.1/ScriptTermine.png" alt="ScriptTermine"></p>
+<h2 id="annexe-%3A-exemple-de-logger" tabindex="-1"><a class="header-anchor" href="#annexe-%3A-exemple-de-logger"></a> Annexe : Exemple de Logger</h2>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Isee-Maroni/mon/temps-3.1/Logger.png" alt="Logger"></p>
+
+
+
+</article>
+
+        </main>
+
+        <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-center items-center">
+                    <p class="text-center">
+                        ©2025 <b><span style="font-family: Consolas, sans-serif;">Do_<span style="color: #4a86e8">It</span></span></b> - Développement, Management et Gestion de projets en IT
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- MathJax import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">
+            window.MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']], // Delimiters for inline math
+                    displayMath: [['$$', '$$'], ['\\[', '\\]']] // Delimiters for block math
+                },
+                svg: {
+                    fontCache: 'global' // Use global font cache for SVG output
+                }
+            };
+            document.addEventListener('DOMContentLoaded', () => {
+                MathJax.typeset(); // Ensures MathJax processes the content after the page loads
+            });
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">
+            Prism.plugins.NormalizeWhitespace.setDefaults({
+                'remove-trailing': true,
+                'remove-indent': true,
+                'left-trim': true,
+                'right-trim': true,
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script>
+    </body>
+</html>
