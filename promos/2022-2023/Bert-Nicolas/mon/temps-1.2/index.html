@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Programmation objet en Python</title>
+
+        <!-- Prismjs imports
+                - Prism core
+                - Prism line numbers
+                - Prism copy to clipboard
+                - Prism autoloader
+        -->
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png">
+
+        <!-- Mermaid import and initialization -->
+        <script type="module" defer="">
+            import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/+esm';
+            mermaid.initialize({
+                startOnLoad: true,
+            });
+        </script>
+
+        <link href="/assets/stylesheets/main.css" rel="stylesheet">
+
+    </head>
+
+    <body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000">
+        <header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-between items-center">
+                    <a class="mx-2" href="/">Home</a>
+                    <div class="flex items-center gap-4 sm:gap-6 ">
+                        <a class="" href="/cs">CS</a>
+                        <a class="" href="/pok">POK</a>
+                        <a class="" href="/mon">MON</a>
+                        <a class="" href="/projets">Projets</a>
+                        <a class="hidden sm:block" href="/promos">Promos</a>
+                        <a href="/search">
+                            <svg class="h-5 aspect-square" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+                            </svg>
+                        </a>
+                        <a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank">
+                            <svg class="h-5 aspect-square" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body="">
+            
+<article class="relative">
+<h1 class="mb-1">Programmation objet en Python</h1>
+<div class="mb-4">
+    
+        <div class="px-4 flex flex-wrap items-center">
+            
+                <div class="font-bold">Tag : </div>
+            
+            <ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags">
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">MON</li>
+                
+
+            </ul>
+
+            
+            <div class="hidden" data-pagefind-meta="Type">
+                
+                    
+                        <span data-pagefind-filter="Type">MON</span>
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Auteurs : </div>
+            <ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs">
+                
+                    <li class="bg-blue-200 rounded-full px-2" data-pagefind-filter="Auteurs">Nicolas BERT</li>
+                
+            </ul>
+        </div>
+    
+
+    
+        <div class="absolute top-0 right-0">
+            <span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2" data-pagefind-filter="Année">
+                2022-2023
+            </span>
+        </div>
+    
+</div>
+
+
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/promos/2022-2023/Bert-Nicolas/">Nicolas BERT</a><span class="px-1">/</span><a href="/promos/2022-2023/Bert-Nicolas/mon/">MONs</a><span class="px-1">/</span><a href="/promos/2022-2023/Bert-Nicolas/mon/temps-1.2/">Programmation objet en Python</a>
+
+</div></div>
+
+
+
+
+<!-- début résumé -->
+<p>POO en Python (Temps 1)</p>
+<!-- fin résumé -->
+<h2 id="la-programmation-orient%C3%A9e-objet" tabindex="-1"><a class="header-anchor" href="#la-programmation-orient%C3%A9e-objet"></a> La programmation orientée objet</h2>
+<p>La programmation orientée objet, également abrégée POO, est un paradigme de programmation et une manière de penser différente de celle que l'on connait habituellement qui est la programmation procédurale.</p>
+<p>L'idée de la programmation objet est d'encapsuler les données(i.e. les attributs) et les fonctions (i.e. les méthodes) dans des objets et ainsi les rendre disponibles uniquement aux objets qui en ont besoin.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Programmation procédurale</strong></th>
+<th><strong>Programmation orientée objet</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Le programme est découpé en petites parties appelées <strong>fonctions</strong>.</td>
+<td>Le programme est découpé en petites parties appellées <strong>objets</strong></td>
+</tr>
+<tr>
+<td>Il n'y a pas de spécificateur d'accès.</td>
+<td>L'accès aux données est réglémenté : public, private, protected ...</td>
+</tr>
+<tr>
+<td>Les fonctions utilisent des <strong>données globales</strong>.</td>
+<td>Les objets utilisent ses <strong>propres données</strong>.</td>
+</tr>
+<tr>
+<td>La logique est pensée de <strong>manière globale</strong> et le code est difficilement scalable.</td>
+<td>La logique est pensée à <strong>petite échelle</strong> (objet) et le code est facilement scalable.</td>
+</tr>
+</tbody>
+</table>
+<div style="display: flex; align-items: center;">
+  <div style="width: 50%; display: flex; flex-direction: column; align-items: center;">
+    <img src="https://raw.githubusercontent.com/do-it-ecm/promo-2022-2023/refs/heads/main//Bert-Nicolas/mon/temps-1.2/procedurale.png" style="border: 0;">
+    <p>La programmation procédrale</p>
+  </div>
+  <div style="width: 50%; display: flex; flex-direction: column; align-items: center;">
+    <img src="https://raw.githubusercontent.com/do-it-ecm/promo-2022-2023/refs/heads/main//Bert-Nicolas/mon/temps-1.2/orientee-objet.png" style="border: 0;">
+    <p>La programmation orientée objet</p>
+  </div>
+</div>
+<h3 id="ressources" tabindex="-1"><a class="header-anchor" href="#ressources"></a> Ressources</h3>
+<p>Ce petit MON se base sur le <a href="https://francoisbrucker.github.io/cours_informatique/cours/algorithme-code-th%C3%A9orie/code/programmation-objet/">cours de François Brucker</a>.</p>
+<h2 id="un-jeu-de-bataille" tabindex="-1"><a class="header-anchor" href="#un-jeu-de-bataille"></a> Un jeu de bataille</h2>
+<p>Dans ce cours j'ai réalisé comme il est suggéré dans le cours de François de Brucker à la section 7 un petit jeu en ligne de commande permettant de faire combatter deux personnages. Je fais ici combattre un magicien contre un nain. Vous pourrez retrouver mon code sur <a href="https://github.com/nbert71/POO-Python">GitHub</a>.</p>
+<div style="display: grid; place-items: center;">
+  <img src="https://raw.githubusercontent.com/do-it-ecm/promo-2022-2023/refs/heads/main//Bert-Nicolas/mon/temps-1.2/gandalf-gimli.png" style="width: 50%;">
+</div>
+<h3 id="la-classe-character" tabindex="-1"><a class="header-anchor" href="#la-classe-character"></a> La classe Character</h3>
+<p>J'ai d'abord commencé par créer une classe Character représentant un personnage avec un nom et nombre de points de vie. Je définis également des méthodes pour récupérer le nom ou le nombre de points de vie et les modifier : ce sont respectivement les getters et les setters. Je crée également une fonction visant à afficher les informations du personnage.</p>
+<pre class="language-python line-numbers"><code>
+
+class Character:
+
+    def __init__(self, name, hp):
+        self.__name = name;
+        self.__hp = hp;
+
+    def getName(self):
+        return self.__name
+
+    def getHp(self):
+        return self.__hp
+
+    def loseHp(self, damage):
+        self.__hp -= damage
+
+    def gainHp(self, heal):
+        self.__hp += heal
+
+    def display(self):
+        print(type(self).__name__  + " " + self.getName())
+        print('- HP : ' + str(self.getHp()))
+
+
+</code></pre><p>La notation <code>__attribut</code> &quot;permet&quot; de gérer des attributs privés mais ce n'est qu'une facette puisqu'en réalité ces attributs ne sont pas privés. On garde tout de même cette syntaxe et les getters/setters pour respecter le principe Open/Closed (cf <a href="https://do-it.aioli.ec-m.fr/mon/TBi/MON/POO/">MON de Tuncay</a>)</p>
+<h3 id="la-classe-dwarf" tabindex="-1"><a class="header-anchor" href="#la-classe-dwarf"></a> La classe Dwarf</h3>
+<p>J'ai ensuite créé la classe Dwarf qui hérite de la classe Character qui représente un nain. Le nain possède une méthode <em>attack</em> qui enlève 20 points de vie à l'adversaire.</p>
+<pre class="language-python line-numbers"><code>
+
+from Character import *
+
+class Dwarf(Character):
+
+    def __init__(self, name, hp=80):
+        super().__init__(name, hp)  # on appelle le constructeur de la classe parente
+        self.__damage = 20
+
+    def display(self):
+        super().display()   # on appelle la méthode display de la classe parente
+        print("- Damage : " + str(self.__damage))
+
+    def attack(self, player):
+        player.loseHp(self.__damage)
+
+
+
+</code></pre><h3 id="la-classe-magician" tabindex="-1"><a class="header-anchor" href="#la-classe-magician"></a> La classe Magician</h3>
+<p>J'ai enfin crée la classe Magician qui hérite elle aussi de la classe Character. Le magicien possède en plus une barre de mana qui lui permet de lancer des sorts. Il possède une méthode attack pour attaquer une autre joueur tout en consommant un peu de sa mana, attention cette méthode ne peut se lancer que si le magicien à encore de la mana. Il dispose aussi d'une méthode pour régénérer ses points de vie.</p>
+<pre class="language-python line-numbers"><code>
+
+from Character import *
+
+def checkMana(self, cost):
+    if self.getMana() >= cost:
+        return True
+    else:
+        print("Vous n'avez pas assez de mana pour lancer ce sort !")
+        return False
+
+class Magician(Character):
+
+    __spellCost = 10
+
+    def __init__(self, name, hp=100):
+        super().__init__(name, hp)
+        self.__mana = 50
+        self.__damage = 10
+
+    def display(self):
+        super().display()
+        print("- Mana : " + str(self.getMana()))
+        print("- Spell cost : " + str(self.__spellCost))
+        print("- Damage : " + str(self.__damage))
+
+    def getMana(self):
+        return self.__mana
+
+    def attack(self, player):
+        if checkMana(self, self.__spellCost):
+            player.loseHp(self.__damage)
+            self.__mana -= self.__spellCost
+        else:
+            print('Vous gagner 30 points de mana')
+            self.__mana += 30
+
+    def heal(self):
+        if checkMana(self, self.__spellCost):
+            self.gainHp(40)
+            self.__mana -= self.__spellCost
+
+
+
+</code></pre><p>Les relations entre les classes sont résumées dans le diagramme UML suivant.</p>
+<div style="display: grid; place-items: center;">
+  <img src="https://raw.githubusercontent.com/do-it-ecm/promo-2022-2023/refs/heads/main//Bert-Nicolas/mon/temps-1.2/uml-poo.png" style="border: 0;">
+</div>
+<h2 id="la-m%C3%A9canique-de-jeu" tabindex="-1"><a class="header-anchor" href="#la-m%C3%A9canique-de-jeu"></a> La mécanique de jeu</h2>
+<p>J'ai ensuite programmé la logique de jeu. Tout d'abord le jeu nous demande de créer nos deux personnages et de leur donner un nom chacun. Ensuite tour à tour, chaque personnage joue. Le combat continue tant que les deux personnages sont encore en vie.</p>
+<pre class="language-python line-numbers"><code>
+
+def play(player1, player2):
+    while player1.getHp() > 0 and player2.getHp() > 0:
+        turn(player1, player2)
+        if player2.getHp() > 0:
+            turn(player2, player1)
+
+    if player1.getHp() <= 0:
+        winner = player2
+    else:
+        winner = player1
+    print(winner.getName() + ' a gagné !')
+
+
+</code></pre><h2 id="conclusion" tabindex="-1"><a class="header-anchor" href="#conclusion"></a> Conclusion</h2>
+<p>Durant ce MON j'ai appris comment faire de la programmation orientée objet en python de manière assez simple. Je vois également et cela se ressent à la pratique, que Python n'est pas un langage très adapté pour l'orienté objet. En effet, il n'y a pas de notions de public ou privé, tout est public ce qui va un peu à l'encontre des principes de la POO. De plus, le fait qu'il ne soit pas un langage typé ne facilte pas les choses. J'ai cependant pu expérimenter la POO en Python.</p>
+
+
+
+</article>
+
+        </main>
+
+        <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-center items-center">
+                    <p class="text-center">
+                        ©2025 <b><span style="font-family: Consolas, sans-serif;">Do_<span style="color: #4a86e8">It</span></span></b> - Développement, Management et Gestion de projets en IT
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- MathJax import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">
+            window.MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']], // Delimiters for inline math
+                    displayMath: [['$$', '$$'], ['\\[', '\\]']] // Delimiters for block math
+                },
+                svg: {
+                    fontCache: 'global' // Use global font cache for SVG output
+                }
+            };
+            document.addEventListener('DOMContentLoaded', () => {
+                MathJax.typeset(); // Ensures MathJax processes the content after the page loads
+            });
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">
+            Prism.plugins.NormalizeWhitespace.setDefaults({
+                'remove-trailing': true,
+                'remove-indent': true,
+                'left-trim': true,
+                'right-trim': true,
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script>
+    </body>
+</html>
