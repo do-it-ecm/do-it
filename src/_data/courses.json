@@ -29,6 +29,10 @@
                                 {
                                     "path": "info/bases/struct_donnees/arbres_dict",
                                     "title": "Arbres et Dictionnaires"
+                                },
+                                {
+                                    "path": "info/bases/struct_donnees/hash",
+                                    "title": "Hachage"
                                 }
                             ]
                         }
@@ -130,12 +134,20 @@
                     ]
                 },
                 {
-                    "title": "Cyber",
+                    "title": "CyberSécurité",
                     "path": "management/cyber",
                     "children": [
                         {
                             "title": "CyberSécurité - Crises",
                             "path": "management/cyber/crise"
+                        },
+                        {
+                            "title": "CyberSécurité - RSSI",
+                            "path": "management/cyber/rssi"
+                        },
+                        {
+                            "title": "CyberSécurité - SOC",
+                            "path": "management/cyber/soc"
                         }
                     ]
                 },
@@ -186,6 +198,10 @@
                 {
                     "title": "Conduite du Changement",
                     "path": "tronc_commun/change_management"
+                },
+                {
+                    "title": "Ethique et Responsabilité",
+                    "path": "tronc_commun/ethique"
                 }
             ]
         }
