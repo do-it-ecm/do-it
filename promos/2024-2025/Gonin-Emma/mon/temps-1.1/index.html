@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>MON 1.1 - Introduction au Golang</title>
+
+        <!-- Prismjs imports
+                - Prism core
+                - Prism line numbers
+                - Prism copy to clipboard
+                - Prism autoloader
+        -->
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png">
+
+        <!-- Mermaid import and initialization -->
+        <script type="module" defer="">
+            import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/+esm';
+            mermaid.initialize({
+                startOnLoad: true,
+            });
+        </script>
+
+        <link href="/assets/stylesheets/main.css" rel="stylesheet">
+
+    </head>
+
+    <body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000">
+        <header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-between items-center">
+                    <a class="mx-2" href="/">Home</a>
+                    <div class="flex items-center gap-4 sm:gap-6 ">
+                        <a class="" href="/cs">CS</a>
+                        <a class="" href="/pok">POK</a>
+                        <a class="" href="/mon">MON</a>
+                        <a class="" href="/projets">Projets</a>
+                        <a class="hidden sm:block" href="/promos">Promos</a>
+                        <a href="/search">
+                            <svg class="h-5 aspect-square" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+                            </svg>
+                        </a>
+                        <a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank">
+                            <svg class="h-5 aspect-square" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body="">
+            
+<article class="relative">
+<h1 class="mb-1">MON 1.1 - Introduction au Golang</h1>
+<div class="mb-4">
+    
+        <div class="px-4 flex flex-wrap items-center">
+            
+                <div class="font-bold">Tags : </div>
+            
+            <ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags">
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">MON</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">golang</li>
+                
+
+            </ul>
+
+            
+            <div class="hidden" data-pagefind-meta="Type">
+                
+                    
+                        <span data-pagefind-filter="Type">MON</span>
+                    
+                
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Auteurs : </div>
+            <ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs">
+                
+                    <li class="bg-blue-200 rounded-full px-2" data-pagefind-filter="Auteurs">Emma Gonin</li>
+                
+            </ul>
+        </div>
+    
+
+    
+        <div class="absolute top-0 right-0">
+            <span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2" data-pagefind-filter="Année">
+                2024-2025
+            </span>
+        </div>
+    
+</div>
+
+        <p class="mb-4 text-lg">
+
+                Ce MON est une introduction au langage Golang.
+
+        </p>
+
+
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/promos/2024-2025/Gonin-Emma/">Emma Gonin</a><span class="px-1">/</span><a href="/promos/2024-2025/Gonin-Emma/mon/">MON de Emma Gonin</a><span class="px-1">/</span><a href="/promos/2024-2025/Gonin-Emma/mon/temps-1.1/">MON 1.1 - Introduction au Golang</a>
+
+</div></div>
+
+
+
+
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Prérequis</b></p>
+</div><div class="pl-8 mr-8">
+<p>Pas de prérequis spécifique, juste de la curiosité pour le langage.</p>
+</div></div>
+<h2 id="introduction" tabindex="-1"><a class="header-anchor" href="#introduction"></a> Introduction</h2>
+<p>Le <em>Go</em>, ou <em>Golang</em>, est un langage de programmation open source créé par Google en 2009. Il se revendique simple d'utilisation avec une rapidité et efficacité d'exécution. Il est multi-platformes et a permis le développement d'outils pour le Cloud (Docker, Kubernetes), d'outils CLI (Terraform) ou pour le développement de jeux vidéos (Ebitengine).</p>
+<h2 id="table-des-mati%C3%A8res" tabindex="-1"><a class="header-anchor" href="#table-des-mati%C3%A8res"></a> Table des matières</h2>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#table-des-mati%C3%A8res">Table des matières</a></li>
+<li><a href="#installation-de-go-sur-son-ordinateur-">Installation de Go sur son ordinateur </a></li>
+<li><a href="#faire-sa-propre-application-cli-command-line-interface-">Faire sa propre application CLI (Command Line Interface) </a></li>
+<li><a href="#notions-basiques-du-langage-go-">Notions basiques du langage Go </a>
+<ul>
+<li><a href="#les-variables-">Les variables </a></li>
+<li><a href="#arrays-ou-slices-">Arrays ou slices </a></li>
+<li><a href="#les-d%C3%A9clarations-">Les déclarations </a></li>
+<li><a href="#les-pointeurs-">Les pointeurs </a></li>
+<li><a href="#structures-et-interfaces-">Structures et interfaces </a></li>
+<li><a href="#goroutines-et-channels-">Goroutines et channels </a></li>
+</ul>
+</li>
+<li><a href="#petite-application-cli-pour-g%C3%A9rer-sa-todo-list-">Petite application CLI pour gérer sa todo list </a></li>
+<li><a href="#petit-exemple-de-mise-en-place-dun-protocole-http-avec-go-">Petit exemple de mise en place d'un protocole HTTP avec Go </a></li>
+<li><a href="#ressources">Ressources</a></li>
+</ul>
+<h2 id="installation-de-go-sur-son-ordinateur" tabindex="-1"><a class="header-anchor" href="#installation-de-go-sur-son-ordinateur"></a> Installation de Go sur son ordinateur <a id="#installation-de-go-sur-son-ordinateur-"></a></h2>
+<p>Pour installer Go sur son ordinateur, on télécharge le <a href="https://go.dev/dl/">fichier d'installation de Go</a> selon son système d'exploitation.
+Si on n'a pas d'IDE, on télécharge VSCode et on installe l'extension Go pour VScode.</p>
+<p>Pour faire notre première utilisation de Go, on va faire un affichage classique de <code>Hello world !</code> sur notre terminal !
+On crée un fichier <em>main.go</em> dans lequel on écrit :</p>
+<pre class="line-numbers"><code>
+
+package main
+
+import (
+  "fmt"
+)
+
+func main() {
+  fmt.Println("Hello world ! ")
+}
+
+
+</code></pre><p>On exécute le fichier dans le Powershell (à l'emplacement du fichier) en tapant la commande</p>
+<pre class="line-numbers"><code>
+
+go run main.go
+
+
+</code></pre><p>Et normalement on peut observer un <code>Hello world !</code> dans notre terminal, bravo !</p>
+<h2 id="faire-sa-propre-application-cli-(command-line-interface)" tabindex="-1"><a class="header-anchor" href="#faire-sa-propre-application-cli-(command-line-interface)"></a> Faire sa propre application CLI (Command Line Interface) <a id="#faire-sa-propre-application-cli-command-line-interface-"></a></h2>
+<p>J'ai voulu me familiariser avec le langage en suivant un <a href="https://spf13.com/presentation/building-an-awesome-cli-app-in-go-oscon/">tutoriel</a> pour faire ma propre application à interface ligne de commandes.</p>
+<p>Pour créer cette interface de manière plutôt simple, on télécharge <a href="https://github.com/spf13/cobra/blob/main/README.md">Cobra</a> en exécutant les lignes de commandes :</p>
+<pre class="line-numbers"><code>
+
+go mod init name-project
+go get github.com/spf13/cobra@latest
+go install github.com/spf13/cobra-cli@latest
+
+
+</code></pre><p>Cela nous permet d'installer Cobra ainsi que Cobra-CLI pour notre projet. Ce sont des librairies qui permettent de créer facilement des applications CLI en Go. Pour initialiser l'appli on lance :</p>
+<pre class="line-numbers"><code>
+
+cobra-cli init
+go build
+
+
+</code></pre><p>Notre projet a l'architecture suivante :</p>
+<pre class="line-numbers"><code>
+
+└── /cmd
+	├── root.go
+└── name-project.exe
+└── go.mod
+└── go.sum
+└── main.go
+
+
+</code></pre><p>Dans le dossier /cmd, il y aura tous les fichiers relatifs aux commandes que l'on souhaite créer.
+Pour créer une nouvelle commande au nom new-cmd, on lance</p>
+<pre class="line-numbers"><code>
+
+cobra-cli add new-cmd
+
+
+</code></pre><p>Et sur notre terminal doit s'afficher &quot;new-cmd created at chemin\du\projet&quot;.
+Pour appeler cette commande, on lance sur le terminal à l'emplacement du projet :</p>
+<pre class="line-numbers"><code>
+
+.\name-project.exe new-cmd
+
+
+</code></pre><p>On aura alors écrit sur le terminal : &quot;new-cmd called&quot;.</p>
+<p>Pour pouvoir customiser nos commandes, il est mieux de faire un tour des bases du langage Go avant de se lancer.</p>
+<h2 id="notions-basiques-du-langage-go" tabindex="-1"><a class="header-anchor" href="#notions-basiques-du-langage-go"></a> Notions basiques du langage Go <a id="#notions-basiques-du-langage-go"></a></h2>
+<h3 id="les-variables" tabindex="-1"><a class="header-anchor" href="#les-variables"></a> Les variables <a id="#les-variables-"></a></h3>
+<p>Pour déclarer une variable en Go, on utilise <code>var</code>. Les types de variables sont les booléens <code>bool</code>, les entiers <code>int</code>, les <code>bytes</code> (qui sont des uint8), les <code>runes</code> (qui sont des int32 et qui représentent les caractères), les <code>strings</code> qui sont des slices de bytes qu'on peut uniquement lire, les flottants <code>float</code> et les complexes.
+On peut utiliser la syntaxe <code>:=</code> pour déclarer et initier une variable.</p>
+<h3 id="arrays-ou-slices" tabindex="-1"><a class="header-anchor" href="#arrays-ou-slices"></a> Arrays ou slices <a id="#arrays-ou-slices"></a></h3>
+<p>Un <code>array</code> est de longueur fixe, avec un seul type et qu'on parcourt avec les indexs. <code>[n]T</code> est un array de n valeurs de type T mais en Go on utilise plus souvent une structure de données qui s'appelle &quot;slice&quot;.
+Un slice est une version avec longueur variable d'un array. On peut les initier seulement avec leur type, par exemple <code>[]string</code> est une slice vide de longueur 0 de chaîne de caractères. On utilise la fonction make pour initier une slice vide de longueur non-nulle. <code>c:=make([]int, 3, capacity)</code> est une slice d'entiers de longueur 3. La capacity est la capacité d'int que pourrait contenir c, cela augmente les performances de mémoire.</p>
+<h3 id="les-d%C3%A9clarations" tabindex="-1"><a class="header-anchor" href="#les-d%C3%A9clarations"></a> Les déclarations <a id="#les-declarations"></a></h3>
+<p>En Go, il y a seulement un opérateur boucle : la boucle <em><code>for</code></em>, qui a la syntaxe suivante :</p>
+<pre class="line-numbers"><code>
+
+for i := 0; i < 10; i++ {
+  sum += i
+}
+
+
+</code></pre><p>Remarque : il n'y a pas de parenthèses après le for contrairement au C, JavaScript ou Java.
+Les déclarations <em><code>if</code></em> et <em><code>else</code></em> ont la syntaxe suivante :</p>
+<pre class="line-numbers"><code>
+
+if 7%2 == 0 {
+    fmt.Println("7 est pair")
+} else {
+    fmt.Println("7 est impair")
+}
+
+
+</code></pre><p>On peut utiliser la déclaration <em><code>switch/case</code></em> comme en C, C++, JavaScript... La seule différence c'est qu'on n'a pas à déclarer de break entre chaque cas car Go le fait automatiquement.</p>
+<h3 id="les-pointeurs" tabindex="-1"><a class="header-anchor" href="#les-pointeurs"></a> Les pointeurs <a id="#les-pointeurs"></a></h3>
+<p>Go a des pointeurs comme en C++, C... Ils stockent l'adresse mémoire d'une valeur mais peuvent aussi être nuls (nil). On les initie comme ceci, avec une astérisque :</p>
+<pre class="line-numbers"><code>
+
+var p *int32 = new(int32)
+
+
+</code></pre><p><code>*p</code> déréférence le pointeur et est la valeur vers laquelle le pointeur pointe.
+<code>&amp;v</code> est l'adresse mémoire de la variable v.</p>
+<h3 id="structures-et-interfaces" tabindex="-1"><a class="header-anchor" href="#structures-et-interfaces"></a> Structures et interfaces <a id="structures-et-interfaces"></a></h3>
+<p>En Go, on peut créer des structures personnalisées, une structure est une collection de champs. Par exemple :</p>
+<pre class="line-numbers"><code>
+
+type Vector struct {
+    X int
+    Y int
+}
+
+
+</code></pre><p>est la structure d'un vecteur.
+Go n'a pas de classes mais on peut créer des méthodes relatives à des types.
+Par exemple :</p>
+<pre class="line-numbers"><code>
+
+func (r rect) perim() int {
+    return 2*r.width + 2*r.height
+}
+
+
+</code></pre><p>est une méthode associée à la structure rect qui représente un rectangle d'hauteur height et de largeur width.
+Une interface est une collection de méthodes.
+Par exemple :</p>
+<pre class="line-numbers"><code>
+
+type geometrie interface {
+    aire() float64
+    perim() float64
+}
+
+
+</code></pre><p>L'interface géométrie contient les méthodes qui permettent de calculer l'aire et le périmètre. La méthode aire peut être déclarée pour plusieurs types : on peut avoir une <code>aire()</code> pour les rectangle et une autre fonction <code>aire()</code> pour les cercles.</p>
+<h3 id="goroutines-et-channels" tabindex="-1"><a class="header-anchor" href="#goroutines-et-channels"></a> Goroutines et channels <a id="goroutines-et-channels"></a></h3>
+<p>Une <em>goroutine</em> permet de lancer plusieurs fonctions en même temps et de les exécuter de manière concurrente. Attention, l'exécution concurrente n'est pas la même chose qu'une exécution parallèle. Un seul CPU gère les tâches de manière concurrente dans l'exécution concurrente tandis que deux CPUs gèrent les tâches en parallèle dans l'execution parallèle. Une goroutine est la plus petite unité d'exécution en Golang.</p>
+<p>Il est important d'utiliser les méthodes <code>lock()</code> et <code>unlock()</code> pour préserver les données lors de l'appel de plusieurs fonctions qui vont accéder à ces données, pour éviter qu'elles n'y accèdent en même temps.</p>
+<p>Pour créer une goroutine, on ajoute le mot <code>go</code> devant l'appel de la fonction qu'on souhaite lancer en concurrence.</p>
+<p>par exemple :</p>
+<pre class="line-numbers"><code>
+
+package main
+
+import (
+    "fmt"
+    "time"
+)
+
+func f() {
+    time.Sleep(10 * time.Millisecond)
+    fmt.Print("Hello")
+}
+
+func main() {
+    go f()
+    f()
+}
+
+
+</code></pre><p>La fonction <code>Sleep()</code> permet à la goroutine d'avoir le temps de finir de s'exécuter.
+On peut utiliser des goroutines lorsqu'on fait plusieurs requêtes API différentes, lorsqu'on lit un fichier SQL et qu'on souhaite mettre les données dans des tableurs...</p>
+<p>Les canaux (<em>channels</em>) sont un moyen utilisé par les goroutines pour communiquer de manière efficace.
+Ils gardent des données, sont thread-safe et on peut &quot;écouter&quot; les données qui arrivent sur ce canal. Un canal (channel) dépend du type de données qu'il contient, on ne peut pas envoyer une chaîne de caractères sur un canal d'entiers.</p>
+<pre class="line-numbers"><code>
+
+var c = make(chan int)
+
+
+</code></pre><p>Pour envoyer et recevoir des données, on utilise l'opérateur channel qui est <code>&lt;-</code></p>
+<pre class="line-numbers"><code>
+
+c <- 3 // On envoie l'entier 3 sur le canal c
+v := <-c // On reçoit et stocke l'entier 3 dans la variable v
+
+
+</code></pre><p>Un canal non initialisé est <code>nil</code> :</p>
+<pre class="line-numbers"><code>
+
+var ch chan int
+
+
+</code></pre><p>Après avoir envoyé les données, on peut fermer le canal avec la fonction <code>close()</code>.</p>
+<h2 id="petite-application-cli-pour-g%C3%A9rer-sa-todo-list" tabindex="-1"><a class="header-anchor" href="#petite-application-cli-pour-g%C3%A9rer-sa-todo-list"></a> Petite application CLI pour gérer sa todo list <a id="#petite-application-cli-pour-gérer-sa-todo-list"></a></h2>
+<p>Après ce petit tour des fondamentaux du langage Go, on peut s'attaquer à un mini-projet pour mettre en pratique la théorie. J'ai regardé des idées de projets en Go faciles à mettre en place et l'une des idées qui est revenue était la création d'une application CLI de todo lists.
+J'ai ainsi créé une commande <code>add</code>, une commande <code>init</code> et une commande <code>list</code>.</p>
+<ul>
+<li>La commande <code>init</code> permet d'initier le fichier <em>todo.csv</em> dans le dossier Utilisateur</li>
+<li>La commande <code>add</code> doit permettre d'ajouter une tâche au fichier <em>todo.csv</em></li>
+<li>La commande <code>list</code> doit permettre de lister les tâches qui se trouvent dans le fichier <em>todo.csv</em></li>
+</ul>
+<p>Pour cette application, j'ai installé les packages suivants : <code>encoding/csv</code> pour la gestion du fichier csv (création, écriture et lecture), <code>os</code> pour la gestion des fichiers dans le système d'exploitation, <code>log</code> pour garder des logs des erreurs et <code>path/filepath</code> pour la gestion des chemins d'accès au fichier.</p>
+<p>Dans le fichier <em>add.go</em>, j'ai créé une structure qui s'appelle Task représentant la tâche avec son contenu et sa catégorie. La fonction principale sert à écrire les données relatives à la tâche dans le fichier <em>todo.csv</em>.</p>
+<pre class="line-numbers"><code>
+
+package cmd
+
+import (
+	"encoding/csv"
+	"fmt"
+	"log"
+	"os"
+	"path/filepath"
+
+	"github.com/spf13/cobra"
+)
+
+// Fonction principale
+func AppendToCSV(filename string, data []Task) error {
+  //On ouvre le fichier csv
+	file, err := os.OpenFile(filename, os.O_APPEND|os.O_WRONLY, 0644)
+	if err != nil {
+		return err
+	}
+	defer file.Close()
+
+  //On crée une instance qui va écrire dans le fichier
+	writer := csv.NewWriter(file)
+	defer writer.Flush()
+
+	for _, task := range data {
+    // Le writer va écrire les données sous forme de chaînes de caractères dans le csv et renvoie une erreur si il y en a une lors de l'écriture dans le fichier
+		if err := writer.Write([]string{task.Content, task.Category}); err != nil {
+			return err
+		}
+	}
+  // on retourne 0, pas besoin de retourner une variable
+	return nil
+}
+
+//Création de la structure de la tâche
+type Task struct {
+	Content  string
+	Category string
+}
+
+// la commande Cobra add va appeler la fonction appendToCsv
+var addCmd = &cobra.Command{
+	Use:   "add",
+	Short: "Add a task to the todo.csv file",
+	Long: `Add a task to the todo.csv file that is located in the home directory`,
+	Run: func(cmd *cobra.Command, args []string) {
+    // Dans le terminal va s'afficher "add called"
+		fmt.Println("add called")
+    // On va chercher le fichier todo.csv qui est dans la Maison (si il y a une erreur, elle se retrouvera dans les logs)
+		homeDir, err1 := os.UserHomeDir()
+		if err1 != nil {
+			log.Fatal(err1)
+		}
+		filepath := filepath.Join(homeDir, ".todo.csv")
+    // On crée une liste de tâches avec les arguments que l'utilisateur a écrit dans le terminal
+		tasks := []Task{
+			{Content: contentFlag, Category: catFlag},
+		}
+    // On appelle la fonction AppendToCSV avec pour arguments le chemin d'accès du todo.csv et la liste des tâches que l'utilisateur souhaite ajouter au fichier
+		err := AppendToCSV(filepath, tasks)
+		if err != nil {
+			log.Fatal(err)
+		}
+	},
+}
+// On crée les flags relatifs au contenu et à la catégorie de la tâche
+var (
+	contentFlag string
+  catFlag string
+)
+
+// On initialise la commande
+func init() {
+  //On ajoute la commande au fichier root.go qui répertorie toutes les commandes du projet grâce à Cobra-CLI
+	rootCmd.AddCommand(addCmd)
+  //On définit les flags de la commande add
+	addCmd.Flags().StringVarP(&contentFlag, "content", "", "", "The content of the new task")
+	addCmd.Flags().StringVarP(&catFlag, "category", "c", "", "The category of new task")
+}
+
+
+</code></pre><p>Ainsi, lorsqu'on écrit et lance sur le terminal la ligne <code>.\name-project.exe add -content &quot;Seek an internship&quot; -category &quot;To do&quot;</code>, normalement, le fichier <em>todo.csv</em> est mis à jour avec une nouvelle ligne contenant &quot;Seek an internship, To do&quot; !
+<img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Gonin-Emma/mon/temps-1.1/image.png" alt="Exemple todo"></p>
+<p>Si vous êtes intéressés, je vous conseille de jeter un coup d'oeil au github de <a href="https://github.com/heybran/gtodo">Gtodo</a> de heybran qui a un projet similaire complet. Le point positif de son projet, c'est qu'il n'a pas utilisé Cobra donc la structure du code est probablement plus intuitive. Il manipule des JSON et pas des CSV également donc les packages à installer seront différents mais son <a href="http://ReadMe.md">ReadMe.md</a> est assez clair.</p>
+<h2 id="petit-exemple-de-mise-en-place-d'un-protocole-http-avec-go" tabindex="-1"><a class="header-anchor" href="#petit-exemple-de-mise-en-place-d'un-protocole-http-avec-go"></a> Petit exemple de mise en place d'un protocole HTTP avec Go <a id="#petit-exemple-de-mise-en-place-dun-protocole-http-avec-go"></a></h2>
+<p>Petit exemple pour créer un serveur web avec un protocole HTTP. On importe le package <code>net/http</code> en lançant dans le terminal de VSCode :</p>
+<pre class="line-numbers"><code>
+
+go install net/http
+
+
+</code></pre><p>Dans un fichier <em>main.go</em>, on importe ce package ainsi que le package <code>fmt</code> qui servira à print.</p>
+<pre class="line-numbers"><code>
+
+import (
+  "fmt",
+  "net/http"
+)
+
+
+</code></pre><p>On va créer un gestionnaire de requêtes, cela peut être une fonction basique qui écrit une réponse au client HTTP. HandleHello est un gestionnaire de requêtes qui a deux paramètres : <code>w http.ResponseWriter</code> et <code>r *http.Request</code>. <code>http.ResponseWriter</code> est utilisé pour écrire la réponse au client et <code>*http.Request</code> contient toutes les informations à propos de la requête.</p>
+<pre class="line-numbers"><code>
+
+func handleHello(w http.ResponseWriter, r *http.Request) {
+    fmt.Fprintf(w, "<html><body><h1>Hello, World!</h1></body></html>")
+}
+
+
+</code></pre><p>On utilise la fonction HandleFunc suivante :</p>
+<pre class="line-numbers"><code>
+
+http.HandleFunc("/hello", handleHello)
+
+
+</code></pre><p>La fonction http.HandleFunc accepte deux arguments : le premier est le chemin URL de la requête et le second est la fonction qui va traiter la requête.</p>
+<p>Lorsque l'on va faire une requête <code>http://localhost/hello</code> à ce serveur, le serveur va nous renvoyer une page html avec marqué &quot;Hello, World!&quot;.</p>
+<p>Pour répondre à quelconque client HTTP, le serveur doit écouter les requêtes entrantes sur un port.</p>
+<pre class="line-numbers"><code>
+
+http.ListenAndServe(":80", nil)
+
+
+</code></pre><p>Cette ligne de code va démarrer le serveur HTTP et écouter les connexions entrantes sur le port 80.</p>
+<p>On lance cette commande à l'emplacement du fichier :</p>
+<pre class="line-numbers"><code>
+
+go run main.go
+
+
+</code></pre><p>Enfin, vous pouvez aller sur <a href="http://localhost/hello">http://localhost/hello</a> et voir comment le serveur gère votre requête !</p>
+<p>Pour aller plus loin, on pourrait créer une méthode qui différencie les requêtes GET des requêtes POST. On pourrait inclure une ou des variables dans l'URL de la requête avec une route dynamique.</p>
+<h2 id="ressources" tabindex="-1"><a class="header-anchor" href="#ressources"></a> Ressources</h2>
+<ul>
+<li>Pour toutes les questions générales ou précises relevant du langage Go, je conseille d'aller lire la documentation officielle qui est assez fournie : <a href="https://go.dev/docs">Documentation officielle Go</a></li>
+<li>Le site officiel de Golang propose un tutoriel pour se familiariser au langage, je me suis servie de ce tutoriel pour faire ce MON et vous résumer les principaux axes de ce langage : <a href="https://go.dev/tour/welcome/1">Tour de Go</a></li>
+<li>J'ai suivi un tutoriel vidéo qui retrace en 1h les bases du Go, je conseille cette vidéo : <a href="https://www.youtube.com/watch?v=8uiZC0l4Ajw&amp;ab_channel=AlexMux">Learn GO Fast: Full Tutorial d'Alex Mux</a></li>
+<li>Le <a href="https://do-it.aioli.ec-m.fr/promos/2022-2023/Adelain-thibault/pok/Go/">POK</a> de Thibault Adelain</li>
+<li><a href="https://go.dev/play/">The Go Playground</a> permet de lancer un programme dans une sandbox, les templates de programmes vont du classique &quot;Hello, World!&quot; à l'envoi de requêtes sur un serveur en passant par une fonction de test...</li>
+<li><a href="https://www.golinuxcloud.com/golang-web-server/">Golang Web Server</a> pour apprendre le protocole HTTP avec Go</li>
+</ul>
+
+
+
+</article>
+
+        </main>
+
+        <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-center items-center">
+                    <p class="text-center">
+                        ©2025 <b><span style="font-family: Consolas, sans-serif;">Do_<span style="color: #4a86e8">It</span></span></b> - Développement, Management et Gestion de projets en IT
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- MathJax import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">
+            window.MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']], // Delimiters for inline math
+                    displayMath: [['$$', '$$'], ['\\[', '\\]']] // Delimiters for block math
+                },
+                svg: {
+                    fontCache: 'global' // Use global font cache for SVG output
+                }
+            };
+            document.addEventListener('DOMContentLoaded', () => {
+                MathJax.typeset(); // Ensures MathJax processes the content after the page loads
+            });
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">
+            Prism.plugins.NormalizeWhitespace.setDefaults({
+                'remove-trailing': true,
+                'remove-indent': true,
+                'left-trim': true,
+                'right-trim': true,
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script>
+    </body>
+</html>

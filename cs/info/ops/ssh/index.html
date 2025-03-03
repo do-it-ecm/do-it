@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>SSH</title>
+
+        <!-- Prismjs imports
+                - Prism core
+                - Prism line numbers
+                - Prism copy to clipboard
+                - Prism autoloader
+        -->
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png">
+
+        <!-- Mermaid import and initialization -->
+        <script type="module" defer="">
+            import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/+esm';
+            mermaid.initialize({
+                startOnLoad: true,
+            });
+        </script>
+
+        <link href="/assets/stylesheets/main.css" rel="stylesheet">
+
+    </head>
+
+    <body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000">
+        <header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-between items-center">
+                    <a class="mx-2" href="/">Home</a>
+                    <div class="flex items-center gap-4 sm:gap-6 ">
+                        <a class="" href="/cs">CS</a>
+                        <a class="" href="/pok">POK</a>
+                        <a class="" href="/mon">MON</a>
+                        <a class="" href="/projets">Projets</a>
+                        <a class="hidden sm:block" href="/promos">Promos</a>
+                        <a href="/search">
+                            <svg class="h-5 aspect-square" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+                            </svg>
+                        </a>
+                        <a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank">
+                            <svg class="h-5 aspect-square" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body="">
+            
+<script>
+    const SIDEBAR_STATE_KEY = "courseSidebarState";
+
+    function toggleFold(button) {
+        // Find the closest parent <li> and its corresponding nested <ul>
+        const listItem = button.closest('li');
+        const nestedList = listItem.querySelector('.nested');
+
+        if (nestedList) {
+            const isActive = nestedList.classList.toggle('active'); // Toggle the 'active' class
+            button.classList.toggle('active', isActive); // Toggle button rotation
+            saveSidebarState();
+        }
+    }
+
+    function saveSidebarState() {
+        const state = {};
+        const nestedLists = document.querySelectorAll('.sidebar-navigation .nested');
+        nestedLists.forEach((list, index) => {
+            state[index] = list.classList.contains('active');
+        });
+        localStorage.setItem(SIDEBAR_STATE_KEY, JSON.stringify(state));
+    }
+
+    function restoreSidebarState() {
+        const state = JSON.parse(localStorage.getItem(SIDEBAR_STATE_KEY));
+        if (!state) return;
+
+        const nestedLists = document.querySelectorAll('.sidebar-navigation .nested');
+        nestedLists.forEach((list, index) => {
+            if (state[index]) {
+                list.classList.add('active');
+                const button = list.parentNode.querySelector('.course-sidebar-item-toggle-button'); // Correctly locate the button
+                if (button) {
+                    button.classList.add('active'); // Rotate the button
+                }
+            }
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        restoreSidebarState();
+    });
+
+let lastScrollYCourses = window.scrollY;
+
+function toggleCourseSidebar() {
+    document.getElementById('course-sidebar').classList.toggle('open');
+}
+
+window.addEventListener('scroll', () => {
+    const burger = document.getElementById('course-burger-button');
+    const sidebar = document.getElementById('course-sidebar');
+    const currentScroll = window.scrollY;
+    // Hide the burger button if max width is reached
+    if (window.innerWidth > 1536) {
+        burger.style.display = 'none';
+    } else if (currentScroll < 10 || currentScroll < lastScrollYCourses) {
+        burger.style.display = 'block';
+    } else if (!sidebar || !sidebar.classList.contains('open')) {
+        burger.style.display = 'none';
+    }
+
+    lastScrollYCourses = currentScroll;
+});
+</script>
+
+<button id="course-burger-button" class="sidebar-burger-button left-2" onclick="toggleCourseSidebar()">☰</button>
+
+<nav id="course-sidebar" class="sidebar left-0 border-r-2 -translate-x-full 2xl:translate-x-0">
+    <article><h2>Cours</h2></article>
+    <ul class="sidebar-navigation space-y-2">
+        
+        
+            
+<li>
+    <div class="course-sidebar-item hover:bg-gray-200 bg-info">
+        <a class="flex-1 text-left pr-2 text-lg">Informatique</a>
+        
+            <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-gray-200 bg-white">
+        <a class="flex-1 text-left pr-2 text-lg">Bases</a>
+        
+            <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-gray-200 bg-white">
+        <a href="/cs/info/bases/git" class="flex-1 text-left pr-2 text-lg">Git</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-gray-200 bg-white">
+        <a href="/cs/info/bases/linux" class="flex-1 text-left pr-2 text-lg">Linux</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-gray-200 bg-white">
+        <a href="/cs/info/bases/ordinateur" class="flex-1 text-left pr-2 text-lg">Ordinateur</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-gray-200 bg-white">
+        <a class="flex-1 text-left pr-2 text-lg">Structures de données</a>
+        
+            <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-gray-200 bg-white">
+        <a href="/cs/info/bases/struct_donnees/linkedlist" class="flex-1 text-left pr-2 text-lg">Listes Chaînées</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-gray-200 bg-white">
+        <a href="/cs/info/bases/struct_donnees/arbres_dict" class="flex-1 text-left pr-2 text-lg">Arbres et Dictionnaires</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-gray-200 bg-white">
+        <a href="/cs/info/bases/struct_donnees/hash" class="flex-1 text-left pr-2 text-lg">Hachage</a>
+        
+    </div>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-gray-200 bg-white">
+        <a class="flex-1 text-left pr-2 text-lg">Dev</a>
+        
+            <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-gray-200 bg-white">
+        <a class="flex-1 text-left pr-2 text-lg">Web</a>
+        
+            <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-gray-200 bg-white">
+        <a href="/cs/info/dev/web/fullstack" class="flex-1 text-left pr-2 text-lg">Fullstack</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-gray-200 bg-white">
+        <a href="/cs/info/dev/web/websocket" class="flex-1 text-left pr-2 text-lg">WebSocket</a>
+        
+    </div>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-gray-200 bg-white">
+        <a href="/cs/info/dev/bash" class="flex-1 text-left pr-2 text-lg">Bash</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-gray-200 bg-white">
+        <a href="/cs/info/dev/java" class="flex-1 text-left pr-2 text-lg">Java</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-gray-200 bg-white">
+        <a href="/cs/info/dev/low_code" class="flex-1 text-left pr-2 text-lg">Low Code</a>
+        
+    </div>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-gray-200 bg-white">
+        <a class="flex-1 text-left pr-2 text-lg">Ops</a>
+        
+            <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-gray-200 bg-white">
+        <a href="/cs/info/ops/ssh" class="flex-1 text-left pr-2 text-lg">SSH</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-gray-200 bg-white">
+        <a href="/cs/info/ops/aioli" class="flex-1 text-left pr-2 text-lg">aioli</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-gray-200 bg-white">
+        <a href="/cs/info/ops/postgres" class="flex-1 text-left pr-2 text-lg">PostgreSQL</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-gray-200 bg-white">
+        <a href="/cs/info/ops/reseaux" class="flex-1 text-left pr-2 text-lg">Réseaux</a>
+        
+    </div>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+        
+            
+<li>
+    <div class="course-sidebar-item hover:bg-gray-200 bg-mgt">
+        <a class="flex-1 text-left pr-2 text-lg">Management</a>
+        
+            <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-gray-200 bg-white">
+        <a class="flex-1 text-left pr-2 text-lg">SI</a>
+        
+            <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-gray-200 bg-white">
+        <a href="/cs/management/si/management" class="flex-1 text-left pr-2 text-lg">Management</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-gray-200 bg-white">
+        <a href="/cs/management/si/audit" class="flex-1 text-left pr-2 text-lg">Audit</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-gray-200 bg-white">
+        <a href="/cs/management/si/conception" class="flex-1 text-left pr-2 text-lg">Conception SI</a>
+        
+    </div>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-gray-200 bg-white">
+        <a class="flex-1 text-left pr-2 text-lg">Agilité</a>
+        
+            <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-gray-200 bg-white">
+        <a href="/cs/management/agile/gdp" class="flex-1 text-left pr-2 text-lg">Gestion Agile</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-gray-200 bg-white">
+        <a href="/cs/management/agile/scrum" class="flex-1 text-left pr-2 text-lg">SCRUM</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-gray-200 bg-white">
+        <a href="/cs/management/agile/cristal_clear" class="flex-1 text-left pr-2 text-lg">Cristal Clear</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-gray-200 bg-white">
+        <a href="/cs/management/agile/methodes_agiles" class="flex-1 text-left pr-2 text-lg">Autres méthodes agiles</a>
+        
+    </div>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-gray-200 bg-white">
+        <a href="/cs/management/cyber" class="flex-1 text-left pr-2 text-lg">CyberSécurité</a>
+        
+            <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-gray-200 bg-white">
+        <a href="/cs/management/cyber/crise" class="flex-1 text-left pr-2 text-lg">CyberSécurité - Crises</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-gray-200 bg-white">
+        <a href="/cs/management/cyber/rssi" class="flex-1 text-left pr-2 text-lg">CyberSécurité - RSSI</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-gray-200 bg-white">
+        <a href="/cs/management/cyber/soc" class="flex-1 text-left pr-2 text-lg">CyberSécurité - SOC</a>
+        
+    </div>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-gray-200 bg-white">
+        <a class="flex-1 text-left pr-2 text-lg">Sobriété Numérique</a>
+        
+            <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-gray-200 bg-white">
+        <a href="/cs/management/sobriete/numerique" class="flex-1 text-left pr-2 text-lg">Sobriété Numérique</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-gray-200 bg-white">
+        <a href="/cs/management/sobriete/accessibilite" class="flex-1 text-left pr-2 text-lg">Accessibilité Numérique</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-gray-200 bg-white">
+        <a href="/cs/management/sobriete/fresque_numerique" class="flex-1 text-left pr-2 text-lg">Fresque du Numérique</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-gray-200 bg-white">
+        <a href="/cs/management/sobriete/impacts" class="flex-1 text-left pr-2 text-lg">Impacts du Numérique</a>
+        
+    </div>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+        
+            
+<li>
+    <div class="course-sidebar-item hover:bg-gray-200 bg-gp">
+        <a class="flex-1 text-left pr-2 text-lg">Gestion &amp; Modélisation Projet</a>
+        
+            <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-gray-200 bg-white">
+        <a href="/cs/gestion_modelisation/service_design" class="flex-1 text-left pr-2 text-lg">Service Design</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-gray-200 bg-white">
+        <a href="/cs/gestion_modelisation/gdp" class="flex-1 text-left pr-2 text-lg">Gestion de Projet</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-gray-200 bg-white">
+        <a href="/cs/gestion_modelisation/uiux" class="flex-1 text-left pr-2 text-lg">UI/UX</a>
+        
+    </div>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+        
+            
+<li>
+    <div class="course-sidebar-item hover:bg-gray-200 bg-white">
+        <a class="flex-1 text-left pr-2 text-lg">Tronc Commun</a>
+        
+            <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-gray-200 bg-white">
+        <a href="/cs/tronc_commun/change_management" class="flex-1 text-left pr-2 text-lg">Conduite du Changement</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-gray-200 bg-white">
+        <a href="/cs/tronc_commun/ethique" class="flex-1 text-left pr-2 text-lg">Ethique et Responsabilité</a>
+        
+    </div>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+        
+    </ul>
+</nav>
+
+<article class="relative">
+<h1 class="mb-1">SSH</h1>
+<div class="mb-4">
+    
+        <div class="px-4 flex flex-wrap items-center">
+            
+                <div class="font-bold">Tags : </div>
+            
+            <ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags">
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">COURS</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">informatique</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">os</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">linux</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">ssh</li>
+                
+
+            </ul>
+
+            
+            <div class="hidden" data-pagefind-meta="Type">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Auteurs : </div>
+            <ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs">
+                
+                    <li class="bg-blue-200 rounded-full px-2" data-pagefind-filter="Auteurs">François Brucker</li>
+                
+                    <li class="bg-blue-200 rounded-full px-2" data-pagefind-filter="Auteurs">Loïck Goupil-Hallay</li>
+                
+            </ul>
+        </div>
+    
+
+    
+</div>
+
+
+<script>
+let lastScrollYSummary = window.scrollY;
+
+function toggleSummarySidebar() {
+    document.getElementById('toc-sidebar').classList.toggle('open');
+}
+
+window.addEventListener('scroll', () => {
+    const burger = document.getElementById('toc-burger-button');
+    const sidebar = document.getElementById('toc-sidebar');
+    const currentScroll = window.scrollY;
+    // Hide the burger button if max width is reached
+    if (window.innerWidth > 1536) {
+        burger.style.display = 'none';
+    } else if (currentScroll < 10 || currentScroll < lastScrollYSummary) {
+        burger.style.display = 'block';
+    } else if (!sidebar || !sidebar.classList.contains('open')) {
+        burger.style.display = 'none';
+    }
+
+    lastScrollYSummary = currentScroll;
+});
+</script>
+<p><button id="toc-burger-button" class="sidebar-burger-button right-2" onclick="toggleSummarySidebar()">☰</button></p>
+<nav id="toc-sidebar" class="sidebar right-0 border-l-2 translate-x-full 2xl:translate-x-0">
+<h2>Sommaire</h2>
+<nav class="toc"><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#introduction"> Introduction</a></li><li class="toc-item"><a class="toc-link" href="#fonctionnement"> Fonctionnement</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#protocoles"> Protocoles</a></li><li class="toc-item"><a class="toc-link" href="#cryptographie"> Cryptographie</a></li><li class="toc-item"><a class="toc-link" href="#s%C3%A9quence-de-connexion-(simplifi%C3%A9e)"> Séquence de connexion (simplifiée)</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#connexion-au-serveur-de-centrale-marseille"> Connexion au serveur de Centrale Marseille</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#setup-ssh"> Setup SSH</a></li><li class="toc-item"><a class="toc-link" href="#agents-ssh"> Agents SSH</a></li><li class="toc-item"><a class="toc-link" href="#cl%C3%A9s-ssh"> Clés SSH</a></li><li class="toc-item"><a class="toc-link" href="#connexion"> Connexion</a></li><li class="toc-item"><a class="toc-link" href="#gagner-du-temps"> Gagner du temps</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#connexion-%C3%A0-aioli"> Connexion à aioli</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#gagner-du-temps-1"> Gagner du temps</a></li></ol></li></ol></nav></nav>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Liens utiles</strong></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li><a href="https://francoisbrucker.github.io/cours_informatique/cours/syst%C3%A8me-et-r%C3%A9seau/ssh/">Cours Linux</a></li>
+</ul>
+</div></div>
+
+<h2 id="introduction" tabindex="-1"><a class="header-anchor" href="#introduction"></a> Introduction</h2>
+<p>Le SSH(Secure Shell) est un protocole de communication <strong>sécurisé</strong> qui permet de se <strong>connecter à un serveur distant</strong>, de <strong>lancer des commandes</strong> sur ce serveur, de <strong>transférer des fichiers</strong>. Tout cela en assurant la <strong>confidentialité</strong> et l'<strong>intégrité</strong> des données échangées. SSH est massivement utilisé pour administrer des serveurs à distance. C'est un protocole écrit en 1995, qui a été conçu pour remplacer les protocoles non sécurisés comme telnet, rlogin, rsh.</p>
+<p>C'est aussi un programme qui permet de se connecter à un serveur distant en utilisant le protocole SSH. Il est disponible par défaut sur la plupart des systèmes d'exploitation (Mais pas forcément activé).</p>
+<h2 id="fonctionnement" tabindex="-1"><a class="header-anchor" href="#fonctionnement"></a> Fonctionnement</h2>
+<h3 id="protocoles" tabindex="-1"><a class="header-anchor" href="#protocoles"></a> Protocoles</h3>
+<p>SSH se base sur les protocoles <strong>TCP/IP</strong> (comme la plupart des services sur internet). La combinaison de ces protocoles est utilisée pour <strong>formatter</strong>, <strong>router</strong> et <strong>délivrer</strong> les packets de données entre deux systèmes. IP (Internet Protocol) est utilisé pour acheminer les packets de données entre les deux systèmes via leur adresse. TCP (Transmission Control Protocol) est utilisé pour s'assurer que les packets de données sont bien envoyés et reçus via un port spécifique.</p>
+<h3 id="cryptographie" tabindex="-1"><a class="header-anchor" href="#cryptographie"></a> Cryptographie</h3>
+<p>SSH est sécurisé car il oblige les deux systèmes à s'<strong>authentifier mutuellement</strong> par l'usage de <strong>clés cryptographiques</strong>. Ces clés permettent de <strong>chiffrer</strong> et <strong>signer</strong> les données échangées entre les deux systèmes.</p>
+<p>Les clés utilisées pour l'authentification sont dites <strong>asymétriques</strong>, cela veut dire qu'il y a une clé publique et une clé privée. La clé publique est partagée entre les deux systèmes, tandis que la clé privée est gardée secrète. La <u>clé privée est utilisée pour signer</u> les données, tandis que la <u>clé publique est utilisée pour vérifier la signature</u>. Il est (pour l'instant) impossible de déduire la clé privée à partir de la clé publique. La clé publique est donc partagée sans risque.<br>
+Pour se connecter à un serveur via SSH, il faut donc que le serveur autorise la connexion de la clé publique de l'utilisateur. L'utilisateur doit quant à lui posséder la clé privée correspondante pour se connecter.</p>
+<p>Une fois que l'authentification est faite, les systèmes échangent des <strong>clés symétriques</strong> pour chiffrer les données échangées. Ces clés symétriques sont générées aléatoirement pour chaque session. Cela permet d'assurer la <strong>confidentialité</strong> et l'<strong>intégrité</strong> des données échangées, même si un attaquant intercepte les données.</p>
+<h3 id="s%C3%A9quence-de-connexion-(simplifi%C3%A9e)" tabindex="-1"><a class="header-anchor" href="#s%C3%A9quence-de-connexion-(simplifi%C3%A9e)"></a> Séquence de connexion (simplifiée)</h3>
+<p>Voici une version simplifiée de la séquence de connexion entre un client et un serveur via SSH. Une <a href="https://info.support.huawei.com/info-finder/encyclopedia/en/SSH.html">version complète</a> est disponible sur le site de Huawei.</p>
+<pre class="mermaid" style="background-color: transparent;">
+sequenceDiagram
+    participant Client
+    participant Serveur
+    Client->>Serveur: Demande de connexion
+    Client<<-->>Serveur : Liaison TCP/IP
+    Serveur->>Client: Clé publique
+    Client->>Serveur: Clé publique
+    Client->>Serveur: Clé symétrique
+    Serveur->>Client: Clé symétrique
+    Client<<-->>Serveur: Données chiffrées
+</pre>
+<h2 id="connexion-au-serveur-de-centrale-marseille" tabindex="-1"><a class="header-anchor" href="#connexion-au-serveur-de-centrale-marseille"></a> Connexion au serveur de Centrale Marseille</h2>
+<p>Nous allons maintenant voir le cas concret de connexion à Centrale Marseille à distance via SSH.</p>
+<h3 id="setup-ssh" tabindex="-1"><a class="header-anchor" href="#setup-ssh"></a> Setup SSH</h3>
+<p>Avant de se connecter à quoi que ce soit, il faut s'assurer que le programme SSH est installé sur votre machine. Vous n'avez pas besoin d'activer le démon SSH sur votre machine, mais vous devez avoir le programme client SSH. Pour cela, vous pouvez taper <code>ssh -V</code> dans votre terminal.<br>
+Si vous n'avez pas d'erreur et que vous avez une version de SSH qui s'affiche, c'est que vous avez le programme client SSH installé sur votre machine. Dans le cas contraire, il vous faut l'installer.</p>
+<h3 id="agents-ssh" tabindex="-1"><a class="header-anchor" href="#agents-ssh"></a> Agents SSH</h3>
+<p>Ensuite, il faut s'assurer que vous ayiez un agent SSH actif sur votre machine.<br>
+Les agents SSH sont des programmes qui permettent de gérer automatiquement l'authentification SSH. Ils permettent de stocker les clés privées en mémoire et de les utiliser pour se connecter à des serveurs sans avoir à rentrer le mot de passe à chaque fois.</p>
+<p>Si vous avez activé le service SSH sur votre machine, il y a des chances que le service SSH-agent soit aussi actif par défaut. Pour vérifier si vous avez un agent SSH actif, vous pouvez taper <code>ssh-add -l</code> dans votre terminal.<br>
+Si vous avez un message de type: <code>could not open a connection to your authentication agent</code>, c'est que vous n'avez pas d'agent SSH actif. Vous pouvez alors faire au choix:</p>
+<ul>
+<li>Taper <code>eval &quot;$(ssh-agent)&quot;</code> pour lancer un nouvel agent SSH. <em>Le eval est important, ne tentez pas de gagner 0.31ms</em> (il faudra relancer cette commande avec chaque nouveau terminal depuis lequel on souhaite lancer une connexion SSH)</li>
+<li>Activer l'agent SSH au démarrage de votre terminal en ajoutant la commande <code>eval &quot;$(ssh-agent)&quot;</code> dans votre fichier de configuration de shell (<code>~/.bashrc</code> OU <code>~/.zshrc</code> OU <code>~/.profile</code>,...). Il faudra immédiatement relancer le terminal.</li>
+<li>Activer le service SSH-agent au démarrage de votre machine. La commande exacte dépend de votre OS mais devrait ressembler à <code>systemctl enable ssh-agent.service</code></li>
+</ul>
+<h3 id="cl%C3%A9s-ssh" tabindex="-1"><a class="header-anchor" href="#cl%C3%A9s-ssh"></a> Clés SSH</h3>
+<p>Dernière étape avant de se connecter, il faut s'assurer que vous avez une fameuse paire de clés SSH.<br>
+Par défaut, elles se trouvent dans <code>~/.ssh/</code>, vous pouvez vous en assurer en tapant <code>ls ~/.ssh/id_rsa*</code> dans votre terminal. Si vous voyez bien apparaitre des fichiers <code>id_rsa</code> et <code>id_rsa.pub</code>, c'est que vous avez une paire de clés SSH.<br>
+Dans le cas contraire, vous pouvez générer une paire de clés SSH en tapant <code>ssh-keygen</code> dans votre terminal, puis en suivant les instructions. Pensez à protéger votre clé privée avec un mot de passe sécurisé, sinon je risque de vous pirater.</p>
+<h3 id="connexion" tabindex="-1"><a class="header-anchor" href="#connexion"></a> Connexion</h3>
+<p>Maintenant que vous avez tout ce qu'il faut, vous pouvez vous connecter à Centrale Marseille. Pour cela, il vous suffit de taper <code>ssh &lt;votre_login_ecm&gt;@sas1.ec-m.fr</code> dans votre terminal et de remplir votre mot de passe. Si vous ne le voyez pas, c'est normal, c'est pour des raisons de sécurité.<br>
+Magie, vous êtes maintenant connecté à Centrale Marseille à distance. Vous pouvez contempler avec joie le message de bienvenue qui vous accueille.</p>
+<h3 id="gagner-du-temps" tabindex="-1"><a class="header-anchor" href="#gagner-du-temps"></a> Gagner du temps</h3>
+<p>Si vous voulez vous connecter à Centrale Marseille sans avoir à taper votre mot de passe à chaque fois, vous pouvez ajouter votre clé publique à votre compte ECM. Pour cela, vous pouvez taper <code>ssh-copy-id &lt;votre_login_ecm&gt;@sas1.ec-m.fr</code> dans votre terminal.</p>
+<p>Si vous voulez gagner encore plus de temps, vous pouvez configurer un hôte SSH dans votre fichier de configuration SSH. Pour cela, il faut ajouter les lignes suivantes dans le fichier <code>/etc/ssh/ssh_config</code> si vous êtes administrateur et unique utilisateur de votre machine, ou dans le fichier <code>~/.ssh/config</code> si vous êtes un utilisateur lambda. (Si le fichier n'existe pas, vous pouvez le créer)</p>
+<pre class="language-bash line-numbers"><code>
+
+Host ecm
+    HostName sas1.ec-m.fr
+    User <votre_login_ecm>
+    Port 22
+
+
+</votre_login_ecm></code></pre><p>Vous pouvez bien sûr choisir un autre nom que <code>ecm</code> pour l'hôte.</p>
+<p>Maintenant, pour vous connecter à Centrale Marseille, il vous suffit de taper <code>ssh ecm</code> dans votre terminal.</p>
+<h2 id="connexion-%C3%A0-aioli" tabindex="-1"><a class="header-anchor" href="#connexion-%C3%A0-aioli"></a> Connexion à aioli</h2>
+<p>La promo Do-It possède <strong>son propre serveur dédié</strong> nommé <code>aioli</code>. Pour vous connecter à aioli, le processus est similaire à celui de Centrale Marseille.</p>
+<p>La seule différence est que vous n'avez pas forcément un compte sur aioli, il faudra donc demander à FB, de vous créer un compte. Chaque compte sur aioli possède un nom bien provençal. Et ce compte n'est <strong>pas accessible via mot de passe</strong>, il faut obligatoirement se connecter via clé SSH. Cela veut dire que vous devrez <strong>transmettre votre clé SSH <u>PUBLIQUE</u> à FB</strong> pour qu'il puisse l'ajouter à votre compte.</p>
+<p>Pour vous connecter à aioli, vous pouvez taper <code>ssh &lt;votre_login_aioli&gt;@aioli.ec-m.fr</code> dans votre terminal. Si vous avez configuré un hôte SSH pour aioli, vous pouvez taper <code>ssh aioli</code> dans votre terminal. <em>S'il vous demande un mot de passe, c'est que vous avez merdé quelque part</em>.</p>
+<h3 id="gagner-du-temps-1" tabindex="-1"><a class="header-anchor" href="#gagner-du-temps-1"></a> Gagner du temps</h3>
+<p>Si vous voulez gagner du temps, vous pouvez configurer un hôte SSH pour aioli dans votre fichier de configuration SSH. Pour cela, il faut ajouter les lignes suivantes dans le fichier <code>/etc/ssh/ssh_config</code> si vous êtes administrateur et unique utilisateur de votre machine, ou dans le fichier <code>~/.ssh/config</code> si vous êtes un utilisateur lambda. (Si le fichier n'existe pas, vous pouvez le créer)</p>
+<pre class="language-bash line-numbers"><code>
+
+Host aioli
+    HostName aioli.ec-m.fr
+    User <votre_login_aioli>
+    Port 22
+
+
+</votre_login_aioli></code></pre><p>Vous pouvez bien sûr choisir un autre nom que <code>aioli</code> pour l'hôte.</p>
+
+
+</article>
+
+        </main>
+
+        <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-center items-center">
+                    <p class="text-center">
+                        ©2025 <b><span style="font-family: Consolas, sans-serif;">Do_<span style="color: #4a86e8">It</span></span></b> - Développement, Management et Gestion de projets en IT
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- MathJax import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">
+            window.MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']], // Delimiters for inline math
+                    displayMath: [['$$', '$$'], ['\\[', '\\]']] // Delimiters for block math
+                },
+                svg: {
+                    fontCache: 'global' // Use global font cache for SVG output
+                }
+            };
+            document.addEventListener('DOMContentLoaded', () => {
+                MathJax.typeset(); // Ensures MathJax processes the content after the page loads
+            });
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">
+            Prism.plugins.NormalizeWhitespace.setDefaults({
+                'remove-trailing': true,
+                'remove-indent': true,
+                'left-trim': true,
+                'right-trim': true,
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script>
+    </body>
+</html>
