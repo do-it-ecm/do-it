@@ -98,6 +98,8 @@ Do-It 3 is designed to not require any maintenance. In case of an issue, please 
 For any updates to the website, please make sure to document them in the [CHANGELOG](./CHANGELOG.md) file.\
 If you want to add a new promotion or student, you can use the helper scripts provided in the `scripts/` directory.
 
+To properly receive all updates, you need to run the following commands: `git pull --recurse-submodules` and `npm install`
+
 #### Adding a new promotion
 
 This process requires corresponding privileges on the GitHub organization and the GitHub repository.
@@ -131,6 +133,11 @@ To fix this issue, you need to open a PowerShell terminal as an administrator an
 
 **OneDrive will cause issues** with the project files, and it will take a lot of time / space to sync all of them.\
 To avoid this issue, you need to move the project files to a location outside of the OneDrive folder. Or you can disable OneDrive sync for the project folder.
+
+#### Node (package) Issues
+
+If you face a missing package or any sort of Node issue, you can try to **reinstall the dependencies** by running `npm install`.\
+If that is not enough, you can try a **clean install** by deleting the `node_modules` folder and the `package-lock.json` file, then running `npm install`.
 
 ## Contributors <span id="contributors"></span>
 
