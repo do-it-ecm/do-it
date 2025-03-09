@@ -7,7 +7,7 @@
     --color-info: #93c47d;
     --color-mgt: #a9c6f4;
     --color-gp: #f5cfcf;
-
+    --breakpoint-3xl: 101rem;
 }
 
 @layer base {

@@ -65,12 +65,10 @@ window.addEventListener('scroll', () => {
     const sidebar = document.getElementById('course-sidebar');
     const currentScroll = window.scrollY;
     // Hide the burger button if max width is reached
-    if (window.innerWidth > 1536) {
-        burger.style.display = 'none';
-    } else if (currentScroll < 10 || currentScroll < lastScrollYCourses) {
-        burger.style.display = 'block';
+    if (currentScroll < 10 || currentScroll < lastScrollYCourses) {
+        burger.classList.remove('hidden');
     } else if (!sidebar || !sidebar.classList.contains('open')) {
-        burger.style.display = 'none';
+        burger.classList.add('hidden');
     }
 
     lastScrollYCourses = currentScroll;
@@ -79,7 +77,7 @@ window.addEventListener('scroll', () => {
 
 <button id="course-burger-button" class="sidebar-burger-button left-2" onclick="toggleCourseSidebar()">☰</button>
 
-<nav id="course-sidebar" class="sidebar left-0 border-r-2 -translate-x-full 2xl:translate-x-0">
+<nav id="course-sidebar" class="sidebar left-0 border-r-2 -translate-x-full 3xl:translate-x-0">
     <article><h2>Cours</h2></article>
     <ul class="sidebar-navigation space-y-2">
         {% from 'macros/render-navigation.njk' import renderNavigation %}

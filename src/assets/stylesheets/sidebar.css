@@ -16,7 +16,7 @@
   }
 
   .sidebar {
-    @apply fixed z-10 top-[50px] w-screen md:w-1/4 max-w-screen bg-white p-4 overscroll-contain overflow-y-auto transform transition-transform duration-300 border-gray-200 ease-in-out h-[calc(100vh-35px)] 2xl:max-w-[calc((100vw-1000px)/2-35px)] min-w-80 top-[50px] 2xl:transform-none 2xl:transition-none 2xl:translate-x-0;
+    @apply fixed z-10 top-[50px] w-screen md:w-1/4 max-w-screen bg-white p-4 overscroll-contain overflow-y-auto transform transition-transform duration-300 border-gray-200 ease-in-out h-[calc(100vh-35px)] 3xl:max-w-[calc((100vw-1000px)/2-35px)] min-w-80 top-[50px] 3xl:transform-none 3xl:transition-none 3xl:translate-x-0;
   }
 
   .sidebar.open {
@@ -24,7 +24,7 @@
   }
 
   .sidebar-burger-button {
-    @apply fixed top-[50px] z-20 p-2 bg-gray-200 rounded-md block 2xl:hidden cursor-pointer;
+    @apply fixed top-[50px] z-20 p-2 bg-gray-200 rounded-md block 3xl:hidden cursor-pointer;
   }
 
   .course-sidebar-item {
