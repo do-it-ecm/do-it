@@ -24,7 +24,7 @@
   }
 
   .sidebar-burger-button {
-    @apply fixed top-[50px] z-20 p-2 bg-gray-200 rounded-md block 3xl:hidden cursor-pointer;
+    @apply fixed top-[calc(theme(spacing.2)+50px)] z-20 p-2 bg-gray-200 rounded-md block 3xl:hidden cursor-pointer;
   }
 
   .course-sidebar-item {
