@@ -1,6 +1,25 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+@import './sidebar.css';
+
+@config '../../../tailwind.config.js';
+
+@theme {
+    --color-info: #93c47d;
+    --color-mgt: #a9c6f4;
+    --color-gp: #f5cfcf;
+    --breakpoint-3xl: 101rem;
+}
+
+@layer base {
+
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+        border-color: var(--color-gray-200, currentColor);
+    }
+}
 
 @layer base {
     body {
@@ -9,7 +28,7 @@
 
     img:not([class*="img-"]) {
         @apply mx-auto;
-        @apply border-4 rounded p-0 m-4 max-w-[90%] mx-auto;
+        @apply border-4 rounded-sm p-0 m-4 max-w-[90%] mx-auto;
     }
 
     h2 {
@@ -47,6 +66,39 @@
     code[class*=language-]::before,
     code[class*=language-]::after {
         content: "";
+    }
+
+    table.no-border tr {
+        @apply border-none;
+    }
+
+    .prose .fichier {
+        @apply underline decoration-1;
+    }
+
+    .quote p,
+    .quote ul,
+    .quote ol,
+    .quote li {
+        @apply m-0;
+    }
+
+    details p {
+        @apply mb-0;
+    }
+
+    /* For Safari details render */
+    details>summary::-webkit-details-marker {
+        display: none;
+    }
+
+}
+
+@layer components {
+
+    a:not([class]),
+    a:not([class]):visited {
+        @apply underline decoration-purple-500 decoration-2 hover:text-purple-800 hover:decoration-purple-800 active:decoration-4;
     }
 
     .img-big-banner {
@@ -101,56 +153,4 @@
         @apply max-w-[25%];
     }
 
-}
-
-@layer components {
-
-    a:not([class]),
-    a:not([class]):visited {
-        @apply underline decoration-purple-500 decoration-2 hover:text-purple-800 hover:decoration-purple-800 active:decoration-4;
-    }
-}
-
-table.no-border tr {
-    @apply border-none;
-}
-
-.prose .fichier {
-    @apply underline decoration-1;
-}
-
-.quote p,
-.quote ul,
-.quote ol,
-.quote li {
-    @apply m-0;
-}
-
-details p {
-    @apply mb-0;
-}
-
-/* For Safari details render */
-details>summary::-webkit-details-marker {
-    display: none;
-}
-
-/* Show line numbers on code */
-/* Source issue: https://github.com/11ty/eleventy-plugin-syntaxhighlight/issues/10 */
-pre {
-    counter-reset: lineNumber;
-}
-
-code .highlight-line:before {
-    -webkit-user-select: none;
-    border-right: 1px solid #404040;
-    color: #858585;
-    content: counter(lineNumber);
-    counter-increment: lineNumber;
-    display: inline-block;
-    font-variant-numeric: tabular-nums;
-    margin-right: 1.2em;
-    padding-right: 1.2em;
-    text-align: right;
-    width: 2.4em;
 }

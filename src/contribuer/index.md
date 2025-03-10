@@ -188,6 +188,33 @@ Pour que le site reste **cohérent** et **lisible**, il est recommandé de suivr
 - **Citer** vos sources si vous utilisez des informations provenant d'autres sites
 - **Éviter** les fautes d'orthographe et de grammaire
 
+### Optimiser l'encodage des images
+
+Afin de réduire l'impact des images / vidéos / sons sur le temps de chargement du site, il est recommandé d'optimiser leur encodage.\
+Pour cela, vous pouvez utiliser des outils tels que [ffmpeg](https://ffmpeg.org/), ils permettent de **grandement réduire la taille** des fichiers sans perte de qualité.
+
+#### Installer ffmpeg
+
+- MacOS : `brew install ffmpeg`
+- Linux : `sudo apt install ffmpeg`
+- Windows : [Télécharger ffmpeg](https://ffmpeg.org/download.html)
+
+#### Réencoder un fichier
+
+{% info %}
+- Réencoder les fichiers permet de **réduire leur taille** (avec ou sans perte de qualité selon les paramètres)
+- Le gain de taille pour une vidéo est généralement de l'ordre de 90% (*50Mo -> 5Mo*) par rapport à un encodage rapide par défaut.
+- Le gain de taille pour une image est généralement de l'ordre de 50% (*2Mo -> 1Mo*) par rapport à un encodage rapide par défaut.
+{% endinfo %}
+
+Pour réencoder un fichier avec ffmpeg, il suffit de lancer la commande suivante dans le terminal: `ffmpeg -i <fichier_source> -preset veryslow <fichier_destination>`
+
+{% attention %}
+- La commande peut être longue à s'exécuter pour des gros fichiers *de l'ordre de 100Mo*
+- Par défaut, ffmpeg ne peut pas écraser un fichier existant sans le flag `-y`
+- Il est recommandé d'utiliser le preset `veryslow` pour une meilleure compression des vidéos
+{% endattention %}
+
 ## Autres guides
 
 - [Guide de contribution Markdown](./markdown)

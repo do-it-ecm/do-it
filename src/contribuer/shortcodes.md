@@ -221,7 +221,7 @@ Permet d'ajouter des liens dans votre contenu.
 - [Lien 2](https://www.example.com)
 {% endlien %}
 
-### Shortcode auto-fermant `lieninterne`
+### Shortcode auto-fermant `lienInterne`
 
 Ajoute un lien vers une ressource interne du site. Affiche son titre et son résumé.\
 Le chemin de la ressource peut être absolu ou relatif.
@@ -229,10 +229,10 @@ Le chemin de la ressource peut être absolu ou relatif.
 Optionnellement, il est aussi possible de spécifier un format de date pour la ressource.
 
 ```markdown
-&#123;% lieninterne "CHEMIN/VERS/RESSOURCE" "FORMAT_DATE" %&#125;
+&#123;% lienInterne "CHEMIN/VERS/RESSOURCE" "FORMAT_DATE" %&#125;
 ```
 
-{% lieninterne "/promos/2024-2025/Loick-GoupilHallay/pok/temps-2" %}
+{% lienInterne "/promos/2024-2025/Loick-GoupilHallay/pok/temps-2" %}
 
 ### Shortcode auto-fermant `sizedImage`
 

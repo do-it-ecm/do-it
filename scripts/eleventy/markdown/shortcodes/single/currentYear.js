@@ -1,7 +1,7 @@
 
 export default function (eleventyConfig) {
 
-    eleventyConfig.addShortcode("currentyear", () => {
+    eleventyConfig.addShortcode("currentYear", () => {
         return new Date().getFullYear();
     });
 }
