@@ -176,11 +176,11 @@ You can use any length of content (multiline, images, code blocks,...) inside th
 
 ### Lien Interne <span id="lien-interne"></span>
 
-The `lieninterne` is a **regular shortcode** used to generate an internal link, with a summary of the linked content.\
+The `lienInterne` is a **regular shortcode** used to generate an internal link, with a summary of the linked content.\
 You can use it like this:
 
 ```markdown
-{% lieninterne "<LINK_URL>" %}
+{% lienInterne "<LINK_URL>" %}
 ```
 
 - `<LINK_URL>`: The URL of the link. (Mandatory)
