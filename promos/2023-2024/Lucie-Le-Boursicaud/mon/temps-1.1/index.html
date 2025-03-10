@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>MON 1 : Initiation à C++</title>
+
+        <!-- Prismjs imports
+                - Prism core
+                - Prism line numbers
+                - Prism copy to clipboard
+                - Prism autoloader
+        -->
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png">
+
+        <!-- Mermaid import and initialization -->
+        <script type="module" defer="">
+            import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/+esm';
+            mermaid.initialize({
+                startOnLoad: true,
+            });
+        </script>
+
+        <link href="/assets/stylesheets/main.css" rel="stylesheet">
+
+    </head>
+
+    <body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000">
+        <header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-between items-center">
+                    <a class="mx-2" href="/">Home</a>
+                    <div class="flex items-center gap-4 sm:gap-6 ">
+                        <a class="" href="/cs">CS</a>
+                        <a class="" href="/pok">POK</a>
+                        <a class="" href="/mon">MON</a>
+                        <a class="" href="/projets">Projets</a>
+                        <a class="hidden sm:block" href="/promos">Promos</a>
+                        <a href="/search">
+                            <svg class="h-5 aspect-square" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+                            </svg>
+                        </a>
+                        <a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank">
+                            <svg class="h-5 aspect-square" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body="">
+            
+<article class="relative">
+<h1 class="mb-1">MON 1 : Initiation à C++</h1>
+<div class="mb-4">
+    
+        <div class="px-4 flex flex-wrap items-center">
+            
+                <div class="font-bold">Tags : </div>
+            
+            <ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags">
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">MON</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">Informatique</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">Langage C++</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">Apprentissage d&#39;un langage</li>
+                
+
+            </ul>
+
+            
+            <div class="hidden" data-pagefind-meta="Type">
+                
+                    
+                        <span data-pagefind-filter="Type">MON</span>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Auteurs : </div>
+            <ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs">
+                
+                    <li class="bg-blue-200 rounded-full px-2" data-pagefind-filter="Auteurs">Lucie Le Boursicaud</li>
+                
+            </ul>
+        </div>
+    
+
+    
+        <div class="absolute top-0 right-0">
+            <span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2" data-pagefind-filter="Année">
+                2023-2024
+            </span>
+        </div>
+    
+</div>
+
+        <p class="mb-4 text-lg">
+
+                Dans ce MON l'objectif est de découvrir un nouveau langage informatique dans lequel je n'ai aucune base. A la fin des 10h de cours j'espère savoir coder de petits algorithmes simples en C++.
+
+        </p>
+
+
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/promos/2023-2024/Lucie-Le-Boursicaud/">Lucie Le Boursicaud</a><span class="px-1">/</span><a href="/promos/2023-2024/Lucie-Le-Boursicaud/mon/">MON de Lucie Le Boursicaud</a><span class="px-1">/</span><a href="/promos/2023-2024/Lucie-Le-Boursicaud/mon/temps-1.1/">MON 1 : Initiation à C++</a>
+
+</div></div>
+
+
+
+
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p>Niveau débutant</p>
+</div><div class="pl-8 mr-8">
+<p>Prérequis : Savoir ce qu'est un langage orienté objet.</p>
+</div></div>
+<h2 id="sommaire" tabindex="-1"><a class="header-anchor" href="#sommaire"></a> Sommaire</h2>
+<ol>
+<li>Présentation du langage</li>
+<li>Syntaxe du C++</li>
+<li>Premiers algorithmes</li>
+<li>Orientation objet</li>
+</ol>
+<h2 id="1.pr%C3%A9sentation-du-langage" tabindex="-1"><a class="header-anchor" href="#1.pr%C3%A9sentation-du-langage"></a> 1.Présentation du langage</h2>
+<p>Le langage C++ est apparu dans les années 90 et il est aujourd'hui devenu un langage très utilisés et indispensable pour certains programmeur. Son grand atout est sa fonctionalité de classe permettant d'utiliser la programmation object comme en JAVA. Sa rapidité, sa puissance ainsi que sa très bonne gestion de la mémoire font de lui un langage incontournable. Nous allons découvrir ensemble les bases de ce langage.</p>
+<h5 id="documents-et-outils-utilis%C3%A9s" tabindex="-1"><a class="header-anchor" href="#documents-et-outils-utilis%C3%A9s"></a> Documents et outils utilisés</h5>
+<p><a href="http://math.univ-lyon1.fr/~omarguin/programmation/C++Polycop1.pdf">La programmation en C++</a>
+<a href="http://math.univ-lyon1.fr/~omarguin/programmation/C++Polycop2.pdf">La programmation objet en C++</a>
+<a href="https://app.codesignal.com/">Exercices de programmation sur CodeSignal</a></p>
+<h2 id="2.-syntaxe-du-c%2B%2B" tabindex="-1"><a class="header-anchor" href="#2.-syntaxe-du-c%2B%2B"></a> 2. Syntaxe du C++</h2>
+<h4 id="type-de-variable" tabindex="-1"><a class="header-anchor" href="#type-de-variable"></a> Type de variable</h4>
+<p>Comme d'autres langages le C++ possède plusieurs type de variables :</p>
+<ul>
+<li>vide : <em>void</em>  - aucune voriable ne peut être de ce type on verra son utilité plus tard</li>
+<li>entier : <em>char</em> - petit entier de -128 à 127
+<em>short</em> - grand entier de -32768  à 32767
+<em>long</em> - très grand entier
+<em>int</em> - coïncide avec short ou long en fonction de l'initialisation</li>
+<li>réels : <em>float</em> - précision de 7 chiffres
+<em>double</em> - précision de 15 chiffres
+<em>long double</em> - précision de 18 chiffres</li>
+</ul>
+<p>Parfois on pourra rencontré le type <em><strong>unsigned</strong></em> , il s'agit d'un entier dit &quot;non signé&quot;.</p>
+<h4 id="d%C3%A9clarer-une-variable" tabindex="-1"><a class="header-anchor" href="#d%C3%A9clarer-une-variable"></a> Déclarer une variable</h4>
+<p>Il est nécessaire de déclarer une variable avant de devoir l'utiliser en C++.
+Pour déclarer une variable on utilise la syntaxe suivante : <em>type liste_de_variables</em>.
+Exemples :</p>
+<pre class="language-html line-numbers"><code>
+
+ int a, b, c;    // déclare trois entiers a,b et c
+ const float Taille = 1.67;  // déclare une constante de type float
+ const Nom = 'Lucie'; // déclare une constante littérale
+
+
+</code></pre><h4 id="les-diff%C3%A9rents-op%C3%A9rateurs" tabindex="-1"><a class="header-anchor" href="#les-diff%C3%A9rents-op%C3%A9rateurs"></a> Les différents opérateurs</h4>
+<ul>
+<li>&quot;+&quot; : addition</li>
+<li>&quot;-&quot; : soustraction</li>
+<li>&quot;*&quot; : multiplication</li>
+<li>&quot;/&quot; : donne le quotient (entier si il s'agit de deux entiers)</li>
+<li>&quot;%&quot; : donne le reste modulo entre deux entiers
+Exemples :</li>
+</ul>
+<pre class="language-html line-numbers"><code>
+
+ 20.0 / 3.2    donnera  6.25
+ 15 / 8       donnera 1
+ 15 % 8       donnera 7
+
+
+</code></pre><p>Comme d'autres langage l'utilisation de ++ ou de -- permet d'incrémenter ou de décrémenter une variable.</p>
+<h4 id="instructions" tabindex="-1"><a class="header-anchor" href="#instructions"></a> Instructions</h4>
+<p>Pour donner des instruction en C++ on peut soit faire une instruction par ligne comme ceci :</p>
+<pre class="language-html line-numbers"><code>
+
+int a = 4;
+a++; 
+
+
+</code></pre><p>Ou utiliser des instruction-bloc comme ceci :</p>
+<pre class="language-html line-numbers"><code>
+
+{
+  int a = 4;
+  a++ ;
+}
+
+
+</code></pre><p>Si je déclare une variable dans un bloc alors elle ne pourra pas être utilisée en dehors de ce bloc., il s'agit d'une variable <em>locale</em>.
+Il est interdit de donner le même nom à deux variables distinctes au sein d'un même bloc.
+Si je déclare une variable en dehors d'un bloc alors c'est une variable dite <em>globale</em>.</p>
+<h4 id="fonctions" tabindex="-1"><a class="header-anchor" href="#fonctions"></a> Fonctions</h4>
+<h5 id="elements-de-bases" tabindex="-1"><a class="header-anchor" href="#elements-de-bases"></a> Elements de bases</h5>
+<p>Une fonction est définie par 4 éléments distincts :</p>
+<ul>
+<li>son nom</li>
+<li>le type de valeur qu'elle renvoie</li>
+<li>les paramètres dont elle a besoin</li>
+<li>le corps de la fonction</li>
+</ul>
+<p>Toute fonction doit être définie avant de pouvoir être utilisée.
+Pour déclarer une fonction on utilise cette syntaxe : type nom(liste_des_paramètres).
+Exemples :</p>
+<pre class="language-html line-numbers"><code>
+
+double Distance(double x1, double y1, double x2, double y2);
+char Concatenation(char mot1, char mot2);
+void AfficherUnNombreXFois(int nombre, int x);
+
+
+</code></pre><p>On voit ici l'utilité de <strong><em>void</em></strong> rencontré plus tôt. La dernière fonction n'a pour vocation que d'afficher et ne return pas de valeur.</p>
+<h5 id="d%C3%A9finir-une-fonction" tabindex="-1"><a class="header-anchor" href="#d%C3%A9finir-une-fonction"></a> Définir une fonction</h5>
+<p>Pour déclarer une fonction voici la syntaxe :
+type nom_de_la_fonction(tous_les_paramètres)
+{
+corps de la fonction
+}</p>
+<p>Exemples :</p>
+<pre class="language-html line-numbers"><code>
+
+double Moyenne(double x, double y){
+  return (x + y) / 2.0
+}
+
+
+</code></pre><p>Lorsque l'on utilise <em>return</em> cela interrompt l'exécution de la fonction.</p>
+<h5 id="utiliser-une-fonction" tabindex="-1"><a class="header-anchor" href="#utiliser-une-fonction"></a> Utiliser une fonction</h5>
+<p>Une fois ma fonction déclarée je peux appeler ma fonction pour l'utiliser sur différentes valeurs.</p>
+<pre class="language-html line-numbers"><code>
+
+double n=3;
+double m=4;
+double resultat = Moyenne(n,m);
+
+
+</code></pre><p>Alors la variable <em>resultat</em> récupérera la valeur de la moyenne de 3 et 4 soit 3.5.</p>
+<h5 id="les-diff%C3%A9rentes-instructions" tabindex="-1"><a class="header-anchor" href="#les-diff%C3%A9rentes-instructions"></a> Les différentes instructions</h5>
+<p>Comme d'autres langages on retrouve les instructions de bases <em>if</em>, <em>while</em>, <em>do</em>, <em>for</em>, et aussi <em>switch</em> qui permet de dissocier différents cas pour lequels on ne veut pas lancer la même instruction.</p>
+<h5 id="compl%C3%A9ments" tabindex="-1"><a class="header-anchor" href="#compl%C3%A9ments"></a> Compléments</h5>
+<p>Il existe des expressions particulière en C++.</p>
+<ul>
+<li>
+<p>L'expression virgule
+Elle s'utilise de la forme suivante : <em>expression 1</em> , <em>expression 2</em>.
+D'abord, l'<em>expression 1</em> est évaluée mais sa valeur n'est pas gardée en mémoire.
+Ensuite l'<em>expression 2</em> est évaluée et donne sa valeur est l'<em>expression 1</em>.
+Cette utilisation est utile dans le cas où l'<em>expression 1</em> a un effet de bord.</p>
+</li>
+<li>
+<p>L'expression conditionnelle
+Elle s'utilise de la forme suivante : <em>expression 1</em> ? <em>expression 2</em> : <em>expression 3</em>.
+D'abord l'<em>expression 1</em> est évaluée. Ensuite, si elle est non nulle, l'<em>expression 2</em> est évaluée et donne sa valeur à l'expression conditionnelle. Sinon, l'<em>expression 3</em> est évaluée et donne sa valeur à l'expression conditionnelle.</p>
+</li>
+</ul>
+<p>Plusieurs fonctions utiles sont aussi à connaitre telles que : <em>floor</em>, <em>fabs</em>, <em>sqrt</em>, <em>pow</em> ainsi que les fonctions trigo.</p>
+<ul>
+<li>Les énumérations
+Les énumérations sont des listes de noms représentant les valeurs entières successives 0,1,2,...
+On peut l'a défini de la façon suivante : <strong>enum</strong> <em>nom</em> { <em>liste_de_noms</em> }
+Exemple :</li>
+</ul>
+<pre class="language-html line-numbers"><code>
+
+enum Chiffres { un, deux, trois, quatre, cinq, six, sept, huit, neuf}
+enum Peinture { huile, gouache, acrylique, aquarelle}
+
+
+</code></pre><p>Alors on obtiendra la déclaration implicite des constantes entières :</p>
+<pre class="language-html line-numbers"><code>
+
+const int huile=0;
+const int gouache=1;
+const int acrylique=2;
+...
+
+
+</code></pre><p>Et attribue à ces constantes un type appelé Peinture.</p>
+<ul>
+<li>Tableaux
+Un tableau est une collection indicée de variables de même type.
+On peut le définir de la façon suivante : <em>type</em> <em>nom</em> [<em>taille</em>] où
+<em>type</em> est le type des éléments du tableau
+<em>nom</em> est le nom du tableau
+<em>taille</em> est une constante entière égale au nmbre d'éléments du tableau.</li>
+</ul>
+<p>Exemples:</p>
+<pre class="language-html line-numbers"><code>
+
+int taille[2];       //tableau de deux entiers pour indiquer sa taille
+double tempsdouche[7];     //tableau de 7 réels pour indiquer le nombre de minutes passées sous la douche
+Peinture collection[10];    //tableau de 10 peintures
+
+
+</code></pre><blockquote>
+<p>Soit i une expression entière, on note Peinture[i] l'élement d'indice i du tableau <em>Peinture</em>.</p>
+</blockquote>
+<ul>
+<li>Chaînes de caractères
+En C++, une chaine de caractères est en fait un tableau de caractères avec un caractère nul '\0' en fin de chaîne.
+Exemple :</li>
+</ul>
+<pre class="language-html line-numbers"><code>
+
+char couleur[8]; // on a 7 caractères utiles
+strcpy(couleur, "rouge")
+
+
+</code></pre><p>Les chaines de caractères peuvent être affichées grâce aux habituels <em>cin</em> et <em>cout</em>. De nombreuses fonctions de bases utiles pour les chaines de caractères sont déjà pré-définies en C++.</p>
+<h2 id="3.premiers-algorithmes" tabindex="-1"><a class="header-anchor" href="#3.premiers-algorithmes"></a> 3.Premiers algorithmes</h2>
+<p>Dans cette partie je vais m'exercer à coder de petits algorithmes simples avec ce que j'ai appris du langage.</p>
+<h4 id="algorithme-de-calcul-de-distance-entre-deux-points" tabindex="-1"><a class="header-anchor" href="#algorithme-de-calcul-de-distance-entre-deux-points"></a> Algorithme de calcul de distance entre deux points</h4>
+<pre class="language-html line-numbers"><code>
+
+double Distance(x1,y1,x2,y2){
+  double dx,dy;
+  dx = x1-x2;
+  dy = y1-y2;
+  return sqrt(dx*dx+dy*dy);
+}
+
+
+</code></pre><h4 id="algorithme-de-calcul-du-maximum-entre-deux-entiers" tabindex="-1"><a class="header-anchor" href="#algorithme-de-calcul-du-maximum-entre-deux-entiers"></a> Algorithme de calcul du maximum entre deux entiers</h4>
+<pre class="language-html line-numbers"><code>
+
+int Max(int a, int b)
+{
+if ((a <= b))
+return b;
+return a;
+}
+
+
+</code></pre><h4 id="algorithme-de-calcul-du-maximum-entre-une-liste-d'entiers" tabindex="-1"><a class="header-anchor" href="#algorithme-de-calcul-du-maximum-entre-une-liste-d'entiers"></a> Algorithme de calcul du maximum entre une liste d'entiers</h4>
+<pre class="language-html line-numbers"><code>
+
+int main()
+{
+    int arr[] = { 2, 7, 9, -1, 0, 3, 6, 21, 8, -12};
+ 
+    int max = INT_MIN;
+    for (int i: arr)
+    {
+        if (i > max) {
+            max = i;
+        }
+    }
+    return max;
+}
+
+
+</code></pre><h4 id="entrainement-sur-codesignal" tabindex="-1"><a class="header-anchor" href="#entrainement-sur-codesignal"></a> Entrainement sur CodeSignal</h4>
+<p>Suite à cela j'ai repris le mode arcade de CodeSignal depuis le début mais en codant en C++ cette fois-ci. CodeSignal est une plateforme qui permet d'évaluer ses compétences en développement. Elle propose une variété de défis de programmations qui peuvent résolu en utilisant le langage de son choix.</p>
+<h2 id="4.-orientation-objet" tabindex="-1"><a class="header-anchor" href="#4.-orientation-objet"></a> 4. Orientation Objet</h2>
+<h4 id="d%C3%A9finitions" tabindex="-1"><a class="header-anchor" href="#d%C3%A9finitions"></a> Définitions</h4>
+<p>En informatique un objet est défini comme ce qui suit :
+<em>&quot;Un objet est une structure informatique regroupant :</em>
+<em>- des variables, caractérisant l'état de l'objet,</em>
+<em>- des fonctions, caractérisant le comportement de l'objet.&quot;</em></p>
+<p>Tout objet appartient à une classe, on dira que l'objet est une <em>instance</em> de cette classe.
+Ainsi avant de décrire un objet il est important de décrire la classe à laquelle il appartienne.</p>
+<h4 id="strat%C3%A9gie-d.d.u" tabindex="-1"><a class="header-anchor" href="#strat%C3%A9gie-d.d.u"></a> Stratégie D.D.U</h4>
+<p>Lorsque l'on souhaite programmer une classe, on passe par trois phases :</p>
+<ul>
+<li>Déclaration</li>
+<li>Définition</li>
+<li>Utilisation</li>
+</ul>
+<h5 id="d%C3%A9claration" tabindex="-1"><a class="header-anchor" href="#d%C3%A9claration"></a> Déclaration</h5>
+<p>Cette partie se traite dans un fichier .h qui se présente sous cette forme :</p>
+<pre class="language-html line-numbers"><code>
+
+class Classe
+{
+  public : 
+    *déclaration*
+  private :
+    *déclaration*
+}
+
+
+</code></pre><h5 id="d%C3%A9finition" tabindex="-1"><a class="header-anchor" href="#d%C3%A9finition"></a> Définition</h5>
+<p>Cette partie se traite dans un fichier .cpp qui contient les définitions des fonctions de la classe.</p>
+<h5 id="utilisation" tabindex="-1"><a class="header-anchor" href="#utilisation"></a> Utilisation</h5>
+<p>Cette partie se traite aussi dans un fichier .cpp dans lequel on pourra utilisé notre classe.</p>
+<p>Ainsi pour chaque classe on aura un fichier .h avec sa déclaration et un fichier .cpp contenant sa définition.</p>
+<div><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Lucie-Le-Boursicaud/mon/temps-1.1/schema_objet.png"></div>
+<h4 id="comment-cr%C3%A9%C3%A9-un-programme-%3F" tabindex="-1"><a class="header-anchor" href="#comment-cr%C3%A9%C3%A9-un-programme-%3F"></a> Comment créé un programme ?</h4>
+<p>On procéde en trois étape :</p>
+<ul>
+<li>Créer les fichiers sources en .h et .cpp.</li>
+<li>Compiler les fichieres .cpp ce qui crée deux fichiers objets.</li>
+<li>Editer les liens entre les fichiers objets pour obtenir un fichier exécutable en .exe.</li>
+</ul>
+<p>Pour ce faire, sur Microsoft, il suffit de créer les fichiers sources, de les ajouter dans un projet et de lancer la commande <strong>build</strong>. Les phase 2 et 3 se feront alors automatiquement.</p>
+<h4 id="conclusion" tabindex="-1"><a class="header-anchor" href="#conclusion"></a> Conclusion</h4>
+<p>Pendant ce MON j'ai pu découvrir ce nouveau langage qui m'est désormais bien moins inconnu. J'ai pu le pratiquer à l'aide de CodeSignal sur des algorithmes plutôt simple. J'ai appris comment l'utiliser en orientation objet avec un exemple du cours que j'ai consulté (voir dans les ressources). En 10h il est compliqué de maîtriser un nouveau langage mais le but ici était de le découvvrir et d'en comprendre les bases.</p>
+
+
+
+</article>
+
+        </main>
+
+        <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-center items-center">
+                    <p class="text-center">
+                        ©2025 <b><span style="font-family: Consolas, sans-serif;">Do_<span style="color: #4a86e8">It</span></span></b> - Développement, Management et Gestion de projets en IT
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- MathJax import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">
+            window.MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']], // Delimiters for inline math
+                    displayMath: [['$$', '$$'], ['\\[', '\\]']] // Delimiters for block math
+                },
+                svg: {
+                    fontCache: 'global' // Use global font cache for SVG output
+                }
+            };
+            document.addEventListener('DOMContentLoaded', () => {
+                MathJax.typeset(); // Ensures MathJax processes the content after the page loads
+            });
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">
+            Prism.plugins.NormalizeWhitespace.setDefaults({
+                'remove-trailing': true,
+                'remove-indent': true,
+                'left-trim': true,
+                'right-trim': true,
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script>
+    </body>
+</html>
