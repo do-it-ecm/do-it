@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>MON1.2: Utilisation de Python pour automatiser des tâches sur Excel avec Openpyxl</title>
+
+        <!-- Prismjs imports
+                - Prism core
+                - Prism line numbers
+                - Prism copy to clipboard
+                - Prism autoloader
+        -->
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png">
+
+        <!-- Mermaid import and initialization -->
+        <script type="module" defer="">
+            import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/+esm';
+            mermaid.initialize({
+                startOnLoad: true,
+            });
+        </script>
+
+        <link href="/assets/stylesheets/main.css" rel="stylesheet">
+
+    </head>
+
+    <body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000">
+        <header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-between items-center">
+                    <a class="mx-2" href="/">Home</a>
+                    <div class="flex items-center gap-4 sm:gap-6 ">
+                        <a class="" href="/cs">CS</a>
+                        <a class="" href="/pok">POK</a>
+                        <a class="" href="/mon">MON</a>
+                        <a class="" href="/projets">Projets</a>
+                        <a class="hidden sm:block" href="/promos">Promos</a>
+                        <a href="/search">
+                            <svg class="h-5 aspect-square" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+                            </svg>
+                        </a>
+                        <a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank">
+                            <svg class="h-5 aspect-square" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body="">
+            
+<article class="relative">
+<h1 class="mb-1">MON1.2: Utilisation de Python pour automatiser des tâches sur Excel avec Openpyxl</h1>
+<div class="mb-4">
+    
+        <div class="px-4 flex flex-wrap items-center">
+            
+                <div class="font-bold">Tags : </div>
+            
+            <ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags">
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">MON</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">Excel</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">Python</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">Automatisation</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">Openpyxl</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">Programmation Objet</li>
+                
+
+            </ul>
+
+            
+            <div class="hidden" data-pagefind-meta="Type">
+                
+                    
+                        <span data-pagefind-filter="Type">MON</span>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Auteurs : </div>
+            <ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs">
+                
+                    <li class="bg-blue-200 rounded-full px-2" data-pagefind-filter="Auteurs">Duc DANG VU</li>
+                
+            </ul>
+        </div>
+    
+
+    
+        <div class="absolute top-0 right-0">
+            <span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2" data-pagefind-filter="Année">
+                2023-2024
+            </span>
+        </div>
+    
+</div>
+
+        <p class="mb-4 text-lg">
+
+                Ce MON aura pour objectif de s'initier à l'utilisation de la bibliothèque openpyxl de Python, pour lire et modifier des fichiers Excel.
+
+        </p>
+
+
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/promos/2023-2024/Dang-Vu-Duc/">Duc DANG VU</a><span class="px-1">/</span><a href="/promos/2023-2024/Dang-Vu-Duc/mon/">MON de Duc DANG VU</a><span class="px-1">/</span><a href="/promos/2023-2024/Dang-Vu-Duc/mon/temps-1.2/">MON1.2: Utilisation de Python pour automatiser des tâches sur Excel avec Openpyxl</a>
+
+</div></div>
+
+
+
+
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p>Prérequis</p>
+</div><div class="pl-8 mr-8">
+<p>Connaissance basique de la programmation objet avec Python.</p>
+</div></div>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Note</b></p>
+</div><div class="pl-8 mr-8">
+<p>Tout les codes présentés ci-dessous ainsi que les fichiers de ce MON (notamment les emplois du temps personnalisés) sont disponibles dans le dossier Github de Do-It: <a href="https://github.com/do-it-ecm/do-it/tree/main/src/promos/2023-2024/Dang-Vu-Duc/mon/temps-1.2">Codes du MON1.2</a></p>
+</div></div>
+<h2 id="introduction" tabindex="-1"><a class="header-anchor" href="#introduction"></a> Introduction</h2>
+<p>L'outil Excel du pack Office est un outil très répandu dans toutes les entreprises. Tout le monde sait à peu près comment fonctionne ce logiciel, mais peu de gens savent qu'il existe une bibliothèque python qui permet de lire et modifier des fichier Excel: <strong>openpyxl</strong>. Ce MON aura donc pour objectif d'apprendre à utiliser openpyxl pour automatiser des tâches sur des fichiers Excel qui seraient en temps normal longues à faire à la main.</p>
+<p>Dans un premier temps, nous expliquerons les méthodes principales de openpyxl. Ensuite, nous appliquerons ces connaissances en créant des emplois du temps personnalisés pour chaque élève Do-It 2023/2024.</p>
+<p>Dans ce MON, seulement une petite partie des commandes de la bibliothèque openpyxl seront expliquées (celles les plus importantes). Le reste est très bien expliqué sur le <a href="https://openpyxl.readthedocs.io/en/stable/">site de openpyxl</a>.</p>
+<p>Dans la suite, quelques lignes de code en python seront présentées. Le résultat de l’exécution des lignes de code est indiqué juste après celles-ci, après 3 chevrons <code>&gt;&gt;&gt;</code></p>
+<h2 id="apprentissage-de-la-biblioth%C3%A8que" tabindex="-1"><a class="header-anchor" href="#apprentissage-de-la-biblioth%C3%A8que"></a> Apprentissage de la bibliothèque</h2>
+<p>Tout d'abord, il faut installer openpyxl. Pour cela, il faut rentrer la commande suivante dans une invite de commande:</p>
+<pre class="language-python line-numbers"><code>
+
+pip install openpyxl
+
+
+</code></pre><p>Une fois la bibliothèque installée, il faut l'importer au début du code python, et nous sommes prêts! Nous allons dans la suite expliquer les méthodes principales qui permettent de lire et modifier des données dans des fichiers Excel. Dans la suite, les fichiers manipulés doivent se trouver dans le même repertoire que le fichier python exécuté. Le fichier Excel que nous allons manipuler en exemple se nomme <em>test.xlsx</em> et contient le simple tableur suivant:</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Dang-Vu-Duc/mon/temps-1.2/Image1.png" alt="Image test"></p>
+<p>La feuille qui est remplie se nomme <em>Feuille 1</em>.</p>
+<h3 id="lecture-de-donn%C3%A9es" tabindex="-1"><a class="header-anchor" href="#lecture-de-donn%C3%A9es"></a> Lecture de données</h3>
+<p>Dans un premier temps, nous allons expliquer comment lire des données. La première classe qui est importante à connaître est la classe <strong>Workbook</strong>. Pour créer un objet de cette classe, on utilise la méthode <em>openpyxl.load_workbook</em>. Les objets de cette classe correspondent au fichier Excel renseigné en paramètre de la méthode. Ils contiennent toutes les informations du fichier: lignes, colonnes, cellules etc... Par exemple, on peut récupérer les noms des feuilles du fichier Excel avec la méthode <em>sheetnames</em>.
+Il faut ensuite récupérer la feuille sur laquelle on veut lire les données. Pour cela, on renseigne le nom de la feuille en question comme suit:</p>
+<pre class="language-python line-numbers"><code>
+
+import openpyxl
+
+wb = openpyxl.load_workbook('test.xlsx')
+sheet = wb['Feuille 1']
+
+
+</code></pre><div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Note</b></p>
+</div><div class="pl-8 mr-8">
+<p>Il est également possible de récupérer la feuille active (c'est-à-dire celle qui s'affiche lorsqu'on ouvre le fichier Excel) par l'attribut <em>active</em> de la classe Workbook: <code>sheet = wb.active</code></p>
+</div></div>
+<p>La variable <em>sheet</em> est un objet de la classe <strong>Worksheet</strong>. Cet objet contient notamment les informations de toutes les cellules de la feuille. On récupère une cellule en indiquant directement son nom, ou bien en indiquant son numéro de ligne et de colonne via la méthode <em>cell</em>. Notons que ces numéros commencent à 1 (et pas 0) et le numéro de colonne 27 correspond à la colonne &quot;AA&quot;. On peut récupérer le contenu de la cellule avec l'attribut <em>value</em>. On peut également récupérer les coordonnées d'une cellule avec l'attribut <em>coordinate</em>.</p>
+<pre class="language-python line-numbers"><code>
+
+cell = sheet['A1']
+# ou cell = sheet.cell(row = 1, column = 1)
+print(cell.value)
+print(cell.coordinate)
+
+>>> 'Pommes'
+>>> 'A1'
+
+
+</code></pre><p>Il est possible de convertir un nombre vers la lettre d'une colonne et vice-versa. Par exemple, 1 correspond à &quot;A&quot; et 28 correspond à &quot;AB&quot;. Les fonctions utilisées sont <em>get_column_letter</em> et <em>column_index_from_string</em>. Ces fonctions doivent être importées avant d'être utilisées:</p>
+<pre class="language-python line-numbers"><code>
+
+from openpyxl.utils import get_column_letter, column_index_from_string
+
+print(get_column_letter(30))
+print(column_index_from_string('E'))
+
+>>> 'AD'
+>>> 5
+
+
+</code></pre><h3 id="%C3%A9criture-de-donn%C3%A9es" tabindex="-1"><a class="header-anchor" href="#%C3%A9criture-de-donn%C3%A9es"></a> Écriture de données</h3>
+<p>En plus de lire des données, il est possible de les modifier, et d'en rajouter dans les fichiers Excel. Par exemple, on peut modifier le titre d'une feuille, ou encore modifier le contenu d'une cellule. Après chaque modification, il faut enregistrer le workbook avec la méthode <em>save</em>. Notons qu'on ne peut pas sauvegarder un fichier qui est ouvert dans un autre onglet. Il est recommandé d'enregistrer le fichier modifié sous un autre nom afin de ne pas écraser le fichier original. Ainsi, si jamais il y a des erreurs dans le programme, il est possible de récupérer le fichier original.</p>
+<pre class="language-python line-numbers"><code>
+
+wb = openpyxl.load_workbook('test.xlsx')
+sheet = wb['Feuille 1']
+cell = sheet['A1']
+
+sheet.title = 'Inventaire fruits'
+cell.value = 'Kiwis'
+
+wb.save('test_copy.xlsx')
+
+
+</code></pre><p>Voici à quoi ressemble le fichier <em>test_copy.xlsx</em>, qui a été enregistré dans le même repertoire que le code python exécuté:</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Dang-Vu-Duc/mon/temps-1.2/Image2.png" alt="Image test2"></p>
+<p>La cellule A1 a bien été modifiée, ainsi que le nom de la feuille.</p>
+<p>On peut également modifier la hauteur et la largeur des cellules en modifiant les attributs <em>row_dimensions.height</em> et <em>column_dimensions.width</em> des objets de la classe <strong>Worksheet</strong>. Les valeurs indiquées sont en &quot;pt&quot;.</p>
+<pre class="language-python line-numbers"><code>
+
+cell = sheet['A2']
+cell.value = 'Pommes de rainette'
+sheet.column_dimensions['A'].width = 30
+
+wb.save('test_copy.xlsx')
+
+
+</code></pre><p>Le fichier <em>test_copy.xlsx</em> produit est le suivant:</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Dang-Vu-Duc/mon/temps-1.2/Image3.png" alt="Image test3"></p>
+<p>La largeur de la colonne A s'est bien modifiée.</p>
+<p>On peut aussi centrer horizontalement et verticalement le contenu d'une cellule avec la classe <strong>Alignment</strong>, changer le style de police du contenu d'une cellule avec la classe <strong>Font</strong> ou encore changer la couleur de fond d'une cellule avec la classe <strong>PatternFill</strong>. Ces classes doivent être importées de la bibliothèque <em>openpyxl.styles</em>. Enfin, il est possible de créer des bordures sur les cellules en modifiant leurs attributs <em>border</em> de la classe <strong>Cell</strong>. Encore une fois, il faut importer la classe <strong>Border</strong> depuis la bibliothèque <em>openpyxl.styles.borders</em>.</p>
+<pre class="language-python line-numbers"><code>
+
+from openpyxl.styles import Font, PatternFill, Alignment
+
+wb = openpyxl.load_workbook('test.xlsx')
+sheet = wb['Feuille 1']
+
+cell = sheet['A2']
+cell.value = 'Pommes de rainette'
+sheet.column_dimensions['A'].width = 30
+sheet.row_dimensions[2].height = 30
+cell.font = Font(size = 15, bold = True)
+cell.alignment = Alignment(horizontal = "center", vertical = "center")
+cell.fill = PatternFill("solid", start_color = "0ebf3e")
+cell.border = Border(left = Side(style='thick'), right = Side(style='thick'), top = Side(style='thick'), bottom = Side(style='thick'))
+
+wb.save('test_copy.xlsx')
+
+
+</code></pre><p>Le résultat est le suivant:</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Dang-Vu-Duc/mon/temps-1.2/Image4.png" alt="Image"></p>
+<p>Le texte &quot;Pomme de rainette&quot; est bien centré horizontalement et verticalement dans sa cellule et il est bien en gras et de taille 15. De plus, la couleur de la cellule a bien changé et la cellule a bien des bordures épaisses.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Note</b></p>
+</div><div class="pl-8 mr-8">
+<p>La couleur renseignée en paramètres de la classe <strong>PatternFill</strong> est sous la forme d'un code hex. Ce code peut être déterminé grâce au site suivant: <a href="https://htmlcolorcodes.com/">htmlcolorcode.com</a></p>
+</div></div>
+<p>Enfin, il est possible de fusionner des cellules ou de les séparer, grâce aux méthodes <em>merge_cells</em> et <em>unmerge_cells</em>. Par exemple, si l'on ajoute au code précédent la commande <code>sheet.merge_cells('A3:A4')</code>, on obtient le résultat suivant:</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Dang-Vu-Duc/mon/temps-1.2/Image5.png" alt="Image merge"></p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Note</b></p>
+</div><div class="pl-8 mr-8">
+<p>On remarque que seul le contenu de la première cellule est conservé. De plus, les autres cellules de la cellule fusionnée sont des objets de la classe <strong>MergedCell</strong>. Il est possible de récupérer tout ces objets grâce à l'attribut <em>merged_cell.ranges</em> de la classe <strong>Worksheet</strong>.</p>
+</div></div>
+<h2 id="application-des-connaissances-acquises" tabindex="-1"><a class="header-anchor" href="#application-des-connaissances-acquises"></a> Application des connaissances acquises</h2>
+<p>Afin d'appliquer ces connaissances de openpyxl, nous allons travailler sur les fichiers Excel disponibles dans le Drive Do-It 2023/2024. Nous allons récupérer le fichier contenant la liste des élèves ainsi que leur choix de cours, ainsi que le fichier contenant l'emploi du temps de l'année. L'objectif est de créer un emploi du temps personnalisé pour chaque élève, en fonction de ses choix de cours. Il faudra donc lire les données de la première feuille puis écrire de nouvelles données sur la deuxième feuille. Ensuite, nous allons implémenter des méthodes pour permettre à l'utilisateur de rajouter ou supprimer manuellement des cours sur son emploi du temps.</p>
+<h3 id="cr%C3%A9ation-automatique-d'emplois-du-temps-personnalis%C3%A9s" tabindex="-1"><a class="header-anchor" href="#cr%C3%A9ation-automatique-d'emplois-du-temps-personnalis%C3%A9s"></a> Création automatique d'emplois du temps personnalisés</h3>
+<p>Le premier fichier Excel sur lequel nous allons travailler est celui contenant la liste des élèves ainsi que leurs choix de cours. Ce fichier est nommé <em>etudiants_Do-It_23_24.xlsx</em>. Le deuxième fichier est nommé <em>edt_Do_It.23-24.xlsx</em>, et contient l'emploi du temps de la promo Do-It 2023/2024 sous forme d'un tableau. On va créer une classe <strong>Create_timetable</strong> qui va contenir les méthodes pour manipuler les emplois du temps. Plus particulièrement, la méthode <em>create_timetable_automatic</em> va prendre en argument le nom et le prénom d'un étudiant et va enregistrer son emploi du temps personnalisé. Voici les différentes étapes que le programme va suivre:</p>
+<ul>
+<li>Création d'une liste <em>courses_name</em>, qui contient initialement les cours qui sont communs à tout les élèves (par exemple filière métier, les cours de tronc commun, les vacances etc...) On s'assure que tout ces cours soient écrits en lettres minuscules.</li>
+<li>Récupération du numéro de ligne correspondant au nom et prénom (donnés en arguments) dans le document Excel <em>etudiants_Do-It_23_24.xlsx</em>. Si le nom ou le prénom ne figure pas dans le document, on affiche une erreur et on sort de la méthode.</li>
+<li>Récupération des cours de l'élève. Pour cela, on parcourt le numéro de ligne que l'on vient de déterminer et on vérifie si une croix s'y trouve. Si c'est le cas, on remonte jusqu'au nom du cours (ligne 2) et on ajoute à la liste <em>courses_name</em> le nom du cours.</li>
+<li>Suppression des cours que l'élève n'a pas choisi. On parcourt toutes les cellules à l'intérieur du tableau du fichier Excel <em>edt_Do_It.23-24.xlsx</em>, et on relève son contenu. Si ce contenu n'est pas l'élément vide, on vérifie si le nom du cours est présent dans la liste <em>courses_name</em>. Si ce n'est pas le cas, on supprime ce cours. Pour supprimer ce cours, on fait appel à la méthode <em>remove_course_automatic</em>, qui suit les étapes suivantes:
+<ul>
+<li>Séparation des cellules</li>
+<li>Coloration de chaque cellule en blanc</li>
+<li>Suppression du contenu de ces cellules.</li>
+</ul>
+</li>
+<li>Si le cours est dans la liste des cours, on réajuste la hauteur de la cellule</li>
+<li>Une fois que toutes les cellules ont été visitées, on enregistre l'emploi du temps sous le nom de <em>edt de &quot;prénom&quot; &quot;nom&quot;</em></li>
+</ul>
+<p>On créé également une méthode <em>create_all_timetable</em>, qui itère la méthode précédente 24 fois (une fois pour chaque élève) pour créer chaque emploi du temps pour chaque élèves. Ces emplois du temps sont disponibles dans le dossier GitHub de ce MON: <a href="https://github.com/do-it-ecm/do-it/tree/main/src/promos/2023-2024/Dang-Vu-Duc/mon/temps-1.2">Codes du MON1.2</a></p>
+<p>Pour executer ce code, il faut créer un objet de la classe <strong>Create_timetable</strong> et appeler la méthode <em>create_timetable_automatic</em>, en renseignant les nom et prénom de l'élève (sous forme de chaîne de caractères):</p>
+<pre class="language-python line-numbers"><code>
+
+test = Create_timetable()
+test.create_timetable_automatic("Dang Vu", "Duc")
+
+
+</code></pre><p>L'exécution de ces lignes produit le fichier Excel suivant:</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Dang-Vu-Duc/mon/temps-1.2/Image6.png" alt="edt Duc"></p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Note</b></p>
+</div><div class="pl-8 mr-8">
+<p>Les emplois du temps produits sont basés sur le fichier original datant du 14/10/23. Il est possible que d'ici cette date, de nouveaux cours soient rajoutés, ou bien modifiés voire même supprimés. C'est pourquoi le temps 3 n'est pas complet pour tout les emplois du temps car à l'heure où j'écris ces lignes, les cours du temps 3 ne sont pas encore fixés. De plus, il est très important que les noms des cours indiqués dans le fichier <em>etudiants_Do-It_23_24.xlsx</em> correspondent <strong>mot pour mot</strong> à ceux présents dans le fichier <em>edt_Do_It.23-24.xlsx</em>. Même un espace à la fin du nom posera des problèmes.</p>
+</div></div>
+<h3 id="ajout-et-suppression-automatis%C3%A9-d'un-cours" tabindex="-1"><a class="header-anchor" href="#ajout-et-suppression-automatis%C3%A9-d'un-cours"></a> Ajout et suppression automatisé d'un cours</h3>
+<p>La classe <strong>Create_timetable</strong> contient également des méthodes pour ajouter ou supprimer des cours dans un fichier Excel renseigné en argument. Voici les étapes que suit la méthode <em>add_course</em> pour ajouter des cours:</p>
+<ul>
+<li>Demande des informations suivantes: jour et mois du cours qui doit être ajouté, date et durée du cours, nom du professeur, numéro de salle et couleur du cours (au format hex)</li>
+<li>Récupération de la cellule correspondant à la date renseignée. Pour cela, on appelle la méthode <em>get_cell_reference</em>, qui utilise une liste <em>weeks</em> composée des semaines de l'année (obtenue grâce aux colonnes C et D de l'edt) et qui en déduit la cellule correspondante.</li>
+<li>Ajout du cours en question: on fusionne les $n$ cellules en partant de la cellule obtenue, $n$ étant la durée du cours renseignée.</li>
+</ul>
+<p>La méthode <em>remove_course</em> suit des étapes similaires.</p>
+<p>Voici ce que produit la méthode <em>add_course</em> quand on exécute la commande <code>test.add_course(&quot;edt_de_Duc_Dang_Vu.xlsx&quot;)</code>, après avoir rentré les informations du cours à rajouter:</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Dang-Vu-Duc/mon/temps-1.2/Image7.png" alt="Image commande"></p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Dang-Vu-Duc/mon/temps-1.2/Image8.png" alt="Image edt modifié"></p>
+<p>Et voici ce que produit la méthode <em>remove_course</em> quand on exécute la commande <code>test.remove_course(&quot;edt_de_Duc_Dang_Vu.xlsx&quot;)</code>, après avoir rentré les informations du cours à supprimer:</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Dang-Vu-Duc/mon/temps-1.2/Image9.png" alt="Image commande 2"></p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Dang-Vu-Duc/mon/temps-1.2/Image10.png" alt="Image edt modifié 2"></p>
+<p>Le cours a bien été ajouté, puis supprimé comme on le voulait.</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Cliquer pour voir le code de la classe <strong>Create_timetable</strong></p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-python line-numbers"><code>
+
+import openpyxl
+from openpyxl.styles import Font, PatternFill, Alignment
+from openpyxl.utils import get_column_letter
+from openpyxl.styles.borders import Border, Side
+
+class Create_timetable():
+    def __init__(self):
+        self.create_new_sheets()
+        self.weeks = []
+        self.possible_times = [8, 9, 10, 11, 12, 14, 15, 16, 17, 18]
+        self.wb = openpyxl.load_workbook('edt_Do_It.23-24.xlsx')
+        self.sheet = self.wb['année']
+        for i in range(3,35):
+            cell_begin = self.sheet.cell(row = i, column = 3)
+            cell_end = self.sheet.cell(row = i, column = 4)
+            self.weeks.append([cell_begin.value, cell_end.value])
+
+    def create_new_sheets(self):
+        self.wb2 = openpyxl.load_workbook('etudiants_Do-It_23_24.xlsx')
+        self.sheet2 = self.wb2['effectif']
+        self.wb3 = openpyxl.load_workbook('edt_Do_It.23-24.xlsx')
+        self.sheet3 = self.wb3['année']
+
+    def get_cell_reference(self, day, month, time):
+        nb_week = None
+        nb_day = None
+        for k in range(len(self.weeks)):
+            date_begin = self.weeks[k][0]
+            date_end = self.weeks[k][1]
+            if date_begin.month == date_end.month and month == date_begin.month:
+                if day in range(date_begin.day, date_end.day + 1):
+                    nb_week = k
+                    nb_day = day - date_begin.day
+                    break
+            if date_begin.month != date_end.month and month == date_begin.month:
+                if day >= date_begin.day:
+                    nb_week = k
+                    nb_day = day - date_begin.day
+                    break
+            if date_begin.month != date_end.month and month == date_end.month:
+                if day <= date_end.day:
+                    nb_week = k
+                    virtual_day_begin = date_end.day - 4
+                    nb_day = day - virtual_day_begin
+                    break
+        if nb_week == None:
+            print("La date indiquée n'est pas valide")
+            return(False)
+        nb_row = nb_week + 3
+        if time not in self.possible_times:
+            print("L'heure indiquée n'est pas valide")
+            return(False)
+        else:
+            index = self.possible_times.index(time)
+            nb_column = nb_day * 8 + 5 + index
+        return(get_column_letter(nb_column) + str(nb_row))
+
+    def add_course(self, file_name):
+        current_wb = openpyxl.load_workbook(file_name)
+        current_sheet = current_wb['année']
+        day = int(input("Entrez le jour du cours: "))
+        month = int(input("Entrez le mois du cours: "))
+        time = None
+        while time not in self.possible_times:
+            time = int(input("Entrez l'heure du cours: "))
+        duration = int(input("Entrez la durée du cours: "))
+        name = str(input("Entrez le nom du cours: "))
+        professor = str(input("Entrez le nom du professeur: "))
+        room = str(input("Entrez le numéro de salle: "))
+        color = str(input("Entrez le code hex de la couleur du cours: "))
+        cell_reference = self.get_cell_reference(day, month, time)
+        cell_reference2 = self.get_cell_reference(day, month, time + duration - 1)
+        current_sheet.merge_cells(cell_reference + ':' + cell_reference2)
+        cell = current_sheet[cell_reference]
+        cell.fill = PatternFill("solid", start_color = color)
+        cell.value = f"{name}\n{professor}\n{room}"
+        cell.alignment = Alignment(wrapText=True, horizontal = "center", vertical = "center")
+        current_sheet.row_dimensions[cell.row].height = 10 * 3 + 10
+        current_wb.save(file_name)
+
+    def remove_course(self, file_name):
+        current_wb = openpyxl.load_workbook(file_name)
+        current_sheet = current_wb['année']
+        day = int(input("Entrez le jour du cours qui doit être supprimé: "))
+        month = int(input("Entrez le mois du cours qui doit être supprimé: "))
+        time = int(input("Entrez l'heure du cours qui doit être supprimé: "))
+        duration = int(input("Entrez la durée du cours qui doit être supprimé: "))
+        cell_reference = self.get_cell_reference(day, month, time)
+        cell_reference2 = self.get_cell_reference(day, month, time + duration - 1)
+        border = Border(left = Side(style='thin'), right = Side(style='thin'), top = Side(style='thin'), bottom = Side(style='thin'))
+        current_sheet.unmerge_cells(cell_reference + ':' + cell_reference2)
+        for k in range(duration):
+            cell_reference = self.get_cell_reference(day, month, time + k)
+            cell = current_sheet[cell_reference]
+            cell.border = border
+            cell.fill = PatternFill("solid", start_color = "FFFFFF")
+            cell.value = None
+        current_wb.save(file_name)
+
+    def remove_course_automatic(self, cell, duration):
+        border = Border(left = Side(style='thin'), right = Side(style='thin'), top = Side(style='thin'), bottom = Side(style='thin'))
+        if duration == 1:
+            cell.border = border
+            cell.fill = PatternFill("solid", start_color = "FFFFFF")
+            cell.value = None
+        else:
+            cell_end_coordinate = str(get_column_letter(cell.column + duration - 1)) + str(cell.row)
+            self.sheet3.unmerge_cells(cell.coordinate + ':' + cell_end_coordinate)
+            for k in range(duration):
+                current_cell_coordinate = str(get_column_letter(cell.column + k)) + str(cell.row)
+                current_cell = self.sheet3[current_cell_coordinate]
+                current_cell.border = border
+                current_cell.fill = PatternFill("solid", start_color = "FFFFFF")
+                current_cell.value = None
+
+    def get_course_duration(self, cell):
+        for mergedCell in self.sheet3.merged_cells.ranges:
+            if cell.coordinate in mergedCell:
+                return(mergedCell.max_col - mergedCell.min_col + 1)
+        return(1)
+
+
+
+    def create_timetable_automatic(self, nom, prénom):
+        courses_name = ["bonjour !", "tc1 : agilité", "lancement projet 3a", "tc1 : gestion des sources", "tc1 : service design", "langues", "projet 3a", "vacances", "filière métier", "tronc commun 3a", "prez mon 2", "prez pok", "point pok sprint 1", "point pok sprint 2", "prez mon 1", "pok&mon", "cap 1a/3a/conception si", "prez projet", "rencontre w3g", "débrief", "conférence métier"]
+        row_number = None
+        for k in range(3,27):
+            cell_nom = self.sheet2.cell(row = k, column = 1)
+            cell_prénom = self.sheet2.cell(row = k, column = 2)
+            if prénom.lower() == cell_prénom.value.lower() and nom.lower() == cell_nom.value.lower():
+                row_number = k
+                break
+        if row_number == None:
+            print("Nom ou prénom invalide")
+            return()
+        for k in range(7,30):
+            cell = self.sheet2.cell(row = row_number, column = k)
+            if cell.value == 'x' or cell.value == "X":
+                course = self.sheet2.cell(row = 2, column = k).value
+                course = course.lower()
+                if course == 'bonnes pratiques':
+                    courses_name.append("structuration d'un projet info")
+                    courses_name.append("programmation par les tests")
+                else:
+                    courses_name.append(course)
+        border_medium_left =  Border(left = Side(style='medium'), right = Side(style='thin'), top = Side(style='thin'), bottom = Side(style='thin'))
+        border = Border(left = Side(style='thin'), right = Side(style='thin'), top = Side(style='thin'), bottom = Side(style='thin'))
+        border_thick_left = Border(left = Side(style='thick'), right = Side(style='thin'), top = Side(style='thin'), bottom = Side(style='thin'))
+        for nb_row in range(5, 35):
+            for nb_column in range(5, 45):
+                cell = self.sheet3.cell(row = nb_row, column = nb_column)
+                course_name = ''
+                if cell.value != None:
+                    for char in cell.value:
+                        course_name += char.lower()
+                        if "\n" in course_name:
+                            course_name = course_name[:len(course_name) - 1]
+                            break
+                    if course_name not in courses_name:
+                        course_duration = self.get_course_duration(cell)
+                        self.remove_course_automatic(cell, course_duration)
+                    else:
+                        cell.alignment = Alignment(wrapText=True, horizontal = "center", vertical = "center")
+                        cell.font = Font(size = 10)
+                        self.sheet3.row_dimensions[cell.row].height = 10 * 3 + 10
+                if (nb_column - 5) % 8 == 0:
+                    cell.border = border_thick_left
+                elif (nb_column - 5) % 8 == 4:
+                    cell.border = border_medium_left
+                else:
+                    cell.border = border
+        self.wb3.save(f'edt de {cell_prénom.value} {cell_nom.value}.xlsx')
+        print(f'Emploi du temps enregistré sous le nom de "edt de {cell_prénom.value} {cell_nom.value}.xlsx"')
+
+    def create_all_timetable(self):
+        for k in range(3,27):
+            self.create_new_sheets()
+            nom = self.sheet2.cell(row = k, column = 1).value
+            prénom = self.sheet2.cell(row = k, column = 2).value
+            self.create_timetable_automatic(nom, prénom)
+        print("Tout les edt ont été enregistrés")
+
+
+</code></pre></div>
+</details>
+</div>
+<h2 id="conclusion" tabindex="-1"><a class="header-anchor" href="#conclusion"></a> Conclusion</h2>
+<p>Ce MON fut très intéressant. Je ne savais pas qu'il était possible d'automatiser des opérations sur Excel avec Python, et j'ai donc beaucoup appris. Ces connaissances peuvent très certainement m'être utiles dans ma future carrière.</p>
+<h2 id="sources" tabindex="-1"><a class="header-anchor" href="#sources"></a> Sources</h2>
+<ul>
+<li>Al Sweigart. <em>Automate the boring stuff with Python</em>. Chapitre 13: <em>Working with Excel spreadsheets</em>. <a href="https://automatetheboringstuff.com/">https://automatetheboringstuff.com/</a>. Consulté pour la dernière fois le 15/10/23</li>
+<li>Documentation de openpyxl. <em><a href="http://readthedoc.io">readthedoc.io</a></em>. <a href="https://openpyxl.readthedocs.io/en/stable/">site d'openpyxl</a></li>
+<li>Tout les codes présentés ont été écrits par mes soins, de A à Z</li>
+</ul>
+
+
+
+</article>
+
+        </main>
+
+        <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-center items-center">
+                    <p class="text-center">
+                        ©2025 <b><span style="font-family: Consolas, sans-serif;">Do_<span style="color: #4a86e8">It</span></span></b> - Développement, Management et Gestion de projets en IT
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- MathJax import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">
+            window.MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']], // Delimiters for inline math
+                    displayMath: [['$$', '$$'], ['\\[', '\\]']] // Delimiters for block math
+                },
+                svg: {
+                    fontCache: 'global' // Use global font cache for SVG output
+                }
+            };
+            document.addEventListener('DOMContentLoaded', () => {
+                MathJax.typeset(); // Ensures MathJax processes the content after the page loads
+            });
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">
+            Prism.plugins.NormalizeWhitespace.setDefaults({
+                'remove-trailing': true,
+                'remove-indent': true,
+                'left-trim': true,
+                'right-trim': true,
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script>
+    </body>
+</html>
