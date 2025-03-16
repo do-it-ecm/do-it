@@ -14,3 +14,6 @@
 	path = src/cs
 	url = https://github.com/do-it-ecm/courses.git
 	branch = main
+[submodule "scripts/compliance"]
+	path = scripts/compliance
+	url = https://github.com/do-it-ecm/compliance-check.git
