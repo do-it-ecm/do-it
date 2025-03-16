@@ -1,0 +1,26 @@
+name: Notify Parent Repo Build
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  notify-parent:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Compliance Check
+        uses: do-it-ecm/compliance-check@1.0.0
+
+      - name: Trigger Parent Workflow
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          token: ${{ secrets.DO_IT_UPDATE_TOKEN }}
+          repository: do-it-ecm/do-it
+          event-type: submodule-update
+          client-payload: '{"submodule": "${{ github.repository }}"}'

@@ -12,6 +12,7 @@ export default function (eleventyConfig) {
         "**/assets/**",
         "**/node_modules/**",
         "**/.gitignore",
+        "**/.git",
     ];
     IGNORE_GLOBS.forEach((glob) => {
         eleventyConfig.ignores.add(glob);
