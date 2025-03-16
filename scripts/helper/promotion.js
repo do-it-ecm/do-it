@@ -17,107 +17,17 @@ export const PROMOS_DIRECTORY = path.join(process.cwd(), 'src', 'promos');
 // Remote organization URL
 const REMOTE_ORG_URL = 'https://github.com/do-it-ecm';
 // Default GitHub workflow
-const DEFAULT_GITHUB_WORKFLOW = `name: Notify Parent Repo Build
-
-    on:
-    push:
-        branches:
-        - main
-
-    jobs:
-    notify-parent:
-        runs-on: ubuntu-latest
-
-        steps:
-        - name: Trigger Parent Workflow
-            uses: peter-evans/repository-dispatch@v3
-            with:
-            token: \${{ secrets.DO_IT_UPDATE_TOKEN }}
-            repository: do-it-ecm/do-it
-            event-type: submodule-update
-            client-payload: '{"submodule": "\${{ github.repository }}"}'
-    `;
+const DEFAULT_GITHUB_WORKFLOW = fs.readFileSync(path.join('templates', 'promo', 'update-parent.yml'), 'utf-8');
 // Default promo index page
-const DEFAULT_INDEX_PAGE = `---
-    layout: layout/promo.njk
-    ---
-    `
+const DEFAULT_INDEX_PAGE = fs.readFileSync(path.join('templates', 'promo', 'index.njk'), 'utf-8');
 // Default promo POK page
-const DEFAULT_POK_PAGE = `---
-    layout: layout/pok-mon-promo-index.njk
-
-    category: POK
-    ---
-    `;
+const DEFAULT_POK_PAGE = fs.readFileSync(path.join('templates', 'promo', 'pok-index.njk'), 'utf-8');
 // Default promo MON page
-const DEFAULT_MON_PAGE = `---
-    layout: layout/pok-mon-promo-index.njk
-
-    category: MON
-    ---
-    `;
+const DEFAULT_MON_PAGE = fs.readFileSync(path.join('templates', 'promo', 'mon-index.njk'), 'utf-8');
 // Default projects index page
-const DEFAULT_PROJECTS_PAGE = `---
-    layout: layout/projet-index.njk
-    ---
-    `;
+const DEFAULT_PROJECTS_PAGE = fs.readFileSync(path.join('templates', 'promo', 'projects-index.njk'), 'utf-8');
 // Default gitignore file
-const DEFAULT_GITIGNORE_CONTENT = `# IDE
-.vscode
-.vs
-.idea
-.idea/
-*.iml
-.idea_modules
-*.ipr
-*.iws
-*.bak
-*.swp
-*.swo
-*.swn
-*.suo
-*.workspace
-
-# Compile output
-dist/
-build/
-
-# Node.js
-node_modules/
-npm-debug.log
-yarn-error.log
-yarn-debug.log*
-yarn.lock
-
-# Python
-__pycache__/
-*.pyc
-.env/
-.venv/
-venv/
-env/
-
-# Mac
-.DS_Store
-.AppleDouble
-.LSOverride
-
-# Windows
-Thumbs.db
-ehthumbs.db
-Desktop.ini
-
-# Keys
-*.key
-*.pem
-*.p12
-*.pfx
-*.crt
-*.csr
-*.cer
-*.jks
-*.pub
-`;
+const DEFAULT_GITIGNORE_CONTENT = fs.readFileSync(path.join('templates', 'promo', '.gitignore'), 'utf-8');
 
 /**
  * List all the promotion directories in the `src/promos` directory.
@@ -139,7 +49,7 @@ export function listPromos() {
 function getLatestPromo() {
     const promos = listPromos();
     const currentYear = new Date().getFullYear();
-    return promos.length ? promos.sort().reverse()[0] : `${currentYear - 1}-${currentYear}`;
+    return promos.length ? promos.sort()[-1] : `${currentYear - 1}-${currentYear}`;
 }
 
 /**
@@ -302,6 +212,6 @@ async function initPromo() {
     }
 }
 
-if (import.meta.url === new URL(import.meta.url).href) {
+if (import.meta.url === `file://${process.argv[1]}`) {
     initPromo();
 }
