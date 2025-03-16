@@ -10,165 +10,20 @@ import * as path from 'path';
 import { execSync } from 'child_process';
 import inquirer from 'inquirer';
 import { listPromos, PROMOS_DIRECTORY } from './promotion.js';
-import { VALID_NAME_REGEX } from '../compliance/filenames.js';
+import { VALID_NAME_REGEX } from '../compliance/filenames.mjs';
 
 // Valid student name, must be letters, special accentuated characters, at least 1 character and max 50 characters
 const VALID_STUDENT_REGEX = /^[\p{L}\p{M}'\-\s]+$/u;
 // Default student profile content
-const DEFAULT_PROFILE_CONTENT = `---
-layout: layout/profile.njk
-
-title: "STUDENT_NAME"
-authors:
-    - "STUDENT_NAME"
----
-
-Bienvenue sur le profil de STUDENT_NAME.
-
-## POK & MON
-
-- [POK](./pok)
-- [MON](./mon)
-
-## Projet
-`;
+const DEFAULT_PROFILE_CONTENT = fs.readFileSync(path.join('templates', 'student', 'profile.njk'), 'utf-8');
 // Default student POK index content
-const DEFAULT_POK_INDEX_CONTENT = `---
-layout: layout/pok-index.njk
-
-title: "POK de STUDENT_NAME"
-authors:
-  - "STUDENT_NAME"
----
-
-Ensemble des POK réalisés par STUDENT_NAME.
-
-- [POK 1](./temps-1)
-- [POK 2](./temps-2)
-- [POK 3](./temps-3)
-`;
+const DEFAULT_POK_INDEX_CONTENT = fs.readFileSync(path.join('templates', 'student', 'pok-index.njk'), 'utf-8');
 // Default student MON index content
-const DEFAULT_MON_INDEX_CONTENT = `---
-layout: layout/mon-index.njk
-
-title: "MON de STUDENT_NAME"
-authors:
-  - "STUDENT_NAME"
----
-
-Ensemble des MON réalisés par STUDENT_NAME.
-
-- [MON 1.1](./temps-1.1)
-- [MON 1.2](./temps-1.2)
-- [MON 2.1](./temps-2.1)
-- [MON 2.2](./temps-2.2)
-- [MON 3.1](./temps-3.1)
-- [MON 3.2](./temps-3.2)
-`;
+const DEFAULT_MON_INDEX_CONTENT = fs.readFileSync(path.join('templates', 'student', 'mon-index.njk'), 'utf-8');
 // Default MON content
-const DEFAULT_MON_CONTENT = `---
-layout: layout/mon.njk
-
-title: "Titre du MON PERIOD.HALF"
-authors:
-  - STUDENT_NAME
-
-date: 1970-09-01
-
-temps: PERIOD
-tags:
-
-résumé: "Un MON traitant d'un sujet."
----
-
-{% prerequis %}
-
-Liste des prérequis du POK ET/OU MON
-
-{% endprerequis %}
-{% lien %}
-
-Les lien utiles pour la compréhension de celui-ci.
-
-{% endlien %}
-
-Quelques phrases permettant de connaître, sans jargon ni blabla, le contenu de ce MON. On oubliera pas de donner :
-
-- le niveau et les prérequis nécessaires en utilisant la balise [prerequis](/contribuer/shortcodes/#prerequis)
-- les autres POK & MON en rapport en utilisant la balise [lien](/contribuer/shortcodes/#lien)
-
-## Contenu
-
-Le contenu du MON.
-`;
+const DEFAULT_MON_CONTENT = fs.readFileSync(path.join('templates', 'student', 'mon.njk'), 'utf-8');
 // Default POK content
-const DEFAULT_POK_CONTENT = `---
-layout: layout/pok.njk
-
-title: "Titre du POK du temps PERIOD"
-authors:
-  - STUDENT_NAME
-
-date: 1970-09-01
-
-temps: PERIOD
-tags:
-
-résumé: Un POK traitant d'un sujet.
----
-
-{% prerequis %}
-
-Liste des prérequis du POK ET/OU MON
-
-{% endprerequis %}
-{% lien %}
-
-Les lien utiles pour la compréhension de celui-ci.
-
-{% endlien %}
-
-Quelques phrases permettant de connaître, sans jargon ni blabla, le contenu de ce POK. On oubliera pas de donner :
-
-- le niveau et les prérequis nécessaires en utilisant la balise [prerequis](/contribuer/shortcodes/#prerequis)
-- les autres POK & MON en rapport en utilisant la balise [lien](/contribuer/shortcodes/#lien)
-
-## Tâches
-
-### Sprints
-
-But final.
-
-#### Sprint 1
-
-Liste des taches que l'on pense faire. On coche si la tache est réalisée. A la fin du sprint on fait une petite étude post-mortem pour voir ce qui s'est passé et les ajustement à faire pour le prochain sprint, pok.
-
-- [ ] Une tâche non réalisée
-- [x] Une tâche réalisée
-
-#### Sprint 2
-
-- [ ] Une tâche non réalisée
-- [x] Une tâche réalisée
-
-Liste des taches que l'on pense faire. On coche si la tache est réalisée. A la fin du sprint on fait une petite étude post-mortem pour voir ce qui s'est passé et les ajustement à faire pour le prochain sprint, pok.
-
-### Horodatage
-
-Toutes les séances et le nombre d'heure que l'on y a passé.
-
-| Date | Heures passées | Indications |
-| -------- | -------- |-------- |
-| Mardi 27/08  | 1H  | Travail sur la trame du site |
-
-## Contenu
-
-Le contenu du POK.
-
-### Premier Sprint
-
-### Second Sprint
-`;
+const DEFAULT_POK_CONTENT = fs.readFileSync(path.join('templates', 'student', 'pok.njk'), 'utf-8');
 
 /**
  * Select a promotion from the available promotions.
@@ -423,6 +278,6 @@ function formatStudentDirectory(studentName) {
     return `${removeAccents(firstName)}-${removeAccents(lastName)}`;
 }
 
-if (import.meta.url === new URL(import.meta.url).href) {
+if (import.meta.url === `file://${process.argv[1]}`) {
     initStudent();
 }

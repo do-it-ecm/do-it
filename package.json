@@ -11,7 +11,7 @@
     "serve": "npm run check-compliance && npx @11ty/eleventy --serve --incremental",
     "serve-nav": "env NAV=true npm run serve",
     "debug": "DEBUG=* npx @11ty/eleventy",
-    "check-compliance": "node ./scripts/compliance/index.js",
+    "check-compliance": "node ./scripts/compliance/index.mjs",
     "init-promotion": "node ./scripts/helper/promotion.js",
     "init-student": "node ./scripts/helper/student.js"
   },
