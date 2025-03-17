@@ -23,6 +23,17 @@ export default function (eleventyConfig) {
   collectionsConfig(eleventyConfig);
   postCompilation(eleventyConfig); // tailwind and search
 
+  let buildStartTime;
+
+  eleventyConfig.on("beforeBuild", () => {
+    buildStartTime = Date.now();
+  });
+
+  eleventyConfig.on("afterBuild", () => {
+    const buildEndTime = Date.now();
+    console.log(`⏱️  Eleventy Build time: ${((buildEndTime - buildStartTime) / 1000).toFixed(2)}s ⏱️`);
+  });
+
   return {
     dir: {
       input: "src",
