@@ -35,7 +35,7 @@ Pour ajouter du contenu, il faut d'abord connaître sa promotion (par exemple `2
 
 ### Le directory élève
 
-Le directory élève (dossier élève pour ceux qui viennent de Windows) est **le directory qui contient les informations et les publications de l'élève**. Il est situé dans le dossier `src/promos/2024-2025/Gordon-Zola/`{.fichier}.
+Le directory élève (dossier élève pour ceux qui viennent de Windows) est **le directory qui contient les informations et les publications de l'élève**. Il est situé dans le dossier `src/promos/2024-2025/Gordon-Zola/`.
 
 Pour le créer, vous devez utiliser l'utilitaire node: `npm run init-student` dans le terminal. Vous allez devoir selectionner la promotion dans laquelle vous voulez ajouter votre directory élève. Ensuite vous devrez rentrer votre nom et prénom.\
 Cela va **automatiquement** créer un **directory élève** ainsi qu'une **branche git locale** à votre nom dans la promotion choisie, avec tous les fichiers nécessaires pour commencer à écrire.
@@ -72,7 +72,7 @@ Si vous avez déjà un directory élève, n'allez pas en créer un autre. Vous p
 
 ### Ajouter un POK
 
-Pour ajouter / éditer un POK, il suffit d'aller éditer le fichier `src/promos/VOTRE_PROMOTION/VOTRE_DIRECTORY_ELEVE/pok/temps-TEMPS/index.md`{.fichier}.
+Pour ajouter / éditer un POK, il suffit d'aller éditer le fichier `src/promos/VOTRE_PROMOTION/VOTRE_DIRECTORY_ELEVE/pok/temps-TEMPS/index.md`.
 
 Il faut seulement s'assurer que le fichier contient son entête avec:
 - Le layout **POK** (layout/pok.njk) à utiliser
@@ -109,7 +109,7 @@ résumé: RÉSUMÉ_DE_VOTRE_POK
 
 ### Ajouter un MON
 
-Pour ajouter / éditer un MON, il suffit d'aller éditer le fichier `src/promos/VOTRE_PROMOTION/VOTRE_DIRECTORY_ELEVE/mon/temps-TEMPS/index.md`{.fichier}.
+Pour ajouter / éditer un MON, il suffit d'aller éditer le fichier `src/promos/VOTRE_PROMOTION/VOTRE_DIRECTORY_ELEVE/mon/temps-TEMPS/index.md`.
 
 Il faut seulement s'assurer que le fichier contient son entête avec:
 - Le layout **MON** (layout/mon.njk) à utiliser
@@ -146,7 +146,7 @@ résumé: RÉSUMÉ_DE_VOTRE_MON
 
 ### Ajouter un projet
 
-Pour ajouter / éditer un projet, cela se passe dans `src/promos/VOTRE_PROMOTION/_projets/VOTRE_PROJET`{.fichier}.
+Pour ajouter / éditer un projet, cela se passe dans `src/promos/VOTRE_PROMOTION/_projets/VOTRE_PROJET`.
 
 Il faut seulement s'assurer que le fichier contient son entête avec:
 - Le layout **projet** (layout/projet.njk) à utiliser
