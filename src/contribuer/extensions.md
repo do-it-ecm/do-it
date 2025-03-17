@@ -37,9 +37,9 @@ Notre layout de base contient plusieurs librairies javascript et CSS pour améli
 ## Variables
 
 Plusieurs variables sont disponibles pour uniformiser le style / code du site.\
-Elles sont définies dans les fichiers `src/_data/*.json`{.fichier} et sont accessibles dans les fichiers HTML et Markdown.
+Elles sont définies dans les fichiers `src/_data/*.json` et sont accessibles dans les fichiers HTML et Markdown.
 
-Pour importer celles du fichier `site.json`{.fichier}, il suffit de placer entre crochets doubles &#123;&#123; &#125;&#125; le nom de la variable.\
+Pour importer celles du fichier `site.json`, il suffit de placer entre crochets doubles &#123;&#123; &#125;&#125; le nom de la variable.\
 Par exemple, pour importer l'URL du site :
 
 ```markdown

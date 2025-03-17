@@ -3,7 +3,6 @@
  */
 
 import markdownIt from "markdown-it";
-import markdownItAttrs from "markdown-it-attrs";
 import markdownItMultimdTable from "markdown-it-multimd-table";
 import markdownItAnchor from "markdown-it-anchor";
 import markdownItTocDoneRight from "markdown-it-toc-done-right";
@@ -33,7 +32,6 @@ export default function (eleventyConfig) {
 
     // Add plugins
     markdownItLibrary
-        .use(markdownItAttrs)
         .use(markdownItMultimdTable, {
             multiline: true,
             rowspan: true,

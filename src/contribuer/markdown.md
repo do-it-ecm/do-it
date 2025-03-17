@@ -121,16 +121,16 @@ Cela peut être un lien vers une page web, un fichier à télécharger, une autr
 [Do-It]({{ site.url }})
 
 {% attention %}
-Si vous nommez votre fichier autrement que `index.md`{.fichier}, il faut mettre `../` devant le chargement de votre ressource (ex : `![image à voir](../mon-image.png)`{.fichier}).
+Si vous nommez votre fichier autrement que `index.md`, il faut mettre `../` devant le chargement de votre ressource (ex : `![image à voir](../mon-image.png)`).
 
-En effet, si vous utilisez par exemple `mon_fichier.md`{.fichier} comme nom de post, eleventy va :
+En effet, si vous utilisez par exemple `mon_fichier.md` comme nom de post, eleventy va :
 
-1. créer un dossier nommer `mon_fichier`{.fichier}
-2. placer votre post dans ce dossier et le renommer `index.md`{.fichier}
+1. créer un dossier nommer `mon_fichier`
+2. placer votre post dans ce dossier et le renommer `index.md`
 
 Vos images ne se retrouvent du coup plus dans le bon dossier...
 
-C'est pourquoi, il est recommandé de toujours créer un dossier avec le nom de votre post et d'y mettre vos données,fichier `index.md`{.fichier} et ressources.
+C'est pourquoi, il est recommandé de toujours créer un dossier avec le nom de votre post et d'y mettre vos données,fichier `index.md` et ressources.
 {% endattention %}
 
 ## Images & Vidéos <a id="images-videos"></a>
