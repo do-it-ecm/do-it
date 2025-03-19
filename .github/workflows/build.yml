@@ -1,17 +1,17 @@
 name: publish
 
 on:
-  workflow_run:
-    workflows: ["check-compliance"]
-    types:
-      - completed
+  repository_dispatch:
+    types: [submodule-update]
+  push:
+    branches:
+      - main
 
 env:
   NODE_VERSION: "20.7" # Define the Node.js version here
 
 jobs:
   publish:
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     steps:
       # Checkout code without initializing submodules
@@ -70,6 +70,9 @@ jobs:
         with:
           path: ~/.npm
           key: npm-cache-${{ env.NODE_VERSION }}-${{ github.ref_name }}
+
+      - name: Check Compliance
+        run: npm run check-compliance
 
       - name: Build
         run: npm run build-github
