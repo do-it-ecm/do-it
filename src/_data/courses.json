@@ -189,6 +189,10 @@
                 {
                     "title": "UI/UX",
                     "path": "gestion_modelisation/uiux"
+                },
+                {
+                    "title": "High Performance Team",
+                    "path": "gestion_modelisation/hpt"
                 }
             ]
         },
