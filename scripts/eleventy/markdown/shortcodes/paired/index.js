@@ -12,6 +12,7 @@ import setupChemin from "./chemin.js";
 import setupPrerequis from "./prerequis.js";
 import setupLien from "./lien.js";
 import setupSommaire from "./sommaire.js";
+import setupCitation from "./citation.js";
 
 export default function (eleventyConfig) {
     setupInfo(eleventyConfig);
@@ -24,4 +25,5 @@ export default function (eleventyConfig) {
     setupPrerequis(eleventyConfig);
     setupLien(eleventyConfig);
     setupSommaire(eleventyConfig);
+    setupCitation(eleventyConfig);
 }

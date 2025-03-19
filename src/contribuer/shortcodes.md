@@ -132,6 +132,19 @@ Contenu de l'info.
 Contenu de l'info.
 {% endinfo %}
 
+### Paired Shortcode  `citation`
+
+Permet d'ajouter une citation dans votre contenu.
+
+```markdown
+&#123;% citation "**Auteur de la citation (OPTIONNEL)**", "**Source de la citation (OPTIONNEL)**" %&#125;
+Contenu de la citation.
+&#123;% endcitation %&#125;
+```
+
+{% citation "Linus Torvalds" %}
+AI is 90% marketing and 10% reality
+{% endcitation %}
 
 ### Paired Shortcode `faire`
 

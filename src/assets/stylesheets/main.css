@@ -59,10 +59,6 @@
         @apply max-w-none prose prose-slate;
     }
 
-    blockquote {
-        @apply border-l-8;
-    }
-
     code[class*=language-]::before,
     code[class*=language-]::after {
         content: "";
