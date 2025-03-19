@@ -1,15 +1,9 @@
 name: check-compliance
 
 on:
-  repository_dispatch:
-    types: [submodule-update]
   pull_request:
-    types:
-      - closed
-    branches:
-      - main
   push:
-    branches:
+    branches-ignore:
       - main
 
 env:
@@ -78,3 +72,6 @@ jobs:
 
       - name: Check Compliance
         run:  npm run check-compliance
+
+      - name: Build
+        run: npm run build-github
