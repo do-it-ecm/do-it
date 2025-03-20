@@ -13,6 +13,8 @@ Thank you for your interest in contributing to Do-It! We welcome all contributio
     - [Init Promotion](#init-promotion)
 - [ShortCodes](#shortcodes)
     - [SizedImage](#sizedimage)
+    - [Sommaire](#sommaire)
+    - [Citation](#citation)
     - [Attention](#attention)
     - [Details](#details)
     - [Exercice](#exercice)
@@ -56,9 +58,11 @@ If you want to trigger a build, you can create a pull request from your branch t
 The repository contains a few helper scripts to help you with the development process. You can find them in the `scripts/` directory.
 
 ### Compliance Checks <span id="compliance-checks"></span>
+
 `npm run check-compliance` will run the compliance checks on the repository. It will check the filestructure to find any inconsistencies with the guidelines.
 
 ### Serve <span id="serve"></span>
+
 `npm run serve` will build the website and serve it on a local server. It will watch for changes in the source files and rebuild the website when a change is detected. It will also reload the browser when the build is complete.
 
 PLEASE use this command to **check your changes before pushing them**. It will help you to see how your changes will look on the website.
@@ -66,9 +70,11 @@ PLEASE use this command to **check your changes before pushing them**. It will h
 You can use `npm run serve-nav` to serve the website with the navigation bar. It will help you to navigate through the website more easily, but the build will be slower.
 
 ### Init Student <span id="init-student"></span>
+
 `npm run init-student` will create a new git branch and checkout in it. It will then create the student directory in the corresponding promotion. It will prompt you for the promotion and student name, then for a confirmation. It will also create the necessary files and directories for the student.
 
 ### Init Promotion <span id="init-promotion"></span>
+
 `npm run init-promotion` will create a new git submodule for a promotion. It will prompt you for the promotion year. It will also create the necessary files and directories for the promotion. It will set the upstream repository to a new repository that will be created on GitHub.
 
 ## ShortCodes <span id="shortcodes"></span>
@@ -89,6 +95,35 @@ You can use it like this:
 - `<IMAGE_ALT>`: The alt text of the image. (Mandatory)
 - `<IMAGE_SIZE>`: The size of the image. You can use `veryTinyIcon`, `tinyIcon`, `smallIcon`, `icon`, `bigIcon`, `biggerIcon`, `hugeIcon`, `smallImg`, `img`, `bigImg`, `smallBanner`, `banner`, `bigBanner`. (Default is `img`)
 - `<CENTER_IMAGE>`: A boolean to center the image. You can use `true` or `false`. (Default is `true`)
+
+### Sommaire <span id="sommaire"></span>
+
+The `sommaire` is a **paired shortcode** used to generate a styled table of contents.\
+You can use it like this:
+
+```markdown
+{% sommaire %}
+[[toc]]
+{% endsommaire %}
+```
+
+The `[[toc]]` will automatically generate the table of contents based on the headers in the markdown file.
+If you prefer to use a custom table of contents, you can replace `[[toc]]` with your custom table of contents.
+
+### Citation <span id="citation"></span>
+
+The `citation` is a **paired shortcode** used to generate a styled citation block.\
+You can use it like this:
+
+```markdown
+{% citation "<CITATION_AUTHOR>", "<CITATION_SOURCE>" %}
+<CITATION_CONTENT>
+{% endcitation %}
+```
+
+- `<CITATION_CONTENT>`: The content of the citation. (Mandatory), must be raw HTML.
+- `<CITATION_AUTHOR>`: The author of the citation. (Optional, default is an empty string)
+- `<CITATION_SOURCE>`: The source of the citation. (Optional, default is an empty string)
 
 ### Attention <span id="attention"></span>
 
