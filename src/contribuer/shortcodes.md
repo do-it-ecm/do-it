@@ -134,7 +134,7 @@ Contenu de l'info.
 
 ### Paired Shortcode  `citation`
 
-Permet d'ajouter une citation dans votre contenu.
+Permet d'ajouter une citation dans votre contenu. Le contenu de la citation **doit être en raw HTML** pour permettre son affichage correct. *utilisez les balises &lt;br&gt; pour les retours à la ligne.*
 
 ```markdown
 &#123;% citation "**Auteur de la citation (OPTIONNEL)**", "**Source de la citation (OPTIONNEL)**" %&#125;
