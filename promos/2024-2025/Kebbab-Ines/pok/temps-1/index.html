@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="referrer" content="no-referrer-when-downgrade">
+        <meta name="robots" content="index, follow">
+
+        <link rel="canonical" href="https://do-it.aioli.ec-m.fr/promos/2024-2025/Kebbab-Ines/pok/temps-1/">
+
+        
+        
+
+        <meta name="description" content="Do-It, cours et travaux des élèves de l&#39;école Centrale Méditerranée">
+        <meta property="og:description" content="Do-It, cours et travaux des élèves de l&#39;école Centrale Méditerranée">
+        <meta name="twitter:description" content="Do-It, cours et travaux des élèves de l&#39;école Centrale Méditerranée">
+
+        
+            <meta name="author" content="Inès Kebbab">
+        
+        <meta name="keywords" content="do-it, centrale, centrale méditerranée, ecm, POK, info">
+
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png">
+        <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png">
+
+        <link href="/assets/stylesheets/main.css" rel="stylesheet">
+
+        <meta property="og:title" content="POK1 - Complesims, l&#39;interface web pour gérer des objectifs">
+
+        <meta property="og:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta property="og:url" content="https://do-it.aioli.ec-m.fr/promos/2024-2025/Kebbab-Ines/pok/temps-1/">
+        <meta property="og:type" content="website">
+
+        <meta name="twitter:card" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:title" content="POK1 - Complesims, l&#39;interface web pour gérer des objectifs">
+        <meta name="twitter:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:url" content="https://do-it.aioli.ec-m.fr/promos/2024-2025/Kebbab-Ines/pok/temps-1/">
+
+        <title>POK1 - Complesims, l&#39;interface web pour gérer des objectifs</title>
+
+        <!-- Prismjs imports
+                - Prism line numbers
+                - Prism toolbar
+        -->
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+        <!-- Mermaid import and initialization -->
+        <script type="module" defer="">
+            import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/+esm';
+            mermaid.initialize({
+                startOnLoad: true,
+            });
+        </script>
+    </head>
+
+    <body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000">
+        <header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-between items-center">
+                    <a class="mx-2" href="/">Home</a>
+                    <div class="flex items-center gap-4 sm:gap-6 ">
+                        <a class="" href="/cs">CS</a>
+                        <a class="" href="/pok">POK</a>
+                        <a class="" href="/mon">MON</a>
+                        <a class="" href="/projets">Projets</a>
+                        <a class="hidden sm:block" href="/promos">Promos</a>
+                        <a href="/search">
+                            <svg class="h-5 aspect-square" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+                            </svg>
+                        </a>
+                        <a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank">
+                            <svg class="h-5 aspect-square" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body="">
+            
+<article class="relative">
+<h1 class="mb-1">POK1 - Complesims, l&#39;interface web pour gérer des objectifs</h1>
+<div class="mb-4">
+    
+        <div class="px-4 flex flex-wrap items-center">
+            
+                <div class="font-bold">Tags : </div>
+            
+            <ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags">
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">POK</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">info</li>
+                
+
+            </ul>
+
+            
+            <div class="hidden" data-pagefind-meta="Type">
+                
+                    
+                        <span data-pagefind-filter="Type">POK</span>
+                    
+                
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Auteurs : </div>
+            <ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs">
+                
+                    <li class="bg-blue-200 rounded-full px-2" data-pagefind-filter="Auteurs">Inès Kebbab</li>
+                
+            </ul>
+        </div>
+    
+
+    
+        <div class="absolute top-0 right-0">
+            <span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2" data-pagefind-filter="Année">
+                2024-2025
+            </span>
+        </div>
+    
+</div>
+
+        <p class="mb-4 text-lg">
+
+                Ce premier POK vise à créer un petit site web pour suivre l'avancée dans une liste d'objectifs dans un jeu vidéo (Les Sims 4).
+
+        </p>
+
+
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/promos/2024-2025/Kebbab-Ines/">Inès KEBBAB</a><span class="px-1">/</span><a href="/promos/2024-2025/Kebbab-Ines/pok/">POK de Inès Kebbab</a><span class="px-1">/</span><a href="/promos/2024-2025/Kebbab-Ines/pok/temps-1/">POK1 - Complesims, l&#39;interface web pour gérer des objectifs</a>
+
+</div>
+</div>
+
+
+
+
+<p>L'objectif de ce POK est de revoir les notions de base de développement web en réalisant un POK.</p>
+<p>Autres POK ou MON en lien :</p>
+<ul>
+<li><a href="https://do-it.aioli.ec-m.fr/promos/2022-2023/Gissler-Nathan/mon/mon-1-1/">Web Front 1 HTML/CSS/JS</a> (MON de Nathan Gissler)</li>
+<li><a href="https://do-it.aioli.ec-m.fr/promos/2023-2024/William%20Lalanne/mon/temps-1.2/">Un peu de JavaScript</a> (MON de William Lalanne)</li>
+</ul>
+<h2 id="objectifs" tabindex="-1"><a class="header-anchor" href="#objectifs"></a> Objectifs</h2>
+<p>Ayant déjà de bases du dev web (front end, back end...), les objectifs principaux de ce projet est :</p>
+<ol>
+<li><strong>Se raffraichir la mémoire sur les notions utiles</strong>, notamment en vu de suivre (peut-être) le CS &quot;Dev Web : Zero to hero&quot; au temps 2.</li>
+<li><strong>Se perfectionner</strong> en front, sur HTML/CSS/JS et approfondir la compréhension du back (notamment avec des requêtes et la gestion d'une base de données simple).</li>
+<li><strong>Finir mon premier projet concret en solo de A à Z (ou presque)</strong>, sur un site complètement solo, du début à la fin.</li>
+</ol>
+<h2 id="t%C3%A2ches" tabindex="-1"><a class="header-anchor" href="#t%C3%A2ches"></a> Tâches</h2>
+<h4 id="sprint-1---rodage-et-premiers-tests" tabindex="-1"><a class="header-anchor" href="#sprint-1---rodage-et-premiers-tests"></a> Sprint 1 - Rodage et premiers tests</h4>
+<ol>
+<li>[X] Maquette express (avec des wireframes ?) de l'interface et choix de premières catégories à implémenter pour le sprint.</li>
+<li>[X] Remise à niveau / rappels HTML et CSS.</li>
+<li>[X] Remise à niveau / rappels en JS et analyse du code de site de James Turner pour comprendre la structure. (réalisé au Sprint 2)</li>
+<li>[X] Implémentation du premier bloc de checklist &quot;simple&quot;, en front end VS en back puis front end. (réalisé au Sprint 2)</li>
+</ol>
+<h4 id="sprint-2---ajout-des-autres-blocs-et-informations" tabindex="-1"><a class="header-anchor" href="#sprint-2---ajout-des-autres-blocs-et-informations"></a> Sprint 2 - Ajout des autres blocs et informations</h4>
+<ol>
+<li>[X] Implémentation de blocs à checklist à niveau d'avancement (1,2,3... Fait).</li>
+<li>[ ] Gestion des filtres d'affichages (DLCs et non terminé/terminé).</li>
+<li>[X] Affichage des pourcentages d'avancement par catégorie.</li>
+<li>[X] Affichage d'informations au survol des informations sur l'item.</li>
+<li>[/] Sauvegarde et/ou mise en cache.</li>
+<li>[ ] Etudier l'évolution vers une base de donnée (+ rappels back). (abandonné à la fin du sprint 1)</li>
+<li>[ ] <em>(Bonus : Animation / pop up si la checklist est complétée.)</em></li>
+</ol>
+<h3 id="horodatage" tabindex="-1"><a class="header-anchor" href="#horodatage"></a> Horodatage</h3>
+<p>Toutes les séances et le nombre d'heure que l'on y a passé.</p>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Heures passées</th>
+<th>Indications</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Dimanche 15/09</td>
+<td>10h</td>
+<td>Rappels HTML/CSS, réalisation du front en parallèle, recherches JS et premiers tests (infructueux) - Sprint 1</td>
+</tr>
+<tr>
+<td>Dimanche 13/10</td>
+<td>4h</td>
+<td>Apprentissage des bases JS et premiers tests pour la checklist &quot;Mort&quot; - Sprint 2</td>
+</tr>
+<tr>
+<td>Lundi 14/10</td>
+<td>5h</td>
+<td>Fin de la checklist &quot;Mort&quot;, ajout checklist avec progression, essais infobulle, recherches stockage local avec Javascript - Sprint 2</td>
+</tr>
+<tr>
+<td>Mardi 15/10</td>
+<td>1h</td>
+<td>Finalisation projet et rédaction POK - Sprint 2</td>
+</tr>
+</tbody>
+</table>
+<h2 id="contenu" tabindex="-1"><a class="header-anchor" href="#contenu"></a> Contenu</h2>
+<h3 id="l'id%C3%A9e-du-projet" tabindex="-1"><a class="header-anchor" href="#l'id%C3%A9e-du-projet"></a> L'idée du projet</h3>
+<p>Ce projet est inspiré par ma propre expérience de jeu sur les Sims 4 où je me mets au défi de &quot;finir le jeu à 100%&quot;, au travers d'une partie et donc obtenir toutes les réussites du jeu, compléter toutes les collections, atteindre le niveau maximal de toutes les compétences, etc.</p>
+<p>La liste de choses à découvrir est longue et pour suivre mon avancement, j'utilise le  <a href="https://jamesturner.yt/supersim/tracker">site du joueur James Turner</a> qui répond partiellement au besoin (et m'ayant ainsi inspiré ce POK), un Google Doc avec des checklists, ainsi qu'une liste papier selon les items.</p>
+<p>L'objectif serait donc d'avoir une interface web pour suivre au même endroit les items réalisés rangés par catégorie, à l'instar du site d'inspiration, avec quelques filtres supplémentaires (éléments manquants,...) et l'enregistrement de la progression sans connexion.</p>
+<p>Une fonctionnalité supplémentaire <em>(pour explorer plus de fonctionnalités)</em> serait d'afficher des informations d'aide pour réaliser l'item de la checklist.</p>
+<h3 id="premier-sprint" tabindex="-1"><a class="header-anchor" href="#premier-sprint"></a> Premier Sprint</h3>
+<h4 id="rappels-html-et-css" tabindex="-1"><a class="header-anchor" href="#rappels-html-et-css"></a> Rappels HTML et CSS</h4>
+<p>Pour commencer, j'ai repris mes bases en HTML et CSS pour faire un site &quot;agréable&quot; en partant de zéro. Je me suis aidée des formations du GInfo et du cours HTML/CSS d'Open Classroom pour me rafraîchir la mémoire.</p>
+<p>Ayant créé un site Wordpress récemment, j'ai pu faire beaucoup de liens entre les options des components et les valeurs de style ce que j'ai trouvé assez amusant.</p>
+<p>Les notions principales que je garde en mémoire :</p>
+<ul>
+<li><strong>Pour les marges :</strong> la valeur padding sert aux marges internes alors que la valeur margin sert aux marges externes.</li>
+<li><strong>Pour &quot;séparer&quot; une div :</strong> après avoir foncé dans le tas en cherchant la propriété &quot;width:65%; align: left;&quot; etc dans le but d'avoir deux colonnes, je me suis retrouvée bloquée un certain temps avec un bug de div qui n'avait pas les bonnes couleurs de fond ou les bons alignements... Tout simplement car ce n'était pas la bonne propriété ! La propriété CSS utile est <em>&quot;display&quot;</em>, avec les valeurs <em>&quot;flex&quot;, &quot;flex-direction&quot;</em> etc. Avec l'affichage <em>&quot;grid&quot;</em>, j'ai même pu avoir la grille souhaitée pour la checklist.</li>
+<li><strong>Faire du CSS propre n'est pas une perte de temps :</strong> j'ai d'abord été tenté d'inclure quelques styles dans les balises HTML... avant de me raisonner car de nombreuses balises avaient des propriétés similaires et il était beaucoup plus efficace de créer une classe (ou un id). Cela m'a aussi permis de me raisonner lorsque j'ai commencé le JS.</li>
+</ul>
+<p>Même si j'ai survolé le cours OpenClassrooms (et que l'ordre d'apprentissage ne correspondait pas à ce que je souhaitais réaliser), j'ai tout de même pu apprendre quelques notions supplémentaires notamment en CSS. De plus, cela m'a forcé a quasiment écrire toutes mes lignes à la main.</p>
+<p>Il y a encore des ajouts HTML et CSS à faire, mais la version actuelle permet d'avoir une première section avec les données pour tester et incorporer le JS.</p>
+<p>J'ai passé davantage de temps que prévu pour affiner et m'approprier le design de mon site. Je n'étais d'abord pas convaincue de la direction (dans les tons verts) avant de me décider sur un dark mode qui me permettait d'avoir des contrastes plus appréciables.</p>
+<h4 id="rappels-javascript" tabindex="-1"><a class="header-anchor" href="#rappels-javascript"></a> Rappels Javascript</h4>
+<p>Contrairement au HTML et CSS, je n'avais plus de souvenirs du JS. Un rappel théorique a été de rigueur, avec la formation du GInfo sur le Javascript. Cela m'a permis d'avoir déjà quelques intuitions sur les outils que j'utiliserais dans le second sprint (notamment pour la mise en cache au local).</p>
+<p>J'ai aussi pu analyser et mieux comprendre comment été construit le site de James Turner. Cela m'a semblé lourd et peu flexible pour un jeu très complexe de données, avec de nombreuses informations redondantes. J'aimerais en discuter avant mon prochain sprint pour savoir si poursuivre en JS est le plus optimal pour &quot;gérer la base de données&quot; (d'autant plus, que JS ne communique pas entre les pages du site).</p>
+<p>J'ai fait des premiers tests à partir d'exemples de codes de &quot;to do list&quot; trouvé sur le net et réadapté pour mon besoin, afin de sélectionner les items de la to do (et les marquer comme réalisé) pour la première catégorie d'item (&quot;Morts&quot;)... Mais ils n'ont pas été fructueux. En fait, je me suis rendue compte que c'était comme si j'avais essayé de me lancer dans ma propre recette de cuisine improvisée avec tous les ingrédients en main... sauf que je ne m'étais pas rendue compte que je n'avais aucun ustensile dans ma cuisine. Bref,  survoler le concept ne suffira pas ici avant de s'amuser, il me faut creuser davantage et éclaircir les zones de floues qu'il me reste en suivant pas à pas quelques tutos basiques.</p>
+<p>J'ai fini ce POK en me documentant sur JS et en recherchant les ressources utiles conseillées sur les autres MON/POK sur le sujet. Avant le début du sprint 2, je souhaite ainsi me pencher et faire quelques tests en dehors de ce projet avec :</p>
+<ul>
+<li>Le site MDN sur la section <a href="https://developer.mozilla.org/fr/docs/Web/JavaScript">Javascript</a> ;</li>
+<li>Le cours OpenClassrooms <a href="https://openclassrooms.com/fr/courses/7696886-apprenez-a-programmer-avec-javascript">&quot;Apprenez le Javascript</a> ;</li>
+<li>Le cours OpenClassrooms <a href="https://openclassrooms.com/fr/courses/7697016-creez-des-pages-web-dynamiques-avec-javascript">&quot;Créer des pages web dynamiques avec JavaScript&quot;</a> ;</li>
+<li>La page <a href="https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/">Legacy JavaScript Algorithms and Data Structures</a> de FreeCodeCamp (EN) ;</li>
+<li>Le cours de M. Brucker <a href="https://francoisbrucker.github.io/cours_informatique/cours/web/javascript-bases/">&quot;Javascript - bases&quot;</a> ;</li>
+<li>Pléthore de vidéos YouTubes, de durées variables (EN) ;</li>
+</ul>
+<p>J'ai été quelque peu perdue dans la quantité de ressources pour démarrer et dans le choix de celle qui sera la plus adaptée à mon besoin (avoir une bonne compréhension, sans prétendre à maîtriser l'outil).</p>
+<p>Pour clôturer le sprint 1, j'ai réussi à faire une catégorie ouverte/fermée comme prévue en JS lors du sprint 2... mais sans JS, avec l'aide de la balise &quot;details&quot; en HTML ! Il reste néanmoins quelques sujets de style à régler et corriger (et notamment avec l'affichage de la balise &quot;summary&quot;, qui entre en conflit avec mon titre H3 et les marges internes de mes boîtes).</p>
+<h4 id="quid-d'une-base-de-donn%C3%A9es-%3F" tabindex="-1"><a class="header-anchor" href="#quid-d'une-base-de-donn%C3%A9es-%3F"></a> Quid d'une base de données ?</h4>
+<p>J'avais hésité dès le départ à créer une base de données dans laquelle il serait facile d'ajouter un élément via l'interface plus tard. Pour me forcer à explorer au maximum Javascript, j'ai décidé de faire sans. Néanmoins, au vu du code sur le site d'inspiration, la rédaction est lourde et si l'on souhaite à terme avoir les mêmes données sur différentes pages, la donnée sera plutôt redondante (voire pire, une usine à gaz ?).</p>
+<p>En me rendant finalement compte des timings réels d'un sprint, je pense revoir le back sur mon temps libre ainsi que les bases de données. La base de données pourra comprendre la &quot;catégorie&quot; d'items, le nom, son statut (réalisé ou non) et éventuellement d'autres informations complémentaires / utiles (<em>pex : des infos sur comment compléter tel item</em>).</p>
+<h4 id="conclusion-du-sprint-1" tabindex="-1"><a class="header-anchor" href="#conclusion-du-sprint-1"></a> Conclusion du sprint 1</h4>
+<p>J'étais finalement plus rouillée que je le pensais, mais cela m'a permis de repartir sur des bases solides en HTML et CSS... J'espère néanmoins rattraper ce léger retard sur le sprint 2.</p>
+<h3 id="second-sprint" tabindex="-1"><a class="header-anchor" href="#second-sprint"></a> Second Sprint</h3>
+<h4 id="premiers-pas-en-js-%3A-changement-de-couleur-d'une-box" tabindex="-1"><a class="header-anchor" href="#premiers-pas-en-js-%3A-changement-de-couleur-d'une-box"></a> Premiers pas en JS : changement de couleur d'une box</h4>
+<ol>
+<li><strong>Récupération et identification de l'élément HTML.</strong></li>
+</ol>
+<p>Ayant retenu la leçon du sprint 1, j'ai d'abord repris de zéro les bases du Javascript pour comprendre comment l'intégrer dans mon code existant.</p>
+<p>Le language est assez proche de Python et fonctionne sur un système de variables, de fonctions et de méthodes... Ce système de propriétés sera intéressant plus tard pour identifier les différents items de la checklist selon des critères (DLCs possédés par le joueur, l'âge de l'avatar, mais aussi pour la catégorie de l'item ) et enregistrer la progression de la liste (avec la mise en cache local notamment).</p>
+<p>Après avoir revu et compris les bases, j'ai enfin réussi à comprendre pourquoi les bouts de code que j'essayais de forcer lors du sprint 1 ne marchaient pas : pour accéder aux objets dans le corps du HTML, il faut au préalable différé l'exécution du script et laisser le HTML de la charge se charger grâce à l'attribut <code>defer</code> à ajouter dans la balise <code>&lt;script src=&quot;scripts/script.js&quot; defer&gt;</code>.</p>
+<p>Après avoir bien lié le HTML, on peut enfin songer à récupérer des éléments dans le HTML. J'ai pu testé deux méthodes pour commencer (les objets étant identifiables par leur classe CSS): <code>querySelector</code> et <code>querySelectorAll</code>. Voici en quelques exemples les effets, pour récupérer les components de mes boxs:</p>
+<p><strong>Test 1 (via l'affichage dans la console)</strong></p>
+<pre class="line-numbers"><code>
+
+const listeBox = document.querySelectorAll(".conteneur div");
+console.log(listeBox);
+
+
+</code></pre><p>On obtient une liste d'objects HMTL, qui contient bien toutes les div &quot;box&quot; de la div de classe Conteneur.</p>
+<p><em>Problème?</em> L'accès aux propriétés est moins direct : comme les propriétés liées au style sont à deux échellons, autant s'éviter des peines.</p>
+<p><strong>Test 2 (idem)</strong></p>
+<pre class="line-numbers"><code>
+
+const box = document.querySelector(".box");
+console.log(box);
+
+
+</code></pre><p><em>Problème?</em> Il ne sélectionne que la première div sur la page qui est de la classe &quot;.box&quot;.</p>
+<p><strong>Test 3 (idem)</strong></p>
+<pre class="line-numbers"><code>
+
+const listeBox = document.querySelectorAll(".box");
+console.log(listeBox);
+
+
+</code></pre><p>Cette fois-ci, c'est la bonne, maintenant qu'on a vérifié que cela fonctionne et qu'on peut accéder à une liste contenant les boxs, et ainsi à leurs propriétés.</p>
+<ol start="2">
+<li><strong>Modification des propriétés d'un élément avec JS</strong></li>
+</ol>
+<p>Ensuite, il me fallait tester la modification des propriétés du component, l'objectif étant de modifier la &quot;background-color&quot; d'une boîte (au clic), soit un élément de style. Après quelques tests à l'aveugle (avec la méthode <code>setAttribute</code>), je teste avec des éléments plus simple et aboutit à ce type de code :</p>
+<pre class="line-numbers"><code>
+
+const listeBox = document.querySelectorAll(".box");
+listeBox[0].style.backgroundColor ="rgb(219, 188, 252)";
+
+
+</code></pre><p>Ici, on modifie en permanence la couleur d'une case ; on voudrait la modifier uniquement au clic. Pour cela, on peut utiliser la méthode JS qui déclenche le script selon un événement (ici au clic) :</p>
+<pre class="line-numbers"><code>
+
+listeBox[0].addEventListener('click',
+    () => {
+        listeBox[0].style.backgroundColor ="rgb(219, 188, 252)";
+    });
+
+
+</code></pre><ol start="3">
+<li><strong>Finalisation des cases à cocher</strong></li>
+</ol>
+<p>Le problème est que le changement est permanant après le clic, alors même que l'on souhaiterait pouvoir décocher la case. De plus, pour le moment, le script est effectif uniquement sur une unique case (toutes répertoriées dans listeBox qui est un tableau).</p>
+<p>Pour résoudre le premier, on peut imaginer avoir deux classes &quot;box&quot; distinctes : une pour la case décochée (celle actuelle), et une nouvelle lorsque la case est cochée. On pourra ainsi modifier la classe de la boîte. On peut aussi ajouter un booléen à chaque box pour indiquer si la case est cochée ou non. Cette variable sera aussi pertinente pour la mise en cache.</p>
+<p>Pour résoudre le second problème, il faut mettre en place une boucle for pour que toutes les box puissent avoir de l'interaction.</p>
+<p>Ainsi, je suis arrivée à la fonction JS suivante, qui permet de cocher ou décocher les cases librement d'un simple clic :</p>
+<pre class="line-numbers"><code>
+
+const listeBox = document.querySelectorAll(".box");
+
+for (let i = 0; i < listeBox.length; i++ ) {
+    listeBox[i].notChecked = true ;
+    listeBox[i].addEventListener('click',
+        () => {
+            if (listeBox[i].notChecked){
+                listeBox[i].className ="box_checked";
+                listeBox[i].notChecked = false ;
+
+            } else {
+                listeBox[i].className ="box";
+                listeBox[i].notChecked = true ;
+            }
+        });
+}
+
+
+</code></pre><h4 id="affichage-du-d%C3%A9compte-d'items-compl%C3%A9t%C3%A9s" tabindex="-1"><a class="header-anchor" href="#affichage-du-d%C3%A9compte-d'items-compl%C3%A9t%C3%A9s"></a> Affichage du décompte d'items complétés</h4>
+<p>J'ai ajouté dans la boucle précédente le décompte du nombre total d'items complétés (avec une variable dédiée). Ensuite pour l'affichage, après avoir créé une nouvelle div dans le fichier HTML, j'ai ajouté ces quelques lignes pour avoir l'affichage du décompte :</p>
+<pre class="line-numbers"><code>
+
+let totalMort = 0;
+let divTotalMort = document.getElementById("totalMort");
+let spanTotalMort = `Morts obtenues : ${totalMort} sur ${listeBox.length}`;
+divTotalMort.innerText = spanTotalMort;
+
+
+</code></pre><p>Ces lignes correspondent à l'initialisation de l'affichage, mais l'idée est la même à la fin de la fonction relative au clic (pour mettre à jour avec les nouveaux éléments).</p>
+<h4 id="autres-ajouts-du-sprint-2" tabindex="-1"><a class="header-anchor" href="#autres-ajouts-du-sprint-2"></a> Autres ajouts du sprint 2</h4>
+<ul>
+<li>Un premier item pour l'item à niveau d'avancement (entre 1 et 10), en se basant sur les mêmes logiques que précédemment, avec une variable supplémentaire. Après avoir mis la main dans le code, je comprends mieux pourquoi le code du site d'inspirations était très chargé.</li>
+<li>Réflexions pour le stockage local :
+<ul>
+<li>Le code <code>window.localStorage.setItem(&quot;element&quot;, &quot;Contenu&quot;);</code> peut permettre de stocker des données.</li>
+<li>De la même façon, <code>window.localStorage.getItem(&quot;element&quot;);</code> peut permettre de récupérer le contenu de l'élément stocké en local.</li>
+<li>Si on veut stocker notre avancement, il va falloir stocker les différents données, valeurs, attributs... etc. en local et avoir un code pour solliciter lorsque la page est ouverte/rafraîchie.
+<ul>
+<li>Ajout d'id différenciés pour chaque item de la checklist &quot;mort&quot; (j'ai notamment appris qu'un component pouvait avoir à la fois une classe et un id). Cela serait utile pour la génération d'un fichier cache de stockage local pour mieux identifier les items déjà validés ou non.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Des modifications CSS sur le style des boîtes.</li>
+<li>Retravail des balises HTML <code>details</code> et <code>summary</code> pour résoudre des bugs d'affichages.</li>
+<li>Tests de l'ajout d'infobulle/tooltip (pour les collections), avec l'attribut Title de la balise a et du CSS (<a href="https://outils-web.fr/des-tooltips-info-bulles-en-css3-3-methodes-simples/">inspiré d'internet</a>). Il reste encore des bugs à régler.</li>
+</ul>
+<h3 id="conclusion-et-suites-possibles" tabindex="-1"><a class="header-anchor" href="#conclusion-et-suites-possibles"></a> Conclusion et suites possibles</h3>
+<p>Souhaitant aborder d'autres sujets au cours de mes prochains POK &amp; MON, je ne pense pas continuer ce projet dans ce cadre. Néanmoins, je souhaite poursuivre l'amélioration de cette page et du site dans le cadre de mon utilisation personnelle.</p>
+<p>Je reste assez perplexe par rapport à la définition d'une &quot;base de données&quot; (ou grande quantité de données) de cette façon à la main. Il est possible néanmoins de réaliser une base JSS à partir d'un fichier CSV ou d'un Json, ce qui peut être intéressant à creuser.</p>
+<p>Je suis satisfaite de constater par moi-même le grand potentiel du trio HTML/CSS/JavaScript pour faire un site web, potentiel qui mérite encore à être largement exploré. Notamment, de nombreuses librairies en ligne permettent de faire économiser du temps en nous épargnant des lignes de style à rédiger pour les components et permettent de gérer facilement le responsive (mobile, mais aussi par rapport à la taille de la fenêtre).</p>
+<h4 id="ce-que-j'ai-appris-%3A" tabindex="-1"><a class="header-anchor" href="#ce-que-j'ai-appris-%3A"></a> Ce que j'ai appris :</h4>
+<ul>
+<li>Le fonctionnement de JS (et j'ai appris à ne plus avoir peur de l'utiliser!).</li>
+<li>Que des components peuvent avoir une classe ET un id, et plus globalement l'usage de nouvelles balises HTML (details par exemple) et attributs CSS.</li>
+<li>Consolidation des apprentissages en style.</li>
+</ul>
+<h4 id="les-erreurs-%C3%A0-%C3%A9viter-%3A" tabindex="-1"><a class="header-anchor" href="#les-erreurs-%C3%A0-%C3%A9viter-%3A"></a> Les erreurs à éviter :</h4>
+<ul>
+<li>Le CSS peut être très chronophage, surtout si on cherche à debug un bug graphique !</li>
+<li>Ne pas (toujours) foncer directement dans le code sans réfléchir... et ne pas éviter le problème.</li>
+<li>Ne pas fractionner son temps de travail : travailler 10h sur une journée car on se laisse emporter par le sujet, c'est tenable une fois mais ça ne permet pas d'avoir du recul et de bien mesurer le temps qu'on passe sur des détails parfois inutile (ou sur lesquels on manque de recul, et sur lesquels la nuit porterait conseil).</li>
+</ul>
+<p><a href="https://github.com/i-kebb/checklist-complesims.git">Lien vers le projet Github</a></p>
+
+
+
+</article>
+
+        </main>
+
+        <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-center items-center">
+                    <p class="text-center">
+                        ©2025 <b><span style="font-family: Consolas, sans-serif;">Do_<span style="color: #4a86e8">It</span></span></b> - Développement, Management et Gestion de projets en IT
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- MathJax import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">
+            window.MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']], // Delimiters for inline math
+                    displayMath: [['$$', '$$'], ['\\[', '\\]']] // Delimiters for block math
+                },
+                svg: {
+                    fontCache: 'global' // Use global font cache for SVG output
+                }
+            };
+            document.addEventListener('DOMContentLoaded', () => {
+                MathJax.typeset(); // Ensures MathJax processes the content after the page loads
+            });
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">
+            Prism.plugins.NormalizeWhitespace.setDefaults({
+                'remove-trailing': true,
+                'remove-indent': true,
+                'left-trim': true,
+                'right-trim': true,
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script>
+    </body>
+</html>

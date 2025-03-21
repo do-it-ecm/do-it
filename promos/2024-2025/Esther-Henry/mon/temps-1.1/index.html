@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="referrer" content="no-referrer-when-downgrade">
+        <meta name="robots" content="index, follow">
+
+        <link rel="canonical" href="https://do-it.aioli.ec-m.fr/promos/2024-2025/Esther-Henry/mon/temps-1.1/">
+
+        
+        
+
+        <meta name="description" content="Do-It, cours et travaux des élèves de l&#39;école Centrale Méditerranée">
+        <meta property="og:description" content="Do-It, cours et travaux des élèves de l&#39;école Centrale Méditerranée">
+        <meta name="twitter:description" content="Do-It, cours et travaux des élèves de l&#39;école Centrale Méditerranée">
+
+        
+            <meta name="author" content="Esther Henry">
+        
+        <meta name="keywords" content="do-it, centrale, centrale méditerranée, ecm, MON, python, vert, bleu">
+
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png">
+        <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png">
+
+        <link href="/assets/stylesheets/main.css" rel="stylesheet">
+
+        <meta property="og:title" content="Python pour l’Analyse de Données Textuelles - Partie 1 : Reprendre les Bases">
+
+        <meta property="og:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta property="og:url" content="https://do-it.aioli.ec-m.fr/promos/2024-2025/Esther-Henry/mon/temps-1.1/">
+        <meta property="og:type" content="website">
+
+        <meta name="twitter:card" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:title" content="Python pour l’Analyse de Données Textuelles - Partie 1 : Reprendre les Bases">
+        <meta name="twitter:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:url" content="https://do-it.aioli.ec-m.fr/promos/2024-2025/Esther-Henry/mon/temps-1.1/">
+
+        <title>Python pour l’Analyse de Données Textuelles - Partie 1 : Reprendre les Bases</title>
+
+        <!-- Prismjs imports
+                - Prism line numbers
+                - Prism toolbar
+        -->
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+        <!-- Mermaid import and initialization -->
+        <script type="module" defer="">
+            import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/+esm';
+            mermaid.initialize({
+                startOnLoad: true,
+            });
+        </script>
+    </head>
+
+    <body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000">
+        <header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-between items-center">
+                    <a class="mx-2" href="/">Home</a>
+                    <div class="flex items-center gap-4 sm:gap-6 ">
+                        <a class="" href="/cs">CS</a>
+                        <a class="" href="/pok">POK</a>
+                        <a class="" href="/mon">MON</a>
+                        <a class="" href="/projets">Projets</a>
+                        <a class="hidden sm:block" href="/promos">Promos</a>
+                        <a href="/search">
+                            <svg class="h-5 aspect-square" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+                            </svg>
+                        </a>
+                        <a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank">
+                            <svg class="h-5 aspect-square" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body="">
+            
+<article class="relative">
+<h1 class="mb-1">Python pour l’Analyse de Données Textuelles - Partie 1 : Reprendre les Bases</h1>
+<div class="mb-4">
+    
+        <div class="px-4 flex flex-wrap items-center">
+            
+                <div class="font-bold">Tags : </div>
+            
+            <ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags">
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">MON</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">python</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">vert</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">bleu</li>
+                
+
+            </ul>
+
+            
+            <div class="hidden" data-pagefind-meta="Type">
+                
+                    
+                        <span data-pagefind-filter="Type">MON</span>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Auteurs : </div>
+            <ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs">
+                
+                    <li class="bg-blue-200 rounded-full px-2" data-pagefind-filter="Auteurs">Esther Henry</li>
+                
+            </ul>
+        </div>
+    
+
+    
+        <div class="absolute top-0 right-0">
+            <span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2" data-pagefind-filter="Année">
+                2024-2025
+            </span>
+        </div>
+    
+</div>
+
+        <p class="mb-4 text-lg">
+
+                L'objectif de ces MON 1.1 et MON 1.2 est d'apprendre à utiliser Python pour l’analyse de données textuelles et de mettre en pratique ces compétences à travers un exemple concret.
+Ce MON 1.1 a pour but de (ré)acquérir les bases de Python, afin de pouvoir développer par la suite du code plus avancé pour l’analyse de données textuelles dans le cadre d’une enquête en sciences humaines et sociales.
+
+        </p>
+
+
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/promos/2024-2025/Esther-Henry/">Esther Henry</a><span class="px-1">/</span><a href="/promos/2024-2025/Esther-Henry/mon/">MON de Esther Henry</a><span class="px-1">/</span><a href="/promos/2024-2025/Esther-Henry/mon/temps-1.1/">Python pour l’Analyse de Données Textuelles - Partie 1 : Reprendre les Bases</a>
+
+</div>
+</div>
+
+
+
+
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Prérequis</b></p>
+</div><div class="pl-8 mr-8">
+<p>Aucun prérequis, ce MON est justement dédié à reprendre les bases de python</p>
+</div>
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Liens</b></p>
+</div><div class="pl-8 mr-8">
+<p>C’est ce livre qui m’a permis de reprendre les bases de python afin de m’en servir pour une étude de shs <a href="https://pur-editions.fr/product/7857/python-pour-les-shs">Python pour les SHS</a></p>
+</div>
+</div>
+<h2 id="objectif" tabindex="-1"><a class="header-anchor" href="#objectif"></a> Objectif</h2>
+<ol>
+<li>Reprendre les bases de Python et s'entraîner sur des exemples simples.</li>
+<li>Les bibliothèques : comprendre le fonctionnement et installer les modules nécessaires.</li>
+</ol>
+<h2 id="introduction" tabindex="-1"><a class="header-anchor" href="#introduction"></a> Introduction</h2>
+<p>Python est de plus en plus utilisé en sciences humaines et sociales pour son efficacité dans le traitement et l'analyse de données massives et variées. Grâce à ses nombreuses bibliothèques dédiées à l'analyse textuelle (comme NLTK ou spiCy), il permet d'extraire des informations pertinentes de grands corpus de textes, d'automatiser des tâches répétitives, et de visualiser des données de manière claire et compréhensible. Sa simplicité de syntaxe et sa large communauté d'utilisateurs en font un outil accessible, même pour les chercheurs n'ayant pas de formation technique poussée, tout en offrant une grande flexibilité pour mener des analyses complexes. C'est donc un langage idéal pour se former à l'analyse de données textuelles, ce qui sera à terme le but de ces MON.</p>
+<h2 id="python-%3A-rappel-des-bases" tabindex="-1"><a class="header-anchor" href="#python-%3A-rappel-des-bases"></a> Python : rappel des bases</h2>
+<h3 id="penser-comme-un-ordinateur" tabindex="-1"><a class="header-anchor" href="#penser-comme-un-ordinateur"></a> Penser comme un ordinateur</h3>
+<p>Pour rappel, quel que soit le langage de programmation utilisé, il est essentiel de penser comme un ordinateur. Il est inutile de tenter de communiquer avec une machine comme avec un être humain. Il faut donc utiliser un langage adapté, en l'occurrence Python, avec une syntaxe précise et un vocabulaire spécifique pour réaliser des opérations. Heureusement, Python a été conçu comme un langage d'apprentissage, ce qui le rend relativement facile à maîtriser et intuitif à utiliser.</p>
+<h3 id="comment-faire-du-python-%3F" tabindex="-1"><a class="header-anchor" href="#comment-faire-du-python-%3F"></a> Comment faire du python ?</h3>
+<h4 id="o%C3%B9-faire-du-python-%3F" tabindex="-1"><a class="header-anchor" href="#o%C3%B9-faire-du-python-%3F"></a> Où faire du python ?</h4>
+<p>Comme expliqué précédemment, pour coder, il faut communiquer avec la machine dans son langage, mais où le faire ?</p>
+<p>Plusieurs solutions existent, mais il est généralement nécessaire d'utiliser un logiciel capable de traduire notre script (c'est-à-dire le code que l'on rédige sous forme de texte) afin que l'ordinateur puisse l'exécuter.</p>
+<p>Dans notre cas, nous avons choisi d'utiliser Visual Studio Code, qui nous permet à la fois d'écrire le code et de visualiser les résultats dans un seul et même outil.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Liens</b></p>
+</div><div class="pl-8 mr-8">
+<p><a href="https://www.youtube.com/watch?v=V6NfiMu4eZ0">une vidéo présentant comment installer VS Code</a></p>
+</div>
+</div>
+<h4 id="les-modules-%C3%A0-installer" tabindex="-1"><a class="header-anchor" href="#les-modules-%C3%A0-installer"></a> Les modules à installer</h4>
+<p>Une fois VS Code installé, il est nécessaire d’installer un certain nombre de modules afin de pouvoir l’utiliser pour coder en Python. Il est possible d'installer directement des modules via l’interface de VS Code dans la partie <strong>“Extensions”</strong>.</p>
+<p>Nous recommandons donc d’installer à minima : <strong>Python</strong> (et <strong>Pylance</strong>, qui s’installera automatiquement) et <strong>Python Debugger</strong> (qui permet de corriger certains bugs) afin de pouvoir exécuter notre code (c'est-à-dire permettre à la machine de nous donner les résultats des opérations demandées dans notre script).</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Esther-Henry/mon/temps-1.1/images/VSCode-Extensions.png" alt="Installer les extensions"></p>
+<p>Il peut aussi être utile d’installer <strong>Jupyter</strong>, qui permettra d’enregistrer des fichiers contenant à la fois le script, le résultat de son exécution et des commentaires supplémentaires.</p>
+<h4 id="%C3%A9crire-sa-premi%C3%A8re-ligne-de-code" tabindex="-1"><a class="header-anchor" href="#%C3%A9crire-sa-premi%C3%A8re-ligne-de-code"></a> Écrire sa première ligne de code</h4>
+<p>Maintenant que VS Code est correctement installé, vous allez pouvoir écrire votre premier script et l’exécuter pour vérifier que l’installation fonctionne.</p>
+<p>Pour ce faire :</p>
+<ul>
+<li>Ouvrez VS Code</li>
+<li>Ouvrez un nouveau fichier (sur macOS, cliquez sur “File” puis “New File …”)</li>
+<li>Sélectionnez “Python File”</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Esther-Henry/mon/temps-1.1/images/ouvrir-un-fichier-python.png" alt="Ouvrir un fichier python"></p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Faire</b></p>
+</div><div class="pl-8 mr-8">
+<p>Vérifiez alors qu’un fichier Python s’est bien ouvert : le fichier se nomme “quelque-chose <strong>.py</strong>” et en bas à droite de votre fenêtre, il est bien écrit “Python”.</p>
+</div>
+</div>
+<p>Dans cette fenêtre, vous allez donc pouvoir écrire vos premières lignes de code pour dire bonjour au monde et que l’ordinateur vous l’affiche. Pour ce faire, tapez le code suivant puis cliquez sur la flèche en haut à droite :</p>
+<pre class="language-python line-numbers"><code>
+
+print("Hello World !")
+
+
+</code></pre><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Esther-Henry/mon/temps-1.1/images/hello-world.png" alt="Hello World"></p>
+<p>Vous voyez alors que dans le terminal il est marqué:  Hello World !. Cela signifie que votre code est bien éxecuter et que tout est bien installé.</p>
+<h4 id="comprendre-l%E2%80%99organisation-des-fichiers-dans-votre-ordinateur" tabindex="-1"><a class="header-anchor" href="#comprendre-l%E2%80%99organisation-des-fichiers-dans-votre-ordinateur"></a> Comprendre l’organisation des fichiers dans votre ordinateur</h4>
+<p>Pour pouvoir utiliser Python afin de faire de l’analyse de données, il est essentiel de comprendre comment sont organisés vos fichiers dans votre ordinateur. Si cette notion n’est pas claire, il est conseillé de lire ce cours avant de continuer.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Liens</b></p>
+</div><div class="pl-8 mr-8">
+<p><a href="https://francoisbrucker.github.io/cours_informatique/cours/coder-et-d%C3%A9velopper/ordinateur-d%C3%A9veloppement/fichiers-navigation/">Naviguer dans un système de fichiers</a></p>
+</div>
+</div>
+<h4 id="faire-des-erreurs" tabindex="-1"><a class="header-anchor" href="#faire-des-erreurs"></a> Faire des erreurs</h4>
+<p>Lorsque l’on code, il est inévitable de faire des erreurs, et cela ne doit pas vous faire peur ! En effet, faire des erreurs fait partie du processus d’apprentissage, et il est important de savoir les analyser pour les corriger et pouvoir continuer à coder.</p>
+<p>Ainsi, en Python, les erreurs les plus fréquentes sont celles de syntaxe, mais aussi des appels qui ne renvoient rien, ou encore des divisions par zéro.</p>
+<p>Quelle que soit la nature de l'erreur, il est essentiel de prendre le temps de lire le message d’erreur qui vous indique la ligne concernée et le type d’erreur. Le mieux est alors d’isoler la ligne et de corriger l’erreur pour voir si la ligne fonctionne à nouveau, puis de tester à nouveau tout le code.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Information</b></p>
+</div><div class="pl-8 mr-8">
+<p>Si vous ne comprenez pas le message d’erreur, pas de panique ! Il est fort probable que l’explication se trouve sur internet. Copiez alors votre message d’erreur dans votre moteur de recherche, et vous trouverez probablement une explication pour vous débloquer.</p>
+</div>
+</div>
+<h3 id="commencer-%C3%A0-coder" tabindex="-1"><a class="header-anchor" href="#commencer-%C3%A0-coder"></a> Commencer à coder</h3>
+<h4 id="les-variables" tabindex="-1"><a class="header-anchor" href="#les-variables"></a> Les variables</h4>
+<p>Lorsque l’on veut analyser des données, il nous faut des données à stocker quelque part. Dans le code, cela se traduit par des variables qui vont stocker une information (du texte ou des nombres, par exemple) que l’on appelle <strong>objets</strong>, que l’on associe à un nom pour les identifier. Une variable stocke alors un objet à un instant donné, mais celui-ci peut évoluer au fur et à mesure de l’avancement du code.</p>
+<p>Par exemple, on peut créer la variable :</p>
+<pre class="language-python line-numbers"><code>
+
+pop_do_it = 25
+
+
+</code></pre><p>Cette ligne permet de créer la variable pop_do_it et de lui attribuer l’objet nombre ayant la valeur 25 (à l'aide de l'opérateur =).</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Note</b></p>
+</div><div class="pl-8 mr-8">
+<p>En Python, on peut mettre des espaces entre les différents éléments du code sans que cela n’en change le sens. Ce sont par contre les sauts de ligne qui sont les véritables ruptures dans le code.</p>
+</div>
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Attention</b></p>
+</div><div class="pl-8 mr-8">
+<p>Vous êtes libre de nommer vos variables comme vous le souhaitez, mais en respectant ces règles de base :</p>
+<ul>
+<li>Pas d’espaces</li>
+<li>Pas de caractères spéciaux</li>
+<li>La même variable doit toujours être appelée de la même manière</li>
+</ul>
+</div>
+</div>
+<h4 id="les-types-de-variable" tabindex="-1"><a class="header-anchor" href="#les-types-de-variable"></a> Les types de variable</h4>
+<p>Il existe différents types de variables permettant de stocker divers objets, voici la liste des principaux :</p>
+<ul>
+<li><strong>str</strong> : chaîne de caractères (string) permet de stocker du texte entre guillemets</li>
+</ul>
+<pre class="language-python line-numbers"><code>
+
+nom = “Henry”
+
+
+</code></pre><p>-<strong>int</strong> : nombre entier (integer)</p>
+<pre class="language-python line-numbers"><code>
+
+age = 22
+
+
+</code></pre><ul>
+<li><strong>float</strong> : nombre à virgule</li>
+</ul>
+<pre class="language-python line-numbers"><code>
+
+pi = 3.14
+
+
+</code></pre><ul>
+<li><strong>bool</strong> : booléen renvoie une valeur vrai ou fausse (True ou False)</li>
+</ul>
+<pre class="language-python line-numbers"><code>
+
+mon_est_interessant = True
+
+
+</code></pre><ul>
+<li><strong>list</strong> : liste est une séquence ordonnées d'éléments modifiable, les éléments peuvent être de différents types</li>
+</ul>
+<pre class="language-python line-numbers"><code>
+
+eleve = [“Esther”, ”Henry”, 22]
+
+
+</code></pre><ul>
+<li><strong>tuple</strong> : similaire à une liste mais les éléments ne sont pas modifiables</li>
+</ul>
+<pre class="language-python line-numbers"><code>
+
+coordonnees = (10, 20)
+
+
+</code></pre><ul>
+<li><strong>dict</strong> : dictionnaire est une collection de paires clé-valeur, où chaque clé est unique</li>
+</ul>
+<pre class="language-python line-numbers"><code>
+
+etudiante = {“nom” : “Henry”, “age” : 22, “étudiante” : True}
+
+
+</code></pre><h4 id="les-op%C3%A9rations" tabindex="-1"><a class="header-anchor" href="#les-op%C3%A9rations"></a> Les opérations</h4>
+<p>En Python, il existe un certain nombre d’opérateurs permettant de faire les opérations de base sur les nombres</p>
+<table>
+<thead>
+<tr>
+<th>Opérations</th>
+<th>Symboles</th>
+<th>Exemples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>addition</td>
+<td>+</td>
+<td>1 + 9 donne 10</td>
+</tr>
+<tr>
+<td>soustraction</td>
+<td>-</td>
+<td>9 - 1 donne 8</td>
+</tr>
+<tr>
+<td>multiplication</td>
+<td>*</td>
+<td>2 * 9 donne 18</td>
+</tr>
+<tr>
+<td>puissance</td>
+<td>**</td>
+<td>7 ** 2 donne 49</td>
+</tr>
+<tr>
+<td>division</td>
+<td>/</td>
+<td>18 / 2 donne 9</td>
+</tr>
+<tr>
+<td>reste division euclidienne</td>
+<td>%</td>
+<td>9 % 2 donne 1</td>
+</tr>
+<tr>
+<td>quotient division eucidienne</td>
+<td>//</td>
+<td>9 // 2 donne 4</td>
+</tr>
+</tbody>
+</table>
+<p>Certaines de ces opérations sont aussi utilisables sur d’autres types de variables, mais attention, ce n’est pas une généralité. Nous verrons notamment ici l’addition sur une variable de type texte.</p>
+<h4 id="les-variables-de-type-texte" tabindex="-1"><a class="header-anchor" href="#les-variables-de-type-texte"></a> Les variables de type texte</h4>
+<p>Pour faire de l’analyse de données textuelles, il est préférable de bien maîtriser ce type de variable.</p>
+<p><strong>Les guillemets</strong>
+Lorsque l’on veut entrer des variables de type texte, il est essentiel de les saisir entre <strong>guillemets</strong>.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Note</b></p>
+</div><div class="pl-8 mr-8">
+<p>Dans le cas de texte plutôt long où vous risquez d’avoir des guillemets de différents types, il est conseillé d’utiliser les triples guillemets afin d’éviter les erreurs !</p>
+<p>Par exemple :</p>
+<pre class="language-python line-numbers"><code>
+
+print(“”” "Le bonheur, ce n'est pas d'avoir tout ce que l'on désire, mais d'apprécier ce que l'on a."  - P. Coelho”””)
+
+
+</code></pre><p>Qui affichera : &quot;Le bonheur, ce n'est pas d'avoir tout ce que l'on désire, mais d'apprécier ce que l'on a.&quot;  - P. Coelho</p>
+</div>
+</div>
+<p><strong>Les caractères spéciaux</strong>
+La gestion des caractères spéciaux est un autre point de vigilance lors de la saisi de données textuelles. En effet certains caractères ont deja un sens en python, il y à donc un risque de confusion si on les utilise.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Note</b></p>
+</div><div class="pl-8 mr-8">
+<p>Pour eviter la confusion, la solution est de mettre un backslash devant le caractère en question.
+Par exemple pour mettre un % sans un texte on ecrira :</p>
+<pre class="language-python line-numbers"><code>
+
+print(“Le pourcentage de réussite au bac en 2019 est de 88.1\%”)
+
+
+</code></pre><p>Qui retournera sans erreur : Le pourcentage de réussite au bac en 2019 est de 88.1%</p>
+</div>
+</div>
+<p><strong>Faire des opérations sur du texte</strong>
+Il est possible de faire des opérations sur des variables de type texte. En effet, l’opérateur <code>+</code> permet d’assembler du texte et la fonction <code>str()</code> permet de convertir un nombre en texte. Ainsi, on pourrait écrire le texte suivant en partant de différents éléments :</p>
+<pre class="language-python line-numbers"><code>
+
+pop_do_it = 25
+texte = “Il y a” + str (pop_do_it) + “élèves en Do-It”
+print(texte)
+
+
+</code></pre><p>Qui retournera : Il y a 25 élèves en Do-It</p>
+<h4 id="ma%C3%AEtriser-les-listes-et-les-biblioth%C3%A8ques" tabindex="-1"><a class="header-anchor" href="#ma%C3%AEtriser-les-listes-et-les-biblioth%C3%A8ques"></a> Maîtriser les listes et les bibliothèques</h4>
+<p>Afin d’analyser des données, il est essentiel de maîtriser les listes et les bibliothèques que nous avons définies plus haut.</p>
+<h5 id="les-listes" tabindex="-1"><a class="header-anchor" href="#les-listes"></a> Les listes</h5>
+<p>Nous allons travailler sur les opérations de base afin de se familiariser avec les listes. Pour ce faire, nous allons utiliser l’exemple d’une recette de gâteau et créer la liste suivante, puis l’afficher :</p>
+<pre class="language-python line-numbers"><code>
+
+proportion = [100, 50,100,200,3]
+print (proportion)
+
+
+</code></pre><div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Attention</b></p>
+</div><div class="pl-8 mr-8">
+<p>Les éléments d’une liste sont associés à leur position dans la liste, qui commence à 0 pour le premier élément, 1 pour le deuxième, et ainsi de suite…
+Mais aussi -1 pour le dernier, -2 pour l'avant-dernier, etc.</p>
+</div>
+</div>
+<p>Ainsi, si l’on veut afficher le troisième élément de notre liste, on notera :</p>
+<pre class="language-python line-numbers"><code>
+
+print ( proportion [2] )
+
+
+</code></pre><p>Une fois notre liste créée, nous allons voir quelques opérations qu’il est possible d’effectuer afin de la modifier :</p>
+<ul>
+<li>La fonction <strong>.append ( )</strong> permet d’ajouter un élément à la fin de la liste.</li>
+<li>La fonction <strong>.remove ( )</strong> permet de retirer un élément de la liste.</li>
+</ul>
+<p>Faisons maintenant des petits exercices pour nous entraîner à manipuler les listes.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Exercice</b></p>
+</div><div class="pl-8 mr-8">
+<p>Modifier la dernière valeur de la liste afin que celle-ci prenne la valeur 2, puis afficher la liste pour vérifier.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-python line-numbers"><code>
+
+proportion [-1]  = 2
+print(proportion)
+
+
+</code></pre></div>
+</details>
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Exercice</b></p>
+</div><div class="pl-8 mr-8">
+<p>Retirer la proportion de chocolat, qui était de 200 grammes, et afficher la liste pour vérifier.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-python line-numbers"><code>
+
+proportion.remove (200)
+print(proportion)
+
+
+</code></pre></div>
+</details>
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Exercice</b></p>
+</div><div class="pl-8 mr-8">
+<p>Ajouter la proportion de citron dans le gâteau qui est de 4 à la fin de la liste et afficher la liste.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-python line-numbers"><code>
+
+proportion.append (4)
+print(proportion)
+
+
+</code></pre></div>
+</details>
+</div>
+<h5 id="les-dictionnaires" tabindex="-1"><a class="header-anchor" href="#les-dictionnaires"></a> Les dictionnaires</h5>
+<p>Pour continuer avec l’exemple de notre gâteau au chocolat, nous allons créer un dictionnaire afin d’associer à chaque ingrédient sa proportion :</p>
+<pre class="language-python line-numbers"><code>
+
+recette={“sucre” : 100, “farine” : 50, “beurre” : 100, “chocolat” : 200, “oeuf” : 3}
+
+
+</code></pre><p>Le dictionnaire fonctionne sur un système de clé/valeur séparés par &quot;:&quot;, et pour accéder à une valeur, il faut passer par sa clé. Par exemple, pour afficher la quantité de chocolat :</p>
+<pre class="language-python line-numbers"><code>
+
+print(recette [“chocolat”] )
+
+
+</code></pre><p>Qui retournera : 200</p>
+<p>Passons maintenant aux exercices pour manipuler un dictionnaire :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Exercice</b></p>
+</div><div class="pl-8 mr-8">
+<p>Ajouter la proportion de sel dans notre gâteau, qui est de 1, et afficher la nouvelle recette.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-python line-numbers"><code>
+
+recette[“sel”] = 1
+print (recette)
+
+
+</code></pre></div>
+</details>
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Exercice</b></p>
+</div><div class="pl-8 mr-8">
+<p>Modifier la valeur du chocolat à 250 pour un gâteau plus gourmand et afficher la nouvelle recette.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-python line-numbers"><code>
+
+recette[“chocolat”] = 250
+print (recette)
+
+
+</code></pre></div>
+</details>
+</div>
+<h5 id="les-commentaires" tabindex="-1"><a class="header-anchor" href="#les-commentaires"></a> Les commentaires</h5>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Information</b></p>
+</div><div class="pl-8 mr-8">
+<p>Lorsque l’on écrit du code, il peut être utile d’y ajouter des commentaires, que ce soit pour soi-même se souvenir de ce que l’on a fait, ou pour permettre à quelqu’un à qui vous partagez le code de comprendre la logique qui se cache derrière.</p>
+<p>Pour ajouter un commentaire, c’est très simple : il suffit d’aller à la ligne et de commencer celle-ci par un #. La ligne en question ne sera donc pas exécutée par la machine.</p>
+<pre class="language-python line-numbers"><code>
+
+#Voici ma recette de gâteau favorite !
+recette={“sucre” : 100, “farine” : 50, “beurre” : 100, “chocolat” : 200, “oeuf” : 3}
+
+
+</code></pre></div>
+</div>
+<h4 id="op%C3%A9rateurs-de-condition-et-de-comparaison" tabindex="-1"><a class="header-anchor" href="#op%C3%A9rateurs-de-condition-et-de-comparaison"></a> Opérateurs de condition et de comparaison</h4>
+<p>Lorsque l’on veut faire de l’analyse de données, il est important de maîtriser les opérateurs de condition et de comparaison, car ce sont eux qui vont nous permettre de s’adapter à telle ou telle situation. Ainsi, les principaux opérateurs de condition et de comparaison sont :</p>
+<table>
+<thead>
+<tr>
+<th>Opérations</th>
+<th>Symboles</th>
+<th>Exemples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>égalité</td>
+<td>==</td>
+<td>type (9) == type (“neuf”) retourne False</td>
+</tr>
+<tr>
+<td>supérieur</td>
+<td>&gt;</td>
+<td>9 &gt; 1 retourne True</td>
+</tr>
+<tr>
+<td>supérieur ou égal</td>
+<td>&gt;=</td>
+<td>1 &gt;=9 retourne False</td>
+</tr>
+<tr>
+<td>inférieur</td>
+<td>&lt;</td>
+<td>7 &lt; 2 retourne False</td>
+</tr>
+<tr>
+<td>différent</td>
+<td>!=</td>
+<td>type (1) != int retourne False</td>
+</tr>
+<tr>
+<td>est présent dans</td>
+<td>in</td>
+<td>5 in [1,2,5] retourne True</td>
+</tr>
+</tbody>
+</table>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Attention</b></p>
+</div><div class="pl-8 mr-8">
+<p>Attention = permet d’attribuer une valeur tandis que == est un opérateur de comparaison.</p>
+</div>
+</div>
+<h4 id="conditions%2C-boucles-et-fonctions" tabindex="-1"><a class="header-anchor" href="#conditions%2C-boucles-et-fonctions"></a> Conditions, boucles et fonctions</h4>
+<p>Après avoir vu comment utiliser nos différentes variables, il est essentiel d’apprendre à organiser son code. Pour ce faire, nous avons besoin des trois blocs suivants :</p>
+<ul>
+<li>Tester une condition</li>
+<li>Répéter une opération</li>
+<li>Construire une fonction</li>
+</ul>
+<p>En Python, ces blocs ont la particularité d’être décalés de quatre espaces. Ils sont essentiels, car si vous les oubliez, Python vous renverra un message d’erreur et ne pourra pas exécuter votre code. Par ailleurs, ces alinéas permettent de mieux visualiser vos blocs et de structurer correctement votre code.</p>
+<h5 id="condition-%3A-si-%E2%80%A6-alors-%E2%80%A6" tabindex="-1"><a class="header-anchor" href="#condition-%3A-si-%E2%80%A6-alors-%E2%80%A6"></a> Condition : si … alors …</h5>
+<p>Pour tester une condition, on utilise les fonctions <strong>if</strong>, <strong>else</strong> et <strong>elif</strong>. Prenons un exemple pour mieux comprendre.</p>
+<pre class="language-python line-numbers"><code>
+
+#Regarder si en Do-It le nombre d’élève est pair et à defaut un multiple de 5
+pop_do_it = 25
+if pop_do_it % 2 == 0 : 
+    print(“Le nombre d’éléve en Do It est pair”)
+elif pop_do_it % 5 ==0 : 
+    print(“Le nombre d’éléve en Do It est multiple de 5”)
+else : 
+    print(“Le nombre d’élève en Do It n’est ni pair ni un multiple de 5”)
+
+
+
+</code></pre><p>Ici, le code nous retournera : <strong>Le nombre d’élèves en Do It est multiple de 5</strong>.</p>
+<p>En effet, le code suit cet ordre :</p>
+<ul>
+<li>Évaluer si le nombre d’élèves, c’est-à-dire 25, est divisible par 2. Si c’est le cas, il retourne &quot;Le nombre d’élèves en Do It est pair&quot; et sort du bloc.</li>
+<li>Si ce n’est pas le cas, il évalue si le nombre d’élèves est divisible par 5. Si c’est le cas, il retourne &quot;Le nombre d’élèves en Do It est multiple de 5&quot; et sort du bloc.</li>
+<li>Enfin, si les deux conditions précédentes ne sont pas vérifiées, il retourne &quot;Le nombre d’élèves en Do It n’est ni pair ni un multiple de 5&quot; et sort du bloc.</li>
+</ul>
+<p>Par ailleurs, il est possible de cumuler des conditions grâce aux opérateurs <strong>and</strong> (et) et <strong>or</strong> (ou).</p>
+<h5 id="les-boucles" tabindex="-1"><a class="header-anchor" href="#les-boucles"></a> Les boucles</h5>
+<p>Les boucles sont très utiles lorsque l’on veut répéter une opération. En Python, les boucles <strong>for</strong> et <strong>while</strong> permettent de répéter des actions, mais elles s'utilisent différemment.</p>
+<p>La boucle <strong>for</strong> est généralement utilisée pour itérer sur une séquence (comme une liste, un tuple, ou une chaîne de caractères) ou un intervalle de valeurs prédéfini. Elle s'arrête automatiquement lorsque tous les éléments de la séquence ont été parcourus. Par exemple :</p>
+<pre class="language-python line-numbers"><code>
+
+for i in range(5):
+    print(i)
+
+
+</code></pre><p>Ou dans une liste :</p>
+<pre class="language-python line-numbers"><code>
+
+list=[0,2,5,6,3,8,978]
+for p in list :
+    print(“Age”, p)
+
+
+</code></pre><p>La boucle <strong>while</strong>, quant à elle, continue à s'exécuter tant qu'une condition est vraie. Elle est plus flexible, mais doit être contrôlée avec précaution pour éviter des boucles infinies. Par exemple :</p>
+<pre class="language-python line-numbers"><code>
+
+i = 0
+while i < 5:
+    print(i)
+    i += 1
+
+
+</code></pre><p>En résumé, <strong>for</strong> est idéal pour des itérations définies à l'avance, tandis que <strong>while</strong> est utilisé lorsque la répétition dépend d'une condition à évaluer dynamiquement.</p>
+<h5 id="construire-des-fonctions" tabindex="-1"><a class="header-anchor" href="#construire-des-fonctions"></a> Construire des fonctions</h5>
+<p>Une fonction est un bloc de code qui prend des données en entrée, les traite, puis renvoie des résultats modifiés en conséquence.</p>
+<p>Quel que soit le contenu de la fonction, elle s’organise toujours de la même manière. Prenons l’exemple d’une fonction qui, peu importe notre liste d’ingrédients, nous renvoie si elle contient du chocolat :</p>
+<pre class="language-python line-numbers"><code>
+
+def contient_chocolat (list_ingredient) : 
+    for i in list_ingredient : 
+        if i == "chocolat" :
+            return print("Il y a du chocolat")
+    else :
+        return print("Il n'y a pas de chocolat")
+    
+ingredient = ["lait","oeuf","beurre","farine","chocolat","levure"]
+contient_chocolat(ingredient)
+
+
+</code></pre><p>On vient de :</p>
+<ul>
+<li>Définir la fonction <code>contient_chocolat</code> grâce à <strong>def ()</strong>.</li>
+<li>Définir les informations d’entrée, ici <strong>list_ingredient</strong>.</li>
+<li>Effectuer les opérations nécessaires pour traiter notre information d’entrée. Ici, nous parcourons la liste avec <strong>for</strong> pour tester chaque élément et voir si l’un d’entre eux est la chaîne de caractères &quot;chocolat&quot;.</li>
+<li>Peu importe s’il y a du chocolat ou non, l’essentiel est que nous renvoyons cette information via <strong>return</strong>.</li>
+<li>Dans notre cas, il y a deux options : s’il y a du chocolat, alors nous imprimons &quot;Il y a du chocolat&quot; et nous sortons de la fonction ; sinon, nous continuons et imprimons &quot;Il n'y a pas de chocolat&quot; avant de sortir de la fonction.</li>
+<li>Enfin, nous testons notre fonction avec la liste <strong>ingredient</strong> en appliquant la fonction via <strong>contient_chocolat(ingredient)</strong>, ce qui nous retournera dans ce cas &quot;Il y a du chocolat&quot;.</li>
+</ul>
+<h3 id="les-biblioth%C3%A8ques" tabindex="-1"><a class="header-anchor" href="#les-biblioth%C3%A8ques"></a> Les bibliothèques</h3>
+<p>Une bibliothèque en Python est un ensemble de modules contenant du code pré-écrit, permettant de simplifier et d'accélérer le développement. Elle regroupe des fonctions et des outils déjà développés, que l'utilisateur peut intégrer directement dans ses programmes. Par exemple, la bibliothèque <strong>math</strong> propose des fonctions mathématiques courantes, <strong>requests</strong> facilite les requêtes en ligne, et <strong>Nltk</strong> est utilisée pour l’analyse de données textuelles. En important une bibliothèque dans son code, l'utilisateur peut alors accéder à des fonctions spécialisées, ce qui rend le développement plus rapide et efficace, tout en assurant que le code soit fiable et optimisé.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-cyan-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Information</b></p>
+</div><div class="pl-8 mr-8">
+<p>Le plus simple, si un utilisateur a besoin d’un outil spécifique pour son travail, est de chercher sur internet s’il n’existe pas déjà une bibliothèque correspondante. Il est fort probable que vous trouverez cette information accompagnée de la notice d’utilisation de la bibliothèque.</p>
+</div>
+</div>
+<p>Nous allons ici voir comment se familiariser avec l’utilisation des bibliothèques en s’appuyant sur l’exemple de <strong>requests</strong>, qui est fortement utilisé pour accéder aux données présentes sur internet.</p>
+<h4 id="installer-une-nouvelle-biblioth%C3%A8que" tabindex="-1"><a class="header-anchor" href="#installer-une-nouvelle-biblioth%C3%A8que"></a> Installer une nouvelle bibliothèque</h4>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Note</b></p>
+</div><div class="pl-8 mr-8">
+<p>Pour rappel, si l’on veut faire appel dans notre code à une bibliothèque déjà installée, il faut l’importer avec <strong>import</strong>. Par exemple :</p>
+<pre class="language-python line-numbers"><code>
+
+import math as m
+m.sqrt(9)
+
+
+</code></pre><p>Ici, nous donnons à la bibliothèque le nom <code>m</code> lors de l’importation, ce qui nous permet par la suite d’y faire appel pour ses différentes fonctions via <strong>m.</strong>.</p>
+</div>
+</div>
+<p>La méthode la plus simple pour installer une nouvelle bibliothèque est la méthode <strong>pip</strong>, qui va aller chercher dans les bases de données en ligne pour la télécharger.</p>
+<p>Pour ce faire, il faut ouvrir un terminal dans VS Code et taper l’instruction suivante, puis appuyer sur Entrée :</p>
+<pre class="line-numbers"><code>
+
+pip install requests 
+
+
+</code></pre><p>Une fois <code>requests</code> installé, il peut être utile de vérifier que l’installation a bien été effectuée et qu’il n’y a pas eu de bug. Pour cela, ouvrez une nouvelle fenêtre Python et saisissez le code suivant :</p>
+<pre class="language-python line-numbers"><code>
+
+import requests as req
+print( req.get(“https://www.lequipe.fr”) )
+
+
+</code></pre><p>Si tout s’est bien passé, l’ordinateur doit nous retourner : &lt;Response [200]&gt;, ce qui signifie que tout s’est bien déroulé et que la page de l’Équipe a bien été récupérée.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Note</b></p>
+</div><div class="pl-8 mr-8">
+<p>Lorsque l’on utilise une bibliothèque dans un travail que l’on publie, il est important de citer cette bibliothèque pour deux raisons : la reconnaissance envers les créateurs de la bibliothèque et afin que les lecteurs puissent comprendre et utiliser les scripts.</p>
+</div>
+</div>
+<h4 id="utilisation-de-la-biblioth%C3%A8que-requests" tabindex="-1"><a class="header-anchor" href="#utilisation-de-la-biblioth%C3%A8que-requests"></a> Utilisation de la bibliothèque requests</h4>
+<p>L’objectif de cette partie est de voir comment utiliser certaines fonctions de requests qui pourraient être utiles pour faire de l’analyse de données textuelles par la suite.</p>
+<h5 id="r%C3%A9cup%C3%A9rer-une-page-internet" tabindex="-1"><a class="header-anchor" href="#r%C3%A9cup%C3%A9rer-une-page-internet"></a> Récupérer une page internet</h5>
+<p>Nous allons voir ici comment récupérer une page sur le site internet de l’Équipe et afficher une partie de son contenu.</p>
+<pre class="language-python line-numbers"><code>
+
+reponse = req.get("https://www.lequipe.fr")
+contenu = reponse.text
+print(contenu[100:150])
+
+
+</code></pre><p>Ce code nous permet alors :</p>
+<ul>
+<li>Via la fonction <strong>.get</strong> de <code>requests</code>, de récupérer une page internet via son URL et de la stocker dans <code>reponse</code>.</li>
+<li>Via la fonction <strong>.text</strong>, de convertir les données stockées dans <code>reponse</code> en chaîne de caractères et de les stocker dans <code>contenu</code>.</li>
+<li>Puis d’afficher 50 caractères parmi ceux présents dans la page (tout afficher serait trop lourd).</li>
+</ul>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Attention</b></p>
+</div><div class="pl-8 mr-8">
+<p>Lorsque l’on fait trop de requêtes sur la même page, il est possible que l’on soit bloqué. Il faut alors attendre quelques heures avant de pouvoir faire de nouvelles requêtes sur cette page.</p>
+</div>
+</div>
+<h5 id="v%C3%A9rifier-la-pr%C3%A9sence-d%E2%80%99un-mot-sur-une-page" tabindex="-1"><a class="header-anchor" href="#v%C3%A9rifier-la-pr%C3%A9sence-d%E2%80%99un-mot-sur-une-page"></a> Vérifier la présence d’un mot sur une page</h5>
+<p>Pour vérifier qu’un mot est bien présent sur une page, on peut importer la page comme précédemment puis utiliser les fonctions <strong>if</strong> et <strong>in</strong> pour vérifier si le mot est présent ou non :</p>
+<pre class="language-python line-numbers"><code>
+
+#Récupérer la page 
+url="https://www.lequipe.fr"
+reponse = req.get(url)
+contenu = reponse.text
+
+#Tester la présence du mot
+if "vélo" in contenu :
+    print ("Le mot est présent")
+else :
+    print("Le mot n'est pas présent")
+
+
+</code></pre><h5 id="un-petit-exercice-pour-voir-si-on-a-bien-compris" tabindex="-1"><a class="header-anchor" href="#un-petit-exercice-pour-voir-si-on-a-bien-compris"></a> Un petit exercice pour voir si on a bien compris</h5>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Exercice</b></p>
+</div><div class="pl-8 mr-8">
+<p>Construire une fonction afin d’automatiser la recherche d’un mot dans une page.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-python line-numbers"><code>
+
+def presence_mot(mot,url) :
+    reponse = req.get(url)
+    contenu = reponse.text
+    if mot in contenu :
+        print("Le mot est présent")
+    else :
+        print("Le mot n'est pas présent")
+
+
+</code></pre></div>
+</details>
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-orange-500 bg-orange-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-orange-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Exercice</b></p>
+</div><div class="pl-8 mr-8">
+<p>Choisir trois sites internet de médias et deux mots, puis tester pour chaque page si les mots sont présents.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>corrigé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-python line-numbers"><code>
+
+pages = ["https://www.lemonde.fr","https://www.lequipe.fr","https://www.causette.fr"]
+mots = ["femme","santé"]
+resultats = {}
+for p in pages : 
+    resultats[p]={}
+    for j in mots :
+        resultats[p][j]=presence_mot(j,p)
+print (resultats)
+
+
+</code></pre></div>
+</details>
+</div>
+<h3 id="horodatage" tabindex="-1"><a class="header-anchor" href="#horodatage"></a> Horodatage</h3>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Heures passées</th>
+<th>Indications</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lundi 09/09</td>
+<td>1H45</td>
+<td>Préparation du sujet (Lecture du livre &amp; Installation de Python)</td>
+</tr>
+<tr>
+<td>Mardi 10/09</td>
+<td>3H</td>
+<td>Reprendre les bases de python (Théorie &amp; Exercices)</td>
+</tr>
+<tr>
+<td>Mercredi 11/09</td>
+<td>3H</td>
+<td>Bibliothèques</td>
+</tr>
+<tr>
+<td>Lundi 16/09</td>
+<td>4H</td>
+<td>Mettre en forme</td>
+</tr>
+</tbody>
+</table>
+<h3 id="bibliographie" tabindex="-1"><a class="header-anchor" href="#bibliographie"></a> Bibliographie</h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-emerald-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Liens</b></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li><a href="https://pur-editions.fr/product/7857/python-pour-les-shs">Python pour les SHS</a></li>
+<li><a href="https://www.youtube.com/watch?v=V6NfiMu4eZ0">Vidéo présentant comment installer VS Code pour python</a></li>
+</ul>
+</div>
+</div>
+
+
+
+</article>
+
+        </main>
+
+        <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-center items-center">
+                    <p class="text-center">
+                        ©2025 <b><span style="font-family: Consolas, sans-serif;">Do_<span style="color: #4a86e8">It</span></span></b> - Développement, Management et Gestion de projets en IT
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- MathJax import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">
+            window.MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']], // Delimiters for inline math
+                    displayMath: [['$$', '$$'], ['\\[', '\\]']] // Delimiters for block math
+                },
+                svg: {
+                    fontCache: 'global' // Use global font cache for SVG output
+                }
+            };
+            document.addEventListener('DOMContentLoaded', () => {
+                MathJax.typeset(); // Ensures MathJax processes the content after the page loads
+            });
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">
+            Prism.plugins.NormalizeWhitespace.setDefaults({
+                'remove-trailing': true,
+                'remove-indent': true,
+                'left-trim': true,
+                'right-trim': true,
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script>
+    </body>
+</html>

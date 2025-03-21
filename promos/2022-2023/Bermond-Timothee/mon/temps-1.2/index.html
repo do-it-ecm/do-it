@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="referrer" content="no-referrer-when-downgrade">
+        <meta name="robots" content="index, follow">
+
+        <link rel="canonical" href="https://do-it.aioli.ec-m.fr/promos/2022-2023/Bermond-Timothee/mon/temps-1.2/">
+
+        
+        
+
+        <meta name="description" content="Do-It, cours et travaux des élèves de l&#39;école Centrale Méditerranée">
+        <meta property="og:description" content="Do-It, cours et travaux des élèves de l&#39;école Centrale Méditerranée">
+        <meta name="twitter:description" content="Do-It, cours et travaux des élèves de l&#39;école Centrale Méditerranée">
+
+        
+            <meta name="author" content="Timothée Bermond">
+        
+        <meta name="keywords" content="do-it, centrale, centrale méditerranée, ecm, MON, CSS, SASS">
+
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png">
+        <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png">
+
+        <link href="/assets/stylesheets/main.css" rel="stylesheet">
+
+        <meta property="og:title" content="CSS et introduction à SASS">
+
+        <meta property="og:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta property="og:url" content="https://do-it.aioli.ec-m.fr/promos/2022-2023/Bermond-Timothee/mon/temps-1.2/">
+        <meta property="og:type" content="website">
+
+        <meta name="twitter:card" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:title" content="CSS et introduction à SASS">
+        <meta name="twitter:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:url" content="https://do-it.aioli.ec-m.fr/promos/2022-2023/Bermond-Timothee/mon/temps-1.2/">
+
+        <title>CSS et introduction à SASS</title>
+
+        <!-- Prismjs imports
+                - Prism line numbers
+                - Prism toolbar
+        -->
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+        <!-- Mermaid import and initialization -->
+        <script type="module" defer="">
+            import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/+esm';
+            mermaid.initialize({
+                startOnLoad: true,
+            });
+        </script>
+    </head>
+
+    <body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000">
+        <header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-between items-center">
+                    <a class="mx-2" href="/">Home</a>
+                    <div class="flex items-center gap-4 sm:gap-6 ">
+                        <a class="" href="/cs">CS</a>
+                        <a class="" href="/pok">POK</a>
+                        <a class="" href="/mon">MON</a>
+                        <a class="" href="/projets">Projets</a>
+                        <a class="hidden sm:block" href="/promos">Promos</a>
+                        <a href="/search">
+                            <svg class="h-5 aspect-square" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+                            </svg>
+                        </a>
+                        <a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank">
+                            <svg class="h-5 aspect-square" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body="">
+            
+<article class="relative">
+<h1 class="mb-1">CSS et introduction à SASS</h1>
+<div class="mb-4">
+    
+        <div class="px-4 flex flex-wrap items-center">
+            
+                <div class="font-bold">Tags : </div>
+            
+            <ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags">
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">MON</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">CSS</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">SASS</li>
+                
+
+            </ul>
+
+            
+            <div class="hidden" data-pagefind-meta="Type">
+                
+                    
+                        <span data-pagefind-filter="Type">MON</span>
+                    
+                
+                    
+                
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Auteurs : </div>
+            <ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs">
+                
+                    <li class="bg-blue-200 rounded-full px-2" data-pagefind-filter="Auteurs">Timothée Bermond</li>
+                
+            </ul>
+        </div>
+    
+
+    
+        <div class="absolute top-0 right-0">
+            <span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2" data-pagefind-filter="Année">
+                2022-2023
+            </span>
+        </div>
+    
+</div>
+
+
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/promos/2022-2023/Bermond-Timothee/">Timothée Bermond</a><span class="px-1">/</span><a href="/promos/2022-2023/Bermond-Timothee/mon/">MONs de Timothée</a><span class="px-1">/</span><a href="/promos/2022-2023/Bermond-Timothee/mon/temps-1.2/">CSS et introduction à SASS</a>
+
+</div>
+</div>
+
+
+
+
+<!-- début résumé -->
+<p>Les bases du CSS et introduction à SASS</p>
+<!-- fin résumé -->
+<h2 id="les-bases-du-css" tabindex="-1"><a class="header-anchor" href="#les-bases-du-css"></a> Les bases du CSS</h2>
+<p>J'ai tout d'abord commencé par suivre la partie sur le CSS de cette <a href="https://openclassrooms.com/fr/courses/1603881-apprenez-a-creer-votre-site-web-avec-html5-et-css3">formation openclassrooms</a>.</p>
+<p>Le CSS permet de faire la mise en forme son site (couleur du texte, police, mise en page,...).</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2022-2023/refs/heads/main//Bermond-Timothee/mon/temps-1.2/index_sans_css.jpg" alt="POK sans CSS">
+Mon POK sans css.</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2022-2023/refs/heads/main//Bermond-Timothee/mon/temps-1.2/index_avec_css.jpg" alt="POK avec CSS">
+Mon POK avec css.</p>
+<p>Le CSS peut-être écrit dans un fichier <em>.css</em> (recommandé), dans l'en-tête du fichier html à l'aide d'une balise <em>style</em> ou directement dans les balises (non recommandé). Utiliser un fichier <em>.css</em> permet de facilement généraliser les propriétés à toutes nos pages html sans avoir à faire des copié-collé.</p>
+<p>Pour appliquer un style nous pouvons sélectionner :</p>
+<ul>
+<li>une balise</li>
+<li>une classe</li>
+<li>un id</li>
+</ul>
+<p>Pour ce faire on écrit le nom de la balise / classe / id puis on ajoute entre acolades les propriétés que l'on veut appliquer.</p>
+<pre class="language-css line-numbers"><code>
+
+balise{
+  propriété1: valeur1;
+  propriété2: valeur2;
+}
+
+
+</code></pre><p>Pour chaque propriété on doit indiquer une valeur.</p>
+<p>On peut égalemement appliquer un style à plusieurs balises en les séparant d'une virgule.</p>
+<pre class="language-css line-numbers"><code>
+
+balise1, balise2{
+  propriété1: valeur1;
+  propriété2: valeur2;
+}
+
+
+</code></pre><h3 id="formater-du-texte" tabindex="-1"><a class="header-anchor" href="#formater-du-texte"></a> Formater du texte</h3>
+<p>Il est possible de modifier de nombreuses caractéristiques du texte.</p>
+<p><strong>La taille</strong></p>
+<p>Il est possible de modifier la taille du texte avec la propriété <em>font-size</em>. On peut indiquer une taille absolue ou une taille relative.</p>
+<ul>
+<li>Taille absolue
+On indique le nombre de pixels (ou cm, mm mais plus rare) :</li>
+</ul>
+<pre class="language-css line-numbers"><code>
+
+p{
+  font-size: 14px;
+}
+
+
+</code></pre><ul>
+<li>Taille relative
+On peut écrire la taille en mot anglais :
+<ul>
+<li>xx-small</li>
+<li>x-small</li>
+<li>small</li>
+<li>medium</li>
+<li>large</li>
+<li>x-large</li>
+<li>xx-large
+Ou indiquer la taille en <em>em</em> :</li>
+<li><em>1em</em> : taille normale</li>
+<li>'&gt;'1em : grossi le texte</li>
+<li>&lt;1em : rétrécit le texte</li>
+</ul>
+</li>
+</ul>
+<pre class="language-css line-numbers"><code>
+
+p{
+  font-size: 1.8em;
+}
+
+
+</code></pre><p><strong>La police</strong></p>
+<p>Pour modifier la police il faut utiliser la propriété <em>font-family</em> suivi d'au moins une police. Le mieux est d'indiquer au moins 4 polices (séparées par des virgules) au cas où l'internaute n'aurait pas la 1ère police. (le navigateur essaiera tout d'abord d'utiliser a <em>police1</em>, s'il ne l'a pas il essaiera la <em>police2</em>, etc...)</p>
+<p><strong>Italique</strong></p>
+<p>Pour mettre en italique on utilise la propriété <em>font-style</em> et la valeur <em>italic</em>.</p>
+<p><strong>Gras</strong></p>
+<p>Pour mettre en gras on utilise la propriété <em>font-weight</em> et la valeur <em>bold</em>.</p>
+<p><strong>Souligné</strong></p>
+<p>Pour souligner ou décorer le texte on utilise la propriété <em>text-decoration</em> et les valeurs :</p>
+<ul>
+<li><em>underline</em> : souligné;</li>
+<li><em>line-through</em> : barré;</li>
+<li><em>overline</em> : ligne au-dessus.</li>
+</ul>
+<p>On peut également indiquer la valeur <em>none</em> si on veut annuler une des propriétés précédentes.</p>
+<p><strong>L'alignement</strong></p>
+<p>Il est possible d'appliquer tous les alignements connus avec la propriété <em>text-align</em> et les valeurs :</p>
+<ul>
+<li><em>left</em> : aligné à gauche;</li>
+<li><em>center</em> : centré;</li>
+<li><em>right</em> : aligné à droite;</li>
+<li><em>justify</em> : justifié.</li>
+</ul>
+<h3 id="ajouter-de-la-couleur-et-un-fond" tabindex="-1"><a class="header-anchor" href="#ajouter-de-la-couleur-et-un-fond"></a> Ajouter de la couleur et un fond</h3>
+<p><strong>Couleur du texte</strong></p>
+<p>On peut modifier la couleur du texte avec la propriété <em>color</em>. Pour les valeurs il y a plusieurs choix possibles :</p>
+<ul>
+<li>indiquer le nom de la couleur (en anglais), problème : avec cette méthode vous n'avez accès qu'à 16 couleurs que je ne listerai pas ici;</li>
+<li>utiliser la notation hexadécimale qui consiste à utiliser un # suivi de 6 caractères qui se lisent 2 par deux indiquant la quantité de rouge, de vert et de bleu;</li>
+<li>utiliser la méthode RGB, pour cela il faut taper <em>rgb(Rouge, Vert, Bleu)</em>.</li>
+</ul>
+<p><strong>Couleur de fond</strong></p>
+<p>Pour cela on utilise la propriété <em>background-color</em> et les mêmes valeurs que précédemment.</p>
+<p><strong>Image de fond</strong></p>
+<p>Pour cela on utilise la propriété <em>background-image</em> et en valeur <em>url(&quot;nom_de_l_image.png&quot;)</em>.</p>
+<p>Avec la propriété <em>background-attachment</em> on peut décider :</p>
+<ul>
+<li>de faire défiler l'image de fond avec le texte : <em>scroll</em>;</li>
+<li>de laisser fixe l'image de fond : <em>fixed</em>.</li>
+</ul>
+<p>Il est également possible de répéter ou non l'image de fond avec la propriété <em>background-repeat</em>.</p>
+<p>Ou encore d'indiquer la position de l'image de fond avec la propriété <em>background-position</em>.</p>
+<p><strong>Transparence</strong></p>
+<p>Il est possible de jouer avec les niveaux de transparence des éléments avec la propriété <em>opacity</em> qui prend une valeur entre 0 et 1 (1:opaque, 0:transparent) ou en utilisant la notation RGBa qui consiste à ajouter une valeur comprise entre 0 et 1 à la notation RGB.</p>
+<h3 id="cr%C3%A9ez-des-bordures-et-des-ombres" tabindex="-1"><a class="header-anchor" href="#cr%C3%A9ez-des-bordures-et-des-ombres"></a> Créez des bordures et des ombres</h3>
+<p><strong>Bordures standards</strong></p>
+<p>Pour modifier l'apparence de la bordure on utilise la propriété <em>border</em> qui peut prendre jusqu'à 3 valeurs :</p>
+<ul>
+<li>la largeur : valeur en pixels (2px);</li>
+<li>la couleur : utiliser un des choix vu plus haut pour décider de la couleur;</li>
+<li>type de bordure : il existe 8 types différents de bordure.
+<img src="https://raw.githubusercontent.com/do-it-ecm/promo-2022-2023/refs/heads/main//Bermond-Timothee/mon/temps-1.2/types_bordures.jpg" alt="Types bordures CSS"></li>
+</ul>
+<p>Il est également possible de ne sélectionner qu'une bordure avec les propriétés :</p>
+<ul>
+<li><em>border-top</em></li>
+<li><em>border-bottom</em></li>
+<li><em>border-left</em></li>
+<li><em>border-right</em></li>
+</ul>
+<p>On peut aussi arrondir les bordures avec la propriété <em>border-radius</em> et on indique l'importance de l'arrondi en pixels.</p>
+<p><strong>Les ombres</strong></p>
+<p>Il est possible d'ajouter l'ombre des boites avec la propriété <em>box-shadow</em> qui prend 4 valeurs :</p>
+<ol>
+<li>Le décalage horizontzal</li>
+<li>Le décalage vertical</li>
+<li>L'adoucissement du dégradé.</li>
+<li>La couleur de l'ombre.</li>
+</ol>
+<p>Il est également possible d'ajouter la valeur <em>inset</em> qui place l'ombre à l'intérieur du bloc.</p>
+<p>On peut aussi ajouter l'ombre du texte avec la propriété <em>text-shadow</em> qui prend les mêmes valeurs que <em>box-shadow</em>.</p>
+<h3 id="apparences-dynamiques" tabindex="-1"><a class="header-anchor" href="#apparences-dynamiques"></a> Apparences dynamiques</h3>
+<p>Il est possible de modifier l'apparence du texte :</p>
+<ul>
+<li>au survol avec le pseudo-formats CSS <em>:hoover</em></li>
+<li>lors du clique : <em>:active</em></li>
+<li>lorsque l'élément est séléctionné : <em>:focus</em></li>
+<li>lorsque le lien a déjà été consulté : <em>:visited</em></li>
+</ul>
+<h3 id="structurer-son-site" tabindex="-1"><a class="header-anchor" href="#structurer-son-site"></a> Structurer son site</h3>
+<p><strong>Les balises structurantes</strong></p>
+<p>Des balises ont été introduites pour structurer les pages :</p>
+<ul>
+<li>l'en-tête : balise <em>header</em></li>
+<li>le pied de page : balise <em>footer</em></li>
+<li>principaux liens de navigation : balise <em>nav</em></li>
+<li>des sections de page : balise <em>section</em></li>
+<li>des informations complémentaires : balise <em>aside</em></li>
+<li>un article indépendant : balise <em>article</em></li>
+</ul>
+<p>Ce qui donne a peu près :
+<img src="https://raw.githubusercontent.com/do-it-ecm/promo-2022-2023/refs/heads/main//Bermond-Timothee/mon/temps-1.2/balises_structure.jpg" alt="Balises structure"></p>
+<p><strong>Flexbox</strong></p>
+<p>C'est la technique que j'ai principalement utilisé pour la mise en page de mon POK.</p>
+<p>Le principe de la mise en page est simple :
+On définit un conteneur dans lequel on place des éléments.
+Le conteneur est une balise HTML et les éléments sont d'autres balises HTML à l'intérieur de cette balise :</p>
+<pre class="language-html line-numbers"><code>
+
+<div id="conteneur">
+  <div class="element 1">Element</div>
+  <div class="element 2">Element</div>
+  <div class="element 3">Element</div>
+</div>
+
+
+</code></pre><p>Il faut ensuite ajouter la valeur <em>flex</em> à la propriété <em>display</em> du conteneur.</p>
+<p>On peut maintenant modifier la direction avec la propriété <em>flex-direction</em> qui peut prendre les valeurs suivantes :</p>
+<ul>
+<li><em>row</em> : sur une ligne</li>
+<li><em>column</em> : sur une colonne</li>
+<li><em>row-reverse</em> : sur une ligne en ordre inversé</li>
+<li><em>column-reverse</em> : sur une colonne en ordre inversé</li>
+</ul>
+<p>Afin de permettre aux éléments d'aller à la ligne si il n'y a plus de place il faut utiliser la propriété <em>flex-wrap</em>.</p>
+<p>On peut ensuite aligner les éléments selon l'axe principal avec la propriété <em>justify-content</em> qui peut prendre différentes valeurs :
+<img src="https://raw.githubusercontent.com/do-it-ecm/promo-2022-2023/refs/heads/main//Bermond-Timothee/mon/temps-1.2/alignement_axe_principal.jpg%22" alt="Alignement axe principal"></p>
+<p>Mais on peut également aligner les éléments sur l'axe secondaire avec la propriété <em>align-items</em> qui peut prendre différentes valeurs :
+<img src="https://raw.githubusercontent.com/do-it-ecm/promo-2022-2023/refs/heads/main//Bermond-Timothee/mon/temps-1.2/alignement_axe_secondaire.jpg" alt="Alignement axe secondaire">
+Il est possible d'aligner un seul élément sur l'axe secondaire avec la propriété <em>align-self</em>.</p>
+<p>La propriété <em>order</em> permet de changer l'ordre des éléments du conteneur.</p>
+<p>Enfin la propriété <em>flex</em> peut autoriser les éléments à occuper plus ou moins d'espace restant.
+Par exemple :</p>
+<pre class="language-css line-numbers"><code>
+
+.element:nth-child(1)
+{
+    flex: 2;
+}
+.element:nth-child(2)
+{
+    flex: 1;
+}
+
+
+</code></pre><p>permet à l'élément 1 de grossir 2 fois plus que l'élément 1.</p>
+<p>Il existe également d'autres manières de structurer les pages que je n'ai pas étudier durant ce MON.</p>
+<h2 id="simplification-du-css-avec-sass" tabindex="-1"><a class="header-anchor" href="#simplification-du-css-avec-sass"></a> Simplification du CSS avec Sass</h2>
+<p>Dans une deuxième partie j'ai suivi cette autre <a href="https://openclassrooms.com/fr/courses/6106181-simplifiez-vous-le-css-avec-sass">formation openclassrooms</a>.</p>
+<h4 id="structure-du-css" tabindex="-1"><a class="header-anchor" href="#structure-du-css"></a> Structure du CSS</h4>
+<p>Il est très facile de se retrouver avec des fichiers .css brouillons et il devient alors très difficile et surtout long pour rien de modifier l'apparence de certaines parties de son site. C'est pourquoi il est important d'avoir un fichier .css bien structuré afin de gagner en efficacité.</p>
+<p><strong>Principe du DRY</strong></p>
+<p>Le principe DRY, signifiant &quot;Don't Repeat Yourself&quot;, est très important : il ne faut pas que l'on retrouve des règles qui se répètent.
+Dans mon POK par exemple on peut retrouver la répétion de la même règle pour deux balises différentes.</p>
+<pre class="language-css line-numbers"><code>
+
+#div_choix3{
+    display: none;
+}
+
+#div_choix4{
+    display: none;
+}
+
+
+</code></pre><p>J'ai donc ajouté une règle <em>.div_choix-hide</em> que j'applique à mes deux <em>div</em> en ajoutant <em>div_choix-hide</em> à leur classe.
+On passe donc de ceci :</p>
+<pre class="language-html line-numbers"><code>
+
+<div id="div_choix4" class="div_choix">
+
+
+</div></code></pre><p>A ceci :</p>
+<pre class="language-html line-numbers"><code>
+
+<div id="div_choix4" class="div_choix div_choix-hide">
+
+
+</div></code></pre><p>J'ai fusionné mes deux règles redondantes en une seule :</p>
+<pre class="language-css line-numbers"><code>
+
+.div_choix-hide{
+    display: none;
+}
+
+
+
+</code></pre><p>Ce qui me permet d'avoir un codebase plus facile à maintenir.</p>
+<p>Je l'ai appliqué à mon POK et suis passé d'un fichier .css de plus de 300 lignes à un fichier de moins de 200 lignes.</p>
+<p><strong>Spécificité</strong></p>
+<p>Définition de la <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Cascade_and_inheritance#specificity">documentation MDN</a> :</p>
+<p>La spécificité est la manière dont le navigateur décide quelle règle s’applique si plusieurs règles ont des sélecteurs différents, mais peuvent quand même s’appliquer au même élément.</p>
+<p>C'est super compliqué à expliquer et je vais juste vous embrouiller donc allez checker vous même sur le <a href="https://openclassrooms.com/fr/courses/6106181-simplifiez-vous-le-css-avec-sass/6595695-structurez-votre-css#/id/r-7191892">cours</a> où c'est très bien expliqué.</p>
+<p><strong>BEM</strong></p>
+<p>BEM est une convention CSS qui permet de rapidement s'y retrouver dans son code sans avoir à chercher des heures à quoi sert tel ou tel élément.</p>
+<p>BEM est l'acronyme de bloc, élément, modificateur.</p>
+<p>Comment ça fonctionne?</p>
+<p>Tout d'abord, il faut construire des <strong>blocs</strong>, càd un composant qui est autonome et peut fonctionner indépendamment du reste de la page.
+Par exemple, dans un portfolio, si on supprimait tout sauf le titre d'un projet il ne deviendrait qu'un bout de texte isolé. Alors que si on prend l'aperçu entier du projet (titre, image, description) là ça à du sens, on a donc un bloc que l'on va nommer en décrivant sa fontion : <em>.apercu-proj</em> et auquel on va assigner les règles spécifiques à ce bloc.
+Ensuite, on va nommer tous les <strong>éléments</strong> de ce bloc selon une nomenclature particulière : <em>bloc_parent__fonction_élément</em>.
+Ici, pour le titre on obtiendrait : <em>.apercu-proj__titre</em>.
+Enfin, pour des modifications spécifiques à un bloc ou un élément on va ajouter un <strong>modificateur</strong>. Là encore, il y a une nomenclature spéciale : <em>bloc/élément_modifié--style_modificateur</em>.
+Dans notre cas, si on veut mettre un fond vert ça donnerait : <em>apercu-projet--vert</em></p>
+<h3 id="sass" tabindex="-1"><a class="header-anchor" href="#sass"></a> Sass</h3>
+<p>Sass est un préprocesseurs css, càd un outil qui permet de rédiger son code de manière plus cohérente visuellement.
+Il est possible d'écrire du Sass dans des fichiers <em>.sass</em> ou <em>.scss</em>. La syntaxe est légèrement différente mais reste quand même très proche.</p>
+<p>Dans ce MON nous allons nous concentrer sur les fichiers <em>.scss</em>.</p>
+<p>Grâce à Sass, il est possible d'utiliser le <strong>nesting</strong>, càd l'imbrication des sélécteurs.
+Au lieu d'écrire :</p>
+<pre class="language-css line-numbers"><code>
+
+ul {
+  list-style: none;
+  text-align: right;
+}
+
+ul li {
+  display: inline;
+  font-size: 3rem;
+  color: #D6FFF5;
+}
+
+
+</code></pre><p>On écrit :</p>
+<pre class="language-scss line-numbers"><code>
+
+ul {
+  list-style: none;
+  text-align: right;
+  li {
+      display: inline;
+      font-size: 3rem;
+      color: #D6FFF5;
+  }
+}
+
+
+</code></pre><div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Attention</strong> à ne pas créer des sélecteurs trop spécifiques.</p>
+</div><div class="pl-8 mr-8">
+<p>On pourrait donc être tenté de reproduire une copie conforme de la structure de notre HTML.
+Cela n'est pas une bonne idée car on va se retrouver avec des sélécteurs de haute spécificité qui seront très durs à modifier.</p>
+</div>
+</div>
+<p><strong>Utiliser des sélécteurs BEM avec Sass</strong></p>
+<p>On peut fusionner la méthodologie BEM et le nesting de Sass.</p>
+<p>Pour cela on utilise les &amp; ce qui nous permet d'être plus clair visuellement et de ne pas avoir à répeter le nom des blocs ou des éléments :</p>
+<pre class="language-scss line-numbers"><code>
+
+.block{
+  background-color: #15DEA5;
+  &__element {
+      color: #fff;
+        &--modifier {
+            background-color: #001534;
+  }
+  }
+}
+
+
+</code></pre><p>Ce qui nous donne en CSS compilé :</p>
+<pre class="language-css line-numbers"><code>
+
+.block {
+  background-color: #15DEA5;
+}
+
+.block__element {
+  color: #fff;
+}
+
+.block__element--modifier {
+  background-color: #001534;
+}
+
+
+</code></pre><h3 id="am%C3%A9liorer-la-maintenabilit%C3%A9-du-code-avec-les-variables-sass" tabindex="-1"><a class="header-anchor" href="#am%C3%A9liorer-la-maintenabilit%C3%A9-du-code-avec-les-variables-sass"></a> Améliorer la maintenabilité du code avec les variables Sass</h3>
+<p>Afin de pouvoir rapidement modifier une valeur qui apparait de nombreuses fois dans le CSS, il est possible d'utiliser les variables Sass.
+Par exemple, si l'on retrouve un grand nombre de fois la couleur vert menthe dans notre fichier, il est possible d'écrire <em>$color-primary: #15DEA5</em> au début de votre fichier .scss et puis de remplacer tous les <em>#15DEA5</em> par <em>$color-primary</em> dans le reste du fichier. Comme ça si l'on décide de changer la couleur principale de notre site il suffit de changer le code hexadécimal et tous les éléments changeront de couleur plutôt que de devoir les changer 1 à 1.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p>Nommer la variable en fonction de son rôle</p>
+</div><div class="pl-8 mr-8">
+<p>On pourrait donc être tenté de nommer la variable <em>#mint</em> (vert menthe) mais si l'on change de couleur par du bleu alors il faudrait soit changer tous <em>#mint</em> du fichier soit juste changer le <em>$mint: #15DEA5</em> au début mais cela créérait une confusion car la couleur ne serait plus vert menthe mais bleu.</p>
+</div>
+</div>
+<p>Il existe 8 types de variables dans Sass:</p>
+<ul>
+<li>les couleurs;</li>
+<li>les chaines de caractères</li>
+<li>les nombres</li>
+<li>les listes et maps</li>
+<li>les booléens, les nulls et les fonctions</li>
+</ul>
+<h3 id="les-mixins-sass" tabindex="-1"><a class="header-anchor" href="#les-mixins-sass"></a> Les mixins Sass</h3>
+<p>Les mixins fonctionnent un peu comme une variable sauf qu'elles stockent des blocs entiers de code.
+C'est donc très pratique pour stocker des ensembles de règles CSS que l'on utilise fréquemment.</p>
+<pre class="language-scss line-numbers"><code>
+
+@mixin mixin-name {
+  css-property: value;
+}
+
+
+</code></pre><p>Par exemple, si l'on veut ajouter des ombres à de nombreux textes on peut créer une mixin :</p>
+<pre class="language-scss line-numbers"><code>
+
+@mixin heading-shadow{
+  text-shadow: .55rem .55rem #15DEA5;
+}
+
+
+</code></pre><p>Et puis l'ajouter dans notre sélecteur :</p>
+<pre class="language-scss line-numbers"><code>
+
+.form {
+  &__heading {
+      @include heading-shadow;
+  }
+}
+
+
+</code></pre><p>Il est également possible d'ajouter des arguments à nos mixins :</p>
+<pre class="language-scss line-numbers"><code>
+
+@mixin heading-shadow($colour){
+  text-shadow: .55rem .55rem $colour;
+}
+
+
+</code></pre><p>Ce qui nous permet ici d'appliquer les ombres de la couleur que l'on veut.</p>
+<p>On peut régler la valeur par défaut qui sera utilisé en écrivant :</p>
+<pre class="language-scss line-numbers"><code>
+
+@mixin heading-shadow($colour: $colour-primary){
+  text-shadow: .55rem .55rem $colour;
+}
+
+
+</code></pre><p>Si aucune couleur n'est spécifiée alors l'ombre sera de la couleur principale (colour-primary).</p>
+<h3 id="%C3%A9crire-du-code-plus-propre-gr%C3%A2ce-aux-extensions-sass" tabindex="-1"><a class="header-anchor" href="#%C3%A9crire-du-code-plus-propre-gr%C3%A2ce-aux-extensions-sass"></a> Écrire du code plus propre grâce aux extensions Sass</h3>
+<p>Attention en utilisant trop de mixins cela créer une duplication de l'ensemble de règles dans le CSS compilé. Il comporte de multiples répétitions.</p>
+<p>Heureusement, les extensions existent. Pour cela on utilise un placeholder, càd un bloc de code qui va être réutilisé dans les à l'aide de <em>@extend</em> pour les sélecteurs voulus.</p>
+<pre class="language-scss line-numbers"><code>
+
+%typography {
+  color: $colour-primary;
+  font-size: 2rem;
+  font-weight: 100;
+  line-height: 1.7;
+}
+h1 {
+@extend %typography;
+}
+textarea {
+  @extend %typography;
+}
+button {
+  @extend %typography;
+}
+input {
+  @extend %typography;
+}
+
+
+</code></pre><p>Ainsi lorsque l'on regarde le CSS compilé, il n'y a plus de répétitions mais une liste des sélecteurs concernés :</p>
+<pre class="language-css line-numbers"><code>
+
+h1, textarea, button, input {
+color: #15dea5;
+font-size: 2rem;
+font-weight: 100;
+line-height: 1.7;
+}
+
+
+</code></pre><h3 id="mixins-vs-extensions" tabindex="-1"><a class="header-anchor" href="#mixins-vs-extensions"></a> Mixins Vs Extensions</h3>
+<p>Bien que les extensions évitent les répétions, il est préférable d'utiliser les mixins. En effet, les extensions démolissent l'ordre et la prédictibilité du codebase. De plus, les extensions n'acceptent pas d'arguments contrairement aux mixins.</p>
+<h3 id="conditions-dans-sass" tabindex="-1"><a class="header-anchor" href="#conditions-dans-sass"></a> Conditions dans Sass</h3>
+<p>Il est possible d'instaurer des conditions dans Sass.
+Cela s'écrit :</p>
+<pre class="language-scss line-numbers"><code>
+
+@if ( lightness($colour) < 25% ) {
+  $colour: lighten($colour, 10%);
+}@else{
+  $colour: darken($colour, 10%);
+}
+
+
+</code></pre><p>On peut donc créer des mixins modulables en fonctions de certains paramètres ;</p>
+<pre class="language-scss line-numbers"><code>
+
+@mixin heading-shadow($colour: $colour-primary, $size: $heading-shadow-size){
+  @if ( lightness($colour) < 25% ) {
+      $colour: lighten($colour, 10%);
+  }@else{
+      $colour: darken($colour, 10%);
+  }
+  text-shadow: $size $size $colour;
+}
+
+
+</code></pre><h3 id="cr%C3%A9er-des-fonctions" tabindex="-1"><a class="header-anchor" href="#cr%C3%A9er-des-fonctions"></a> Créer des fonctions</h3>
+<p>Il est possible de créer des fonctions avec le <em>@function Nom_de_la_fonction(Arguments)</em>.
+Pour récupérer une valeur on utilise <em>@return</em>.
+Voici un exemple de fonction qui modifie la couleur :</p>
+<pre class="language-scss line-numbers"><code>
+
+@function lightness-shift($colour){
+  @if ( lightness($colour) < 25% ) {
+      @return lighten($colour, 10%);
+  }@else{
+      @return darken($colour, 10%);
+  }
+}
+
+
+</code></pre><p>Je n'ai pas eu le temps de finir toute la formation openclassrooms, il me reste encore la dernière partie : <a href="https://openclassrooms.com/fr/courses/6106181-simplifiez-vous-le-css-avec-sass/6599201-utilisez-le-systeme-7-1-pour-une-codebase-plus-simple-a-gerer">&quot;Optimisez votre code en utilisant les techniques avancées de Sass&quot;</a></p>
+
+
+
+</article>
+
+        </main>
+
+        <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-center items-center">
+                    <p class="text-center">
+                        ©2025 <b><span style="font-family: Consolas, sans-serif;">Do_<span style="color: #4a86e8">It</span></span></b> - Développement, Management et Gestion de projets en IT
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- MathJax import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">
+            window.MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']], // Delimiters for inline math
+                    displayMath: [['$$', '$$'], ['\\[', '\\]']] // Delimiters for block math
+                },
+                svg: {
+                    fontCache: 'global' // Use global font cache for SVG output
+                }
+            };
+            document.addEventListener('DOMContentLoaded', () => {
+                MathJax.typeset(); // Ensures MathJax processes the content after the page loads
+            });
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">
+            Prism.plugins.NormalizeWhitespace.setDefaults({
+                'remove-trailing': true,
+                'remove-indent': true,
+                'left-trim': true,
+                'right-trim': true,
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script>
+    </body>
+</html>

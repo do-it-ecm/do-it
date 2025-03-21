@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="referrer" content="no-referrer-when-downgrade">
+        <meta name="robots" content="index, follow">
+
+        <link rel="canonical" href="https://do-it.aioli.ec-m.fr/promos/2023-2024/Ledins-Cassandra/mon/temps-1.2/">
+
+        
+        
+
+        <meta name="description" content="Do-It, cours et travaux des élèves de l&#39;école Centrale Méditerranée">
+        <meta property="og:description" content="Do-It, cours et travaux des élèves de l&#39;école Centrale Méditerranée">
+        <meta name="twitter:description" content="Do-It, cours et travaux des élèves de l&#39;école Centrale Méditerranée">
+
+        
+            <meta name="author" content="Cassandra Ledins">
+        
+        <meta name="keywords" content="do-it, centrale, centrale méditerranée, ecm, MON">
+
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png">
+        <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png">
+
+        <link href="/assets/stylesheets/main.css" rel="stylesheet">
+
+        <meta property="og:title" content="Bases en C">
+
+        <meta property="og:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta property="og:url" content="https://do-it.aioli.ec-m.fr/promos/2023-2024/Ledins-Cassandra/mon/temps-1.2/">
+        <meta property="og:type" content="website">
+
+        <meta name="twitter:card" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:title" content="Bases en C">
+        <meta name="twitter:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:url" content="https://do-it.aioli.ec-m.fr/promos/2023-2024/Ledins-Cassandra/mon/temps-1.2/">
+
+        <title>Bases en C</title>
+
+        <!-- Prismjs imports
+                - Prism line numbers
+                - Prism toolbar
+        -->
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+        <!-- Mermaid import and initialization -->
+        <script type="module" defer="">
+            import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/+esm';
+            mermaid.initialize({
+                startOnLoad: true,
+            });
+        </script>
+    </head>
+
+    <body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000">
+        <header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-between items-center">
+                    <a class="mx-2" href="/">Home</a>
+                    <div class="flex items-center gap-4 sm:gap-6 ">
+                        <a class="" href="/cs">CS</a>
+                        <a class="" href="/pok">POK</a>
+                        <a class="" href="/mon">MON</a>
+                        <a class="" href="/projets">Projets</a>
+                        <a class="hidden sm:block" href="/promos">Promos</a>
+                        <a href="/search">
+                            <svg class="h-5 aspect-square" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+                            </svg>
+                        </a>
+                        <a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank">
+                            <svg class="h-5 aspect-square" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body="">
+            
+<article class="relative">
+<h1 class="mb-1">Bases en C</h1>
+<div class="mb-4">
+    
+        <div class="px-4 flex flex-wrap items-center">
+            
+                <div class="font-bold">Tag : </div>
+            
+            <ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags">
+                
+                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">MON</li>
+                
+
+            </ul>
+
+            
+            <div class="hidden" data-pagefind-meta="Type">
+                
+                    
+                        <span data-pagefind-filter="Type">MON</span>
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Auteurs : </div>
+            <ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs">
+                
+                    <li class="bg-blue-200 rounded-full px-2" data-pagefind-filter="Auteurs">Cassandra Ledins</li>
+                
+            </ul>
+        </div>
+    
+
+    
+        <div class="absolute top-0 right-0">
+            <span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2" data-pagefind-filter="Année">
+                2023-2024
+            </span>
+        </div>
+    
+</div>
+
+        <p class="mb-4 text-lg">
+
+                Apprendre les bases du C
+
+        </p>
+
+
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-purple-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/promos/2023-2024/Ledins-Cassandra/">Cassandra Ledins</a><span class="px-1">/</span><a href="/promos/2023-2024/Ledins-Cassandra/mon/">MON de Cassandra Ledins</a><span class="px-1">/</span><a href="/promos/2023-2024/Ledins-Cassandra/mon/temps-1.2/">Bases en C</a>
+
+</div>
+</div>
+
+
+
+
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-pink-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Prérequis</strong></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li>des notions de programmation aident grandement</li>
+<li>de la patience sinon</li>
+</ul>
+</div>
+</div>
+<h2 id="introduction" tabindex="-1"><a class="header-anchor" href="#introduction"></a> Introduction</h2>
+<p>J'ai voulu développer mon champ de connaissance en programmation pour avoir plus d'outils à ma disposition pour aborder différents problèmes. J'ai pensé à apprendre le C ou le C++ (langage utilisé en développement de jeux vidéos, domaine qui m'intéresse). M. Brucker ayant suggéré d'apprendre le C d'abord, c'est ce que je vais faire ici. Cela me servira aussi pour mon alternance dans le milieu de l'intelligence artificielle, où on est parfois amenés à modifier des librairies écrites en C pour entraîner nos modèles.</p>
+<p>Je pars de 0 dans ce langage. Je vais prendre le cours &quot;Apprenez à programmer en C&quot; d'OpenClassrooms, durée estimée 10h, de difficulté moyenne. <strong>mettre lien</strong></p>
+<h2 id="a-l'abordage-!" tabindex="-1"><a class="header-anchor" href="#a-l'abordage-!"></a> A l'abordage !</h2>
+<p>On commence par nous rassurer et nous guider dans la création d'un projet C. <strong>Je n'ai pas suivi les conseils exacts donnés</strong> car j'avais envie de continuer à travailler dans VSCode et ils proposaient d'autres IDE.</p>
+<p>On créé donc notre premier petit code &quot;minimal&quot; <strong>main.c</strong> qui a la tête suivante :</p>
+<pre class="language-c line-numbers"><code>
+
+
+/* Mon super programme de hacker 
+Attention à vos mirettes*/
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    printf("Hello world!\n"); //Ici, on veut impressioner en soirée mondaine en disant Bonjour monde.
+    return 0;
+}
+
+
+</stdlib.h></stdio.h></code></pre><p><strong>stdio.h</strong> et <strong>stdlib.h</strong> sont des librairies avec lesquelles on travaille dans le code. Comme dans un code python où on import les librairies.
+D'après ce que j'ai compris, stdio s'occupera de la gestion des standard input/output, et stdlib de l'exit.</p>
+<p>On créé une fonction <strong>main</strong> qui sera exécutée en première par défaut. Elle retourne un &quot;int&quot; par convention (0) pour dire que tout s'est bien passé.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 text-amber-800" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Note</b></p>
+</div><div class="pl-8 mr-8">
+<p>Par lisibilité et car c'est fortement recommandé pour éviter les confusions, on doit donc, comme on le voit dans l'exemple, <strong>déclarer le type de sortie</strong> de la fonction.</p>
+</div>
+</div>
+<p>Assez intuitivement, on retrouve les commentaires : sur une ligne avec <strong>//</strong> et sur plusieurs lignes avec <strong>&quot;/*&quot;</strong> et <strong>&quot;*/&quot;</strong></p>
+<p>A l'intérieur de la fonction entre crochets, on effectue deux choses : on print un message dans le terminal et on retourne 0 pour dire que ça s'est bien passé.</p>
+<p>Mais avant d'observer ça, il va d'abord falloir compiler le code. Pour cela j'ai utilisé la commande gcc dans le terminal.</p>
+<pre class="line-numbers"><code>
+
+gcc main.c -o bonjour.exe
+
+
+</code></pre><p>Ici, on utilise le compilateur gcc, sur notre fichier main.c que l'on vient d'écrire. Avec l'option -o, on indique que l'on veut compiler le tout sous forme d'un fichier exécutable que l'on veut appeler bonjour.exe.</p>
+<p>Après avoir tapé cela dans le terminal, le fichier exécutable bonjour.exe apparaît dans notre dossier projet. Il ne nous reste plus qu'à taper son petit nom pour l'exécuter et voir la magie s'opérer (on s'assure d'écrire ./ devant le fichier pour que le shell sache qu'on parle d'un fichier et non d'une commande):</p>
+<pre class="line-numbers"><code>
+
+./bonjour.exe
+
+>Hello world!
+
+echo $!
+
+>0
+
+
+</code></pre><p>On sait grâce au cours Linux/OPS comment vérifier le code de sortie, on voit que c'est 0. Donc on est super contents.</p>
+<h3 id="variables" tabindex="-1"><a class="header-anchor" href="#variables"></a> Variables</h3>
+<p>Il y a plusieurs types de variables, et on doit également déclarer leurs types à la création. Il y a des variables pour les entiers (<strong>int</strong>, <strong>long</strong>, <strong>signed char</strong>), et pour les float (<strong>float</strong>, <strong>double</strong>). Leur différence tient dans la place en mémoire qu'ils prennent, ils sont donc aussi limités dans leur grandeur. On peut aussi ajouter <strong>unsigned</strong> devant tout ça, si on veut déclarer un nombre positif, et avoir la possibilité qu'il soit plus grand.</p>
+<p>On peut annoncer au monde en quelle année on est, en utilisant les outils de remplacement de variable <strong>%</strong>. Après ce symbole, on ajoute une lettre pour indiquer de quel type de variable il s'agira. Ici <strong>d</strong> pour un entier int, <strong>f</strong> pour un float.</p>
+<pre class="language-c line-numbers"><code>
+
+ int annee = 2023;
+ float compotes_mangées = 2.5;
+ printf("Hello world!\nNous sommes actuellement en %d\nJ'ai actuellement mangé %f compotes depuis le début de ce MON.\n", annee, compotes_mangées);
+
+
+</code></pre><p>Après compilation et exécution (avec le reste du code qu'on a écrit plus haut) :</p>
+<pre class="line-numbers"><code>
+
+Hello world!
+Nous sommes actuellement en 2023
+J'ai actuellement mangé 2.500000 compotes depuis le début de ce MON.
+
+
+</code></pre><p>Pour les opérations mathématiques, ça ressemble à Python à ceci près que la division est automatiquement euclidienne entre 2 entiers. Pour avoir un résultat en float, il faudra diviser des floats. (5/2 = 2 mais 5.0/2.0 = 2.5). On va passer là-dessus.</p>
+<p>On peut se servir de la variable dans une opération pour la redéfinir par exemple pour l'incrémentation:</p>
+<pre class="language-c line-numbers"><code>
+
+int pouet = 0;
+pouet = pouet + 1;
+
+
+</code></pre><p>Ce qui peut aussi être écrit avec :</p>
+<pre class="language-c line-numbers"><code>
+
+int pouet = 0;
+pouet++
+
+
+</code></pre><p>On peut aussi vouloir fixer une constante avec <strong>const</strong>. On ne pourra plus la modifier après sa déclaration !</p>
+<pre class="language-c line-numbers"><code>
+
+const int mes_compotes = 8; //PAS TOUCHE
+
+
+</code></pre><p>Il existe aussi l'option <strong>static</strong> qui peut avoir 2 utilités : rendre une variable d'un fichier &quot;locale&quot; c'est-à-dire qu'elle ne sera pas accessible dans un autre fichier.
+Ou si elle est utilisée sur une variable à l'intérieur d'une fonction, la variable ne sera pas &quot;supprimée&quot; à la fin de la fonction. Donc si elle est modifiée dans la fonction et que la fonction est ensuite rappelée, la fonction débutera avec la valeur <strong>déjà modifiée</strong> de la variable.</p>
+<h2 id="conditions" tabindex="-1"><a class="header-anchor" href="#conditions"></a> Conditions</h2>
+<p>Pour les conditions c'est encore pareil que python à ceci près qu'on rajoute des accolades, des parenthèses et des points virgules.</p>
+<pre class="language-c line-numbers"><code>
+
+if (maConditionEstVraie)
+{
+  mesinstructions;
+}
+else if (uneAutreCondition)
+{
+  mesautresinstructions;
+}
+
+
+</code></pre><p>On a les comparateurs <strong>==</strong>,<strong>&lt;=</strong>, et les opérateurs <strong>&amp;&amp;</strong>, <strong>||</strong>, <strong>!</strong>.</p>
+<p>Pour éviter d'utiliser des conditions else if à la suite, on peut construire un <strong>switch</strong>:</p>
+<pre class="language-c line-numbers"><code>
+
+switch (mescompotes)
+{
+case 0:
+  printf("Je suis dans la sauce");
+  break;
+case 1:
+  printf("Je suis pas à l'aise");
+  break;
+case 2:
+  printf("Va falloir aller faire les courses");
+  break;
+default:
+  printf("Tout va bien");
+  break;
+}
+
+
+</code></pre><p>On peut <strong>assigner</strong> une valeur à une variable en fonction de si une <strong>condition</strong> est vérifiée ou non de cette sorte:</p>
+<pre class="language-c line-numbers"><code>
+
+variable = (condition) ? valeur1 : valeur2;
+
+
+</code></pre><h2 id="boucles" tabindex="-1"><a class="header-anchor" href="#boucles"></a> Boucles</h2>
+<p>Il y a 3 boucles différentes: while, do... while et for.</p>
+<p>Avec tout ce qu'on a appris je décide de faire un code de braquage de compotes. Vous allez me donner toutes vos compotes maintenant.</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Le code de mon braquage</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-c line-numbers"><code>
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int mes_compotes = 0;
+    int ses_compotes = 1000;
+    printf("Ceci est un braquage de compotes, laissez-vous faire\nVous avez 1000 compotes et vous allez devoir m'en donner jusqu'à ce que je sois rassasiée.\n");
+    printf("Votre but est de garder le maximum de vos compotes.\n");
+    while (mes_compotes<457)
+    {
+        if (mes_compotes<=100)
+        {
+            printf("J'ai très très faim\n");
+        }
+        else if (mes_compotes<=200)
+        {
+            printf("J'ai faim\n");
+        }
+        else if (mes_compotes<=300)
+        {
+            printf("Encore un peu\n");
+        }
+        else if (mes_compotes<=440)
+        {
+            printf("Je suis presque rassasiée\n");
+        }
+        else
+        {
+            int compotes_restantes = (457-mes_compotes);
+            printf("Donne-moi encore %d compotes\n", compotes_restantes);
+        }
+        printf("Il te reste %d compotes, combien veux-tu m'en donner ?\n", ses_compotes);
+        int compotes_transit = 0;
+        scanf("%d", &compotes_transit);
+        mes_compotes = mes_compotes + compotes_transit;
+        ses_compotes = ses_compotes - compotes_transit;
+    }
+    printf("*s'endort*\nTu as réussi à apaiser le monstre des compotes, et il te reste %d compotes !\n", ses_compotes);
+    return 0;
+}
+
+
+</stdlib.h></stdio.h></code></pre></div>
+</details>
+</div>
+<img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Ledins-Cassandra/mon/temps-1.2/braquage.png">
+<h2 id="fonctions" tabindex="-1"><a class="header-anchor" href="#fonctions"></a> Fonctions</h2>
+<p>On peut bien sûr créer des fonctions comme ceci :</p>
+<pre class="language-c line-numbers"><code>
+
+type maFonction(type arg1, type arg2, ..)
+{
+  mesInstructions;
+}
+
+
+</code></pre><p>Puis les appeler autre part :</p>
+<pre class="language-c line-numbers"><code>
+
+int main()
+{
+  type arg1 = valeur1;
+  maFonction(type arg1);
+}
+
+
+</code></pre><h2 id="headers-et-fonctions-modulaires" tabindex="-1"><a class="header-anchor" href="#headers-et-fonctions-modulaires"></a> Headers et fonctions modulaires</h2>
+<p>On peut également créer des fichiers annexes de headers et d'autres fonctions, comme des librairies.</p>
+<p>Dans notre code, si on définit une fonction après la fonction main, cela ne marchera pas. Pour faire cela, il faut indiquer dans un header (donc au début du code) le format de la fonction. Pour notre braquage par exemple on pourrait créer:</p>
+<pre class="language-c line-numbers"><code>
+
+void braquage(int compotes_voulues);
+
+
+</code></pre><p>On peut même créer la fonction dans un autre fichier, par exemple fonctions.c. On créé avec celà un fichier header fonctions.h, qui contient des directives préprocesseurs de protection :</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>fonctions.h</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-c line-numbers"><code>
+
+#ifndef fonctions_h
+#define fonctions_h
+
+#include <stdio.h>
+
+void braquage(int mes_compotes);
+
+#endif 
+
+
+</stdio.h></code></pre></div>
+</details>
+</div>
+<p>Puis ensuite le fichier fonctions.c, dans lequel on explicite la fonction braquage:</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>fonctions.c</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 text-indigo-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-c line-numbers"><code>
+
+#include "fonctions.h"
+
+void braquage(int compotes_voulues)
+{
+     int mes_compotes = 0;
+    int ses_compotes = 1000;
+    printf("Ceci est un braquage de compotes, laissez-vous faire\nVous avez 1000 compotes et vous allez devoir m'en donner jusqu'à ce que je sois rassasiée.\n");
+    printf("Votre but est de garder le maximum de vos compotes.\n");
+    while (mes_compotes<compotes_voulues) {="" if="" (mes_compotes<="100)" printf("J'ai="" très="" faim\n");="" }="" else="" printf("Encore="" un="" peu\n");="" printf("Je="" suis="" presque="" rassasiée\n");="" int="" compotes_restantes="(compotes_voulues-mes_compotes);" printf("Donne-moi="" encore="" %d="" compotes\n",="" compotes_restantes);="" printf("Il="" te="" reste="" compotes,="" combien="" veux-tu="" m'en="" donner="" ?\n",="" ses_compotes);="" compotes_transit="0;" scanf("%d",="" &compotes_transit);="" mes_compotes="mes_compotes" +="" compotes_transit;="" ses_compotes="ses_compotes" -="" printf("*s'endort*\nTu="" as="" réussi="" à="" apaiser="" le="" monstre="" des="" et="" il="" compotes="" !\n",="" <="" code=""></compotes_voulues)></code></pre></div>
+</details>
+</div>
+<p>On appelle ce fichier annexe dans les headers de la fonction main comme suit :</p>
+<pre class="language-c line-numbers"><code>
+
+#include <stdio.h>
+#include <stdlib.h>
+#include "fonctions.h"
+
+int main()
+{
+    braquage(457);
+    return 0;
+}
+
+
+</stdlib.h></stdio.h></code></pre><p>On oublie pas de compiler l'ensemble des fichiers en .c en tapant:</p>
+<pre class="line-numbers"><code>
+
+gcc main.c fonctions.c -o test.exe
+
+
+</code></pre><p>Et maintenant notre test fonctionne <strong>exactement</strong> comme toute à l'heure ! Sauf que notre fonction main est plus propre et pourra être complexifiée.</p>
+<h2 id="pointeurs" tabindex="-1"><a class="header-anchor" href="#pointeurs"></a> Pointeurs</h2>
+<p>Une variable est toujours stockée à une adresse. Un pointeur c'est un outil qui stocke l'adresse mémoire d'une variable. On le déclare avec le type de la variable et une étoile. On peut récupérer l'adresse d'une variable avec <strong>&amp;</strong>.</p>
+<pre class="language-c line-numbers"><code>
+
+int variable = 0;
+int *pointeur = &variable;
+
+
+</code></pre><p>Maintenant le côté surprenant (en tout cas pour moi), c'est qu'afficher *pointeur retourne la valeur de la variable, et afficher pointeur retourne l'adresse de la variable.</p>
+<p>On ainsi modifier depuis n'importe où la valeur de notre variable :</p>
+<pre class="language-c line-numbers"><code>
+
+*pointeur = 1;
+printf("%d", variable);
+
+
+</code></pre><p>Ce code retournera 1.</p>
+<h2 id="tableaux" tabindex="-1"><a class="header-anchor" href="#tableaux"></a> Tableaux</h2>
+<p>On peut créer un tableau, de taille fixe, avec des crochets. On peut initialiser des valeurs ou non, les changer une par une. On peut aussi jouer avec les pointeurs : toutes les cases du tableaux sont stockées dans des <strong>adresses succintes</strong>, sachant que la première valeur se récupère à l'adresse indiquée par le nom de la variable. On ne peut stocker que des variables du <strong>même type</strong> dans un tableau.</p>
+<pre class="language-c line-numbers"><code>
+
+int monTableau[3];
+monTableau[0] = 1;
+*(monTableau + 1) = 2;
+monTableau[2] = 3;
+
+
+</code></pre><h2 id="conclusion" tabindex="-1"><a class="header-anchor" href="#conclusion"></a> Conclusion</h2>
+<p>Ca a été très intéressant pour moi de découvrir C et les concepts de pointeurs, de les appliquer dans des exercices. Ca a aussi permis de débloquer des problèmes de compréhension que j'avais dans les scripts en général (javascript ou shell). Je recommande vivement le cours d'OpenClassroom pour qui veut s'aventurer au C.</p>
+
+
+
+</article>
+
+        </main>
+
+        <footer class="min-h-[50px] border-t-2 border-gray-200 mt-4">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-center items-center">
+                    <p class="text-center">
+                        ©2025 <b><span style="font-family: Consolas, sans-serif;">Do_<span style="color: #4a86e8">It</span></span></b> - Développement, Management et Gestion de projets en IT
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- MathJax import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">
+            window.MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']], // Delimiters for inline math
+                    displayMath: [['$$', '$$'], ['\\[', '\\]']] // Delimiters for block math
+                },
+                svg: {
+                    fontCache: 'global' // Use global font cache for SVG output
+                }
+            };
+            document.addEventListener('DOMContentLoaded', () => {
+                MathJax.typeset(); // Ensures MathJax processes the content after the page loads
+            });
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">
+            Prism.plugins.NormalizeWhitespace.setDefaults({
+                'remove-trailing': true,
+                'remove-indent': true,
+                'left-trim': true,
+                'right-trim': true,
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script>
+    </body>
+</html>
