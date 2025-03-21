@@ -4,7 +4,7 @@ layout: layout/post.njk
 eleventyImport:
   collections: ["PROJET"]
 
-eleventyExcludeFromCollections: true
+eleventyExcludeFromCollections: ["PROJET", "index"]
 
 tags:
     - "index"
@@ -24,13 +24,7 @@ eleventyComputed:
 
 {% for projet in collections.PROJET | sort | reverse %}
     {% set yearMatches = projet.data.year == year %}
-    {% set isIndex = false %}
-    {% for tag in projet.data.tags %}
-        {% if tag == "index" %}
-            {% set isIndex = true %}
-        {% endif %}
-    {% endfor %}
-    {% if yearMatches and not isIndex %}
+    {% if yearMatches and not "index" in projet.data.tags %}
         <div class="my-3 px-2 p-1 border-solid border-2 rounded relative">
             <div class="text-3xl mb-3">
                 <a href="{{ projet.url  }}">{{ projet.data.title }}</a>

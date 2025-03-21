@@ -2,21 +2,50 @@
 <html lang="fr">
     <head>
         <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta name="referrer" content="no-referrer-when-downgrade">
+        <meta name="robots" content="index, follow">
+
+        <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+
+        {% set default_description = "Do-It, cours et travaux des élèves de l'école Centrale Méditerranée" %}
+        {% set final_description = description | default(default_description) %}
+
+        <meta name="description" content="{{ final_description }}">
+        <meta property="og:description" content="{{ final_description }}">
+        <meta name="twitter:description" content="{{ final_description }}">
+
+        {% if authors %}
+            <meta name="author" content="{{ authors.join(', ') }}">
+        {% endif %}
+        <meta name="keywords" content="do-it, centrale, centrale méditerranée, ecm, {{ tags | join(', ') if tags }}">
+
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png">
+        <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png">
+
+        <link href="/assets/stylesheets/main.css" rel="stylesheet">
+
+        <meta property="og:title" content="{{ title }}">
+
+        <meta property="og:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+        <meta property="og:type" content="website">
+
+        <meta name="twitter:card" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:title" content="{{ title }}">
+        <meta name="twitter:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:url" content="{{ site.url}}{{ page.url }}">
 
         <title>{{ title }}</title>
 
         <!-- Prismjs imports
-                - Prism core
                 - Prism line numbers
-                - Prism copy to clipboard
-                - Prism autoloader
+                - Prism toolbar
         -->
         <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
-        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon">
-        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png">
 
         <!-- Mermaid import and initialization -->
         <script type="module" defer>
@@ -25,9 +54,6 @@
                 startOnLoad: true,
             });
         </script>
-
-        <link href="/assets/stylesheets/main.css" rel="stylesheet">
-
     </head>
 
     <body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000">

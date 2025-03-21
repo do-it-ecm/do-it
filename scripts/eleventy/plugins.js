@@ -7,6 +7,7 @@ import { EleventyRenderPlugin, EleventyHtmlBasePlugin } from "@11ty/eleventy";
 import eleventyNavigationPlugin from "@11ty/eleventy-navigation";
 import syntaxHighlight from "@11ty/eleventy-plugin-syntaxhighlight";
 import urls from "@11ty/posthtml-urls";
+import sitemap from "@quasibit/eleventy-plugin-sitemap";
 
 export default function (eleventyConfig) {
   const PLUGINS = [
@@ -17,6 +18,12 @@ export default function (eleventyConfig) {
   ];
   PLUGINS.forEach((plugin) => {
     eleventyConfig.addPlugin(plugin);
+  });
+
+  eleventyConfig.addPlugin(sitemap, {
+    sitemap: {
+      hostname: "https://do-it.aioli.ec-m.fr",
+    },
   });
 
   // PostHTML URL transforms (convert relative URLs to raw github URLs)
