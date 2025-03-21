@@ -23,14 +23,8 @@ eleventyComputed:
 
     <ul class="flex flex-wrap not-prose list-none text-sm my-1 mx-0 px-1 gap-1 md:gap-2 lg:gap-3">
         {% for student in collections.index | sort(attribute='data.authors') %}
-            {% set categoryMatches = false %}
             {% set promoMatches = student.data.year == year %}
-            {% for tag in student.data.tags %}
-                {% if tag == category %}
-                    {% set categoryMatches = true %}
-                {% endif %}
-            {% endfor %}
-            {% if categoryMatches and promoMatches %}
+            {% if category in student.data.tags and promoMatches %}
                 {% if student.data.authors %}
                 <li class="relative group rounded-full border-blue-200 border-2 flex items-center hover:cursor-pointer">
                     <a href="{{ student.url }}" class="inline-block w-full underline decoration-2 decoration-blue-500 p-2 md:px-4 group-hover:decoration-blue-700 group-hover:text-blue-700">
