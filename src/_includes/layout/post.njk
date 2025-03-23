@@ -3,7 +3,7 @@ layout: layout/base.njk
 
 eleventyComputed:
   eleventyNavigation:
-    résumé: "{{ résumé }}"
+    description: "{{ description }}"
 ---
 
 <article class="relative">
@@ -11,20 +11,16 @@ eleventyComputed:
 <div {% if tags or authors %}class="mb-4"{% endif %}>
     {% if tags %}
         <div class="px-4 flex flex-wrap items-center">
-            {% if tags | length > 1 %}
-                <div class="font-bold">Tags : </div>
-            {% else %}
-                <div class="font-bold">Tag : </div>
-            {% endif %}
+            <div class="font-bold">Tag{{ 's' if tags | length > 1 }} : </div>
             <ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags">
                 {% for tag in tags %}
-                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">{{ tag }}</li>
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">{{ tag }}</li>
                 {% endfor %}
 
             </ul>
 
             {# Gestion des tags #}
-            <div class="hidden" data-pagefind-meta="Type">
+            <div class="hidden" data-pagefind-meta="Type" aria-hidden="true">
                 {% for tag in tags %}
                     {% if tag == "MON" %}
                         <span data-pagefind-filter="Type">MON</span>
@@ -40,10 +36,10 @@ eleventyComputed:
 
     {% if authors %}
         <div class="px-4 flex flex-wrap items-center">
-            <div class="font-bold">Auteurs : </div>
+            <div class="font-bold">Auteur{{ 's' if authors | length > 1 }} : </div>
             <ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs">
                 {% for author in authors %}
-                    <li class="bg-blue-200 rounded-full px-2" data-pagefind-filter="Auteurs">{{ author }}</li>
+                    <li class="bg-blue-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Auteurs">{{ author }}</li>
                 {% endfor %}
             </ul>
         </div>
@@ -51,18 +47,14 @@ eleventyComputed:
 
     {% if year %}
         <div class="absolute top-0 right-0">
-            <span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2" data-pagefind-filter="Année">
+            <span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2 text-neutral-950" data-pagefind-filter="Année">
                 {{ year }}
             </span>
         </div>
     {% endif%}
 </div>
-{% if résumé %}
-        <p class="mb-4 text-lg">
-
-                {{ résumé | safe }}
-
-        </p>
+{% if description %}
+<p class="mb-4 text-lg">{{ description | safe }}</p>
 {% endif %}
 
 {% if navigation and eleventyNavigation and eleventyNavigation.key %}
@@ -78,7 +70,7 @@ eleventyComputed:
         {%- endif -%}
     {%- endfor -%}
     {% endchemin %}
-{% elif not navigation and eleventyNavigation and eleventyNavigation.key %}
+{% elif not navigation %}
     {% chemin %}
         <span class="px-1">
             <i>Navigation disponible uniquement en production</i>

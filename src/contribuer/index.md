@@ -81,7 +81,7 @@ Il faut seulement s'assurer que le fichier contient son entête avec:
 - Le temps du **POK**
 - Les auteurs
 - Les tags (optionnel mais recommandé)
-- Un résumé (optionnel mais recommandé)
+- Une description (optionnelle mais recommandée entre 50 et 150 caractères)
 
 Le reste du fichier est en markdown, vous êtes **libre** d'écrire ce que vous voulez.
 
@@ -102,7 +102,7 @@ authors:
 tags:
   - VOS_TAGS
 
-résumé: RÉSUMÉ_DE_VOTRE_POK
+description: RÉSUMÉ_DE_VOTRE_POK
 ---
 ```
 {% enddetails %}
@@ -118,7 +118,7 @@ Il faut seulement s'assurer que le fichier contient son entête avec:
 - Le temps du **MON**
 - Les auteurs
 - Les tags (optionnel mais recommandé)
-- Un résumé (optionnel mais recommandé)
+- Une description (optionnelle mais recommandée entre 50 et 150 caractères)
 
 Le reste du fichier est en markdown, vous êtes **libre** d'écrire ce que vous voulez.
 
@@ -139,7 +139,7 @@ authors:
 tags:
   - VOS_TAGS
 
-résumé: RÉSUMÉ_DE_VOTRE_MON
+description: RÉSUMÉ_DE_VOTRE_MON
 ---
 ```
 {% enddetails %}
@@ -154,7 +154,7 @@ Il faut seulement s'assurer que le fichier contient son entête avec:
 - La date de publication
 - Les auteurs
 - Les tags (optionnel mais recommandé)
-- Un résumé (optionnel mais recommandé)
+- Une description (optionnelle mais recommandée)
 
 Le reste du fichier est en markdown, vous êtes **libre** d'écrire ce que vous voulez.
 
@@ -173,7 +173,7 @@ authors:
 tags:
   - VOS_TAGS
 
-résumé: RÉSUMÉ_DE_VOTRE_PROJET
+description: RÉSUMÉ_DE_VOTRE_PROJET
 ---
 ```
 {% enddetails %}

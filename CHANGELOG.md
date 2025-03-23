@@ -2,6 +2,71 @@
 
 All notable changes to the Do-It website will be documented in this file
 
+## [Dark Mode - Do-It 3.4.0] - 2025-03-23
+
+### Added
+
+- Added the `citation` paired shortcode to generate a stylish citation block.
+- Added a dark mode to the website to make it easier on the eyes at night.
+- Added meta tags and other SEO improvements to the website to improve its visibility on search engines.
+- Added an auto generated sitemap to help search engines index the website.
+
+### Changed
+
+- Reformat existing shortcodes to fix a improper syntax issue
+- Merged the compliance check into the build workflow (as a preliminary step) to avoid redundant pulls
+- Replaced `résumé` with `description` in the markdown files to avoid non-ASCII characters
+
+## [Security & Automation - Do-It 3.3.0] - 2025-03-17
+
+### Breaking
+
+- Replace the "`compliance check` directory by a separate submodule
+
+### Added
+
+- Added autofocus on the `pagefind` input to make it easier to search for a page.
+- GitHub action dedicated to the compliance check of the website before pushing to the repository.
+- Added timers to the build process to measure the time taken by each step.
+
+### Changed
+
+- Fixed a visual issue with sidebars in screen between 1536px and 1616px
+- Updated a few dependencies to their latest versions
+- Renamed shortcodes to camelCase (lieninterne -> lienInterne, currentyear -> currentYear)
+- Upgraded the `init-student` script
+    - Use git sdk to avoid the use of raw git commands
+    - Use concurrent requests to speed up the process
+    - Using templates files instead of raw variables for the default student files
+- Upgraded the `init-promotion` script
+    - Use git sdk to avoid the use of raw git commands
+    - Use concurrent requests to speed up the process
+    - Using the octokit library to interact with the GitHub API to automatically create all required resources
+    - Using templates files instead of raw variables for the default promo files
+
+### Removed
+
+- Removed `markdown-it-attrs` plugin as it was not used and causing useless warnings
+
+## [Auto Deploy - Do-It 3.2.1] - 2025-02-27
+
+### Added
+
+- New GitHub action to automatically build and publish the website image to the GitHub Container Registry when pushing to the `main` branch with a tag.
+
+## [TailwindCSS upgrade - Do-It 3.2.0] - 2025-02-05
+
+### Changed
+
+- Upgraded TailwindCSS from version 3 to version 4 to benefit from the new features, bug fixes and x1000 performance improvements.
+
+## [Nginx max payload increase - Do-It 3.1.1] - 2025-02-04
+
+### Changed
+
+- Fixed `client_max_body_size` in the nginx configuration to allow larger payloads to be sent to the server. (To accept the update payload from github webhook)
+- Upgraded the auto update cronjob on the container
+
 ## [Deployment Upgrade - Do-It 3.1.0] - 2025-02-02
 
 ### Added
@@ -23,6 +88,9 @@ All notable changes to the Do-It website will be documented in this file
 - Added prism.js plugins: `line-numbers`, `copy-to-clipboard`, `toolbar`, `show-language`, `normalize-whitespace`
 - Added courses to the cs directory and made it a submodule.
 - Added a sidebar navigation to the courses to make it easier to discover the courses.
+- Added `markdown-it-toc-done-right` plugin to generate a table of contents for the markdown files.
+- Added a `sommaire` paired shortcode to generate a table of contents for the markdown files.
+- Added a `sizedImage` single shortcode to generate an image with a specific size.
 
 #### Compliance
 

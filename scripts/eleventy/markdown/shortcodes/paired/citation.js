@@ -6,11 +6,11 @@ export default function (eleventyConfig) {
     const svgIconBegin = `<svg class="w-8 h-8 text-red-800 scale-x-[-1]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 14">${svgPath}</svg>`;
     const svgIconEnd = `<svg class="w-8 h-8 text-red-800 mb-4 ml-auto scale-y-[-1]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 14">${svgPath}</svg>`;
 
-    const authorText = author ? `<div class="text-right text-gray-600 ml-auto">${author}</div>` : '';
+    const authorText = author ? `<div class="text-right text-neutral-600 ml-auto dark:text-neutral-300">${author}</div>` : '';
     const sourceLink = source ? `<a href="${source.trim()}" class="ml-auto">${authorText}</a>` : authorText;
     return `
 <div class="mx-8">
-  <div class="text-xl italic text-gray-900 mx-auto w-fit">
+  <div class="text-xl italic text-neutral-700 mx-auto w-fit dark:text-neutral-200">
     ${svgIconBegin}
     <div class="px-9 w-fit">${content}</div>
     ${svgIconEnd}

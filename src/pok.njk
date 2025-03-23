@@ -16,18 +16,14 @@ resume: 'Proof of Knowledge - Apprentissage en autonomie tutorée'
 ---
 
 <div class="my-3 px-2 p-1 border-solid border-2 rounded relative">
-    <div class="text-3xl mb-3">
-        Par Promos
-    </div>
+    <div class="text-3xl mb-3">Par Promos</div>
 
     {% from 'macros/promo-list.njk' import promoList %}
     {{ promoList(collections.PROMO, "pok") }}
 </div>
 
 <div class="my-3 px-2 p-1 border-solid border-2 rounded relative">
-    <div class="text-3xl mb-3">
-        Par auteurs
-    </div>
+    <div class="text-3xl mb-3">Par auteurs</div>
 
     <ul class="flex flex-wrap not-prose list-none text-sm my-1 mx-0 px-1 gap-1 md:gap-2 lg:gap-3">
       {% for student in collections.index | sort(attribute='data.authors') %}
