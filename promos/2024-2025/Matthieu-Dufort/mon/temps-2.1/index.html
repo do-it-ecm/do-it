@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="robots" content="index, follow">
+
+        <link rel="canonical" href="https://do-it.aioli.ec-m.fr/promos/2024-2025/Matthieu-Dufort/mon/temps-2.1/">
+
+        
+        
+
+        <meta name="description" content="Un MON ayant pour but de monter en compétence sur Google Script.">
+        <meta property="og:description" content="Un MON ayant pour but de monter en compétence sur Google Script.">
+        <meta name="twitter:description" content="Un MON ayant pour but de monter en compétence sur Google Script.">
+
+        
+            <meta name="author" content="Matthieu Dufort">
+        
+        <meta name="keywords" content="do-it, centrale, centrale méditerranée, ecm, MON, Novice, Google Script, Macros, Automatisations dans Google">
+
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png">
+        <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png">
+
+        <link href="/assets/stylesheets/main.css" rel="stylesheet">
+
+        <meta property="og:title" content="Automatisation avec Google App Script">
+
+        <meta property="og:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta property="og:url" content="https://do-it.aioli.ec-m.fr/promos/2024-2025/Matthieu-Dufort/mon/temps-2.1/">
+        <meta property="og:type" content="website">
+
+        <meta name="twitter:card" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:title" content="Automatisation avec Google App Script">
+        <meta name="twitter:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:url" content="https://do-it.aioli.ec-m.fr/promos/2024-2025/Matthieu-Dufort/mon/temps-2.1/">
+
+        <title>Automatisation avec Google App Script</title>
+
+        <!-- Prismjs imports
+                - Prism line numbers
+                - Prism toolbar
+        -->
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet">
+        <link id="prism-theme" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+        <!-- Mermaid import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js "></script>
+
+        <script defer="">
+        // Check if a theme is stored in localStorage. If so, use it, otherwise fallback to the system preference.
+        const storedTheme = localStorage.getItem('theme');
+        if (storedTheme) {
+            document.documentElement.classList.toggle("dark", storedTheme === "dark");
+        } else {
+            // Use system color scheme if there is no stored theme preference.
+            document.documentElement.classList.toggle("dark", window.matchMedia("(prefers-color-scheme: dark)").matches);
+        }
+
+        function loadPrismTheme(isDarkMode) {
+            const newTheme = isDarkMode ? 'prism-okaidia.min.css' : 'prism-solarizedlight.min.css';
+            const newLink = document.createElement('link');
+            newLink.rel = 'stylesheet';
+            newLink.id = 'prism-theme';
+            newLink.href = `https://cdn.jsdelivr.net/npm/prismjs/themes/${newTheme}`;
+
+            newLink.onload = () => {
+                // Reapply highlighting after the new theme loads
+                Prism.highlightAll();
+            };
+
+            const existingLink = document.getElementById('prism-theme');
+            if (existingLink) {
+                document.head.replaceChild(newLink, existingLink);
+            } else {
+                document.head.appendChild(newLink);
+            }
+        }
+
+        function setMermaidTheme(isDarkMode) {
+            const theme = isDarkMode ? 'dark' : 'forest';
+            mermaid.initialize({
+                securityLevel: 'loose',
+                theme,
+                startOnLoad: true,
+            });
+        }
+
+        // Toggle dark and light mode and update localStorage accordingly.
+        function toggleDarkMode() {
+            const dark = document.documentElement.classList.contains("dark");
+            const newTheme = dark ? "light" : "dark";
+            localStorage.setItem('theme', newTheme);
+            document.documentElement.classList.toggle("dark", !dark);
+            loadPrismTheme(!dark);
+            setMermaidTheme(!dark);
+        }
+
+        // On initial load, ensure that Prism and Mermaid are initialized using the current theme.
+        const isDark = document.documentElement.classList.contains("dark");
+        loadPrismTheme(isDark);
+        setMermaidTheme(isDark);
+        </script>
+
+    </head>
+
+    <body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000" class="bg-neutral-50 text-neutral-950 dark:bg-neutral-900 dark:text-neutral-50">
+        <header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white dark:bg-neutral-900 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-between items-center">
+                    <a class="mx-2" href="/">Home</a>
+                    <button class="hidden sm:block text-neutral-950 dark:text-neutral-50 hover:bg-neutral-700 hover:text-neutral-50 hover:dark:bg-neutral-300 hover:dark:text-neutral-950 transition-colors p-2 rounded-full duration-800 ease-in-out" onclick="toggleDarkMode()">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 dark:hidden stroke-current">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <path d="M12 2V4" stroke-linecap="round"></path>
+                            <path d="M12 20V22" stroke-linecap="round"></path>
+                            <path d="M4 12L2 12" stroke-linecap="round"></path>
+                            <path d="M22 12L20 12" stroke-linecap="round"></path>
+                            <path d="M19.7778 4.22266L17.5558 6.25424" stroke-linecap="round"></path>
+                            <path d="M4.22217 4.22266L6.44418 6.25424" stroke-linecap="round"></path>
+                            <path d="M6.44434 17.5557L4.22211 19.7779" stroke-linecap="round"></path>
+                            <path d="M19.7778 19.7773L17.5558 17.5551" stroke-linecap="round"></path>
+                        </svg>
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 stroke-current hidden dark:block">
+                            <path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </button>
+                    <div class="flex items-center gap-4 sm:gap-6 ">
+                        <a class="" href="/cs">CS</a>
+                        <a class="" href="/pok">POK</a>
+                        <a class="" href="/mon">MON</a>
+                        <a class="" href="/projets">Projets</a>
+                        <a class="hidden sm:block" href="/promos">Promos</a>
+                        <a href="/search">
+                            <svg class="h-5 aspect-square stroke-neutral-950 dark:stroke-neutral-300 fill-none stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+                            </svg>
+                        </a>
+                        <a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank">
+                            <svg class="h-5 aspect-square dark:stroke-neutral-300 dark:fill-neutral-300" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body="">
+            
+<article class="relative">
+<h1 class="mb-1">Automatisation avec Google App Script</h1>
+<div class="mb-4">
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Tags : </div>
+            <ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags">
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">MON</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">Novice</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">Google Script</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">Macros</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">Automatisations dans Google</li>
+                
+
+            </ul>
+
+            
+            <div class="hidden" data-pagefind-meta="Type" aria-hidden="true">
+                
+                    
+                        <span data-pagefind-filter="Type">MON</span>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Auteur : </div>
+            <ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs">
+                
+                    <li class="bg-blue-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Auteurs">Matthieu Dufort</li>
+                
+            </ul>
+        </div>
+    
+
+    
+        <div class="absolute top-0 right-0">
+            <span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2 text-neutral-950" data-pagefind-filter="Année">
+                2024-2025
+            </span>
+        </div>
+    
+</div>
+
+<p class="mb-4 text-lg">Un MON ayant pour but de monter en compétence sur Google Script.</p>
+
+
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100 dark:border-purple-800 dark:bg-purple-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-purple-500 dark:stroke-purple-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/promos/2024-2025/Matthieu-Dufort/">Matthieu Dufort</a><span class="px-1">/</span><a href="/promos/2024-2025/Matthieu-Dufort/mon/">MON de Matthieu Dufort</a><span class="px-1">/</span><a href="/promos/2024-2025/Matthieu-Dufort/mon/temps-2.1/">Automatisation avec Google App Script</a>
+
+</div>
+</div>
+
+
+
+
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100 dark:border-emerald-800 dark:bg-emerald-950">
+<svg class="absolute w-6 h-6 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-emerald-500 dark:stroke-emerald-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Liens</b></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li><a href="https://developers.google.com/apps-script/samples/fundamentals-codelabs?hl=fr">Premier pas avec Google App script</a></li>
+<li><a href="https://do-it.aioli.ec-m.fr/promos/2022-2023/Abdane-Ossama/mon/mon2.1/">MON de Abdane Ossama</a></li>
+</ul>
+</div>
+</div>
+<p>Pour ce mon, je veux me former sur google script afin de pouvoir optimiser tous mes documents en créant des documents récurant automatiquement, en enoyant des emails ou en faisant des macros.</p>
+<h1 id="contenu" tabindex="-1"><a class="header-anchor" href="#contenu"></a> Contenu</h1>
+<h2 id="introduction" tabindex="-1"><a class="header-anchor" href="#introduction"></a> Introduction</h2>
+<p>L'objectif premier de ce MON est de monter en compétences sur Google script afin d'optimiser mon utilisation des outils googles. J'utilise énormément les outils google dans le cadre d'un projet de voile auquel je participe en naviguant mais aussi en gérant la logistique de toutes les régates. Ceci me pousse à par exemple créer des documents de présence qu'il faut ensuite faire remplir en envoyant des mails, créer toujours les mêmes documents après chaque régate pour récupérer des retours et préparer le bateau pour la suite etc.</p>
+<p>En bref, beaucoup de taches répétitives qui me prennent énormément de temps. Mais, la bonne nouvelle et que tout est automatisable ! Je vais donc apprendre à utiliser google script en partant de la documentation que je vais adapter a mon utilisation. Ceci va me permettre de bien prendre en main l'outils.</p>
+<h2 id="fondamentaux" tabindex="-1"><a class="header-anchor" href="#fondamentaux"></a> Fondamentaux</h2>
+<p>J'ai commencé par voir les principes fondamentaux de app script et des macros avec google sheet.</p>
+<h3 id="macro" tabindex="-1"><a class="header-anchor" href="#macro"></a> Macro</h3>
+<p>Il est possible d'en créer directement par l'app script en écrivant le code puis en l'important dans un sheet. Mais, il est possible aussi d'en faire directement (pour les macros) en enregistrant une série de manipulation que l'on fait souvent. On peut ensuite modifier ces enregistrements dans l'app script si besoin.</p>
+<p>Voici quelques exemples de fonctions/Instructions basiques afin de comprendre la logique :</p>
+<pre class="language-JavaScript line-numbers"><code>
+
+function Header(){ // Permet de définir une fonction
+  var spreadsheet = SpreadsheetApp.getActive(); // Initialise une variable avec le document actif
+  var sheet = spreadsheet.getActiveSheet();// Initialise une variable avec la feuille actif
+  sheet.getRange(  spreadsheet.getCurrentCell().getRow(),1, 1, 10).activate(); // Selectionne les cases à modifier
+  spreadsheet.getActiveRangeList().setBackground('#4c1130').setFontWeight('bold'); //change la couleur du fond et le texte en gras
+}
+
+
+</code></pre><p>Ainsi, pour une macro, on détermine le document et l'endroit sur lequel on veut travailler puis on utilise les fonctions de la documentation</p>
+<h3 id="fonction-sheet" tabindex="-1"><a class="header-anchor" href="#fonction-sheet"></a> Fonction Sheet</h3>
+<p>Script permet aussi de créer des nouvelles fonctions. Pour faire cela il est recommandé d'utiliser les commentaires de la façon suivante afin d'aider les futurs utilisateurs à utiliser la fonction :</p>
+<pre class="language-JavaScript line-numbers"><code>
+
+/**
+ * Fonction nommmé FONCTION qui fait un calcul
+ *
+ * @param {number} nombre Un nombre utilisé dans le calcul.
+ * @return {number} Je retourne une calcul
+ * @customfunction
+ */
+
+
+</code></pre><p>Le <code>@param</code> permet de définir chacun des paramètres pour savoir comment remplir la fonction. Le <code>@return</code> permet de donner une description de ce que donnera la fonction en enfin le <code>@customfunction</code> permet de dire que c'est une fonction personnalisée.</p>
+<p>On obtiendra alors sur sheet en commençant à tapper la fonction :</p>
+<p>FONCTION(nombre)
+<em>Je retourne un calcul</em></p>
+<h3 id="interface-utilisateur" tabindex="-1"><a class="header-anchor" href="#interface-utilisateur"></a> Interface utilisateur</h3>
+<p>Il est aussi possible avec app script de modifier l'interface des utilisateurs de notre feuille. On peut par exemple ajouter de nouveaux menus :</p>
+<pre class="language-JavaScript line-numbers"><code>
+
+function onOpen() { // fonction qui run dès que le sheet s'ouvre ou est rechargé
+  var ui = SpreadsheetApp.getUi(); // récupère les objets de l'interface utilisateur
+  ui.createMenu('Book-list') // créer un menu
+    .addItem('Load Book-list', 'loadBookList') // Ajoute la fonction loadBookList sous le nom Load Book-list dans le menu
+    .addToUi(); // Ajoute le menu à l'interface
+}
+
+
+</code></pre><p>On peut ainsi se faire par exemple des automatismes de formating de la feuille Excel pour formater toutes les feuilles de la même façon :</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Matthieu-Dufort/mon/temps-2.1/FormatingSheet.png" alt="Ajustement du format d'une feuille de calcul"> <em>Screen d'une feuille de calcul formaté avec google app script</em></p>
+<h3 id="interaction-entre-plusieurs-document" tabindex="-1"><a class="header-anchor" href="#interaction-entre-plusieurs-document"></a> Interaction entre plusieurs document</h3>
+<p>Il est possible de récupérer des données d'un document pour faire des actions dans un autre :</p>
+<pre class="language-Javascript line-numbers"><code>
+
+var bookSS = SpreadsheetApp.openById(1651); // récupère le sheet grace à l'id
+var bookSheet = bookSS.getSheetByName("feuille1"); // récupère la feuille voulue
+var bookRange = bookSheet.getDataRange(); // récupère la zone voulue
+var bookListValues = bookRange.getValues(); // récupère les valeurs
+
+
+</code></pre><h2 id="envoie-d'emails-de-rappel-pour-remplir-un-document" tabindex="-1"><a class="header-anchor" href="#envoie-d'emails-de-rappel-pour-remplir-un-document"></a> Envoie d'emails de rappel pour remplir un document</h2>
+<p>Dans cette partie, je vais m'attaquer à un automatisme qui a pour but d'être utiliser dans mon équipe de voile.</p>
+<p>Le but de cet automatisme est de créer un programme qui ajoutera un onglet sur google sheet afin de déclencher un rappel automatique pour envoyer des mails à tous les équipiers qui n'ont pas rempli leur présence quand on le souhaite.</p>
+<p>Pour cela, il faut récupérer les informations sur le nom des équipier et sur ce qu'ils ont rempli dans le premier sheet qui ressemble à ceci :</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Matthieu-Dufort/mon/temps-2.1/SheetPresence.png" alt="Forme du sheet de présence"> <em>Exemple d'un google sheet pour confirmer la présence des équipiers sur une régate</em></p>
+<p>Ainsi, la fonction va devoir regarder pour chaque ligne du tableau :</p>
+<ul>
+<li>Le nom de l'équipier</li>
+<li>Si il a rempli les 4 cases oui/non ainsi que les dates d'arrivées et de départ sur place</li>
+</ul>
+<p>Ensuite, il faut matcher le nom de l'équipier avec un autre sheet contenant toutes les informations personnels de chaque équipier afin de récupérer les adresses emails.</p>
+<p>Pour cela, je vais utiliser les fonctions précédentes.</p>
+<pre class="language-JavaScript line-numbers"><code>
+
+/* Ceci est un programme pour créer un nouvel onglet dans un Google Sheet afin de lancer des rappels automatiques par email. */
+
+function onOpen() {
+  const ui = SpreadsheetApp.getUi();
+  const sheet = SpreadsheetApp.getActiveSpreadsheet();
+  const sheetId = sheet.getId();
+
+  if (sheetId === '14NxpXdjVUQZZ3VveCR2A-WgSxw3RBQTuZ7qRD0EmU50') {
+    ui.createMenu('Alerte')
+      .addItem('Reminder', 'sendEmailAlertForCalendar')
+      .addToUi();
+  }
+} // créer le nouveau menu à l'ouverture du fichier précis avec un bouton Reminder pour enoyer les emails
+
+function getLineToCheck(lineNumber) {
+  const mainSheet = SpreadsheetApp.getActiveSheet();
+  const case1 = `B${lineNumber}`;
+  const case2 = `H${lineNumber}`;
+  const range = mainSheet.getRange(`${case1}:${case2}`);
+  const data = range.getValues();
+  return data;
+} // Récupère pour chaque équipier sa ligne de présence à remplir pour être sur que chaque case est remplie
+
+function email(name) {
+  const emailSheet = SpreadsheetApp.openById('1NAOMaIw11sNwl_f5Gbewi2N1TffxvRRqOIYldrIGTKo').getSheetByName('Equipiers');
+  const columnName = emailSheet.getRange("A:A").getValues();
+
+  for (let i = 0; i < columnName.length; i++) {
+    if (columnName[i][0] === name) {
+      const lineNumber = i + 1;
+      const email = emailSheet.getRange(lineNumber, 10).getValue();
+      return email;
+    }
+  }
+  return null;
+} // Récupère le mail de l'équipier qui se trouve sur une autre google sheet avec toutes les informations personnels
+
+function sendEmailAlertForCalendar() {
+  const presenceSheet = SpreadsheetApp.getActiveSheet();
+  const sheetName = presenceSheet.getName();
+
+  for (let i = 7; i < 18; i++) {
+    const presenceLine = getLineToCheck(i);
+    const name = presenceLine[0][0];
+
+    if (name === '') {
+      continue;
+    } // Si le nom est vide, cela signifi qu'il n'y a pas encore d'équipier et il est donc normal que la ligne soit ensuite vide, on passe donc à la suivante
+
+    for (let j = 0; j < 6; j++) {
+
+      if (presenceLine[0][j + 1] === '') {
+
+        var emailAddress = email(name);
+
+        if (emailAddress === null) {
+          Logger.log(`Adresse email introuvable pour ${name}`);
+          break;
+        }
+
+        GmailApp.sendEmail(
+          emailAddress,
+          `Rappel : Présence pour la régate ${sheetName}`,
+          `Hello ${name}, ta présence sur la régate ${sheetName} n'a pas encore été remplie. Merci de le faire au plus vite sur : https://docs.google.com/spreadsheets/d/1slpb6ni9qlglIINmb6PINYsyHXc32taKJiH_crkcylI/edit?gid=1420162290#gid=1420162290`
+        );
+        break;
+      } // Envoie le mail si une case est vide puis passe à la ligne suivante afin de pas envoyer un mail par case vide
+    }
+  }
+} // Utilise les fonctions précédentes afin de savoir si il faut ou non envoyer un mail ou non
+
+
+</code></pre><p>On retrouver maintenant l'onglet :</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Matthieu-Dufort/mon/temps-2.1/SheetReminderOnglet.png" alt="Sheet de présence avec Automatisme"> <em>Google sheet avec l'alerte disponible</em></p>
+<p>Et en déclanchant l'automatisme (dès qu'on clique sur le <em>Reminder</em> de l'onglet <em>Alert</em>) on obtient le mail suivant :</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Matthieu-Dufort/mon/temps-2.1/EmailRappel.png" alt="Email de Rappel"> <em>Email d'alert que l'on reçoit si l'on ne rempli pas toutes les cases</em></p>
+<p>Ceci va permetre de gagner énormément de temps en évitant d'avoir à faire un rappel en privé à chaque personne une par une.</p>
+<p>Je n'ai malheureusement pas eu le temps de faire le 2ème automatisme consistant à créer à la fin de chaque régate un sheet afin de rassembler les retours et l'envoyer par mail a tous les participants mais c'est bien sur quelque chose que je ferais plus tard personnellement 🙂.</p>
+
+
+
+</article>
+
+        </main>
+
+        <footer class="min-h-[50px] border-t-2 mt-4 border-gray-200 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-center items-center">
+                    <p class="text-center">
+                        ©2025 <b><span style="font-family: Consolas, sans-serif;">Do-<span style="color: #4a86e8">It</span></span></b> - Développement, Management et Gestion de projets en IT
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- MathJax import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">
+            window.MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']], // Delimiters for inline math
+                    displayMath: [['$$', '$$'], ['\\[', '\\]']] // Delimiters for block math
+                },
+                svg: {
+                    fontCache: 'global' // Use global font cache for SVG output
+                }
+            };
+            document.addEventListener('DOMContentLoaded', () => {
+                MathJax.typeset(); // Ensures MathJax processes the content after the page loads
+            });
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">
+            Prism.plugins.NormalizeWhitespace.setDefaults({
+                'remove-trailing': true,
+                'remove-indent': true,
+                'left-trim': true,
+                'right-trim': true,
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script>
+    </body>
+</html>

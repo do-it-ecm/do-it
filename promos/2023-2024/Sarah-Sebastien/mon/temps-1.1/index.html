@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="robots" content="index, follow">
+
+        <link rel="canonical" href="https://do-it.aioli.ec-m.fr/promos/2023-2024/Sarah-Sebastien/mon/temps-1.1/">
+
+        
+        
+
+        <meta name="description" content="Ce MON permettra dans un premier temps de définir précisément un ERP et d&#39;avoir un aperçu des solutions existantes. Puis dans un second temps, il offrira une approche de démarche de déploiement d&#39;un projet ERP">
+        <meta property="og:description" content="Ce MON permettra dans un premier temps de définir précisément un ERP et d&#39;avoir un aperçu des solutions existantes. Puis dans un second temps, il offrira une approche de démarche de déploiement d&#39;un projet ERP">
+        <meta name="twitter:description" content="Ce MON permettra dans un premier temps de définir précisément un ERP et d&#39;avoir un aperçu des solutions existantes. Puis dans un second temps, il offrira une approche de démarche de déploiement d&#39;un projet ERP">
+
+        
+            <meta name="author" content="Sarah Sebastien">
+        
+        <meta name="keywords" content="do-it, centrale, centrale méditerranée, ecm, MON, Système d&#39;information, ERP, PGI">
+
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png">
+        <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png">
+
+        <link href="/assets/stylesheets/main.css" rel="stylesheet">
+
+        <meta property="og:title" content="MON 1.1. L&#39;ERP, du concept à son intégration en entreprise">
+
+        <meta property="og:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta property="og:url" content="https://do-it.aioli.ec-m.fr/promos/2023-2024/Sarah-Sebastien/mon/temps-1.1/">
+        <meta property="og:type" content="website">
+
+        <meta name="twitter:card" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:title" content="MON 1.1. L&#39;ERP, du concept à son intégration en entreprise">
+        <meta name="twitter:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:url" content="https://do-it.aioli.ec-m.fr/promos/2023-2024/Sarah-Sebastien/mon/temps-1.1/">
+
+        <title>MON 1.1. L&#39;ERP, du concept à son intégration en entreprise</title>
+
+        <!-- Prismjs imports
+                - Prism line numbers
+                - Prism toolbar
+        -->
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet">
+        <link id="prism-theme" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+        <!-- Mermaid import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js "></script>
+
+        <script defer="">
+        // Check if a theme is stored in localStorage. If so, use it, otherwise fallback to the system preference.
+        const storedTheme = localStorage.getItem('theme');
+        if (storedTheme) {
+            document.documentElement.classList.toggle("dark", storedTheme === "dark");
+        } else {
+            // Use system color scheme if there is no stored theme preference.
+            document.documentElement.classList.toggle("dark", window.matchMedia("(prefers-color-scheme: dark)").matches);
+        }
+
+        function loadPrismTheme(isDarkMode) {
+            const newTheme = isDarkMode ? 'prism-okaidia.min.css' : 'prism-solarizedlight.min.css';
+            const newLink = document.createElement('link');
+            newLink.rel = 'stylesheet';
+            newLink.id = 'prism-theme';
+            newLink.href = `https://cdn.jsdelivr.net/npm/prismjs/themes/${newTheme}`;
+
+            newLink.onload = () => {
+                // Reapply highlighting after the new theme loads
+                Prism.highlightAll();
+            };
+
+            const existingLink = document.getElementById('prism-theme');
+            if (existingLink) {
+                document.head.replaceChild(newLink, existingLink);
+            } else {
+                document.head.appendChild(newLink);
+            }
+        }
+
+        function setMermaidTheme(isDarkMode) {
+            const theme = isDarkMode ? 'dark' : 'forest';
+            mermaid.initialize({
+                securityLevel: 'loose',
+                theme,
+                startOnLoad: true,
+            });
+        }
+
+        // Toggle dark and light mode and update localStorage accordingly.
+        function toggleDarkMode() {
+            const dark = document.documentElement.classList.contains("dark");
+            const newTheme = dark ? "light" : "dark";
+            localStorage.setItem('theme', newTheme);
+            document.documentElement.classList.toggle("dark", !dark);
+            loadPrismTheme(!dark);
+            setMermaidTheme(!dark);
+        }
+
+        // On initial load, ensure that Prism and Mermaid are initialized using the current theme.
+        const isDark = document.documentElement.classList.contains("dark");
+        loadPrismTheme(isDark);
+        setMermaidTheme(isDark);
+        </script>
+
+    </head>
+
+    <body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000" class="bg-neutral-50 text-neutral-950 dark:bg-neutral-900 dark:text-neutral-50">
+        <header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white dark:bg-neutral-900 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-between items-center">
+                    <a class="mx-2" href="/">Home</a>
+                    <button class="hidden sm:block text-neutral-950 dark:text-neutral-50 hover:bg-neutral-700 hover:text-neutral-50 hover:dark:bg-neutral-300 hover:dark:text-neutral-950 transition-colors p-2 rounded-full duration-800 ease-in-out" onclick="toggleDarkMode()">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 dark:hidden stroke-current">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <path d="M12 2V4" stroke-linecap="round"></path>
+                            <path d="M12 20V22" stroke-linecap="round"></path>
+                            <path d="M4 12L2 12" stroke-linecap="round"></path>
+                            <path d="M22 12L20 12" stroke-linecap="round"></path>
+                            <path d="M19.7778 4.22266L17.5558 6.25424" stroke-linecap="round"></path>
+                            <path d="M4.22217 4.22266L6.44418 6.25424" stroke-linecap="round"></path>
+                            <path d="M6.44434 17.5557L4.22211 19.7779" stroke-linecap="round"></path>
+                            <path d="M19.7778 19.7773L17.5558 17.5551" stroke-linecap="round"></path>
+                        </svg>
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 stroke-current hidden dark:block">
+                            <path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </button>
+                    <div class="flex items-center gap-4 sm:gap-6 ">
+                        <a class="" href="/cs">CS</a>
+                        <a class="" href="/pok">POK</a>
+                        <a class="" href="/mon">MON</a>
+                        <a class="" href="/projets">Projets</a>
+                        <a class="hidden sm:block" href="/promos">Promos</a>
+                        <a href="/search">
+                            <svg class="h-5 aspect-square stroke-neutral-950 dark:stroke-neutral-300 fill-none stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+                            </svg>
+                        </a>
+                        <a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank">
+                            <svg class="h-5 aspect-square dark:stroke-neutral-300 dark:fill-neutral-300" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body="">
+            
+<article class="relative">
+<h1 class="mb-1">MON 1.1. L&#39;ERP, du concept à son intégration en entreprise</h1>
+<div class="mb-4">
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Tags : </div>
+            <ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags">
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">MON</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">Système d&#39;information</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">ERP</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">PGI</li>
+                
+
+            </ul>
+
+            
+            <div class="hidden" data-pagefind-meta="Type" aria-hidden="true">
+                
+                    
+                        <span data-pagefind-filter="Type">MON</span>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Auteur : </div>
+            <ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs">
+                
+                    <li class="bg-blue-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Auteurs">Sarah Sebastien</li>
+                
+            </ul>
+        </div>
+    
+
+    
+        <div class="absolute top-0 right-0">
+            <span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2 text-neutral-950" data-pagefind-filter="Année">
+                2023-2024
+            </span>
+        </div>
+    
+</div>
+
+<p class="mb-4 text-lg">Ce MON permettra dans un premier temps de définir précisément un ERP et d'avoir un aperçu des solutions existantes. Puis dans un second temps, il offrira une approche de démarche de déploiement d'un projet ERP</p>
+
+
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100 dark:border-purple-800 dark:bg-purple-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-purple-500 dark:stroke-purple-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/promos/2023-2024/Sarah-Sebastien/">Sarah Sebastien</a><span class="px-1">/</span><a href="/promos/2023-2024/Sarah-Sebastien/mon/">MON de Sarah Sebastien</a><span class="px-1">/</span><a href="/promos/2023-2024/Sarah-Sebastien/mon/temps-1.1/">MON 1.1. L&#39;ERP, du concept à son intégration en entreprise</a>
+
+</div>
+</div>
+
+
+
+
+<h2 id="sommaire" tabindex="-1"><a class="header-anchor" href="#sommaire"></a> Sommaire</h2>
+<ol>
+<li>Définition</li>
+<li>L'histoire des ERP</li>
+<li>Architecture et fonctionnement d'un ERP</li>
+<li>Différents types d'ERP</li>
+<li>Une démarche d'implémentation du progiciel dans l'entreprise</li>
+<li>Conclusion</li>
+</ol>
+<h2 id="1.d%C3%A9finition" tabindex="-1"><a class="header-anchor" href="#1.d%C3%A9finition"></a> 1.Définition</h2>
+<p>Un <strong>ERP</strong> (Entreprise Ressource Planning) en anglais, ou <strong>PGI</strong> (Progiciel de Gestion Intégré) en français, est un système d’informations qui permet de <strong>gérer et fédérer l’ensemble des processus d’une entreprise</strong>. Un ERP est basé sur la construction des applications informatiques de l’entreprise (comptabilité, gestion de stocks,etc.) sous forme de <strong>modules indépendants</strong>. Ces modules partagent une <strong>base de données commune et unique</strong>, permettant la communication de données entre les applications.</p>
+<p>Un ERP a plusieurs caractéristiques :</p>
+<ul>
+<li><strong>Couverture fonctionnelle</strong> : doit couvrir au moins 3 fonctions de l’entreprise (souvent 5, si ce n’est toutes).</li>
+<li><strong>Base de données unique</strong> : une donnée est saisie une fois et peut être immédiatement disponible dans les autres modules de l’ERP</li>
+<li><strong>Adaptation et paramétrage étendu</strong> : un ERP doit être suffisamment flexible pour s’adapter au mode de fonctionnement d’une entreprise avec, par exemple, le paramétrage des postes de travail : autorisations d'accès, environnement de travail personnalisé (interface graphique), traçabilité des opération, etc…</li>
+<li><strong>Présence d’outils d’aide à la décision</strong> : le fait de disposer d’une BDD unique permet de faire toutes les requêtes possibles en SQL sans aucune ambiguïté. On peut donc définir une série de requêtes adaptées pour la prise de décision et des sorties sous formes de tableaux, diagrammes, etc...</li>
+</ul>
+<h2 id="2.-l'histoire-des-erp" tabindex="-1"><a class="header-anchor" href="#2.-l'histoire-des-erp"></a> 2. L'histoire des ERP</h2>
+<h3 id="a.-avant-les-erp" tabindex="-1"><a class="header-anchor" href="#a.-avant-les-erp"></a> a. Avant les ERP</h3>
+<p>Avant les ERP, les applications d'entreprise étaient <strong>complètement indépendantess</strong> aussi bien sur le plan des programmes que sur celui des données. On avait donc une juxtaposition d'applicatifs communiquant difficilement
+Ce qui provoquait:</p>
+<ul>
+<li><strong>la redondance des données</strong> (volumes de stockage importants)</li>
+<li><strong>des mises à jour non coordonnées</strong> (risques d'incohérence des données)</li>
+<li><strong>pas de standardisation des données</strong> (d'où des problèmes de compatibilité dans les transferts)</li>
+<li><strong>une dissémination des données</strong> (risques de pertes)</li>
+<li><strong>un cloisonnement des tâches</strong> (pertes de temps et d'efficacité)</li>
+</ul>
+<h3 id="b.-de-la-naissance-du-concept" tabindex="-1"><a class="header-anchor" href="#b.-de-la-naissance-du-concept"></a> b. De la naissance du concept</h3>
+<p>Les racines du concept proviennent des années 60 quand les fabricants ont créé un logiciel « de planification déterministe des besoins » (« Material Requirements Planning ou <strong>MRP</strong>). Cet outil avait pour but de calculer automatiquement la commande des composants selon des prévisions de ventes données. Au fil des années, d’autres fonctions support se sont ajoutées, comme la comptabilité, les RH et la distribution, amenant ainsi le cabinet d’analyse Gardener à inventer le terme en 1990.</p>
+<h3 id="c.-vers-son-%C3%A9volution-aujourd'hui" tabindex="-1"><a class="header-anchor" href="#c.-vers-son-%C3%A9volution-aujourd'hui"></a> c. Vers son évolution aujourd'hui</h3>
+<p>Aujourd’hui, les ERP gèrent une multitude de processus vitaux :</p>
+<table>
+<thead>
+<tr>
+<th>Fonctions</th>
+<th>Rôle de l'ERP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Le suivi des commandes</td>
+<td><em>l'ERP permet une traçabilité des marchandises et assure l'exécution des commandes</em></td>
+</tr>
+<tr>
+<td>La gestion des ressources humaines</td>
+<td><em>l'ERP assure la gestion les salaires, la planification des équipes et les opérations liées aux employés</em></td>
+</tr>
+<tr>
+<td>La planification des ressources</td>
+<td><em>l'ERP gère la répartition des ressources (main-d’œuvre,matière première)</em></td>
+</tr>
+<tr>
+<td>La supervision de la production</td>
+<td><em>l’ERP synchronise la production, de la planification à l'exécution pour répondre à la demande</em></td>
+</tr>
+<tr>
+<td>La comptabilité et les finances</td>
+<td><em>l’ERP gère les transactions et génère des rapports financiers précis</em></td>
+</tr>
+<tr>
+<td>La gestion des ventes</td>
+<td><em>l'ERP permet un suivi du cycle de ventes et donc une vue complète des activités commerciales</em></td>
+</tr>
+</tbody>
+</table>
+<h2 id="3.-architecture-et-fonctionnement-d'un-erp" tabindex="-1"><a class="header-anchor" href="#3.-architecture-et-fonctionnement-d'un-erp"></a> 3. Architecture et fonctionnement d'un ERP</h2>
+<h3 id="a.-architecture-technique" tabindex="-1"><a class="header-anchor" href="#a.-architecture-technique"></a> a. Architecture technique</h3>
+<img align="right" width="350" src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Sarah-Sebastien/mon/temps-1.1/image_1.png"  ="">
+<p>Les ERP sont basés sur une architecture client/serveur : les différents postes informatiques accèdent à l’informations de loin et les transformations effectuées sont appliquées <strong>à toutes les fonctions</strong>. Les serveurs sont couplés à une <strong>base de données unique</strong>, où sont stockées toutes les données, et communiquent avec les clients.
+De plus, les ERP sont <strong>compatibles au pack Office</strong>, en particulier pour PowerPoint et Excel. Le premier étant utile pour personnaliser les bureaux ERP en fonction de l'entreprise et le second pour effectuer les imports/exports de données. Les ERP sont aussi compatibles avec des outils de reporting (es CrystalReport), outils principalement utilisés pour le module de gestion relation client.</p>
+<h3 id="b.-une-architecture-dite-%22modulaire%22" tabindex="-1"><a class="header-anchor" href="#b.-une-architecture-dite-%22modulaire%22"></a> b. Une architecture dite &quot;modulaire&quot;</h3>
+<p>Un ERP est <strong>modulaire</strong> dans le sens où il est possible de n'avoir qu'une ou plusieurs applications pour une entreprise, et d'en ajouter quand elle veut. Les applications modulaires telles que les ERP permettent d'être sûr de la compatibilité des modules entre eux, ils s'imbriquent comme des blocs de Lego et fonctionnent ensemble (pas de vérification de compatibilité à effectuer).</p>
+<img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Sarah-Sebastien/mon/temps-1.1/image_2.png"  ="">
+<h2 id="4.-diff%C3%A9rents-types-d'erp" tabindex="-1"><a class="header-anchor" href="#4.-diff%C3%A9rents-types-d'erp"></a> 4. Différents types d'ERP</h2>
+<h3 id="a.-open-source%2Fpropri%C3%A9taire" tabindex="-1"><a class="header-anchor" href="#a.-open-source%2Fpropri%C3%A9taire"></a> a. Open Source/Propriétaire</h3>
+<ul>
+<li>Les <strong>ERP propriétaires</strong> sont commercialisés par des sociétés spécialisées dans la conception et la mise en place de logiciels auprès des entreprises.</li>
+<li>Les <strong>ERP open source</strong> fonctionnent avec des licences, ie des formes de contrat par lequel une société :
+<ul>
+<li>donne l'autorisation à un client d'utiliser le PGI commercialisé,</li>
+<li>détermine les limites de l'utilisation du logiciel,</li>
+<li>liste les obligations et responsabilités du client et de la société.</li>
+</ul>
+</li>
+</ul>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100 dark:border-cyan-800 dark:bg-cyan-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-cyan-500 dark:stroke-cyan-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><em><strong>A noter</strong></em></p>
+</div><div class="pl-8 mr-8">
+<p>La licence représente 15 % à 25 % de l'investissement total dans un projet ERP.</p>
+</div>
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100 dark:border-yellow-800 dark:bg-yellow-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-yellow-500 dark:stroke-yellow-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>A noter</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Aujourd'hui, ce sont principalement les ERP propriétaires qui dominent le marché des PGI.
+On peut citer SAP, Oracle NetSuite, Microsoft Dynamics, par exemple, qui sont les 3 principaux ERP de nos jours.</p>
+</div>
+</div>
+<h3 id="b.-g%C3%A9n%C3%A9raliste%2Fsp%C3%A9cialis%C3%A9" tabindex="-1"><a class="header-anchor" href="#b.-g%C3%A9n%C3%A9raliste%2Fsp%C3%A9cialis%C3%A9"></a> b. Généraliste/Spécialisé</h3>
+<ul>
+<li>PGI <strong>généraliste</strong>: sont flexibles et fonctionnent pour la grande majorité des entreprises. Ils sont adaptés à tout type d'activité</li>
+<li>PGI <strong>spécialisé</strong>: (ou “métier”) sont plus efficaces pour répondre à des besoins spécifiques de certains secteurs. (ex pour un PGI industriel, il permet : gestion des nomenclatures, calcul des niveaux, caractéristiques des matériaux, gestion des variantes ou encore traçabilité de la production.)</li>
+</ul>
+<h3 id="c.-typologie-diff%C3%A9rentes-en-fonction-de-la-taille-de-l'entreprise" tabindex="-1"><a class="header-anchor" href="#c.-typologie-diff%C3%A9rentes-en-fonction-de-la-taille-de-l'entreprise"></a> c. Typologie différentes en fonction de la taille de l'entreprise</h3>
+<p>Selon la taille d’une entreprise, ses attentes et son besoin concernant les fonctionnalités d’un ERP varient.</p>
+<table>
+<thead>
+<tr>
+<th><strong>Les petites entreprises</strong></th>
+<th><strong>Les PME/ETI</strong></th>
+<th><strong>Les grandes entreprises</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>l’ERP a pour but d’aider l’entreprise à dépasser le stade des feuilles de calcul et à gérer efficacement les différents aspects de son activité (vente, la relation client, opérations financières, l'exploitation). Les outils ERP pour petites entreprises se trouvent généralement sur le cloud. Ils sont <em>rapides à installer</em> et conçus pour <em>évoluer progressivement</em></td>
+<td>l’ERP pour une PME/ETI et ses possibles filiales offrent une analytique intégrée, un <em>déploiement rapide</em> pour des dizaines de processus différents (fonction Finance, RH, gestion de la Supply Chain et bien d'autres encore). Les systèmes ERP modulaires et basés sur le cloud sont également un choix populaire chez les PME/ETI aux processus complexes ou aux plans de croissance rapide</td>
+<td>les ERP pour les grandes entreprises à rayonnement mondial ont besoin d’inclure l'IA, le Machine Learning et l'analytique, ainsi qu'une automatisation intelligente pour transformer leurs modèles économiques et processus. Les systèmes ERP peuvent être déployés sur site, sur le cloud ou dans un scénario hybride. Ils peuvent s'intégrer à des bases de données existantes ou, idéalement, s'exécuter sur des bases de données <em>In-Memory</em> (Les données sont stockées directement dans la mémoire vive du système informatique plutôt que sur un disque) plus récentes et puissantes</td>
+</tr>
+</tbody>
+</table>
+<h3 id="d.-diff%C3%A9rents-types-de-d%C3%A9ploiements-du-progiciel" tabindex="-1"><a class="header-anchor" href="#d.-diff%C3%A9rents-types-de-d%C3%A9ploiements-du-progiciel"></a> d. Différents types de déploiements du progiciel</h3>
+<img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Sarah-Sebastien/mon/temps-1.1/image_3.png"  ="">
+<table>
+<thead>
+<tr>
+<th><strong>ERP cloud</strong></th>
+<th><strong>ERP sur site/&quot;on-premise&quot;</strong></th>
+<th><strong>ERP hybride/à deux niveaux</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>On parle d'ERP sur site lorsque l'entreprise est propriétaire du centre de données. Le logiciel sur site peut être acheté moyennant des frais uniques ou une licence perpétuelle et il est ensuite installé localement sur les ordinateurs et serveurs d’une entreprise. C’est alors l’entreprise qui est responsable de l'hébergement, de la maintenance, des mises à jour du logiciel, et de la sécurité des données</td>
+<td>Ils sont hébergés dans des centres de données et la plateforme est gérée par des fournisseurs. L'accès aux systèmes ERP Cloud se fait par Internet, au lieu d'un ordinateur local ou d'un logiciel installé. Le fournisseur de logiciels s'occupe généralement de la maintenance régulière, des mises à jour et de la sécurité et utilisent généralement un modèle de tarification par abonnement pour les entreprises</td>
+<td>: Pour les entreprises qui souhaitent combiner les deux approches afin de répondre à leurs exigences de gestion, il existe un modèle d'ERP cloud hybride. Dans ce cas, une partie des applications et données ERP de l’entreprise se trouve dans le cloud et l'autre partie sur site</td>
+</tr>
+</tbody>
+</table>
+<h2 id="5.-une-d%C3%A9marche-d'impl%C3%A9mentation-du-progiciel-dans-l'entreprise" tabindex="-1"><a class="header-anchor" href="#5.-une-d%C3%A9marche-d'impl%C3%A9mentation-du-progiciel-dans-l'entreprise"></a> 5. Une démarche d'implémentation du progiciel dans l'entreprise</h2>
+<p>L’intégration d’un système ERP est une étape essentielle pour l’optimisation des opérations d’une entreprise. L’ERP doit avant tout contribuer à améliorer les performances de l’entreprise. Ainsi, la mise en place d’un ERP doit suivre une démarche structurée et méthodique.</p>
+<h3 id="a.-conception-du-projet-erp" tabindex="-1"><a class="header-anchor" href="#a.-conception-du-projet-erp"></a> a. Conception du projet ERP</h3>
+<h4 id="1.-la-prise-en-compte-des-modifications-internes-%C3%A0-l'entreprise" tabindex="-1"><a class="header-anchor" href="#1.-la-prise-en-compte-des-modifications-internes-%C3%A0-l'entreprise"></a> 1. La prise en compte des modifications internes à l'entreprise</h4>
+<p>La mise en place d’un nouveau système de gestion informatisé entraîne des changements dans l’organisation du travail de tous les employés. C’est pourquoi, une redéfinition précise des rôles de chacun doit être pensée et anticipée en fonction des nouvelles exigences.</p>
+<p>Les étapes nécessaires à la bonne mise en place d’un ERP consistent à :</p>
+<ul>
+<li><strong>identifier et référencer l’ensemble des processus</strong>: cela permettra de mettre en lumière  certains  process pouvant s’avérer inadaptés avec les nouveaux enjeux ou objectifs d'une entreprise et lui permettre de choisir de les optimiser ou de les abandonner</li>
+<li><strong>communiquer sur les motivations de la direction à changer ou à intégrer un nouvel ERP</strong> et informer tout le personnel sur leur nouveau rôle</li>
+<li><strong>impliquer les collaborateurs dans le projet et ses différentes phases</strong>, de manière à coopérer avec eux pour éviter toute réticence face au changement puisque l’intégration ou le changement d’un ERP les amènera forcément à revoir leurs habitudes et méthodes de travail</li>
+</ul>
+<h4 id="2.-d%C3%A9finition-d'un-cahier-des-charges" tabindex="-1"><a class="header-anchor" href="#2.-d%C3%A9finition-d'un-cahier-des-charges"></a> 2. Définition d'un cahier des charges</h4>
+<p>Au préalable, il est nécessaire de se poser les bonnes questions, et de rédiger <strong>un cahier des charges précis</strong> dans lequel les besoins de l’entreprise sont détaillés. Ces besoins sont hiérarchisés en fonction de leur degré d’importance.
+L'entreprise doit alors se poser les questions suivantes:</p>
+<ul>
+<li>besoin externe(pression du marché, concurrence, clients) ou interne (évolution du SI, réorganisation, gain de productivité) ?</li>
+<li>contraintes spéciales?(environnement comme des ordinateurs spécifiques)</li>
+<li>envergure du projet ? (nombre d'utilisateurs finaux, budget envisagé pour le changement/implémentation d'ERP)</li>
+<li>constitution de l'équipe projet?</li>
+<li>architecture du SI actuel et les choix techniques envisagés?</li>
+</ul>
+<p>C’est une base de travail qui permettra aux intégrateurs(*) de vérifier l’adéquation de leurs solutions par rapport aux souhaits exprimés.</p>
+<h4 id="3.-s%C3%A9lection-d'un-progiciel-et-d'un-%C3%A9diteur(*)" tabindex="-1"><a class="header-anchor" href="#3.-s%C3%A9lection-d'un-progiciel-et-d'un-%C3%A9diteur(*)"></a> 3. Sélection d'un progiciel et d'un éditeur(*)</h4>
+<p>Lors de ce choix, il est nécessaire de sélectionner des progiciels réellement adaptés aux moyens de l’entreprise (PME/petite entreprise/grande entreprise/multinationale/multi-activités, etc...) pour ne pas se retrouver avec des solutions trop complexes et inadaptées.</p>
+<p>Il faut également se poser des questions sur la <strong>typologie du progiciel</strong> recherchée (open source/propriétaire, ERP source/ERP sur site/ERP hybride, ou ERP généraliste/spécialisé)</p>
+<p>D’un point de vue technique, il est également important de tenir compte de la notoriété, et du nombre de licences déjà commercialisées de chaque éditeur (*), afin d’assurer la pérennité de la solution.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100 dark:border-cyan-800 dark:bg-cyan-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-cyan-500 dark:stroke-cyan-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>A noter</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Il faut savoir que l’on garde en moyenne son ERP 8 à 10 ans. C’est un <strong>engagement à long terme</strong>.</p>
+</div>
+</div>
+<h4 id="4.-s%C3%A9lection-d'un-int%C3%A9grateur(*)" tabindex="-1"><a class="header-anchor" href="#4.-s%C3%A9lection-d'un-int%C3%A9grateur(*)"></a> 4. Sélection d'un intégrateur(*)</h4>
+<p>Comme il va permettre la mise en place de la solution, il est important de sélectionner l'intégrateur en regardant plusieurs critères :</p>
+<ul>
+<li>son <strong>organisation pour le déploiement du système</strong> (planning, réunions, contrôle de l’avancement, adaptabilité aux contraintes, délai de mise en place d’un ERP estimé)</li>
+<li>sa <strong>disponibilité</strong></li>
+<li>sa <strong>proximité géographique de l’entreprise</strong> (en terme notamment de réactivité et de coût)</li>
+<li>une bonne <strong>relation client-prestataire</strong> :les qualités relationnelles sont primordiales dans l’acceptation du projet en interne, et donc jouent un rôle important dans la réussite du projet</li>
+</ul>
+<h4 id="5.-de-l'obtention-du-devis-vers-le-contrat" tabindex="-1"><a class="header-anchor" href="#5.-de-l'obtention-du-devis-vers-le-contrat"></a> 5. De l'obtention du devis vers le contrat</h4>
+<p>Une fois vérifiée l’adéquation de la solution choisie avec le budget prévu, l’établissement du devis peut avoir lieu. Lors de l’obtention d’un devis, il convient de l’analyser en portant son attention sur:</p>
+<ul>
+<li>l’aspect financier et des critères de qualité (réactivité, fonctionnalité, adaptabilité)</li>
+<li>la possibilité de <strong>surcoûts</strong> (coût de la hot line, coût des journées de prestations, fréquence de mises à jours et couts, etc..)</li>
+</ul>
+<p><em>Le contrat établi entre l’intégrateur et l’entreprise est la dernière étape avant le déploiement du système.</em></p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100 dark:border-cyan-800 dark:bg-cyan-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-cyan-500 dark:stroke-cyan-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>A noter</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Il faut garder à l'esprit que l'intégrateur n'a qu'une obligation de moyens et non de résultats.</p>
+</div>
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100 dark:border-yellow-800 dark:bg-yellow-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-yellow-500 dark:stroke-yellow-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Vocabulaire</strong></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li><strong>Les éditeurs</strong> : Ils réalisent les progiciels et assurent leur maintenance.</li>
+<li><strong>Les intégrateurs</strong> : Ils sont l’interface entre l’éditeur et l’entreprise. Ils forment les utilisateurs, procèdent au déploiement du progiciel et au développement de modules spécifiques.</li>
+<li><strong>Les experts conseil</strong> : Ils étudient les besoins de l’entreprise, recherchent les progiciels adaptés à la demande de celle-ci ainsi que les intégrateurs. Ils sont l’interface entre l’intégrateur et l’entreprise.</li>
+</ul>
+</div>
+</div>
+<h3 id="b.-mise-en-place-du-projet-erp" tabindex="-1"><a class="header-anchor" href="#b.-mise-en-place-du-projet-erp"></a> b. Mise en place du projet ERP</h3>
+<h4 id="1.-le-d%C3%A9ploiement-du-progiciel" tabindex="-1"><a class="header-anchor" href="#1.-le-d%C3%A9ploiement-du-progiciel"></a> 1. Le déploiement du progiciel</h4>
+<p>Son déploiement doit être en phase avec le système d’information existant. Ainsi, il faut en premier lieu <strong>mettre à jour l’infrastructure du SI</strong> et procéder à une <strong>migration des données dans la base unique de l’ERP</strong>.</p>
+<p>Une fois l'installation complète, il faut réaliser le paramétrage et les tests:</p>
+<ul>
+<li><strong>paramétrage</strong> de l'ERP par le personnel concerné par l'utilisation future de l'ERP</li>
+<li><strong>tests par l'équipe projet</strong> dédiée qui va récolter les <strong>retours d'expériences utilisateurs</strong> pour procéder par la suite à d'éventuelles modifications</li>
+</ul>
+<h4 id="2.-formation-des-collaborateurs" tabindex="-1"><a class="header-anchor" href="#2.-formation-des-collaborateurs"></a> 2. Formation des collaborateurs</h4>
+<p>Former le personnel permettra une adhésion progressive au nouvel outil. Cette formation est réalisée par <strong>l'intégrateur</strong>, et pourra avoir lieu par le biais des utilisateurs finaux ou de référents.</p>
+<h2 id="6.-conclusion" tabindex="-1"><a class="header-anchor" href="#6.-conclusion"></a> 6. Conclusion</h2>
+<p>Pour conclure, on peut dire qu'on assiste de plus en plus à une <strong>digitalisation des enterprises</strong> qui est devenue un enjeu majeur aujourd'hui pour qu'une entreprise reste performante. (développement du télétravail, migration vers le Cloud, etc..).
+En choisissant de digitaliser ses processus métiers, l'entreprise a la possibilité de mettre en place un système dans lequel ses collaborateurs, ses machines et ses produits interagissent en temps réel. Le rôle d'un ERP devient alors fondamental.</p>
+<p>Par ailleurs, à l'ère de la <strong>transformation digitale</strong>, c'est devenu un enjeu pour les ERP actuels de fonctionner avec les nouvelles technologies intelligentes (IA, Machine Learning, bases de données In-Memory, etc). Ils permettent aux entreprises d'exécuter des processus encore plus efficaces et de rester compétitive dans un monde industriel en constante évolution.</p>
+<h2 id="sources" tabindex="-1"><a class="header-anchor" href="#sources"></a> Sources</h2>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100 dark:border-pink-800 dark:bg-pink-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-pink-500 dark:stroke-pink-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p>Sources</p>
+</div><div class="pl-8 mr-8">
+<p><a href="https://fablain.developpez.com/tutoriel/presentation-generale-erp-sap/">https://fablain.developpez.com/tutoriel/presentation-generale-erp-sap/</a>
+<a href="http://www.entreprise-erp.com/">http://www.entreprise-erp.com/</a>
+<a href="http://www.guillaumeriviere.name/estia/si/pub/cours_ERP_PGI_2010.pdf">http://www.guillaumeriviere.name/estia/si/pub/cours_ERP_PGI_2010.pdf</a>
+<a href="https://www.sap.com/france/products/erp/what-is-erp.html#definition">https://www.sap.com/france/products/erp/what-is-erp.html#definition</a>
+<a href="http://www.guillaumeriviere.name/estia/si/pub/cours_ERP_PGI_2010.pdf">http://www.guillaumeriviere.name/estia/si/pub/cours_ERP_PGI_2010.pdf</a>
+<a href="https://fablain.developpez.com/tutoriel/presenterp/#LII-A">https://fablain.developpez.com/tutoriel/presenterp/#LII-A</a>
+<a href="https://archipelia.com/mise-en-place-erp/">https://archipelia.com/mise-en-place-erp/</a></p>
+</div>
+</div>
+
+
+
+</article>
+
+        </main>
+
+        <footer class="min-h-[50px] border-t-2 mt-4 border-gray-200 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-center items-center">
+                    <p class="text-center">
+                        ©2025 <b><span style="font-family: Consolas, sans-serif;">Do-<span style="color: #4a86e8">It</span></span></b> - Développement, Management et Gestion de projets en IT
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- MathJax import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">
+            window.MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']], // Delimiters for inline math
+                    displayMath: [['$$', '$$'], ['\\[', '\\]']] // Delimiters for block math
+                },
+                svg: {
+                    fontCache: 'global' // Use global font cache for SVG output
+                }
+            };
+            document.addEventListener('DOMContentLoaded', () => {
+                MathJax.typeset(); // Ensures MathJax processes the content after the page loads
+            });
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">
+            Prism.plugins.NormalizeWhitespace.setDefaults({
+                'remove-trailing': true,
+                'remove-indent': true,
+                'left-trim': true,
+                'right-trim': true,
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script>
+    </body>
+</html>

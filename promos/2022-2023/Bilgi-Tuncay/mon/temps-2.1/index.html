@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="robots" content="index, follow">
+
+        <link rel="canonical" href="https://do-it.aioli.ec-m.fr/promos/2022-2023/Bilgi-Tuncay/mon/temps-2.1/">
+
+        
+        
+
+        <meta name="description" content="Do-It, cours et travaux des élèves de l&#39;école Centrale Méditerranée">
+        <meta property="og:description" content="Do-It, cours et travaux des élèves de l&#39;école Centrale Méditerranée">
+        <meta name="twitter:description" content="Do-It, cours et travaux des élèves de l&#39;école Centrale Méditerranée">
+
+        
+            <meta name="author" content="Tuncay Bilgi">
+        
+        <meta name="keywords" content="do-it, centrale, centrale méditerranée, ecm, MON, Jenkins, CI/CD">
+
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png">
+        <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png">
+
+        <link href="/assets/stylesheets/main.css" rel="stylesheet">
+
+        <meta property="og:title" content="Jenkins">
+
+        <meta property="og:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta property="og:url" content="https://do-it.aioli.ec-m.fr/promos/2022-2023/Bilgi-Tuncay/mon/temps-2.1/">
+        <meta property="og:type" content="website">
+
+        <meta name="twitter:card" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:title" content="Jenkins">
+        <meta name="twitter:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:url" content="https://do-it.aioli.ec-m.fr/promos/2022-2023/Bilgi-Tuncay/mon/temps-2.1/">
+
+        <title>Jenkins</title>
+
+        <!-- Prismjs imports
+                - Prism line numbers
+                - Prism toolbar
+        -->
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet">
+        <link id="prism-theme" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+        <!-- Mermaid import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js "></script>
+
+        <script defer="">
+        // Check if a theme is stored in localStorage. If so, use it, otherwise fallback to the system preference.
+        const storedTheme = localStorage.getItem('theme');
+        if (storedTheme) {
+            document.documentElement.classList.toggle("dark", storedTheme === "dark");
+        } else {
+            // Use system color scheme if there is no stored theme preference.
+            document.documentElement.classList.toggle("dark", window.matchMedia("(prefers-color-scheme: dark)").matches);
+        }
+
+        function loadPrismTheme(isDarkMode) {
+            const newTheme = isDarkMode ? 'prism-okaidia.min.css' : 'prism-solarizedlight.min.css';
+            const newLink = document.createElement('link');
+            newLink.rel = 'stylesheet';
+            newLink.id = 'prism-theme';
+            newLink.href = `https://cdn.jsdelivr.net/npm/prismjs/themes/${newTheme}`;
+
+            newLink.onload = () => {
+                // Reapply highlighting after the new theme loads
+                Prism.highlightAll();
+            };
+
+            const existingLink = document.getElementById('prism-theme');
+            if (existingLink) {
+                document.head.replaceChild(newLink, existingLink);
+            } else {
+                document.head.appendChild(newLink);
+            }
+        }
+
+        function setMermaidTheme(isDarkMode) {
+            const theme = isDarkMode ? 'dark' : 'forest';
+            mermaid.initialize({
+                securityLevel: 'loose',
+                theme,
+                startOnLoad: true,
+            });
+        }
+
+        // Toggle dark and light mode and update localStorage accordingly.
+        function toggleDarkMode() {
+            const dark = document.documentElement.classList.contains("dark");
+            const newTheme = dark ? "light" : "dark";
+            localStorage.setItem('theme', newTheme);
+            document.documentElement.classList.toggle("dark", !dark);
+            loadPrismTheme(!dark);
+            setMermaidTheme(!dark);
+        }
+
+        // On initial load, ensure that Prism and Mermaid are initialized using the current theme.
+        const isDark = document.documentElement.classList.contains("dark");
+        loadPrismTheme(isDark);
+        setMermaidTheme(isDark);
+        </script>
+
+    </head>
+
+    <body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000" class="bg-neutral-50 text-neutral-950 dark:bg-neutral-900 dark:text-neutral-50">
+        <header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white dark:bg-neutral-900 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-between items-center">
+                    <a class="mx-2" href="/">Home</a>
+                    <button class="hidden sm:block text-neutral-950 dark:text-neutral-50 hover:bg-neutral-700 hover:text-neutral-50 hover:dark:bg-neutral-300 hover:dark:text-neutral-950 transition-colors p-2 rounded-full duration-800 ease-in-out" onclick="toggleDarkMode()">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 dark:hidden stroke-current">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <path d="M12 2V4" stroke-linecap="round"></path>
+                            <path d="M12 20V22" stroke-linecap="round"></path>
+                            <path d="M4 12L2 12" stroke-linecap="round"></path>
+                            <path d="M22 12L20 12" stroke-linecap="round"></path>
+                            <path d="M19.7778 4.22266L17.5558 6.25424" stroke-linecap="round"></path>
+                            <path d="M4.22217 4.22266L6.44418 6.25424" stroke-linecap="round"></path>
+                            <path d="M6.44434 17.5557L4.22211 19.7779" stroke-linecap="round"></path>
+                            <path d="M19.7778 19.7773L17.5558 17.5551" stroke-linecap="round"></path>
+                        </svg>
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 stroke-current hidden dark:block">
+                            <path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </button>
+                    <div class="flex items-center gap-4 sm:gap-6 ">
+                        <a class="" href="/cs">CS</a>
+                        <a class="" href="/pok">POK</a>
+                        <a class="" href="/mon">MON</a>
+                        <a class="" href="/projets">Projets</a>
+                        <a class="hidden sm:block" href="/promos">Promos</a>
+                        <a href="/search">
+                            <svg class="h-5 aspect-square stroke-neutral-950 dark:stroke-neutral-300 fill-none stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+                            </svg>
+                        </a>
+                        <a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank">
+                            <svg class="h-5 aspect-square dark:stroke-neutral-300 dark:fill-neutral-300" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body="">
+            
+<article class="relative">
+<h1 class="mb-1">Jenkins</h1>
+<div class="mb-4">
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Tags : </div>
+            <ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags">
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">MON</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">Jenkins</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">CI/CD</li>
+                
+
+            </ul>
+
+            
+            <div class="hidden" data-pagefind-meta="Type" aria-hidden="true">
+                
+                    
+                        <span data-pagefind-filter="Type">MON</span>
+                    
+                
+                    
+                
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Auteur : </div>
+            <ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs">
+                
+                    <li class="bg-blue-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Auteurs">Tuncay Bilgi</li>
+                
+            </ul>
+        </div>
+    
+
+    
+        <div class="absolute top-0 right-0">
+            <span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2 text-neutral-950" data-pagefind-filter="Année">
+                2022-2023
+            </span>
+        </div>
+    
+</div>
+
+
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100 dark:border-purple-800 dark:bg-purple-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-purple-500 dark:stroke-purple-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/promos/2022-2023/Bilgi-Tuncay/">Tuncay Bilgi</a><span class="px-1">/</span><a href="/promos/2022-2023/Bilgi-Tuncay/mon/">MON de Tuncay Bilgi</a><span class="px-1">/</span><a href="/promos/2022-2023/Bilgi-Tuncay/mon/temps-2.1/">Jenkins</a>
+
+</div>
+</div>
+
+
+
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Résumé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<ul>
+<li>Niveau intermédiaire</li>
+<li>Pré-requis nécessaires nombreux</li>
+<li>Installations d'outils nécessaires</li>
+</ul>
+</div>
+</details>
+</div>
+<h1 id="jenkins%2C-en-th%C3%A9orie-%3A" tabindex="-1"><a class="header-anchor" href="#jenkins%2C-en-th%C3%A9orie-%3A"></a> Jenkins, en théorie :</h1>
+<h3 id="objectif-%3A" tabindex="-1"><a class="header-anchor" href="#objectif-%3A"></a> Objectif :</h3>
+<p>Comprendre les besoins qui mènent à l'utilisation d'un outil comme Jenkins pour un développeur fullstack, puis mettre en place un exemple pratique d'utilisation.</p>
+<h3 id="sujets-abord%C3%A9s-pendant-le-mon-%3A" tabindex="-1"><a class="header-anchor" href="#sujets-abord%C3%A9s-pendant-le-mon-%3A"></a> Sujets abordés pendant le MON :</h3>
+<ul>
+<li>Qu'est ce que Jenkins ?</li>
+<li>Pourquoi utiliser un tel outil ?</li>
+<li>Les bases</li>
+<li>Exemple d'utilisation concret sur un de mes projets.</li>
+</ul>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100 dark:border-pink-800 dark:bg-pink-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-pink-500 dark:stroke-pink-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Prérequis</b></p>
+</div><div class="pl-8 mr-8">
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100 dark:border-red-800 dark:bg-red-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-red-500 dark:stroke-red-800 stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Attention</b></p>
+</div><div class="pl-8 mr-8">
+<p>C'est un MON intermédiaire : les manipulations ne sont pas compliquées mais la mise en place nécessite des bases sur de nombreux concepts différents.</p>
+</div>
+</div>
+<p>Pré-requis :</p>
+<ul>
+<li>Connaître le contexte de development Fullstack.</li>
+<li>Linux, CLI, shell, ssh</li>
+<li>Git, Github</li>
+<li><a href="./../Docker">Docker</a>.</li>
+<li>Un <a href="./../../../../pok/un-site-chez-moi/TBi/Artblog">projet</a> à portée de mains, (la doc Jenkins en fourni un).</li>
+</ul>
+</div>
+</div>
+<h3 id="ressources-utilis%C3%A9es-%3A" tabindex="-1"><a class="header-anchor" href="#ressources-utilis%C3%A9es-%3A"></a> Ressources utilisées :</h3>
+<ul>
+<li><a href="https://www.jenkins.io/doc/tutorials/">Documentation Jenkins (un peu dur à lire)</a></li>
+<li><a href="https://www.youtube.com/watch?v=LFDrDnKPOTg&amp;ab_channel=Simplilearn">Vidéo introductive sur les concepts</a></li>
+<li><a href="./../Docker">Magnifique MON sur Docker</a></li>
+<li><a href="./../../../../pok/un-site-chez-moi/TBi/Artblog">Excellent POK de blog en React</a> ou <a href="./../../../../">Incroyable POK de plagiat de la FDJ en Svelte</a></li>
+</ul>
+<h2 id="continuous-delivery-and-continuous-integration-(ci%2Fcd)-%3A" tabindex="-1"><a class="header-anchor" href="#continuous-delivery-and-continuous-integration-(ci%2Fcd)-%3A"></a> Continuous Delivery and Continuous Integration (CI/CD) :</h2>
+<p>Ce sont des concepts de développement qui ont plusieurs but :</p>
+<ul>
+<li>Améliorer la qualité du code</li>
+<li>Faciliter la vie des développeurs</li>
+<li>Développer du code plus rapidement</li>
+<li>Ajouter les dernières fonctionnalités le plus rapidement possible</li>
+</ul>
+<p>Plus particulièrement, <strong>la continuous integration</strong> est l'ensemble de bonnes pratiques et d'outils qui permet de développer et tester e le code dans une version prête à être déployée le plus souvent possible.
+Traditionnellement, dans une équipe de développeur, la partie front et la partie Back pouvaient être développées par des personnes différentes et mises en communs quelques fois avant de lancer des tests. Cette technique est inefficace car elle laisse le temps à des bugs ou des incompatibilités de grandir sans que l'on s'en rend compte. En effet, si l'on test le système seulement une fois par mois, il est possible de se retrouver avec une version qui ne marche plus et perdre énormément de temps.
+Des outils comme git, github action ou Jenkins permettent aux développeurs de mettre leurs codes en communs puis de lancer une batterie de tests sur ce code plusieurs fois par jour. Grâce à cela, on évite la propagations de bugs et finalement, on gagne du temps.</p>
+<p>Quand le code est testé est prêt à être déployé il ne reste qu'à ... le déployé!</p>
+<p><strong>La continuous delivery</strong> est l'ensemble d'outils et de pratiques qui permettent de déployer automatiquement la dernière version fonctionnelle du code sur le serveur de production. Cela permet d'offrir au client une version qui soit toujours fonctionnelle et qui possède les derniers ajouts, mises à jours correctives ou même mises à jour de sécurité.
+On peut par exemple imaginer une automatisation qui, toute les nuits, récupère toutes les fonctionnalités codées par les développeurs, les teste puis si tout fonctionne, les mets en commun dans une version à jour du code. Cette automatisation pourrait même déployer directement le code.
+On appelle cela un <strong>nightly build</strong>.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100 dark:border-cyan-800 dark:bg-cyan-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-cyan-500 dark:stroke-cyan-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Information</b></p>
+</div><div class="pl-8 mr-8">
+<p>Par exemple ce site de M.Brucker utilise de la CI/CD :</p>
+<ul>
+<li>les élèves développent en collaboration grâce à github</li>
+<li>A chaque commit sur la branche principale, le code est testé par Github action</li>
+<li>Si les tests passent, le code est déployé sur le site <a href="http://github.io">github.io</a> et la dernière version est disponible directement sans que M.Brucker ait besoin de déployer quoi que ce soit lui-même</li>
+</ul>
+<p>Le problème avec cette manière de procéder est que l'on peut push un commit monstrueux qui détruit le site. Peut importe l'état des tests, le commit sera accepté et il faudra réparer le code avant de pouvoir déployer le site à nouveau.</p>
+</div>
+</div>
+<h2 id="qu'est-ce-que-jenkins%3F" tabindex="-1"><a class="header-anchor" href="#qu'est-ce-que-jenkins%3F"></a> Qu'est-ce que Jenkins?</h2>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100 dark:border-cyan-800 dark:bg-cyan-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-cyan-500 dark:stroke-cyan-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Information</b></p>
+</div><div class="pl-8 mr-8">
+<p>Une vidéo explicative <a href="https://www.youtube.com/watch?v=LFDrDnKPOTg&amp;ab_channel=Simplilearn">ici</a></p>
+</div>
+</div>
+<p>L'idée est d'un tel outil est de mettre en place un environnement d'intégration continue. C'est à dire que le but est de créer un outil qui permet de développer, tester et pousser le code automatiquement, dès sa création. Par exemple, au lieu d'ajouter de nouvelles fonctionnalités sur notre site web, de faire un commit sur le repository, puis se rendre compte qu'il ne marche pas et corriger les bugs puis recommencer, on peut automatiser tout ça. Dans le meilleur des cas, à chaque nouvelle fonctionnalité, elle est automatiquement testée puis intégrée dans une version viable du code, prête à être déployée. Si les tests détectent des erreurs ou des incompatibilités dans le code, la nouvelle fonctionnalité n'est pas intégrée dans la branche principale et le développeur peut la retravailler sans jamais corrompre la version du code qui marche.</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Des outils et des outils pour la CI</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<ul>
+<li>Bamboo</li>
+<li>Buildbot</li>
+<li>Apache Gump (pour Java)</li>
+<li>Travis CI (qui fonctionne avec Github)</li>
+<li>Github Action</li>
+<li>Jenkins</li>
+</ul>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100 dark:border-cyan-800 dark:bg-cyan-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-cyan-500 dark:stroke-cyan-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Information</b></p>
+</div><div class="pl-8 mr-8">
+<p>Liste non exhaustive réalisée après quelques minutes sur google.</p>
+</div>
+</div>
+</div>
+</details>
+</div>
+<h2 id="la-pipeline-jenkins-%3A" tabindex="-1"><a class="header-anchor" href="#la-pipeline-jenkins-%3A"></a> La Pipeline Jenkins :</h2>
+<p>La pipeline, ou le workflow, est l'ensemble des étapes qui gravitent autour de Jenkins et qui permettent de mettre en place l'intégration et le déploiement continue.</p>
+<p>|Dev| =&gt; Commit -&gt; Build -&gt; Test -&gt; Release -&gt; Deploy =&gt; |Production|</p>
+<p>Cette pipeline peut être enclenchée périodiquement comme avec un nightly build ou elle peut être enclenchée à chaque commit.</p>
+<h1 id="jenkins%2C-en-pratique-%3A" tabindex="-1"><a class="header-anchor" href="#jenkins%2C-en-pratique-%3A"></a> Jenkins, En pratique :</h1>
+<p>Nous allons mettre en place Jenkins avec un projet node.js, en suivant <a href="https://www.jenkins.io/doc/tutorials/build-a-node-js-and-react-app-with-npm/">le tutoriel officiel de la doc</a>. Le projet utilisé ne sera pas le projet de base proposé par la doc mais mon propre projet, le POK Artblog.</p>
+<h2 id="lets-go" tabindex="-1"><a class="header-anchor" href="#lets-go"></a> Lets-go</h2>
+<p>La Doc nous propose de créer une image Docker qui va servir de serveur CI, c'est à dire le serveur qui s'occupe de réaliser les tâches automatiques qu'on va mettre en place. Ici, on simule ce serveur sur notre ordinateur, en pratique ça peut être fait par un serveur dédié.
+Je ne recopie pas la doc ici, seulement les subtilités que je rencontres et les résultats.</p>
+<h3 id="setup-du-conteneur-docker-%3A" tabindex="-1"><a class="header-anchor" href="#setup-du-conteneur-docker-%3A"></a> Setup du conteneur Docker :</h3>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100 dark:border-cyan-800 dark:bg-cyan-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-cyan-500 dark:stroke-cyan-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Information</b></p>
+</div><div class="pl-8 mr-8">
+<p>Le prérequis sur Docker rentre en jeu. Je ne sais pas a quel point c'est indispensable, mais sachez que la documentation officielle de Jenkins nous demande d'utiliser docker.</p>
+</div>
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100 dark:border-red-800 dark:bg-red-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-red-500 dark:stroke-red-800 stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Attention</b></p>
+</div><div class="pl-8 mr-8">
+<p>Blue Ocean n'est plus mis à jour. Le process d'installation fonctionne correctement et vous pourrez probablement utiliser le plugin à partir d'ici, mais je préfère rester sur des technologies à jour, ignorez ce qui concerne Blue Ocean si vous ne souhaitez pas l'utiliser.</p>
+</div>
+</div>
+<p>Le tutoriel de Jenkins utilise <strong>Docker:dind</strong> et les <strong>Networks</strong> de Docker. Ce sont des outils qui permettent de créer plusieurs containers et de les lier entre eux. Le problème : il existe maintenant des manières plus simples. Nous avons Docker compose, qui est sensé faire la même chose mais plus simplement, j'essaie de me débrouiller avec ça.
+En lisant la doc je vois que j'ai besoin de 2 services :</p>
+<ul>
+<li>Jenkins</li>
+<li>App, service qui va lancer mon instance node</li>
+</ul>
+<p>J'écris un Docker-compose.yml qui invoque ces deux types de conteneur, avec des images que j'ai récupéré sur le site officiel <a href="https://hub.docker.com/">DockerHub</a>
+Aussi, je pull les images avant de lancer le compose :</p>
+<p>docker pull jenkins/jenkins:alpine-lts
+docker pull node-16alpine</p>
+<p>J'expose les ports utilisés par les applications, et je crée un volume.
+Voila la tête du Docker-compose.yml :</p>
+<p>version: '3'
+services:
+jenkins:
+image: jenkins/jenkins:lts
+ports:
+- &quot;8080:8080&quot;
+- &quot;50000:50000&quot;
+volumes:
+- jenkins_home:/var/jenkins_home
+environment:
+JAVA_OPTS: &quot;-Djenkins.install.runSetupWizard=false&quot;</p>
+<p>nextjs:
+build: .
+command: npm run dev
+volumes:
+- .:/app
+- /app/node_modules
+ports:
+- &quot;3000:3000&quot;
+depends_on:
+- jenkins</p>
+<p>volumes:
+jenkins_home:</p>
+<p>Il faut alors ajouter un dockerfile qui définit le build pour next.js, cf le MON Docker.
+On installe BlueOcean directement dans l'instance Jenkins.
+La ligne sur l’environnement permet d'enlever le besoin d'avoir un mdp, cela implique bien-sûr des problèmes de sécurités.</p>
+<p>On peut lancer le container en daemon avec dans le terminale : <code>docker-compose up -d</code>. Ajoutez un nom si vous voulez arrêter le container en CLI, sinon allez sur Docker desktop.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100 dark:border-red-800 dark:bg-red-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-red-500 dark:stroke-red-800 stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Attention</b></p>
+</div><div class="pl-8 mr-8">
+<p>Le fait de lancer un projet dans un container peux créer des erreurs nouvelles, faites attentions.
+Par exemple, dans le container, je reçois une erreur de React que je n'avais pas avant.</p>
+</div>
+</div>
+<h3 id="les-mains-dans-jenkins-%3A" tabindex="-1"><a class="header-anchor" href="#les-mains-dans-jenkins-%3A"></a> Les mains dans Jenkins :</h3>
+<h4 id="blue-ocean-%3A" tabindex="-1"><a class="header-anchor" href="#blue-ocean-%3A"></a> Blue Ocean :</h4>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100 dark:border-red-800 dark:bg-red-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-red-500 dark:stroke-red-800 stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Attention</b></p>
+</div><div class="pl-8 mr-8">
+<p>Blue Ocean n'est plus mis à jour. Le process d'installation fonctionne correctement et vous pourrez probablement utiliser le plugin à partir d'ici, mais je préfère rester sur des technologies à jour, passez à la partie suivante si besoin.</p>
+</div>
+</div>
+<p>Un fois sur Jenkins :
+On passe d'abord la langue en anglais car la traduction est désastreuse, pour cela, il faut installer le plugin <strong>Local</strong>. Ensuite, on installe le plugin <strong>Blue Ocean</strong> puis <strong>Pipeline</strong> on restart jenkins. ( C'est long ). Finalement on bascule sur <strong>Blue Ocean</strong>.</p>
+<p>Voici le résultat :</p>
+<img src="https://raw.githubusercontent.com/do-it-ecm/promo-2022-2023/refs/heads/main//Bilgi-Tuncay/mon/temps-2.1/blueocean1.png" alt="Composer" style="height: 200px; margin: 0 auto; border: 0">
+<p>La suite de la doc est <a href="https://www.jenkins.io/doc/book/blueocean/creating-pipelines/">ici</a>.</p>
+<h4 id="classic-ui-pipeline-%3A" tabindex="-1"><a class="header-anchor" href="#classic-ui-pipeline-%3A"></a> Classic UI Pipeline :</h4>
+<p>Après avoir installé <strong>Pipeline</strong>, on à accès à ce nouveau type de workflow. On suit la doc <a href="https://www.jenkins.io/doc/book/pipeline/getting-started/">ici</a>.</p>
+<p>On crée notre premiere pipeline en suivant la doc et on l'execute :</p>
+<img src="https://raw.githubusercontent.com/do-it-ecm/promo-2022-2023/refs/heads/main//Bilgi-Tuncay/mon/temps-2.1/jenkins1.png" alt="Composer" style="height: 200px; margin: 0 auto; border: 0">
+<h4 id="les-jenkinsfile-%3A" tabindex="-1"><a class="header-anchor" href="#les-jenkinsfile-%3A"></a> Les Jenkinsfile :</h4>
+<p>Ici je crée une Pipeline qui se connecte à mon Github et qui execute un echo hello world.</p>
+<pre class="line-numbers"><code>
+
+Started by user unknown or anonymous
+Obtained Jenkinsfile from git https://github.com/TuncayBilgi/artblog
+[Pipeline] Start of Pipeline
+[Pipeline] node
+Running on Jenkins in /var/jenkins_home/workspace/FirstSCMPipe
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Declarative: Checkout SCM)
+[Pipeline] checkout
+Selected Git installation does not exist. Using Default
+The recommended git tool is: NONE
+No credentials specified
+Cloning the remote Git repository
+Cloning repository https://github.com/TuncayBilgi/artblog
+ > git init /var/jenkins_home/workspace/FirstSCMPipe # timeout=10
+Fetching upstream changes from https://github.com/TuncayBilgi/artblog
+ > git --version # timeout=10
+ > git --version # 'git version 2.30.2'
+ > git fetch --tags --force --progress -- https://github.com/TuncayBilgi/artblog +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > git config remote.origin.url https://github.com/TuncayBilgi/artblog # timeout=10
+ > git config --add remote.origin.fetch +refs/heads/*:refs/remotes/origin/* # timeout=10
+Avoid second fetch
+ > git rev-parse refs/remotes/origin/dev^{commit} # timeout=10
+Checking out Revision c70b1dcde19a3541436986499634cfcb416c5988 (refs/remotes/origin/dev)
+ > git config core.sparsecheckout # timeout=10
+ > git checkout -f c70b1dcde19a3541436986499634cfcb416c5988 # timeout=10
+Commit message: "CI/CD  init"
+First time build. Skipping changelog.
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] withEnv
+[Pipeline] {
+[Pipeline] stage
+[Pipeline] { (Stage 1)
+[Pipeline] echo
+Hello world! <=== // LE HELLO WORLD EN QUESTION
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
+
+
+
+</code></pre><p>On peut voir que Jenkins clone ma branche dev du repo artblog Github, on voit même le dernier commit, puis il execute la pipeline.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100 dark:border-cyan-800 dark:bg-cyan-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-cyan-500 dark:stroke-cyan-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Information</b></p>
+</div><div class="pl-8 mr-8">
+<p>Bravo ! A partir d'ici vous avez tout ce qu'il faut pour commencer à expérimenter sur Jenkins. La suite des opérations consiste par exemple à mettre en place de vrais pipelines, à donner une clé ssh à jenkins pour qu'il puisse commit sur les branches du repo.</p>
+</div>
+</div>
+<h3 id="pour-aller-plus-loin-%3A" tabindex="-1"><a class="header-anchor" href="#pour-aller-plus-loin-%3A"></a> Pour aller plus loin :</h3>
+<p>Nous allons mettre en place une pipeline qui effectue une action sur le repository à chaque pull-request effectuée sur le remote.</p>
+<h4 id="relier-jenkins-et-github-par-ssh-%3A" tabindex="-1"><a class="header-anchor" href="#relier-jenkins-et-github-par-ssh-%3A"></a> Relier Jenkins et Github par SSH :</h4>
+<p>Nous allons donner une clé de déploiement a Jenkins pour qu'il puisse déployer ou non sur le repo Github.
+Pour cela on génère une paire de clé dans notre projet Artblog avec <code>ssh keygen</code>, on choisit un dossier, je met mes clés dans ssh/ .</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100 dark:border-red-800 dark:bg-red-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-red-500 dark:stroke-red-800 stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Attention</b></p>
+</div><div class="pl-8 mr-8">
+<p>Il est impératif d'inclure le dossier qui contient vos clés dans le fichier <code>.gitignore</code> sinon vos clés seront dévoilée publiquement et c'est un gros risque de sécurité.</p>
+</div>
+</div>
+<p>Ensuite, on entre cette nouvelle clé dans le repository github en tant que clé de déploiement.</p>
+<img src="https://raw.githubusercontent.com/do-it-ecm/promo-2022-2023/refs/heads/main//Bilgi-Tuncay/mon/temps-2.1/github1.png" alt="Composer" style="height: 200px; margin: 0 auto; border: 0">
+<p>Coté Jenkins on met en place les <strong>credentials</strong>, c'est à dire notre clé privée SSH dans une pipeline qui va permettre de modifier notre Repository github.</p>
+<h4 id="permettre-%C3%A0-jenkins-de-rep%C3%A9rer-des-pull-request-%3A" tabindex="-1"><a class="header-anchor" href="#permettre-%C3%A0-jenkins-de-rep%C3%A9rer-des-pull-request-%3A"></a> Permettre à Jenkins de repérer des pull request :</h4>
+<p>Pour cela on installe des plugins notamment <strong>Github API</strong> qui permet de gérer des webhooks. Les webhooks sont des requêtes envoyées par Github à une adresse quand un certain évènement à lieu.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100 dark:border-red-800 dark:bg-red-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-red-500 dark:stroke-red-800 stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Attention</b></p>
+</div><div class="pl-8 mr-8">
+<p>Il se trouve que ce que je veux faire n'est pas possible à moins d'avoir une adresse public à questionner. En effet le webhook de github ne peut pas trouver mon localhost:8080 où jenkins écoute les webhooks. Il faut mettre en place une interface qui transforme mon port local en public grâce à un service tier comme webhook relay, je ne le fais donc pas.</p>
+</div>
+</div>
+<h4 id="plan-de-secours-%3A-job-p%C3%A9riodique-%3A" tabindex="-1"><a class="header-anchor" href="#plan-de-secours-%3A-job-p%C3%A9riodique-%3A"></a> Plan de secours : Job périodique :</h4>
+<p>La méthode pour contourner le problème des webhooks est celle mise en place dans le POK CI-CD : on demande à jenkins de regarder toutes les heures le dernier commit de notre repo, si ce commit est identifié comme non-déployé on le déploie et on le met dans la base de données des commits déployés.
+Voir le <a href="https://do-it.aioli.ec-m.fr/pok/un-site-chez-moi/TBi/CI-CD/">POK</a> en question pour plus de détails et pour une implémentation qui fonctionne.</p>
+
+
+
+</article>
+
+        </main>
+
+        <footer class="min-h-[50px] border-t-2 mt-4 border-gray-200 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-center items-center">
+                    <p class="text-center">
+                        ©2025 <b><span style="font-family: Consolas, sans-serif;">Do-<span style="color: #4a86e8">It</span></span></b> - Développement, Management et Gestion de projets en IT
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- MathJax import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">
+            window.MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']], // Delimiters for inline math
+                    displayMath: [['$$', '$$'], ['\\[', '\\]']] // Delimiters for block math
+                },
+                svg: {
+                    fontCache: 'global' // Use global font cache for SVG output
+                }
+            };
+            document.addEventListener('DOMContentLoaded', () => {
+                MathJax.typeset(); // Ensures MathJax processes the content after the page loads
+            });
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">
+            Prism.plugins.NormalizeWhitespace.setDefaults({
+                'remove-trailing': true,
+                'remove-indent': true,
+                'left-trim': true,
+                'right-trim': true,
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script>
+    </body>
+</html>

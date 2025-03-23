@@ -1,0 +1,775 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="robots" content="index, follow">
+
+        <link rel="canonical" href="https://do-it.aioli.ec-m.fr/promos/2024-2025/Matthieu-Dufort/pok/temps-2/">
+
+        
+        
+
+        <meta name="description" content="Un POK ayant pour objectif d&#39;apprendre le langage C.">
+        <meta property="og:description" content="Un POK ayant pour objectif d&#39;apprendre le langage C.">
+        <meta name="twitter:description" content="Un POK ayant pour objectif d&#39;apprendre le langage C.">
+
+        
+            <meta name="author" content="Matthieu Dufort">
+        
+        <meta name="keywords" content="do-it, centrale, centrale méditerranée, ecm, POK, Novice, C">
+
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png">
+        <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png">
+
+        <link href="/assets/stylesheets/main.css" rel="stylesheet">
+
+        <meta property="og:title" content="TLe langage C : Apprentissage et morpion">
+
+        <meta property="og:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta property="og:url" content="https://do-it.aioli.ec-m.fr/promos/2024-2025/Matthieu-Dufort/pok/temps-2/">
+        <meta property="og:type" content="website">
+
+        <meta name="twitter:card" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:title" content="TLe langage C : Apprentissage et morpion">
+        <meta name="twitter:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:url" content="https://do-it.aioli.ec-m.fr/promos/2024-2025/Matthieu-Dufort/pok/temps-2/">
+
+        <title>TLe langage C : Apprentissage et morpion</title>
+
+        <!-- Prismjs imports
+                - Prism line numbers
+                - Prism toolbar
+        -->
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet">
+        <link id="prism-theme" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+        <!-- Mermaid import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js "></script>
+
+        <script defer="">
+        // Check if a theme is stored in localStorage. If so, use it, otherwise fallback to the system preference.
+        const storedTheme = localStorage.getItem('theme');
+        if (storedTheme) {
+            document.documentElement.classList.toggle("dark", storedTheme === "dark");
+        } else {
+            // Use system color scheme if there is no stored theme preference.
+            document.documentElement.classList.toggle("dark", window.matchMedia("(prefers-color-scheme: dark)").matches);
+        }
+
+        function loadPrismTheme(isDarkMode) {
+            const newTheme = isDarkMode ? 'prism-okaidia.min.css' : 'prism-solarizedlight.min.css';
+            const newLink = document.createElement('link');
+            newLink.rel = 'stylesheet';
+            newLink.id = 'prism-theme';
+            newLink.href = `https://cdn.jsdelivr.net/npm/prismjs/themes/${newTheme}`;
+
+            newLink.onload = () => {
+                // Reapply highlighting after the new theme loads
+                Prism.highlightAll();
+            };
+
+            const existingLink = document.getElementById('prism-theme');
+            if (existingLink) {
+                document.head.replaceChild(newLink, existingLink);
+            } else {
+                document.head.appendChild(newLink);
+            }
+        }
+
+        function setMermaidTheme(isDarkMode) {
+            const theme = isDarkMode ? 'dark' : 'forest';
+            mermaid.initialize({
+                securityLevel: 'loose',
+                theme,
+                startOnLoad: true,
+            });
+        }
+
+        // Toggle dark and light mode and update localStorage accordingly.
+        function toggleDarkMode() {
+            const dark = document.documentElement.classList.contains("dark");
+            const newTheme = dark ? "light" : "dark";
+            localStorage.setItem('theme', newTheme);
+            document.documentElement.classList.toggle("dark", !dark);
+            loadPrismTheme(!dark);
+            setMermaidTheme(!dark);
+        }
+
+        // On initial load, ensure that Prism and Mermaid are initialized using the current theme.
+        const isDark = document.documentElement.classList.contains("dark");
+        loadPrismTheme(isDark);
+        setMermaidTheme(isDark);
+        </script>
+
+    </head>
+
+    <body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000" class="bg-neutral-50 text-neutral-950 dark:bg-neutral-900 dark:text-neutral-50">
+        <header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white dark:bg-neutral-900 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-between items-center">
+                    <a class="mx-2" href="/">Home</a>
+                    <button class="hidden sm:block text-neutral-950 dark:text-neutral-50 hover:bg-neutral-700 hover:text-neutral-50 hover:dark:bg-neutral-300 hover:dark:text-neutral-950 transition-colors p-2 rounded-full duration-800 ease-in-out" onclick="toggleDarkMode()">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 dark:hidden stroke-current">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <path d="M12 2V4" stroke-linecap="round"></path>
+                            <path d="M12 20V22" stroke-linecap="round"></path>
+                            <path d="M4 12L2 12" stroke-linecap="round"></path>
+                            <path d="M22 12L20 12" stroke-linecap="round"></path>
+                            <path d="M19.7778 4.22266L17.5558 6.25424" stroke-linecap="round"></path>
+                            <path d="M4.22217 4.22266L6.44418 6.25424" stroke-linecap="round"></path>
+                            <path d="M6.44434 17.5557L4.22211 19.7779" stroke-linecap="round"></path>
+                            <path d="M19.7778 19.7773L17.5558 17.5551" stroke-linecap="round"></path>
+                        </svg>
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 stroke-current hidden dark:block">
+                            <path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </button>
+                    <div class="flex items-center gap-4 sm:gap-6 ">
+                        <a class="" href="/cs">CS</a>
+                        <a class="" href="/pok">POK</a>
+                        <a class="" href="/mon">MON</a>
+                        <a class="" href="/projets">Projets</a>
+                        <a class="hidden sm:block" href="/promos">Promos</a>
+                        <a href="/search">
+                            <svg class="h-5 aspect-square stroke-neutral-950 dark:stroke-neutral-300 fill-none stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+                            </svg>
+                        </a>
+                        <a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank">
+                            <svg class="h-5 aspect-square dark:stroke-neutral-300 dark:fill-neutral-300" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body="">
+            
+<article class="relative">
+<h1 class="mb-1">TLe langage C : Apprentissage et morpion</h1>
+<div class="mb-4">
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Tags : </div>
+            <ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags">
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">POK</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">Novice</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">C</li>
+                
+
+            </ul>
+
+            
+            <div class="hidden" data-pagefind-meta="Type" aria-hidden="true">
+                
+                    
+                        <span data-pagefind-filter="Type">POK</span>
+                    
+                
+                    
+                
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Auteur : </div>
+            <ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs">
+                
+                    <li class="bg-blue-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Auteurs">Matthieu Dufort</li>
+                
+            </ul>
+        </div>
+    
+
+    
+        <div class="absolute top-0 right-0">
+            <span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2 text-neutral-950" data-pagefind-filter="Année">
+                2024-2025
+            </span>
+        </div>
+    
+</div>
+
+<p class="mb-4 text-lg">Un POK ayant pour objectif d'apprendre le langage C.</p>
+
+
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100 dark:border-purple-800 dark:bg-purple-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-purple-500 dark:stroke-purple-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/promos/2024-2025/Matthieu-Dufort/">Matthieu Dufort</a><span class="px-1">/</span><a href="/promos/2024-2025/Matthieu-Dufort/pok/">POK de Matthieu Dufort</a><span class="px-1">/</span><a href="/promos/2024-2025/Matthieu-Dufort/pok/temps-2/">TLe langage C : Apprentissage et morpion</a>
+
+</div>
+</div>
+
+
+
+
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100 dark:border-pink-800 dark:bg-pink-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-pink-500 dark:stroke-pink-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Prérequis</b></p>
+</div><div class="pl-8 mr-8">
+<p>Pas de prérequis particuliers sont nécessaires mais il peut être intéressant de lire le MON de Cassandra en complément.</p>
+</div>
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100 dark:border-emerald-800 dark:bg-emerald-950">
+<svg class="absolute w-6 h-6 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-emerald-500 dark:stroke-emerald-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Liens</b></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li><a href="https://openclassrooms.com/fr/courses/19980-apprenez-a-programmer-en-c">Cours d'Openclassroom</a></li>
+<li><a href="https://do-it.aioli.ec-m.fr/promos/2023-2024/Ledins-Cassandra/mon/temps-1.2/">MON de Cassandra Ledins</a></li>
+<li><a href="CodeEntrainement.zip">Code créé au cours de l'apprentissage</a></li>
+<li><a href="Morpion.zip">Code pour jouer au Moprion</a></li>
+</ul>
+</div>
+</div>
+<p>Pour ce POK, j'ai décidé d'apprendre un nouveau langage afin d'élargir mes compétences en développement avec un langage un peu moins intuitif que python. Je vais me former sur l'utilisation du langage C. Pour cela je vais partir de la documentation et construire ensuite dans un second temps un petit projet (probablement un morpion ou un mini jeu de ce genre) afin de le prendre un peu plus en main.</p>
+<h2 id="t%C3%A2ches" tabindex="-1"><a class="header-anchor" href="#t%C3%A2ches"></a> Tâches</h2>
+<ul>
+<li>Regarder les MON et POK traitant du sujet afin de trouver un bon moyen d'apprendre</li>
+<li>Suivre un cours pour avoir des bases sur ce langage</li>
+<li>Construire des programmes pour apprendre</li>
+<li>Construire un mini jeu pour prendre en main le langage</li>
+</ul>
+<h3 id="sprints" tabindex="-1"><a class="header-anchor" href="#sprints"></a> Sprints</h3>
+<p>Le but final de ce POK et de parvenir a comprendre du code en C et d'être capable d'écrire des programmes simples.</p>
+<h4 id="sprint-1" tabindex="-1"><a class="header-anchor" href="#sprint-1"></a> Sprint 1</h4>
+<ul>
+<li>[x] Se renseigner sur les anciens POK et MON dessus</li>
+<li>[x] Trouver un cours à suivre</li>
+<li>[x] Suivre le cours pour monter en compétence</li>
+</ul>
+<h4 id="sprint-2" tabindex="-1"><a class="header-anchor" href="#sprint-2"></a> Sprint 2</h4>
+<ul>
+<li>[X] Réaliser un mini projet par moi même</li>
+</ul>
+<h3 id="horodatage" tabindex="-1"><a class="header-anchor" href="#horodatage"></a> Horodatage</h3>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Heures passées</th>
+<th>Indications</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Vendredi 15/11</td>
+<td>4H</td>
+<td>Inventaire des POK et MON, choix du cours et début, Installation d'un compilateur</td>
+</tr>
+<tr>
+<td>Samedi 16/11</td>
+<td>5H</td>
+<td>Suite du cours d'openclassrooms</td>
+</tr>
+<tr>
+<td>Dimanche 17/11</td>
+<td>4h</td>
+<td>Suite du cours d'openclassrooms</td>
+</tr>
+<tr>
+<td>Mardi 10/12</td>
+<td>1h</td>
+<td>Suite du cours d'openclassroom</td>
+</tr>
+<tr>
+<td>Jeudi 12/12</td>
+<td>2h</td>
+<td>Suite du cours d'openclassroom</td>
+</tr>
+<tr>
+<td>Vendredi 13/12</td>
+<td>3h</td>
+<td>Suite du cours d'openclassroom et initialisation du jeu de morpion</td>
+</tr>
+<tr>
+<td>Samedi 14/12</td>
+<td>2h00</td>
+<td>Build du jeu de morpion</td>
+</tr>
+<tr>
+<td>Lundi 16/12</td>
+<td>2h00</td>
+<td>Fin du jeu de morpion</td>
+</tr>
+</tbody>
+</table>
+<h2 id="contenu" tabindex="-1"><a class="header-anchor" href="#contenu"></a> Contenu</h2>
+<h2 id="premier-sprint" tabindex="-1"><a class="header-anchor" href="#premier-sprint"></a> Premier Sprint</h2>
+<p>Après avoir fait l'inventaire des POK et MON traitant du langage C : j'ai choisi de suivre le cours d'open ClassRoom qui est fortement recommandé par Cassandra et qui lui a permis d'acquérir de bonnes bases. Je vais essayer de compléter son MON en abordant d'autres points du langage C. Je recommande donc au futur personne voulant apprendre ce langage de lire aussi son <a href="https://do-it.aioli.ec-m.fr/promos/2023-2024/Ledins-Cassandra/mon/temps-1.2/">MON</a>.</p>
+<h2 id="ecrire-du-c-avec-vscode" tabindex="-1"><a class="header-anchor" href="#ecrire-du-c-avec-vscode"></a> Ecrire du C avec VSCode</h2>
+<p>J'ai décidé de travailler, comme toujours, avec VSCode et j'ai donc installé une extension spéciale pour le C afin de faire la compilation et de débugger (+ pouvoir écrire avec un style adapté : couleurs etc.). Je recommande donc : <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode.cpptools">C/C++</a>. Cependant, elle n'a vite plus marché (pour la compilation) dès que j'ai réparti mon code sur plusieurs fichiers. J'ai du ensuite compiler à chaque fois avec le terminal de commande en compilant chaque fichier .c en objet .o puis en compilant ensemble les objets en .exe.</p>
+<p>Pour la compilation, il est nécessaire aussi d'installer un compilateur, j'ai choisi <a href="https://sourceforge.net/projects/mingw/">MinGW</a> et de rentrer ensuite son path dans l'ordinateur et dans les options de l'extension de VSCode pour pouvoir l'utiliser.</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Utiliser le compilateur installé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<p>Pour changer le path du compilateur dans l'extension :</p>
+<ul>
+<li>ctrl + shift + P</li>
+<li>C/C++ : Edit configuration (UI)</li>
+<li>Changer le path du compilateur pour : <em>C:\MinGW\bin\gcc.exe</em> par exemple si votr fichier gcc.exe de MinGW se situe la bas</li>
+</ul>
+<p>Pour utiliser les lignes de code dans le terminal, il faut ajouter le path en variable d'environnement sur votre ordinateur :</p>
+<ul>
+<li>Paramètre puis propriétés systèmes</li>
+<li>Variable d'environnement</li>
+<li>Path puis modifier</li>
+<li>Ajouter le nouveau Path : <em>C:\MinGW\bin\gcc.exe</em></li>
+</ul>
+<p>Ceci fonctionne sur windows (en tout cas sur le mien 🙂)</p>
+</div>
+</details>
+</div>
+<p>J'ai du perdre environ 2h la dessus le temps de configurer VS Code puis mon ordinateur n'ayant jamais vraiment utiliser avant un langage nécessitant une compilation avant d'être lancé. Une fois que tout marchait avec l'extension de VS Code, j'ai de nouveau eu des soucis 3h après quand j'ai utilisé plusieurs fichier. Finalement je n'ai plus pu l'utiliser (ne me demandez pas pourquoi, je ne sais toujours pas) et je suis passé directement par des lignes de code dans le terminal pour compiler avec :</p>
+<pre class="line-numbers"><code>
+
+> gcc -c main.c -o main.o
+> gcc -c multiplication.c -o multiplication.o
+> gcc main.o multiplication.o -o main.exe
+
+
+</code></pre><p>Finalement, j'ai enfin pu  me concentrer sur le code en parvenant a compiler les fichiers !</p>
+<h2 id="infos-g%C3%A9n%C3%A9rales" tabindex="-1"><a class="header-anchor" href="#infos-g%C3%A9n%C3%A9rales"></a> Infos générales</h2>
+<h3 id="introduction-de-variable-et-fonction" tabindex="-1"><a class="header-anchor" href="#introduction-de-variable-et-fonction"></a> Introduction de variable et fonction</h3>
+<p>Le langage C est plus proche en écriture du Java que du python. C'est un langage ou il faut annoncer le type de chaque variable et de chaque fonction.</p>
+<pre class="language-C line-numbers"><code>
+
+int variable ; //Variable pour un entier
+float variable = 1.5 ; // Variable pour un floatant initialisée
+int fonction(){ // Fonction retournant un entier
+  return 1;
+}
+
+
+</code></pre><div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100 dark:border-amber-800 dark:bg-amber-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-amber-800 dark:stroke-amber-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Note</b></p>
+</div><div class="pl-8 mr-8">
+<p>Il faut mettre un point virgule à la fin de chaque ligne d'instruction.</p>
+</div>
+</div>
+<p>Voici les plages d'utilisation maximum de chacun des types étant du à l'espace de mémoire accordé :
+<img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Matthieu-Dufort/pok/temps-2/typeLangageC.png" alt="test"><em>Tableau des tailles de chiffres possible en fonction du type, Openclassroom</em></p>
+<h3 id="calcul" tabindex="-1"><a class="header-anchor" href="#calcul"></a> Calcul</h3>
+<p>Pour le système de calcul standard, on retrouve les abréviations des autres langages tel que :</p>
+<pre class="language-C line-numbers"><code>
+
+int variable = 2 ;
+variable ++ ; // incrémente variable de 1
+variable += 5 // ajoute 5 à variable
+variable *= 4 // multiplie variable par 4
+
+
+</code></pre><div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100 dark:border-cyan-800 dark:bg-cyan-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-cyan-500 dark:stroke-cyan-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Information</b></p>
+</div><div class="pl-8 mr-8">
+<p>Le nom du langage C++ découle du format de l'incrémentation en C (C=C+1 &lt;=&gt; C++). Ce nom a été choisi pour évoquer l'évolution du langage C mais c'est en réalité deux langages utilisés pour faire des choses différentes.</p>
+</div>
+</div>
+<h3 id="fonction" tabindex="-1"><a class="header-anchor" href="#fonction"></a> fonction</h3>
+<p>Pour une fonction qui ne renvoie rien on utilise l'indicateur <em>void</em>.</p>
+<p>L'utilisation des fonctions d'affichage dans le terminal est assez différente de ce qui est fait en python ou en Java :</p>
+<pre class="language-C line-numbers"><code>
+
+int variable ;
+printf("Quelle valeur voulez vous donner à la variable ?");
+scanf("%d", &variable);
+printf("Vous avez donnée la valeur %d", variable);
+
+
+</code></pre><p>Ceci permet de demander la valeur puis d'afficher ce que l'utilisateur à écrit. on référence les variables dans l'affichage avec le % suivi du type de variable comme le tableau ci-joint :</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Matthieu-Dufort/pok/temps-2/AffichageEnC.png" alt="test"><em>Tableau des format en fonction du type, Openclassroom</em></p>
+<p>On peut rajouter le type <strong>%s</strong> pour les chaines de caractères ou <strong>%c</strong> pour un type char.</p>
+<h2 id="syst%C3%A8me-de-m%C3%A9moire" tabindex="-1"><a class="header-anchor" href="#syst%C3%A8me-de-m%C3%A9moire"></a> Système de mémoire</h2>
+<h3 id="fonctionnement-de-la-m%C3%A9moire-syst%C3%A8me" tabindex="-1"><a class="header-anchor" href="#fonctionnement-de-la-m%C3%A9moire-syst%C3%A8me"></a> Fonctionnement de la mémoire système</h3>
+<p>Le cours d'openclassroom m'a permis d'apprendre beaucoup sur le fonctionnement de la mémoire.</p>
+<p>Elle fonctionne sous forme de tableau avec une colonne contenant les adresses (des numéros de 1 à X) et une colonne associée contenant les espaces de stockage.</p>
+<p>Lorsque l'on définit une variable, on demande à l'ordinateur un espace de stockage et on le réserve pour la valeur de la variable. On peut réserver cet espace en le laissant vide ou en l'initialisant directement avec une valeur mais dans tous les cas, l'espace est reservé dès la ligne de création de variable.</p>
+<p>En C, il y a beaucoup de manipulation qui découle de ce fonctionnement. Le système de définition de variable en est un exemple :</p>
+<pre class="language-C line-numbers"><code>
+
+int variable;
+
+scanf("%d", &variable); //le symbole & permet d'accéder à l'adresse de stockage de la variable
+// On modifie ici la valeur dans la case associée à l'adresse de stockage de variable
+
+
+</code></pre><p>Ce fonctionnement permet de définir des pointeurs.</p>
+<h3 id="pointeur" tabindex="-1"><a class="header-anchor" href="#pointeur"></a> Pointeur</h3>
+<p>Un pointeur conssiste a définir une variable comme étant l'adresse d'une autre variable. Ceci est utilisé pour modifier une variable définie dans une fonction ou dans le main à un autre endroit (autre fonction).</p>
+<p>En effet, avec un return à la fin d'une fonction on ne peut modifier qu'une variable mais graçe au pointeur cela n'a plus de limite.</p>
+<pre class="language-C line-numbers"><code>
+
+int variable;
+*pointeur = &variable ; // permet de définir le pointeur
+
+printf("%d", pointeur); // affiche l'adresse de stockage de variable
+printf("%d", *pointeur); // affiche la valeur de variable
+
+
+</code></pre><p>C'est en utilisant le *pointeur dans d'autre fonction que l'on peut modifier la variable en dehors de l'endroit ou elle est définie dans avoir besoin de la retourner à la fin de la fonction.</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Bilan Sprint 1</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<p>J'ai vraiment bien aimé ce début de pok ou j'ai pu apprendre plein de choses autant sur le fonctionnement général d'un ordianteur que sur le code en C. J'ai découvert de 0 ce langage qui demande beaucoup de rigueur et j'ai bien aimé. J'ai par contre perdu beaucoup trop de temps pour parvenir a faire marcher la compilation du code au début et dès l'utilisation de fichiers multiples. J'espère donc que la première partie de ce compte rendu pourra bien aider les suivants à gagner du temps la dessus. Je n'ai donc pas eu le temps de finir le cours mais j'ai hate de le continuer au prochain sprint pour passer sur du dev de mon coté pour bien appliquer tout ce que j'ai appris.</p>
+</div>
+</details>
+</div>
+<h2 id="second-sprint" tabindex="-1"><a class="header-anchor" href="#second-sprint"></a> Second Sprint</h2>
+<h2 id="suite-du-cours-d'openclassroom" tabindex="-1"><a class="header-anchor" href="#suite-du-cours-d'openclassroom"></a> Suite du cours d'openclassroom</h2>
+<h3 id="cr%C3%A9ation-de-structure" tabindex="-1"><a class="header-anchor" href="#cr%C3%A9ation-de-structure"></a> Création de structure</h3>
+<p>Il est possible de donner des formats à des variables en utilisant des structures que l'on définira dans les fichiers <em>.h</em>.</p>
+<p>La structure se définit comme :</p>
+<pre class="language-C line-numbers"><code>
+
+struct Coordonnees
+{
+    int x ;
+    int y ;
+};
+
+
+</code></pre><p>Il est ensuite possible d'utiliser cette structure comme un format de variable :</p>
+<pre class="language-C line-numbers"><code>
+
+struct Coordonnees point;
+    point.x = 10;
+    point.y = 20;
+
+
+</code></pre><p>On a maintenant une variable point définie avec deux entiers et initialisée à <code>{10, 20}</code>.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100 dark:border-cyan-800 dark:bg-cyan-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-cyan-500 dark:stroke-cyan-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Information</b></p>
+</div><div class="pl-8 mr-8">
+<p>Il est aussi possible d'utiliser les pointeurs avec des variables ayant une structure personnalisée.</p>
+</div>
+</div>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100 dark:border-amber-800 dark:bg-amber-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-amber-800 dark:stroke-amber-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Note</b></p>
+</div><div class="pl-8 mr-8">
+<p>Il est possible de faire un alias en utilisant la fonction <code>typedef</code> :</p>
+<pre class="language-C line-numbers"><code>
+
+typedef struct Coordonnees Coordonnees
+
+
+</code></pre><p><em>Struct Coordonnees</em> peut alors être remplacé par <em>Coordonnees</em> tout court.</p>
+</div>
+</div>
+<p>De la même manière, il est possible de définir une énumération, ce qui reviendrait à définir une liste de choix pour un variable. La variable ne peut alors prendre que les valeurs définies dans l'énumération.</p>
+<pre class="language-C line-numbers"><code>
+
+enum Status
+{
+  High, Medium, Low
+}
+
+
+</code></pre><p>Ces valeurs peuvent être associées à des nombres.</p>
+<h3 id="gestion-de-fichier" tabindex="-1"><a class="header-anchor" href="#gestion-de-fichier"></a> Gestion de fichier</h3>
+<p>Dans cette partie, nous allons travailler sur la gestion de fichiers grâce a la bibliothèque <strong>stdlib</strong> et <strong>stdio</strong>. L'utilisation de fichiers stockés en local dans l'ordinateur permet de conserver les résultats du code après qu'il se soit arrêter.</p>
+<p>Il est possible d'ouvrir un fichier de plusieurs façons :</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Matthieu-Dufort/pok/temps-2/TypeOuvertureFichier.png" alt="test"><em>Liste des façons d'ouvrir un fichier possible en C, Openclassroom</em></p>
+<p>Faisons un exercice avec un programme qui recopie des lignes dans un fichier pour nous :</p>
+<pre class="language-C line-numbers"><code>
+
+int main(int argc, char *argv[])
+{
+    FILE* fichier = NULL; // créer le pointeur du fichier
+
+    fichier = fopen("test.txt", "w+"); // ouvre le fichier en le vidant au préalable
+    char ligne[240] ;
+    int nombreLigne = 0 ;
+
+    printf("Que devez vous recopier ? (max 238 caractères)");
+    fgets(ligne, sizeof(ligne), stdin); //Récupère la ligne à recopier
+
+    printf("Combien de ligne avez vous à écrire ?");
+    scanf("%d", &nombreLigne); // Récupère le nombre de ligne à recopier
+
+    if (fichier != NULL)
+    {
+        for (int i = 0; i < nombreLigne ; i++) // répète l'écriture de la ligne
+        {
+          fprintf(fichier, "%s",ligne); // Ecris dans le document
+        }
+        fclose(fichier); // ferme le fichier
+        printf("Vous avez bien recopier toutes vos lignes !");
+    }
+    else
+    {
+      printf("Veuillez créer le fichier avant d'écrire dessus.");
+    }
+
+    return 0;
+}
+
+
+</code></pre><div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100 dark:border-amber-800 dark:bg-amber-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-amber-800 dark:stroke-amber-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Note</b></p>
+</div><div class="pl-8 mr-8">
+<p>On utilise la fonction <em>fgets</em> et non <em>scanf</em> pour récupérer une ligne de caractères car la fonction scanf s'arrête au premier espace trouvé.</p>
+<p>Attention : la fonction fgets enregistre aussi le saut de ligne créer par la touche entrée lors de la validation de ce que l'on veut écrire.</p>
+<p>V<em>oir la partie suivante pour plus d'explication sur la gestion de la mémoire avec fgets.</em></p>
+</div>
+</div>
+<p>Dans les fichiers, on utilise la fonction <code>fgetc</code> pour lire un caractère  ou la fonction <code>fgets</code>. (Ces fonctions déplacent le curseur et liront les caractères suivant naturellement si elles sont reutilisées dans le code). <code>fscanf</code> peut aussi être utilisée afin de récupérer des valeurs à attribuer à des variables.</p>
+<p>Le curseur de lecture ou d'écriture est aussi déplaçable avec la fonction <code>fseek</code>.</p>
+<h3 id="gestion-de-la-m%C3%A9moire" tabindex="-1"><a class="header-anchor" href="#gestion-de-la-m%C3%A9moire"></a> Gestion de la mémoire</h3>
+<p><strong>Fonctions de demandes d'information à l'utilisateur</strong> :</p>
+<p>Lorsque l'on utilise <em>scanf</em> ou <em>fgets</em>, on demande à l'utilisateur des informations qui seront ensuite stockées sur un espace voulu de taille définie. Les informations sont extraites du buffer, c'est à dire de la zone de mémoire où tout ce qui est tapé sur le clavier est stocké. On y accède avec le pointeur <em>stdin</em>.</p>
+<p><em>Scanf</em> est une fonction qui peut créer des soucis de stockage car son fonctionnement consiste à stocker toutes les informations écritent dans le shell et ceci même si l'espace de stockage est trop petit. Si le text écrit est trop grand, la fonction dépace alors son stockage en supprimant ce qui est stocké après pour mettre le texte à la place, ce qui bien sur peut être dangereux pour le programme.</p>
+<p><em>Fgets</em> se limite bien à la mémoire définie et vide le buffer des caractères qu'elle a lu. Ainsi, si la taille dépasse la mémoire, le buffer aura toutes les informations qui dépassent stockées. Il faut donc penser a bien le vider.</p>
+<p><strong>Réserver de la mémoire</strong> :</p>
+<p>Il est possible de resérver de la place en mémoire à l'aide d'une fonction : <code>malloc</code>. Cette fonction permet de créer par exemple un tableau qui dépend de la taille d'une variable. on peut ainsi poser une question puis réserver de la mémoire en fonction de la réponse :</p>
+<pre class="language-C line-numbers"><code>
+
+int taille = 0;
+int *tableau = NULL ;
+printf("Combien de lignes voulez vous ?");
+Scanf("%d", &taille );
+
+tableau = malloc(taille * sizeof(int))
+
+
+</code></pre><p>On a ainsi un tableau de la taille demandée. Pour libérer cet espace il suffit d'utiliser la fonction <code>free</code>.</p>
+<h3 id="structure-de-donn%C3%A9es" tabindex="-1"><a class="header-anchor" href="#structure-de-donn%C3%A9es"></a> Structure de données</h3>
+<p><strong>Chaine de caractères</strong> :</p>
+<p>Il est impossible de modifier la taille d'un tableau dynamiquement. Cependant, il est possible de faire une chaine qui s'agrandit au fur et a mesure en utilisant les structures :</p>
+<pre class="language-C line-numbers"><code>
+
+typedef struct Chaine Chaine
+struct Chaine
+{
+  char caractere ; // élément de la chaine
+  Chaine *caracteresuivant ; // pointeur vers l'élément suivant
+}
+
+typedef struct Liste Liste
+struct Liste
+{
+  Chaine *premierCaractere //pointeur vers le début de la chaine
+}
+
+
+</code></pre><p>Ainsi, avec des structures de cette forme, il est possible de faire une chaine infinie en insérant, supprimant et modifiant les caractères. Il suffit pour cela de bien remplir a chaque fois le pointeur vers l'élement suivant et on optient ainsi une chaine dynamique.</p>
+<h2 id="cr%C3%A9ation-d'un-jeu-de-morpion-en-c" tabindex="-1"><a class="header-anchor" href="#cr%C3%A9ation-d'un-jeu-de-morpion-en-c"></a> Création d'un jeu de morpion en C</h2>
+<p>Le code du morpion se retrouve <a href="Morpion.zip">ici</a>.</p>
+<p>Pour la réalisation de ce Morpion, j'ai tout d'abord commencé par réfléchir :</p>
+<ul>
+<li>aux variables</li>
+<li>aux fonctions</li>
+<li>à la logique</li>
+</ul>
+<p>J'ai alors construit le main et le fichier de fonction.h afin de mettre en place précisément la logique pour confirmer que tout allait bien se dérouler. Puis, j'ai construit mes fonctions.</p>
+<p>Voici ici le main commenté :</p>
+<pre class="language-C line-numbers"><code>
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "fonction.h"
+
+int main(int argc, char *argv[])
+{
+    Morpion tab= {{' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '}}; //Initialisation de la grille avec une struct de Moprion
+    int tour =0 ;
+    int error = 0 ;
+    int result = 0 ;
+    char jeu ;
+    char position[3];
+    printf("Le jeu peut commencer ! \n");
+    affiche(&tab);
+    while(result == 0) // On joue tant que personne n'a gagné (ou une égalité)
+    {
+        if(tour % 2  == 0)
+        {
+            jeu = 'X';
+        }
+        else
+        {
+            jeu = 'O';
+        }
+        printf("\nC'est au tour de %c, que voulez vous jouer ?", jeu);
+        scanf("%2s", &position);
+        error = jouer(&tab, jeu, position); // On modifie de la table si la valeur est juste
+        if(error == 1)
+        {
+            printf("Attention la case est déjà prise ou votre entrée était invalide, veuillez rejouer !\n");
+            tour --;
+        }
+        affiche(&tab); // On affiche la grille
+        result = gagner(&tab); // On vérifie qu'il n'y a pas encore de gagnant
+        tour ++;
+    }
+    if(result == 1) // On affiche le résultat
+    {
+        printf("\n\nBravo X, vous avez gagné !\n");
+    }
+    else if (result == 2)
+    {
+        printf("\n\nBravo O, vous avez gagné !\n");
+    }
+    else if (result == 3)
+    {
+        printf("\n\nEgalité !\n");
+    }
+
+}
+
+
+</string.h></stdlib.h></stdio.h></code></pre><p>Voici donc la logique de ce jeu de Morpion qui se joue dans le terminal en rentrant les coordonnées de la table (A1, B3, C2 ...) afin de placer ses pions.</p>
+<p>Voici le fonctionnement des différentes fonctions :</p>
+<ul>
+<li>
+<p>La fonction <strong>gagner</strong> a pour but de vérifier à chaque tour que le jeu n'est pas fini. En cas de victoire, elle change la valeur du <em>result</em> pour sortir de la boucle et annoncer le ou la gagnante.</p>
+</li>
+<li>
+<p>La fonction <strong>affiche</strong> permet d'afficher la grille entre chaque tour avec bien sur les coordonnées des cases.</p>
+</li>
+<li>
+<p>La fonction <strong>jouer</strong> permet de modifier la grille en utilisant les pointeurs tout en vérifiant que les coordonnées rentrées ne sont pas fausses.</p>
+</li>
+</ul>
+<p>Et c'est ainsi que l'on peut rapidement jouer au Morpion une fois que la compilation (un petit peu longue) est terminée. Le code reste très peu optimisé mais je n'ai pas eu le temps d'aller plus loin dessus.</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Bilan Sprint 2</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<p>J'ai beaucoup apprécié continuer ce pok car j'avais hate de finir le cours afin de pouvoir passer à de la pratique en faisant un petit jeu. Mais, j'ai laissé coulé trop de temps entre les deux sprints et j'ai donc eu du mal a me remettre dans le cours. Ceci m'a perdu un peu de temps. Le cours d'openclassroom m'a pris beaucoup plus de temps que le temps indiqué (10h) et j'ai donc dépassé le temps que j'avais prévu dessus. J'ai donc manqué de temps pour optimiser mon morpion qui aurait bien mérité un peu plus de réfléxion.</p>
+<p>Dans la globalité, j'ai beaucoup apprécié travailler sur un nouveau langage qui a beaucoup de différences avec ceux que je maitrise plus (python, javascript etc.). La gestion de la mémoire et des pointeurs m'a pris du temps. En écrivant mon code de morpion, je me suis beaucoup emméler entre les pointeurs et les variables. Le C demande beaucoup de rigueur !</p>
+<p>je recommande le cours d'openclassroom aux suivants qui voudront s'aventurer sur le C, en prenant bien le temps de faire des exercices de son coté pour assimiler au lieu de juste le lire.</p>
+</div>
+</details>
+</div>
+
+
+
+</article>
+
+        </main>
+
+        <footer class="min-h-[50px] border-t-2 mt-4 border-gray-200 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-center items-center">
+                    <p class="text-center">
+                        ©2025 <b><span style="font-family: Consolas, sans-serif;">Do-<span style="color: #4a86e8">It</span></span></b> - Développement, Management et Gestion de projets en IT
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- MathJax import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">
+            window.MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']], // Delimiters for inline math
+                    displayMath: [['$$', '$$'], ['\\[', '\\]']] // Delimiters for block math
+                },
+                svg: {
+                    fontCache: 'global' // Use global font cache for SVG output
+                }
+            };
+            document.addEventListener('DOMContentLoaded', () => {
+                MathJax.typeset(); // Ensures MathJax processes the content after the page loads
+            });
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">
+            Prism.plugins.NormalizeWhitespace.setDefaults({
+                'remove-trailing': true,
+                'remove-indent': true,
+                'left-trim': true,
+                'right-trim': true,
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script>
+    </body>
+</html>

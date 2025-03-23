@@ -1,0 +1,2159 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="robots" content="index, follow">
+
+        <link rel="canonical" href="https://do-it.aioli.ec-m.fr/promos/2023-2024/Dang-Vu-Duc/pok/temps-1/">
+
+        
+        
+
+        <meta name="description" content="Ce POK a pour objectif d&#39;utiliser le module Qt de Python pour implémenter un jeu de Blackjack. Le programme montrera également des statistiques sur différents aspects du jeu tels que l&#39;espérance de du gain, le pourcentage de réussite pour chaque main ou encore l&#39;espérance de gain avec le comptage des cartes.">
+        <meta property="og:description" content="Ce POK a pour objectif d&#39;utiliser le module Qt de Python pour implémenter un jeu de Blackjack. Le programme montrera également des statistiques sur différents aspects du jeu tels que l&#39;espérance de du gain, le pourcentage de réussite pour chaque main ou encore l&#39;espérance de gain avec le comptage des cartes.">
+        <meta name="twitter:description" content="Ce POK a pour objectif d&#39;utiliser le module Qt de Python pour implémenter un jeu de Blackjack. Le programme montrera également des statistiques sur différents aspects du jeu tels que l&#39;espérance de du gain, le pourcentage de réussite pour chaque main ou encore l&#39;espérance de gain avec le comptage des cartes.">
+
+        
+            <meta name="author" content="Duc DANG VU">
+        
+        <meta name="keywords" content="do-it, centrale, centrale méditerranée, ecm, POK, Python, Qt, Interfaces graphiques, Programmation Objet, Blackjack, Jeux de casino">
+
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png">
+        <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png">
+
+        <link href="/assets/stylesheets/main.css" rel="stylesheet">
+
+        <meta property="og:title" content="POK1: Implémentation du jeu de Blackjack avec Python">
+
+        <meta property="og:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta property="og:url" content="https://do-it.aioli.ec-m.fr/promos/2023-2024/Dang-Vu-Duc/pok/temps-1/">
+        <meta property="og:type" content="website">
+
+        <meta name="twitter:card" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:title" content="POK1: Implémentation du jeu de Blackjack avec Python">
+        <meta name="twitter:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:url" content="https://do-it.aioli.ec-m.fr/promos/2023-2024/Dang-Vu-Duc/pok/temps-1/">
+
+        <title>POK1: Implémentation du jeu de Blackjack avec Python</title>
+
+        <!-- Prismjs imports
+                - Prism line numbers
+                - Prism toolbar
+        -->
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet">
+        <link id="prism-theme" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+        <!-- Mermaid import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js "></script>
+
+        <script defer="">
+        // Check if a theme is stored in localStorage. If so, use it, otherwise fallback to the system preference.
+        const storedTheme = localStorage.getItem('theme');
+        if (storedTheme) {
+            document.documentElement.classList.toggle("dark", storedTheme === "dark");
+        } else {
+            // Use system color scheme if there is no stored theme preference.
+            document.documentElement.classList.toggle("dark", window.matchMedia("(prefers-color-scheme: dark)").matches);
+        }
+
+        function loadPrismTheme(isDarkMode) {
+            const newTheme = isDarkMode ? 'prism-okaidia.min.css' : 'prism-solarizedlight.min.css';
+            const newLink = document.createElement('link');
+            newLink.rel = 'stylesheet';
+            newLink.id = 'prism-theme';
+            newLink.href = `https://cdn.jsdelivr.net/npm/prismjs/themes/${newTheme}`;
+
+            newLink.onload = () => {
+                // Reapply highlighting after the new theme loads
+                Prism.highlightAll();
+            };
+
+            const existingLink = document.getElementById('prism-theme');
+            if (existingLink) {
+                document.head.replaceChild(newLink, existingLink);
+            } else {
+                document.head.appendChild(newLink);
+            }
+        }
+
+        function setMermaidTheme(isDarkMode) {
+            const theme = isDarkMode ? 'dark' : 'forest';
+            mermaid.initialize({
+                securityLevel: 'loose',
+                theme,
+                startOnLoad: true,
+            });
+        }
+
+        // Toggle dark and light mode and update localStorage accordingly.
+        function toggleDarkMode() {
+            const dark = document.documentElement.classList.contains("dark");
+            const newTheme = dark ? "light" : "dark";
+            localStorage.setItem('theme', newTheme);
+            document.documentElement.classList.toggle("dark", !dark);
+            loadPrismTheme(!dark);
+            setMermaidTheme(!dark);
+        }
+
+        // On initial load, ensure that Prism and Mermaid are initialized using the current theme.
+        const isDark = document.documentElement.classList.contains("dark");
+        loadPrismTheme(isDark);
+        setMermaidTheme(isDark);
+        </script>
+
+    </head>
+
+    <body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000" class="bg-neutral-50 text-neutral-950 dark:bg-neutral-900 dark:text-neutral-50">
+        <header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white dark:bg-neutral-900 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-between items-center">
+                    <a class="mx-2" href="/">Home</a>
+                    <button class="hidden sm:block text-neutral-950 dark:text-neutral-50 hover:bg-neutral-700 hover:text-neutral-50 hover:dark:bg-neutral-300 hover:dark:text-neutral-950 transition-colors p-2 rounded-full duration-800 ease-in-out" onclick="toggleDarkMode()">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 dark:hidden stroke-current">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <path d="M12 2V4" stroke-linecap="round"></path>
+                            <path d="M12 20V22" stroke-linecap="round"></path>
+                            <path d="M4 12L2 12" stroke-linecap="round"></path>
+                            <path d="M22 12L20 12" stroke-linecap="round"></path>
+                            <path d="M19.7778 4.22266L17.5558 6.25424" stroke-linecap="round"></path>
+                            <path d="M4.22217 4.22266L6.44418 6.25424" stroke-linecap="round"></path>
+                            <path d="M6.44434 17.5557L4.22211 19.7779" stroke-linecap="round"></path>
+                            <path d="M19.7778 19.7773L17.5558 17.5551" stroke-linecap="round"></path>
+                        </svg>
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 stroke-current hidden dark:block">
+                            <path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </button>
+                    <div class="flex items-center gap-4 sm:gap-6 ">
+                        <a class="" href="/cs">CS</a>
+                        <a class="" href="/pok">POK</a>
+                        <a class="" href="/mon">MON</a>
+                        <a class="" href="/projets">Projets</a>
+                        <a class="hidden sm:block" href="/promos">Promos</a>
+                        <a href="/search">
+                            <svg class="h-5 aspect-square stroke-neutral-950 dark:stroke-neutral-300 fill-none stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+                            </svg>
+                        </a>
+                        <a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank">
+                            <svg class="h-5 aspect-square dark:stroke-neutral-300 dark:fill-neutral-300" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body="">
+            
+<article class="relative">
+<h1 class="mb-1">POK1: Implémentation du jeu de Blackjack avec Python</h1>
+<div class="mb-4">
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Tags : </div>
+            <ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags">
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">POK</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">Python</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">Qt</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">Interfaces graphiques</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">Programmation Objet</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">Blackjack</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">Jeux de casino</li>
+                
+
+            </ul>
+
+            
+            <div class="hidden" data-pagefind-meta="Type" aria-hidden="true">
+                
+                    
+                        <span data-pagefind-filter="Type">POK</span>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Auteur : </div>
+            <ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs">
+                
+                    <li class="bg-blue-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Auteurs">Duc DANG VU</li>
+                
+            </ul>
+        </div>
+    
+
+    
+        <div class="absolute top-0 right-0">
+            <span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2 text-neutral-950" data-pagefind-filter="Année">
+                2023-2024
+            </span>
+        </div>
+    
+</div>
+
+<p class="mb-4 text-lg">Ce POK a pour objectif d'utiliser le module Qt de Python pour implémenter un jeu de Blackjack. Le programme montrera également des statistiques sur différents aspects du jeu tels que l'espérance de du gain, le pourcentage de réussite pour chaque main ou encore l'espérance de gain avec le comptage des cartes.</p>
+
+
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100 dark:border-purple-800 dark:bg-purple-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-purple-500 dark:stroke-purple-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/promos/2023-2024/Dang-Vu-Duc/">Duc DANG VU</a><span class="px-1">/</span><a href="/promos/2023-2024/Dang-Vu-Duc/pok/">POK de Duc DANG VU</a><span class="px-1">/</span><a href="/promos/2023-2024/Dang-Vu-Duc/pok/temps-1/">POK1: Implémentation du jeu de Blackjack avec Python</a>
+
+</div>
+</div>
+
+
+
+
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100 dark:border-pink-800 dark:bg-pink-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-pink-500 dark:stroke-pink-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p>Prérequis</p>
+</div><div class="pl-8 mr-8">
+<p>Connaissance basique de Qt pour Python (cf mon <a href="../../mon/temps-1.1">MON1 du temps 1</a>)</p>
+</div>
+</div>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100 dark:border-amber-800 dark:bg-amber-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-amber-800 dark:stroke-amber-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Note</b></p>
+</div><div class="pl-8 mr-8">
+<p>Tout les codes présentés ci-dessous sont disponibles dans le dossier Github de Do-It: <a href="https://github.com/do-it-ecm/do-it/tree/main/src/promos/2023-2024/Dang-Vu-Duc/pok/temps-1">Codes du POK</a></p>
+</div>
+</div>
+<h2 id="introduction" tabindex="-1"><a class="header-anchor" href="#introduction"></a> Introduction</h2>
+<p>Le Blackjack est l'un des jeux de carte les plus connus et joués dans les casinos. C'est un jeu qui oppose les joueurs au casino (dénommé aussi le dealer, puisqu'il distribue les cartes). Le Blackjack étant un jeu de carte de casino, on peut se douter que ce jeu est naturellement à l'avantage du casino. Il serait ainsi intéressant de se demander à quel point le joueur est perdant dans ce jeu, sachant qu'il utilise une stratégie connue pour être optimale. En d'autres termes, <strong>quelle est l'espérance de gain d'un joueur qui joue au Blackjack?</strong> D'autres statistiques seront également calculées, comme par exemple la meilleure carte que le dealer peut avoir ou bien encore l'influence du <em>comptage de cartes</em>.</p>
+<p>L'objectif sera également de recréer un jeu de Blackjack, en utilisant le module <em>Qt for Python</em>, que j'ai appris à maîtriser lors de mon premier MON du temps 1. C'est d'ailleurs par cela que ce POK va commencer.</p>
+<p>Tout les codes présentés ci-après ont été écrits par mes soins, de A à Z.</p>
+<h2 id="sommaire" tabindex="-1"><a class="header-anchor" href="#sommaire"></a> Sommaire</h2>
+<ul>
+<li>Brève explication des règles du Blackjack</li>
+<li>Prévision du premier sprint</li>
+<li>Implémentation d'un jeu de Blackjack avec Qt sur Python</li>
+<li>Démonstration du code</li>
+<li>Bilan du premier sprint et prévision du deuxième sprint</li>
+<li>Implémentation des simulations autour du jeu de Blackjack</li>
+<li>Conclusion</li>
+</ul>
+<h2 id="br%C3%A8ve-explication-des-r%C3%A8gles-du-blackjack" tabindex="-1"><a class="header-anchor" href="#br%C3%A8ve-explication-des-r%C3%A8gles-du-blackjack"></a> Brève explication des règles du Blackjack</h2>
+<p>Il faut tout d'abord commencer par expliquer rapidement les (simples) règles du Blackjack. Ce jeu oppose les joueurs à la <em>maison</em> (autrement dit le casino, ou bien le dealer). Lors de chaque tour, le dealer distribue 2 cartes faces ouvertes à chaque joueur et une carte face ouverte à lui-même. Le but pour chaque joueur est de se rapprocher le plus possible de 21 points, sans dépasser cette limite. Chaque carte vaut sa valeur (le 2 vaut 2 points, le 5 vaut 5 points etc...), les têtes (valet, dame et roi) valent 10 points et l'As vaut 1 ou 11 points. Le joueur peut décider parmi plusieurs actions lors de son tour:</p>
+<ul>
+<li>Tirer une nouvelle carte et l'ajouter à son compte (action de <em>tirer</em>),</li>
+<li>Garder son compte actuel et terminer son tour (action de <em>rester</em>),</li>
+<li>Si le joueur a deux cartes, il peut <em>doubler</em>: dans ce cas, il double sa mise et pioche une unique carte, puis termine son tour,</li>
+<li>Si le joueur a deux cartes de même valeur, il peut les <em>séparer</em>: dans ce cas, il joue avec deux mains, chacune contenant une carte initialement en double. Sa mise initiale est donc misée également sur la deuxième main.</li>
+</ul>
+<p>Une fois que le joueur a terminé son tour, le dealer joue. Il joue toujours de la même manière: il pioche tant qu'il a un compte inférieur ou égal à 16, puis il reste s'il a un compte supérieur ou égal à 17. Si le joueur a dépassé 21 (on dit qu'il a <em>bust</em>), il perd; même si le dealer bust après lui, et perd sa mise. Si le joueur a un compte supérieur à celui du dealer, ou que le dealer bust sans que le joueur ne bust, alors le joueur gagne et il reçoit deux fois sa mise.</p>
+<h2 id="pr%C3%A9vision-du-premier-sprint" tabindex="-1"><a class="header-anchor" href="#pr%C3%A9vision-du-premier-sprint"></a> Prévision du premier sprint</h2>
+<p>L'objectif du premier sprint est de finir l'interface graphique du jeu de Blackjack avec Python. L'idéal serait d'avoir un jeu de Blackjack fonctionnel, comprenant les fonctionnalités suivantes:</p>
+<ul>
+<li>Interface affichant les cartes du dealer et du joueur</li>
+<li>Boutons permettant au joueur de tirer, rester, doubler ou séparer</li>
+<li>Interface dans le cas du split, avec la séparation des deux mains</li>
+<li>Bouton pour recommencer</li>
+<li>Interface pour permettre au joueur de miser, compter les mises du joueur.</li>
+</ul>
+<h2 id="impl%C3%A9mentation-d'un-jeu-de-blackjack-avec-qt-sur-python" tabindex="-1"><a class="header-anchor" href="#impl%C3%A9mentation-d'un-jeu-de-blackjack-avec-qt-sur-python"></a> Implémentation d'un jeu de Blackjack avec Qt sur Python</h2>
+<p>La première étape de ce POK est de recréer ce jeu sur Python grâce au module Qt. Toutes les méthodes et classes utilisées dans le code sont expliquées dans mon <a href="../../mon/temps-1.1">MON 1.1</a>.</p>
+<p>J'ai utilisé l'outil Qt Designer pour designer l'aspect de l'interface utilisateur. J'ai opté pour un simple fond vert, pour représenter le tapis de jeu, ainsi que 7 images de dos de carte pour le joueur et le dealer. Au-dessus de ces cartes, on voit le compte des points et en-dessous, il y a les boutons correspondant aux actions que le joueur peut effectuer à chaque tour. Il faut bien s'assurer de renommer chaque objet avec un nom logique, pour pouvoir s'y retrouver dans le code. Voici à quoi ressemble la fenêtre sur Qt Designer:</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Dang-Vu-Duc/pok/temps-1/Image1.png" alt="Image main_window"></p>
+<p>Cette fenêtre est enregistrée sous le nom de <em>main_window</em>. On crée une autre fenêtre que l'on nomme <em>split_window</em>. En effet, il faut une autre disposition des éléments dans le cas où le joueur décide de séparer ses cartes. Voici à quoi ressemble cette fenêtre sur Qt Designer:</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Dang-Vu-Duc/pok/temps-1/Image2.png" alt="Image split_window"></p>
+<p>Maintenant qu'on a les deux fichiers .ui de chaque fenêtre, on commence à implémenter le jeu. Pour organiser correctement le code et le rendre plus lisible, on crée trois fichiers .py:</p>
+<ul>
+<li>Un fichier <em>blackjack_methods.py</em> qui va contenir la classe <strong>Blackjack_methods</strong> contenant les méthodes relatives à la manipulation du deck de cartes et des mains (création du deck, calcul du compte des mains),</li>
+<li>Un fichier <em>UI_blackjack.py</em> qui va contenir la classe <strong>Blackjack</strong> contenant les méthodes relatives à la création de l'interface graphique,</li>
+<li>Un fichier <em><a href="http://main.py">main.py</a></em> qui va contenir les instructions pour exécuter le code.</li>
+</ul>
+<h3 id="la-classe-blackjack_methods" tabindex="-1"><a class="header-anchor" href="#la-classe-blackjack_methods"></a> La classe Blackjack_methods</h3>
+<p>Comme explicité ci-dessus, cette classe contient les méthodes pour manipuler le deck. La méthode <em>newdeck</em> permet de créer le sabot pour le Blackjack. Ce sabot est composé de 6 jeux de 52 cartes. Ce sabot (dénommé <em>deck</em> dans le code) est une liste d'objet de la classe <strong>Card</strong>. Ces objets ont comme attribut un nom (par exemple 2_of_clubs pour le 2 de trèfle ou 11_of_hearts pour le valet de coeur) et sa valeur (1 pour As, et 10 pour les têtes). Cette classe a également une méthode appelée <em>sum_hand</em>, qui prend en argument une liste et qui renvoie sa somme. Cette méthode prend en compte que l'As (donc la valeur 1) vaut soit 1 soit 11. Ainsi, si la main est <code>[1, 4]</code>, la méthode renvoie 15, mais si la main est <code>[1, 5, 7]</code>, la méthode renvoie 13. Voici l'implémentation de cette classe:</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Cliquer pour voir le code de la classe <strong>Blackjack_methods</strong></p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-python line-numbers"><code>
+
+class Blackjack_methods():
+    def __init__(self):
+        self.newdeck()
+
+    def newdeck(self):
+        suits = ["diamonds", "clubs" ,"hearts", "spades"]
+        values = range(1,14)
+        initial_deck = []
+        for suit in suits:
+            for value in values:
+                if value < 10:
+                    initial_deck.append(Card(f"{value}_of_{suit}", value))
+                if value >= 10:
+                    initial_deck.append(Card(f"{value}_of_{suit}", 10))
+
+        self.deck = initial_deck * 6
+
+    def sum_hand(self, hand):
+        if 1 in (card.value for card in hand):
+            sum1 = sum([card.value for card in hand]) + 10
+            if sum1 > 21:
+                return(sum([card.value for card in hand]))
+            else:
+                return(sum1)
+        else:
+            return(sum([card.value for card in hand]))
+
+class Card():
+    def __init__(self, name, value):
+        self.value = value
+        self.name = name
+
+
+</code></pre></div>
+</details>
+</div>
+<h3 id="la-classe-blackjack" tabindex="-1"><a class="header-anchor" href="#la-classe-blackjack"></a> La classe Blackjack</h3>
+<h4 id="l'initialisation" tabindex="-1"><a class="header-anchor" href="#l'initialisation"></a> L'initialisation</h4>
+<p>Cette classe hérite des classes <strong>QMainWindow</strong> et <strong>Blackjack_methods</strong>, dans l'optique de réaliser l'interface graphique du jeu. Dans l'initialisation de cette classe, on retrouve les éléments suivants:</p>
+<ul>
+<li>La création des fenêtres <em>main_window</em> et <em>split_window</em> avec l'aide des fichiers .ui précédemment créés. On utilise la méthode <em>load</em> de la classe <strong>QUiLoader</strong>.</li>
+<li>La création des attributs associés à chaque objet des fichiers .ui (les labels, les boutons etc...). On utilise la méthode <em>findChild</em> de la classe <strong>QWidget</strong></li>
+<li>L'association des méthodes correspondantes à chaque bouton de l'interface grâce à la méthode <em>clicked.connect</em> de la classe <strong>QPushButton</strong> (par exemple, la méthode <em>restart</em> pour le bouton <em>restartButton</em>)</li>
+</ul>
+<p>Voilà l'implémentation de cette initialisation:</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Cliquer pour voir le code de l'initialisation de la classe <strong>Blackjack</strong></p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-python line-numbers"><code>
+
+class Blackjack(QMainWindow, Blackjack_methods):
+    def __init__(self):
+        super().__init__()
+
+        ui_file_name = "Blackjack_main_window.ui"
+        ui_file = QFile(ui_file_name)
+        loader = QUiLoader()
+        self.main_window = loader.load(ui_file)
+        ui_file.close()
+        self.main_window.setWindowTitle("Blackjack")
+
+        self.label_dealercard1 = self.main_window.findChild(QLabel, "DealerCard1")
+        self.label_dealercard2 = self.main_window.findChild(QLabel, "DealerCard2")
+        self.label_dealercard3 = self.main_window.findChild(QLabel, "DealerCard3")
+        self.label_dealercard4 = self.main_window.findChild(QLabel, "DealerCard4")
+        self.label_dealercard5 = self.main_window.findChild(QLabel, "DealerCard5")
+        self.label_dealercard6 = self.main_window.findChild(QLabel, "DealerCard6")
+        self.label_dealercard7 = self.main_window.findChild(QLabel, "DealerCard7")
+        self.label_playercard1 = self.main_window.findChild(QLabel, "PlayerCard1")
+        self.label_playercard2 = self.main_window.findChild(QLabel, "PlayerCard2")
+        self.label_playercard3 = self.main_window.findChild(QLabel, "PlayerCard3")
+        self.label_playercard4 = self.main_window.findChild(QLabel, "PlayerCard4")
+        self.label_playercard5 = self.main_window.findChild(QLabel, "PlayerCard5")
+        self.label_playercard6 = self.main_window.findChild(QLabel, "PlayerCard6")
+        self.label_playercard7 = self.main_window.findChild(QLabel, "PlayerCard7")
+
+        self.label_dealerheader = self.main_window.findChild(QLabel, "labelDealerCards")
+        self.label_playerheader = self.main_window.findChild(QLabel, "labelPlayerCards")
+        self.label_dealercount = self.main_window.findChild(QLabel, "labelDealerCount")
+        self.label_playercount = self.main_window.findChild(QLabel, "labelPlayerCount")
+        self.PlayerCount = self.main_window.findChild(QLabel, "PlayerCount")
+        self.DealerCount = self.main_window.findChild(QLabel, "DealerCount")
+        self.result = self.main_window.findChild(QLabel, "label_result")
+        self.label_cards = self.main_window.findChild(QLabel, "label_cards")
+        self.cardsLeft = self.main_window.findChild(QLabel, "cardsLeft")
+
+        self.hitButton = self.main_window.findChild(QPushButton, "button_hit")
+        self.stayButton = self.main_window.findChild(QPushButton, "button_stay")
+        self.doubleButton = self.main_window.findChild(QPushButton, "button_double")
+        self.restartButton = self.main_window.findChild(QPushButton, "button_restart")
+        self.splitButton = self.main_window.findChild(QPushButton, "button_split")
+
+        ui_file_name2 = "Blackjack_split_window.ui"
+        ui_file2 = QFile(ui_file_name2)
+        loader2 = QUiLoader()
+        self.split_window = loader2.load(ui_file2)
+        ui_file2.close()
+        self.split_window.setWindowTitle("Blackjack: Split Window")
+
+        self.label_split_dealercard1 = self.split_window.findChild(QLabel, "DealerCard1")
+        self.label_split_dealercard2 = self.split_window.findChild(QLabel, "DealerCard2")
+        self.label_split_dealercard3 = self.split_window.findChild(QLabel, "DealerCard3")
+        self.label_split_dealercard4 = self.split_window.findChild(QLabel, "DealerCard4")
+        self.label_split_dealercard5 = self.split_window.findChild(QLabel, "DealerCard5")
+        self.label_split_dealercard6 = self.split_window.findChild(QLabel, "DealerCard6")
+        self.label_split_dealercard7 = self.split_window.findChild(QLabel, "DealerCard7")
+        self.label_split_playercard1_1 = self.split_window.findChild(QLabel, "PlayerCard1_1")
+        self.label_split_playercard1_2 = self.split_window.findChild(QLabel, "PlayerCard1_2")
+        self.label_split_playercard1_3 = self.split_window.findChild(QLabel, "PlayerCard1_3")
+        self.label_split_playercard1_4 = self.split_window.findChild(QLabel, "PlayerCard1_4")
+        self.label_split_playercard1_5 = self.split_window.findChild(QLabel, "PlayerCard1_5")
+        self.label_split_playercard1_6 = self.split_window.findChild(QLabel, "PlayerCard1_6")
+        self.label_split_playercard1_7 = self.split_window.findChild(QLabel, "PlayerCard1_7")
+        self.label_split_playercard2_1 = self.split_window.findChild(QLabel, "PlayerCard2_1")
+        self.label_split_playercard2_2 = self.split_window.findChild(QLabel, "PlayerCard2_2")
+        self.label_split_playercard2_3 = self.split_window.findChild(QLabel, "PlayerCard2_3")
+        self.label_split_playercard2_4 = self.split_window.findChild(QLabel, "PlayerCard2_4")
+        self.label_split_playercard2_5 = self.split_window.findChild(QLabel, "PlayerCard2_5")
+        self.label_split_playercard2_6 = self.split_window.findChild(QLabel, "PlayerCard2_6")
+        self.label_split_playercard2_7 = self.split_window.findChild(QLabel, "PlayerCard2_7")
+        self.split_PlayerCount1 = self.split_window.findChild(QLabel, "PlayerCount1")
+        self.split_PlayerCount2 = self.split_window.findChild(QLabel, "PlayerCount2")
+        self.split_DealerCount = self.split_window.findChild(QLabel, "DealerCount")
+        self.cardsLeft_split = self.split_window.findChild(QLabel, "cardsLeft")
+
+        self.split_hitButton1 = self.split_window.findChild(QPushButton, "button_hit1")
+        self.split_stayButton1 = self.split_window.findChild(QPushButton, "button_stay1")
+        self.split_doubleButton1 = self.split_window.findChild(QPushButton, "button_double1")
+        self.split_hitButton2 = self.split_window.findChild(QPushButton, "button_hit2")
+        self.split_stayButton2 = self.split_window.findChild(QPushButton, "button_stay2")
+        self.split_doubleButton2 = self.split_window.findChild(QPushButton, "button_double2")
+        self.split_buttonRestart = self.split_window.findChild(QPushButton, "button_restart")
+
+        self.split_hitButton1.clicked.connect(self.hit_split)
+        self.split_hitButton2.clicked.connect(self.hit_split)
+        self.split_stayButton1.clicked.connect(self.stay_split_first)
+        self.split_stayButton2.clicked.connect(self.stay_split)
+        self.split_buttonRestart.clicked.connect(self.restart_split)
+
+        self.restart()
+
+        self.hitButton.clicked.connect(self.hit)
+        self.restartButton.clicked.connect(self.restart)
+        self.stayButton.clicked.connect(self.stay)
+        self.splitButton.clicked.connect(self.split)
+        self.main_window.show()
+
+
+</code></pre></div>
+</details>
+</div>
+<p>On peut remarquer qu'il y a beaucoup de lignes de codes, mais que c'est assez répétitif, notamment parce qu'il faut associer chaque objet de l'interface à des attributs de la classe dans le code.</p>
+<p>Il faut ensuite créer chaque méthode associée aux boutons.</p>
+<h4 id="la-m%C3%A9thode-restart" tabindex="-1"><a class="header-anchor" href="#la-m%C3%A9thode-restart"></a> La méthode restart</h4>
+<p>Cette méthode est appelée dans l'initialisation de la classe. Elle permet de réaliser les actions suivantes:</p>
+<ul>
+<li>Refaire un nouveau deck lorsque la taille du sabot est inférieure à 52 cartes,</li>
+<li>Piocher deux nouvelles cartes pour le joueur et une nouvelle carte pour le dealer, et les afficher à leurs endroits respectifs grâce à la méthode <em>setPixmap</em> de la classe <strong>QPixmap</strong>,</li>
+<li>Mettre à jour les comptes du dealer et du joueur grâce à la méthode <em>display_player_count</em>. Cette méthode permet d'afficher le compte du joueur, en faisant attention au cas où un As est dans la main. Par exemple, si la main du joueur est As-4, alors le compte doit afficher 5/15.</li>
+<li>Activer ou désactiver le bouton <em>séparer</em> grâce à la méthode <em>setEnabled</em> de la classe <strong>QPushButton</strong>. En effet, ce bouton n'est actif que si le joueur a deux cartes de même valeur,</li>
+<li>Réinitialiser les attributs de la classe, que l'on explicitera au fur et à mesure.</li>
+</ul>
+<p>Cette méthode est appelée lorsque l'utilisateur clique sur le bouton &quot;Recommencer&quot; dans l'interface.</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Cliquer pour voir le code de la méthode <em>restart</em></p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-python line-numbers"><code>
+
+def restart(self):
+    if len(self.deck) <= 52:
+        self.newdeck()
+    self.player_bust = False
+    self.hitButton.setEnabled(True)
+    self.stayButton.setEnabled(True)
+    self.doubleButton.setEnabled(True)
+    self.result.setText("")
+    self.DealerCount.setStyleSheet("color : white")
+    self.PlayerCount.setStyleSheet("color : white")
+    self.restartButton.setStyleSheet("background-color: white")
+    self.split_buttonRestart.setStyleSheet("background-color: white")
+    self.dealer_spot = 1
+    self.dealer_spot_split = 1
+    card = self.draw()
+    self.dealer_hand = [card]
+    if card.value == 1:
+        self.DealerCount.setText("1/11")
+    else:
+        self.DealerCount.setText(f"{self.sum_hand(self.dealer_hand)}")
+    pixmap = QPixmap(f'PNG-cards/{card.name}.png')
+    self.label_dealercard1.setPixmap(pixmap)
+    self.player_spot = 2
+    self.player_spot_split_1 = 1
+    self.player_spot_split_2 = 1
+    card1 = self.draw()
+    card2 = self.draw()
+    pixmap1 = QPixmap(f'PNG-cards/{card1.name}.png')
+    pixmap2 = QPixmap(f'PNG-cards/{card2.name}.png')
+    self.player_hand = [card1, card2]
+    self.label_playercard1.setPixmap(pixmap1)
+    self.label_playercard2.setPixmap(pixmap2)
+    self.display_player_count()
+    pixmap = QPixmap(f'PNG-cards/dos.png')
+    self.label_playercard3.setPixmap(pixmap)
+    self.label_playercard4.setPixmap(pixmap)
+    self.label_playercard5.setPixmap(pixmap)
+    self.label_playercard6.setPixmap(pixmap)
+    self.label_playercard7.setPixmap(pixmap)
+    self.label_dealercard2.setPixmap(pixmap)
+    self.label_dealercard3.setPixmap(pixmap)
+    self.label_dealercard4.setPixmap(pixmap)
+    self.label_dealercard5.setPixmap(pixmap)
+    self.label_dealercard6.setPixmap(pixmap)
+    self.label_dealercard7.setPixmap(pixmap)
+    if card1.value == card2.value:
+        self.splitButton.setEnabled(True)
+    else:
+        self.splitButton.setEnabled(False)
+
+
+</code></pre></div>
+</details>
+</div>
+<h4 id="la-m%C3%A9thode-draw" tabindex="-1"><a class="header-anchor" href="#la-m%C3%A9thode-draw"></a> La méthode draw</h4>
+<p>Cette méthode permet de piocher une carte dans le deck. Pour cela, on utilise la fonction <em>choice</em> de la bibliothèque <em>random</em> pour choisir une carte aléatoire dans le deck. Ensuite, on la retire du deck et on la renvoie. A chaque fois que le joueur pioche une carte, il faut mettre à jour le nombre de cartes restantes.</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Cliquer pour voir le code de la méthode <em>draw</em></p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-python line-numbers"><code>
+
+def draw(self):
+        card = random.choice(self.deck)
+        self.deck.remove(card)
+        self.cardsLeft.setText(f"{len(self.deck)}")
+        self.cardsLeft_split.setText(f"{len(self.deck)}")
+        return(card)
+
+
+</code></pre></div>
+</details>
+</div>
+<h4 id="la-m%C3%A9thode-hit" tabindex="-1"><a class="header-anchor" href="#la-m%C3%A9thode-hit"></a> La méthode hit</h4>
+<p>Cette méthode est appelée lorsque l'utilisateur clique sur le bouton &quot;Tirer&quot; de l'interface. Cette méthode permet de réaliser les actions suivantes:</p>
+<ul>
+<li>Désactiver le bouton &quot;Séparer&quot;. En effet, lorsque le joueur a pioché une carte, il ne peut plus séparer ses cartes,</li>
+<li>Piocher une carte grâce à la méthode <em>draw</em> et la placer à l'endroit adéquat. Pour déterminer cet endroit adéquat, on doit créer un attribut <em>player_spot</em> qu'on incrémente au fur et à mesure que l'on avance dans la pioche. A noter que l'attribut &quot;name&quot; de chaque objet de la classe <strong>Card</strong> correspond exactement au nom qui est donné dans le fichier qui contient toutes les cartes en png, afin que la méthode <em>setPixmap</em> puisse retrouver l'image.</li>
+<li>Mettre à jour le compte du joueur.</li>
+</ul>
+<p>Si le compte du joueur dépasse 21, on appelle la méthode <em>stay</em>.</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Cliquer pour voir le code de la méthode <em>hit</em></p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-python line-numbers"><code>
+
+def hit(self):
+    self.splitButton.setEnabled(False)
+    card = self.draw()
+    self.player_hand.append(card)
+    pixmap = QPixmap(f'PNG-cards/{card.name}.png')
+    if self.player_spot == 0:
+        self.label_playercard1.setPixmap(pixmap)
+        self.player_spot += 1
+
+    elif self.player_spot == 1:
+        self.label_playercard2.setPixmap(pixmap)
+        self.player_spot += 1
+
+    elif self.player_spot == 2:
+        self.label_playercard3.setPixmap(pixmap)
+        self.player_spot += 1
+
+    elif self.player_spot == 3:
+        self.label_playercard4.setPixmap(pixmap)
+        self.player_spot += 1
+
+    elif self.player_spot == 4:
+        self.label_playercard5.setPixmap(pixmap)
+        self.player_spot += 1
+
+    elif self.player_spot == 5:
+        self.label_playercard6.setPixmap(pixmap)
+        self.player_spot += 1
+
+    elif self.player_spot == 6:
+        self.label_playercard7.setPixmap(pixmap)
+        self.player_spot += 1
+
+    self.display_player_count()
+    count = self.sum_hand(self.player_hand)
+    if count > 21:
+        self.player_bust = True
+        self.result.setText("Le joueur a bust")
+        self.PlayerCount.setStyleSheet("color : red")
+        self.stay()
+
+
+</code></pre></div>
+</details>
+</div>
+<h4 id="la-m%C3%A9thode-stay" tabindex="-1"><a class="header-anchor" href="#la-m%C3%A9thode-stay"></a> La méthode stay</h4>
+<p>Cette méthode est associée au bouton &quot;Rester&quot; de l'interface, et permet de finir le tour du joueur. Elle permet de réaliser les actions suivantes:</p>
+<ul>
+<li>Piocher des cartes jusqu'à ce que le dealer dépasse 16, et afficher les cartes au fur et à mesure de la même manière qu'avec la méthode <em>hit</em>.</li>
+<li>Déterminer si le joueur a gagné ou si le dealer a gagné, et l'afficher sur l'interface,</li>
+<li>Désactiver tout les boutons sauf le bouton &quot;recommencer&quot;, que l'on mettra en rouge.</li>
+</ul>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Cliquer pour voir le code de la méthode stay</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-python line-numbers"><code>
+
+def stay(self):
+    if 1 in (card.value for card in self.player_hand):
+        self.PlayerCount.setText(f"{self.sum_hand(self.player_hand)}")
+    while self.sum_hand(self.dealer_hand) < 17:
+        card = self.draw()
+        self.dealer_hand.append(card)
+        pixmap = QPixmap(f'PNG-cards/{card.name}.png')
+        if self.dealer_spot == 0:
+            self.label_dealercard1.setPixmap(pixmap)
+            self.dealer_spot += 1
+
+        elif self.dealer_spot == 1:
+            self.label_dealercard2.setPixmap(pixmap)
+            self.dealer_spot += 1
+
+        elif self.dealer_spot == 2:
+            self.label_dealercard3.setPixmap(pixmap)
+            self.dealer_spot += 1
+
+        elif self.dealer_spot == 3:
+            self.label_dealercard4.setPixmap(pixmap)
+            self.dealer_spot += 1
+
+        elif self.dealer_spot == 4:
+            self.label_dealercard5.setPixmap(pixmap)
+            self.dealer_spot += 1
+
+        elif self.dealer_spot == 5:
+            self.label_dealercard6.setPixmap(pixmap)
+            self.dealer_spot += 1
+
+        elif self.dealer_spot == 6:
+            self.label_dealercard7.setPixmap(pixmap)
+            self.dealer_spot += 1
+        count = self.sum_hand(self.dealer_hand)
+        self.DealerCount.setText(f"{count}")
+        #time.sleep(1)
+    if not self.player_bust and self.sum_hand(self.dealer_hand) > 21:
+        self.result.setText("Le dealer a bust")
+    if not self.player_bust and (self.sum_hand(self.dealer_hand) < self.sum_hand(self.player_hand) or self.sum_hand(self.dealer_hand) > 21):
+        self.result.setText("Le joueur a gagné")
+    if not self.player_bust and (self.sum_hand(self.dealer_hand) > self.sum_hand(self.player_hand) and self.sum_hand(self.dealer_hand) <= 21):
+        self.result.setText("Le dealer a gagné")
+    if not self.player_bust and self.sum_hand(self.dealer_hand) == self.sum_hand(self.player_hand):
+        self.result.setText("Egalité!")
+    if count > 21:
+        self.DealerCount.setStyleSheet("color : red")
+    self.restartButton.setStyleSheet("background-color: red")
+    self.hitButton.setEnabled(False)
+    self.stayButton.setEnabled(False)
+    self.doubleButton.setEnabled(False)
+    self.splitButton.setEnabled(False)
+
+
+
+</code></pre></div>
+</details>
+</div>
+<h4 id="les-m%C3%A9thodes-dans-le-cas-du-split" tabindex="-1"><a class="header-anchor" href="#les-m%C3%A9thodes-dans-le-cas-du-split"></a> Les méthodes dans le cas du split</h4>
+<p>Toutes ces méthodes ont leur équivalent si jamais le joueur décide de séparer ses cartes. En effet, comme la fenêtre <em>split_window</em> est différente de la fenêtre <em>main_window</em>, on a par conséquent d'autres boutons, et donc d'autres méthodes à créer. Cependant, ces méthodes sont sensiblement les mêmes que celles explicitées précédemment, il est inutile de les expliciter ici. On peut mentionner tout de même que ces méthodes doivent gérer l'activation ou la désactivation des différents boutons, puisque le joueur ne peut pas jouer ses mains en même temps.</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Cliquer pour voir le code des méthodes dans le cas du split</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-python line-numbers"><code>
+
+def display_player_count_split(self):
+  if self.IsFirst:
+      count = self.sum_hand(self.player_hand_split_1)
+      if 1 in (card.value for card in self.player_hand_split_1) and (sum([card.value for card in self.player_hand_split_1]) + 10) < 21:
+          self.split_PlayerCount1.setText(f"{sum([card.value for card in self.player_hand_split_1])}" + "/" + f"{count}")
+      else:
+          self.split_PlayerCount1.setText(f"{count}")
+  else:
+      count = self.sum_hand(self.player_hand_split_2)
+      if 1 in (card.value for card in self.player_hand_split_2) and (sum([card.value for card in self.player_hand_split_2]) + 10) < 21:
+          self.split_PlayerCount2.setText(f"{sum([card.value for card in self.player_hand_split_2])}" + "/" + f"{count}")
+      else:
+          self.split_PlayerCount2.setText(f"{count}")
+
+def hit_split(self):
+  if self.IsFirst:
+      card = self.draw()
+      self.player_hand_split_1.append(card)
+      pixmap = QPixmap(f'PNG-cards/{card.name}.png')
+      if self.player_spot_split_1 == 0:
+          self.label_split_playercard1_1.setPixmap(pixmap)
+          self.player_spot_split_1 += 1
+
+      elif self.player_spot_split_1 == 1:
+          self.label_split_playercard1_2.setPixmap(pixmap)
+          self.player_spot_split_1 += 1
+
+      elif self.player_spot_split_1 == 2:
+          self.label_split_playercard1_3.setPixmap(pixmap)
+          self.player_spot_split_1 += 1
+
+      elif self.player_spot_split_1 == 3:
+          self.label_split_playercard1_4.setPixmap(pixmap)
+          self.player_spot_split_1 += 1
+
+      elif self.player_spot_split_1 == 4:
+          self.label_split_playercard1_5.setPixmap(pixmap)
+          self.player_spot_split_1 += 1
+
+      elif self.player_spot_split_1 == 5:
+          self.label_split_playercard1_6.setPixmap(pixmap)
+          self.player_spot_split_1 += 1
+
+      elif self.player_spot_split_1 == 6:
+          self.label_split_playercard1_7.setPixmap(pixmap)
+          self.player_spot_split_1 += 1
+
+      self.display_player_count_split()
+      count = self.sum_hand(self.player_hand_split_1)
+      if count > 21:
+          self.split_PlayerCount1.setStyleSheet("color : red")
+          self.split_hitButton2.setEnabled(True)
+          self.split_stayButton2.setEnabled(True)
+          self.split_doubleButton2.setEnabled(True)
+          self.split_hitButton1.setEnabled(False)
+          self.split_stayButton1.setEnabled(False)
+          self.split_doubleButton1.setEnabled(False)
+          self.IsFirst = False
+
+  else:
+      card = self.draw()
+      self.player_hand_split_2.append(card)
+      pixmap = QPixmap(f'PNG-cards/{card.name}.png')
+      if self.player_spot_split_2 == 0:
+          self.label_split_playercard2_1.setPixmap(pixmap)
+          self.player_spot_split_2 += 1
+
+      elif self.player_spot_split_2 == 1:
+          self.label_split_playercard2_2.setPixmap(pixmap)
+          self.player_spot_split_2 += 1
+
+      elif self.player_spot_split_2 == 2:
+          self.label_split_playercard2_3.setPixmap(pixmap)
+          self.player_spot_split_2 += 1
+
+      elif self.player_spot_split_2 == 3:
+          self.label_split_playercard2_4.setPixmap(pixmap)
+          self.player_spot_split_2 += 1
+
+      elif self.player_spot_split_2 == 4:
+          self.label_split_playercard2_5.setPixmap(pixmap)
+          self.player_spot_split_2 += 1
+
+      elif self.player_spot_split_2 == 5:
+          self.label_split_playercard2_6.setPixmap(pixmap)
+          self.player_spot_split_2 += 1
+
+      elif self.player_spot_split_2 == 6:
+          self.label_split_playercard2_7.setPixmap(pixmap)
+          self.player_spot_split_2 += 1
+
+      self.display_player_count_split()
+      count = self.sum_hand(self.player_hand_split_2)
+      if count > 21:
+          self.split_PlayerCount2.setStyleSheet("color : red")
+          self.stay_split()
+
+
+def stay_split_first(self):
+    self.IsFirst = False
+    if 1 in (card.value for card in self.player_hand_split_1):
+        self.split_PlayerCount1.setText(f"{self.sum_hand(self.player_hand_split_1)}")
+    self.split_hitButton2.setEnabled(True)
+    self.split_stayButton2.setEnabled(True)
+    self.split_doubleButton2.setEnabled(True)
+    self.split_hitButton1.setEnabled(False)
+    self.split_stayButton1.setEnabled(False)
+    self.split_doubleButton1.setEnabled(False)
+
+def stay_split(self):
+  self.split_hitButton2.setEnabled(False)
+  self.split_stayButton2.setEnabled(False)
+  self.split_doubleButton2.setEnabled(False)
+  while self.sum_hand(self.dealer_hand) < 17:
+      card = self.draw()
+      self.dealer_hand.append(card)
+      pixmap = QPixmap(f'PNG-cards/{card.name}.png')
+      if self.dealer_spot_split == 0:
+          self.label_split_dealercard1.setPixmap(pixmap)
+          self.dealer_spot_split += 1
+
+      elif self.dealer_spot_split == 1:
+          self.label_split_dealercard2.setPixmap(pixmap)
+          self.dealer_spot_split += 1
+
+      elif self.dealer_spot_split == 2:
+          self.label_split_dealercard3.setPixmap(pixmap)
+          self.dealer_spot_split += 1
+
+      elif self.dealer_spot_split == 3:
+          self.label_split_dealercard4.setPixmap(pixmap)
+          self.dealer_spot_split += 1
+
+      elif self.dealer_spot_split == 4:
+          self.label_split_dealercard5.setPixmap(pixmap)
+          self.dealer_spot_split += 1
+
+      elif self.dealer_spot_split == 5:
+          self.label_split_dealercard6.setPixmap(pixmap)
+          self.dealer_spot_split += 1
+
+      elif self.dealer_spot_split == 6:
+          self.label_split_dealercard7.setPixmap(pixmap)
+          self.dealer_spot_split += 1
+
+      count = self.sum_hand(self.dealer_hand)
+      self.split_DealerCount.setText(f"{count}")
+  self.split_buttonRestart.setStyleSheet("background-color: red")
+  if count > 21:
+      self.split_DealerCount.setStyleSheet("color : red")
+
+def restart_split(self):
+  self.main_window.show()
+  self.split_window.close()
+  pixmap = QPixmap(f'PNG-cards/dos.png')
+  self.label_split_playercard1_2.setPixmap(pixmap)
+  self.label_split_playercard1_3.setPixmap(pixmap)
+  self.label_split_playercard1_4.setPixmap(pixmap)
+  self.label_split_playercard1_5.setPixmap(pixmap)
+  self.label_split_playercard1_6.setPixmap(pixmap)
+  self.label_split_playercard1_7.setPixmap(pixmap)
+  self.label_split_playercard2_2.setPixmap(pixmap)
+  self.label_split_playercard2_3.setPixmap(pixmap)
+  self.label_split_playercard2_4.setPixmap(pixmap)
+  self.label_split_playercard2_5.setPixmap(pixmap)
+  self.label_split_playercard2_6.setPixmap(pixmap)
+  self.label_split_playercard2_7.setPixmap(pixmap)
+  self.label_split_dealercard2.setPixmap(pixmap)
+  self.label_split_dealercard3.setPixmap(pixmap)
+  self.label_split_dealercard4.setPixmap(pixmap)
+  self.label_split_dealercard5.setPixmap(pixmap)
+  self.label_split_dealercard6.setPixmap(pixmap)
+  self.label_split_dealercard7.setPixmap(pixmap)
+  self.split_PlayerCount1.setStyleSheet("color : white")
+  self.split_PlayerCount2.setStyleSheet("color : white")
+  self.split_DealerCount.setStyleSheet("color : white")
+  self.restart()
+
+
+</code></pre></div>
+</details>
+</div>
+<h2 id="d%C3%A9monstration-du-code" tabindex="-1"><a class="header-anchor" href="#d%C3%A9monstration-du-code"></a> Démonstration du code</h2>
+<p>Pour exécuter ce code, on exécute ces quelques lignes dans un fichier <a href="http://main.py">main.py</a>:</p>
+<pre class="language-python line-numbers"><code>
+
+app = QApplication(sys.argv)
+window = Blackjack()
+app.exec()
+
+
+</code></pre><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Dang-Vu-Duc/pok/temps-1/Image3.png" alt="Image démo1"></p>
+<p>On voit bien l'interface que l'on a créé plus tôt sur Qt Designer. Voici ce à quoi ressemble la fenêtre à la fin d'un tour:</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Dang-Vu-Duc/pok/temps-1/Image4.png" alt="Image demo2"></p>
+<p>De plus, voici à quoi ressemble l'interface après la fin d'un tour où le joueur a split:</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Dang-Vu-Duc/pok/temps-1/Image5.png" alt="Image demo3"></p>
+<h2 id="bilan-du-premier-sprint-et-pr%C3%A9vision-du-deuxi%C3%A8me-sprint" tabindex="-1"><a class="header-anchor" href="#bilan-du-premier-sprint-et-pr%C3%A9vision-du-deuxi%C3%A8me-sprint"></a> Bilan du premier sprint et prévision du deuxième sprint</h2>
+<p>Tout les objectifs du premier sprint ont été réalisés, sauf la réalisation de l'interface de mise. En effet, l'implémentation des autres fonctionnalités m'ont pris plus de temps que prévu, de nombreux problèmes de programmation et de débogage ont été très chronophage. Cependant, l'interface de mise devrait être plus rapide à coder.</p>
+<p>Ainsi, l'objectif pour le deuxième sprint est de coder les simulations pour obtenir des statistiques autour du jeu de Blackjack (et de finir l'interface de mise). Voici les différents objectifs du deuxième sprint:</p>
+<ul>
+<li>Implémenter des simulations pour calculer l'espérance de gain d'un joueur qui suit une stratégie optimale</li>
+<li>Implémenter des simulations pour calculer les taux de réussite d'un joueur face à chaque première cartes du dealer possibles</li>
+<li>Implémenter des simulations pour calculer les taux de réussites de chaque mains possibles d'un joueur</li>
+</ul>
+<h2 id="impl%C3%A9mentation-de-l'interface-de-mise" tabindex="-1"><a class="header-anchor" href="#impl%C3%A9mentation-de-l'interface-de-mise"></a> Implémentation de l'interface de mise</h2>
+<p>Pour finaliser l'implémentation du jeu sur Python, il ne manque plus qu'à réaliser l'interface de mise, où le joueur pourra saisir sa mise. On utilise encore une fois l'outil Qt Designer pour faire l'aspect de l'interface:</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Dang-Vu-Duc/pok/temps-1/Image6.png" alt="Qt Designer bet_window"></p>
+<p>Il faut ensuite assigner chaque objet ainsi créé à des attributs de la classe <strong>Blackjack</strong> dans l'initialisation, et assigner les méthodes correspondantes à chaque bouton.</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Cliquer pour voir le nouveau code de l'initialisation de la classe <strong>Blackjack_methods</strong></p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-python line-numbers"><code>
+
+def __init__(self):
+    super().__init__()
+    self.player_stack = 200
+
+    ui_file_name = "Blackjack_main_window.ui"
+    ui_file = QFile(ui_file_name)
+    loader = QUiLoader()
+    self.main_window = loader.load(ui_file)
+    ui_file.close()
+    self.main_window.setWindowTitle("Blackjack")
+
+    self.label_dealercard1 = self.main_window.findChild(QLabel, "DealerCard1")
+    self.label_dealercard2 = self.main_window.findChild(QLabel, "DealerCard2")
+    self.label_dealercard3 = self.main_window.findChild(QLabel, "DealerCard3")
+    self.label_dealercard4 = self.main_window.findChild(QLabel, "DealerCard4")
+    self.label_dealercard5 = self.main_window.findChild(QLabel, "DealerCard5")
+    self.label_dealercard6 = self.main_window.findChild(QLabel, "DealerCard6")
+    self.label_dealercard7 = self.main_window.findChild(QLabel, "DealerCard7")
+    self.label_playercard1 = self.main_window.findChild(QLabel, "PlayerCard1")
+    self.label_playercard2 = self.main_window.findChild(QLabel, "PlayerCard2")
+    self.label_playercard3 = self.main_window.findChild(QLabel, "PlayerCard3")
+    self.label_playercard4 = self.main_window.findChild(QLabel, "PlayerCard4")
+    self.label_playercard5 = self.main_window.findChild(QLabel, "PlayerCard5")
+    self.label_playercard6 = self.main_window.findChild(QLabel, "PlayerCard6")
+    self.label_playercard7 = self.main_window.findChild(QLabel, "PlayerCard7")
+
+    self.label_dealerheader = self.main_window.findChild(QLabel, "labelDealerCards")
+    self.label_playerheader = self.main_window.findChild(QLabel, "labelPlayerCards")
+    self.label_dealercount = self.main_window.findChild(QLabel, "labelDealerCount")
+    self.label_playercount = self.main_window.findChild(QLabel, "labelPlayerCount")
+    self.PlayerCount = self.main_window.findChild(QLabel, "PlayerCount")
+    self.DealerCount = self.main_window.findChild(QLabel, "DealerCount")
+    self.result = self.main_window.findChild(QLabel, "label_result")
+    self.label_cards = self.main_window.findChild(QLabel, "label_cards")
+    self.cardsLeft = self.main_window.findChild(QLabel, "cardsLeft")
+    self.player_stack_main = self.main_window.findChild(QLabel, "player_stack")
+    self.player_bet_main = self.main_window.findChild(QLabel, "player_bet")
+
+    self.hitButton = self.main_window.findChild(QPushButton, "button_hit")
+    self.stayButton = self.main_window.findChild(QPushButton, "button_stay")
+    self.doubleButton = self.main_window.findChild(QPushButton, "button_double")
+    self.restartButton = self.main_window.findChild(QPushButton, "button_restart")
+    self.splitButton = self.main_window.findChild(QPushButton, "button_split")
+
+    ui_file_name2 = "Blackjack_split_window.ui"
+    ui_file2 = QFile(ui_file_name2)
+    loader2 = QUiLoader()
+    self.split_window = loader2.load(ui_file2)
+    ui_file2.close()
+    self.split_window.setWindowTitle("Blackjack: Split Window")
+
+    self.label_split_dealercard1 = self.split_window.findChild(QLabel, "DealerCard1")
+    self.label_split_dealercard2 = self.split_window.findChild(QLabel, "DealerCard2")
+    self.label_split_dealercard3 = self.split_window.findChild(QLabel, "DealerCard3")
+    self.label_split_dealercard4 = self.split_window.findChild(QLabel, "DealerCard4")
+    self.label_split_dealercard5 = self.split_window.findChild(QLabel, "DealerCard5")
+    self.label_split_dealercard6 = self.split_window.findChild(QLabel, "DealerCard6")
+    self.label_split_dealercard7 = self.split_window.findChild(QLabel, "DealerCard7")
+    self.label_split_playercard1_1 = self.split_window.findChild(QLabel, "PlayerCard1_1")
+    self.label_split_playercard1_2 = self.split_window.findChild(QLabel, "PlayerCard1_2")
+    self.label_split_playercard1_3 = self.split_window.findChild(QLabel, "PlayerCard1_3")
+    self.label_split_playercard1_4 = self.split_window.findChild(QLabel, "PlayerCard1_4")
+    self.label_split_playercard1_5 = self.split_window.findChild(QLabel, "PlayerCard1_5")
+    self.label_split_playercard1_6 = self.split_window.findChild(QLabel, "PlayerCard1_6")
+    self.label_split_playercard1_7 = self.split_window.findChild(QLabel, "PlayerCard1_7")
+    self.label_split_playercard2_1 = self.split_window.findChild(QLabel, "PlayerCard2_1")
+    self.label_split_playercard2_2 = self.split_window.findChild(QLabel, "PlayerCard2_2")
+    self.label_split_playercard2_3 = self.split_window.findChild(QLabel, "PlayerCard2_3")
+    self.label_split_playercard2_4 = self.split_window.findChild(QLabel, "PlayerCard2_4")
+    self.label_split_playercard2_5 = self.split_window.findChild(QLabel, "PlayerCard2_5")
+    self.label_split_playercard2_6 = self.split_window.findChild(QLabel, "PlayerCard2_6")
+    self.label_split_playercard2_7 = self.split_window.findChild(QLabel, "PlayerCard2_7")
+    self.split_PlayerCount1 = self.split_window.findChild(QLabel, "PlayerCount1")
+    self.split_PlayerCount2 = self.split_window.findChild(QLabel, "PlayerCount2")
+    self.split_DealerCount = self.split_window.findChild(QLabel, "DealerCount")
+    self.cardsLeft_split = self.split_window.findChild(QLabel, "cardsLeft")
+    self.split_player_bet1 = self.split_window.findChild(QLabel, "player_bet1")
+    self.split_player_bet2 = self.split_window.findChild(QLabel, "player_bet2")
+    self.split_player_stack = self.split_window.findChild(QLabel, "player_stack")
+    self.split_player_bet_total = self.split_window.findChild(QLabel, "player_bet_total")
+
+    self.split_hitButton1 = self.split_window.findChild(QPushButton, "button_hit1")
+    self.split_stayButton1 = self.split_window.findChild(QPushButton, "button_stay1")
+    self.split_doubleButton1 = self.split_window.findChild(QPushButton, "button_double1")
+    self.split_hitButton2 = self.split_window.findChild(QPushButton, "button_hit2")
+    self.split_stayButton2 = self.split_window.findChild(QPushButton, "button_stay2")
+    self.split_doubleButton2 = self.split_window.findChild(QPushButton, "button_double2")
+    self.split_buttonRestart = self.split_window.findChild(QPushButton, "button_restart")
+
+    self.split_hitButton1.clicked.connect(self.hit_split)
+    self.split_hitButton2.clicked.connect(self.hit_split)
+    self.split_stayButton1.clicked.connect(self.stay_split_first)
+    self.split_stayButton2.clicked.connect(self.stay_split)
+    self.split_buttonRestart.clicked.connect(self.restart_split)
+    self.split_doubleButton1.clicked.connect(self.double_split)
+    self.split_doubleButton2.clicked.connect(self.double_split)
+
+    ui_file_name3 = "Blackjack_bet_window.ui"
+    ui_file3 = QFile(ui_file_name3)
+    loader3 = QUiLoader()
+    self.bet_window = loader2.load(ui_file3)
+    ui_file3.close()
+    self.bet_window.setWindowTitle("Blackjack: Fenêtre de mise")
+
+    self.playerBet = self.bet_window.findChild(QLabel, "player_bet")
+    self.playerStack = self.bet_window.findChild(QLabel, "player_stack")
+    self.line_edit_bet = self.bet_window.findChild(QLineEdit, "line_edit_bet")
+    self.slideBet = self.bet_window.findChild(QSlider, "slide_bet")
+    self.validerButton = self.bet_window.findChild(QPushButton, "button_valider")
+    self.validerButton.clicked.connect(self.valider_bet)
+
+    self.add10 = self.bet_window.findChild(QPushButton, "add_10")
+    self.add20 = self.bet_window.findChild(QPushButton, "add_20")
+    self.add50 = self.bet_window.findChild(QPushButton, "add_50")
+    self.add10.clicked.connect(self.add_10)
+    self.add20.clicked.connect(self.add_20)
+    self.add50.clicked.connect(self.add_50)
+
+    self.remove10 = self.bet_window.findChild(QPushButton, "remove_10")
+    self.remove20 = self.bet_window.findChild(QPushButton, "remove_20")
+    self.remove50 = self.bet_window.findChild(QPushButton, "remove_50")
+    self.remove10.clicked.connect(self.remove_10)
+    self.remove20.clicked.connect(self.remove_20)
+    self.remove50.clicked.connect(self.remove_50)
+
+    onlyInt = QIntValidator()
+    onlyInt.setRange(0,self.player_stack)
+    self.line_edit_bet.setValidator(onlyInt)
+    self.line_edit_bet.textChanged.connect(self.line_edit_changed)
+    self.line_edit_bet.returnPressed.connect(self.valider_bet)
+
+    self.slideBet.setSingleStep(10)
+    self.slideBet.setTickPosition(QSlider.TicksBelow)
+    self.slideBet.valueChanged.connect(self.slide_changed)
+
+    self.restart()
+
+    self.hitButton.clicked.connect(self.hit)
+    self.restartButton.clicked.connect(self.restart)
+    self.stayButton.clicked.connect(self.stay)
+    self.splitButton.clicked.connect(self.split)
+    self.doubleButton.clicked.connect(self.double)
+
+
+</code></pre></div>
+</details>
+</div>
+<p>Pour rentrer sa mise, le joueur aura plusieurs possibilités:</p>
+<ul>
+<li>Entrer sa mise avec son clavier dans un champ textuel,</li>
+<li>Ajuster sa mise avec un curseur,</li>
+<li>Ajuster sa mise avec des boutons.</li>
+</ul>
+<h3 id="impl%C3%A9mentation-du-champ-textuel" tabindex="-1"><a class="header-anchor" href="#impl%C3%A9mentation-du-champ-textuel"></a> Implémentation du champ textuel</h3>
+<p>Pour implémenter un champ dans lequel le joueur pourra rentrer sa mise, on va utiliser la classe <strong>QLineEdit</strong>. L'objet <em>line_edit_bet</em> de cette classe est défini dans l'initialisation. On utilise la classe <strong>QIntValidator</strong> pour n'autoriser que les entiers dans le champ. Ensuite, on utilise la méthode <em>textChanged.connect</em> pour détecter quand l'utilisateur rentre du texte dans le champ. Quand c'est le cas, la méthode <em>line_edit_changed</em> est appelée: cette méthode va récupérer la mise du joueur en arrondissant à la dizaine supérieure la valeur rentrée par le joueur. Cette mise va être affichée sur le curseur et le texte indiquant la mise du joueur.</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Cliquer pour voir le code de la méthode <em>line_edit_changed</em></p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-python line-numbers"><code>
+
+def line_edit_changed(self, value):
+    if value != '':
+        value = int(value)
+        if value > self.player_stack:
+            value = self.player_stack
+            self.slideBet.setValue(value)
+            self.playerBet.setText(f"Mise du joueur: {value}")
+            self.player_bet = value
+        else:
+            value = value / 10
+            value = round(value)
+            value = value * 10
+            if value == 0:
+                self.validerButton.setEnabled(False)
+            else:
+                self.validerButton.setEnabled(True)
+            self.slideBet.setValue(value)
+            self.playerBet.setText(f"Mise du joueur: {value}")
+            self.player_bet = value
+
+
+</code></pre></div>
+</details>
+</div>
+<h3 id="impl%C3%A9mentation-du-curseur" tabindex="-1"><a class="header-anchor" href="#impl%C3%A9mentation-du-curseur"></a> Implémentation du curseur</h3>
+<p>L'implémentation du curseur se fait via la classe <strong>QSlider</strong>. L'objet <em>slideBet</em> de cette classe est défini dans l'initialisation. Lorsque que le joueur change la valeur du curseur, on récupère cette valeur et on exécute la méthode <em>slide_changed</em>. Cette méthode récupère la mise indiquée par le curseur (arrondie à la dizaine supérieure) et l'affiche dans le champ textuel.</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Cliquer pour voir le code de la méthode <em>slide_changed</em></p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-python line-numbers"><code>
+
+def slide_changed(self, value):
+    value = value / 10
+    value = round(value)
+    value = value * 10
+    if value == 0:
+        self.validerButton.setEnabled(False)
+    else:
+        self.validerButton.setEnabled(True)
+    self.slideBet.setValue(value)
+    self.playerBet.setText(f"Mise du joueur: {value}")
+    self.player_bet = value
+    self.line_edit_bet.setText(str(value))
+
+
+</code></pre></div>
+</details>
+</div>
+<p>Le joueur peut valider sa mise grâce au bouton &quot;valider&quot;. Ce bouton ferme la fenêtre de mise et ouvre la fenêtre de jeu principale. De plus, ce bouton actualise le &quot;stack&quot; du joueur (c'est-à-dire le nombre jetons restants) et affiche la mise dans l'espace dédié. Enfin, il active ou désactive les boutons &quot;Doubler&quot; et &quot;Séparer&quot;, suivant le stack restant du joueur et de sa mise actuelle.
+Notons que ce bouton est désactivé lorsque la mise est égale à 0.</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Cliquer pour voir le code de la méthode <em>valider_bet</em></p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-python line-numbers"><code>
+
+def valider_bet(self):
+    if self.player_bet != 0:
+        self.player_stack -= self.player_bet
+        self.player_stack_main.setText(f"Stack du joueur: {self.player_stack}")
+        self.player_bet_main.setText(f"Mise du joueur: {self.player_bet}")
+        if self.player_bet > self.player_stack:
+            self.doubleButton.setEnabled(False)
+            self.splitButton.setEnabled(False)
+        else:
+            self.doubleButton.setEnabled(True)
+        self.main_window.show()
+        self.bet_window.close()
+
+
+</code></pre></div>
+</details>
+</div>
+<h3 id="impl%C3%A9mentation-des-boutons-de-mise" tabindex="-1"><a class="header-anchor" href="#impl%C3%A9mentation-des-boutons-de-mise"></a> Implémentation des boutons de mise</h3>
+<p>Dans l'interface de mise, il est également possible d'ajuster sa mise grâce à 6 boutons: 3 boutons pour enlever 10, 20 ou 50 à la mise et 3 boutons pour ajouter 10, 20 ou 50 à la mise. Chacun de ces boutons est relié aux méthodes correspondantes (<em>add_10</em>, <em>add_20</em>, <em>add_50</em>, <em>remove_10</em>, <em>remove_20</em> et <em>remove_50</em>). Ces méthodes ajoutent ou retirent la quantité voulue de la mise du joueur, en vérifiant bien s'il est possible d'effectuer la modification (la mise ne peut pas être négative ou bien excéder le stack du joueur).</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Cliquer pour voir les méthodes pour ajuster les mises grâce aux boutons</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-python line-numbers"><code>
+
+def add_10(self):
+    if self.player_bet + 10 > self.player_stack:
+        return()
+    else:
+        self.player_bet += 10
+        self.slideBet.setValue(self.player_bet)
+        self.playerBet.setText(f"Mise du joueur: {self.player_bet}")
+        self.line_edit_bet.setText(str(self.player_bet))
+
+def remove_10(self):
+    if self.player_bet - 10 < 0:
+        return()
+    else:
+        self.player_bet -= 10
+        self.slideBet.setValue(self.player_bet)
+        self.playerBet.setText(f"Mise du joueur: {self.player_bet}")
+        self.line_edit_bet.setText(str(self.player_bet))
+
+def add_20(self):
+    if self.player_bet + 20 > self.player_stack:
+        return()
+    else:
+        self.player_bet += 20
+        self.slideBet.setValue(self.player_bet)
+        self.playerBet.setText(f"Mise du joueur: {self.player_bet}")
+        self.line_edit_bet.setText(str(self.player_bet))
+
+def remove_20(self):
+    if self.player_bet - 20 < 0:
+        return()
+    else:
+        self.player_bet -= 20
+        self.slideBet.setValue(self.player_bet)
+        self.playerBet.setText(f"Mise du joueur: {self.player_bet}")
+        self.line_edit_bet.setText(str(self.player_bet))
+
+def add_50(self):
+    if self.player_bet + 50 > self.player_stack:
+        return()
+    else:
+        self.player_bet += 50
+        self.slideBet.setValue(self.player_bet)
+        self.playerBet.setText(f"Mise du joueur: {self.player_bet}")
+        self.line_edit_bet.setText(str(self.player_bet))
+
+def remove_50(self):
+    if self.player_bet - 50 < 0:
+        return()
+    else:
+        self.player_bet -= 50
+        self.slideBet.setValue(self.player_bet)
+        self.playerBet.setText(f"Mise du joueur: {self.player_bet}")
+        self.line_edit_bet.setText(str(self.player_bet))
+
+
+</code></pre></div>
+</details>
+</div>
+<h3 id="d%C3%A9monstration-de-l'interface-de-mise" tabindex="-1"><a class="header-anchor" href="#d%C3%A9monstration-de-l'interface-de-mise"></a> Démonstration de l'interface de mise</h3>
+<p>Lorsque l'on exécute le code avec ces nouvelles lignes de code, on obtient bien l'interface voulue. On peut bouger le curseur à notre guise, et on peut également rentrer la mise dans le champ. Dans les deux cas, la valeur change dans le champ ou le curseur bouge en adéquation avec l&quot;action réalisée.</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Dang-Vu-Duc/pok/temps-1/Image7.png" alt="Image Démo bet_window"></p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100 dark:border-amber-800 dark:bg-amber-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-amber-800 dark:stroke-amber-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Note</b></p>
+</div><div class="pl-8 mr-8">
+<p>Pour compléter le système de mise, il faut également compléter le code présenté lors du premier sprint pour actualiser le stack du joueur en fonction de sa mise, s'il a gagné ou pas, s'il a doublé ou pas etc... Cette partie n'est pas expliquée ici, mais elle est bien implémentée dans le code Python présent dans mon <a href="https://github.com/do-it-ecm/do-it/tree/main/src/promos/2023-2024/Dang-Vu-Duc/pok/temps-1">dossier GitHub</a> de Do-It</p>
+</div>
+</div>
+<h2 id="impl%C3%A9mentation-des-simulations-autour-du-jeu-de-blackjack" tabindex="-1"><a class="header-anchor" href="#impl%C3%A9mentation-des-simulations-autour-du-jeu-de-blackjack"></a> Implémentation des simulations autour du jeu de Blackjack</h2>
+<p>Maintenant que l'implémentation de l'interface graphique du jeu de Blackjack est fonctionnelle, il faut implémenter le code nécessaire aux simulations pour obtenir des statistiques autour du jeu de Blackjack.
+Pour rappel, d'après les règles du jeu, le dealer pioche tant qu'il n'a pas 16 points mais s'arrête quand il a 17 points ou plus. Sur cette base, il est connu qu'il existe une stratégie nommée &quot;stratégie de base&quot;. Cette stratégie se présente sous forme de tableau, qui indique quelle action doit réaliser le joueur en fonction de sa main et de la première carte du dealer.</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Dang-Vu-Duc/pok/temps-1/Image8.png" alt="Stratégie de base">
+<em>Source: <a href="https://www.guide-blackjack.com/strategie-base-las-vegas.html">Guide-Blackjack.com</a></em></p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100 dark:border-amber-800 dark:bg-amber-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-amber-800 dark:stroke-amber-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Note</b></p>
+</div><div class="pl-8 mr-8">
+<p>On remarque que cette stratégie de base se présente sous forme de trois parties: un tableau dans le cas où le joueur a un As, un autre où il a un double et un dernier dans les autres cas. Ceci est dû au fait que le comptage est différent dans le cas d'un As, et que le joueur peut séparer ses cartes dans le cas d'un double.</p>
+</div>
+</div>
+<p>Nous allons donc créer une classe <strong>Blackjack_simulation</strong> qui va permettre de simuler cette stratégie et d'en estimer son efficacité. Nous allons expliciter ses méthodes une par une.</p>
+<h3 id="l'initialisation-de-la-classe-blackjack_simulation" tabindex="-1"><a class="header-anchor" href="#l'initialisation-de-la-classe-blackjack_simulation"></a> L'initialisation de la classe <strong>Blackjack_simulation</strong></h3>
+<p>Cette classe hérite de la classe <strong>Blackjack_methods</strong>, présentée précédemment, afin d'hériter des méthodes pour créer des nouveaux decks et pour compter les points d'une main. L'initialisation a pour but de créer les 3 parties du tableau de la stratégie de base, nommées <em>strat1</em> pour le cas de base, <em>strat2</em> pour le cas du double et <em>strat3</em> pour le cas de l'As.</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Cliquer pour voir l'initialisation de la classe <em>Blackjack_simulation</em></p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-python line-numbers"><code>
+
+def __init__(self):
+    super().__init__()
+    #0: stay
+    #1: hit
+    #2: double
+    #3: split
+    self.true_count = 0
+    self.running_count = 0
+    self.strat1 = [[0 for j in range(10)] for i in range(13)]
+    for i in range(4):
+        for j in range(10):
+            self.strat1[i][j] = 1
+    for j in range(5,10):
+        self.strat1[4][j] = 1
+    for i in range(7,11):
+        for j in range(5,10):
+            self.strat1[i][j] = 1
+    self.strat1[4][0] = 1
+    self.strat1[5][8] = 1
+    self.strat1[5][9] = 1
+    self.strat1[7][0] = 1
+    self.strat1[7][1] = 1
+    for j in range(1,5):
+        self.strat1[4][j] = 2
+    for j in range(8):
+        self.strat1[5][j] = 2
+    for j in range(10):
+        self.strat1[6][j] = 2
+    self.strat2 = [[3 for j in range(10)] for i in range(10)]
+    for i in range(0,3):
+        for j in range(6,10):
+            self.strat2[i][j] = 1
+    for j in range(3):
+        self.strat2[2][j] = 1
+    self.strat2[2][5] = 1
+    for i in range(4,6):
+        for j in range(6,10):
+            self.strat2[i][j] = 1
+    self.strat2[4][5] = 1
+    self.strat2[3][8] = 1
+    self.strat2[3][9] = 1
+    for j in range(10):
+        self.strat2[8][j] = 0
+    self.strat2[7][5] = 0
+    self.strat2[7][8] = 0
+    self.strat2[7][9] = 0
+    for j in range(8):
+        self.strat2[3][j] = 2
+    self.strat3 = [[2 for j in range(10)] for i in range(9)]
+    for i in range(5):
+        for j in range(5,10):
+            self.strat3[i][j] = 1
+    for j in range(7,10):
+        self.strat3[5][j] = 1
+    for i in range(6,9):
+        for j in range(10):
+            self.strat3[i][j] = 0
+    self.strat3[5][5] = 0
+    self.strat3[5][6] = 0
+    for i in range(4):
+        for j in range(2):
+            self.strat3[i][j] = 1
+    self.strat3[4][0] = 1
+    self.strat3[0][2] = 1
+    self.strat3[1][2] = 1
+
+
+</code></pre></div>
+</details>
+</div>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100 dark:border-amber-800 dark:bg-amber-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-amber-800 dark:stroke-amber-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Note</b></p>
+</div><div class="pl-8 mr-8">
+<p>Dans ces tableaux, la valeur 0 indique qu'il faut rester, 1 indique qu'il faut tirer, 2 indique qu'il faut doubler et 3 indique qu'il faut séparer.</p>
+</div>
+</div>
+<h3 id="la-m%C3%A9thode-play_casino" tabindex="-1"><a class="header-anchor" href="#la-m%C3%A9thode-play_casino"></a> La méthode <em>play_casino</em></h3>
+<p>Cette méthode prend en argument une main (c'est-à-dire une liste d'objet de la classe <strong>Card</strong>) et la modifie pour simuler le fait que le dealer joue. En d'autres termes, cette méthode va ajouter des cartes jusqu'à ce que le compte de la main atteigne ou dépasse 17.</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Cliquer pour voir la méthode <em>play_casino</em></p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-python line-numbers"><code>
+
+def play_casino(self,hand):
+        while self.sum_hand(hand) <= 16:
+            card = self.draw()
+            self.count(card)
+            hand.append(card)
+
+
+</code></pre></div>
+</details>
+</div>
+<h3 id="la-m%C3%A9thode-simulation" tabindex="-1"><a class="header-anchor" href="#la-m%C3%A9thode-simulation"></a> La méthode <em>simulation</em></h3>
+<p>Cette méthode va permettre de simuler la stratégie de base face au dealer pendant n parties (n étant spécifié en argument). Elle va permettre d'afficher plusieurs graphiques:</p>
+<ul>
+<li>Un graphique en barres affichant le taux de réussite face à chaque première carte possible du dealer, ainsi que l'espérance de gain du joueur,</li>
+<li>Des graphiques en couleur indiquant les taux de réussite du joueur de chaque main possibles et face à chaque première carte possibles du dealer. Il y aura 3 de ces graphiques, puisqu'il existe 3 tableaux de stratégies possibles.</li>
+</ul>
+<p>L'implémentation de ces simulations est assez longue, mais assez répétitive. Avant de jouer les mains, on initialise le gain du joueur à 0 et on crée des listes qui contiendront les taux de réussite du joueur en fonction de sa main. Voici les étapes que la méthode suit:</p>
+<ul>
+<li>Piocher 4 cartes: deux cartes pour le joueur et deux cartes pour le dealer. Le joueur ne voit que la première carte du dealer.</li>
+<li>Vérifier le cas du Blackjack (un As et une carte de valeur 10):
+<ul>
+<li>Si le joueur a un Blackjack et pas le dealer, ajouter à son gain 1.5,</li>
+<li>Si le dealer a Blackjack et pas le joueur, enlever à son gain 1,</li>
+<li>Si les deux ont un Blackjack, ne pas toucher au gain du joueur.</li>
+</ul>
+</li>
+<li>Vérifier le cas où les deux cartes sont égales. Dans ce cas, on se réfère au tableau <em>strat2</em> en utilisant la première carte du dealer et le compte de la main du joueur. Ces éléments vont servir d'indices pour récupérer la valeur dans le tableau de la stratégie de base, qui indiquera l'action à faire. Ensuite, on utilise la méthode <em>play_casino</em> pour faire jouer le dealer, on vérifie qui gagne et on actualise le gain du joueur en conséquence.</li>
+<li>Vérifier le cas où le joueur a un As. On se réfère au tableau <em>strat3</em> et on fait effectue les actions en conséquence. On fait ensuite jouer le dealer et on vérifie qui gagne.</li>
+<li>Vérifier le cas normal (sans As ni doubles). On se réfère au tableau <em>strat1</em> et on fait le même processus.</li>
+</ul>
+<p>On effectue cet algorithme n fois. On remarque que cet algorithme est répétitif, et cela se voit dans l'implémentation, qui est assez longue.</p>
+<p>Après la simulation de ces n parties, il n'y a plus qu'à afficher les résultats sous forme de graphiques en couleur et d'un graphique en barre (comme explicité précédemment), grâce à la bibliothèque matplotlib. On peut choisir d'afficher seulement un graphique, ou bien les 4 en même temps.</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Cliquer pour voir la méthode <em>simulation</em></p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-python line-numbers"><code>
+
+def simulation(self,n,count,graph_type):
+    gain = 0
+    winrate_player = 0
+    bust_player = 0
+    bust_casino = 0
+    list_card_winrate = [0 for i in range(10)]
+    list_card_played = [0 for i in range(10)]
+    played = False
+    number_count = 0
+    hands_played_normal = [[0 for i in range(15)] for k in range(10)]
+    winrates_normal = [[0 for i in range(15)] for k in range(10)]
+    hands_played_split = [[0 for i in range(10)] for k in range(10)]
+    winrates_split = [[0 for i in range(10)] for k in range(10)]
+    hands_played_ace = [[0 for i in range(9)] for k in range(10)]
+    winrates_ace = [[0 for i in range(9)] for k in range(10)]
+    for game in range(n):
+        played = False
+        factor = 1
+        if len(self.deck) < 52:
+            self.newdeck()
+            self.true_count, self.running_count = 0, 0
+        if count and self.true_count >= 1:
+            factor *= (self.true_count)
+            number_count += 1
+        # if self.true_count >= count_threshold and count:
+        #     factor *= (count_factor)
+        #     number_count += 1
+        card1 = self.draw()
+        card3 = self.draw()
+        card2 = self.draw()
+        card4 = self.draw()
+        self.count(card1)
+        self.count(card2)
+        self.count(card3)
+        self.count(card4)
+        if card3.value == 1:
+            index3 = 9
+        else:
+            index3 = card3.value - 2
+        hand_player = [card1, card2]
+        hand_casino = [card3, card4]
+        list_card_played[index3] += 1
+        played_normal = False
+        played_split = False
+        played_ace = False
+        if card1.value != 1 and card2.value != 1 and card1.value != card2.value:
+            index_player = card1.value + card2.value - 5
+            if card3.value == 1:
+                index_casino = 0
+            else:
+                index_casino = 11 - card3.value
+            hands_played_normal[index_casino][index_player] += 1
+            played_normal = True
+        if card1.value == card2.value:
+            if card1.value == 1:
+                index_player = 9
+            else:
+                index_player = card1.value - 2
+            if card3.value == 1:
+                index_casino = 0
+            else:
+                index_casino = 11 - card3.value
+            hands_played_split[index_casino][index_player] += 1
+            played_split = True
+        if ((card1.value == 1) ^ (card2.value == 1)):
+            no_ace = max(card1.value,card2.value)
+            if card3.value == 1:
+                index_casino = 0
+            else:
+                index_casino = 11 - card3.value
+            index_player = no_ace - 2
+            hands_played_ace[index_casino][index_player] += 1
+            played_ace = True
+        #Cas du Blackjack
+        if ((card1.value == 1 and card2.value == 10) or (card1.value == 10 and card2.value == 1)) and not ((card3.value == 1 and card4.value == 10) or (card3.value == 10 and card4.value == 1)):
+            played = True
+            gain += factor * 1.5
+            winrate_player += 1
+            list_card_winrate[index3] += 1
+            winrates_ace[index_casino][index_player] += 1
+        if ((card3.value == 1 and card4.value == 10) or (card3.value == 10 and card4.value == 1)) and not ((card1.value == 1 and card2.value == 10) or (card1.value == 10 and card2.value == 1)):
+            played = True
+            gain -= factor * 1
+        if ((card3.value == 1 and card4.value == 10) or (card3.value == 10 and card4.value == 1)) and ((card1.value == 1 and card2.value == 10) or (card1.value == 10 and card2.value == 1)):
+            played = True
+            winrates_ace[index_casino][index_player] += 1/2
+            gain += 0
+            winrate_player += 1/2
+            list_card_winrate[index3] += 1/2
+        #Cas du split
+        if card1.value == card2.value:
+            if card1.value == 1:
+                index1 = 9
+            else:
+                index1 = card1.value - 2
+
+            if card3.value == 1:
+                index2 = 9
+            else:
+                index2 = card3.value - 2
+            if self.strat2[index1][index2] == 1:
+                card = self.draw()
+                hand_player.append(card)
+                self.count(card)
+            elif self.strat2[index1][index2] == 2 and len(hand_player) == 2:
+                card = self.draw()
+                hand_player.append(card)
+                self.count(card)
+                factor *= 2
+                played = True
+                if self.sum_hand(hand_player) <= 21:
+                    self.play_casino(hand_casino)
+                    if self.sum_hand(hand_casino) > 21:
+                        bust_casino += 1
+                    if self.sum_hand(hand_casino) < self.sum_hand(hand_player) or self.sum_hand(hand_casino)>21:
+                        gain += factor*1
+                        winrate_player += 1
+                        list_card_winrate[index3] += 1
+                        if played_split:
+                            winrates_split[index_casino][index_player] += 1
+                    if self.sum_hand(hand_casino) > self.sum_hand(hand_player) and self.sum_hand(hand_casino)<=21:
+                        gain -= factor*1
+                else:
+                    bust_player += 1
+                    gain -= factor*1
+            elif self.strat2[index1][index2] == 3:
+                played = True
+                card11 = self.draw()
+                self.count(card11)
+                card22 = self.draw()
+                self.count(card22)
+                hands = []
+                hand_player1 = [card1,card11]
+                hand_player2 = [card2,card22]
+                hands = [hand_player1,hand_player2]
+                for k in range(2):
+                    card1 = hands[k][0]
+                    card2 = hands[k][1]
+                    if (card1.value == 1 and card2.value == 10) or (card2.value == 1 and card1.value == 10):
+                        self.play_casino(hand_casino)
+                        if self.sum_hand(hand_casino) != 21 or len(hand_casino) != 2:
+                            gain += factor*1.5*0.5
+                            winrate_player += 1/2
+                            list_card_winrate[index3] += 1/2
+                            if played_split:
+                                winrates_split[index_casino][index_player] += 1/2
+                        else:
+                            gain += 0
+                            if played_split:
+                                winrates_split[index_casino][index_player] += 1/4
+                    else:
+                        index1 = self.sum_hand(hands[k]) - 5
+                        if index1 < 0:
+                            index1 = 0
+                        if index1 > 12:
+                            index1 = 12
+                        if card3.value == 1:
+                            index2 = 9
+                        if card3.value != 1:
+                            index2 = card3.value - 2
+                        while (self.strat1[index1][index2] == 1 or self.strat1[index1][index2] == 2) and self.sum_hand(hands[k]) <= 21:
+                            if self.strat1[index1][index2] == 2 and len(hands[k]) == 2:
+                                card = self.draw()
+                                hands[k].append(card)
+                                self.count(card)
+                                factor *= 2
+                                break
+                            card = self.draw()
+                            self.count(card)
+                            hands[k].append(card)
+                            index1 = self.sum_hand(hands[k]) - 5
+                            if index1 < 0:
+                                index1 = 0
+                            if index1 > 12:
+                                index1 = 12
+                        if self.sum_hand(hands[k]) <= 21:
+                            self.play_casino(hand_casino)
+                            if self.sum_hand(hand_casino) > 21:
+                                bust_casino += 1
+                            if self.sum_hand(hand_casino) < self.sum_hand(hands[k]) or self.sum_hand(hand_casino)>21:
+                                gain += factor*1*0.5
+                                winrate_player += 1/2
+                                list_card_winrate[index3] += 1/2
+                                if played_split:
+                                    winrates_split[index_casino][index_player] += 1/2
+                            if self.sum_hand(hand_casino) > self.sum_hand(hands[k]) and self.sum_hand(hand_casino)<=21:
+                                gain -= factor*1*0.5
+                            if self.sum_hand(hand_casino) == self.sum_hand(hands[k]):
+                                winrates_split[index_casino][index_player] += 1/4
+                        else:
+                            bust_player += 1
+                            gain -= factor*1*0.5
+        #Cas de l'As
+        if ((card1.value == 1) ^ (card2.value == 1)) and not played:
+            played = True
+            index1 = max(card1.value,card2.value) - 2
+            if card3.value == 1:
+                index2 = 9
+            if card3.value != 1:
+                index2 = card3.value - 2
+            while (self.strat1[index1][index2] == 1 or self.strat1[index1][index2] == 2) and self.sum_hand(hand_player) <= 21:
+                if self.strat1[index1][index2] == 2 and len(hand_player) == 2:
+                    card = self.draw()
+                    hand_player.append(card)
+                    self.count(card)
+                    factor *= 2
+                    break
+                card = self.draw()
+                self.count(card)
+                hand_player.append(card)
+                index1 = self.sum_hand(hand_player) - 5
+                if index1 < 0:
+                    index1 = 0
+                if index1 > 12:
+                    index1 = 12
+            if self.sum_hand(hand_player) <= 21:
+                self.play_casino(hand_casino)
+                if self.sum_hand(hand_casino) > 21:
+                    bust_casino += 1
+                if self.sum_hand(hand_casino) < self.sum_hand(hand_player) or self.sum_hand(hand_casino)>21:
+                    gain += factor*1
+                    winrate_player += 1
+                    list_card_winrate[index3] += 1
+                    if played_ace:
+                        winrates_ace[index_casino][index_player] += 1
+                if self.sum_hand(hand_casino) > self.sum_hand(hand_player) and self.sum_hand(hand_casino)<=21:
+                    gain -= factor*1
+            else:
+                bust_player += 1
+                gain -= factor*1
+        #Cas normal
+        elif not played:
+            index1 = self.sum_hand(hand_player) - 5
+            if index1 < 0:
+                index1 = 0
+            if index1 > 12:
+                index1 = 12
+            if card3.value == 1:
+                index2 = 9
+            if card3.value != 1:
+                index2 = card3.value - 2
+            while (self.strat1[index1][index2] == 1 or self.strat1[index1][index2] == 2) and self.sum_hand(hand_player) <= 21:
+                if self.strat1[index1][index2] == 2 and len(hand_player) == 2:
+                    card = self.draw()
+                    hand_player.append(card)
+                    self.count(card)
+                    factor *= 2
+                    break
+                card = self.draw()
+                self.count(card)
+                hand_player.append(card)
+                index1 = self.sum_hand(hand_player) - 5
+                if index1 < 0:
+                    index1 = 0
+                if index1 > 12:
+                    index1 = 12
+            if self.sum_hand(hand_player) <= 21:
+                self.play_casino(hand_casino)
+                if self.sum_hand(hand_casino) > 21:
+                    bust_casino += 1
+                if self.sum_hand(hand_casino) < self.sum_hand(hand_player) or self.sum_hand(hand_casino)>21:
+                    gain += factor*1
+                    winrate_player += 1
+                    list_card_winrate[index3] += 1
+                    if played_normal:
+                        winrates_normal[index_casino][index_player] += 1
+                    if played_split:
+                        winrates_split[index_casino][index_player] += 1
+                if self.sum_hand(hand_casino) == self.sum_hand(hand_player):
+                    if played_normal:
+                        winrates_normal[index_casino][index_player] += 1/2
+                    if played_split:
+                        winrates_split[index_casino][index_player] += 1/2
+                if self.sum_hand(hand_casino) > self.sum_hand(hand_player) and self.sum_hand(hand_casino)<=21:
+                    gain -= factor*1
+            else:
+                bust_player += 1
+                gain -= factor*1
+    for k in range(10):
+        list_card_winrate[k] = round(list_card_winrate[k] * 100 /list_card_played[k],2)
+    if graph_type == 1 or graph_type == 5:
+        x = ('2','3','4','5','6','7','8','9','10','A')
+        X = np.arange(len(x))
+        ax = plt.axes()
+        ax.set_xticks(X, x)
+        for i in range(len(X)):
+            plt.text(i,list_card_winrate[i] + 1,f"{list_card_winrate[i]}%", ha = "center")
+        plt.text(8, 55, f"Espérance de gain: {round(gain*100/n, 2)}%", ha = "center")
+        plt.bar(X, list_card_winrate)
+        ax.set_xlabel("Première carte du dealer")
+        ax.set_ylabel("Taux de réussite (en %)")
+        plt.title(f"Taux de réussite du joueur face à chaque première carte possible du dealer. Taux de réussite moyen: {round(winrate_player * 100 /n, 2)}%")
+
+    if graph_type == 2 or graph_type == 5:
+        for i in range(10):
+            for j in range(15):
+                winrates_normal[i][j] = round((winrates_normal[i][j]/hands_played_normal[i][j])*100,1)
+        size_x = 15
+        size_y = 10
+        x_start = 0
+        x_end = 15
+        y_start = 0
+        y_end = 10
+        extent = [x_start,x_end, y_end, y_start]
+        fig = plt.figure(figsize=(8,8))
+        ax = fig.add_subplot(111)
+        axes = plt.gca()
+        axes.set_ylabel('Première carte du dealer')
+        axes.yaxis.set_ticks(np.arange(0.5,10.5))
+        axes.yaxis.set_ticklabels(['A','10','9','8','7','6','5','4','3','2'], rotation = 0, color = 'red',fontsize = 12)
+        axes.set_xlabel('Main du joueur')
+        axes.xaxis.set_ticks(np.arange(0.5,15.5))
+        axes.xaxis.set_ticklabels([str(i) for i in range(5,20)], rotation = 0, color = 'green', verticalalignment = 'center',fontsize = 12)
+        im = ax.imshow(winrates_normal,extent = extent, cmap="RdYlGn",vmin = 0, vmax = 100)
+        plt.title("Taux de réussite de chaque main possible (sans As ni double)", pad = 22)
+
+        jump_x = (x_end - x_start) / (2.0 * size_x)
+        jump_y = (y_end - y_start) / (2.0 * size_y)
+        x_positions = np.linspace(start=x_start, stop=x_end, num=size_x, endpoint=False)
+        y_positions = np.linspace(start=y_start, stop=y_end, num=size_y, endpoint=False)
+
+        for y_index, y in enumerate(y_positions):
+            for x_index, x in enumerate(x_positions):
+                label = winrates_normal[y_index][x_index]
+                text_x = x + jump_x
+                text_y = y + jump_y
+                ax.text(text_x, text_y, label, color='black', ha='center', va='center')
+        for dealerhand in range(10):
+            S = 0
+            S2 = 0
+            for winrate in range(15):
+                S += winrates_normal[dealerhand][winrate] * hands_played_normal[dealerhand][winrate]
+                S2 += hands_played_normal[dealerhand][winrate]
+            S = S/S2
+            ax.text(15 + jump_x, dealerhand + jump_y, round(S,1), color='black', ha='center', va='center')
+        for winrate in range(15):
+            S = 0
+            S2 = 0
+            for dealerhand in range(10):
+                S += winrates_normal[dealerhand][winrate] * hands_played_normal[dealerhand][winrate]
+                S2 += hands_played_normal[dealerhand][winrate]
+            S = S/S2
+            ax.text(winrate + jump_x, -jump_y/2, round(S,1), color='black', ha='center', va='center')
+        fig.colorbar(im)
+
+    if graph_type == 3 or graph_type == 5:
+        for i in range(10):
+            for j in range(10):
+                winrates_split[i][j] = round((winrates_split[i][j]/hands_played_split[i][j])*100,1)
+        size_x = 10
+        size_y = 10
+        x_start = 0
+        x_end = 10
+        y_start = 0
+        y_end = 10
+        extent = [x_start,x_end, y_end, y_start]
+        fig = plt.figure(figsize=(8,8))
+        ax = fig.add_subplot(111)
+        axes = plt.gca()
+        axes.set_ylabel('Première carte du dealer')
+        axes.yaxis.set_ticks(np.arange(0.5,10.5))
+        axes.yaxis.set_ticklabels(['A','10','9','8','7','6','5','4','3','2'], rotation = 0, color = 'red',fontsize = 12)
+        axes.set_xlabel('Main du joueur')
+        axes.xaxis.set_ticks(np.arange(0.5,10.5))
+        axes.xaxis.set_ticklabels([f"{i}-{i}" for i in range(2,11)] + ["A-A"], rotation = 0, color = 'green', verticalalignment = 'center',fontsize = 12)
+        im = ax.imshow(winrates_split,extent = extent, cmap="RdYlGn",vmin = 0, vmax = 100)
+        plt.title("Taux de réussite de chaque main possible (seulement les doubles)", pad = 22)
+
+        jump_x = (x_end - x_start) / (2.0 * size_x)
+        jump_y = (y_end - y_start) / (2.0 * size_y)
+        x_positions = np.linspace(start=x_start, stop=x_end, num=size_x, endpoint=False)
+        y_positions = np.linspace(start=y_start, stop=y_end, num=size_y, endpoint=False)
+
+        for y_index, y in enumerate(y_positions):
+            for x_index, x in enumerate(x_positions):
+                label = winrates_split[y_index][x_index]
+                text_x = x + jump_x
+                text_y = y + jump_y
+                ax.text(text_x, text_y, label, color='black', ha='center', va='center')
+        for dealerhand in range(10):
+            S = 0
+            S2 = 0
+            for winrate in range(10):
+                S += winrates_split[dealerhand][winrate] * hands_played_split[dealerhand][winrate]
+                S2 += hands_played_split[dealerhand][winrate]
+            S = S/S2
+            ax.text(10 + jump_x, dealerhand + jump_y, round(S,1), color='black', ha='center', va='center')
+        for winrate in range(10):
+            S = 0
+            S2 = 0
+            for dealerhand in range(10):
+                S += winrates_split[dealerhand][winrate] * hands_played_split[dealerhand][winrate]
+                S2 += hands_played_split[dealerhand][winrate]
+            S = S/S2
+            ax.text(winrate + jump_x, -jump_y/2, round(S,1), color='black', ha='center', va='center')
+        fig.colorbar(im)
+
+    if graph_type == 4 or graph_type == 5:
+        for i in range(10):
+            for j in range(9):
+                winrates_ace[i][j] = round((winrates_ace[i][j]/hands_played_ace[i][j])*100,1)
+        size_x = 9
+        size_y = 10
+        x_start = 0
+        x_end = 9
+        y_start = 0
+        y_end = 10
+        extent = [x_start,x_end, y_end, y_start]
+        fig = plt.figure(figsize=(8,8))
+        ax = fig.add_subplot(111)
+        axes = plt.gca()
+        axes.set_ylabel('Première carte du dealer')
+        axes.yaxis.set_ticks(np.arange(0.5,10.5))
+        axes.yaxis.set_ticklabels(['A','10','9','8','7','6','5','4','3','2'], rotation = 0, color = 'red',fontsize = 12)
+        axes.set_xlabel('Main du joueur')
+        axes.xaxis.set_ticks(np.arange(0.5,9.5))
+        axes.xaxis.set_ticklabels(['A-2','A-3','A-4','A-5','A-6','A-7','A-8','A-9','A-10'], rotation = 0, color = 'green', verticalalignment = 'center',fontsize = 12)
+        im = ax.imshow(winrates_ace,extent = extent, cmap="RdYlGn",vmin = 0, vmax = 100)
+        plt.title("Taux de réussite de chaque main possible (avec un As dans la main)", pad = 22)
+
+        jump_x = (x_end - x_start) / (2.0 * size_x)
+        jump_y = (y_end - y_start) / (2.0 * size_y)
+        x_positions = np.linspace(start=x_start, stop=x_end, num=size_x, endpoint=False)
+        y_positions = np.linspace(start=y_start, stop=y_end, num=size_y, endpoint=False)
+
+        for y_index, y in enumerate(y_positions):
+            for x_index, x in enumerate(x_positions):
+                label = winrates_ace[y_index][x_index]
+                text_x = x + jump_x
+                text_y = y + jump_y
+                ax.text(text_x, text_y, label, color='black', ha='center', va='center')
+        for dealerhand in range(10):
+            S = 0
+            S2 = 0
+            for winrate in range(9):
+                S += winrates_ace[dealerhand][winrate] * hands_played_ace[dealerhand][winrate]
+                S2 += hands_played_ace[dealerhand][winrate]
+            S = S/S2
+            ax.text(9 + jump_x, dealerhand + jump_y, round(S,1), color='black', ha='center', va='center')
+        for winrate in range(9):
+            S = 0
+            S2 = 0
+            for dealerhand in range(10):
+                S += winrates_ace[dealerhand][winrate] * hands_played_ace[dealerhand][winrate]
+                S2 += hands_played_ace[dealerhand][winrate]
+            S = S/S2
+            ax.text(winrate + jump_x, -jump_y/2, round(S,1), color='black', ha='center', va='center')
+        fig.colorbar(im)
+
+    # print(gain/n,winrate_player/n,bust_player/n,bust_casino/n,number_count/n)
+    if graph_type >= 1:
+        plt.show()
+    return(round(gain*100/n,2))
+
+
+</code></pre></div>
+</details>
+</div>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100 dark:border-amber-800 dark:bg-amber-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-amber-800 dark:stroke-amber-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Note</b></p>
+</div><div class="pl-8 mr-8">
+<p>Il y a beaucoup de détails importants dans ce code et il est très répétitif, c'est pourquoi il est très long. J'ai choisi de ne pas expliquer ces détails, car ils ne sont pas pertinents. Il est plus important de comprendre l'idée générale du code.</p>
+</div>
+</div>
+<h3 id="r%C3%A9sultats-et-analyse-de-la-simulation" tabindex="-1"><a class="header-anchor" href="#r%C3%A9sultats-et-analyse-de-la-simulation"></a> Résultats et analyse de la simulation</h3>
+<p>Voici les (jolis) graphiques que produit cette simulation. Cette simulation a été réalisée sur 10 millions de parties, afin d'avoir un echantillon suffisamment grand pour tendre vers les probabilités réélles. Les valeurs infiquées dans les graphiques en couleur indiquent le taux de réussite du joueur ayant la main indiquée en abscisses face à la première carte du dealer indiquée en ordonnée. Pour le premier graphique en couleur, les valeurs indiquées en abscisses sont les sommes des deux premières cartes du joueur. Par exemple, l'abscisse 10 se réfère à une des mains suivantes: 2-8, 3-7, 4-6 (les mains 5-5 et A-9 ne sont pas dans cette liste car elles sont prises en compte dans les tables des doubles et des As).</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Dang-Vu-Duc/pok/temps-1/Image9.png" alt="Figure1"></p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Dang-Vu-Duc/pok/temps-1/Image10.png" alt="Figure2"></p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Dang-Vu-Duc/pok/temps-1/Image11.png" alt="Figure3"></p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Dang-Vu-Duc/pok/temps-1/Image12.png" alt="Figure4"></p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100 dark:border-amber-800 dark:bg-amber-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-amber-800 dark:stroke-amber-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Note</b></p>
+</div><div class="pl-8 mr-8">
+<p>Sur la droite des graphiques en couleur, il est indiqué les moyennes (pondérées par le nombre de mains jouées) des taux de réussites face à la première carte du dealer correspondante. En haut de ces graphiques, on a les moyennes des taux de réussites des mains du joueur correspondante.</p>
+</div>
+</div>
+<p>Le taux de réussite moyen du joueur est de 43,22% et l'espérance de gain est de -<strong>1,75%</strong>. Ce chiffre est appelé l'avantage de la maison. Cela veut dire que pour une mise de 100 euros, le joueur perd en moyenne 1,75 euros. Pour se donner une idée, voici quelques avantages de la maison sur les jeux de roulette (jeux également populaires au casino):</p>
+<ul>
+<li>Roulette Américaine: <strong>5,4%</strong></li>
+<li>Roulette Européenne: <strong>2,76%</strong></li>
+<li>Roulette Française: <strong>1,35%</strong></li>
+</ul>
+<p><em>Source: <a href="https://www.jeuxroulette.org/articles/41-lavantage-casino-sur-jeu-roulette.html">JeuxRoulette.org</a></em></p>
+<p>Ainsi, le Blackjack est un jeu intéréssant à jouer car il a un avantage de la maison relativement faible comparé à d'autres jeux de casino. A noter que l'avantage de la maison pour les machines à sous se situe entre 10% et 15%, ce qui est très élevé comparé au Blackjack.</p>
+<p>D'après le graphique en barres, on observe que le joueur a plus d'une chance sur deux de gagner quand le dealer a un 3, 4, 5 ou 6, avec un pic à 55.23% lorsqu'il a un 6. Cette carte est la pire carte à avoir pour le dealer. Ensuite, pour les cartes supérieures ou égales à 7, les chances de gagner du joueur chutent, jusqu'à atteindre moins de 35% face à un 10 et moins de 28% face à un As.</p>
+<p>D'après les graphiques en couleurs, on voit clairement que les meilleures mains à avoir sont les mains qui ont une valeur de 10, 11, 18 et 19 avec des taux de réussite qui excèdent 50%. Les mains qui ont une valeur de 8 ou 9 ont également des taux de réussite assez bons. Cependant, les mains avec une valeur comprise entre 12 et 17, ou inférieure à 8 ont des taux de réussite inférieurs à 40%, descendant même à moins de 30% pour les mains à 15 ou 16.</p>
+<p>Pour les mains en double, la main 5-5 a un bon taux de réussite, mais la meilleure reste la main 10-10 qui a un excellent taux de réussite de 79,1%. La main A-A se défend également très bien, avec un taux de réussite à 62,9%. Le reste des mains en double ont des taux de réussite en dessous de 50%.</p>
+<p>Enfin, pour les mains contenant un As, la meilleure main est évidemment A-10, qui correpond à un &quot;Blackjack&quot; et qui gagne à tout les coups, sauf si le dealer en a un aussi. Sinon, la main A-9 a un bon taux de réussite, et le reste des mains avec un As ont un taux de réussite entre 40% et 50%.</p>
+<h3 id="le-comptage-des-cartes%3A-la-m%C3%A9thode-count" tabindex="-1"><a class="header-anchor" href="#le-comptage-des-cartes%3A-la-m%C3%A9thode-count"></a> Le comptage des cartes: la méthode <em>count</em></h3>
+<p>Il existe une méthode pour améliorer son espérance au Blackjack qui s'appelle le comptage des cartes. Une des méthodes s'appelle le <em>système Hi-Lo</em>, et permet d'estimer le nombre de cartes hautes restantes dans le sabot. En effet, plus il y a de cartes hautes dans le sabot, plus le joueur aura une main de départ élevée et plus le dealer aura de chance de bust. Concrètement, le joueur compte les cartes avec un &quot;running count&quot;. Il ajoute à ce running count 1 si une carte entre 2 et 6 sort, et enlève 1 a ce compte quand une carte d'une valeur de 10 ou un As sort. Ce compte ne change pas dans le cas où un 7, 8 ou 9 sort. Le joueur doit ensuite diviser ce running count part le nombre de decks de 52 cartes qu'il reste dans le sabot, pour obtenir le &quot;true_count&quot;. Lorsque ce true count dépasse une certaine valeur, le joueur va miser plus car il aura le sabot contient à ce moment là un grand nombre de cartes hautes comparé aux cartes basses.</p>
+<p>On implémente alors une méthode <em>count</em>, qui prend en argument une carte et modifie les comptes suivant sa valeur. Cette méthode est appelée à chaque fois qu'une carte est piochée.</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Cliquer pour voir la méthode <em>count</em></p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-python line-numbers"><code>
+
+def count(self,card):
+    if card.value >= 2 and card.value <= 6:
+        self.running_count += 1
+    if card.value == 10 or card.value == 1:
+        self.running_count -= 1
+    nb_deck = len(self.deck)/52
+    self.true_count = self.running_count/nb_deck
+
+
+</code></pre></div>
+</details>
+</div>
+<p>Il faut maintenant déterminer à partir de quelle valeur du true count le joueur commencer à changer sa mise, et à quel point il change sa mise. Plusieurs valeurs sont possibles, j'ai choisi pour le test de mettre la valeur seuil à 3 et le facteur multiplicatif de la mise égal au true count plus quatre. Ce facteur est proportionnel au compte; en effet plus le compte est elevé, plus il y a de chances de gagner, et donc plus il faut miser.
+Ainsi, avant de jouer, le programme compare le true count au seuil fixé et si ce seuil est dépassé, la mise est plus grande. L'éxecution de cet algorithme sur 10 millions de parties   avec le comptage des cartes activé donne ce graphique en barre:</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Dang-Vu-Duc/pok/temps-1/Image13.png" alt="Image count"></p>
+<p>On remarque que le taux de réussite moyen et les taux de réussite face à chaque main du dealer ne changent pas comparé au graphique obtenu quand le joueur ne compte pas. Ceci est logique, puisque l'on change seulement la mise. Cependant, on remarque que l'avantage au casino n'est plus que de <strong>0,75%!</strong> C'est plus de deux fois moins que précédemment. Le comptage des cartes est donc bien efficace, mais ne permet cependant pas d'avoir une espérance positive: le casino sera donc toujours gagnant!</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100 dark:border-amber-800 dark:bg-amber-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-amber-800 dark:stroke-amber-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Note</b></p>
+</div><div class="pl-8 mr-8">
+<p>Notons qu'il est possible de changer la valeur seuil et le facteur multiplicatif. Les résultats seront légèrement différents mais ne permettront jamais d'avoir l'avantage sur le casino. De plus, dans la vraie vie, il est difficile de calculer exactement le true count, notamment parce qu'il est difficile d'estimer le nombre de decks restants dans le sabot. Certains casinos cachent également le sabot, ce qui empêche les joueurs de compter les cartes.</p>
+</div>
+</div>
+<h2 id="conclusion" tabindex="-1"><a class="header-anchor" href="#conclusion"></a> Conclusion</h2>
+<p>Ce POK fut très intéressant pour moi car j'ai pu m'entraîner sur la programmation d'interface graphique. Je suis conscient que Python n'est pas le langage le plus répandu pour coder des applications ou des jeux, mais j'ai néanmoins au moins pu comprendre la logique derrière l'implémentation de simples jeux. La deuxième partie du POK fut égalemnt très intéressante: j'ai pu consolider mes acquis sur la programmation objet ainsi que sur ma façon d'organiser mes codes. Sur le plan de la gestion de projet, j'ai pu me rendre compte que j'ai surestimé mes capacités pour le premier sprint (je n'ai pas pu finir l'interface de mise comme je l'avais prévu), et j'ai donc dû mettre les bouchées doubles lors de la deuxième partie du premier temps. Je me suis donc rendu compte de l'importance de connaître mes capacités et d'estimer la compléxité d'une tâche.</p>
+<p>Enfin, je suis très satisfait des résultats expérimentaux sur le jeu du Blackjack que j'ai obtenu. Etant un grand fan des jeux de casino, j'ai toujours voulu savoir les statistiques qui se cachent derrière ce jeu: voilà qui est chose faite!</p>
+
+
+
+</article>
+
+        </main>
+
+        <footer class="min-h-[50px] border-t-2 mt-4 border-gray-200 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-center items-center">
+                    <p class="text-center">
+                        ©2025 <b><span style="font-family: Consolas, sans-serif;">Do-<span style="color: #4a86e8">It</span></span></b> - Développement, Management et Gestion de projets en IT
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- MathJax import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">
+            window.MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']], // Delimiters for inline math
+                    displayMath: [['$$', '$$'], ['\\[', '\\]']] // Delimiters for block math
+                },
+                svg: {
+                    fontCache: 'global' // Use global font cache for SVG output
+                }
+            };
+            document.addEventListener('DOMContentLoaded', () => {
+                MathJax.typeset(); // Ensures MathJax processes the content after the page loads
+            });
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">
+            Prism.plugins.NormalizeWhitespace.setDefaults({
+                'remove-trailing': true,
+                'remove-indent': true,
+                'left-trim': true,
+                'right-trim': true,
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script>
+    </body>
+</html>

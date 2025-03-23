@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="robots" content="index, follow">
+
+        <link rel="canonical" href="https://do-it.aioli.ec-m.fr/promos/2022-2023/Laeuffer-Savinien/mon/temps-2.1/">
+
+        
+        
+
+        <meta name="description" content="Do-It, cours et travaux des élèves de l&#39;école Centrale Méditerranée">
+        <meta property="og:description" content="Do-It, cours et travaux des élèves de l&#39;école Centrale Méditerranée">
+        <meta name="twitter:description" content="Do-It, cours et travaux des élèves de l&#39;école Centrale Méditerranée">
+
+        
+            <meta name="author" content="Savinien Laeuffer">
+        
+        <meta name="keywords" content="do-it, centrale, centrale méditerranée, ecm, MON">
+
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png">
+        <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png">
+
+        <link href="/assets/stylesheets/main.css" rel="stylesheet">
+
+        <meta property="og:title" content="Developpement Mobile avec Flutter">
+
+        <meta property="og:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta property="og:url" content="https://do-it.aioli.ec-m.fr/promos/2022-2023/Laeuffer-Savinien/mon/temps-2.1/">
+        <meta property="og:type" content="website">
+
+        <meta name="twitter:card" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:title" content="Developpement Mobile avec Flutter">
+        <meta name="twitter:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:url" content="https://do-it.aioli.ec-m.fr/promos/2022-2023/Laeuffer-Savinien/mon/temps-2.1/">
+
+        <title>Developpement Mobile avec Flutter</title>
+
+        <!-- Prismjs imports
+                - Prism line numbers
+                - Prism toolbar
+        -->
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet">
+        <link id="prism-theme" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+        <!-- Mermaid import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js "></script>
+
+        <script defer="">
+        // Check if a theme is stored in localStorage. If so, use it, otherwise fallback to the system preference.
+        const storedTheme = localStorage.getItem('theme');
+        if (storedTheme) {
+            document.documentElement.classList.toggle("dark", storedTheme === "dark");
+        } else {
+            // Use system color scheme if there is no stored theme preference.
+            document.documentElement.classList.toggle("dark", window.matchMedia("(prefers-color-scheme: dark)").matches);
+        }
+
+        function loadPrismTheme(isDarkMode) {
+            const newTheme = isDarkMode ? 'prism-okaidia.min.css' : 'prism-solarizedlight.min.css';
+            const newLink = document.createElement('link');
+            newLink.rel = 'stylesheet';
+            newLink.id = 'prism-theme';
+            newLink.href = `https://cdn.jsdelivr.net/npm/prismjs/themes/${newTheme}`;
+
+            newLink.onload = () => {
+                // Reapply highlighting after the new theme loads
+                Prism.highlightAll();
+            };
+
+            const existingLink = document.getElementById('prism-theme');
+            if (existingLink) {
+                document.head.replaceChild(newLink, existingLink);
+            } else {
+                document.head.appendChild(newLink);
+            }
+        }
+
+        function setMermaidTheme(isDarkMode) {
+            const theme = isDarkMode ? 'dark' : 'forest';
+            mermaid.initialize({
+                securityLevel: 'loose',
+                theme,
+                startOnLoad: true,
+            });
+        }
+
+        // Toggle dark and light mode and update localStorage accordingly.
+        function toggleDarkMode() {
+            const dark = document.documentElement.classList.contains("dark");
+            const newTheme = dark ? "light" : "dark";
+            localStorage.setItem('theme', newTheme);
+            document.documentElement.classList.toggle("dark", !dark);
+            loadPrismTheme(!dark);
+            setMermaidTheme(!dark);
+        }
+
+        // On initial load, ensure that Prism and Mermaid are initialized using the current theme.
+        const isDark = document.documentElement.classList.contains("dark");
+        loadPrismTheme(isDark);
+        setMermaidTheme(isDark);
+        </script>
+
+    </head>
+
+    <body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000" class="bg-neutral-50 text-neutral-950 dark:bg-neutral-900 dark:text-neutral-50">
+        <header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white dark:bg-neutral-900 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-between items-center">
+                    <a class="mx-2" href="/">Home</a>
+                    <button class="hidden sm:block text-neutral-950 dark:text-neutral-50 hover:bg-neutral-700 hover:text-neutral-50 hover:dark:bg-neutral-300 hover:dark:text-neutral-950 transition-colors p-2 rounded-full duration-800 ease-in-out" onclick="toggleDarkMode()">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 dark:hidden stroke-current">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <path d="M12 2V4" stroke-linecap="round"></path>
+                            <path d="M12 20V22" stroke-linecap="round"></path>
+                            <path d="M4 12L2 12" stroke-linecap="round"></path>
+                            <path d="M22 12L20 12" stroke-linecap="round"></path>
+                            <path d="M19.7778 4.22266L17.5558 6.25424" stroke-linecap="round"></path>
+                            <path d="M4.22217 4.22266L6.44418 6.25424" stroke-linecap="round"></path>
+                            <path d="M6.44434 17.5557L4.22211 19.7779" stroke-linecap="round"></path>
+                            <path d="M19.7778 19.7773L17.5558 17.5551" stroke-linecap="round"></path>
+                        </svg>
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 stroke-current hidden dark:block">
+                            <path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </button>
+                    <div class="flex items-center gap-4 sm:gap-6 ">
+                        <a class="" href="/cs">CS</a>
+                        <a class="" href="/pok">POK</a>
+                        <a class="" href="/mon">MON</a>
+                        <a class="" href="/projets">Projets</a>
+                        <a class="hidden sm:block" href="/promos">Promos</a>
+                        <a href="/search">
+                            <svg class="h-5 aspect-square stroke-neutral-950 dark:stroke-neutral-300 fill-none stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+                            </svg>
+                        </a>
+                        <a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank">
+                            <svg class="h-5 aspect-square dark:stroke-neutral-300 dark:fill-neutral-300" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body="">
+            
+<article class="relative">
+<h1 class="mb-1">Developpement Mobile avec Flutter</h1>
+<div class="mb-4">
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Tag : </div>
+            <ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags">
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">MON</li>
+                
+
+            </ul>
+
+            
+            <div class="hidden" data-pagefind-meta="Type" aria-hidden="true">
+                
+                    
+                        <span data-pagefind-filter="Type">MON</span>
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Auteur : </div>
+            <ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs">
+                
+                    <li class="bg-blue-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Auteurs">Savinien Laeuffer</li>
+                
+            </ul>
+        </div>
+    
+
+    
+        <div class="absolute top-0 right-0">
+            <span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2 text-neutral-950" data-pagefind-filter="Année">
+                2022-2023
+            </span>
+        </div>
+    
+</div>
+
+
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100 dark:border-purple-800 dark:bg-purple-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-purple-500 dark:stroke-purple-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/promos/2022-2023/Laeuffer-Savinien/">Savinien Laeuffer</a><span class="px-1">/</span><a href="/promos/2022-2023/Laeuffer-Savinien/mon/">MONs de Savinien</a><span class="px-1">/</span><a href="/promos/2022-2023/Laeuffer-Savinien/mon/temps-2.1/">Developpement Mobile avec Flutter</a>
+
+</div>
+</div>
+
+
+
+
+<!-- début résumé -->
+<p>Développement mobile avec Flutter (Drift et FlutterBase)</p>
+<!-- fin résumé -->
+<h2 id="description" tabindex="-1"><a class="header-anchor" href="#description"></a> Description</h2>
+<p>Ayant déjà fait du développement mobile en entreprise, j'ai pu apprendre à maitriser Flutter afin de développer des applications mobiles dans le secteur médical. Cependant tout mon stage s'est focalisé sur la partie front-end des applications mobiles et je n'ai pas pu m'instruire sur la partie back-end qui peut être aussi gérée par Flutter, et quelques plugins utiles. Comme je souhaite probablement trouver un stage dans ce domaine, il me faut acquérir des connaissances dans cette branche afin d'avoir un spectre large de compétences sur le développement mobile. Aussi cela m'aidera énormément pour le projet 3A qui traite aussi du développement mobile.</p>
+<h2 id="qu'est-ce-que-flutter%2C-drift%2C-firebase-%3F" tabindex="-1"><a class="header-anchor" href="#qu'est-ce-que-flutter%2C-drift%2C-firebase-%3F"></a> Qu'est-ce que Flutter, Drift, Firebase ?</h2>
+<h5 id="flutter" tabindex="-1"><a class="header-anchor" href="#flutter"></a> Flutter</h5>
+<p><em><strong>Flutter</strong></em> est un <strong>framework open source</strong>  développé par Google utilisé dans la <strong>création d'applications mobiles</strong> Android mais aussi iOS. Il est basé sur le langage <strong>Dart</strong> aussi créé par Google, et se compile assez vite selon l'application que l'on fait. Il permet de construire des interfaces utilisateurs très esthétique et très rapidement grâce à un système de composants (components) déjà inclus dans Flutter mais qui sont tout aussi personnalisables (à la manière de Bootstrap pour le développement web)</p>
+<div style="width:100%;">
+  <figure style="text-align:center">
+    <img style="height:200px; margin-left: auto; margin-right: auto" src="https://raw.githubusercontent.com/do-it-ecm/promo-2022-2023/refs/heads/main//Laeuffer-Savinien/mon/flutter.png">
+    <figcaption>Logo de lutter</figcaption>
+  </figure>
+</div>
+<p>Je note deux avantages majeurs de ce framework:</p>
+<ul>
+<li>Tout d'abord il permet de développer des applications en même temps pour Android et iOS avec le <strong>même code</strong>.</li>
+<li>Aussi, une fonctionnalité &quot;Hot Reload&quot; est disponible et facilite énormément le développement. Au lieu de compiler, ou de relancer l'application pour afficher les changements de code que l'on a fait, le bouton Hot Reload permet automatiquement d'<strong>actualiser l'application</strong> sur la vue que l'on est en train de consulter. Malheuremsent cela ne marche pas tout le temps lorsque l'on travaille sur la partie back-end, notamment les bases de données où il faut souvent désinstaller l'application et la réinstaller pour retrouver une BDD vierge.</li>
+</ul>
+<h5 id="drift" tabindex="-1"><a class="header-anchor" href="#drift"></a> Drift</h5>
+<p><em><strong>Drift</strong></em>, anciennement Moor, est une librairie Flutter basé sur SQLite. Il fournit à nos applications mobiles un <strong>système de persistence de données</strong>. Drift a beaucoup d'avantages par rapport à une simple librairie comme SQFlite (SQlite pour Flutter):</p>
+<ul>
+<li>Un système de streaming des données: dès qu'une donnée change, le système est notifié et actualisé sans requête supplémentaire</li>
+<li>Une gestion des types plus pratique et efficace</li>
+<li>Une API en Dart qui permet d'écrire des requêtes plus simples sans passer par du SQL.</li>
+</ul>
+<h5 id="firebase" tabindex="-1"><a class="header-anchor" href="#firebase"></a> Firebase</h5>
+<p><em><strong>Firebase</strong></em> est une plateforme de développement d'application créée par Google qui va nous fournir les outils nécessaires à la <strong>création d'une base de données sur un serveur</strong> afin de stocker nos données d'applications.
+<em><strong>Flutterfire</strong></em> est le <strong>package</strong> faisant le lien entre Firebase et nos applications mobiles en Flutter que nous allons installer afin de stocker sur le serveur nos données stockée localement grâce à Drift.</p>
+<div style="width:100%;">
+  <figure style="text-align:center">
+    <img style="height:200px; margin-left: auto; margin-right: auto" src="https://raw.githubusercontent.com/do-it-ecm/promo-2022-2023/refs/heads/main//Laeuffer-Savinien/mon/flutterfire.png">
+    <figcaption>Flutter et Firebase</figcaption>
+  </figure>
+</div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100 dark:border-pink-800 dark:bg-pink-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-pink-500 dark:stroke-pink-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p>Pré-requis</p>
+</div><div class="pl-8 mr-8">
+<p>Dans la suite de ce MON, on considère que Flutter et Dart sont acquis et qu'un projet est déjà créé. Ce tutoriel est destiné à un niveau déjà avancé en Flutter.
+Pour débuter Flutter, on peut se servir de la documentation officielle qui est suffisante et bien faite:
+<a href="https://docs.flutter.dev/">Documentation de Flutter</a></p>
+</div>
+</div>
+<h2 id="persistence-des-donn%C3%A9es-(drift)" tabindex="-1"><a class="header-anchor" href="#persistence-des-donn%C3%A9es-(drift)"></a> Persistence des données (Drift)</h2>
+<h5 id="installation-de-drift" tabindex="-1"><a class="header-anchor" href="#installation-de-drift"></a> Installation de Drift</h5>
+<p>Pour installer Drift à notre projet flutter, il faut ajouter plusieurs packages aux dépences dans notre fichier <code>public.yaml</code>:</p>
+<pre class="language-yaml line-numbers"><code>
+
+dependencies:
+  drift: ^2.2.0
+  sqlite3_flutter_libs: ^0.5.0
+  path_provider: ^2.0.0
+  path: ^1.8.2
+
+dev_dependencies:
+  drift_dev: ^2.2.0+1
+  build_runner: ^2.2.1
+
+
+</code></pre><p>On télécharge et installe finalement les packages en lançant dans notre terminal la commande <code>flutter pub get</code> (si problème avec des packages déjà existant, on peut lancer <code>flutter clean</code> avant)</p>
+<h5 id="d%C3%A9clarer-les-tables" tabindex="-1"><a class="header-anchor" href="#d%C3%A9clarer-les-tables"></a> Déclarer les tables</h5>
+<p>Créons notre fichier tables.dart, où nous allons pouvoir créer directement en Dart notre classe utilisateur et une classe Category, qui définira plusieurs types d'utilisateurs.</p>
+<pre class="language-dart line-numbers"><code>
+
+import 'package:drift/drift.dart';
+
+// Cette ligne affichera d'abord une erreur mais ce fichier se génèrera plus tard
+part 'tables.g.dart';
+
+class Users extends Table {
+  IntColumn get id => integer().autoIncrement()();
+  TextColumn get name => text().withLength(min: 6, max: 32)();
+  TextColumn get surname => text().withLength(min: 6, max: 32)();
+  TextColumn get email => text().withLength(min: 6, max: 32)();
+  IntColumn get category => integer().nullable()();
+}
+
+@DataClassName('Category')
+class Categories extends Table {
+  IntColumn get id => integer().autoIncrement()();
+  TextColumn get description => text()();
+}
+
+// Les lignes suivantes permettent de dire à Drift de créer les classes des bases de données à partir de ce qu'on a défini plus haut
+@DriftDatabase(tables: [Users, Categories])
+class MyDatabase extends _$MyDatabase {
+}
+
+
+</code></pre><div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100 dark:border-cyan-800 dark:bg-cyan-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-cyan-500 dark:stroke-cyan-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p>Remarques</p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li>Attention, par défaut il n'est pas possible d'avoir une valeur null dans une colonne. Une erreur sera affichée si il manque une valeur lors de l'insertion dans la base de données.
+Si on veut rendre une valeur nullable, on peut écrire comme suit:
+<code>TextColumn get email =&gt; text().withLength(min: 6, max: 32)().nullable();</code></li>
+<li>Si une table possède une colonne d'Integers avec une contrainte autoIncrement(), drift considèrera que ce sera la clé primaire par défaut. Si on veut changer la clé primaire on peut overrider cette clé.</li>
+</ul>
+</div>
+</div>
+<p>Maintenant que nos tables sont créées, il faut lancer la commande <code>flutter pub run build_runner build</code> afin que le code nécessaire se génère automatiquement. Une classe pour notre base de données et des classes pour nos entitées sont désormais créées.</p>
+<p>Pour ouvrir notre base de données, on modifie le code précédent comme ceci:</p>
+<pre class="language-dart line-numbers"><code>
+
+// On ajoute les importations nécessaires à l'accès à la base de données
+import 'dart:io';
+import 'package:drift/native.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:path/path.dart' as p;
+
+// On modifie notre classe MyDatabase
+@DriftDatabase(tables: [Todos, Categories])
+class MyDatabase extends _$MyDatabase {
+  MyDatabase() : super(_openConnection());
+  @override
+  int get schemaVersion => 1;
+}
+
+LazyDatabase _openConnection() {
+  return LazyDatabase(() async {
+    // Crée un fichier db.sqlite qui va être stockée dans le téléphone
+    final dbFolder = await getApplicationDocumentsDirectory();
+    final file = File(p.join(dbFolder.path, 'db.sqlite'));
+    return NativeDatabase.createInBackground(file);
+  });
+}
+
+
+</code></pre><p>Notre base de données est créée. Il ne reste plus qu'à créer une instance de <code>MyDatabase</code> dans le fichier main de notre application.</p>
+<pre class="language-dart line-numbers"><code>
+
+Future<void> main() async {
+  final database = MyDatabase();
+
+  await database
+      .into(database.categories)
+      .insert(CategoriesCompanion.insert(description: 'my first category'));
+
+  final allCategories = await database.select(database.categories).get();
+  print('Categories in database: $allCategories');
+}
+
+
+</void></code></pre><h5 id="cr%C3%A9ation-de-requ%C3%AAtes" tabindex="-1"><a class="header-anchor" href="#cr%C3%A9ation-de-requ%C3%AAtes"></a> Création de requêtes</h5>
+<p>Toutes les requêtes se définissent dans notre classe MyDatabase, elles se basent sur du SQL mais se rédigent intégralement en Dart.
+Voici donc quelques requêtes afin de comprendre comment on peut les créer soi même.</p>
+<p>Récupérer tous les users:</p>
+<pre class="language-dart line-numbers"><code>
+
+Future<List<Todo>> get allUsersEntries => select(users).get();
+
+
+</List<Todo></code></pre><p>Récupérer 10 users avec un décalage (offset) de 5:</p>
+<pre class="language-dart line-numbers"><code>
+
+Future<List<Todo>> get getFirstTenUsersOffsetFive => (select(users)..limit(10, offset: 5)).get();
+
+
+</List<Todo></code></pre><p>Trier les users par nom dans l'ordre alphabétique:</p>
+<pre class="language-dart line-numbers"><code>
+
+Future<List<Todo>> get getUsersOrderedByName => (select(users)..orderBy([(u) => OrderingTerm(expression: u.name)])).get();
+
+
+</List<Todo></code></pre><p>Insérer un utilisateur:</p>
+<pre class="language-dart line-numbers"><code>
+
+Future<int> addUser(User entry) {
+  return into(todos).insert(entry);
+}
+
+
+</int></code></pre><p>Update un utilisateur:</p>
+<pre class="language-dart line-numbers"><code>
+
+Future updateUser(User entry) {
+  return update(users).replace(entry);
+}
+
+
+</code></pre><p>Trouver un utilisateur par son ID et le supprimer de la base de données:</p>
+<pre class="language-dart line-numbers"><code>
+
+Future deleteUserByID(int id) {
+  return delete(users)..where((u) => u.id.equals(id));
+}
+
+
+</code></pre><h2 id="firebase-(flutterfire)" tabindex="-1"><a class="header-anchor" href="#firebase-(flutterfire)"></a> Firebase (FlutterFire)</h2>
+<p>Afin d'utiliser Firebase et pour pouvoir l'incorporer à notre application, il est avant tout nécessaire de se créer un compte Firebase sur le lien ci dessous:
+<a href="https://firebase.google.com/">Site de Firebase</a></p>
+<p>Une fois le compte créé, on ajoute un nouveau projet auquel on fournit le nom (identique à l'application créée). Dès que le projet est créé, on arrive sur notre tableau de bord. On peut désormais utiliser les fonctionalités proposées par Firebase.
+Ici nous tenterons de nous servir des outils de base de données, donc Realtime Database.</p>
+<h5 id="installation-et-initialisation-de-flutterfire" tabindex="-1"><a class="header-anchor" href="#installation-et-initialisation-de-flutterfire"></a> Installation et initialisation de FlutterFire</h5>
+<p>Pour installer FlutterFire à notre projet flutter, comme précédemment il faut ajouter plusieurs packages aux dépences. On peut le faire rapidement à l'aide de la commande suivante:</p>
+<pre class="line-numbers"><code>
+
+flutter pub add firebase_core
+
+
+</code></pre><p>Ensuite pour installer le CLI on lance:</p>
+<pre class="line-numbers"><code>
+
+dart pub global activate flutterfire_cli
+
+
+</code></pre><p>Puis on lance cette dernière commande afin de configurer FlutterFire:</p>
+<pre class="line-numbers"><code>
+
+flutterfire configure
+
+
+</code></pre><p>Un fichier <code>firebase_options.dart</code> se sera alors généré et contient toutes les options de configuration.</p>
+<p>Il reste désormais à importer les packages dans les fichiers Dart adéquats, par exemple notre fichier <code>main.dart</code>.</p>
+<pre class="language-dart line-numbers"><code>
+
+import 'package:firebase_core/firebase_core.dart';
+import 'firebase_options.dart';
+
+
+</code></pre><p>Et finalement, il faut initaliser FlutterFire dans notre fonction <code>main</code>:</p>
+<pre class="language-dart line-numbers"><code>
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  runApp(MyApp());
+}
+
+
+</code></pre><h5 id="realtime-database" tabindex="-1"><a class="header-anchor" href="#realtime-database"></a> Realtime database</h5>
+<p>Sur notre page d'accueil de projet sur Firebase, on trouve dans le menu &quot;Créer&quot; l'onglet Realtime Database. On peut se lancer, et créer notre base de données. On choisit l'emplacement et les règles, puis on la crée.</p>
+<p>Dans notre application Flutter, on lance la commande:</p>
+<pre class="line-numbers"><code>
+
+flutter pub add firebase_database
+
+
+</code></pre><p>Puis, pour rebuilder l'application:</p>
+<pre class="line-numbers"><code>
+
+flutter run
+
+
+</code></pre><p>Maintenant, pour pouvoir utiliser Realtime Database dans notre projet, il suffit de l'importer et de créer une instance de FirebaseDatabase:</p>
+<pre class="language-dart line-numbers"><code>
+
+import 'package:firebase_database/firebase_database.dart';
+
+FirebaseDatabase database = FirebaseDatabase.instance;
+
+
+</code></pre><h2 id="sources" tabindex="-1"><a class="header-anchor" href="#sources"></a> Sources</h2>
+<ul>
+<li><a href="https://docs.flutter.dev/">Documentation Flutter</a></li>
+<li><a href="https://m3.material.io/develop/flutter">Material</a></li>
+<li><a href="https://drift.simonbinder.eu/docs/">Documentation Drift</a></li>
+<li><a href="https://firebase.flutter.dev/docs/overview">Documentation Flutterfire</a></li>
+</ul>
+
+
+
+</article>
+
+        </main>
+
+        <footer class="min-h-[50px] border-t-2 mt-4 border-gray-200 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-center items-center">
+                    <p class="text-center">
+                        ©2025 <b><span style="font-family: Consolas, sans-serif;">Do-<span style="color: #4a86e8">It</span></span></b> - Développement, Management et Gestion de projets en IT
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- MathJax import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">
+            window.MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']], // Delimiters for inline math
+                    displayMath: [['$$', '$$'], ['\\[', '\\]']] // Delimiters for block math
+                },
+                svg: {
+                    fontCache: 'global' // Use global font cache for SVG output
+                }
+            };
+            document.addEventListener('DOMContentLoaded', () => {
+                MathJax.typeset(); // Ensures MathJax processes the content after the page loads
+            });
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">
+            Prism.plugins.NormalizeWhitespace.setDefaults({
+                'remove-trailing': true,
+                'remove-indent': true,
+                'left-trim': true,
+                'right-trim': true,
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script>
+    </body>
+</html>

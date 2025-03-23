@@ -1,0 +1,1402 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="robots" content="index, follow">
+
+        <link rel="canonical" href="https://do-it.aioli.ec-m.fr/promos/2023-2024/Sarah-Sebastien/pok/temps-2/">
+
+        
+        
+
+        <meta name="description" content="Il s&#39;agit dans ce POK d&#39;apprendre à coder en Java (par envie personnelle de découvrir ce langage et par besoin pour un futur MON au temps 3). L&#39;objectif est de mettre à profit les connaissances acquises au travers de la réalisation d&#39;un jeu &quot;Mastermind&quot; avec une interface graphique en Java.">
+        <meta property="og:description" content="Il s&#39;agit dans ce POK d&#39;apprendre à coder en Java (par envie personnelle de découvrir ce langage et par besoin pour un futur MON au temps 3). L&#39;objectif est de mettre à profit les connaissances acquises au travers de la réalisation d&#39;un jeu &quot;Mastermind&quot; avec une interface graphique en Java.">
+        <meta name="twitter:description" content="Il s&#39;agit dans ce POK d&#39;apprendre à coder en Java (par envie personnelle de découvrir ce langage et par besoin pour un futur MON au temps 3). L&#39;objectif est de mettre à profit les connaissances acquises au travers de la réalisation d&#39;un jeu &quot;Mastermind&quot; avec une interface graphique en Java.">
+
+        
+            <meta name="author" content="Sarah Sebastien">
+        
+        <meta name="keywords" content="do-it, centrale, centrale méditerranée, ecm, POK, Java, Swing">
+
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png">
+        <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png">
+
+        <link href="/assets/stylesheets/main.css" rel="stylesheet">
+
+        <meta property="og:title" content="POK 2: Discovering the Mastermind of Java">
+
+        <meta property="og:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta property="og:url" content="https://do-it.aioli.ec-m.fr/promos/2023-2024/Sarah-Sebastien/pok/temps-2/">
+        <meta property="og:type" content="website">
+
+        <meta name="twitter:card" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:title" content="POK 2: Discovering the Mastermind of Java">
+        <meta name="twitter:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:url" content="https://do-it.aioli.ec-m.fr/promos/2023-2024/Sarah-Sebastien/pok/temps-2/">
+
+        <title>POK 2: Discovering the Mastermind of Java</title>
+
+        <!-- Prismjs imports
+                - Prism line numbers
+                - Prism toolbar
+        -->
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet">
+        <link id="prism-theme" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+        <!-- Mermaid import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js "></script>
+
+        <script defer="">
+        // Check if a theme is stored in localStorage. If so, use it, otherwise fallback to the system preference.
+        const storedTheme = localStorage.getItem('theme');
+        if (storedTheme) {
+            document.documentElement.classList.toggle("dark", storedTheme === "dark");
+        } else {
+            // Use system color scheme if there is no stored theme preference.
+            document.documentElement.classList.toggle("dark", window.matchMedia("(prefers-color-scheme: dark)").matches);
+        }
+
+        function loadPrismTheme(isDarkMode) {
+            const newTheme = isDarkMode ? 'prism-okaidia.min.css' : 'prism-solarizedlight.min.css';
+            const newLink = document.createElement('link');
+            newLink.rel = 'stylesheet';
+            newLink.id = 'prism-theme';
+            newLink.href = `https://cdn.jsdelivr.net/npm/prismjs/themes/${newTheme}`;
+
+            newLink.onload = () => {
+                // Reapply highlighting after the new theme loads
+                Prism.highlightAll();
+            };
+
+            const existingLink = document.getElementById('prism-theme');
+            if (existingLink) {
+                document.head.replaceChild(newLink, existingLink);
+            } else {
+                document.head.appendChild(newLink);
+            }
+        }
+
+        function setMermaidTheme(isDarkMode) {
+            const theme = isDarkMode ? 'dark' : 'forest';
+            mermaid.initialize({
+                securityLevel: 'loose',
+                theme,
+                startOnLoad: true,
+            });
+        }
+
+        // Toggle dark and light mode and update localStorage accordingly.
+        function toggleDarkMode() {
+            const dark = document.documentElement.classList.contains("dark");
+            const newTheme = dark ? "light" : "dark";
+            localStorage.setItem('theme', newTheme);
+            document.documentElement.classList.toggle("dark", !dark);
+            loadPrismTheme(!dark);
+            setMermaidTheme(!dark);
+        }
+
+        // On initial load, ensure that Prism and Mermaid are initialized using the current theme.
+        const isDark = document.documentElement.classList.contains("dark");
+        loadPrismTheme(isDark);
+        setMermaidTheme(isDark);
+        </script>
+
+    </head>
+
+    <body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000" class="bg-neutral-50 text-neutral-950 dark:bg-neutral-900 dark:text-neutral-50">
+        <header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white dark:bg-neutral-900 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-between items-center">
+                    <a class="mx-2" href="/">Home</a>
+                    <button class="hidden sm:block text-neutral-950 dark:text-neutral-50 hover:bg-neutral-700 hover:text-neutral-50 hover:dark:bg-neutral-300 hover:dark:text-neutral-950 transition-colors p-2 rounded-full duration-800 ease-in-out" onclick="toggleDarkMode()">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 dark:hidden stroke-current">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <path d="M12 2V4" stroke-linecap="round"></path>
+                            <path d="M12 20V22" stroke-linecap="round"></path>
+                            <path d="M4 12L2 12" stroke-linecap="round"></path>
+                            <path d="M22 12L20 12" stroke-linecap="round"></path>
+                            <path d="M19.7778 4.22266L17.5558 6.25424" stroke-linecap="round"></path>
+                            <path d="M4.22217 4.22266L6.44418 6.25424" stroke-linecap="round"></path>
+                            <path d="M6.44434 17.5557L4.22211 19.7779" stroke-linecap="round"></path>
+                            <path d="M19.7778 19.7773L17.5558 17.5551" stroke-linecap="round"></path>
+                        </svg>
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 stroke-current hidden dark:block">
+                            <path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </button>
+                    <div class="flex items-center gap-4 sm:gap-6 ">
+                        <a class="" href="/cs">CS</a>
+                        <a class="" href="/pok">POK</a>
+                        <a class="" href="/mon">MON</a>
+                        <a class="" href="/projets">Projets</a>
+                        <a class="hidden sm:block" href="/promos">Promos</a>
+                        <a href="/search">
+                            <svg class="h-5 aspect-square stroke-neutral-950 dark:stroke-neutral-300 fill-none stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+                            </svg>
+                        </a>
+                        <a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank">
+                            <svg class="h-5 aspect-square dark:stroke-neutral-300 dark:fill-neutral-300" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body="">
+            
+<article class="relative">
+<h1 class="mb-1">POK 2: Discovering the Mastermind of Java</h1>
+<div class="mb-4">
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Tags : </div>
+            <ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags">
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">POK</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">Java</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">Swing</li>
+                
+
+            </ul>
+
+            
+            <div class="hidden" data-pagefind-meta="Type" aria-hidden="true">
+                
+                    
+                        <span data-pagefind-filter="Type">POK</span>
+                    
+                
+                    
+                
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Auteur : </div>
+            <ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs">
+                
+                    <li class="bg-blue-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Auteurs">Sarah Sebastien</li>
+                
+            </ul>
+        </div>
+    
+
+    
+        <div class="absolute top-0 right-0">
+            <span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2 text-neutral-950" data-pagefind-filter="Année">
+                2023-2024
+            </span>
+        </div>
+    
+</div>
+
+<p class="mb-4 text-lg">Il s'agit dans ce POK d'apprendre à coder en Java (par envie personnelle de découvrir ce langage et par besoin pour un futur MON au temps 3). L'objectif est de mettre à profit les connaissances acquises au travers de la réalisation d'un jeu "Mastermind" avec une interface graphique en Java.</p>
+
+
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100 dark:border-purple-800 dark:bg-purple-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-purple-500 dark:stroke-purple-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/promos/2023-2024/Sarah-Sebastien/">Sarah Sebastien</a><span class="px-1">/</span><a href="/promos/2023-2024/Sarah-Sebastien/pok/">POK de Sarah Sebastien</a><span class="px-1">/</span><a href="/promos/2023-2024/Sarah-Sebastien/pok/temps-2/">POK 2: Discovering the Mastermind of Java</a>
+
+</div>
+</div>
+
+
+
+
+<hr>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100 dark:border-pink-800 dark:bg-pink-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-pink-500 dark:stroke-pink-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p>Niveau débutant</p>
+</div><div class="pl-8 mr-8">
+<p>Prérequis : Aucune base en JAVA</p>
+</div>
+</div>
+<h2 id="sommaire" tabindex="-1"><a class="header-anchor" href="#sommaire"></a> Sommaire</h2>
+<ul>
+<li><a href="#backlog">Le backlog du projet</a></li>
+<li><a href="#bases">Acquérir bases en Java</a></li>
+<li><a href="#exercice">s’entraîner en Java</a></li>
+<li><a href="#choix">Choix de l'interface graphique du projet</a></li>
+<li><a href="#swing">Apprendre à utiliser l'API Swing</a></li>
+<li><a href="#maquette">Réalisation de la maquette Figma</a></li>
+<li><a href="#sprint2">Vers le sprint 2</a></li>
+<li><a href="#interface">Réalisation du jeu</a></li>
+<li><a href="#objectifs">Retour sur les objectifs</a></li>
+<li><a href="#experience">Retour d'expérience</a></li>
+</ul>
+<h2 id="backlog"> Le backlog du projet</h2>
+<h3 id="sprint-1" tabindex="-1"><a class="header-anchor" href="#sprint-1"></a> Sprint 1</h3>
+<table>
+<thead>
+<tr>
+<th>Intitulé</th>
+<th>Temps estimé</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>- Suivre une formation d'apprentissage du Java <br> - Appliquer ces connaissances en exercices <br> - Apprendre les connaissances théoriques pour réaliser une interface graphique en Java <br> - Définir les fonctionnalités et le back log du Mastermind <br> - Réaliser une maquette sur Figma du projet</td>
+<td>7h <br> 1h45 <br> 15 mins <br> 30 mins <br> 30 mins</td>
+</tr>
+</tbody>
+</table>
+<h3 id="sprint-2" tabindex="-1"><a class="header-anchor" href="#sprint-2"></a> Sprint 2</h3>
+<table>
+<thead>
+<tr>
+<th>Intitulé</th>
+<th>Temps estimé</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>- Réaliser le backlog Java <br> - Recherche de méthodes de résolution d'un mastermind <br> - Implémentation de ces méthodes <br> - Comparaison des méthodes</td>
+<td>7h <br> 30 mins <br> 2h <br> 30 mins</td>
+</tr>
+</tbody>
+</table>
+<h2 id="bases"> Acquérir bases en Java</h2>
+<p><em>Avant toute chose, comme je ne suis pas encore très à l'aise avec VSCode, une étape cruciale (et compliquée) était l'installation de Java sur l'éditeur. Heureusement, <a href="https://www.youtube.com/watch?v=fbyobdxDQno">cette vidéo</a> d'un indien fort sympatique m'a sauvée. Je pose le lien là pour toute personne qui rencontrerait le même problème que j'ai eu</em></p>
+<p>Pour cette étape, je me suis aidée du <a href="../../../Ouzoulias-Nicolas/MON/temps-1.1/index.md">MON de Nicolas</a> qui traitait exactement du même sujet. J'ai donc suivi la même formation d'Open Classroom que lui. Ce cours qui est censé durer 10h (mais que je n'ai pas suivi en entier) aborde quelques notions assez intéressantes pour commencer. On y retrouve notamment :</p>
+<p><strong>La manipulation de variable</strong>, avec :</p>
+<ul>
+<li>Les conventions d'appellations <em>(ex: Camel case)</em></li>
+<li>les différents types de variables <em>(les principaux étant String, int, double, boolean)</em></li>
+<li>La déclaration d'une variable <em>(composée de trois éléments : type, nom, et valeur)</em></li>
+<li>leur portée <em>(private, public)</em></li>
+</ul>
+<p><strong>La structure d'un code en Java</strong>, avec :</p>
+<ul>
+<li>les notions de packages, classes et méthodes</li>
+<li>les différents types de classes
+<ul>
+<li><em>modèles</em>, utilisées comme modèles pour l'instanciation des objets.</li>
+<li><em>utilitaires</em>, contenant des méthodes statiques qui peuvent être appelées directement sur la classe.</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>Une classe est un ensemble de variables (nommées attributs) et de comportements (nommés méthodes).</p>
+</blockquote>
+<p><strong>La construction de fonctions</strong>, avec :</p>
+<ul>
+<li>les différentes boucles qui existent et comment elles sont utilisées <em>(for, while, do..while)</em></li>
+<li>les opérateurs <em>(et, ou, etc...)</em></li>
+<li>les conditions <em>(avec l'utilisation de &quot;switch&quot; pour les chaines de conditions)</em></li>
+<li>l'utilisation de son terminal pour renseigner des arguments <em>(que je n'ai jamais réussi à faire fonctionner)</em></li>
+<li>les paramètres et les valeurs de retour</li>
+</ul>
+<p><strong>La création de classe</strong>, avec :</p>
+<ul>
+<li>la notion de <strong>constructeur</strong> <em>(ie une fonction spéciale du même nom que la classe avec les arguments passés en paramètres)</em></li>
+<li>la notion <strong>d'instance</strong> <em>(les classes sont vues comme des &quot;modèles&quot;, et pour les utiliser il faut créer un objet à partir de ce modèle, en utilisant le processus d'instanciation : signifie déclarer une variable avec la classe comme type, puis utiliser l'expression de création d'objet)</em></li>
+</ul>
+<blockquote>
+<p>Un objet est donc <strong>une instance</strong> de classe.</p>
+</blockquote>
+<p><strong>La spécialisation de classes</strong>, avec :</p>
+<ul>
+<li>la notion d'héritage (qui permet à ces classes filles de reprendre les mêmes attributs et méthodes que leur classe mère, et d’ajouter en plus leur particularité en les spécialisant par des attributs et/ou méthodes qui leur sont propres)</li>
+<li>la notion de polymorphisme (qui permet de &quot;surcharger&quot; les méthodes de la classe mère pour redéfinir leurs comportements sans changer leur signature)</li>
+</ul>
+<p><strong>L'utilisation de collections</strong>, avec :</p>
+<ul>
+<li>les différences entre les listes et les tableaux (ie le listes ont une taille fixe et on ne peut modifier que les valeurs existantes)</li>
+</ul>
+<p>Et d'autres notions que je n'ai pas étudiées (ex: récursivité, code &quot;Lambda, manipulation des fichiers)</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100 dark:border-cyan-800 dark:bg-cyan-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-cyan-500 dark:stroke-cyan-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Remarque</strong></p>
+</div><div class="pl-8 mr-8">
+<p><em>Je trouve que ce qui est dommage avec cette formation, c'est qu'il y a certains points que je touve importante qu'elle n'aborde pas. Comme less notions de  différents attributs d'une méthode, par exemple (ex : quand écrire &quot;void&quot;, &quot;static&quot;, etc...). Et donc finalement, en finissant la formation je me suis rendue compte que j'avais appris beaucoup de choses mais que je ne savais rien faire...</em></p>
+</div>
+</div>
+<p>Alors je me suis tournée vers un autre type de contenu plus didactique et plus parlant: <strong>les vidéos</strong>. J'en ai regardées plusieurs de <a href="https://www.youtube.com/@formation-video">cette chaine</a> qui étaient vraiment instructives et assez complètes. Je conseille notamment les vidéos sur <a href="https://www.youtube.com/watch?v=IZ8wKErw0_Y">la construction de classe</a>, <a href="https://www.youtube.com/watch?v=zM_Qf07fEyc">l'encapsulation des données</a>, <a href="https://www.youtube.com/watch?v=48wGbUfFtfM">les attributs</a> et <a href="https://www.youtube.com/watch?v=FkB7N0w81Dk">les méthodes</a>.</p>
+<h2 id="exercice"> S'entrainer en Java </h2>
+<p>Avant de me lancer dans mon projet de jeu, je voulais d'abord m'assurer d'avoir bien compris le langage (ou du moins ses bases). Pour ce faire j'ai trouvé plusieurs sites intéressants pour s'entrainer :</p>
+<ul>
+<li><a href="https://www.w3schools.com/java/default.asp">w3schools</a> : <em>sur les conseils d'Arthur. Permet de balayer un grand nombre de notions et de fonctions et de les retouver facilement. Il y a aussi tout une partie sur les méthodes où l'on peut &quot;Essayer soit même&quot; de manière simple sans avoir d'éditeur de code installé.</em></li>
+<li><a href="https://www.cours-gratuit.com/java">cours-gratuit</a> : <em>recommandé par Nicolas dans son MON. Offre une nombre d'exercice très variés et très complets. Certains exercices sont très guidés, d'autres un peu moins. Mais je les ai plus parcourus que réellement appliqués par manque de temps.</em></li>
+<li><a href="https://perso.telecom-paristech.fr/hudry/coursJava/exercices/">site de Télécom Paris</a> : <em>en cherchant sur internet je suis tombée par hasard sur ce site. Les exercices sont vraiment bien guidés et reprennent une bonne partie des connaissances théoriques qui sont vues dans l'Open Classroom. C'est finalement sur ces exercices que je me suis le plus entraînée. Je conseille fortement l'exercice <a href="https://perso.telecom-paristech.fr/hudry/coursJava/exercices/etudiant.html">&quot;Premier contact : modéliser un étudiant</a> pour débuter.</em></li>
+</ul>
+<p>Voici un extrait de l'énoncer de l'exercice <a href="https://perso.telecom-paristech.fr/hudry/coursJava/exercices/etudiant.html">Modéliser un élève</a></p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Modéliser un élève</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<p>Un élève sera ici modélisé par la classe Eleve d'un paquetage nommé gestionEleves, de la façon suivante.
+La classe Eleve posséde trois attributs privés :</p>
+<ul>
+<li>son nom, nommé nom, de type String,</li>
+<li>un ensemble de notes, nommé listeNotes, qui sont des entiers rangés dans un ArrayList<Integer></Integer></li>
+<li>une moyenne de type double, nommée moyenne, qui doit toujours être égale à la moyenne des notes contenues dans l'attribut listeNotes. Un élève sans aucune note sera considéré comme ayant une moyenne nulle.</li>
+</ul>
+<p>La classe Eleve possède un constructeur permettant uniquement d'inialiser le nom de l'élève.
+La classe Eleve possède aussi cinq méthodes publiques :</p>
+<ul>
+<li>Un getter pour la moyenne de l'élève c'est-à-dire une méthode d'en-tête : <em><strong>public double getMoyenne()</strong></em> qui renvoie la valeur de l'attribut moyenne ;</li>
+<li>Un getter pour le nom de l'élève c'est-à-dire une méthode d'en-tête : <em><strong>public String getNom()</strong></em> qui renvoie le nom de l'élève ;</li>
+<li>Un getter pour la liste des notes de l'élève c'est-à-dire une méthode d'en-tête : <em><strong>public ArrayList<Integer> getListeNotes()</Integer></strong></em> qui renvoie la liste des notes de l'élève ;</li>
+<li>La méthode d'en-tête : <em><strong>public void ajouterNote(int note)</strong></em> ajoute la note reçue en paramètre à listeNotes ; si la note reçue en paramètre est négative, la note introduite est 0 ; si la note reçue en paramètre est supérieure à 20, la note introduite est 20 ; la méthode actualise en conséquence l'attribut moyenne ; l'actualisation est faite à temps constant, et non pas en un temps proportionnel au nombre de notes déjà enregistrées.</li>
+<li>La méthode d'en-tête : <em><strong>public String toString()</strong></em> retourne une description de l'élève considéré (par exemple : &quot;Sophie (12.25)&quot;).</li>
+</ul>
+<p>Après avoir terminé la classe Eleve, écrire un programme qui teste cette classe.</p>
+</div>
+</details>
+</div>
+<p>Et voici un extrait de ma solution :</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Eleve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="line-numbers"><code>
+
+package gestionEleves;
+
+import java.util.ArrayList;
+
+public class Eleve {
+    private String nom;
+    private ArrayList<Integer> listeNotes = new ArrayList<Integer>();
+    private double moyenne;
+
+    public Eleve(String nom,ArrayList<Integer> listeNotes, double moyenne){
+        this.nom = nom;
+        this.listeNotes= listeNotes;
+        this.moyenne = moyenne;
+    }
+
+    public double getMoyenne() {
+        boolean IsEmpty = listeNotes.isEmpty();
+        if (IsEmpty == true)
+            return 0;
+        else
+            return moyenne;
+    }
+    public String getNom() {
+        return nom;
+    }
+    public ArrayList<Integer> getListeNotes()  {
+        return listeNotes;
+    }
+
+    public void ajouterNote(int note){
+        listeNotes.add(note);
+        int nbNotes = listeNotes.size();
+        if (note < 0) note = 0;
+	    else if (note > 20) note = 20;
+        moyenne = (moyenne*(nbNotes-1) + note) / nbNotes;
+    }
+    public String toString(){
+        return nom + " a une moyenne de " + moyenne;
+
+    }
+}
+
+
+</Integer></Integer></Integer></Integer></code></pre></div>
+</details>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>TestEleve</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="line-numbers"><code>
+
+package gestionEleves;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+
+public class TestEleve {
+    public static void main(String[] args) {
+        ArrayList<Integer> notes = new ArrayList<Integer>(Arrays.asList(14, 16));
+        Eleve eleve = new Eleve("Sarah",notes,15);
+            eleve.ajouterNote(12);
+            System.out.println(eleve);
+    }
+}
+
+
+</Integer></Integer></code></pre><p>Résultat :</p>
+<pre class="line-numbers"><code>
+
+PS C:\Users\X3400\Documents\GitHub\project_java>  c:; cd 'c:\Users\X3400\Documents\GitHub\project_java'; & 'C:\Program Files\Eclipse Adoptium\jdk-21.0.1.12-hotspot\bin\java.exe' '--enable-preview' '-XX:+ShowCodeDetailsInExceptionMessages' '-cp' 'C:\Users\X3400\Documents\GitHub\project_java\bin' 'gestionEleves.TestEleve'
+Sarah a une moyenne de 14.0
+
+
+</code></pre></div>
+</details>
+</div>
+<h2 id="choix"> Choix de l'interface graphique du projet</h2>
+<p>Après recherches, j'ai trouvé qu'il existait trois API de mise en oeuvre d'interfaces graphiques proposées par l'environnement Java :</p>
+<ul>
+<li><strong>AWT (Abstract Window Toolkit)</strong></li>
+<li><strong>Swing</strong></li>
+<li><strong>JavaFX</strong></li>
+</ul>
+<p>Laquelle choisir ?</p>
+<p>Voici un petit tableau qui retrace les avantages et inconvénients de chaque système que j'ai pu trouvés:</p>
+<table>
+<thead>
+<tr>
+<th>API</th>
+<th>Inconvénients</th>
+<th>Avantages</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>AWT</strong> <em>(historiquement la première API de JAVA qui a vu le jour sur ce sujet)</em></td>
+<td>- Java fait appel au système d'exploitation sous-jacent pour afficher les composants graphiques. Ainsi, l'interface graphique peut s'afficher différemment selon le système d'exploitation dans lequel on se trouve <br> - Comme les composants graphiques doivent exister sur tous les OS, la librairie graphique est relativement pauvre.</td>
+<td>- Rapidité d'affichage, car c'est l'OS qui affiche l'interface graphique</td>
+</tr>
+<tr>
+<td><strong>Swing</strong></td>
+<td>- Beaucoup plus de ressources consommées par l'application (mémoire notamment), <em>mais de nombreuses augmentations de la puissance de calcul ces dernières années permettent de minimiser le problème</em> <br> - Problème de compatibilité avec les besoins des application mobiles</td>
+<td>- Richesse des composants proposés <em>(à l'inverse de AWT, c'est l'API qui pixeliser les différents éléments graphiques et non l'OS)</em> <br> - Plusieurs &quot;looks&quot; graphiques possibles avec la mise à jour régulièrement de nouvelles implémentations de looks</td>
+</tr>
+<tr>
+<td><strong>JavaFX</strong> <em>(parue en 2014 et désormais l'API d'interface graphique principale du Java)</em></td>
+<td>- permet de produire des interfaces graphiques pouvant facilement être utilisées sur différents types d'écrans <br> - permet d'inclure des éléments de 2D et de 3D <br> - Ressemblances avec des API de développement Web et leur formalisme <br> - Moins lourd au niveau conception</td>
+<td>- Bibliothèque non intégrée à Java <br> - Manque de documentation sur la bibliothèque et reste globalement moins utilisé que Swing</td>
+</tr>
+</tbody>
+</table>
+<p>Ainsi, même si JavaFx semble présenter de très forts avantages, comme je débute encore en Java, je pense qu'il est plus judicieux de faire la suite de ce POK avec Swing. Comme c'est une API plus &quot;mature&quot;, il me sera plus facile de trouver des ressources (tuto, exemples que lesquels s'appuyer et autres..) pour réaliser mon projet.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100 dark:border-pink-800 dark:bg-pink-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-pink-500 dark:stroke-pink-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><u>Sources</u></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li><a href="https://www.youtube.com/watch?v=K8OXvWJlVmU">Interface Graphique en Java®</a></li>
+<li><a href="https://www.developpez.net/forums/d1597238/java/interfaces-graphiques-java/lequel-choisir-poa-poo/">https://www.developpez.net/forums/d1597238/java/interfaces-graphiques-java/lequel-choisir-poa-poo/</a></li>
+<li><a href="https://koor.fr/Java/TutorialSwing/comparatif.wp">Comparatif AWT/Swing/SWT/JavaFX</a></li>
+<li><a href="https://java.developpez.com/actu/121250/JavaFX-merite-t-il-son-statut-de-remplacant-de-Swing-Son-utilisation-semble-peiner-a-se-democratiser/">JavaFX mérite-t-il son statut de remplaçant de Swing ?</a></li>
+</ul>
+</div>
+</div>
+<h2 id="swing"> Apprendre à utiliser l'API Swing</h2>
+<p>Je n'ai malheureusement pas eu le temps d'apprendre à me servir de ce système. J'ai cependant trouvé quelques ressources qui devraient me servir pour le prochain sprint :</p>
+<ul>
+<li><a href="http://icps.u-strasbg.fr/people/bastoul/public_html/teaching/java/docs/Swing.pdf">un recueil d'une grande partie des composants que l'on peut retrouver avec Swing</a></li>
+<li><a href="https://www.jmdoudoux.fr/java/dej/chap-swing.htm">une page web avec le même sujet mais qui offre des exemples en plus pour chaque composant</a></li>
+<li><a href="https://www.youtube.com/watch?v=5G2XM1nlX5Q">une vidéo qui qui réalise une interface avec Swing en utilisant VSCode</a></li>
+</ul>
+<h2 id="fonctionnalités"> Les fonctionnalités et le backlog du Mastermind</h2>
+<table>
+<thead>
+<tr>
+<th>Intitulé</th>
+<th>Complexité</th>
+<th>Valeur métier(MoSCoW)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sélectionner une combinaison de 4 couleurs</td>
+<td>3</td>
+<td>Must</td>
+</tr>
+<tr>
+<td>Valider une fois qu'une combinaison a été choisie</td>
+<td>3</td>
+<td>Must</td>
+</tr>
+<tr>
+<td>Effacer une combinaison qui n'a pas encore été validée</td>
+<td>3</td>
+<td>Must</td>
+</tr>
+<tr>
+<td>Choisir d'effacer seulement la dernière couleur qui a été sélectionnée</td>
+<td>8</td>
+<td>Won't</td>
+</tr>
+<tr>
+<td>Pouvoir abandonner la partie à tout moment</td>
+<td>5</td>
+<td>Could</td>
+</tr>
+<tr>
+<td>Pouvoir accéder aux règles du jeu à tout moment</td>
+<td>5</td>
+<td>Won't</td>
+</tr>
+<tr>
+<td>Avoir à indicateur du nombre de couleurs justes et bien placées et juste et mal placées à chaque combinaison validée</td>
+<td>5</td>
+<td>Must</td>
+</tr>
+<tr>
+<td>Avoir le code secret recherché qui s'affiche à la fin d'une partie</td>
+<td>3</td>
+<td>Won't</td>
+</tr>
+</tbody>
+</table>
+<p><em><strong>Remarque :</strong></em>
+<em>Comme je ne maitrise pas encore le langage avec lequel je vais travailler, il m'est assez compliqué de donner une complexité aux fonctionnalités que j'ai listées</em></p>
+<h2 id="maquette"> Réalisation de la maquette Figma</h2>
+<p>Pour mon premier POK, je me suis rendue compte que j'avais perdu beaucoup de temps sur la partie visuelle de mon tableau de Gantt. Comme je n'avais défini clairement à quoi je voulais qu'il ressemble, j'ai passé longtemps à tester et retester des dispositions, des couleurs et des polices. Finalement, j'aurais été beaucoup plus efficace si j'avais défini dès le départ ma charte graphique.</p>
+<p>Alors cette fois, j'ai décidé de ne pas faire la même erreur. J'ai donc regardé sur internet à quoi ressemblait les jeux qui avaient déjà pu être faits par d'autres dans le passé, pour avoir une idée de ce qui était réellement faisable. Et j'ai réalisé une maquette sur Figma, en essayant d'appliquer les conseils qu'on avait pu avoir pendant les cours d'UI/UX.</p>
+<table>
+<tbody>
+<tr>
+<td><img width="350" src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Sarah-Sebastien/pok/temps-2/Maquette_jeu_1.png"></td>
+<td><img width="350" src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Sarah-Sebastien/pok/temps-2/Maquette_jeu_2.png"></td>
+</tr>
+</tbody>
+</table>
+<p>Vous pouvez retrouver la maquette <a href="https://www.figma.com/file/nxQbQ6gxDwGkSqBTP9AhlS/Maquette-MasterMind-en-Java?type=design&amp;node-id=0%3A1&amp;mode=design&amp;t=v7Qm5wzCocXpxts0-1">ici</a> et le prototype <a href="https://www.figma.com/proto/nxQbQ6gxDwGkSqBTP9AhlS/Maquette-MasterMind-en-Java?type=design&amp;node-id=2-4&amp;t=1MvNUXGn23z5K0zS-0&amp;scaling=scale-down&amp;page-id=0%3A1">là</a></p>
+<h2 id="sprint2">  Vers le sprint 2...</h2>
+<p>Si on reprend le backlog du sprint 1 que je m'étais fixé :</p>
+<table>
+<thead>
+<tr>
+<th>Intitulé</th>
+<th>Temps estimé</th>
+<th>Temps réalisé</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>- Suivre la formation open classroom d'apprentissage du Java <br> <em>- Suppléments de formations sur le langage (vidéos, articles)</em> <br> - Appliquer ces connaissances en exercices (cités plus tôt) <br> - Apprendre les connaissances théoriques pour réaliser une interface graphique en Java <br> - Définir les fonctionnalités et le backlog du Mastermind <br> - Réaliser une maquette sur Figma du projet</td>
+<td>7h <br> / <br> 1h45 <br> 15 mins <br> 30 mins <br> 30 mins</td>
+<td><strong>7h</strong> <br> <strong>1h</strong> <br> <strong>1h30</strong> <br> <strong>10 mins</strong> <br> <strong>5 mins</strong> <br> <strong>45 mins</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Au final, j'ai passé sur ce sprint 1 <strong>plus de 10h...</strong>. J'ai rencontré beaucoup de difficultés que je n'avais pas envisagées et qui, au final m'ont pris beaucoup de temps à surmonter. <em>Surtout concernant l'application des codes sur VSCodes</em>(ex: l'installation de Java, réaliser un packetage et déclarer les classes, configurer des arguments pour une classe, etc..).</p>
+<p>On peut alors redéfinir le backlog pour le sprint 2 :</p>
+<table>
+<thead>
+<tr>
+<th>Intitulé</th>
+<th>Temps estimé</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>- Apprendre les connaissances théoriques pour réaliser une interface graphique en Java</em> <br> - Réaliser le backlog défini plus haut sur Java <br> - Recherche de méthodes de résolution d'un mastermind <br> - Implémentation de ces méthodes <br> - Comparaison des méthodes</td>
+<td><em>1h</em> <br> 6h <br> 45mins <br> 1h <br> 30 mins</td>
+</tr>
+</tbody>
+</table>
+<h2 id="interface"> Réalisation du jeu </h2>
+<h3 id="apprentissage-du-codage-d'une-interface-avec-swing" tabindex="-1"><a class="header-anchor" href="#apprentissage-du-codage-d'une-interface-avec-swing"></a> Apprentissage du codage d'une interface avec Swing</h3>
+<p>J'avais repérer une vidéo sur l'utilisation de Swing pour réaliser une interface graphique durant le sprint 1 que j'avais notée <a href="#swing">ici</a>, mais que je n'avais pas eu le temps de suivre.</p>
+<p>J'ai d'abord commencé mon sprint 2 par son visionnage. Je la conseille vivement à toute personne voulant débuter ! Elle permet d'acquérir les bases et de comprendre la logique et elle est très bien expliquée.</p>
+<h3 id="visuel"> Le jeu final </h3>
+<p><em>Le dossier du jeu est téléchargeable <a href="jeu_mastermind.zip">ici</a></em></p>
+<h4 id="interface-initiale" tabindex="-1"><a class="header-anchor" href="#interface-initiale"></a> Interface initiale</h4>
+<img width="350" src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Sarah-Sebastien/pok/temps-2/Mastermind_1.png">
+<h4 id="partie-en-cours" tabindex="-1"><a class="header-anchor" href="#partie-en-cours"></a> Partie en cours</h4>
+<p>Le joueur vient écrire sa proposition:</p>
+<img width="350" src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Sarah-Sebastien/pok/temps-2/Mastermind_2.png">
+<p>Une fois sa tentative validée, les indications de la justesse de sa proposition s'affichent sur la droite :</p>
+<ul>
+<li><strong>Blanc</strong> : la couleur est bonne mais mal placée</li>
+<li><strong>Rouge</strong> : la couleur est bonne et bien placée</li>
+</ul>
+<img width="350" src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Sarah-Sebastien/pok/temps-2/Mastermind_4.png">
+<h4 id="fin-de-la-partie" tabindex="-1"><a class="header-anchor" href="#fin-de-la-partie"></a> Fin de la partie</h4>
+<table>
+<thead>
+<tr>
+<th>L'utilisateur n'a pas réussi à trouver le code avant la fin des 7 tentatives</th>
+<th>L'utilisateur a réussi à trouver le code avant la fin des 7 tentatives</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img width="350" src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Sarah-Sebastien/pok/temps-2/Mastermind_3.png"></td>
+<td><img width="350" src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Sarah-Sebastien/pok/temps-2/Mastermind_5.png"></td>
+</tr>
+</tbody>
+</table>
+<h2 id="code"> Construction du code </h2>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100 dark:border-cyan-800 dark:bg-cyan-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-cyan-500 dark:stroke-cyan-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Avant de commencer...</strong></p>
+</div><div class="pl-8 mr-8">
+<p>J'avais repérer une vidéo sur l'utilisation de Swing pour réaliser une interface graphique durant le sprint 1 que j'avais notée <a href="#swing">ici</a>, mais que je n'avais pas eu le temps de suivre.</p>
+<p>J'ai d'abord commencé mon sprint 2 par son visionnage. Je la conseille vivement à toute personne voulant débuter ! Elle permet d'acquérir les bases et de comprendre la logique et elle est très bien expliquée.</p>
+</div>
+</div>
+<p>Pour mon projet, j'ai créé un package <em>Interface</em> dans lequel j'ai créé 2 classes : <strong><em>MainFrame</em></strong> (qui gère l'affichage de l'écran de jeu) et <strong><em>MessageFrame</em></strong> (qui gère l'affichage de l'écran final de fin de partie), qui héritent de <strong>JFrame</strong>.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100 dark:border-pink-800 dark:bg-pink-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-pink-500 dark:stroke-pink-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Prérequis</b></p>
+</div><div class="pl-8 mr-8">
+<p>Classes importantes du package Java Swing,</p>
+<ul>
+<li><strong>JPanel</strong> :  est un conteneur capable de stocker, et d'organiser ainsi,un ensemble de composants.</li>
+<li><strong>Jframe</strong> : utilisée pour créer des fenêtres graphiques dans une application</li>
+</ul>
+</div>
+</div>
+<img width="200" src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Sarah-Sebastien/pok/temps-2/Jframe_Jpanel.png">
+<p><a href="https://waytolearnx.com/2020/05/jpanel-java-swing.html">Source image</a></p>
+<h3 id="construction-de-la-partie" tabindex="-1"><a class="header-anchor" href="#construction-de-la-partie"></a> Construction de la partie</h3>
+<ul>
+<li><a href="#mainframe">Main Frame</a>
+<ul>
+<li><a href="#a">Implémentation des méthodes</a></li>
+<li><a href="#b">Gestion des graphismes</a></li>
+<li><a href="#c">Création des Panels</a></li>
+</ul>
+</li>
+<li><a href="#messageframe">Message Frame</a></li>
+</ul>
+<h3 id="mainframe"> Main Frame</h3>
+<p>On définit d'abord quelques variables qui vont nous servir tout au long du codage <em>(ex : liste des couleurs disponibles, nombre d'essai maximum, etc...)</em></p>
+<h4 id="a"> Implémentation des méthodes</h4>
+<p>On créé ensuite une méthode qui va venir générer un code secret...</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Generation du code secret</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-java line-numbers"><code>
+
+private List<Color> generateCode(){
+        Random random = new Random();
+        List<Color> secretCode = new ArrayList<>();
+
+        // Génération de 4 nombres aléatoires entre 1 et 6 (inclus)
+        for (int i = 0; i < 4; i++) {
+            int randomNumber = random.nextInt(6);
+            if (secretCode.contains(colorAvailable.get(randomNumber))){
+                do {
+                randomNumber = random.nextInt(6);
+                } while (secretCode.contains(colorAvailable.get(randomNumber)));
+                }
+
+            secretCode.add(colorAvailable.get(randomNumber));
+        }
+        System.out.println(secretCode);
+        return secretCode;
+    }
+
+
+</Color></Color></code></pre></div>
+</details>
+</div>
+<p>... Puis une autre qui va initialiser une grille vide de taille 7x4 de couleur noire qui servira pour l'affichage du jeu de l'utilisateur.</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Création grille vide</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-java line-numbers"><code>
+
+public Color[][] initializeGrid (int rows, int columns, Color color){
+    Color[][] tableau = new Color[rows][columns];
+    for(int i = 0; i < tableau.length; i++){
+        for(int j = 0; j < tableau[i].length; j++){
+            tableau[i][j] = color;
+    }}
+    return tableau;
+}
+
+
+</code></pre></div>
+</details>
+</div>
+<blockquote>
+<p>Ces méthodes sont appelées lors de l'ouverture du jeu.</p>
+</blockquote>
+<p>D'autres méthodes seront aussi utiles plus tard, comme par exemple:</p>
+<ul>
+<li>une méthode qui sera appelée lorsque l'utilisateur appuiera sur une couleur pour changer la couleur de la case de sa proposition</li>
+<li>une méthode qui met à jour la grille de jeu de l'utilisateur lorsqu'il appuie sur &quot;valider&quot;</li>
+<li>une méthode qui met à jour la grille d'indices lorsque l'utilisateur appuie sur &quot;valider&quot;</li>
+<li>une méthode qui va appelé la classe <em>&quot;MessageFrame&quot;</em> pour afficher le message final en fonction de la réussite de l'utilisateur</li>
+</ul>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Un aperçu de ces méthodes</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-java line-numbers"><code>
+
+private void updateChoice(Color color) {
+        //méthode permettant de mettre à jour les couleurs choisies par l'utilisateur
+        for (int i = 0; i <= Choices.size(); i++) {
+            if (Choices.get(i)==Color.LIGHT_GRAY) {
+            // Changer la valeur de l'élément vide à la valeur du bouton appuyé
+                Choices.set(i, color);
+                changeColor();
+                break;
+    }}}
+
+    private void validateChoices (int index) {
+
+        if (isCompleted(Choices)){
+            for(int j = 0; j < choicesGrid[index-1].length; j ++ ){
+                choicesGrid[index-1][j] = Choices.get(j);
+                }
+        //on actualise la grid
+        changeColor();
+        //on indique les indices de la tentative jouée
+        indicateClues(index);
+        //on initialise le zone de choix de couleurs de l'utilisateur
+        emptyChoicesList(Choices);
+        maxTries--;
+        //test si la partie est finie
+        MessageBox(maxTries, isGameFinished);
+        }}
+
+    private void indicateClues(int index){
+        //si une couleur est bien placée : goodPlace+1
+        //si une couleur est bonne et bien placée : goodColor+1
+        int goodColor=0;
+        int goodPlace=0;
+        for(int j = 0; j < choicesGrid[index-1].length; j ++ ){
+            if (choicesGrid[index-1][j] == secretCode.get(j)){
+                goodPlace+=1;}
+            else if (secretCode.contains(choicesGrid[index-1][j])){
+                goodColor+=1;
+            }}
+
+        for (int k = 0; k < goodPlace; k++){
+            clueGrid[index-1][k]=(new Color (141, 1, 1));}
+        for (int l = goodPlace; l<goodColor+goodPlace; 0="" l++){="" clueGrid[index-1][l]="Color.WHITE;}" si="" toutes="" les="" couleurs="" sont="" bonnes="" et="" bien="" placées="" le="" jeu="" est="" terminé="" if="" (goodPlace="=" 4){="" isGameFinished="true;" }="" private="" void="" MessageBox="" (int="" ESSAI,="" boolean="" IsGameFinished){="" méthode="" qui="" permet="" d'affiche="" message="" de="" fin="" partie="" en="" fonction="" la="" réussite="" l'utilisateur="" (ESSAI="=" &="" IsGameFinished="" !="true){" MessageFrame.go(false,secretCode);="" (IsGameFinished="=" true){="" MessageFrame.go(true,secretCode);="" <="" code=""></goodColor+goodPlace;></code></pre></div>
+</details>
+</div>
+<h4 id="b"> Gestion des graphismes</h4>
+<p>Toute la création des formes graphiques (cercles, rectangles) se fait au moyen de la méthode <strong>paint</strong> pour laquelle j'ai créé une <strong>classe fille</strong>.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100 dark:border-cyan-800 dark:bg-cyan-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-cyan-500 dark:stroke-cyan-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Remarque</strong></p>
+</div><div class="pl-8 mr-8">
+<p><em>La position se chaque forme se fait relativement à la dimension initiale de la fenêtre de jeu : quand on augmente ou diminue la taille de la fenêtre lors de la partie, la taille des graphismes n'est pas adaptée (ce qui fait que le jeu n'est pas du tout Responsive...)</em></p>
+</div>
+</div>
+<hr>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Création des dessins</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-java line-numbers"><code>
+
+public void paint(Graphics g) {
+     super.paint(g);
+        //creation du rectangle de fond
+        g.setColor (new Color(91, 91, 91));
+        g.fillRect(40,40,580,480);
+
+        //grilles de colonnes
+        for (int i = 0; i < (choicesGrid.length); i += 1) {
+            for (int j = 0; j < (choicesGrid[i].length); j += 1) {
+               g.setColor(choicesGrid[i][j]);
+               g.fillOval((j+1)*posXCercleL, (i+1)*posYCercleL,44,44);
+        }}
+
+        //lignes choix en cours
+        for (int i = 1; i <= 4; i += 1) {
+            g.setColor(Choices.get(i-1));
+            g.fillOval(i*posXCercleL,550,46,46);
+        }
+
+        //creation des icones d'indications des des réponses
+        for (int i = 0; i < (clueGrid.length); i += 1) {
+            for (int j = 0; j < (clueGrid[i].length); j += 1) {
+                g.setColor(clueGrid[i][j]);
+                g.fillOval(380 + (j+1)*posXCercleR, 10 + (i+1)*posYCercleR,30,30);
+        }}}
+
+        public void changeColor() {
+            //permet d'appeler à nouveau la méthode paint pour redessiner les formes
+            repaint();
+        }
+
+
+</code></pre></div>
+</details>
+</div>
+<h4 id="c"> Création des Panels</h4>
+<p>On va ensuite s'occuper de la méthode <em>initialize</em> qui va permettre de créer les <em>panels</em>, les <em>boutons</em> et les <em>actions associées</em>.</p>
+<h5 id="1-%3A-button-panel" tabindex="-1"><a class="header-anchor" href="#1-%3A-button-panel"></a> 1 : Button Panel</h5>
+<p><em>Ce panel va gérer l'affichage des boutons &quot;valider&quot; et &quot;effacer&quot;</em></p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>ButtonPanel</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-java line-numbers"><code>
+
+    //Panel boutons "valider" et "effacer"
+        JPanel ButtonPanel = new JPanel ();
+        ButtonPanel.setLayout(null);
+
+        JButton btnValider = new JButton ("Valider");
+        btnValider.setFont(mainFont);
+        btnValider.setBounds(500,510,100,50);
+        btnValider.addActionListener(e -> validateChoices(maxTries));
+
+        JButton btnEffacer = new JButton ("Effacer");
+        btnEffacer.setFont(mainFont);
+        btnEffacer.setBounds(350,510,100,50);
+        btnEffacer.addActionListener (new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                //fait à une 1ere méthode qui remet à "zéro" (en gris) le contenu de la liste du choix de l'utilisateur et une autre qui vient actualiser l'action en redessinant le graphique
+                emptyChoicesList(Choices);
+                changeColor();
+            }
+        });
+
+        ButtonPanel.add(btnValider);
+        ButtonPanel.add(btnEffacer);
+        ButtonPanel.setOpaque(false);
+
+
+</code></pre></div>
+</details>
+</div>
+<hr>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100 dark:border-cyan-800 dark:bg-cyan-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-cyan-500 dark:stroke-cyan-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Remarque</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Pour m’entraîner, j'ai utilisé à la fois des classes anonymes (<em>new ActionListener</em>) et des expressions lambda (<em>e -&gt; validateChoices(maxTries)</em>). Après coup, je pense qu'ill aurait été plus cohérent d'utiliser que des expressions lambda, pour harmoniser les codes, et comme je les trouve plus facile à créer.</p>
+</div>
+</div>
+<h5 id="2-%3A-color-panel" tabindex="-1"><a class="header-anchor" href="#2-%3A-color-panel"></a> 2 : Color Panel</h5>
+<p><em>Ce panel va gérer l'affichage des boutons en bas de l'écran permettant à l'utilisateur de choisir ses couleurs</em></p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>colorPanel</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-java line-numbers"><code>
+
+// Panneau choix couleurs
+        JPanel colorPanel = new JPanel ();
+        colorPanel.setLayout (new GridLayout (1, 6, 20, 10));
+        colorPanel.setSize(700,100);
+        colorPanel.setOpaque(false);
+
+        //Ajout des boutons des couleurs
+        JButton btnRed = new JButton();
+        btnRed.setBackground(Color.RED);
+        btnRed.addActionListener(e -> updateChoice(Color.RED));
+        btnRed.setPreferredSize(new Dimension(this.WIDTH, 50));
+
+        JButton btnBlue = new JButton();
+        btnBlue.setBackground(Color.BLUE);
+        btnBlue.addActionListener(e -> updateChoice(Color.BLUE));
+
+        JButton btnCyan = new JButton();
+        btnCyan.setBackground(Color.CYAN);
+        btnCyan.addActionListener(e -> updateChoice(Color.CYAN));
+
+        JButton btnYellow = new JButton();
+        btnYellow.setBackground(Color.YELLOW);
+        btnYellow.addActionListener(e -> updateChoice(Color.YELLOW));
+
+        JButton btnGreen = new JButton();
+        btnGreen.setBackground(Color.GREEN);
+        btnGreen.addActionListener(e -> updateChoice(Color.GREEN));
+
+
+        JButton btnPink = new JButton();
+        btnPink.setBackground(Color.MAGENTA);
+        btnPink.addActionListener(e -> updateChoice(Color.MAGENTA));
+
+        colorPanel.add(btnRed);
+        colorPanel.add(btnBlue);
+        colorPanel.add(btnCyan);
+        colorPanel.add(btnYellow);
+        colorPanel.add(btnGreen);
+        colorPanel.add(btnPink);
+
+
+</code></pre></div>
+</details>
+</div>
+<h5 id="3-%3A-main-panel" tabindex="-1"><a class="header-anchor" href="#3-%3A-main-panel"></a> 3 : Main Panel</h5>
+<p><em>On va venir ensuite créer le main panel qui va stocker les panels précédents en les disposant sur la page (haut, bas, centre, ...)</em></p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>mainPanel</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-java line-numbers"><code>
+
+       JPanel mainPanel = new JPanel();
+        mainPanel.setLayout(new BorderLayout());
+        mainPanel.setBackground(new Color(30, 30, 30));
+        //On ajoute le form panel au main Panel dans la partie "sud"
+        mainPanel.add(colorPanel, BorderLayout.SOUTH);
+        //On ajoute des marges
+        mainPanel.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
+        mainPanel.add(ButtonPanel,BorderLayout.CENTER);
+
+        add(mainPanel);
+
+        setTitle("Mastermind");
+        setSize(700,700);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setVisible(true);
+
+
+</code></pre></div>
+</details>
+</div>
+<p>Enfin, on créé la méthode principale pour executer le panneau principal :</p>
+<pre class="language-java line-numbers"><code>
+
+    public static void main (String[] args){
+        MainFrame myFrame = new MainFrame();
+        myFrame.initialize();
+        }
+
+
+</code></pre><h3 id="messageframe"> Message Frame</h3>
+<p>On réitère la même démarche que pour le Main Panel. Le besoin des méthodes et des boutons ne sera pas le même:</p>
+<ul>
+<li>méthode pour récupérer le code secret transmis lors de l'appel de l'appel de la méthode dans le MainPanel (<strong><em>MessageFrame</em></strong>)</li>
+<li>de la méthode paint pour venir dessiner les cercles de couleurs du code secret (<strong><em>paint</em></strong>)</li>
+<li>du texte dont le contenu s'adaptera en fonction de la réussite (ou pas) du joueur (<strong><em>displayMessage</em></strong>)</li>
+<li>une méthode pour exécuter le frame (<strong><em>go</em></strong>)</li>
+</ul>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>MessageFrame</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-java line-numbers"><code>
+
+public class MessageFrame extends JFrame{
+    final private Font mainFont = new Font ("Poppins", Font.BOLD, 25);
+    final private Font secondFont = new Font ("Poppins",Font.CENTER_BASELINE, 19);
+    private List<Color> secretCode;
+
+    public MessageFrame (List<Color> secretCode){
+        //permet de récupérer le code secret du MainFrame
+        this.secretCode=secretCode;
+    }
+
+    public void paint(Graphics g) {
+        super.paint(g);
+
+        //creation du rectangle de fond
+        g.setColor (Color.WHITE);
+        g.fillRect(100,320,480,130);
+
+        //creation des icones du code secret
+        for (int i = 1; i <= 4; i += 1) {
+            g.setColor(secretCode.get(i-1));
+            g.fillOval(60+100*i,350,60,60);
+        }}
+
+    public void displayMessage(boolean IsWin, List<Color> secretCode){
+        //initialisation des text
+        JLabel messageLabel = new JLabel ("");
+        messageLabel.setFont(mainFont);
+        messageLabel.setHorizontalAlignment(JLabel.CENTER);
+        JLabel codeLabel = new JLabel ("Le code secret était:");
+        codeLabel.setFont(secondFont);
+        codeLabel.setHorizontalAlignment(JLabel.CENTER);
+
+        //création des panels
+        JPanel textPanel= new JPanel ();
+        textPanel.setLayout (new GridLayout (4, 1, 5, 5));
+        textPanel.add(messageLabel);
+        textPanel.add(codeLabel);
+        textPanel.setOpaque(false);
+
+        JButton btnRecommencer = new JButton ("Recommencer");
+        btnRecommencer.setFont(mainFont);
+        btnRecommencer.addActionListener (new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // TODO Auto-generated method stub
+                MainFrame.main(null);
+            }
+        });
+
+        JPanel buttonPanel = new JPanel ();
+        buttonPanel.setOpaque(false);
+        buttonPanel.add(btnRecommencer);
+
+        //creation Panel principal
+        JPanel messagePanel= new JPanel ();
+        messagePanel.setLayout(new BorderLayout());
+        messagePanel.setBorder(BorderFactory.createEmptyBorder(10,10,10,10));
+        messagePanel.add(textPanel,BorderLayout.CENTER);
+        messagePanel.add(buttonPanel,BorderLayout.SOUTH);
+
+
+        if (IsWin == true){
+            messagePanel.setBackground(new Color(178, 255, 106));
+            messageLabel.setText("Vous avez gagné ! 😀");
+        }
+        else {
+            messagePanel.setBackground(new Color(240, 89, 89));
+            messageLabel.setText("Vous avez perdu... 😢");
+        }
+        add(messagePanel);
+
+        setTitle("End");
+        setSize(700,700);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setVisible(true);
+    }
+
+    public static void go (boolean IsWin,List<Color> secretCode){
+        MessageFrame my2Frame = new MessageFrame(secretCode);
+        my2Frame.displayMessage(IsWin,secretCode);
+        }
+}
+
+
+</Color></Color></Color></Color></code></pre></div>
+</details>
+</div>
+<h2 id="objectifs"> Retour sur les objectifs </h2>
+<h3 id="reetour-sur-le-backlog-du-jeu" tabindex="-1"><a class="header-anchor" href="#reetour-sur-le-backlog-du-jeu"></a> Reetour sur le backlog du jeu</h3>
+<table>
+<thead>
+<tr>
+<th>Intitulé</th>
+<th>Complexité</th>
+<th>Valeur métier(MoSCoW)</th>
+<th>Réalisé</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sélectionner une combinaison de 4 couleurs</td>
+<td>3</td>
+<td>Must</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Valider une fois qu'une combinaison a été choisie</td>
+<td>3</td>
+<td>Must</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Effacer une combinaison qui n'a pas encore été validée</td>
+<td>3</td>
+<td>Must</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Choisir d'effacer seulement la dernière couleur qui a été sélectionnée</td>
+<td>8</td>
+<td>Won't</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>Pouvoir abandonner la partie à tout moment</td>
+<td>5</td>
+<td>Could</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>Pouvoir accéder aux règles du jeu à tout moment</td>
+<td>5</td>
+<td>Won't</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>Avoir à indicateur du nombre de couleurs justes et bien placées et juste et mal placées à chaque combinaison validée</td>
+<td>5</td>
+<td>Must</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Avoir le code secret recherché qui s'affiche à la fin d'une partie</td>
+<td>3</td>
+<td>Won't</td>
+<td>✅</td>
+</tr>
+</tbody>
+</table>
+<p>Finalement, je n'ai pas réussi à implémenter toutes les fonctionnalités que j'avais espérées pour mon jeu, surtout par manque de temps :</p>
+<ul>
+<li><em>accéder aux règles du jeu</em> et n'<em>effacer que la dernière couleur sélectionnée</em> n'étaient pas forcément compliqué à mettre en place (rajouter un bouton avec un autre JFrame avec la même méthode que le MessageFrame) mais pas primordial</li>
+<li>le bouton <em>Abandonner</em> était plus compliqué à mettre en place. Je n'ai pas réussi à combiner les graphismes créés avec la méthode paint avec les JButton. J'aurais pu revoir toute la disposition de l'écran, mais cela signifiait changer toutes les proportions, et je manquais de temps...</li>
+</ul>
+<h3 id="retour-sur-le-backlog-du-sprint-2" tabindex="-1"><a class="header-anchor" href="#retour-sur-le-backlog-du-sprint-2"></a> Retour sur le backlog du Sprint 2</h3>
+<table>
+<thead>
+<tr>
+<th>Intitulé</th>
+<th>Temps estimé</th>
+<th>Temps réalisé</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>- Apprendre les connaissances théoriques pour réaliser une interface graphique en Java <br> - Réaliser le backlog défini plus haut sur Java (*) <br> - Recherche de méthodes de résolution d'un mastermind <br> - Implémentation de ces méthodes <br> - Comparaison des méthodes</td>
+<td>1h <br> 6h <br> 45mins <br> 1h <br> 30 mins</td>
+<td><strong>1h15</strong> <br> <strong>9h</strong> <br> <strong>/</strong> <br> <strong>/</strong> <br> <strong>/</strong></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>(*) Plus en détails</strong>
+1h30 : Recherches et réalisations des boutons de choix de couleurs
+1h30 : Recherches sur la méthode paint et réalisation des graphismes
+1h : Tentatives de création des boutons du jeu (&quot;Abandonner&quot;, &quot;Effacer&quot;, &quot;Valider&quot;)
+45 mins : Gestion de la ligne de choix de l'utilisateur
+1h : Gestion de la grille du jeu complet de l’utilisateur et création des méthodes
+1h : Gestion de l'affiche et de la mise à jour des indices et méthodes
+1h30 : Création du MessagePanel
+45 mins : Tests du jeu pour s'assurer de son fonctionnement au fur et à mesure</p>
+</blockquote>
+<p>Bon...
+J'ai finalement assez sous estimé le temps que prendrait le jeu à implémenter.</p>
+<h2 id="experience"> Retour d'expérience </h2>
+<h3 id="points-de-retard-not%C3%A9s" tabindex="-1"><a class="header-anchor" href="#points-de-retard-not%C3%A9s"></a> Points de retard notés</h3>
+<table>
+<thead>
+<tr>
+<th>Problème</th>
+<th>Raison</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Manque de ressources et de culture sur le sujet</td>
+<td>- Ce qui fait que pour certains problèmes (ex: réaliser des formes graphiques dont la couleur se met à jour en fonction des choix de l'utilisateur) je ne savais pas au début comment orienter mes recherches pour résoudre mon problème <br> - Je suis d'ailleurs souvent partie dans une direction pour me rendre compte que ce n'était pas la bonne</td>
+</tr>
+<tr>
+<td>Trop grande volonté de coller au figma</td>
+<td>- Difficulté de réaliser des boutons ronds sur Java (j'ai passé beaucoup de temps sur des forums à essayer de comprendre comment on pouvait contourner le problème pour finalement me rendre compte que je ne comprenais rien et qu'il valait mieux que je fasse des boutons rectangulaires) <br> - Pendant un long moment, je n'arrivais pas à créer les boutons &quot;effacer&quot; et &quot;valider&quot;, comme je les avais positionnés sur la maquette (problème de combinaisons entre les graphismes créés avec la méthode paint et les JButton)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="axes-d'am%C3%A9lioration" tabindex="-1"><a class="header-anchor" href="#axes-d'am%C3%A9lioration"></a> Axes d'amélioration</h3>
+<p>Si c'était à refaire, je ferais en sorte de définir mon backlog pour le sprint 2 après avoir eu un aperçu de comment utiliser Swing et de ses possibilités. Et de même, avant la réalisation de la maquette Figma. Cela m'aurait permis de vraiment savoir ce qui était possible de faire, de dessiner la maquette en conséquence, et d'estimer correctement le temps qu'il me faudra pour réaliser les tâches du backlog.</p>
+
+
+
+</article>
+
+        </main>
+
+        <footer class="min-h-[50px] border-t-2 mt-4 border-gray-200 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-center items-center">
+                    <p class="text-center">
+                        ©2025 <b><span style="font-family: Consolas, sans-serif;">Do-<span style="color: #4a86e8">It</span></span></b> - Développement, Management et Gestion de projets en IT
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- MathJax import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">
+            window.MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']], // Delimiters for inline math
+                    displayMath: [['$$', '$$'], ['\\[', '\\]']] // Delimiters for block math
+                },
+                svg: {
+                    fontCache: 'global' // Use global font cache for SVG output
+                }
+            };
+            document.addEventListener('DOMContentLoaded', () => {
+                MathJax.typeset(); // Ensures MathJax processes the content after the page loads
+            });
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">
+            Prism.plugins.NormalizeWhitespace.setDefaults({
+                'remove-trailing': true,
+                'remove-indent': true,
+                'left-trim': true,
+                'right-trim': true,
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script>
+    </body>
+</html>

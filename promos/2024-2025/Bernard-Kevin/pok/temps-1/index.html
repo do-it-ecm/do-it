@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="robots" content="index, follow">
+
+        <link rel="canonical" href="https://do-it.aioli.ec-m.fr/promos/2024-2025/Bernard-Kevin/pok/temps-1/">
+
+        
+        
+
+        <meta name="description" content="Un POK où je crée un site web pour mon portfolio.">
+        <meta property="og:description" content="Un POK où je crée un site web pour mon portfolio.">
+        <meta name="twitter:description" content="Un POK où je crée un site web pour mon portfolio.">
+
+        
+            <meta name="author" content="Kévin BERNARD">
+        
+        <meta name="keywords" content="do-it, centrale, centrale méditerranée, ecm, POK, vert, frontend, html, css, figma">
+
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png">
+        <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png">
+
+        <link href="/assets/stylesheets/main.css" rel="stylesheet">
+
+        <meta property="og:title" content="POK 1 : Site Web avec mon Portfolio">
+
+        <meta property="og:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta property="og:url" content="https://do-it.aioli.ec-m.fr/promos/2024-2025/Bernard-Kevin/pok/temps-1/">
+        <meta property="og:type" content="website">
+
+        <meta name="twitter:card" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:title" content="POK 1 : Site Web avec mon Portfolio">
+        <meta name="twitter:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:url" content="https://do-it.aioli.ec-m.fr/promos/2024-2025/Bernard-Kevin/pok/temps-1/">
+
+        <title>POK 1 : Site Web avec mon Portfolio</title>
+
+        <!-- Prismjs imports
+                - Prism line numbers
+                - Prism toolbar
+        -->
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet">
+        <link id="prism-theme" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+        <!-- Mermaid import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js "></script>
+
+        <script defer="">
+        // Check if a theme is stored in localStorage. If so, use it, otherwise fallback to the system preference.
+        const storedTheme = localStorage.getItem('theme');
+        if (storedTheme) {
+            document.documentElement.classList.toggle("dark", storedTheme === "dark");
+        } else {
+            // Use system color scheme if there is no stored theme preference.
+            document.documentElement.classList.toggle("dark", window.matchMedia("(prefers-color-scheme: dark)").matches);
+        }
+
+        function loadPrismTheme(isDarkMode) {
+            const newTheme = isDarkMode ? 'prism-okaidia.min.css' : 'prism-solarizedlight.min.css';
+            const newLink = document.createElement('link');
+            newLink.rel = 'stylesheet';
+            newLink.id = 'prism-theme';
+            newLink.href = `https://cdn.jsdelivr.net/npm/prismjs/themes/${newTheme}`;
+
+            newLink.onload = () => {
+                // Reapply highlighting after the new theme loads
+                Prism.highlightAll();
+            };
+
+            const existingLink = document.getElementById('prism-theme');
+            if (existingLink) {
+                document.head.replaceChild(newLink, existingLink);
+            } else {
+                document.head.appendChild(newLink);
+            }
+        }
+
+        function setMermaidTheme(isDarkMode) {
+            const theme = isDarkMode ? 'dark' : 'forest';
+            mermaid.initialize({
+                securityLevel: 'loose',
+                theme,
+                startOnLoad: true,
+            });
+        }
+
+        // Toggle dark and light mode and update localStorage accordingly.
+        function toggleDarkMode() {
+            const dark = document.documentElement.classList.contains("dark");
+            const newTheme = dark ? "light" : "dark";
+            localStorage.setItem('theme', newTheme);
+            document.documentElement.classList.toggle("dark", !dark);
+            loadPrismTheme(!dark);
+            setMermaidTheme(!dark);
+        }
+
+        // On initial load, ensure that Prism and Mermaid are initialized using the current theme.
+        const isDark = document.documentElement.classList.contains("dark");
+        loadPrismTheme(isDark);
+        setMermaidTheme(isDark);
+        </script>
+
+    </head>
+
+    <body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000" class="bg-neutral-50 text-neutral-950 dark:bg-neutral-900 dark:text-neutral-50">
+        <header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white dark:bg-neutral-900 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-between items-center">
+                    <a class="mx-2" href="/">Home</a>
+                    <button class="hidden sm:block text-neutral-950 dark:text-neutral-50 hover:bg-neutral-700 hover:text-neutral-50 hover:dark:bg-neutral-300 hover:dark:text-neutral-950 transition-colors p-2 rounded-full duration-800 ease-in-out" onclick="toggleDarkMode()">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 dark:hidden stroke-current">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <path d="M12 2V4" stroke-linecap="round"></path>
+                            <path d="M12 20V22" stroke-linecap="round"></path>
+                            <path d="M4 12L2 12" stroke-linecap="round"></path>
+                            <path d="M22 12L20 12" stroke-linecap="round"></path>
+                            <path d="M19.7778 4.22266L17.5558 6.25424" stroke-linecap="round"></path>
+                            <path d="M4.22217 4.22266L6.44418 6.25424" stroke-linecap="round"></path>
+                            <path d="M6.44434 17.5557L4.22211 19.7779" stroke-linecap="round"></path>
+                            <path d="M19.7778 19.7773L17.5558 17.5551" stroke-linecap="round"></path>
+                        </svg>
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 stroke-current hidden dark:block">
+                            <path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </button>
+                    <div class="flex items-center gap-4 sm:gap-6 ">
+                        <a class="" href="/cs">CS</a>
+                        <a class="" href="/pok">POK</a>
+                        <a class="" href="/mon">MON</a>
+                        <a class="" href="/projets">Projets</a>
+                        <a class="hidden sm:block" href="/promos">Promos</a>
+                        <a href="/search">
+                            <svg class="h-5 aspect-square stroke-neutral-950 dark:stroke-neutral-300 fill-none stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+                            </svg>
+                        </a>
+                        <a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank">
+                            <svg class="h-5 aspect-square dark:stroke-neutral-300 dark:fill-neutral-300" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body="">
+            
+<article class="relative">
+<h1 class="mb-1">POK 1 : Site Web avec mon Portfolio</h1>
+<div class="mb-4">
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Tags : </div>
+            <ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags">
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">POK</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">vert</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">frontend</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">html</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">css</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">figma</li>
+                
+
+            </ul>
+
+            
+            <div class="hidden" data-pagefind-meta="Type" aria-hidden="true">
+                
+                    
+                        <span data-pagefind-filter="Type">POK</span>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Auteur : </div>
+            <ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs">
+                
+                    <li class="bg-blue-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Auteurs">Kévin BERNARD</li>
+                
+            </ul>
+        </div>
+    
+
+    
+        <div class="absolute top-0 right-0">
+            <span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2 text-neutral-950" data-pagefind-filter="Année">
+                2024-2025
+            </span>
+        </div>
+    
+</div>
+
+<p class="mb-4 text-lg">Un POK où je crée un site web pour mon portfolio.</p>
+
+
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100 dark:border-purple-800 dark:bg-purple-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-purple-500 dark:stroke-purple-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/promos/2024-2025/Bernard-Kevin/">Kévin BERNARD</a><span class="px-1">/</span><a href="/promos/2024-2025/Bernard-Kevin/pok/">POK de Kévin BERNARD</a><span class="px-1">/</span><a href="/promos/2024-2025/Bernard-Kevin/pok/temps-1/">POK 1 : Site Web avec mon Portfolio</a>
+
+</div>
+</div>
+
+
+
+
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100 dark:border-pink-800 dark:bg-pink-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-pink-500 dark:stroke-pink-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Prérequis</b></p>
+</div><div class="pl-8 mr-8">
+<p>Savoir un peu coder en HTML (balises : a, div, button, ul, li, hX)</p>
+</div>
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100 dark:border-emerald-800 dark:bg-emerald-950">
+<svg class="absolute w-6 h-6 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-emerald-500 dark:stroke-emerald-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Liens</b></p>
+</div><div class="pl-8 mr-8">
+<p><b>SOURCES</b></p>
+<ul>
+<li><a href="https://www.ultra-book.com/portfolios">Sites de portfolio</a></li>
+<li><a href="https://www.youtube.com/watch?v=EFBufG7TKRE&amp;t=510s">Créer un Site Web HTML &amp; CSS</a></li>
+<li><a href="https://www.youtube.com/watch?v=lR4-DJey_3A">Exemple de formulaire</a></li>
+<li><a href="https://www.youtube.com/watch?v=E7QPO8P8nls">How to import Google Font</a></li>
+<li><a href="https://github.com/KevinBERNARD1901/site_portfolio">Github avec le projet</a></li>
+<li><a href="https://www.youtube.com/watch?v=aswRKAjjWuE">Barre mouvante inspiration</a></li>
+<li><a href="https://www.youtube.com/watch?v=BgVjild0C9A">Tuto Email JS</a></li>
+<li><a href="https://developer.mozilla.org/fr/docs/Web/API/Element/click_event">Documentation onclick</a></li>
+<li><a href="https://developer.mozilla.org/fr/docs/Web/API/Element/mouseover_event">Documentation hover</a></li>
+</ul>
+</div>
+</div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100 dark:border-purple-800 dark:bg-purple-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-purple-500 dark:stroke-purple-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><b> POK &amp; MON </b></p>
+<ul>
+<li><a href="../../mon/temps-1.1">MON 1.1 : Apprendre à utiliser Figma</a></li>
+</ul>
+</div>
+</div>
+<p>Mon projet à long terme est de travailler en tant qu'<strong>illustrateur free-lance</strong> et je profite de Do-It pour avancer mes compétences en informatique et avancer vers cet objectif.
+C'est pour cela que j'ai décidé de créer <strong>mon site web avec mon portfolio.</strong></p>
+<h2 id="t%C3%A2ches" tabindex="-1"><a class="header-anchor" href="#t%C3%A2ches"></a> Tâches</h2>
+<h3 id="sprints" tabindex="-1"><a class="header-anchor" href="#sprints"></a> Sprints</h3>
+<h4 id="sprint-1" tabindex="-1"><a class="header-anchor" href="#sprint-1"></a> Sprint 1</h4>
+<ul>
+<li>[x] Faire un Mockup sur Figma</li>
+<li>[x] Coder les pages en HTML</li>
+<li>[x] Coder le style en CSS</li>
+</ul>
+<h4 id="sprint-2" tabindex="-1"><a class="header-anchor" href="#sprint-2"></a> Sprint 2</h4>
+<ul>
+<li>[x] Mettre le contact possible (message, prénom/nom, mail) (<b>estimé : </b>3H, <b>réel :</b> 2H50)</li>
+<li>[x] Ajouter une barre mouvante sur la barre de navigation (<b>estimé : </b>2H, <b>réel :</b> 2H50)</li>
+<li>[ ] Catégories : Tous, illustration, personnages, accessoires, croquis, recherche (<b>estimé : </b>3H, <b>réel :</b> )</li>
+<li>[x] Animation des images et de la souris quand cette dernière passe sur les images de la galerie (<b>estimé : </b>1H, <b>réel :</b> 2H20)</li>
+<li>[x] Animation dans la sélection des images (<b>estimé : </b>1H30, <b>réel :</b> 2H)</li>
+<li>[ ] Icône pour savoir si je suis disponible (cloche ou autre) (<b>estimé : </b>1H30, <b>réel :</b> )</li>
+</ul>
+<h3 id="horodatage" tabindex="-1"><a class="header-anchor" href="#horodatage"></a> Horodatage</h3>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Heures passées</th>
+<th>Indications</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Début Sprint 1</strong></td>
+</tr>
+<tr>
+<td>Samedi 14/09</td>
+<td>3H45</td>
+<td>Création du Mockup</td>
+</tr>
+<tr>
+<td>Lundi 16/09</td>
+<td>2H15</td>
+<td>Création des pages HTML + import font &quot;Fira Sans&quot;</td>
+</tr>
+<tr>
+<td>Mardi 17/09</td>
+<td>3H30</td>
+<td>Création du CSS des pages</td>
+</tr>
+<tr>
+<td>Mercredi 18/09</td>
+<td>1H30</td>
+<td>Rédaction du POK</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>11H</td>
+</tr>
+<tr>
+<td><strong>Début Sprint 2</strong></td>
+</tr>
+<tr>
+<td>Mercredi 25/09</td>
+<td>1H30</td>
+<td>Barre qui bouge</td>
+</tr>
+<tr>
+<td>Vendredi 11/10</td>
+<td>5H10</td>
+<td>Barre qui bouge + Formulaire Contact + Animation de la sélection des images</td>
+</tr>
+<tr>
+<td>Lundi 14/10</td>
+<td>3H30</td>
+<td>Changer d'une image à l'autre + Hover sur une image</td>
+</tr>
+<tr>
+<td>Total</td>
+<td>10H10</td>
+</tr>
+</tbody>
+</table>
+<h2 id="contenu" tabindex="-1"><a class="header-anchor" href="#contenu"></a> Contenu</h2>
+<h3 id="premier-sprint" tabindex="-1"><a class="header-anchor" href="#premier-sprint"></a> Premier Sprint</h3>
+<h4 id="mockup" tabindex="-1"><a class="header-anchor" href="#mockup"></a> Mockup</h4>
+<p>Dans un premier temps, j'ai réalisé le <strong>Mockup</strong> de mon site web.
+Pour cela, j'ai cherché plusieurs exemples de sites qui existaient déjà pour m'en inspirer.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100 dark:border-emerald-800 dark:bg-emerald-950">
+<svg class="absolute w-6 h-6 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-emerald-500 dark:stroke-emerald-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Liens</b></p>
+</div><div class="pl-8 mr-8">
+<p><a href="https://www.ultra-book.com/portfolios">Sites de portfolio</a></p>
+</div>
+</div>
+<p>Une fois mes références en tête, j'ai fait mon <strong>Mockup</strong> sur <strong>Figma</strong> grâce à mon <strong>MON 1.1</strong> :</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100 dark:border-purple-800 dark:bg-purple-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-purple-500 dark:stroke-purple-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+<p><a href="../../mon/temps-1.1">MON 1.1 : Apprendre à utiliser Figma</a></p>
+</div>
+</div>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Bernard-Kevin/pok/temps-1/media/Sprint1_1_mockup.png" alt="alt text"></p>
+<p>J'ai créé 3 pages :</p>
+<ul>
+<li>PORTFOLIO</li>
+<li>CONTACT</li>
+<li>MON PROFIL</li>
+</ul>
+<p>J'ai rajouté la sélection d'une image que je ferai avec JavaScript dans mon Sprint 2.</p>
+<h4 id="html" tabindex="-1"><a class="header-anchor" href="#html"></a> HTML</h4>
+<p>Suite à cela j'ai créé mon projet grâce à plusieurs commandes :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100 dark:border-emerald-800 dark:bg-emerald-950">
+<svg class="absolute w-6 h-6 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-emerald-500 dark:stroke-emerald-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Liens</b></p>
+</div><div class="pl-8 mr-8">
+<p><a href="https://www.youtube.com/watch?v=EFBufG7TKRE&amp;t=510s">Créer un Site Web HTML &amp; CSS</a></p>
+</div>
+</div>
+<pre class="line-numbers"><code>
+
+PS C:\Users\kevin\3A\Site_Portfolio> npm create vite@latest ./
+  Need to install the following packages:
+  create-vite@5.5.2
+  Ok to proceed? (y) y
+
+
+  > npx
+  > create-vite ./
+
+  √ Package name: ... site-portfolio
+  √ Select a framework: » Vanilla
+  √ Select a variant: » JavaScript
+
+  Scaffolding project in C:\Users\kevin\3A\Site_Portfolio...
+
+
+</code></pre><p>Puis j'installe les extensions <strong>npm</strong> pour pouvoir lancer le projet :</p>
+<pre class="line-numbers"><code>
+
+PS C:\Users\kevin\3A\Site_Portfolio> npm install
+
+
+</code></pre><p>Ensuite j'ai organisé mon dossier de la manière suivante en prenant les png de mes digitals painting :</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Bernard-Kevin/pok/temps-1/media/Sprint1_2_organisation_dossiers.png" alt="alt text"></p>
+<p>Après j'ai codé mes pages simplement et on avait ce premier aperçu :</p>
+<ol>
+<li>
+<p>Page PORTFOLIO :
+<img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Bernard-Kevin/pok/temps-1/media/Sprint1_3_avant_css_portfolio.png" alt="alt text"></p>
+</li>
+<li>
+<p>Page CONTACT :
+<img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Bernard-Kevin/pok/temps-1/media/Sprint1_4_avant_css_contact.png" alt="alt text"></p>
+</li>
+</ol>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100 dark:border-emerald-800 dark:bg-emerald-950">
+<svg class="absolute w-6 h-6 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-emerald-500 dark:stroke-emerald-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Liens</b></p>
+</div><div class="pl-8 mr-8">
+<p><a href="https://www.youtube.com/watch?v=lR4-DJey_3A">Exemple de formulaire</a></p>
+</div>
+</div>
+<ol start="3">
+<li>Page MON PROFIL :
+<img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Bernard-Kevin/pok/temps-1/media/Sprint1_5_avant_css_mon_profil.png" alt="alt text"></li>
+</ol>
+<h4 id="css" tabindex="-1"><a class="header-anchor" href="#css"></a> CSS</h4>
+<p>Après j'ai stylisé mes pages.
+Tout d'abord j'ai fait ce qui était général aux pages : la <b>police</b> et le <b>header</b>.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100 dark:border-emerald-800 dark:bg-emerald-950">
+<svg class="absolute w-6 h-6 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-emerald-500 dark:stroke-emerald-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Liens</b></p>
+</div><div class="pl-8 mr-8">
+<p><a href="https://www.youtube.com/watch?v=E7QPO8P8nls">How to import Google Font</a></p>
+</div>
+</div>
+<pre class="line-numbers"><code>
+
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+/* Style General */
+
+* {
+  font-family: "Fira Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+h1 {
+    font-weight: 900;
+    text-align: center;
+    margin-top: 50px;
+    font-size: 3em;
+}
+
+h2 {
+    font-weight: 800;
+    text-align: center;
+}
+
+.mail{
+    font-weight: 200;
+    text-align: center;
+    /* font-style: italic; */
+    margin-top: 30px;
+    margin-bottom: 50px;
+    font-size: 1.5em;
+}
+
+b {
+    font-weight: 700;
+}
+
+ul {
+    list-style-type: none;
+    text-align: center;
+    padding: 0;
+}
+
+ul li {
+    display: inline;
+    margin: 0 30px;
+}
+
+ul li a {
+    text-decoration: none;
+    color: black;
+    font-size: 1.5em;
+    font-weight: 100;
+}
+
+a.mon_profil {
+    font-weight: 500;
+    text-decoration: underline;
+}
+
+a.portfolio {
+    font-weight: 500;
+    text-decoration: underline;
+}
+
+a.contact {
+    font-weight: 500;
+    text-decoration: underline;
+}
+
+
+</code></pre><p>Après je me suis occupé des pages :</p>
+<ol>
+<li><strong>Page PORTFOLIO :</strong></li>
+</ol>
+<pre class="line-numbers"><code>
+
+/* Style portfolio */
+
+div.portfolio {
+    margin: 70px auto;
+    width: 60%;
+}
+
+div.portfolio div {
+    justify-content: center;
+    display: flex;
+}
+
+img {
+    width: 33%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    margin: 5px 5px;
+}
+
+
+</code></pre><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Bernard-Kevin/pok/temps-1/media/Sprint1_6_apres_css_portfolio.png" alt="alt text"></p>
+<ol start="2">
+<li><strong>Page CONTACT :</strong></li>
+</ol>
+<pre class="line-numbers"><code>
+
+/* Style contact */
+
+h2.contact {
+    margin-top: 50px;
+    margin-bottom: 60px;
+    font-size: 2.2em;
+    font-weight: 500;
+}
+
+div.contact {
+    margin: 0 auto;
+    max-width: 500px;
+    width: 60%;
+    font-size: 2em;
+}
+
+div.contact div {
+    border-bottom: 1px solid black;
+    margin-bottom: 40px;
+}
+
+label {
+    font-weight: 300;
+    margin: 10px 0;
+    width: 100%;
+}
+
+input, textarea {
+    display: block;
+    margin: 10px 0;
+    border: none;
+    width: 100%;
+    font-size: 0.6em;
+    resize: none;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+}
+
+button {
+    padding: 10px;
+    border: none;
+    background-color: black;
+    color: white;
+    font-weight: 400;
+    font-size: 0.8em;
+    cursor: pointer;
+    margin: 10px calc(100% - 125px);
+}
+
+
+</code></pre><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Bernard-Kevin/pok/temps-1/media/Sprint1_7_apres_css_contact.png" alt="alt text"></p>
+<ol start="3">
+<li><strong>Page MON PROFIL :</strong></li>
+</ol>
+<pre class="line-numbers"><code>
+
+/* Style mon_profil */
+
+div.mon_profil {
+    margin: 50px auto;
+    max-width: 600px;
+    width: 60%;
+    font-size: 1.3em;
+    text-align: justify;
+}
+
+div.mon_profil p {
+    margin-bottom: 40px;
+    font-weight: 300;
+    line-height: 1.5em;
+}
+
+div.mon_profil p b {
+    font-weight: 700;
+}
+
+
+</code></pre><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Bernard-Kevin/pok/temps-1/media/Sprint1_8_apres_css_mon_profil.png" alt="alt text"></p>
+<h4 id="retour-sur-exp%C3%A9rience" tabindex="-1"><a class="header-anchor" href="#retour-sur-exp%C3%A9rience"></a> Retour sur expérience</h4>
+<p><strong>Difficultés :</strong></p>
+<ul>
+<li>J'ai eu du mal à importer le font.</li>
+<li>J'ai beaucoup chercher les paramètres CSS des balises HTML.</li>
+<li>J'ai mis du temps avant de réussir à mettre mon bouton au bout de ligne de mon div.</li>
+</ul>
+<p><strong>Bilan</strong></p>
+<p>Je suis beaucoup monté en compétence et mes bases en HTML &amp; CSS qui étaient bancales sont devenues beaucoup plus solides.</p>
+<h3 id="second-sprint" tabindex="-1"><a class="header-anchor" href="#second-sprint"></a> Second Sprint</h3>
+<h4 id="barre-mouvante" tabindex="-1"><a class="header-anchor" href="#barre-mouvante"></a> Barre mouvante</h4>
+<p>Dans un premier temps j’ai commencé par animer la barre mouvante :
+‘Photo avec du rouge’</p>
+<p>Au début j’ai essayer de faire 'bouger' ma barre en utilisant du CSS mais j’ai tout de suite compris que si je voulais une animation avec une barre qui se déplace quand ma souris survole les autres liens de ma barre de navigation, j’allais avoir besoin de JavaScript.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100 dark:border-emerald-800 dark:bg-emerald-950">
+<svg class="absolute w-6 h-6 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-emerald-500 dark:stroke-emerald-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Liens</b></p>
+</div><div class="pl-8 mr-8">
+<p><a href="https://www.youtube.com/watch?v=aswRKAjjWuE">Barre mouvante inspiration</a></p>
+</div>
+</div>
+<p>C’était la première fois que j’utilisais JavaScript donc je me suis d’abord renseigner sur la manière de l’utiliser et quelle était la logique du langage de programmation de JavaScript. (Lien)</p>
+<p>Après cela j’ai rajouté l’animation pour ma barre.</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>CSS barre mouvante</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="line-numbers"><code>
+
+.barre_mouvante {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background-color: black;
+    transition: left 0.5s ease, width 0.5s ease;
+}
+
+
+</code></pre></div>
+</details>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>JS barre mouvante</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="line-numbers"><code>
+
+const liens = document.querySelectorAll('nav ul li a');
+const barre = document.querySelector('.barre_mouvante');
+
+function change_lien_hover(lien){
+    liens.forEach((lien_) => {
+        lien_.style.fontWeight = '100';
+    });
+    lien.style.fontWeight = '500';
+
+    const lien_rect = lien.getBoundingClientRect();
+    const navRect = document.querySelector('nav').getBoundingClientRect();
+
+    barre.style.width = `${lien_rect.width}px`;
+    barre.style.left = `${lien_rect.left - navRect.left}px`;
+}
+
+function set_active_link(){
+    const current_page = window.location.pathname.split('/').pop();
+
+    liens.forEach((lien) => {
+        const lien_href = lien.getAttribute('href');
+        if (lien_href === current_page) {
+            change_lien_hover(lien);
+        }
+    });
+}
+
+liens.forEach((lien) => {
+    lien.addEventListener('mouseover', () => {
+        change_lien_hover(lien);
+    });
+});
+
+document.querySelector('nav').addEventListener('mouseout', () => {
+    set_active_link();
+});
+
+set_active_link();
+
+
+</code></pre></div>
+</details>
+</div>
+<h4 id="contact-form" tabindex="-1"><a class="header-anchor" href="#contact-form"></a> Contact form</h4>
+<p>Ensuite, j’ai essayé de m’envoyer un mail avec le contenu du form de ma page contact. J’ai d’abord fait des recherches avec mon MON 1.2 (lien). C'était long de tout tester.</p>
+<p>Au début, j’ai pensé à Nodejs mail et je devais mettre mon identifiant et mon mot de passe dans mon JavaScript. Mais du coup, j’avais un problème de confidentialité, pour régler ce souci je pouvais utiliser des variables d’environnement et me créer un serveur backend ou gérer mes variables.</p>
+<p>Je ne voulais pas avoir de backend à gérer donc j’ai fait marche arrière pour utiliser une API. J’ai trouvé Email JS qui fonctionnait très bien.(lien)</p>
+<p>J'ai perdu beaucoup de temps à faire des allers-retours parce que je ne comprenais pas trop ce que je faisais.</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Bernard-Kevin/pok/temps-1/media/Sprint2_1_contact_form.png" alt="alt text">
+<img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Bernard-Kevin/pok/temps-1/media/Sprint2_2_alert_contact.png" alt="alt text">
+<img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Bernard-Kevin/pok/temps-1/media/Sprint2_3_mail_form.png" alt="alt text"></p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>HTML Contact Form</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="line-numbers"><code>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+      (function(){
+          emailjs.init({
+            publicKey: "oMqq7O7XOuIBpqy1P",
+          });
+      })();
+    </script>
+    <script src="js/contact.js"></script>
+    <title>Contact</title>
+  </head>
+  <body>
+    <h1>Kévin BERNARD</h1>
+    <p class="mail">mail : kevin.bernard@gmail.com</p>
+    <nav>
+      <ul>
+        <li><a href="index.html">PORTFOLIO</a></li>
+        <li><a href="contact.html" class="contact">CONTACT</a></li>
+        <li><a href="mon_profil.html">MON PROFIL</a></li>
+      </ul>
+      <div class="barre_mouvante"></div>
+    </nav>
+    <h2 class="contact">Une envie à faire passer ?</h2>
+    <form>
+      <div class="contact">
+        <div>
+          <label for="message">Message</label>
+          <textarea name="message" id="message" placeholder="Mon message" required=""></textarea>
+        </div>
+        <div>
+          <label for="nom_prenom">Nom, Prénom</label>
+          <input type="text" name="nom_prenom" id="nom_prenom" placeholder="Mon nom et prénom" required="">
+        </div>
+        <div>
+          <label for="mail">Mail</label>
+          <input type="text" name="mail" id="mail" placeholder="Mon mail" required="">
+        </div>
+        <button type="button" onclick="send_mail()">ENVOYER</button>
+      </div>
+    </form>
+    <script src="js/script.js"></script>
+  </body>
+</html>
+
+
+</code></pre></div>
+</details>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>JS Contact Form</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="line-numbers"><code>
+
+function send_mail(){
+    let parametres = {
+        nom_prenom: document.getElementById("nom_prenom").value,
+        mail: document.getElementById("mail").value,
+        message: document.getElementById("message").value
+    };
+    console.log(parametres);
+
+    emailjs.send("service_82grttd", "template_b9hegeg", parametres).then(function() {
+        alert("Votre message a bien été envoyé !");
+    }).catch(function(error) {
+        console.error("Échec de l'envoi : ", error);
+        alert("Échec de l'envoi, veuillez réessayer.");
+    });
+}
+
+
+</code></pre></div>
+</details>
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100 dark:border-emerald-800 dark:bg-emerald-950">
+<svg class="absolute w-6 h-6 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-emerald-500 dark:stroke-emerald-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Liens</b></p>
+</div><div class="pl-8 mr-8">
+<p><a href="https://www.youtube.com/watch?v=BgVjild0C9A">Tuto Email JS</a></p>
+</div>
+</div>
+<h4 id="animation-du-hover-et-de-la-s%C3%A9lection-d%E2%80%99une-image" tabindex="-1"><a class="header-anchor" href="#animation-du-hover-et-de-la-s%C3%A9lection-d%E2%80%99une-image"></a> Animation du hover et de la sélection d’une image</h4>
+<p>Suite à cela je me suis occupé de la partie animation des images :</p>
+<ul>
+<li>Onclick</li>
+<li>Hover</li>
+</ul>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>HTML Index = Page Portfolio</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="line-numbers"><code>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <title>Portfolio</title>
+  </head>
+  <body>
+    <h1>Kévin BERNARD</h1>
+    <p class="mail">mail : kevin.bernard@gmail.com</p>
+    <nav>
+      <ul>
+        <li><a href="index.html" class="portfolio">PORTFOLIO</a></li>
+        <li><a href="contact.html">CONTACTS</a></li>
+        <li><a href="mon_profil.html">MON PROFIL</a></li>
+      </ul>
+      <div class="barre_mouvante"></div>
+    </nav>
+    <div class="portfolio">
+      <div>
+        <img class="media" src="https://raw.githubusercontent.com/do-it-ecm/do-it/refs/heads/main/src/media/Exercice_3_photo_1loliloetlolilo.png">
+        <img class="media" src="https://raw.githubusercontent.com/do-it-ecm/do-it/refs/heads/main/src/media/Exercice_3_photo_2.png">
+        <img class="media" src="https://raw.githubusercontent.com/do-it-ecm/do-it/refs/heads/main/src/media/Exercice_4_photo_1.png">
+      </div>
+      <div>
+        <img class="media" src="https://raw.githubusercontent.com/do-it-ecm/do-it/refs/heads/main/src/media/Exercice_4_photo_2.png">
+        <img class="media" src="https://raw.githubusercontent.com/do-it-ecm/do-it/refs/heads/main/src/media/Exercice_6_Oisillons.png">
+        <img class="media" src="https://raw.githubusercontent.com/do-it-ecm/do-it/refs/heads/main/src/media/Exercice_7_Dragon.png">
+      </div>
+    </div>
+    <div class="media_hover">
+      <p id="media_hover_text"></p>
+    </div>
+    <div id="block_zoom" class="block_zoom">
+      <span class="close">&times;</span>
+      <img class="image_zoom" id="image_zoom">
+      <div class="fleche_gauche">&#10094;</div>
+      <div class="fleche_droite">&#10095;</div>
+    </div>
+    <script src="js/script.js"></script>
+    <script src="js/portfolio.js"></script>
+  </body>
+</html>
+
+
+</code></pre></div>
+</details>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>JS Portfolio</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="line-numbers"><code>
+
+const block_zoom = document.querySelector('#block_zoom');
+const image_zoom = document.querySelector('.image_zoom');
+const images = document.querySelectorAll('img.media');
+const close_button = document.querySelector('.close');
+const fleche_gauche = document.querySelector('.fleche_gauche');
+const fleche_droite = document.querySelector('.fleche_droite');
+const media_hover = document.querySelector('.media_hover');
+const media_hover_text = document.querySelector('#media_hover_text');
+
+function getImageZoomIndex() {
+    return Array.from(images).findIndex(image => image.src === image_zoom.src);
+}
+
+media_hover.addEventListener('mouseover', () => {
+    media_hover.style.display = 'flex';
+});
+media_hover.addEventListener('mouseout', () => {
+    media_hover.style.display = 'none';
+});
+media_hover.addEventListener('click', () => {
+    block_zoom.style.display = 'flex';
+    image_zoom.src = images[getImageZoomIndex()].src;
+    setTimeout(() => {
+        block_zoom.style.opacity = '1';
+        image_zoom.style.opacity = '1';
+    }, 100);
+});
+
+images.forEach(image => {
+    image.addEventListener('mouseover', () => {
+        image_zoom.src = image.src;
+        image.style.opacity = '0.8';
+        media_hover.style.display = 'flex';
+        media_hover_text.innerHTML = image.src.split('/').pop().split('.')[0];
+        media_hover.style.left = `${image.getBoundingClientRect().left}px`;
+        media_hover.style.bottom = `${window.innerHeight - image.getBoundingClientRect().bottom}px`;
+        media_hover.style.width = `${image.getBoundingClientRect().width}px`;
+    });
+    image.addEventListener('mouseout', () => {
+        image.style.opacity = '1';
+        media_hover.style.display = 'none';
+    });
+    image.addEventListener('click', () => {
+        block_zoom.style.display = 'flex';
+        setTimeout(() => {
+            block_zoom.style.opacity = '1';
+            image_zoom.style.opacity = '1';
+        }, 100);
+    });
+});
+
+close_button.onclick = () => {
+    block_zoom.style.opacity = '0';
+    image_zoom.style.opacity = '0';
+    setTimeout(() => {
+        block_zoom.style.display = 'none';
+    }, 500);
+};
+
+fleche_gauche.onclick = (e) => {
+    e.stopPropagation();
+    let index_image_zoom = getImageZoomIndex();
+    let max_index = images.length - 1;
+    let index = index_image_zoom - 1;
+    if (index < 0) {
+        index = max_index;
+    }
+    image_zoom.src = images[index].src;
+}
+
+fleche_droite.onclick = (e) => {
+    e.stopPropagation();
+    let index_image_zoom = getImageZoomIndex();
+    let max_index = images.length - 1;
+    let index = index_image_zoom + 1;
+    if (index > max_index) {
+        index = 0;
+    }
+    image_zoom.src = images[index].src;
+}
+
+block_zoom.onclick = () => {
+    block_zoom.style.opacity = '0';
+    image_zoom.style.opacity = '0';
+    setTimeout(() => {
+        block_zoom.style.display = 'none';
+    }, 500);
+}
+
+image_zoom.onclick = (e) => {
+    e.stopPropagation();
+}
+
+
+</code></pre></div>
+</details>
+</div>
+<p>Pour le <strong>onclick</strong> :</p>
+<p>J'ai quelque peu galéré à prendre toutes les images dans mon JS et je ne voyais pas comment faire pour écouter l'événement onclick d'une image parmie les autres sans devoir faire un copier-coller de la fonction pour chaque image comme j'avais fait pour les liens avec ma barre mouvante.
+Finalement j'ai trouver la commande 'for each image in images' de JS.</p>
+<p>Ensuite, ce qui a été le plus long était la mise en forme et comment gérer la transition d'opacité et le display none/flex.</p>
+<p>Pour la transition d'une image à l'autre avec les flèches, j'avais un problème avec la taille de images qui était de 7 alors que je n'affichais que 6 images sur ma page. Je me suis rendu compte que l'image zoomée après le click était aussi pris en compte dans ma liste &quot;images&quot;.</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Bernard-Kevin/pok/temps-1/media/Sprint2_4_onclick.png" alt="alt text"></p>
+<p>Pour le <strong>hover</strong> :</p>
+<p>J'ai eu un peu de mal à faire en sorte d'avoir les coordonnées de l'image qui était survolée par la souris et surtout gérer le fait que si je clique sur le bandeau du hover cela sélectionne la bonne image.
+J'avais au début un problème parce que l'accès à la référence de l'image n'étais disponible qu'après l'avoir cliquée alors que si je mettais la référence dès le hover, je l'avais à la fois pour l'événement hover et onclick.</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Bernard-Kevin/pok/temps-1/media/Sprint2_5_hover.png" alt="alt text"></p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100 dark:border-emerald-800 dark:bg-emerald-950">
+<svg class="absolute w-6 h-6 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-emerald-500 dark:stroke-emerald-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Liens</b></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li><a href="https://developer.mozilla.org/fr/docs/Web/API/Element/click_event">Documentation onclick</a></li>
+<li><a href="https://developer.mozilla.org/fr/docs/Web/API/Element/mouseover_event">Documentation hover</a></li>
+</ul>
+</div>
+</div>
+<h4 id="retour-sur-exp%C3%A9rience-1" tabindex="-1"><a class="header-anchor" href="#retour-sur-exp%C3%A9rience-1"></a> Retour sur expérience</h4>
+<p><strong>Difficultés :</strong></p>
+<ul>
+<li>J'ai sous-évalué le temps que j'accordais à chaque tâche de mon projet.</li>
+<li>Je suis parti trop facilement, rapidement dans une direction avec Node.js avant de finalement faire marche arrière.</li>
+</ul>
+<p><strong>Bilan</strong></p>
+<p>Très satisfait de la qualité de ce que j'ai pu faire et à l'avenir j'ai envie de me faire mon propre serveur backend pour gérer mes mails et déjà me renseigner comment gérer les spams et attaques de sites...
+J'ai pu me démystifier de JavaScript ce qui était une des raisons du choix de ce POK.</p>
+
+
+
+</article>
+
+        </main>
+
+        <footer class="min-h-[50px] border-t-2 mt-4 border-gray-200 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-center items-center">
+                    <p class="text-center">
+                        ©2025 <b><span style="font-family: Consolas, sans-serif;">Do-<span style="color: #4a86e8">It</span></span></b> - Développement, Management et Gestion de projets en IT
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- MathJax import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">
+            window.MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']], // Delimiters for inline math
+                    displayMath: [['$$', '$$'], ['\\[', '\\]']] // Delimiters for block math
+                },
+                svg: {
+                    fontCache: 'global' // Use global font cache for SVG output
+                }
+            };
+            document.addEventListener('DOMContentLoaded', () => {
+                MathJax.typeset(); // Ensures MathJax processes the content after the page loads
+            });
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">
+            Prism.plugins.NormalizeWhitespace.setDefaults({
+                'remove-trailing': true,
+                'remove-indent': true,
+                'left-trim': true,
+                'right-trim': true,
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script>
+    </body>
+</html>

@@ -1,0 +1,243 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="index, follow"><link rel="canonical" href="https://do-it.aioli.ec-m.fr/promos/2023-2024/Dang-Vu-Duc/mon/temps-2.1/"><meta name="description" content="L&#39;objectif de ce MON est d&#39;apprendre à utiliser la bibliothèque Pygame de Python, afin d&#39;implémenter des jeux."><meta property="og:description" content="L&#39;objectif de ce MON est d&#39;apprendre à utiliser la bibliothèque Pygame de Python, afin d&#39;implémenter des jeux."><meta name="twitter:description" content="L&#39;objectif de ce MON est d&#39;apprendre à utiliser la bibliothèque Pygame de Python, afin d&#39;implémenter des jeux."><meta name="author" content="Duc DANG VU"><meta name="keywords" content="do-it, centrale, centrale méditerranée, ecm, MON, Python, Pygame, Programmation objet"><link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon"><link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png"><link rel="apple-touch-icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png"><link href="/assets/stylesheets/main.css" rel="stylesheet"><meta property="og:title" content="Apprentissage de la bibliothèque Pygame"><meta property="og:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png"><meta property="og:url" content="https://do-it.aioli.ec-m.fr/promos/2023-2024/Dang-Vu-Duc/mon/temps-2.1/"><meta property="og:type" content="website"><meta name="twitter:card" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png"><meta name="twitter:title" content="Apprentissage de la bibliothèque Pygame"><meta name="twitter:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png"><meta name="twitter:url" content="https://do-it.aioli.ec-m.fr/promos/2023-2024/Dang-Vu-Duc/mon/temps-2.1/"><title>Apprentissage de la bibliothèque Pygame</title><link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet"><link id="prism-theme" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet"><link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet"><script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script><script defer="">const storedTheme=localStorage.getItem("theme");function loadPrismTheme(e){const t=e?"prism-okaidia.min.css":"prism-solarizedlight.min.css",s=document.createElement("link");s.rel="stylesheet",s.id="prism-theme",s.href=`https://cdn.jsdelivr.net/npm/prismjs/themes/${t}`,s.onload=()=>{Prism.highlightAll()};const m=document.getElementById("prism-theme");m?document.head.replaceChild(s,m):document.head.appendChild(s)}function setMermaidTheme(e){const t=e?"dark":"forest";mermaid.initialize({securityLevel:"loose",theme:t,startOnLoad:!0})}function toggleDarkMode(){const e=document.documentElement.classList.contains("dark"),t=e?"light":"dark";localStorage.setItem("theme",t),document.documentElement.classList.toggle("dark",!e),loadPrismTheme(!e),setMermaidTheme(!e)}storedTheme?document.documentElement.classList.toggle("dark","dark"===storedTheme):document.documentElement.classList.toggle("dark",window.matchMedia("(prefers-color-scheme: dark)").matches);const isDark=document.documentElement.classList.contains("dark");loadPrismTheme(isDark),setMermaidTheme(isDark)</script></head><body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000" class="bg-neutral-50 text-neutral-950 dark:bg-neutral-900 dark:text-neutral-50"><header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white dark:bg-neutral-900 dark:border-neutral-700"><div class="max-w-[1000px] mx-auto px-4"><div class="min-h-[50px] flex justify-between items-center"><a class="mx-2" href="/">Home</a> <button class="hidden sm:block text-neutral-950 dark:text-neutral-50 hover:bg-neutral-700 hover:text-neutral-50 hover:dark:bg-neutral-300 hover:dark:text-neutral-950 transition-colors p-2 rounded-full duration-800 ease-in-out" onclick="toggleDarkMode()"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 dark:hidden stroke-current"><circle cx="12" cy="12" r="5"></circle><path d="M12 2V4" stroke-linecap="round"></path><path d="M12 20V22" stroke-linecap="round"></path><path d="M4 12L2 12" stroke-linecap="round"></path><path d="M22 12L20 12" stroke-linecap="round"></path><path d="M19.7778 4.22266L17.5558 6.25424" stroke-linecap="round"></path><path d="M4.22217 4.22266L6.44418 6.25424" stroke-linecap="round"></path><path d="M6.44434 17.5557L4.22211 19.7779" stroke-linecap="round"></path><path d="M19.7778 19.7773L17.5558 17.5551" stroke-linecap="round"></path></svg> <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 stroke-current hidden dark:block"><path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke-linecap="round" stroke-linejoin="round"></path></svg></button><div class="flex items-center gap-4 sm:gap-6"><a class="" href="/cs">CS</a> <a class="" href="/pok">POK</a> <a class="" href="/mon">MON</a> <a class="" href="/projets">Projets</a> <a class="hidden sm:block" href="/promos">Promos</a> <a href="/search"><svg class="h-5 aspect-square stroke-neutral-950 dark:stroke-neutral-300 fill-none stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path></svg> </a><a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank"><svg class="h-5 aspect-square dark:stroke-neutral-300 dark:fill-neutral-300" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg></a></div></div></div></header><main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body=""><article class="relative"><h1 class="mb-1">Apprentissage de la bibliothèque Pygame</h1><div class="mb-4"><div class="px-4 flex flex-wrap items-center"><div class="font-bold">Tags :</div><ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags"><li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">MON</li><li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">Python</li><li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">Pygame</li><li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">Programmation objet</li></ul><div class="hidden" data-pagefind-meta="Type" aria-hidden="true"><span data-pagefind-filter="Type">MON</span></div></div><div class="px-4 flex flex-wrap items-center"><div class="font-bold">Auteur :</div><ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs"><li class="bg-blue-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Auteurs">Duc DANG VU</li></ul></div><div class="absolute top-0 right-0"><span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2 text-neutral-950" data-pagefind-filter="Année">2023-2024</span></div></div><p class="mb-4 text-lg">L'objectif de ce MON est d'apprendre à utiliser la bibliothèque Pygame de Python, afin d'implémenter des jeux.</p><div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100 dark:border-purple-800 dark:bg-purple-950"><svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-purple-500 dark:stroke-purple-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path></svg><div class="pl-8 mr-8"><a href="/promos/2023-2024/Dang-Vu-Duc/">Duc DANG VU</a><span class="px-1">/</span><a href="/promos/2023-2024/Dang-Vu-Duc/mon/">MON de Duc DANG VU</a><span class="px-1">/</span><a href="/promos/2023-2024/Dang-Vu-Duc/mon/temps-2.1/">Apprentissage de la bibliothèque Pygame</a></div></div><div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100 dark:border-pink-800 dark:bg-pink-950"><svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-pink-500 dark:stroke-pink-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg><div class="pl-8 mb-2 mr-8"><p>Prérequis</p></div><div class="pl-8 mr-8"><p>Connaissance basique de la programmation objet avec Python.</p></div></div><div class="quote relative drop-shadow py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100 dark:border-amber-800 dark:bg-amber-950"><svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-amber-800 dark:stroke-amber-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg><div class="pl-8 mb-2 mr-8"><p><b>Note</b></p></div><div class="pl-8 mr-8"><p>Le jeu du Morpion codé en exemple est disponible sur le lien suivant: <a href="https://duc-dgv.itch.io/morpion">Jeu du morpion avec Pygame</a> Tout les codes présentés sont disponibles dans le dossier Git du MON2.1: <a href="https://github.com/do-it-ecm/do-it/tree/main/src/promos/2023-2024/Dang-Vu-Duc/mon/temps-2.1">codes du MON2.1</a></p></div></div><h2 id="introduction" tabindex="-1"><a class="header-anchor" href="#introduction"></a> Introduction</h2><p>Pygame est une bibliothèque Python permettant d'implémenter des jeux. Ce MON va présenter comment utiliser cette bibliothèque en utilisant l'exemple de l'implémentation d'un simple jeu de Morpion. Notons que Pygame permet de faire des jeux bien plus sophistiqués qu'un simple morpion (par exemple, il est possible de faire des animations ou gérer des collisions). Cependant, la durée du MON ne permet pas de développer un jeu très avancé. Nous allons quand même expliquer les principes de base pour réaliser ce genre d'opération.</p><p>Avant toute chose, il faut installer la bibliothèque. Pour cela, il faut rentrer la commande suivant sur un terminal:</p><pre class="language-python line-numbers"><code>
+
+pip install pygame
+
+
+</code></pre><h2 id="cr%C3%A9ation-d'une-fen%C3%AAtre-de-jeu" tabindex="-1"><a class="header-anchor" href="#cr%C3%A9ation-d'une-fen%C3%AAtre-de-jeu"></a> Création d'une fenêtre de jeu</h2><p>La première étape est de créer une fenêtre, où tout les éléments pourront être placés. Après avoir importé la bibliothèque, on initialise le jeu: <code>pygame.init()</code>. Ensuite, on crée la fenêtre grâce au module <em>display</em> et de sa méthode <em>set_mode</em>.</p><p>Il faut ensuite créer la boucle d'évènements. Cette boucle permet d'actualiser constamment ce qui se passe à l'écran. Une classe importante à comprendre est la classe <strong>Event</strong>. Les objets de cette classe sont, comme son nom l'indique, des évènements qui correspondent à tout ce que l'utilisateur peut faire sur la fenêtre. Par exemple, on peut détecter quand l'utilisateur appuie sur la croix de la fenêtre. C'est ce qu'on implémente dans le code suivant:</p><pre class="language-python line-numbers"><code>
+
+import pygame
+from sys import exit
+
+pygame.init()
+screen = pygame.display.set_mode((800, 500))
+
+while True:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            exit()
+
+
+</code></pre><p>L'exécution de ce code affiche la fenêtre suivante:</p><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Dang-Vu-Duc/mon/temps-2.1/Image1.png" alt="Image1"></p><p>Il faut à présent remplir cette page. Une première étape est de personnaliser le fond, en utilisant la méthode <em>fill</em> : <code>screen.fill(&quot;White&quot;)</code>. Il est également possible de rajouter une image. Pour cela, il faut comprendre la classe <strong>Surface</strong>. Les objets de cette classe sont des éléments, sur lesquels on peut placer différents éléments, comme des images par exemple. Pour associer une image à une surface, on utilise le module <em>image</em> et sa méthode <em>load</em>. Ensuite, on utilise la méthode <em>blit</em> pour afficher cette surface sur l'écran principal. Il ne faut pas oublier d'actualiser la fenêtre avec la méthode <em>update</em> du module <em>display</em>. On peut également ajuster la taille de la surface avec le module <em>tranform</em> et la méthode <em>scale</em>, ou aussi renommer la fenêtre grâce à la méthode <em>set_caption</em>.</p><pre class="language-python line-numbers"><code>
+
+import pygame
+from sys import exit
+
+pygame.init()
+screen = pygame.display.set_mode((800, 500))
+pygame.display.set_caption("Fenêtre test")
+screen.fill("White")
+image_chaton = pygame.image.load("Image_chaton.jpg")
+image_chaton = pygame.transform.scale(image_chaton, (200,150))
+
+while True:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            pygame.quit()
+            exit()
+    screen.blit(image_chaton, (400, 250))
+    pygame.display.update()
+
+
+</code></pre><p>Ce nouveau code affiche la fenêtre suivante:</p><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Dang-Vu-Duc/mon/temps-2.1/Image2.png" alt="Image2"></p><div class="quote relative drop-shadow py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100 dark:border-amber-800 dark:bg-amber-950"><svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-amber-800 dark:stroke-amber-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg><div class="pl-8 mb-2 mr-8"><p><b>Note</b></p></div><div class="pl-8 mr-8"><p>Toutes les coordonnées spécifiées dans la nomenclature pygame ont pour origine le coin supérieure gauche de l'écran.</p></div></div><p>Il est également possible de dessiner des formes, ou insérer du texte. Pour cette dernière opération, on doit créer une police grâce à la classe <strong>Font</strong> du module <em>font</em>. Ensuite, il faut l'afficher puis le mettre dans une rectangle. Ce rectangle est en fait une surface, et on va pouvoir le placer ou l'on veut dans la fenêtre. Pour ce qui est de dessiner des formes, il faut utiliser le module <em>draw</em>, qui contient plusieurs méthodes pour dessiner des lignes, des rectangles, des cercles...</p><h2 id="cr%C3%A9ation-d'un-jeu-de-morpion" tabindex="-1"><a class="header-anchor" href="#cr%C3%A9ation-d'un-jeu-de-morpion"></a> Création d'un jeu de morpion</h2><p>Pour appliquer toutes ces notions, nous allons créer un jeu de morpion. On va donc créer une classe <strong>TicTacToe</strong> qui va définir tout ce qui va se trouver sur la fenêtre de jeu ainsi que les différentes interactions qu'il va y avoir. L'initialisation va simplement initier la fenêtre et les variables telle que le tableau <em>board</em>, qui contiendra les informations de la partie en cours ou encore le booléen <em>playing</em> qui indique si la partie est encore en cours ou non.</p><div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950"><details class="group"><summary class="list-none py-0.5"><svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg> <svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg><div class="pl-8 font-bold inline-block group-open:select-text"><p>Cliquer pour voir l'initialisation de la classe <strong>TicTacToe</strong></p></div><svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path></svg></summary><div class="mx-8 pb-2 cursor-auto select-text"><pre class="language-python line-numbers"><code>
+
+class TicTacToe():
+    def __init__(self):
+        pygame.init()
+        self.screen = pygame.display.set_mode((800, 500))
+        self.background_color = "White"
+        self.screen.fill(self.background_color)
+        pygame.display.set_caption("Morpion")
+        self.clock = pygame.time.Clock()
+        self.font = pygame.font.Font(None, 33)
+        self.morpion_surface = pygame.image.load('Plateau_morpion.png')
+        self.title_surface = self.font.render('Jeu du morpion', False, "Black")
+        self.text_rect = self.title_surface.get_rect(center = (400, 30))
+        self.board = [[None for j in range(3)] for i in range(3)]
+        self.playing = True
+
+
+</code></pre></div></details></div><p>Ensuite, on crée la méthode <em>game</em> qui lance la boucle d'évènement. Dans cette boucle, on donne la possibilité à l'utilisateur de fermer la fenêtre, mais surtout on détecte quand l'utilisateur clique sur la fenêtre. Pour cela, on récupère l'évènement <em>MOUSEBUTTONDOWN</em>. Quand on l'utilisateur clique, on exécute la méthode <em>player_click</em>. Cette méthode récupère la position de la souris, et on détermine la zone dans laquelle elle est dans la grille. Suivant cette zone, et sous réserve qu'elle soit vide, on appelle la méthode <em>play</em> qui dessine un cercle bleu ou une croix rouge. De plus, dans cette boucle d'évènement, on doit dessiner le plateau le module <em>draw</em>. On utilise la méthode <em>line</em> en indiquant les coordonnées de la ligne ainsi que sa couleur.</p><div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950"><details class="group"><summary class="list-none py-0.5"><svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg> <svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg><div class="pl-8 font-bold inline-block group-open:select-text"><p>Cliquer pour voir le code des méthodes <em>game</em>, <em>play</em> et <em>draw_board</em></p></div><svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path></svg></summary><div class="mx-8 pb-2 cursor-auto select-text"><pre class="language-python line-numbers"><code>
+
+def game(self):
+  self.is_player_one_to_play = True
+  self.display_who_to_play(True)
+  self.count = 0
+  while True:
+      for event in pygame.event.get():
+          if event.type == pygame.QUIT:
+              pygame.quit()
+              exit()
+          if event.type == pygame.MOUSEBUTTONDOWN:
+              self.player_click()
+      # self.screen.blit(self.morpion_surface, (160, 30))
+      self.draw_board()
+      pygame.display.update()
+      self.clock.tick(60)
+
+def play(self, spot):
+  if self.is_player_one_to_play:
+      if spot == 1:
+          pygame.draw.circle(self.screen, "Blue", (266.66, 116.65), 50, 4)
+          self.is_player_one_to_play = not self.is_player_one_to_play
+      if spot == 2:
+          pygame.draw.circle(self.screen, "Blue", (400, 116.65), 50, 4)
+          self.is_player_one_to_play = not self.is_player_one_to_play
+      if spot == 3:
+          pygame.draw.circle(self.screen, "Blue", (533.33, 116.65), 50, 4)
+          self.is_player_one_to_play = not self.is_player_one_to_play
+      if spot == 4:
+          pygame.draw.circle(self.screen, "Blue", (266.66, 250), 50, 4)
+          self.is_player_one_to_play = not self.is_player_one_to_play
+      if spot == 5:
+          pygame.draw.circle(self.screen, "Blue", (400, 250), 50, 4)
+          self.is_player_one_to_play = not self.is_player_one_to_play
+      if spot == 6:
+          pygame.draw.circle(self.screen, "Blue", (533.33, 250), 50, 4)
+          self.is_player_one_to_play = not self.is_player_one_to_play
+      if spot == 7:
+          pygame.draw.circle(self.screen, "Blue", (266.66, 383.3), 50, 4)
+          self.is_player_one_to_play = not self.is_player_one_to_play
+      if spot == 8:
+          pygame.draw.circle(self.screen, "Blue", (400, 383.3), 50, 4)
+          self.is_player_one_to_play = not self.is_player_one_to_play
+      if spot == 9:
+          pygame.draw.circle(self.screen, "Blue", (533.33, 383.3), 50, 4)
+          self.is_player_one_to_play = not self.is_player_one_to_play
+  else:
+      if spot == 1:
+          pygame.draw.line(self.screen, "Red", (216.66, 66.65), (316.66, 166.65), 4)
+          pygame.draw.line(self.screen, "Red", (216.66, 166.65), (316.66, 66.65), 4)
+          self.is_player_one_to_play = not self.is_player_one_to_play
+      if spot == 2:
+          pygame.draw.line(self.screen, "Red", (350, 66.65), (450, 166.65), 4)
+          pygame.draw.line(self.screen, "Red", (350, 166.65), (450, 66.65), 4)
+          self.is_player_one_to_play = not self.is_player_one_to_play
+      if spot == 3:
+          pygame.draw.line(self.screen, "Red", (483.33, 66.65), (583.33, 166.65), 4)
+          pygame.draw.line(self.screen, "Red", (483.33, 166.65), (583.33, 66.65), 4)
+          self.is_player_one_to_play = not self.is_player_one_to_play
+      if spot == 4:
+          pygame.draw.line(self.screen, "Red", (216.66, 200), (316.66, 300), 4)
+          pygame.draw.line(self.screen, "Red", (216.66, 300), (316.66, 200), 4)
+          self.is_player_one_to_play = not self.is_player_one_to_play
+      if spot == 5:
+          pygame.draw.line(self.screen, "Red", (350, 200), (450, 300), 4)
+          pygame.draw.line(self.screen, "Red", (350, 300), (450, 200), 4)
+          self.is_player_one_to_play = not self.is_player_one_to_play
+      if spot == 6:
+          pygame.draw.line(self.screen, "Red", (483.33, 200), (583.33, 300), 4)
+          pygame.draw.line(self.screen, "Red", (483.33, 300), (583.33, 200), 4)
+          self.is_player_one_to_play = not self.is_player_one_to_play
+      if spot == 7:
+          pygame.draw.line(self.screen, "Red", (216.66, 333.33), (316.66, 433.33), 4)
+          pygame.draw.line(self.screen, "Red", (216.66, 433.33), (316.66, 333.33), 4)
+          self.is_player_one_to_play = not self.is_player_one_to_play
+      if spot == 8:
+          pygame.draw.line(self.screen, "Red", (350, 333.33), (450, 433.33), 4)
+          pygame.draw.line(self.screen, "Red", (350, 433.33), (450, 333.33), 4)
+          self.is_player_one_to_play = not self.is_player_one_to_play
+      if spot == 9:
+          pygame.draw.line(self.screen, "Red", (483.33, 333.33), (583.33, 433.33), 4)
+          pygame.draw.line(self.screen, "Red", (483.33, 433.33), (583.33, 333.33), 4)
+          self.is_player_one_to_play = not self.is_player_one_to_play
+  self.display_who_to_play(self.is_player_one_to_play)
+
+def draw_board(self):
+  board_rect = pygame.Rect(200, 50, 400, 400)
+  pygame.draw.rect(self.screen, "Black", board_rect, 4)
+  pygame.draw.line(self.screen, "Black", (333.333333, 50),(333.333333, 450), 4)
+  pygame.draw.line(self.screen, "Black", (466.666666, 50),(466.666666, 450), 4)
+  pygame.draw.line(self.screen, "Black", (200, 183.3333),(600, 183.333), 4)
+  pygame.draw.line(self.screen, "Black", (200, 316.6663),(600, 316.6663), 4)
+  button_restart = pygame.Rect(620, 230, 160, 40)
+  pygame.draw.rect(self.screen, "Gray", button_restart)
+  text_restart = self.font.render("Recommencer", False, "Black")
+  self.screen.blit(text_restart, (623,237))
+
+
+</code></pre></div></details></div><p>Il faut également implémenter des méthodes pour afficher le tour du joueur 1 ou 2, le gagnant, ou le match nul.</p><div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950"><details class="group"><summary class="list-none py-0.5"><svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg> <svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg><div class="pl-8 font-bold inline-block group-open:select-text"><p>Cliquer pour voir le code des méthodes <em>display_who_to_play</em>, <em>display_winner</em> et <em>display_draw</em></p></div><svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path></svg></summary><div class="mx-8 pb-2 cursor-auto select-text"><pre class="language-python line-numbers"><code>
+
+def display_who_to_play(self, is_player_one_to_play):
+  self.remove_text()
+  if is_player_one_to_play:
+      text_player_one_to_play = self.font.render("Au tour du joueur 1", False, "Blue")
+      text_rect = text_player_one_to_play.get_rect(center = (400, 30))
+      self.screen.blit(text_player_one_to_play, text_rect)
+  else:
+      text_player_one_to_play = self.font.render("Au tour du joueur 2", False, "Red")
+      text_rect = text_player_one_to_play.get_rect(center = (400, 30))
+      self.screen.blit(text_player_one_to_play, text_rect)
+
+def display_winner(self, is_player_one_winner):
+  self.remove_text()
+  if is_player_one_winner:
+      text_player_one_wins = self.font.render("Le joueur 1 a gagné !", False, "Blue")
+      text_rect = text_player_one_wins.get_rect(center = (400, 30))
+      self.screen.blit(text_player_one_wins, text_rect)
+  else:
+      text_player_one_wins = self.font.render("Le joueur 2 a gagné !", False, "Red")
+      text_rect = text_player_one_wins.get_rect(center = (400, 30))
+      self.screen.blit(text_player_one_wins, text_rect)
+  self.playing = False
+
+def display_draw(self):
+  self.remove_text()
+  text_draw = self.font.render("Égalité !", False, "Black")
+  text_rect = text_draw.get_rect(center = (400, 30))
+  self.screen.blit(text_draw, text_rect)
+
+def remove_text(self):
+  white_rect = pygame.Rect(0, 0, 700, 50)
+  pygame.draw.rect(self.screen, self.background_color, white_rect)
+
+
+</code></pre></div></details></div><p>Enfin, il faut créer une méthode <em>check</em> pour vérifier si un joueur a gagné ou pas. Pour cela, on vérifie au cas par cas les différents possibilité de motifs gagnants. Il faut aussi créer une méthode pour recommencer la partie.</p><div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950"><details class="group"><summary class="list-none py-0.5"><svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg> <svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg><div class="pl-8 font-bold inline-block group-open:select-text"><p>Cliquer pour voir le code des méthodes <em>check</em> et <em>restart</em></p></div><svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path></svg></summary><div class="mx-8 pb-2 cursor-auto select-text"><pre class="language-python line-numbers"><code>
+
+def check(self):
+  if (self.board[0][0] != None and self.board[0][0]) and (self.board[1][1] != None and self.board[1][1]) and (self.board[2][2] != None and self.board[2][2]):
+      self.display_winner(True)
+  elif (self.board[0][0] != None and not self.board[0][0]) and (self.board[1][1] != None and not self.board[1][1]) and (self.board[2][2] != None and not self.board[2][2]):
+      self.display_winner(False)
+  elif (self.board[0][0] != None and self.board[0][0]) and (self.board[0][1] != None and self.board[0][1]) and (self.board[0][2] != None and self.board[0][2]):
+      self.display_winner(True)
+  elif (self.board[0][0] != None and not self.board[0][0]) and (self.board[0][1] != None and not self.board[0][1]) and (self.board[0][2] != None and not self.board[0][2]):
+      self.display_winner(False)
+  elif (self.board[0][0] != None and self.board[0][0]) and (self.board[1][0] != None and self.board[1][0]) and (self.board[2][0] != None and self.board[2][0]):
+      self.display_winner(True)
+  elif (self.board[0][0] != None and not self.board[0][0]) and (self.board[1][0] != None and not self.board[1][0]) and (self.board[2][0] != None and not self.board[2][0]):
+      self.display_winner(False)
+  elif (self.board[1][0] != None and self.board[1][0]) and (self.board[1][1] != None and self.board[1][1]) and (self.board[1][2] != None and self.board[1][2]):
+      self.display_winner(True)
+  elif (self.board[1][0] != None and not self.board[1][0]) and (self.board[1][1] != None and not self.board[1][1]) and (self.board[1][2] != None and not self.board[1][2]):
+      self.display_winner(False)
+  elif (self.board[0][1] != None and self.board[0][1]) and (self.board[1][1] != None and self.board[1][1]) and (self.board[2][1] != None and self.board[2][1]):
+      self.display_winner(True)
+  elif (self.board[0][1] != None and not self.board[0][1]) and (self.board[1][1] != None and not self.board[1][1]) and (self.board[2][1] != None and not self.board[2][1]):
+      self.display_winner(False)
+  elif (self.board[2][0] != None and self.board[2][0]) and (self.board[2][1] != None and self.board[2][1]) and (self.board[2][2] != None and self.board[2][2]):
+      self.display_winner(True)
+  elif (self.board[2][0] != None and not self.board[2][0]) and (self.board[2][1] != None and not self.board[2][1]) and (self.board[2][2] != None and not self.board[2][2]):
+      self.display_winner(False)
+  elif (self.board[0][2] != None and self.board[0][2]) and (self.board[1][2] != None and self.board[1][2]) and (self.board[2][2] != None and self.board[2][2]):
+      self.display_winner(True)
+  elif (self.board[0][2] != None and not self.board[0][2]) and (self.board[1][2] != None and not self.board[1][2]) and (self.board[2][2] != None and not self.board[2][2]):
+      self.display_winner(False)
+  elif (self.board[2][0] != None and self.board[2][0]) and (self.board[1][1] != None and self.board[1][1]) and (self.board[0][2] != None and self.board[0][2]):
+      self.display_winner(True)
+  elif (self.board[2][0] != None and not self.board[2][0]) and (self.board[1][1] != None and not self.board[1][1]) and (self.board[0][2] != None and not self.board[0][2]):
+      self.display_winner(False)
+  elif self.count == 9:
+      self.display_draw()
+
+def restart(self):
+  self.screen.fill(self.background_color)
+  self.draw_board()
+  self.is_player_one_to_play = True
+  self.playing = True
+  self.display_who_to_play(self.is_player_one_to_play)
+  self.board = [[None for j in range(3)] for i in range(3)]
+  self.count = 0
+
+
+</code></pre></div></details></div><p>Voici deux exemples de parties avec cette implémentation:</p><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Dang-Vu-Duc/mon/temps-2.1/Image3.png" alt="Image3"></p><p>Le jeu est disponible sur le lien suivant: <a href="https://duc-dgv.itch.io/morpion">Jeu du morpion avec Pygame</a>.</p><h2 id="conclusion" tabindex="-1"><a class="header-anchor" href="#conclusion"></a> Conclusion</h2><p>Pygame offre des possibilités de jeu très grandes, bien plus que ce j'ai pu expliquer dans ce MON. On peut par exemple implémenter des images qui bougent, et qui peuvent entrer en collision. Cela consiste en une superposition d'images dans la boucle d'évènements. Ce point n'est pas développé ici, par manque de temps, mais il est tout à fait possible de faire des jeux bien plus sophistiqués que cela. Cependant, il fut intéressant d'apprendre ces opérations basiques, et de comprendre la logique qui se cache derrière l'implémentation des jeux.</p></article></main><footer class="min-h-[50px] border-t-2 mt-4 border-gray-200 dark:border-neutral-700"><div class="max-w-[1000px] mx-auto px-4"><div class="min-h-[50px] flex justify-center items-center"><p class="text-center">©2025 <b><span style="font-family:Consolas,sans-serif">Do-<span style="color:#4a86e8">It</span></span></b> - Développement, Management et Gestion de projets en IT</p></div></div></footer><script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">window.MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]]},svg:{fontCache:"global"}},document.addEventListener("DOMContentLoaded",(()=>{MathJax.typeset()}))</script><script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">Prism.plugins.NormalizeWhitespace.setDefaults({"remove-trailing":!0,"remove-indent":!0,"left-trim":!0,"right-trim":!0})</script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script></body></html>
