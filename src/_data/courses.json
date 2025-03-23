@@ -61,10 +61,6 @@
                         {
                             "title": "Java",
                             "path": "info/dev/java"
-                        },
-                        {
-                            "title": "Low Code",
-                            "path": "info/dev/low_code"
                         }
                     ]
                 },

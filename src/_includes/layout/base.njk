@@ -47,49 +47,63 @@
         <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
 
         <!-- Mermaid import and initialization -->
-        <script type="module" defer>
-            import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid/+esm';
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js "></script>
+
+        <script defer>
+        // Check if a theme is stored in localStorage. If so, use it, otherwise fallback to the system preference.
+        const storedTheme = localStorage.getItem('theme');
+        if (storedTheme) {
+            document.documentElement.classList.toggle("dark", storedTheme === "dark");
+        } else {
+            // Use system color scheme if there is no stored theme preference.
+            document.documentElement.classList.toggle("dark", window.matchMedia("(prefers-color-scheme: dark)").matches);
+        }
+
+        function loadPrismTheme(isDarkMode) {
+            const newTheme = isDarkMode ? 'prism-okaidia.min.css' : 'prism-solarizedlight.min.css';
+            const newLink = document.createElement('link');
+            newLink.rel = 'stylesheet';
+            newLink.id = 'prism-theme';
+            newLink.href = `https://cdn.jsdelivr.net/npm/prismjs/themes/${newTheme}`;
+
+            newLink.onload = () => {
+                // Reapply highlighting after the new theme loads
+                Prism.highlightAll();
+            };
+
+            const existingLink = document.getElementById('prism-theme');
+            if (existingLink) {
+                document.head.replaceChild(newLink, existingLink);
+            } else {
+                document.head.appendChild(newLink);
+            }
+        }
+
+        function setMermaidTheme(isDarkMode) {
+            const theme = isDarkMode ? 'dark' : 'forest';
             mermaid.initialize({
+                securityLevel: 'loose',
+                theme,
                 startOnLoad: true,
             });
+        }
+
+        // Toggle dark and light mode and update localStorage accordingly.
+        function toggleDarkMode() {
+            const dark = document.documentElement.classList.contains("dark");
+            const newTheme = dark ? "light" : "dark";
+            localStorage.setItem('theme', newTheme);
+            document.documentElement.classList.toggle("dark", !dark);
+            loadPrismTheme(!dark);
+            setMermaidTheme(!dark);
+        }
+
+        // On initial load, ensure that Prism and Mermaid are initialized using the current theme.
+        const isDark = document.documentElement.classList.contains("dark");
+        loadPrismTheme(isDark);
+        setMermaidTheme(isDark);
         </script>
 
-        <script>
-            document.documentElement.classList.toggle(
-                "dark",
-                localStorage.theme === "dark" ||
-                    (window.matchMedia("(prefers-color-scheme: dark)").matches),
-                );
-
-            loadPrismTheme(document.documentElement.classList.contains("dark"));
-
-            function loadPrismTheme(isDarkMode) {
-                const existingLink = document.getElementById('prism-theme');
-                const newTheme = isDarkMode ? 'prism-okaidia.min.css' : 'prism-solarizedlight.min.css';
-                const newLink = document.createElement('link');
-                newLink.rel = 'stylesheet';
-                newLink.id = 'prism-theme';
-                newLink.href = `https://cdn.jsdelivr.net/npm/prismjs/themes/${newTheme}`;
-
-                newLink.onload = () => {
-                    // Reapply highlighting after the new theme loads
-                    Prism.highlightAll();
-                };
-
-                if (existingLink) {
-                    document.head.replaceChild(newLink, existingLink);
-                } else {
-                    document.head.appendChild(newLink);
-                }
-            }
-
-            function toggleDarkMode() {
-                const dark = document.documentElement.classList.contains("dark");
-                localStorage.theme = dark ? "light" : "dark";
-                document.documentElement.classList.toggle("dark", !dark);
-                loadPrismTheme(!dark);
-            }
-        </script>
     </head>
 
     <body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000" class="bg-neutral-50 text-neutral-950 dark:bg-neutral-900 dark:text-neutral-50">
