@@ -4,6 +4,8 @@
 
 import { DateTime } from "luxon";
 
+const YEAR_REGEX = /^(\d{4}-\d{4})$/;
+
 export default function (eleventyConfig) {
 
     eleventyConfig.addFilter("parentUrl", function (url) {
@@ -23,8 +25,7 @@ export default function (eleventyConfig) {
 
     eleventyConfig.addFilter("getYearFromUrl", (url) => {
         const consideredYear = url.split("/")[2];
-        const yearRegex = /^(\d{4}-\d{4})$/;
-        return yearRegex.test(consideredYear) ? consideredYear : undefined;
+        return YEAR_REGEX.test(consideredYear) ? consideredYear : undefined;
     });
 
     eleventyConfig.addFilter("HalfTimeFromUrl", (url) => {
@@ -33,7 +34,7 @@ export default function (eleventyConfig) {
         } else if (url.endsWith(`.2/`)) {
             return `.2`;
         }
-        else return undefined
+        return undefined
     });
 
     eleventyConfig.addFilter("dateFormat", (dateObj, format = "dd/MM/yyyy") => {
