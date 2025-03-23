@@ -8,6 +8,7 @@ eleventyComputed:
   eleventyNavigation:
     key: "{{ page.url }}"
     title: "{{ title | safe }}"
+    description: "{{ description }}"
 ---
 
 <script>
@@ -87,25 +88,21 @@ window.addEventListener('scroll', () => {
     </ul>
 </nav>
 
-<article class="relative">
+<article>
 <h1  {% if tags or authors %}class="mb-1"{% endif %}>{{ title }}</h1>
 <div {% if tags or authors %}class="mb-4"{% endif %}>
     {% if tags %}
         <div class="px-4 flex flex-wrap items-center">
-            {% if tags | length > 1 %}
-                <div class="font-bold">Tags : </div>
-            {% else %}
-                <div class="font-bold">Tag : </div>
-            {% endif %}
+            <div class="font-bold">Tag{{ 's' if tags | length > 1 }} : </div>
             <ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags">
                 {% for tag in tags %}
-                    <li class="bg-yellow-200 rounded-full px-2" data-pagefind-filter="Tags">{{ tag }}</li>
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">{{ tag }}</li>
                 {% endfor %}
 
             </ul>
 
             {# Gestion des tags #}
-            <div class="hidden" data-pagefind-meta="Type">
+            <div class="hidden" data-pagefind-meta="Type" aria-hidden="true">
                 {% for tag in tags %}
                     {% if tag == "mon" %}
                         <span data-pagefind-filter="Type">MON</span>
@@ -124,7 +121,7 @@ window.addEventListener('scroll', () => {
             <div class="font-bold">Auteurs : </div>
             <ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs">
                 {% for author in authors %}
-                    <li class="bg-blue-200 rounded-full px-2" data-pagefind-filter="Auteurs">{{ author }}</li>
+                    <li class="bg-blue-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Auteurs">{{ author }}</li>
                 {% endfor %}
             </ul>
         </div>
@@ -132,18 +129,14 @@ window.addEventListener('scroll', () => {
 
     {% if year %}
         <div class="absolute top-0 right-0">
-            <span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2" data-pagefind-filter="Année">
+            <span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2 text-neutral-950" data-pagefind-filter="Année">
                 {{ year }}
             </span>
         </div>
     {% endif%}
 </div>
-{% if résumé %}
-        <p class="mb-4 text-lg">
-
-                {{ résumé | safe }}
-
-        </p>
+{% if description %}
+<p class="mb-4 text-lg">{{ description | safe }}</p>
 {% endif %}
 
 {{ content | safe }}

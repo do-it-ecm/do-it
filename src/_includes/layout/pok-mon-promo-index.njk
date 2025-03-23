@@ -61,20 +61,20 @@ eleventyComputed:
                                 <div class="text-lg mb-3">
                                     <a href="{{ article.url }}">{{article.data.title}}</a>
                                 </div>
-                                {% if article.data.résumé %}
-                                    <span class="line-clamp-3">{{ article.data.résumé }}</span>
+                                {% if article.data.description %}
+                                    <span class="line-clamp-3">{{ article.data.description }}</span>
                                 {% else %}
-                                    <span class="grow"><i>Aucun résumé fourni pour le moment.</i></span>
+                                    <span class="grow"><i>Aucune description fourni pour le moment.</i></span>
                                 {% endif %}
                                 <div class="flex flex-wrap flex-row grow justify-between items-end not-prose list-none mt-3 mb-1 mx-0 px-1 gap-1">
                                     <div class="flex-1">
-                                        <span class="bg-blue-200 rounded-full p-2">{{article.data.authors}}</span>
+                                        <span class="bg-blue-200 rounded-full p-2 text-neutral-950">{{article.data.authors}}</span>
                                     </div>
                                     <div>
                                         {% if article.url | HalfTimeFromUrl %}
-                                            <span class="bg-yellow-200 rounded-full p-2">{{ type }} {{ temps }}{{ article.url | HalfTimeFromUrl }}</span>
+                                            <span class="bg-yellow-200 rounded-full p-2 text-neutral-950">{{ type }} {{ temps }}{{ article.url | HalfTimeFromUrl }}</span>
                                         {% endif %}
-                                        <span class="bg-purple-200 rounded-full p-2">{{ article.data.date | dateFormat("dd/MM/yyyy") }}</span>
+                                        <span class="bg-purple-200 rounded-full p-2 text-neutral-950">{{ article.data.date | dateFormat("dd/MM/yyyy") }}</span>
                                     </div>
                                 </div>
                             </li>

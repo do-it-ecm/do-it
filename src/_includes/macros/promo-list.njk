@@ -5,7 +5,7 @@
         {%- for promo in promos | sort | reverse %}
             <li{% if promo.url == page.url %} class="my-active-class group bg-purple-200 rounded-full hover:cursor-pointer"
                 {% else %} class="group bg-purple-200 rounded-full hover:cursor-pointer"{% endif %}>
-                <a class="inline-block w-full underline decoration-2 decoration-purple-500 p-2 md:px-4 group-hover:decoration-purple-700 group-hover:text-purple-700"
+                <a class="inline-block w-full underline decoration-2 decoration-purple-500 p-2 md:px-4 group-hover:decoration-purple-700 group-hover:text-purple-700 text-neutral-950"
                     href="{{ promo.url }}{{ type }}">{{ promo.data.title | default(promo.fileSlug) }}</a>
             </li>
         {%- endfor %}
