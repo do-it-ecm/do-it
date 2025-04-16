@@ -1,0 +1,1206 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="robots" content="index, follow">
+
+        <link rel="canonical" href="https://do-it.aioli.ec-m.fr/promos/2024-2025/Loick-GoupilHallay/pok/temps-3/">
+
+        
+        
+
+        <meta name="description" content="Rework du site Do-It pour apporter la possibilité de scaling et l&#39;utilisation de GitHub Actions pour le CI/CD.">
+        <meta property="og:description" content="Rework du site Do-It pour apporter la possibilité de scaling et l&#39;utilisation de GitHub Actions pour le CI/CD.">
+        <meta name="twitter:description" content="Rework du site Do-It pour apporter la possibilité de scaling et l&#39;utilisation de GitHub Actions pour le CI/CD.">
+
+        
+            <meta name="author" content="Loïck Goupil-Hallay">
+        
+        <meta name="keywords" content="do-it, centrale, centrale méditerranée, ecm, POK, devops, scaling, gitops">
+
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png">
+        <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png">
+
+        <link href="/assets/stylesheets/main.css" rel="stylesheet">
+
+        <meta property="og:title" content="Scaling et CI/CD du site Do-It">
+
+        <meta property="og:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta property="og:url" content="https://do-it.aioli.ec-m.fr/promos/2024-2025/Loick-GoupilHallay/pok/temps-3/">
+        <meta property="og:type" content="website">
+
+        <meta name="twitter:card" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:title" content="Scaling et CI/CD du site Do-It">
+        <meta name="twitter:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:url" content="https://do-it.aioli.ec-m.fr/promos/2024-2025/Loick-GoupilHallay/pok/temps-3/">
+
+        <title>Scaling et CI/CD du site Do-It</title>
+
+        <!-- Prismjs imports
+                - Prism line numbers
+                - Prism toolbar
+        -->
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet">
+        <link id="prism-theme" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+        <!-- Mermaid import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js "></script>
+
+        <script defer="">
+        // Check if a theme is stored in localStorage. If so, use it, otherwise fallback to the system preference.
+        const storedTheme = localStorage.getItem('theme');
+        if (storedTheme) {
+            document.documentElement.classList.toggle("dark", storedTheme === "dark");
+        } else {
+            // Use system color scheme if there is no stored theme preference.
+            document.documentElement.classList.toggle("dark", window.matchMedia("(prefers-color-scheme: dark)").matches);
+        }
+
+        function loadPrismTheme(isDarkMode) {
+            const newTheme = isDarkMode ? 'prism-okaidia.min.css' : 'prism-solarizedlight.min.css';
+            const newLink = document.createElement('link');
+            newLink.rel = 'stylesheet';
+            newLink.id = 'prism-theme';
+            newLink.href = `https://cdn.jsdelivr.net/npm/prismjs/themes/${newTheme}`;
+
+            newLink.onload = () => {
+                // Reapply highlighting after the new theme loads
+                Prism.highlightAll();
+            };
+
+            const existingLink = document.getElementById('prism-theme');
+            if (existingLink) {
+                document.head.replaceChild(newLink, existingLink);
+            } else {
+                document.head.appendChild(newLink);
+            }
+        }
+
+        function setMermaidTheme(isDarkMode) {
+            const theme = isDarkMode ? 'dark' : 'forest';
+            mermaid.initialize({
+                securityLevel: 'loose',
+                theme,
+                startOnLoad: true,
+            });
+        }
+
+        // Toggle dark and light mode and update localStorage accordingly.
+        function toggleDarkMode() {
+            const dark = document.documentElement.classList.contains("dark");
+            const newTheme = dark ? "light" : "dark";
+            localStorage.setItem('theme', newTheme);
+            document.documentElement.classList.toggle("dark", !dark);
+            loadPrismTheme(!dark);
+            setMermaidTheme(!dark);
+        }
+
+        // On initial load, ensure that Prism and Mermaid are initialized using the current theme.
+        const isDark = document.documentElement.classList.contains("dark");
+        loadPrismTheme(isDark);
+        setMermaidTheme(isDark);
+        </script>
+
+    </head>
+
+    <body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000" class="bg-neutral-50 text-neutral-950 dark:bg-neutral-900 dark:text-neutral-50">
+        <header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white dark:bg-neutral-900 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-between items-center">
+                    <a class="mx-2" href="/">Home</a>
+                    <button class="hidden sm:block text-neutral-950 dark:text-neutral-50 hover:bg-neutral-700 hover:text-neutral-50 hover:dark:bg-neutral-300 hover:dark:text-neutral-950 transition-colors p-2 rounded-full duration-800 ease-in-out" onclick="toggleDarkMode()">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 dark:hidden stroke-current">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <path d="M12 2V4" stroke-linecap="round"></path>
+                            <path d="M12 20V22" stroke-linecap="round"></path>
+                            <path d="M4 12L2 12" stroke-linecap="round"></path>
+                            <path d="M22 12L20 12" stroke-linecap="round"></path>
+                            <path d="M19.7778 4.22266L17.5558 6.25424" stroke-linecap="round"></path>
+                            <path d="M4.22217 4.22266L6.44418 6.25424" stroke-linecap="round"></path>
+                            <path d="M6.44434 17.5557L4.22211 19.7779" stroke-linecap="round"></path>
+                            <path d="M19.7778 19.7773L17.5558 17.5551" stroke-linecap="round"></path>
+                        </svg>
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 stroke-current hidden dark:block">
+                            <path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </button>
+                    <div class="flex items-center gap-4 sm:gap-6 ">
+                        <a class="" href="/cs">CS</a>
+                        <a class="" href="/pok">POK</a>
+                        <a class="" href="/mon">MON</a>
+                        <a class="" href="/projets">Projets</a>
+                        <a class="hidden sm:block" href="/promos">Promos</a>
+                        <a href="/search">
+                            <svg class="h-5 aspect-square stroke-neutral-950 dark:stroke-neutral-300 fill-none stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+                            </svg>
+                        </a>
+                        <a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank">
+                            <svg class="h-5 aspect-square dark:stroke-neutral-300 dark:fill-neutral-300" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body="">
+            
+<article class="relative">
+<h1 class="mb-1">Scaling et CI/CD du site Do-It</h1>
+<div class="mb-4">
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Tags : </div>
+            <ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags">
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">POK</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">devops</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">scaling</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">gitops</li>
+                
+
+            </ul>
+
+            
+            <div class="hidden" data-pagefind-meta="Type" aria-hidden="true">
+                
+                    
+                        <span data-pagefind-filter="Type">POK</span>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Auteur : </div>
+            <ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs">
+                
+                    <li class="bg-blue-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Auteurs">Loïck Goupil-Hallay</li>
+                
+            </ul>
+        </div>
+    
+
+    
+        <div class="absolute top-0 right-0">
+            <span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2 text-neutral-950" data-pagefind-filter="Année">
+                2024-2025
+            </span>
+        </div>
+    
+</div>
+
+<p class="mb-4 text-lg">Rework du site Do-It pour apporter la possibilité de scaling et l'utilisation de GitHub Actions pour le CI/CD.</p>
+
+
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100 dark:border-purple-800 dark:bg-purple-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-purple-500 dark:stroke-purple-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/promos/2024-2025/Loick-GoupilHallay/">Loïck Goupil-Hallay</a><span class="px-1">/</span><a href="/promos/2024-2025/Loick-GoupilHallay/pok/">POKs Loïck Goupil-Hallay</a><span class="px-1">/</span><a href="/promos/2024-2025/Loick-GoupilHallay/pok/temps-3/">Scaling et CI/CD du site Do-It</a>
+
+</div>
+</div>
+
+
+
+
+<script>
+let lastScrollYSummary = window.scrollY;
+
+function toggleSummarySidebar() {
+    document.getElementById('toc-sidebar').classList.toggle('open');
+}
+
+window.addEventListener('scroll', () => {
+    const burger = document.getElementById('toc-burger-button');
+    const sidebar = document.getElementById('toc-sidebar');
+    const currentScroll = window.scrollY;
+    // Hide the burger button if max width is reached
+    if (currentScroll < 10 || currentScroll < lastScrollYSummary) {
+        burger.classList.remove('hidden');
+    } else if (!sidebar || !sidebar.classList.contains('open')) {
+        burger.classList.add('hidden');
+    }
+
+    lastScrollYSummary = currentScroll;
+});
+</script>
+<p><button id="toc-burger-button" class="sidebar-burger-button right-2" onclick="toggleSummarySidebar()">☰</button></p>
+<nav id="toc-sidebar" class="sidebar right-0 border-l-2 translate-x-full 3xl:translate-x-0">
+<h2>Sommaire</h2>
+<nav class="toc"><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#introduction"> Introduction</a></li><li class="toc-item"><a class="toc-link" href="#probl%C3%A8mes-actuels"> Problèmes actuels</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#taille-du-build"> Taille du build</a></li><li class="toc-item"><a class="toc-link" href="#scaling"> Scaling</a></li><li class="toc-item"><a class="toc-link" href="#mauvaises-pratiques"> Mauvaises pratiques</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#objectifs"> Objectifs</a></li><li class="toc-item"><a class="toc-link" href="#rework"> Rework</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#r%C3%A9solution-de-la-taille-du-build"> Résolution de la taille du build</a></li><li class="toc-item"><a class="toc-link" href="#scaling-1"> Scaling</a></li><li class="toc-item"><a class="toc-link" href="#mauvaises-pratiques-1"> Mauvaises pratiques</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#script"> Script</a></li><li class="toc-item"><a class="toc-link" href="#pipeline-ci%2Fcd"> Pipeline CI/CD</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#ajout-de-fonctionnalit%C3%A9s"> Ajout de fonctionnalités</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#plugins-front-end"> Plugins front-end</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#prismjs"> PrismJS</a></li><li class="toc-item"><a class="toc-link" href="#mermaidjs"> MermaidJS</a></li><li class="toc-item"><a class="toc-link" href="#mathjax"> MathJax</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#fonctionnalit%C3%A9s-eleventy"> Fonctionnalités eleventy</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#variables"> Variables</a></li><li class="toc-item"><a class="toc-link" href="#shortcodes"> Shortcodes</a></li><li class="toc-item"><a class="toc-link" href="#markdown-it-anchor"> markdown-it-anchor</a></li><li class="toc-item"><a class="toc-link" href="#markdown-it-toc-done-right"> markdown-it-toc-done-right</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#post-build"> Post build</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#html-minifier-terser"> html-minifier-terser</a></li><li class="toc-item"><a class="toc-link" href="#posthtml-url"> posthtml-url</a></li><li class="toc-item"><a class="toc-link" href="#compression-gzip"> Compression gzip</a></li></ol></li></ol></li><li class="toc-item"><a class="toc-link" href="#migration-%26-gitops"> Migration &amp; GitOps</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#configuration-de-la-machine"> Configuration de la machine</a></li></ol></li></ol></li></ol></nav></nav>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100 dark:border-pink-800 dark:bg-pink-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-pink-500 dark:stroke-pink-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>POK avancé</strong></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li><a href="https://git-scm.com/">Git</a></li>
+<li><a href="https://www.11ty.dev/">Eleventy</a></li>
+<li><a href="https://www.gnu.org/software/bash/">Bash</a></li>
+<li><a href="https://www.nginx.com/">Nginx</a></li>
+</ul>
+</div>
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100 dark:border-emerald-800 dark:bg-emerald-950">
+<svg class="absolute w-6 h-6 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-emerald-500 dark:stroke-emerald-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Liens utiles</strong></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li><a href="https://do-it.aioli.ec-m.fr/promos/2024-2025/Louradou-Arthur/pok/temps-1bis/creation_sous_repo_git/">POK Arthur Louradou Git Submodules pour Do-It</a></li>
+</ul>
+</div>
+</div>
+<h2 id="introduction" tabindex="-1"><a class="header-anchor" href="#introduction"></a> Introduction</h2>
+<p>Après 3 ans de bons et loyaux services, le site Do-It arrive à saturation. Il est en effet gangréné par les <strong>mauvaises pratiques</strong> qui se sont <strong>accumulées</strong> au fil des POK &amp; MON. Il est temps de reprendre les choses en main et de revoir l'architecture du site pour le rendre scalable et plus facile à maintenir.</p>
+<p>Le build a dépassé la taille du Giga, le <strong>déploiement</strong> via GitHub Actions <strong>ne passe plus entièrement</strong> à cause de cela, et les pauvres élèves se font engueuler par nos chers professeurs car ils ne peuvent pas consulter leurs rendus.</p>
+<h2 id="probl%C3%A8mes-actuels" tabindex="-1"><a class="header-anchor" href="#probl%C3%A8mes-actuels"></a> Problèmes actuels</h2>
+<h3 id="taille-du-build" tabindex="-1"><a class="header-anchor" href="#taille-du-build"></a> Taille du build</h3>
+<p>Le site Do-It est construit avec Eleventy, et au fil des POK &amp; MON, <strong>la taille du build a explosé</strong>. Il est maintenant impossible de déployer le site en entier via GitHub Actions, car <strong>le build dépasse la taille maximale supportée par GitHub Pages</strong>. Cela est dû au contenu multimédia (images, vidéos, sons, diaporamas, zip, code source,...) qui a été ajouté au fil des années en les plaçant directement dans le dossier <code>src</code>.</p>
+<p>La limite de taille du build est de <strong>1 Go</strong> pour GitHub Pages, et le site Do-It dépasse largement cette taille.</p>
+<h3 id="scaling" tabindex="-1"><a class="header-anchor" href="#scaling"></a> Scaling</h3>
+<p>Le repository Git servant à build le site est <strong>monolithique</strong>. Tous les élèves ont leur propre dossier dans le dossier <code>src</code>, et le site est construit en entier à chaque modification. Cela pose plusieurs problèmes :</p>
+<ul>
+<li><strong>Pas de gestion fine des droits</strong> : les élèves ont accès à tout le site, ce qui peut entraîner des modifications non désirées</li>
+<li><strong>Temps de build trop long</strong> : plus il y a d'élèves, plus le temps de build augmente</li>
+<li><strong>Performances Git dégradées</strong>: GitHub recommande de ne pas excéder 5Gb de données par repository sous peine de faire face à de sérieux problèmes de performance, celui de Do-It atteint les 4.1Gb à l'heure actuelle. La siuation est critique.</li>
+</ul>
+<h3 id="mauvaises-pratiques" tabindex="-1"><a class="header-anchor" href="#mauvaises-pratiques"></a> Mauvaises pratiques</h3>
+<p>Le site Do-It est victime de <strong>mauvaises pratiques</strong> en cascade:</p>
+<ul>
+<li><strong>Les médias sont directement au niveau des markdown</strong> : cela augmente la taille du build et rend le site difficile à maintenir</li>
+<li><strong>Les promos ne respectent pas toutes le même format</strong>: la nomenclature des directories et des fichiers n'est pas vérouillée. Cela rend pénible la maintenance du site</li>
+<li><strong>Les chemins des médias sont en dur dans les fichiers HTML</strong> : cela rend difficile la migration des médias vers un autre emplacement</li>
+<li><strong>Les noms de directories et de fichiers comportent des caractères spéciaux</strong> : cela peut poser des problèmes de compatibilité avec certains systèmes de fichiers et avec les scripts de build</li>
+<li><strong>Les élèves ont accès à tout le site</strong> : cela peut entraîner des modifications non désirées et des conflits</li>
+<li><strong>Personne n'utilise Git</strong>: Les élèves ne font pas l'effort d'utiliser Git comme il faut, tout le monde push sur la branche <code>main</code> et je reçois régulièrement des messages pour résoudre des problèmes de conflits.</li>
+</ul>
+<h2 id="objectifs" tabindex="-1"><a class="header-anchor" href="#objectifs"></a> Objectifs</h2>
+<ul>
+<li><strong>Résoudre le problème de taille de build</strong> pour que toutes les actions de déploiement passent</li>
+<li><strong>Permettre le scaling du site</strong> pour supporter un nombre croissant d'élèves</li>
+<li><strong>Imposer des bonnes pratiques</strong> pour éviter de retomber dans les travers actuels</li>
+<li><strong>Ajouter des fonctionnalités front-end</strong> pour améliorer l'expérience utilisateur (plugins, rework graphiques, résumés,...)</li>
+<li><strong>Migrer le site sur notre propre serveur aioli</strong> pour éviter les limitations de GitHub Pages</li>
+<li><strong>Mettre en place du GitOps</strong> pour faciliter le déploiement et la maintenance du site</li>
+</ul>
+<h2 id="rework" tabindex="-1"><a class="header-anchor" href="#rework"></a> Rework</h2>
+<h3 id="r%C3%A9solution-de-la-taille-du-build" tabindex="-1"><a class="header-anchor" href="#r%C3%A9solution-de-la-taille-du-build"></a> Résolution de la taille du build</h3>
+<p>Le problème d'échec de déploiement étant urgent, j'ai décidé de le résoudre immédiatement en <strong>réencodant</strong> toutes les images du site en <strong>WebP</strong> et toutes les vidéos en <strong>MP4</strong> avec le <strong>codec H.264</strong>. Cela a permis de <strong>diviser par 2 la taille du build</strong> et de permettre le déploiement complet du site via GitHub Actions.</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Script bash d'optimisation des médias</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<p>Ce script permet de réencoder les images en WebP, les vidéos en MP4 et les audios en Opus. Il permet également de mettre à jour les références des médias dans les fichiers HTML et de réécrire l'historique Git pour supprimer les médias originaux.</p>
+<pre class="language-bash line-numbers"><code>
+
+#!/bin/bash
+
+if [[ "$1" == "--rewrite-git-history" ]]; then
+    REWRITE_GIT_HISTORY=true
+    shift
+fi
+
+if [[ "$1" == "-h" || "$1" == "--help" ]]; then
+    echo "Usage: optimizer.bash <image|video|audio>"
+    echo "Optimize media files in the current directory."
+    exit 0
+fi
+
+temp_file=$(mktemp) # Temporary file to store paths for git filter-repo
+
+if [[ "$1" == "image" || "$2" == "image" || "$3" == "image" ]]; then
+    # Process image files (JPG, JPEG, PNG)
+    find src -type f \( -name "*.jpg" -o -name "*.jpeg" -o -name "*.png" -o -name "*.JPG" -o -name "*.JPEG" -o -name "*.PNG" \) -print0 | while IFS= read -r -d '' img; do
+        ffmpeg -y -i "$img" -q:v 75 "${img%.*}.webp" && \
+        echo "$img" >> "$temp_file" && \
+        rm "$img"
+
+        if [[ "$REWRITE_GIT_HISTORY" == "true" ]]; then
+             git rm --cached "$img"
+        fi
+    done
+
+    # Update image references in HTML files
+    find src -type f -name "*.md" -exec sed -i \
+        -e '/http/! s/\.png/\.webp/g' \
+        -e '/http/! s/\.PNG/\.webp/g' \
+        -e '/http/! s/\.jpg/\.webp/g' \
+        -e '/http/! s/\.JPG/\.webp/g' \
+        -e '/http/! s/\.jpeg/\.webp/g' \
+        -e '/http/! s/\.JPEG/\.webp/g' {} +
+
+elif [[ "$1" == "video" || "$2" == "video" || "$3" == "video" ]]; then
+    # Process video files (MP4, MOV, MKV)
+    find src -type f \( -name "*.mp4" -o -name "*.mov" -o -name "*.mkv" \) -print0 | while IFS= read -r -d '' video; do
+        ffmpeg -y -i "$video" -c:v libx264 -preset veryslow -c:a aac -b:a 96k "${video%.*}.compressed.mp4" && \
+        echo "$video" >> "$temp_file" && \
+        rm "$video" && \
+        mv "${video%.*}.compressed.mp4" "${video%.*}.mp4"
+
+        if [[ "$REWRITE_GIT_HISTORY" == "true" ]]; then
+             git rm --cached "$video"
+        fi
+    done
+
+    # Update video references in HTML files
+    find src -type f -name "*.md" -exec sed -i \
+        -e '/http/! s/\.mp4/\.compressed\.mp4/g' \
+        -e '/http/! s/\.mov/\.compressed\.mp4/g' \
+        -e '/http/! s/\.mkv/\.compressed\.mp4/g' {} +
+
+
+elif [[ "$1" == "audio" || "$2" == "audio" || "$3" == "audio" ]]; then
+    # Process audio files (WAV, FLAC, MP3, OGG)
+    find src -type f \( -name "*.wav" -o -name "*.flac" -o -name "*.mp3" -o -name "*.ogg" \) -print0 | while IFS= read -r -d '' audio; do
+        ffmpeg -y -i "$audio" -c:a libopus -b:a 96k "${audio%.*}.opus" && \
+        echo "$audio" >> "$temp_file" && \
+        rm "$audio"
+
+        if [[ "$REWRITE_GIT_HISTORY" == "true" ]]; then
+             git rm --cached "$audio"
+        fi
+    done
+
+    # Update audio references in HTML files
+    find src -type f -name "*.md" -exec sed -i \
+        -e '/http/! s/\.wav/\.opus/g' \
+        -e '/http/! s/\.flac/\.opus/g' \
+        -e '/http/! s/\.mp3/\.opus/g' \
+        -e '/http/! s/\.ogg/\.opus/g' {} +
+
+else
+    echo "Usage: optimizer.bash <image|video|audio>"
+    exit 1
+fi
+
+# Rewrite git history for all stored paths
+if [[ -s "$temp_file" && "$REWRITE_GIT_HISTORY" == "true" ]]; then
+    git filter-repo --invert-paths --paths-from-file "$temp_file" --force
+fi
+
+# Cleanup temporary file
+rm "$temp_file"
+
+
+</image|video|audio></image|video|audio></code></pre></div>
+</details>
+</div>
+<p>Ce script a permis de réduire la taille du build à <strong>600Mo</strong>, ce qui était suffisant pour permettre le déploiement complet du site.<br>
+<strong>Cependant</strong>, laisser perdurer la situation actuelle <strong>condamnerait</strong> la promotion suivante à subir les mêmes problèmes. Il est donc nécessaire de <strong>revoir l'architecture du site</strong> pour le rendre viable.</p>
+<p>La solution perenne est de <strong>sortir les médias du build</strong> et de les stocker dans un <strong>serveur dédié</strong>.<br>
+Comme ni vous, ni moi n'avons envie de payer ou de maintenir un serveur, la solution la plus simple est de <strong>continuer d'utiliser GitHub</strong> pour stocker les médias, mais de <strong>ne plus les inclure dans le build</strong>. Nous allons simplement <strong>référencer les médias</strong> dans les fichiers HTML et les laisser <strong>accessibles via GitHub</strong>.</p>
+<p>Pour faire cela, on utilise un <strong>script de build</strong> qui va <strong>réécrire les URLs des médias</strong> pour qu'ils pointent vers le <strong>serveur GitHub</strong>.\</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Script de build pour réécrire les URLs des médias</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<p>Ce script de build permet de réécrire les URLs des médias pour qu'ils pointent vers le serveur GitHub.\</p>
+<pre class="language-js line-numbers"><code>
+
+if (process.env.NODE_ENV === "production") {
+
+  // DO NOT REMOVE THOSE CONSTANTS,
+  // PERFORMING A GIT REMOTE -V OPERATION ON EACH FILE IS TOO EXPENSIVE
+  // HARDCODED VALUES ARE FINE IN OUR CONTEXT
+
+  // Raw GitHub URL constants
+  const RAW_GITHUB_BASE = "https://raw.githubusercontent.com";
+  // Repositories owner
+  const GITHUB_REPO_OWNER = "do-it-ecm";
+  // Regex to match promo paths (and extract the promo year and relative path)
+  const IS_PROMO_PATH = /src\/promos\/(\d{4}-\d{4})(\/?.*)?/;
+  // Regex to match the CS paths (and extract the relative path)
+  const IS_CS_PATH = /src\/cs\/(.*)/;
+  // Commit ref to use for all submodules
+  const COMMIT_REF = "refs/heads/main"; // Don't bother finding the commit ref for each submodule, just use main
+
+  function mediaUrlTransform(context) {
+    const urlsOptions = {
+      eachURL: function (url, attr, tagName) {
+        let remoteUrl = url;
+        if (url.includes("://")) {
+          // Don't transform external URLs
+        } else { // Hopefully valid relative URL
+          const baseDir = process.cwd();
+          let absoluteDirPath = "";
+          if (url.startsWith("/")) {
+            url = url.slice(1);
+            absoluteDirPath = path.dirname(path.resolve(baseDir, "src", url));
+          } else {
+            absoluteDirPath = path.dirname(path.resolve(baseDir, path.dirname(context.inputPath), url));
+          }
+          const promoMatch = absoluteDirPath.match(IS_PROMO_PATH);
+          if (promoMatch) {
+            // Promo path
+            const promoYear = promoMatch[1];
+            // Retrieve relative path (remove trailing slash)
+            const relativePath = promoMatch[2] ? promoMatch[2].replace(/\/$/, "") : "";
+            remoteUrl = `${RAW_GITHUB_BASE}/${GITHUB_REPO_OWNER}/promo-${promoYear}/${COMMIT_REF}/${relativePath}/${path.basename(url)}`;
+          } else {
+            const csMatch = absoluteDirPath.match(IS_CS_PATH);
+            if (csMatch) {
+              // CS path
+              const relativePath = csMatch[1];
+              remoteUrl = `${RAW_GITHUB_BASE}/${GITHUB_REPO_OWNER}/courses/${COMMIT_REF}/${relativePath}/${path.basename(url)}`;
+            } else {
+              const relativePath = path.relative(baseDir, absoluteDirPath);
+              remoteUrl = `${RAW_GITHUB_BASE}/${GITHUB_REPO_OWNER}/do-it/${COMMIT_REF}/${relativePath}/${path.basename(url)}`;
+            }
+          }
+
+        }
+        return remoteUrl;
+      },
+      filter: {
+        img: { src: true, srcset: true },
+        video: { src: true, srcset: true },
+        audio: { src: true },
+        source: { src: true, srcset: true }
+      }
+    };
+    return urls(urlsOptions);
+  }
+  eleventyConfig.htmlTransformer.addPosthtmlPlugin("html", mediaUrlTransform, { priority: -1 });
+} else {
+  console.warn("Skipping media URL transform in development mode");
+}
+
+
+</code></pre></div>
+</details>
+</div>
+<h3 id="scaling-1" tabindex="-1"><a class="header-anchor" href="#scaling-1"></a> Scaling</h3>
+<p>Pour permettre le scaling du site, il faut impérativement <strong>séparer les promotions</strong>. Chaque promotion doit avoir son propre repository Git, et le site doit être construit à partir de <strong>repositories séparés</strong>. Cela permettra de <strong>réduire le temps de build</strong> et de <strong>séparer les droits et les préoccupations</strong>.</p>
+<p>Concrètement, chaque promotion aura son propre repository Git, et le site Do-It sera construit à partir de <strong>submodules Git</strong>.<br>
+Les submodules Git permettent d'inclure un repository Git dans un autre repository Git. Cela permet de <strong>garder les repositories séparés</strong> tout en <strong>les incluant dans un repository parent</strong>.</p>
+<p>Cela passe par plusieurs étapes clés:</p>
+<ul>
+<li><strong>Création d'une organisation GitHub Do-It</strong> pour stocker les repositories des promotions et le repository du site Do-It</li>
+<li><strong>Création de teams GitHub</strong> pour gérer les droits des élèves sur les repositories</li>
+<li><strong>Création d'un repository par promotion</strong> pour stocker les fichiers des élèves (réalisé par Arthur)</li>
+<li><strong>Création d'un repository pour le site Do-It</strong> pour référencer les repositories des promotions et stocker la logique de build</li>
+<li><strong>Mise en place de submodules Git</strong> pour inclure les repositories des promotions dans le repository du site Do-It</li>
+</ul>
+<h3 id="mauvaises-pratiques-1" tabindex="-1"><a class="header-anchor" href="#mauvaises-pratiques-1"></a> Mauvaises pratiques</h3>
+<h4 id="script" tabindex="-1"><a class="header-anchor" href="#script"></a> Script</h4>
+<p>Pour résoudre les problèmes de mauvaise pratiques, j'ai décidé de mettre en place des scripts (javascript) qui s'assurent de la <strong>conformité du code</strong>. Vous pouvez consulter les scripts de vérification de conformité dans <a href="https://github.com/do-it-ecm/do-it/tree/main/scripts/compliance/">https://github.com/do-it-ecm/do-it/tree/main/scripts/compliance/</a>.</p>
+<p>Ces scripts vérifient que:</p>
+<ul>
+<li>Les fichiers et répertoires ont des noms standards, composés uniquement de caractères alphanumériques, de tirets / underscores et de points. Cela évite de créer des erreurs dans les scripts de réécriture des URLs des médias.</li>
+<li>La structure du dossier élève est respectée, avec un fichier index.(md|njk|html) si du contenu est présent.</li>
+<li>Les médias sont stockés dans des répertoires dédiés (<code>assets</code>) et non directement à côté des fichiers markdown.</li>
+</ul>
+<h4 id="pipeline-ci%2Fcd" tabindex="-1"><a class="header-anchor" href="#pipeline-ci%2Fcd"></a> Pipeline CI/CD</h4>
+<p>En plus, j'ai ajouté une <strong>pipeline CI/CD</strong> GitHub Actions qui va <strong>vérifier</strong> que chacune des nouvelles pratiques est respectée, et dans le cas contraire, le <strong>build ne se lance pas</strong>.</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Pipeline CI/CD Compliance GitHub Actions</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<p>Cette pipeline GitHub Actions utilise du caching pour accélérer le build et lance tous nos tests de conformité.<br>
+Elle ne se lance que lorsqu'une merge request est acceptée ou lorsqu'un submodule est mis à jour. Finito les push sur <code>main</code>!</p>
+<pre class="language-yaml line-numbers"><code>
+
+
+name: check-compliance
+
+on:
+  repository_dispatch:
+    types: [submodule-update]
+  pull_request:
+    types:
+      - closed
+    branches:
+      - main
+
+env:
+  NODE_VERSION: "20.7" # Define the Node.js version here
+
+jobs:
+  check-compliance:
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout code without initializing submodules
+      - uses: actions/checkout@v4
+        with:
+          submodules: false # Defer submodule initialization
+
+      # Restore Git Submodules Cache
+      - name: Restore Git Submodules Cache
+        uses: actions/cache@v4
+        with:
+          path: .git/modules
+          key: submodules-${{ github.ref_name }}
+          restore-keys: |
+            submodules-${{ github.ref_name }}
+            submodules-
+
+      # Git Submodule Update
+      - name: Git Submodule Update
+        run: |
+          git submodule sync
+          git submodule update --init --recursive
+          git submodule foreach "git fetch origin main && git reset --hard origin/main"
+
+      # Cache Git Submodules
+      - name: Cache Git Submodules
+        uses: actions/cache@v4
+        with:
+          path: .git/modules
+          key: submodules-${{ github.ref_name }}
+
+      # Restore Node.js Modules Cache
+      - name: Restore Node.js Modules Cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: npm-cache-${{ env.NODE_VERSION }}-${{ github.ref_name }}
+          restore-keys: |
+            npm-cache-${{ env.NODE_VERSION }}-${{ github.ref_name }}
+            npm-cache-${{ env.NODE_VERSION }}-
+            npm-cache-
+
+      # Use Node.js
+      - name: Use Node.js ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      # Install dependencies
+      - name: Install dependencies
+        run: npm ci
+
+      # Save Node.js Modules Cache
+      - name: Save Node.js Modules Cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: npm-cache-${{ env.NODE_VERSION }}-${{ github.ref_name }}
+
+      - name: Check Compliance
+        run:  npm run check-compliance
+
+
+
+</code></pre></div>
+</details>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Pipeline CI/CD Publish GitHub Actions</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<p>Cette pipeline GitHub Actions construit le site Do-It à partir des submodules Git et applique les changements sur la branche <code>gh-pages</code> pour déployer le site. Elle ne conserve que la dernière version du build pour éviter de faire grossir le repository Git inutilement.</p>
+<pre class="language-yaml line-numbers"><code>
+
+
+name: publish
+
+on:
+  workflow_run:
+    workflows: ["check-compliance"]
+    types:
+      - completed
+
+env:
+  NODE_VERSION: "20.7" # Define the Node.js version here
+
+jobs:
+  publish:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout code without initializing submodules
+      - uses: actions/checkout@v4
+        with:
+          submodules: false # Defer submodule initialization
+
+      # Restore Git Submodules Cache
+      - name: Restore Git Submodules Cache
+        uses: actions/cache@v4
+        with:
+          path: .git/modules
+          key: submodules-${{ github.ref_name }}
+          restore-keys: |
+            submodules-${{ github.ref_name }}
+            submodules-
+
+      # Git Submodule Update
+      - name: Git Submodule Update
+        run: |
+          git submodule sync
+          git submodule update --init --recursive
+          git submodule foreach "git fetch origin main && git reset --hard origin/main"
+
+      # Cache Git Submodules
+      - name: Cache Git Submodules
+        uses: actions/cache@v4
+        with:
+          path: .git/modules
+          key: submodules-${{ github.ref_name }}
+
+      # Restore Node.js Modules Cache
+      - name: Restore Node.js Modules Cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: npm-cache-${{ env.NODE_VERSION }}-${{ github.ref_name }}
+          restore-keys: |
+            npm-cache-${{ env.NODE_VERSION }}-${{ github.ref_name }}
+            npm-cache-${{ env.NODE_VERSION }}-
+            npm-cache-
+
+      # Use Node.js
+      - name: Use Node.js ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      # Install dependencies
+      - name: Install dependencies
+        run: npm ci
+
+      # Save Node.js Modules Cache
+      - name: Save Node.js Modules Cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: npm-cache-${{ env.NODE_VERSION }}-${{ github.ref_name }}
+
+      - name: Build
+        run: npm run build-github
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          publish_dir: dist
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          force_orphan: true
+          publish_branch: gh-pages
+
+
+
+</code></pre></div>
+</details>
+</div>
+<h3 id="ajout-de-fonctionnalit%C3%A9s" tabindex="-1"><a class="header-anchor" href="#ajout-de-fonctionnalit%C3%A9s"></a> Ajout de fonctionnalités</h3>
+<p>Ce rework apporte un grand nombre de nouvelles fonctionnalités qui vont révolutionner l'expérience utilisateur du site Do-It.</p>
+<h4 id="plugins-front-end" tabindex="-1"><a class="header-anchor" href="#plugins-front-end"></a> Plugins front-end</h4>
+<p>Pour améliorer l'expérience utilisateur et réduire le nombre d'images uploadées, j'ai ajouté / rendu fonctionnels de nombreux plugins javascript:</p>
+<h5 id="prismjs" tabindex="-1"><a class="header-anchor" href="#prismjs"></a> PrismJS</h5>
+<p>PrismJS est un plugin javascript qui permet de styliser les blocs de code source dans les fichiers markdown.<br>
+Il est très utile pour mettre en avant les blocs de code et les rendre plus lisibles.</p>
+<p>J'ai ajouté en particulier les extensions PrismJS suivantes:</p>
+<ul>
+<li><code>line-numbers</code> : pour afficher les numéros de ligne</li>
+<li><code>copy-to-clipboard</code> : pour afficher un bouton de copie du code</li>
+<li><code>show-language</code> : pour afficher le langage du code</li>
+<li><code>toolbar</code> : pour afficher la barre d'outils (bouton de copie, langage)</li>
+<li><code>normalize-whitespace</code> : pour effacer les espaces blancs inutiles</li>
+</ul>
+<h5 id="mermaidjs" tabindex="-1"><a class="header-anchor" href="#mermaidjs"></a> MermaidJS</h5>
+<p>MermaidJS est un plugin javascript qui permet de générer des diagrammes à partir de code source.<br>
+Il est très utile pour générer des diagrammes de flux, des diagrammes de séquence, des diagrammes de Gantt, des graphique,...</p>
+<h5 id="mathjax" tabindex="-1"><a class="header-anchor" href="#mathjax"></a> MathJax</h5>
+<p>MathJax est un plugin javascript qui permet de générer des formules mathématiques à partir de code source en latex.<br>
+Il est très utile pour générer des formules mathématiques complexes et les afficher dans les fichiers markdown.</p>
+<h4 id="fonctionnalit%C3%A9s-eleventy" tabindex="-1"><a class="header-anchor" href="#fonctionnalit%C3%A9s-eleventy"></a> Fonctionnalités eleventy</h4>
+<h5 id="variables" tabindex="-1"><a class="header-anchor" href="#variables"></a> Variables</h5>
+<p>J'ai ajouté des variables eleventy pour stocker des choses importantes et récurrentes pour le site.
+On peut retrouver les variables dans les fichiers <a href="https://github.com/do-it-ecm/do-it/tree/main/_data/">https://github.com/do-it-ecm/do-it/tree/main/_data/</a>.<br>
+Ces variables sont explicitées dans les guides de contribution.</p>
+<h5 id="shortcodes" tabindex="-1"><a class="header-anchor" href="#shortcodes"></a> Shortcodes</h5>
+<p>J'ai ajouté des shortcodes eleventy pour générer des éléments HTML récurrents dans les fichiers markdown.
+On peut retrouver les shortcodes dans les fichiers <a href="https://github.com/do-it-ecm/do-it/tree/main/scripts/eleventy/markdown/shortcodes/">https://github.com/do-it-ecm/do-it/tree/main/scripts/eleventy/markdown/shortcodes/</a>.<br>
+Ces shortcodes sont explicités dans les guides de contribution.</p>
+<h5 id="markdown-it-anchor" tabindex="-1"><a class="header-anchor" href="#markdown-it-anchor"></a> markdown-it-anchor</h5>
+<p>markdown-it-anchor est un plugin eleventy qui permet de générer des ancres automatiquement pour les titres des fichiers markdown.<br>
+Cela permet de naviguer plus facilement dans les fichiers markdown et de partager des liens vers des sections spécifiques.</p>
+<h5 id="markdown-it-toc-done-right" tabindex="-1"><a class="header-anchor" href="#markdown-it-toc-done-right"></a> markdown-it-toc-done-right</h5>
+<p>markdown-it-toc-done-right est un plugin eleventy qui permet de générer une table des matières automatiquement pour les fichiers markdown.<br>
+Cela permet de naviguer plus facilement dans les fichiers markdown et de voir la structure du document.</p>
+<h4 id="post-build" tabindex="-1"><a class="header-anchor" href="#post-build"></a> Post build</h4>
+<h5 id="html-minifier-terser" tabindex="-1"><a class="header-anchor" href="#html-minifier-terser"></a> html-minifier-terser</h5>
+<p>html-minifier-terser est un plugin javascript qui permet de minifier le code HTML.<br>
+Cela permet de réduire la taille des fichiers HTML et d'accélérer le chargement des pages, en plus de réduire la consommation de bande passante.</p>
+<h5 id="posthtml-url" tabindex="-1"><a class="header-anchor" href="#posthtml-url"></a> posthtml-url</h5>
+<p>posthtml-url est un plugin eleventy qui permet de réécrire les URLs des médias dans les fichiers HTML.<br>
+Cela permet de pointer vers les médias stockés sur GitHub et de réduire la taille du build.</p>
+<h5 id="compression-gzip" tabindex="-1"><a class="header-anchor" href="#compression-gzip"></a> Compression gzip</h5>
+<p>J'ai ajouté une compression gzip sur les fichiers HTML, CSS et JS pour réduire la taille des fichiers et accélérer le chargement des pages. Combiné avec nginx pour servir les fichiers, cela permet de réduire la consommation de bande passante.</p>
+<h3 id="migration-%26-gitops" tabindex="-1"><a class="header-anchor" href="#migration-%26-gitops"></a> Migration &amp; GitOps</h3>
+<p>Afin de ne plus être dépendant de GitHub Pages, il a été décidé d'utiliser nos propres serveurs pour héberger et exposer le site Do-It.</p>
+<p>L'idée est d'utiliser un serveur Nginx configuré pour servir les fichiers statiques du site Do-It.<br>
+Il faut aussi pouvoir <strong>mettre à jour le site automatiquement</strong> à chaque push sur la branche <code>gh-pages</code>.</p>
+<h4 id="configuration-de-la-machine" tabindex="-1"><a class="header-anchor" href="#configuration-de-la-machine"></a> Configuration de la machine</h4>
+<p>Sur notre fier serveur aioli, j'ai créé une machine virtuelle <a href="https://alpinelinux.org/">alpine</a> vierge que j'ai entièrement configurée pour servir le site Do-It de manière optimale.</p>
+<p>L'intérêt d'Alpine est que c'est un OS ultra léger, qui ne contient que le strict nécessaire pour fonctionner. La surface d'attaque est donc très réduite. La machine virtuelle n'a besoin que de 1Go d'espace disque et 512Mo de RAM pour fonctionner.</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Configuration de la machine</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<p>Ce script permet d'exécuter d'une traite toutes les configurations pour la machine virtuelle (en supposant que le <code>setup-alpine</code> est déjà <strong>fait</strong>).</p>
+<pre class="language-sh line-numbers"><code>
+
+#!/bin/sh
+
+set -e
+
+apk update
+apk upgrade
+apk add --no-cache nginx git python3 openrc
+rm -rf /var/cache/apk/*
+mkdir -p /opt/do-it/jobs
+echo "Creating the nginx configuration file in /etc/nginx/nginx.conf"
+cat <<'EOF' > /etc/nginx/nginx.conf
+user nginx;
+worker_processes auto;
+pcre_jit on;
+error_log /var/log/nginx/error.log warn;
+
+events {
+    worker_connections 1024;
+}
+
+http {
+    include /etc/nginx/mime.types;
+    default_type application/octet-stream;
+
+    server_tokens off;
+    client_max_body_size 1;
+
+    sendfile on;
+    tcp_nopush on;
+    tcp_nodelay on;
+    keepalive_timeout 65;
+    keepalive_requests 1000;
+
+    ssl_protocols TLSv1.2 TLSv1.3;
+    ssl_prefer_server_ciphers on;
+    ssl_session_cache shared:SSL:2m;
+    ssl_session_timeout 1h;
+    ssl_session_tickets off;
+
+    gzip on;
+    gzip_static on;
+    gzip_comp_level 2;
+    gzip_min_length 1000;
+    gzip_types text/html text/css application/javascript;
+    gzip_vary on;
+    gzip_buffers 16 8k;
+
+    log_format main '$remote_addr - $remote_user [$time_local] "$request" '
+                    '$status $body_bytes_sent "$http_referer" '
+                    '"$http_user_agent" "$http_x_forwarded_for"';
+
+    access_log /var/log/nginx/access.log main;
+
+    map $http_upgrade $connection_upgrade {
+        default upgrade;
+        '' close;
+    }
+
+    server {
+        listen 80;
+        listen [::]:80;
+
+        root /opt/do-it/do-it;
+        index index.html;
+
+        location / {
+            if ($request_method = POST) {
+                proxy_pass http://localhost:3001;
+                break;
+            }
+
+            try_files $uri $uri/ =404;
+        }
+
+        # Custom error page for 404
+        error_page 404 /404.html;
+        location = /404.html {
+            internal;
+        }
+
+        # Cache HTML, CSS, JS for 1 week
+        location ~* \.(html|css|js)$ {
+            expires 7d;
+            add_header Cache-Control "public, max-age=604800, must-revalidate";
+            etag on;
+        }
+    }
+}
+EOF
+
+echo "Creating the synchronizer script in /opt/do-it/jobs/synchronizer.sh"
+cat <<'EOF' > /opt/do-it/jobs/synchronizer.sh
+#!/bin/sh
+
+DO_IT_PATH="/opt/do-it/do-it"
+REMOTE_BRANCH="gh-pages"
+LOG_DIRECTORY="/opt/do-it/logs"
+LOG_FILE="${LOG_DIRECTORY}/synchronizer.log"
+
+mkdir -p ${LOG_DIRECTORY}
+
+# Function to prepend a formatted timestamp
+log_with_timestamp() {
+  while IFS= read -r line; do
+    echo "$(date '+%Y/%m/%d %Hh%M:%S') $line"
+  done
+}
+
+cd ${DO_IT_PATH}
+GIT_ORIGIN_URL="$(git remote get-url origin)"
+git fetch origin ${REMOTE_BRANCH} 2>&1 | log_with_timestamp | tee -a ${LOG_FILE}
+git reset --hard origin/${REMOTE_BRANCH} 2>&1 | log_with_timestamp | tee -a ${LOG_FILE}
+echo "Synchronized with the remote origin ${GIT_ORIGIN_URL} ${REMOTE_BRANCH} branch" 2>&1 | log_with_timestamp | tee -a ${LOG_FILE}
+EOF
+
+echo "Creating the server script in /opt/do-it/jobs/server.py"
+cat <<'EOF' > /opt/do-it/jobs/server.py
+# coding: utf-8
+"""
+Create a simple HTTP server that listens on a specified port.
+The server receives POST requests, validates the token, and triggers a script.
+Logs are written to a specified log file.
+"""
+
+from os import path, makedirs
+import argparse
+import logging
+from http.server import HTTPServer, BaseHTTPRequestHandler
+from subprocess import Popen, PIPE
+from json import loads, JSONDecodeError
+import hashlib
+import hmac
+
+class HTTPError(Exception):
+    def __init__(self, status_code: int, detail: str):
+        self.status_code = status_code
+        self.detail = detail
+        super().__init__(self.detail)
+
+class WebhookHandler(BaseHTTPRequestHandler):
+    def verify_signature(self, secret_token):
+        """
+        Verify the request payload's signature using the secret token.
+        """
+        signature_header = self.headers.get('X-Hub-Signature-256')
+        payload_length = int(self.headers.get('Content-Length', 0))
+        payload_body = self.rfile.read(payload_length).decode('utf-8')
+
+        if secret_token:
+            if not signature_header:
+                raise HTTPError(401, "Missing signature header")
+
+            hash_object = hmac.new(secret_token.encode('utf-8'), msg=payload_body.encode('utf-8'), digestmod=hashlib.sha256)
+            expected_signature = "sha256=" + hash_object.hexdigest()
+            if not hmac.compare_digest(expected_signature, signature_header):
+                raise HTTPError(403, "Invalid request signature")
+
+        try:
+            parsed_body = loads(payload_body)
+        except JSONDecodeError:
+            raise HTTPError(400, "Invalid JSON payload")
+
+        return parsed_body
+
+    def do_POST(self):
+        """
+        Handle POST requests, validate payload, and trigger script execution.
+        """
+        try:
+            # Verify the request signature and extract JSON payload
+            request_body = self.verify_signature(self.server.secret_token)
+
+            # Validate repository and branch
+            repo_full_name = request_body['repository'].get('full_name')
+            ref = request_body['ref']
+            if repo_full_name != f"{self.server.github_repo_owner}/{self.server.github_repo}":
+                raise HTTPError(400, f"Repository mismatch. Expected {self.server.github_repo_owner}/{self.server.github}")
+            if ref != f"refs/heads/{self.server.github_branch}":
+                raise HTTPError(400, f"Branch mismatch. Expected {self.server.github_branch}")
+
+            # Run the update script if provided
+            if self.server.update_script:
+                self.run_script(self.server.update_script)
+
+            self.send_response(200)
+            self.end_headers()
+            self.wfile.write(b"Webhook processed successfully.")
+        except HTTPError as e:
+            self.send_response(e.status_code)
+            self.end_headers()
+            self.wfile.write(e.detail.encode('utf-8'))
+            logging.error(f"HTTPError: {e.detail}")
+        except Exception as e:
+            self.send_response(500)
+            self.end_headers()
+            self.wfile.write(f"Error: {e}".encode('utf-8'))
+            logging.error(f"Unexpected error: {e}")
+
+    @staticmethod
+    def run_script(script_path):
+        """
+        Execute the update script.
+        """
+        logging.info(f"Executing script: {script_path}")
+        process = Popen([script_path], stdout=PIPE, stderr=PIPE)
+        stdout, stderr = process.communicate()
+        if stderr:
+            logging.error(f"Script error: {stderr.decode('utf-8')}")
+            raise Exception(f"Script error: {stderr.decode('utf-8')}")
+        logging.info(f"Script output: {stdout.decode('utf-8')}")
+        logging.info("Script executed successfully")
+
+    def log_message(self, format, *args):
+        """
+        Log an arbitrary message to the logger.
+        """
+        logging.info("%s - - [%s] %s\n" %
+                     (self.client_address[0],
+                      self.log_date_time_string(),
+                      format % args))
+
+def run_server(host, port, secret_token, update_script, github_repo_owner, github_repo, github_branch):
+    """
+    Start the web server on the specified host and port.
+    """
+    server = HTTPServer((host, port), WebhookHandler)
+    server.secret_token = secret_token
+    server.update_script = update_script
+    server.github_repo_owner = github_repo_owner
+    server.github_repo = github_repo
+    server.github_branch = github_branch
+
+    logging.info(f"Starting server on {host}:{port}")
+    try:
+        server.serve_forever()
+    except KeyboardInterrupt:
+        server.shutdown()
+        logging.info("Server stopped.")
+
+def main():
+    parser = argparse.ArgumentParser(description="Simple HTTP server to handle GitHub webhooks.")
+    parser.add_argument('--host', default='localhost', help='Hostname to bind the server to (default: ::)')
+    parser.add_argument('--port', type=int, default=3001, help='Port to listen on (default: 3001)')
+    parser.add_argument('--secret-token', help='Secret token to validate incoming requests')
+    parser.add_argument('--update-script', required=True, help='Path to the script to execute upon valid webhook')
+    parser.add_argument('--github-repo-owner', required=True, help='GitHub repository owner')
+    parser.add_argument('--github-repo', required=True, help='GitHub repository name')
+    parser.add_argument('--github-branch', required=True, help='GitHub branch to monitor for webhooks')
+    parser.add_argument('--log-file', required=True, help='Path to the log file (default: server.log)')
+
+    args = parser.parse_args()
+
+    # Create log directory if it does not exist
+    log_dir = path.dirname(args.log_file)
+    makedirs(log_dir, exist_ok=True)
+
+    # Configure logging
+    logging.basicConfig(
+        filename=args.log_file,
+        level=logging.INFO,
+        format='%(asctime)s - %(levelname)s - %(message)s'
+    )
+
+    run_server(
+        host=args.host,
+        port=args.port,
+        secret_token=args.secret_token,
+        update_script=args.update_script,
+        github_repo_owner=args.github_repo_owner,
+        github_repo=args.github_repo,
+        github_branch=args.github_branch
+    )
+
+if __name__ == "__main__":
+    main()
+EOF
+
+echo "Creating the init script in /etc/init.d/do-it-webserver"
+cat <<'EOF' > /etc/init.d/do-it-webserver
+#!/sbin/openrc-run
+name="do-it-webserver"
+description="Do-It Git Update Signals Python Web Server"
+
+command="/usr/local/bin/do-it-webserver.sh"
+
+pidfile="/var/run/${RC_SVCNAME}.pid"
+logfile="/var/log/${RC_SVCNAME}.log"
+
+depend() {
+    need net
+}
+
+supervisor="supervise-daemon"
+output_log="${logfile}"
+error_log="${logfile}"
+command_background="yes"
+EOF
+
+echo "Creating the web server service script in /usr/local/bin/do-it-webserver.sh"
+cat <<'EOF' > /usr/local/bin/do-it-webserver.sh
+#!/bin/sh
+python3 /opt/do-it/jobs/server.py --update-script /opt/do-it/jobs/synchronizer.sh --github-repo-owner do-it-ecm --github-repo do-it --github-branch gh-pages --secret-token EXAMPLETOKEN --log-file /opt/do-it/logs/server.log --port 3001
+EOF
+
+echo "Cloning the do-it repository"
+git clone --branch gh-pages --single-branch https://github.com/do-it-ecm/do-it.git /opt/do-it/do-it
+echo "Setting permissions"
+rc-update add nginx default
+chmod +x /usr/local/bin/do-it-webserver.sh
+chmod +x /etc/init.d/do-it-webserver
+rc-update add do-it-webserver default
+(crontab -l 2>/dev/null; echo "*/15 * * * * sh /opt/do-it/jobs/synchronizer.sh") | crontab -
+sleep 5
+echo "Starting the services"
+rc-service nginx start
+rc-service do-it-webserver start
+
+
+</code></pre></div>
+</details>
+</div>
+<p>Ce script met en place un serveur Nginx pour <strong>servir</strong> les fichiers statiques du site Do-It et un serveur Python pour écouter les webhooks GitHub et <strong>mettre à jour</strong> le site automatiquement.<br>
+Ces deux services redémarrent automatiquement en cas de crash.<br>
+Il met aussi en place la <strong>synchronisation automatique</strong> du site toutes les 15 minutes, au cas où le webhook ne fonctionnerait pas temporairement.
+Il faut simplement penser à <strong>remplacer <code>EXAMPLETOKEN</code> par le token GitHub</strong> dans le script.</p>
+
+
+
+</article>
+
+        </main>
+
+        <footer class="min-h-[50px] border-t-2 mt-4 border-gray-200 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-center items-center">
+                    <p class="text-center">
+                        ©2025 <b><span style="font-family: Consolas, sans-serif;">Do-<span style="color: #4a86e8">It</span></span></b> - Développement, Management et Gestion de projets en IT
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- MathJax import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">
+            window.MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']], // Delimiters for inline math
+                    displayMath: [['$$', '$$'], ['\\[', '\\]']] // Delimiters for block math
+                },
+                svg: {
+                    fontCache: 'global' // Use global font cache for SVG output
+                }
+            };
+            document.addEventListener('DOMContentLoaded', () => {
+                MathJax.typeset(); // Ensures MathJax processes the content after the page loads
+            });
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">
+            Prism.plugins.NormalizeWhitespace.setDefaults({
+                'remove-trailing': true,
+                'remove-indent': true,
+                'left-trim': true,
+                'right-trim': true,
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script>
+    </body>
+</html>

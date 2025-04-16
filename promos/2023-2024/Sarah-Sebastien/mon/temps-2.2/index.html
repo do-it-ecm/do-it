@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="robots" content="index, follow">
+
+        <link rel="canonical" href="https://do-it.aioli.ec-m.fr/promos/2023-2024/Sarah-Sebastien/mon/temps-2.2/">
+
+        
+        
+
+        <meta name="description" content="Ce MON permettra d&#39;apprendre ce qu&#39;est un processus, comment il est construit et comment l&#39;améliorer.">
+        <meta property="og:description" content="Ce MON permettra d&#39;apprendre ce qu&#39;est un processus, comment il est construit et comment l&#39;améliorer.">
+        <meta name="twitter:description" content="Ce MON permettra d&#39;apprendre ce qu&#39;est un processus, comment il est construit et comment l&#39;améliorer.">
+
+        
+            <meta name="author" content="Sarah Sebastien">
+        
+        <meta name="keywords" content="do-it, centrale, centrale méditerranée, ecm, MON, Processus métiers, BPM, RPA, Modélisation, TOGAF">
+
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png">
+        <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png">
+
+        <link href="/assets/stylesheets/main.css" rel="stylesheet">
+
+        <meta property="og:title" content="MON 2.2. Focus sur les « processus »">
+
+        <meta property="og:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta property="og:url" content="https://do-it.aioli.ec-m.fr/promos/2023-2024/Sarah-Sebastien/mon/temps-2.2/">
+        <meta property="og:type" content="website">
+
+        <meta name="twitter:card" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:title" content="MON 2.2. Focus sur les « processus »">
+        <meta name="twitter:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:url" content="https://do-it.aioli.ec-m.fr/promos/2023-2024/Sarah-Sebastien/mon/temps-2.2/">
+
+        <title>MON 2.2. Focus sur les « processus »</title>
+
+        <!-- Prismjs imports
+                - Prism line numbers
+                - Prism toolbar
+        -->
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet">
+        <link id="prism-theme" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+        <!-- Mermaid import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js "></script>
+
+        <script defer="">
+        // Check if a theme is stored in localStorage. If so, use it, otherwise fallback to the system preference.
+        const storedTheme = localStorage.getItem('theme');
+        if (storedTheme) {
+            document.documentElement.classList.toggle("dark", storedTheme === "dark");
+        } else {
+            // Use system color scheme if there is no stored theme preference.
+            document.documentElement.classList.toggle("dark", window.matchMedia("(prefers-color-scheme: dark)").matches);
+        }
+
+        function loadPrismTheme(isDarkMode) {
+            const newTheme = isDarkMode ? 'prism-okaidia.min.css' : 'prism-solarizedlight.min.css';
+            const newLink = document.createElement('link');
+            newLink.rel = 'stylesheet';
+            newLink.id = 'prism-theme';
+            newLink.href = `https://cdn.jsdelivr.net/npm/prismjs/themes/${newTheme}`;
+
+            newLink.onload = () => {
+                // Reapply highlighting after the new theme loads
+                Prism.highlightAll();
+            };
+
+            const existingLink = document.getElementById('prism-theme');
+            if (existingLink) {
+                document.head.replaceChild(newLink, existingLink);
+            } else {
+                document.head.appendChild(newLink);
+            }
+        }
+
+        function setMermaidTheme(isDarkMode) {
+            const theme = isDarkMode ? 'dark' : 'forest';
+            mermaid.initialize({
+                securityLevel: 'loose',
+                theme,
+                startOnLoad: true,
+            });
+        }
+
+        // Toggle dark and light mode and update localStorage accordingly.
+        function toggleDarkMode() {
+            const dark = document.documentElement.classList.contains("dark");
+            const newTheme = dark ? "light" : "dark";
+            localStorage.setItem('theme', newTheme);
+            document.documentElement.classList.toggle("dark", !dark);
+            loadPrismTheme(!dark);
+            setMermaidTheme(!dark);
+        }
+
+        // On initial load, ensure that Prism and Mermaid are initialized using the current theme.
+        const isDark = document.documentElement.classList.contains("dark");
+        loadPrismTheme(isDark);
+        setMermaidTheme(isDark);
+        </script>
+
+    </head>
+
+    <body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000" class="bg-neutral-50 text-neutral-950 dark:bg-neutral-900 dark:text-neutral-50">
+        <header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white dark:bg-neutral-900 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-between items-center">
+                    <a class="mx-2" href="/">Home</a>
+                    <button class="hidden sm:block text-neutral-950 dark:text-neutral-50 hover:bg-neutral-700 hover:text-neutral-50 hover:dark:bg-neutral-300 hover:dark:text-neutral-950 transition-colors p-2 rounded-full duration-800 ease-in-out" onclick="toggleDarkMode()">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 dark:hidden stroke-current">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <path d="M12 2V4" stroke-linecap="round"></path>
+                            <path d="M12 20V22" stroke-linecap="round"></path>
+                            <path d="M4 12L2 12" stroke-linecap="round"></path>
+                            <path d="M22 12L20 12" stroke-linecap="round"></path>
+                            <path d="M19.7778 4.22266L17.5558 6.25424" stroke-linecap="round"></path>
+                            <path d="M4.22217 4.22266L6.44418 6.25424" stroke-linecap="round"></path>
+                            <path d="M6.44434 17.5557L4.22211 19.7779" stroke-linecap="round"></path>
+                            <path d="M19.7778 19.7773L17.5558 17.5551" stroke-linecap="round"></path>
+                        </svg>
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 stroke-current hidden dark:block">
+                            <path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </button>
+                    <div class="flex items-center gap-4 sm:gap-6 ">
+                        <a class="" href="/cs">CS</a>
+                        <a class="" href="/pok">POK</a>
+                        <a class="" href="/mon">MON</a>
+                        <a class="" href="/projets">Projets</a>
+                        <a class="hidden sm:block" href="/promos">Promos</a>
+                        <a href="/search">
+                            <svg class="h-5 aspect-square stroke-neutral-950 dark:stroke-neutral-300 fill-none stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+                            </svg>
+                        </a>
+                        <a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank">
+                            <svg class="h-5 aspect-square dark:stroke-neutral-300 dark:fill-neutral-300" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body="">
+            
+<article class="relative">
+<h1 class="mb-1">MON 2.2. Focus sur les « processus »</h1>
+<div class="mb-4">
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Tags : </div>
+            <ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags">
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">MON</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">Processus métiers</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">BPM</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">RPA</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">Modélisation</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">TOGAF</li>
+                
+
+            </ul>
+
+            
+            <div class="hidden" data-pagefind-meta="Type" aria-hidden="true">
+                
+                    
+                        <span data-pagefind-filter="Type">MON</span>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Auteur : </div>
+            <ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs">
+                
+                    <li class="bg-blue-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Auteurs">Sarah Sebastien</li>
+                
+            </ul>
+        </div>
+    
+
+    
+        <div class="absolute top-0 right-0">
+            <span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2 text-neutral-950" data-pagefind-filter="Année">
+                2023-2024
+            </span>
+        </div>
+    
+</div>
+
+<p class="mb-4 text-lg">Ce MON permettra d'apprendre ce qu'est un processus, comment il est construit et comment l'améliorer.</p>
+
+
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100 dark:border-purple-800 dark:bg-purple-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-purple-500 dark:stroke-purple-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/promos/2023-2024/Sarah-Sebastien/">Sarah Sebastien</a><span class="px-1">/</span><a href="/promos/2023-2024/Sarah-Sebastien/mon/">MON de Sarah Sebastien</a><span class="px-1">/</span><a href="/promos/2023-2024/Sarah-Sebastien/mon/temps-2.2/">MON 2.2. Focus sur les « processus »</a>
+
+</div>
+</div>
+
+
+
+
+<hr>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100 dark:border-pink-800 dark:bg-pink-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-pink-500 dark:stroke-pink-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p>Niveau débutant</p>
+</div><div class="pl-8 mr-8">
+<p>Prérequis :
+<em>J'évoque dans cette partie des concepts (ex: ERP, Lean Management, etc..) que j'ai déjà évoqués dans <a href="../temps-1.1">ce MON</a> et dans <a href="../temps-1.2">celui ci</a>.</em>
+<em>Ils ne sont pas indispensables à la compréhension de ce MON mais ils peuvent servir !</em></p>
+</div>
+</div>
+<h2 id="sommaire" tabindex="-1"><a class="header-anchor" href="#sommaire"></a> Sommaire</h2>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#definition">La définition du processus</a></li>
+<li><a href="#histoire">L'histoire du processus</a></li>
+<li><a href="#mod%C3%A9lisation">La modélisation du processus</a></li>
+<li><a href="#am%C3%A9liorer">Comment améliorer un processus...</a></li>
+<li><a href="#autonome">...Jusqu'à le rendre autonome</a></li>
+</ul>
+<h2 id="introduction"> Introduction </h2>
+<p>Quand on demande à ChatGPT <em>&quot;quelle est la place des processus dans une entreprise aujourd'hui ?&quot;</em>, il répond, sans hésitation,qu'ils <em>&quot;occupent une place centrale et stratégique au sein des entreprises d'aujourd'hui&quot;</em> et que leur importance <em>&quot;découle de plusieurs facteurs clés qui contribuent à la réussite globale d'une organisation&quot;</em>. Parmi les 10 aspects qu'ils citent pour mettre en évidence la place des processus dans une entreprise, on retrouve notamment <strong>l'efficacité opérationnelle</strong>, <strong>la qualité des produits et services</strong>, ou encore <strong>la communication interne</strong>.</p>
+<h2 id="histoire"> 1. Le processus : son histoire </h2>
+<p>Jusqu’à l’aube des années 70, beaucoup d’entreprises sont organisées selon un modèle de type <strong>Taylorien</strong> (<em>organisation scientifique du travail</em>), adapté à un environnement où la demande est supérieure à l’offre. La concurrence n’est pas mondialisée et les ressources sont facilement accessibles. L'accent des stratégies des entreprises n'est pas mis la performance opérationnelle mais plus sur la <strong>recherche du chiffre d'affaires</strong>.</p>
+<p>La charnière survient lors des années 70 et 80, avec l'avènement du <strong>1er choc pétrolier</strong> et la <strong>crise économique</strong> : s'en suit de nombreux changements économiques. Les cycles de développement deviennent de plus en plus courts et les produits de plus en plus complexes. Cela demande donc de mettre en œuvre une organisation transversale où les <strong>interactions entre les différents services</strong> (achats, productions, RH, etc...) sont définies de façon aussi précise et fiable que possible. Les entreprises sont donc dans l’obligation de repenser progressivement leur mode de gestion.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100 dark:border-pink-800 dark:bg-pink-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-pink-500 dark:stroke-pink-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><u>Sources partie 1</u></p>
+</div><div class="pl-8 mr-8">
+<p>Caseau, Y. (2011). Processus et Entreprise 2.0: Innover par la collaboration et le lean management. Dunod</p>
+</div>
+</div>
+<h2 id="definition"> 2. Le processus : sa définition </h2>
+<h3 id="a.-qu%E2%80%99est-ce-qu%E2%80%99un-processuss-%3F" tabindex="-1"><a class="header-anchor" href="#a.-qu%E2%80%99est-ce-qu%E2%80%99un-processuss-%3F"></a> a. Qu’est ce qu’un processuss ?</h3>
+<p>Une entreprise est organisée pour la <strong>production de valeur</strong>, cette production se concrétisant par la fourniture d’un <strong>output</strong> (<em>produit, service, livrable</em>) en consommant certains <strong>inputs</strong> (<em>ressources</em>), la valeur produite étant alors la différence entre valeur des outputs et valeur des inputs. On calcule en considérant l’entreprise comme un tout, ou comme la subdivision de m<strong>étiers divers produisent une valeur spécifique</strong>, et ayant chacune des <em>outputs</em> et des <em>inputs</em>. On parle alors de <strong>processus</strong> comme un enchaînement des activités concourant à la production d’une valeur.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100 dark:border-cyan-800 dark:bg-cyan-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-cyan-500 dark:stroke-cyan-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Processus vs Procédure</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Comme moi même je ne savais pas vraiment décrire la différence, je me permets de poser cette définition toute simple que j'ai trouvée <a href="https://optimiso-group.com/articles/comprendre-enfin-la-difference-entre-processus-et-procedure/">ici</a>
+<em>&quot;C'est comme faire un gâteau au chocolat : le processus est l’action de réaliser le gâteau et la procédure est la recette de cuisine qui explique comment réaliser ce gâteau.&quot;</em></p>
+</div>
+</div>
+<h3 id="b.-et-un-processus-m%C3%A9tier-alors-%3F" tabindex="-1"><a class="header-anchor" href="#b.-et-un-processus-m%C3%A9tier-alors-%3F"></a> b. Et un processus métier alors ?</h3>
+<p>On appelle <strong>processus métier</strong>, ou <em>processus d'affaires</em> l'ensemble des activités permettant à une entreprise d'atteindre ses objectifs stratégiques, notamment celui de l'amélioration. Il met en évidence les interactions sous forme d’échange d’informations entre les différents acteurs de l’entreprise.</p>
+<ul>
+<li><strong>Échanges entre acteurs</strong> internes ou externes (<em>commercial, technicien, fournisseurs…</em>)</li>
+<li><strong>Échanges avec les applications ou services</strong> (<em>email, gestion de facturation, gestion des clients, etc...</em>)</li>
+<li><strong>Échanges d’informations avec d’autres processus métiers</strong></li>
+</ul>
+<p>On retrouve globalement 3 types de processus métiers dans une organisation:</p>
+<ul>
+<li><strong>processus de pilotage/management</strong> : définissent la culture, les objectifs et la stratégie de l'entreprise et contribuent à leur déploiement (<em>ex: processus de planification et d’allocation des ressources</em>)</li>
+<li><strong>processus opérationnels</strong> : contribuent directement à la mise en œuvre du produit ou du service proposé par l'entreprise de l'identification du besoin du client à sa satisfaction (<em>ex:processus de développement produit, de ventes, de livraison</em>)</li>
+<li><strong>processus de support</strong> : assurent la disponibilité des ressources et moyens nécessaires au bon déroulement de tous les autres processus d'affaires (<em>ex: processus d'administration, de recrutement, de gestion du système d'information, etc...</em>)</li>
+</ul>
+<blockquote>
+<p><strong>L’ efficacité d’une organisation</strong> dépend alors, de <strong>l’efficacité de ses processus métiers</strong>. Pour demeurer concurrentielles, les organisations doivent donc chercher à <strong>optimiser</strong> et <strong>automatiser</strong> leurs processus métiers (<em>c'est ce que nous étudierons dans la <a href="#am%C3%A9liorer">partie 4</a></em>)</p>
+</blockquote>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100 dark:border-pink-800 dark:bg-pink-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-pink-500 dark:stroke-pink-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><u>Sources partie 2</u></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li><a href="https://www.blogdumoderateur.com/processus-metier-entreprise-definition-usages-outils/">https://www.blogdumoderateur.com/processus-metier-entreprise-definition-usages-outils/</a> (<em>approche très accessible des concepts cités au dessus</em>)</li>
+<li>Caseau, Y. (2011). Processus et Entreprise 2.0: Innover par la collaboration et le lean management. Dunod (<em>permet d'approfondir ces concepts, très complet</em>)</li>
+<li>Morley, Chantal, et al. Processus métiers et S.I. : Gouvernance, management, modélisation Ed. 3. Dunod, 2011. (<em>ouvrage très complet, et transversal un peu à tout le MON</em>)</li>
+</ul>
+</div>
+</div>
+<h2 id="modélisation"> 3. Le processus : sa modélisation </h2>
+<p>Nous allons voir dans cette partie les différents items suivants :</p>
+<ul>
+<li><a href="#a">a. Pourquoi modéliser un processus ? </a></li>
+<li><a href="#b">b. TOGAF ? ADM  ? APQC ? quésaco ? </a></li>
+<li><a href="#c">c. Y'a t'il un langage de modélisation ?</a></li>
+<li><a href="#d">d. Quels sont les différents types d'outils de modélisation ?</a></li>
+</ul>
+<h3 id="a"> a. Pourquoi modéliser un processus ?  </h3>
+<p>La <strong>modélisation (ou cartographie) des processus métiers</strong> est une activité qui consiste à créer un diagramme (<em>flux détaillé, déroulement du travail, cas d’utilisation, etc...</em>) qui montre les <strong>intrants-extrants</strong>, les tâches et les activités faisant partie du processus, dans une séquence structurée.</p>
+<p>Modéliser un processus c'est offrir une représentation visuelle du fonctionnement de l’entreprise, qui permet de :</p>
+<ul>
+<li>porter sa description à un niveau de clarté et de simplicité qui puisse être accessible à tous les collaborateurs d'une entreprise (<em>même ceux qui sont externes à un processus</em>).</li>
+<li>rendre cette description <strong>transparente</strong> en facilitant son partage et sa <strong>communication</strong> entre les acteurs concernés.</li>
+<li>mettre en valeur les différents <strong>problèmes de fonctionnement</strong>.</li>
+</ul>
+<p>Cette modélisation <strong>conceptualise l’entreprise et sa vision stratégique</strong> : elle permet de mettre en évidence les <strong>processus-clés</strong>, qui se trouvent au cœur des activités primaires d’une chaîne de valeur. C'est eux qui sont directement liés aux facteurs-clés assurant le succès de l’entreprise.</p>
+<h4 id="urbanisation-des-si" tabindex="-1"><a class="header-anchor" href="#urbanisation-des-si"></a> Urbanisation des SI</h4>
+<p>En faisant mes recherches sur le sujet je suis tombée sur le concept d'<strong>&quot;urbanisation des SI&quot;</strong>. Ce concept n'est pas directement lié avec la modélisation des processus, mais permet de mieux comprendre les enjeux : <em>je trouvais pertinent d'évoquer cette notion ici</em>.
+Voici une définition de Wikipédia assez récapitulative et explicite :</p>
+<blockquote>
+<p><strong>L'urbanisation du système d'information</strong> d'une entité ou d'une organisation, qui peut être une entreprise ou une administration, est une discipline d’ingénierie informatique consistant à faire évoluer le système d'information (SI) de celle-ci afin qu'il soutienne et accompagne efficacement les missions de ladite organisation et anticipe ses transformations.</p>
+</blockquote>
+<p>Ce besoin d'évolution peut provenir de différents facteurs stratégiques d'une entreprise (ex : regroupements et fusions, acquisitions, nouveaux modes ou canaux de distribution, réorganisation, etc...) qui impliquent donc des changements structurels importants.</p>
+<p>Ainsi, <strong>cartographier les processus</strong> de l'entreprise, est un outil essentiel</p>
+<ul>
+<li><em>en amont</em> de l'urbanisation : elle va permettre lors de la refonte du SI, d'être au plus proche du fonctionnel</li>
+<li><em>en aval</em>: elle va permettre de pouvoir <strong>capitaliser</strong> et <strong>standardiser</strong> (comme dans la méthode 5S) sur ces nouveaux outils, en redéfinissant une nouvelle manière de faire, <em>ie un nouveau processus</em>.</li>
+</ul>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100 dark:border-cyan-800 dark:bg-cyan-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-cyan-500 dark:stroke-cyan-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Workflow</strong></p>
+</div><div class="pl-8 mr-8">
+<p>On parle souvent de workflow au sens logiciel : c’est la représentation informatique d’une suite de tâches dans un processus.</p>
+</div>
+</div>
+<h3 id="b"> b.TOGAF ? ADM  ? APQC ? quésaco ? </h3>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100 dark:border-red-800 dark:bg-red-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-red-500 dark:stroke-red-800 stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Disclaimer</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Je vais tenter d'introduire dans cette partie quelques concepts, qui sont liés de manière plus ou moins directe avec les processus métiers, mais que je trouve très intéressants d'évoquer.
+Ces concepts ont été assez compliqués à comprendre : j'espère en avoir fait un résumé accessible et compréhensible.</p>
+</div>
+</div>
+<h4 id="togaf" tabindex="-1"><a class="header-anchor" href="#togaf"></a> TOGAF</h4>
+<p><strong>TOGAF</strong> (<em>The Open Group Architecture Framework</em>) : c’est un cadre (<em>framework</em>) d'architecture d'entreprise largement utilisé dans le domaine de la gestion des SI.
+L'objectif principal de TOGAF est de fournir une méthode et un ensemble d'outils (ie un cadre commun) pour élaborer une architecture d'entreprise qui répond aux besoins actuels et futurs de l'organisation, et faciliter la capitalisation des pratiques architecturales.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100 dark:border-cyan-800 dark:bg-cyan-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-cyan-500 dark:stroke-cyan-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Framework</strong></p>
+</div><div class="pl-8 mr-8">
+<p>On parle de <em>framework</em> (ou <em>cadre</em> en français) pour désigner une collection de moyens et procédés dédiés à un domaine d'activités particuliers. Il est utilisé comme référence et instrument de travail.</p>
+</div>
+</div>
+<p>Comme on l'a vu plutôt avec le concept <em>d'urbanisation</em> : le développement et la maintenance d’une architecture d’entreprise est un processus complexe impliquant de nombreux acteurs et processus décisionnels. Donc le TOGAF aide en documentant les spécifications, les processus et les produits de travail de l’architecture d’entreprise.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100 dark:border-cyan-800 dark:bg-cyan-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-cyan-500 dark:stroke-cyan-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>A savoir</strong></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li>Le développement initial de TOGAF version 1 a été réalisé en <strong>1995</strong>, grâce aux représentants de certaines des principales entreprises et organisations mondiales : efforts combinés de plus de <strong>300 membres</strong></li>
+<li><strong>programme de certification</strong> mis en place depuis 2008 avec plus de 15 000 personnes certifiées à l'échelle internationale</li>
+<li>s'applique à <strong>tout type d'architecture</strong>, <em>y compris ERP</em> (ex: SAO fournit son propre cadre d’architecture EAF (<em>SAP Entreprise Architecture Framework</em>), une adaptation de TOGAF)</li>
+<li>est conçu pour être <strong>adaptable</strong> et <strong>utilisable</strong> dans divers contextes d'entreprise : fournit un cadre générique qui peut être adapté pour répondre aux besoins spécifiques d'une organisation.
+Structure</li>
+</ul>
+</div>
+</div>
+<h5 id="structure" tabindex="-1"><a class="header-anchor" href="#structure"></a> Structure</h5>
+<p>TOGAF est structuré en <em>plusieurs parties</em>, chacune se concentrant sur des aspects spécifiques de l'architecture d'entreprise. On distingue 2 grandes parties :</p>
+<ul>
+<li><strong>ADM</strong> (Architecture Development Method / ou <em>cadre d'architecture</em>) : C'est le cœur de TOGAF, décrivant une méthode itérative en 10 phases pour développer et gérer une architecture d'entreprise. (<em>ex: planification, la création de l'architecture baseline, la conception cible, la mise en œuvre et la gestion du changement</em>)</li>
+<li><strong>Ressources de support</strong> : incluent des directives, des techniques, des modèles, des référentiels, et d'autres ressources pour aider à appliquer l'ADM.</li>
+</ul>
+<h4 id="apqc" tabindex="-1"><a class="header-anchor" href="#apqc"></a> APQC</h4>
+<p><strong>L'APQC</strong> (<em>American Productivity &amp; Quality Center</em>) est une organisation à but non lucratif <strong>fondée en 1977</strong> qui se consacre à la recherche et à la promotion des <strong>meilleures pratiques</strong> en matière de productivité et de qualité au sein des entreprises : elle fournit des <strong>ressources</strong> et des conseils pour aider les organisations à <strong>améliorer leurs performances</strong>, <strong>à innover</strong> et à <strong>atteindre l'excellence opérationnelle</strong>.</p>
+<p>Elle fournit une base de données importantes de processus clés <em>globaux</em> (ex: processus achats), sur lesquels les enterprises peuvent venir s'appuyer pour concevoir ou améliorer leur processus.
+(<em>Remarque : En tout cas, Madame Girard m'a dit que c'était une ressources qu'ils utilisaient beaucoup chez KPMG comme base de création ou d'amélioration d'un processus dans une entreprise cliente.</em>)</p>
+<h3 id="c"> c. Y'a t'il un langage de modélisation ? </h3>
+<p>Le document TOGAF met l'accent sur les <strong>modèles</strong> et la <strong>construction d'un référentiel</strong>. Les <strong>langages de modélisation</strong> aident à mieux formaliser les connaissances, analyser les problèmes, et concevoir des solutions.</p>
+<p>C'est en 1990 qu'on entend pour la premières fois parler de <strong>standards de modélisation</strong> (UML puis BPMN) qui ont permis d'harmoniser les techniques de modélisation. TOGAF recommande alors l'usage de de ces standards.</p>
+<p>On peut prendre l'exemple du BPMN qui est le plus répandu en entreprise. Voici un exemple pour illustrer les symboles de bases.</p>
+<img width="500," src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Sarah-Sebastien/mon/temps-2.2/Legende_BPMN.jpg">
+<p><a href="https://www.processmaker.com/blog/what-is-the-bpmn-2-0-standard/">Source image</a></p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100 dark:border-cyan-800 dark:bg-cyan-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-cyan-500 dark:stroke-cyan-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Pour aller plus loin</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Pour ceux que ça pourrait intéresser, on peut retrouver des explications très détaillées <a href="https://www.urbanisation-si.com/bpmn-norme-omg-synthese-des-elements-graphiques">ici</a> et <a href="https://www.urbanisation-si.com/bpmn-l-antiseche-pour-rester-incollable-en-modelisation-de-processus">là</a></p>
+</div>
+</div>
+<h3 id="d"> d. Quels sont les différents types d'outils de modélisation ?   </h3>
+<h4 id="types-de-diagrammes" tabindex="-1"><a class="header-anchor" href="#types-de-diagrammes"></a> Types de diagrammes</h4>
+<p>Aujourd'hui, il existe plusieurs types d'applications logicielles pour cartographier les processus d'entreprise. Mais avant de savoir quel logiciel utiliser, il faut savoir quel type de digramme on souhaite réaliser. Il en existe plusieurs sortes, en voici quelques uns :</p>
+<table>
+<thead>
+<tr>
+<th>Diagramme BPMN</th>
+<th>Diagramme VSM</th>
+<th>Diagramme à couloirs</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>On parle en général de &quot;diagramme de flux de travail&quot; pour désigner la représentation d'un processus. Un diagramme BPM est spécifique  aux processus d'entreprise, mais reste le plus utilisé pour modéliser un processus, car est normalisé</td>
+<td>Technique de cartographie des processus axée sur l'élimination du gaspillage dans des secteurs tels que la fabrication, la gestion de la chaîne d'approvisionnement et l'ingénierie logicielle</td>
+<td>Aussi appelé &quot;diagramme de Rummler-Brache&quot; ou &quot;diagramme transversal&quot;: permet de regrouper les étapes du processus par acteur dans des &quot;couloirs&quot; ou <em>&quot;bandes fonctionnelles&quot;</em>(montre également les interactions entre les différents acteurs).</td>
+</tr>
+<tr>
+<td><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Sarah-Sebastien/mon/temps-2.2/BPMN.png"  =""></td>
+<td><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Sarah-Sebastien/mon/temps-2.2/VSM.png"  =""></td>
+<td><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Sarah-Sebastien/mon/temps-2.2/Swimlane.png"  =""></td>
+</tr>
+<tr>
+<td><a href="https://sparxsystems.fr/resources/gallery/diagrams/business/bus-bpmn_business_process-book_lending_example.html?ref=eaRes">Source</a></td>
+<td><a href="https://online.visual-paradigm.com/fr/diagrams/features/value-stream-mapping-software/">Source</a></td>
+<td><a href="https://miro.com/templates/swimlanes-diagram/">Source</a></td>
+</tr>
+</tbody>
+</table>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100 dark:border-cyan-800 dark:bg-cyan-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-cyan-500 dark:stroke-cyan-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Diagramme de cartographie conceptuelle</strong></p>
+</div><div class="pl-8 mr-8">
+<p>On parle de ce type de diagramme pour désigner un outil de conception/réflexion permettant à une équipe de construire une carte mentale en collaboration sur un processus. <em>L'accent ici est mis au brainstorming plutôt que sur un diagramme propre et structuré</em>.</p>
+</div>
+</div>
+<h4 id="logiciels-de-mod%C3%A9lisation" tabindex="-1"><a class="header-anchor" href="#logiciels-de-mod%C3%A9lisation"></a> Logiciels de modélisation</h4>
+<p>Pour essayer de voir ce qui se faisait sur le marché, j'ai épluché plusieurs sites qui recensaient les logiciels de modélisations les plus utilisés. Voici ce qui est en ressorti :</p>
+<table>
+<thead>
+<tr>
+<th>Logiciel</th>
+<th>Avantages</th>
+<th>Inconvénients</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>LucidChart/Miro</td>
+<td>- outils très visuels <br> - fonctionnent en mode cloud/ axés sur la collaboration <br> - faciles à utiliser <br> - gratuits</td>
+<td>- manquent d’outils d’analyse et de visualisation <br> - pas de connecteurs natifs avec des applications tierces  <br> - fonctionnements parfois trop basiques <br> - très vite limité dans l'utilisation gratuite (<em>nombre de formes dans un diagramme et nombre de tableaux modifiables restreints</em>)</td>
+</tr>
+<tr>
+<td>Visio</td>
+<td>- offre une connexion aux autres applications Microsoft <br> - flexibilité et diversité des modèles de diagrammes disponibles et personnalisables <br> - interface facile à prendre en main</td>
+<td>- coûteux pour les utilisateurs individuels ou les petites entreprises <br> - pas aussi dynamique que ses concurrents</td>
+</tr>
+<tr>
+<td>Agilium/ProcessMaker</td>
+<td>- “approche low code” ⇒ construction d’applications métiers facile et intuitive <br> - tableaux de bord personnalisés <br> - collaboration à distance <br> - intégration d'outils de supervision des processus (<em>permet de suivre l’ensemble des processus en cours, suspendre, reprendre, rejouer des traitements</em>) <br> - grandes bibliothèques de modèles de flux de travail</td>
+<td>- logiciels destinés aux moyennes et grandes entreprises (coût mensuel assez élevé, <em>ex:(environ 1 500 €/mois) pour ProcessMaker</em>) <br> - fonctionnalités du logiciel complexes à personnaliser <br> - lenteur du logiciel (<em>mentionné plusieurs fois pour Agilium</em>)</td>
+</tr>
+</tbody>
+</table>
+<p>On voit alors qu'il existe vraiment 2 types de logiciels. Ceux qui servent vraiment simplement à modéliser visuellement un processus, et ceux qui offrent le suivi de l'exécution du processus derrière. Avec des logiciels qui se destinent plus aux petites entreprises, voire particuliers <em>(LucidChart, Miro)</em>, qui sont des logiciels que je connaissais déjà et d'autres destinés plus aux moyennes et grandes entreprises <em>(Visio, Agilium, ProcessMaker)</em>.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100 dark:border-cyan-800 dark:bg-cyan-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-cyan-500 dark:stroke-cyan-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Information</b></p>
+</div><div class="pl-8 mr-8">
+<p>Par curiosité, j'ai parlé à Madame Girard qui était une intervenante du cours de &quot;Conception des SI&quot; de ces logiciels. En tant que consultante chez KPMG dans les SI, elle n'avait jamais entendu parler des 2 derniers logiciels. Finalement, ce ne sont pas des solutions qu'ils recommandent d'adopter. Elle m'a dit que de nombreux ERP aujourd'hui incluaient déjà la possibilité d'intégrer et d'exécuter des workflow directement dans l'application.</p>
+</div>
+</div>
+<h3 id="entra%C3%AEnement-%C3%A0-la-mod%C3%A9lisation-d'un-processus" tabindex="-1"><a class="header-anchor" href="#entra%C3%AEnement-%C3%A0-la-mod%C3%A9lisation-d'un-processus"></a> Entraînement à la modélisation d'un processus</h3>
+<p>Après tout ce que je venais de voir, je voulais essayer de m’entraîner à modéliser un processus en utilisant ce que je venais d'apprendre. Pour le choix du logiciel de modélisation, je voulais un logiciel gratuit: comme ce logiciel était apparu plusieurs fois dans les classements, j'ai voulu essayer <em>LucidChart</em>.</p>
+<p>Pour ce faire, je me suis entraînée à réaliser le processus se service de client dans un restaurant. Voici ma proposition :</p>
+<img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Sarah-Sebastien/mon/temps-2.2/Entrainement.png"  ="">
+<p><em>Bien sûr, ce processus est très simplifié, certaines étapes sont beaucoup plus complexes. Le processus nécessite également plus de passerelles pour être vraiment précis (ex: étapes différentes à effectuer en fonction du mode de paiement du client, etc...). Mais cela reste un bon entraînement pour comprendre le fonctionnement d'une modélisation.</em></p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100 dark:border-cyan-800 dark:bg-cyan-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-cyan-500 dark:stroke-cyan-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Information</b></p>
+</div><div class="pl-8 mr-8">
+<p>Après coup, lors du cours de &quot;Conception de SI&quot;, nous avons été amené à modéliser un autre processus d'une entreprise fictive. Nous avions seulement les formes primaires du BPMN, et la vocation première de l'exercice n'était pas la réalisation du diagramme. Pour la modélisation, nous avions utilisé <em>Bizalgi Modeler</em>, qui est un logiciel gratuit. Avec le recul, ce logiciel semblait beaucoup plus adapter à de une simple modélisation visuelle d'un processus.</p>
+</div>
+</div>
+<p>En fin de compte le choix du bon logiciel de cartographie des processus dépend des besoins de l'organisation et des résultats escomptés par l'équipe.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100 dark:border-pink-800 dark:bg-pink-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-pink-500 dark:stroke-pink-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><u>Sources partie 3</u></p>
+</div><div class="pl-8 mr-8">
+<p><strong>Partie a:</strong></p>
+<ul>
+<li><a href="http://www.volle.com/ouvrages/econtic/processus.htm">http://www.volle.com/ouvrages/econtic/processus.htm</a></li>
+<li>Baltzan, Paige, et al. Système D’information de Gestion. Chenelière Èducation, 2015.
+<strong>Partie b/c:</strong></li>
+<li>Quelques explications sur le TOGAF très accessibles <a href="https://www.urbanisation-si.com/le-processus-des-iterations-adm-architecture-development-method-le-moteur-de-la-transformation-dentreprise-togaf-the-open-group-architecture-framework">ici</a> et <a href="https://www.urbanisation-si.com/togaf-pour-les-nuls">là</a></li>
+<li>Desfray, P. &amp; Raymond, G. (2019). 12. Modélisation de l’architecture d’entreprise avec ArchiMate. Dans : , TOGAF, Archimate, UML et BPMN (pp. 209-248). Paris: Dunod.</li>
+<li><a href="https://www.apqc.org/">Site de l'APQC</a>
+<strong>Partie d:</strong></li>
+<li><a href="https://whatfix.com/blog/process-mapping-tools/">Présentation divers types de diagramme</a></li>
+<li><a href="">Comparateur logiciels </a> (<em>peut être pas la meilleure source à utiliser mais permet de savoir sur quels logiciels porter la recherche</em>)</li>
+<li><a href="https://www.capterra.fr/reviews/201133/visio">Site d'avis d'utilisateurs sur les différents logiciels</a> (<em>permet d'avoir plusieurs avis sur les logiciels, moins biaisés que sur le site précédent</em>)</li>
+</ul>
+</div>
+</div>
+<h2 id="améliorer"> Le processus : son optimisation </h2>
+<h3 id="notion-importante-%3A-le-bpm" tabindex="-1"><a class="header-anchor" href="#notion-importante-%3A-le-bpm"></a> Notion importante : le BPM</h3>
+<p>Lorsqu'on parle de <em>processus métiers</em>, on évoque toujours la <strong>Gestion des Processus Métiers</strong> (en anglais BPM pour <em>Business Process Management</em>), qui permet d’avoir une vue d’ensemble de processus métiers de l’entreprise. C'est un outil qui est tourné vers <strong>l'optimisation</strong> des processus pour gagner <strong>en efficacité et en efficience</strong>: on parle alors d'amélioration continue des performances des processus en les rendant plus fluides, plus rapides et plus fiables.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100 dark:border-cyan-800 dark:bg-cyan-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-cyan-500 dark:stroke-cyan-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><em>Efficient? Efficace? Amélioration continue?</em></p>
+</div><div class="pl-8 mr-8">
+<p>Pour en apprendre plus sur ces concepts : je vous conseille de lire ce <a href="../../../Sarah-Sebastien/MON/temps-1.2/index.md">MON</a></p>
+</div>
+</div>
+<h3 id="le-cycle-de-vie-du-bpm-%3A" tabindex="-1"><a class="header-anchor" href="#le-cycle-de-vie-du-bpm-%3A"></a> Le cycle de vie du BPM :</h3>
+<p>On retrouve 6 étapes :</p>
+<img width="300," src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Sarah-Sebastien/mon/temps-2.2/BPM.png">
+<p><a href="https://www.manager-go.com/organisation-entreprise/bpm.htm">Source image</a></p>
+<table>
+<thead>
+<tr>
+<th>Etape</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Diagnostic de l'organisation</strong></td>
+<td>Choix des processus à améliorer</td>
+</tr>
+<tr>
+<td><strong>Analyse des processus</strong></td>
+<td>Cartographier ces processus actuels</td>
+</tr>
+<tr>
+<td><strong>Conception/Reconception</strong></td>
+<td>Construction et modélisation d'un processus idéal et intégration dans SI (<em>souvent des ERP</em>)</td>
+</tr>
+<tr>
+<td><strong>Exécution</strong></td>
+<td>Mise en production de l'outil pour exécuter le processus</td>
+</tr>
+<tr>
+<td><strong>Surveillance</strong></td>
+<td>Pilotage et suivi des performances de l'outil en fonction des objectifs fixés</td>
+</tr>
+<tr>
+<td><strong>Optimisation</strong></td>
+<td>Recherche de possibilités d'amélioration pour réduire l'écart entre l'attendu et le constaté</td>
+</tr>
+</tbody>
+</table>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100 dark:border-pink-800 dark:bg-pink-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-pink-500 dark:stroke-pink-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><u>Sources partie 4</u></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li>Chourabi, O., Feki, M., Dudézert, A. &amp; Boughzala, I. (2022). Des Robots et des Hommes: L’Allianz parfaite !. Recherche et Cas en Sciences de Gestion, 22, 91-104. <a href="https://doi.org/10.3917/rcsg.022.0091">https://doi.org/10.3917/rcsg.022.0091</a> (<em>article pas très long mais qui permet d'avoir une première approche des concepts de bases</em>)</li>
+</ul>
+</div>
+</div>
+<h2 id="autonome"> Le processus : son automatisation </h2>
+<h3 id="le-rpa" tabindex="-1"><a class="header-anchor" href="#le-rpa"></a> le RPA</h3>
+<p>RPA (<em>Robotic Process Automation</em>) utilise des technologies logicielles pour automatiser des tâches routinières répétitives avec peu de valeur ajoutée. Il permet d'amélioration la <strong>qualité</strong> et la <strong>productivité</strong> des processus métiers.</p>
+<p><em>Parmi les processus les plus automatisés, on trouve ceux de type gestion de documents, gestion des réclamations, réservations, factures et plus largement de la relation client, ou processus RH par ex...</em></p>
+<p>Certains definissent le RPA comme &quot;<em>un terme générique pour les outils qui opèrent sur l'interface utilisateur d'autres systèmes informatiques</em>&quot;.
+Sauf qu'aujourd'hui les formes traditionnelles d'automatisation des processus (<em>comme l'enregistrement d'écran, le &quot;scraping&quot; et les
+macros</em>) s'appuient également sur l'interface utilisateur de l'ordinateur. Mais la fonction principale de la RPA est <strong>l'identification des éléments</strong> et non les coordonnées de l'écran, comme pourrait le faire Excel. Cela permet une interaction plus intelligente avec l'interface utilisateur.</p>
+<h3 id="rpa-%2B-ia-%3D-ipa" tabindex="-1"><a class="header-anchor" href="#rpa-%2B-ia-%3D-ipa"></a> RPA + IA = IPA</h3>
+<p>L'avantage du RPA réside dans sa capacité à intégrer des éléments de l'IA pour améliorer ses fonctionnalités.
+On ne parle alors plus vraiment de <em>RPA</em> mais d'<strong>IPA</strong> (<em>Intelligent Process Automation</em>
+) qui va permettre d'ajouter aux robots, des capacités cognitives et d'apprentissage, pour leur par ex :</p>
+<ul>
+<li><strong>Prise de décision plus complexes</strong> (<em>intégration d'algorithmes d'IA</em>)</li>
+<li><strong>utilisation des techniques du Machine Learning</strong> (<em>en lien avec l'amélioration continue : permettre de constamment chercher à améliorer ses processus en fonction des défaust relevés</em>)</li>
+<li><strong>Reconnaître des images, des voix et des sons</strong></li>
+<li><strong>Analyse prédictive</strong> (<em>permettant d'anticiper les résultats et d'ajuster automatiquement les processus en conséquence.</em>)</li>
+<li><strong>Augmenter la capacité d'intéractions</strong> (<em>avec des personnes et même d’autres robots, ex: chatbots</em>)</li>
+</ul>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100 dark:border-cyan-800 dark:bg-cyan-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-cyan-500 dark:stroke-cyan-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Cadeau</strong></p>
+</div><div class="pl-8 mr-8">
+<p><a href="https://www.youtube.com/watch?v=mmR6Thnr0pY">Une petite vidéo</a> intéressante qui montre l'intégration d'un RPA dans un processus de souscription à une assurance maladie.</p>
+</div>
+</div>
+<hr>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100 dark:border-pink-800 dark:bg-pink-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-pink-500 dark:stroke-pink-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><u>Sources partie 5</u></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li>Chourabi, O., Feki, M., Dudézert, A. &amp; Boughzala, I. (2022). Des Robots et des Hommes: L’Allianz parfaite !. Recherche et Cas en Sciences de Gestion, 22, 91-104. <a href="https://doi.org/10.3917/rcsg.022.0091">https://doi.org/10.3917/rcsg.022.0091</a></li>
+<li>Ribeiro, J., Lima, R., Eckhardt, T., &amp; Paiva, S. (2021), “Robotic Process
+Automation and Artificial Intelligence in Industry 4.0–A Literature re-
+view”, Procedia Computer Science, 181, 51-58 (<em>article très long, et qui va bcp dans les détails mais assez intéressant</em>)</li>
+<li><a href="https://www.decideo.fr/Comment-le-RPA-et-l-IPA-rendent-les-processus-metiers-autonomes-et-intelligents_a10813.html">https://www.decideo.fr/Comment-le-RPA-et-l-IPA-rendent-les-processus-metiers-autonomes-et-intelligents_a10813.html</a> (<em>article très intéressant qui traite également de comment mettre en place ces technologies en entreprise, sujet que je n'ai pas traité ici</em>)</li>
+</ul>
+</div>
+</div>
+<blockquote>
+<p><strong>Horodateur</strong> :
+Samedi 06/01 : 1h (Recherche de concepts, de ressources et tentative de définition d'un plan)
+Dimanche 07/01 : 2h (Definition des termes partie 1/2 + Analyse différents logiciels de modélisation)
+Lundi 08/01 : 2h30 (Recherche des différents types de diagrammes + Prise en main de LucidChart + réalisation du processus d'entraînement)
+Mardi 09/01 : 1h (Première recherches sur les concepts évoqués partie 3)
+Mercredi 10/01  : 2h (Reprise des recherches de la veille + ajouts de compléments (ex : concept urbanisation) + réorganisation du plan du MON initial + recherches sur le BPM)
+Lundi 15/01 : 1h (Recherches sur le RPA et l'automatisation des processus)
+Lundi 15/01 : 30mins (Relecture du MON et correction d'erreurs)</p>
+</blockquote>
+
+
+
+</article>
+
+        </main>
+
+        <footer class="min-h-[50px] border-t-2 mt-4 border-gray-200 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-center items-center">
+                    <p class="text-center">
+                        ©2025 <b><span style="font-family: Consolas, sans-serif;">Do-<span style="color: #4a86e8">It</span></span></b> - Développement, Management et Gestion de projets en IT
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- MathJax import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">
+            window.MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']], // Delimiters for inline math
+                    displayMath: [['$$', '$$'], ['\\[', '\\]']] // Delimiters for block math
+                },
+                svg: {
+                    fontCache: 'global' // Use global font cache for SVG output
+                }
+            };
+            document.addEventListener('DOMContentLoaded', () => {
+                MathJax.typeset(); // Ensures MathJax processes the content after the page loads
+            });
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">
+            Prism.plugins.NormalizeWhitespace.setDefaults({
+                'remove-trailing': true,
+                'remove-indent': true,
+                'left-trim': true,
+                'right-trim': true,
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script>
+    </body>
+</html>

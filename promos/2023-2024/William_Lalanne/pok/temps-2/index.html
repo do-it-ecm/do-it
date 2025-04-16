@@ -1,0 +1,242 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="index, follow"><link rel="canonical" href="https://do-it.aioli.ec-m.fr/promos/2023-2024/William_Lalanne/pok/temps-2/"><meta name="description" content="Ajout d&#39;un back sur mon site de Memory avec Node.js et express."><meta property="og:description" content="Ajout d&#39;un back sur mon site de Memory avec Node.js et express."><meta name="twitter:description" content="Ajout d&#39;un back sur mon site de Memory avec Node.js et express."><meta name="author" content="William Lalanne"><meta name="keywords" content="do-it, centrale, centrale méditerranée, ecm, POK"><link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon"><link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png"><link rel="apple-touch-icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png"><link href="/assets/stylesheets/main.css" rel="stylesheet"><meta property="og:title" content="Back-end pour mon site de Memory avec Express"><meta property="og:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png"><meta property="og:url" content="https://do-it.aioli.ec-m.fr/promos/2023-2024/William_Lalanne/pok/temps-2/"><meta property="og:type" content="website"><meta name="twitter:card" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png"><meta name="twitter:title" content="Back-end pour mon site de Memory avec Express"><meta name="twitter:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png"><meta name="twitter:url" content="https://do-it.aioli.ec-m.fr/promos/2023-2024/William_Lalanne/pok/temps-2/"><title>Back-end pour mon site de Memory avec Express</title><link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet"><link id="prism-theme" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet"><link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet"><script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script><script defer="">const storedTheme=localStorage.getItem("theme");function loadPrismTheme(e){const t=e?"prism-okaidia.min.css":"prism-solarizedlight.min.css",s=document.createElement("link");s.rel="stylesheet",s.id="prism-theme",s.href=`https://cdn.jsdelivr.net/npm/prismjs/themes/${t}`,s.onload=()=>{Prism.highlightAll()};const m=document.getElementById("prism-theme");m?document.head.replaceChild(s,m):document.head.appendChild(s)}function setMermaidTheme(e){const t=e?"dark":"forest";mermaid.initialize({securityLevel:"loose",theme:t,startOnLoad:!0})}function toggleDarkMode(){const e=document.documentElement.classList.contains("dark"),t=e?"light":"dark";localStorage.setItem("theme",t),document.documentElement.classList.toggle("dark",!e),loadPrismTheme(!e),setMermaidTheme(!e)}storedTheme?document.documentElement.classList.toggle("dark","dark"===storedTheme):document.documentElement.classList.toggle("dark",window.matchMedia("(prefers-color-scheme: dark)").matches);const isDark=document.documentElement.classList.contains("dark");loadPrismTheme(isDark),setMermaidTheme(isDark)</script></head><body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000" class="bg-neutral-50 text-neutral-950 dark:bg-neutral-900 dark:text-neutral-50"><header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white dark:bg-neutral-900 dark:border-neutral-700"><div class="max-w-[1000px] mx-auto px-4"><div class="min-h-[50px] flex justify-between items-center"><a class="mx-2" href="/">Home</a> <button class="hidden sm:block text-neutral-950 dark:text-neutral-50 hover:bg-neutral-700 hover:text-neutral-50 hover:dark:bg-neutral-300 hover:dark:text-neutral-950 transition-colors p-2 rounded-full duration-800 ease-in-out" onclick="toggleDarkMode()"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 dark:hidden stroke-current"><circle cx="12" cy="12" r="5"></circle><path d="M12 2V4" stroke-linecap="round"></path><path d="M12 20V22" stroke-linecap="round"></path><path d="M4 12L2 12" stroke-linecap="round"></path><path d="M22 12L20 12" stroke-linecap="round"></path><path d="M19.7778 4.22266L17.5558 6.25424" stroke-linecap="round"></path><path d="M4.22217 4.22266L6.44418 6.25424" stroke-linecap="round"></path><path d="M6.44434 17.5557L4.22211 19.7779" stroke-linecap="round"></path><path d="M19.7778 19.7773L17.5558 17.5551" stroke-linecap="round"></path></svg> <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 stroke-current hidden dark:block"><path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke-linecap="round" stroke-linejoin="round"></path></svg></button><div class="flex items-center gap-4 sm:gap-6"><a class="" href="/cs">CS</a> <a class="" href="/pok">POK</a> <a class="" href="/mon">MON</a> <a class="" href="/projets">Projets</a> <a class="hidden sm:block" href="/promos">Promos</a> <a href="/search"><svg class="h-5 aspect-square stroke-neutral-950 dark:stroke-neutral-300 fill-none stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path></svg> </a><a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank"><svg class="h-5 aspect-square dark:stroke-neutral-300 dark:fill-neutral-300" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg></a></div></div></div></header><main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body=""><article class="relative"><h1 class="mb-1">Back-end pour mon site de Memory avec Express</h1><div class="mb-4"><div class="px-4 flex flex-wrap items-center"><div class="font-bold">Tag :</div><ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags"><li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">POK</li></ul><div class="hidden" data-pagefind-meta="Type" aria-hidden="true"><span data-pagefind-filter="Type">POK</span></div></div><div class="px-4 flex flex-wrap items-center"><div class="font-bold">Auteur :</div><ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs"><li class="bg-blue-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Auteurs">William Lalanne</li></ul></div><div class="absolute top-0 right-0"><span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2 text-neutral-950" data-pagefind-filter="Année">2023-2024</span></div></div><p class="mb-4 text-lg">Ajout d'un back sur mon site de Memory avec Node.js et express.</p><div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100 dark:border-purple-800 dark:bg-purple-950"><svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-purple-500 dark:stroke-purple-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path></svg><div class="pl-8 mr-8"><a href="/promos/2023-2024/William_Lalanne/">William Lalanne</a><span class="px-1">/</span><a href="/promos/2023-2024/William_Lalanne/pok/">POK de William Lalanne</a><span class="px-1">/</span><a href="/promos/2023-2024/William_Lalanne/pok/temps-2/">Back-end pour mon site de Memory avec Express</a></div></div><h2 id="objectifs-de-ce-pok" tabindex="-1"><a class="header-anchor" href="#objectifs-de-ce-pok"></a> Objectifs de ce POK</h2><p>Dans ce POK j'aimerais commencer à intégrer l'aspect backend au site que j'ai développé pour mon premier POK. Pour cela je vais utiliser Node.js et Express sur lesquels je vais me former lors d'un MON.</p><h2 id="les-%C3%A9tapes-pour-le-sprint-1" tabindex="-1"><a class="header-anchor" href="#les-%C3%A9tapes-pour-le-sprint-1"></a> Les étapes pour le Sprint 1</h2><ul><li>Reprendre le front (parce que certains trucs sont pas top) : 2h</li><li>Créer des popup pour la connexion et l'inscription : 2h</li><li>Voir comment fonctionne MySQL : 2h</li><li>Création de la base de données : 3h</li><li>Création du serveur avec Node et Express : 1h</li></ul><h2 id="les-%C3%A9tapes-pour-le-sprint-2" tabindex="-1"><a class="header-anchor" href="#les-%C3%A9tapes-pour-le-sprint-2"></a> Les étapes pour le Sprint 2</h2><ul><li>Créer les routes d'inscription et de connexion : 4h</li><li>Créer les requêtes pour que l'utilisateur s'inscrive et se connecte : 1h</li><li>Afficher l'historique des parties du joueur connecté : 5h</li></ul><h2 id="sprint-1---reprise-du-front" tabindex="-1"><a class="header-anchor" href="#sprint-1---reprise-du-front"></a> Sprint 1 - Reprise du Front</h2><p>Certaines choses que j'avais faites la dernière fois doivent être modifié. D'abord je dois ajouter des boutons pour la connexion et l'inscription. De plus, j'ai modifié les boutons pour paramétrer la partie sur la page d'accueil, voici ce que ça donne:</p><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//William_Lalanne/pok/temps-2/Page_Accueil.png" alt="Page accueil modifié"></p><p>Ensuite sur les pages de jeux, je trouvais que tous les éléments étaient trop gros, on ne voyait donc pas tous les éléments sur la page sans scrollé. J'ai fait en sorte de tout réduire:</p><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//William_Lalanne/pok/temps-2/Page_Jeu.png" alt="Page de jeu"></p><p>Comme on peut le voir en bas à gauche, j'ai aussi rajouté un système pour compter le nombre de coups effectués pendant la partie. Cela permet au joueur de comparer ses parties.</p><h2 id="popup-pour-s'inscrire-et-se-connecter" tabindex="-1"><a class="header-anchor" href="#popup-pour-s'inscrire-et-se-connecter"></a> Popup pour s'inscrire et se connecter</h2><p>Pour s'incrire, l'utilisateur doit appuyer sur le bouton inscription, puis un formulaire s'affiche pour collecter les informations nécessaires :</p><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//William_Lalanne/pok/temps-2/Inscription.png" alt="Inscription"></p><p>Pour s'inscrire l'utilisateur doit rentrer obligatoirement son prénom, son nom, son adresse mail, son mot de passe et confirmer son mot de passe. Il peut aussi, s'il le souhaite, ajouter une photo de profil.</p><p>Pour que l'utilisateur se connecte, j'ai créé la fenêtre suivante :</p><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//William_Lalanne/pok/temps-2/Connexion.png" alt="Connexion"></p><p>Il doit entrer son adresse mail et son mot de passe, il peut aussi cliquer sur &quot;Créer un nouveau compte&quot; pour ouvrir la fenêtre précédente.</p><h2 id="cr%C3%A9ation-de-la-base-de-donn%C3%A9es" tabindex="-1"><a class="header-anchor" href="#cr%C3%A9ation-de-la-base-de-donn%C3%A9es"></a> Création de la base de données</h2><p>Pour créer la base de données avec la table et les colonnes voulues après l'installation de MySQL, j'ai d'abord du créer une table grâce à la requête suivante :</p><pre class="language-sql line-numbers"><code>
+
+CREATE DATABASE IF NOT EXISTS mydb
+
+
+</code></pre><p>&quot;mydb&quot; est le nom de la base de données créés. Quand on regarde la liste des bases de données crées, on voit que mydb existe : <img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//William_Lalanne/pok/temps-2/databases.png" alt="databases"></p><p>Ensuite au sein de la base de données on crée une table qui va contenir les informations des utilisateurs du Memory, cette table s'appelera <strong>users</strong>. Pour faire cela il faut utiliser la commande :</p><pre class="language-sql line-numbers"><code>
+
+CREATE TABLE IF NOT EXISTS users (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  name VARCHAR(255) NOT NULL );
+
+
+</code></pre><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//William_Lalanne/pok/temps-2/table.png" alt="table"></p><p>On précise que dans la table on veut 2 colonnes, une première qui s'appelle <strong>id</strong> qui contient des int et qui est la clé primaire de la table. La clé primaire permet d'identifier de manière unique chaque objet. Le mot clé <em>AUTO_INCREMENT</em> permet d'augmenter automatiquement la valeur de l'id à chaque ajout. Il y a une seconde colonne qui s'appelle <strong>name</strong> qui contiendra le nom des utilisateurs, c'est un string limité à 255 caractères : <img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//William_Lalanne/pok/temps-2/colonnes.png" alt="colonnes"></p><p>Pour utiliser notre base de données avec Node plus tard, il faut aussi configurer un profil utilisateur, on aura besoin de plusieurs informations pour se connecter à la base de donnée:</p><pre class="language-js line-numbers"><code>
+
+  host: 'localhost',
+  user: 'your_username',
+  password: 'your_password',
+  database: 'your_database',
+
+
+</code></pre><p>Pour configurer le profil utilisateur on utilise les commandes suivantes :</p><pre class="language-sql line-numbers"><code>
+
+CREATE USER 'your_username'@'localhost' IDENTIFIED BY 'your_password';
+
+
+</code></pre><p>Dans notre cas, cela donnera :</p><pre class="language-sql line-numbers"><code>
+
+CREATE USER 'williamlalanne'@'localhost' IDENTIFIED BY 'mdpdewilliam';
+
+
+</code></pre><p>On définit le user_name, l'host, et le password dont on a besoin.</p><pre class="language-js line-numbers"><code>
+
+const mysql = require('mysql12/promise');
+
+const connection = {
+    host: 'localhost',
+    user: 'williamlalanne',
+    password: 'mdpdewilliam',
+    database: 'mydb',
+}
+
+connection.connect((err) => {
+    if (err) {
+        console.log(err)
+    }
+    else {
+        console.log("Connecté à la base de données")
+    }
+});
+
+
+</code></pre><p>La méthode <em>connect()</em> permet de savoir si la connexion a fonctionné ou non. On affiche un message d'erreur s'il y a eu un problème ou <em>&quot;Connecté à la base de données&quot;</em> si la connexion a réussi.</p><h2 id="cr%C3%A9ation-du-serveur" tabindex="-1"><a class="header-anchor" href="#cr%C3%A9ation-du-serveur"></a> Création du serveur</h2><p>Pour démarrer un serveur basique, on créé un fichier <em>server.js</em> dans lequel on créera le serveur. Il faut d'abord commencer par importer le package HTTP indispensable pour créer un serveur :</p><pre class="language-js line-numbers"><code>
+
+const http = require('http');
+
+
+</code></pre><p>Une fois le package HTTP importé, on peut créer notre serveur à l'aide des commandes suivantes:</p><pre class="language-js line-numbers"><code>
+
+const http = require('http');
+const app = require('./app');
+
+const server = http.createServer(app);
+
+
+</code></pre><p>Le serveur est créé simplement grâce à la fonction <em><strong>createServer</strong></em> du package HTTP à qui on donne l'argument &quot;app&quot;.</p><p>J'ai créé au préalable un fichier app.js où l'on crée l'application Express et où l'on définit les paramètres de l'application.</p><h2 id="sprint-2---cr%C3%A9ation-des-routes" tabindex="-1"><a class="header-anchor" href="#sprint-2---cr%C3%A9ation-des-routes"></a> Sprint 2 - Création des routes</h2><p>Pour qu'un utilisateur puisse s'inscrire, il faut que lorsqu'il rentre ses informations, celles-ci soient envoyées à la base de données &quot;users&quot; créée plus haut. Pour cela, il faut créer ce qu'on appelle une route. Une route répond des requêtes faites à une URL spécifique. Par exemple, si l'on veut intérroger la base de donnée pour savoir si un utilisateur existe, on peut créer la route suivante :</p><pre class="language-js line-numbers"><code>
+
+app.get('/users', (req, res) => {
+    const email = req.query.email;
+
+    if (!email) {
+        return res.status(200).send('Utilisateur non inscrit')
+    }
+
+    const sql = 'SELECT * FROM users WHERE email = ?';
+    connection.query(sql, [email], (err, results) => {
+        if (err) {
+            console.log('Requête users echec', err);
+            res.status(500).send('Erreur');
+        }
+        if (results.length>0) {
+            console.log('Adresse mail déjà utilisée');
+            return res.status(409).json({message: 'Utilisateur déjà existant' })
+        }
+        else {
+            return res.status(200).json({message: 'Utilisateur non trouvé' })
+        }
+    });
+});
+
+
+</code></pre><p>Ici, notre route est &quot;/users&quot; et elle va gérer les requêtes faites à la base de données &quot;users&quot;. Notre route est associée à une requête HTTP, ici la requête est <strong>&quot;GET&quot;</strong>. On interroge la base de données pour en extraire des informations. Mais on pourrait très bien associer notre route à une requête HTTP <strong>&quot;POST&quot;</strong> pour donner des data à la base de données.</p><p>Ensuite après avoir créé la route il faut s'en servir. Dans le fichier JavaScript qui gère la page d'accueil j'ai créé une requête qui utilise la route précédente :</p><pre class="language-js line-numbers"><code>
+
+document.getElementById('inscriptionForm').addEventListener('submit', function (event) {
+  const email = document.getElementById('email').value;
+
+  fetch(`http://localhost:3000/users?email=${email}`, {
+      method: 'GET',
+      headers: {
+          'Content-Type': 'application/json',
+      },
+  })
+  .then(response => {
+      if (!response.ok) {
+          throw new Error(`Erreur lors de la requête GET: ${response.status}`);
+      }
+      return response.json();
+  })
+  .then(data => {
+
+      console.log('Réponse du serveur :', data);
+
+      if (data.message === 'Utilisateur déjà existant') {
+
+          console.log('Utilisateur déjà existant');
+      } else if (data.message === 'Utilisateur non trouvé') {
+
+          console.log('Utilisateur non trouvé');
+      }
+  })
+  .catch(error => {
+      console.error('Erreur :', error);
+  });
+});
+
+
+</code></pre><p>Ici on a une requête coté client qui va permettre de savoir si l'utilisateur s'est déjà inscrit ou non sur le site. On voit que cette requête utilise la route précédemment créée car l'url utilisée est <a href="http://localhost:3000/users">http://localhost:3000/users</a> et on utilise la méthode &quot;GET&quot;. Pour faire simple, cette requête prend en argument l'email entré par l'utilisateur dans le formulaire d'inscription. Ensuite, on donne à notre route l'adresse mail et on interroge la base de données, est ce qu'il y a un utilisateur avec cette adresse ? La route renvoie des data que l'on utilise dans notre requête coté client. En fonction de ses data, la réponse ne sera pas la même. Si l'utilisateur existe déjà : on renvoie &quot;Utilisateur déjà exitant&quot;. Si ce n'est pas le cas &quot;Utilisateur non trouvé&quot;. Mais il faudrait faire une autre requête à la place pour ajouter l'utilisateur à la base de données.</p><h2 id="route-qui-g%C3%A8re-l'inscription" tabindex="-1"><a class="header-anchor" href="#route-qui-g%C3%A8re-l'inscription"></a> Route qui gère l'inscription</h2><p>Pour gérer l'inscription, il faut créer une route sur l'url &quot;/inscription&quot; qui utilise une méthode POST pour ajouter des données à notre table users. Voilà ce que donne notre route :</p><pre class="language-js line-numbers"><code>
+
+app.post('/inscription', (req, res) => {
+
+    const { first_name, last_name, email, mot_de_passe } = req.body;
+
+    const sql = 'INSERT INTO users (first_name, last_name, email, mot_de_passe) VALUES (?, ?, ?, ?)'
+    connection.query(sql, [first_name, last_name, email, mot_de_passe], (err, results) => {
+
+        if (err) {
+            console.log('Erreur inscription', err);
+            res.status(500).send('Erreur inscription');
+        }
+
+        else {
+            console.log('Inscription succès');
+            res.status(200).json(results);
+        }
+    });
+});
+
+
+</code></pre><p>Dans cette route, on implémente la requête sql à faire à la base de données, on insère dans la table users 4 valeurs, first_name, last_name, email, mot_de_passe.</p><p>Ensuite dans le fichier startgame.js on crée la requête voulue :</p><pre class="language-js line-numbers"><code>
+
+document.getElementById('inscriptionForm').addEventListener('submit', function (event) {
+
+  const first_name = document.getElementById('first_name').value;
+  const last_name = document.getElementById('last_name').value;
+  const email = document.getElementById('email').value;
+  const mot_de_passe = document.getElementById('mot_de_passe').value;
+
+  fetch('http://localhost:3000/inscription', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ first_name, last_name, email, mot_de_passe }),
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Erreur lors de la requête POST');
+    }
+    return response.json();
+  })
+  .then(data => {
+    console.log('Réponse du serveur :', data);
+  })
+  .catch(error => {
+    console.error('Erreur :', error);
+  });
+
+});
+
+
+</code></pre><p>Les valeurs du prenom, nom, email et mot de passe entrées par l'utilisateur dans le form d'inscription sont récupérées et utilisées comme body de la requête. Or, comme on a l'a précisé dans la route créée, req.body est utilisé pour attribuer les valeurs de first_name, last_name, email et mot_de_passe. Donc la requête sql devient : <strong>INSERT INTO users (first_name, last_name, email, mot_de_passe) VALUES (prenom entré par l'utilisateur, nom entré par l'utilisateur, email entré par l'utilisateur, mot de passe entré par l'utilisateur)</strong>.</p><p>On peut faire le test et essayer d'inscrire Nicolas Ouzouliasse à la base de données.</p><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//William_Lalanne/pok/temps-2/Exemple_Inscription.png" alt="Exemple d'inscription"></p><p>Lorsqu'on appuie sur le bouton &quot;S'inscrire&quot;, la requête est envoyée au serveur. On peut voir le résultat de la requête :</p><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//William_Lalanne/pok/temps-2/Requete_Get.png" alt="Serveur"></p><p>On voit que la requête GET a fonctionné et qu'elle a renvoyé un status 200, donc l'utilisateur entré n'a pas de compte.</p><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//William_Lalanne/pok/temps-2/Requete_Post.png" alt="Serveur"></p><p>La requête POST pour l'inscription a elle aussi fonctionné, elle a renvoyé un status 200 donc les informations de l'utilisateur ont été enregistrées dans la base de données :</p><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//William_Lalanne/pok/temps-2/Donnee.png" alt="Exemple de donnee"></p><p>Tout a bien fonctionné, Nicolas a bien été ajouté à la base de données comme il le fallait.</p><h2 id="route-qui-g%C3%A8re-la-connexion" tabindex="-1"><a class="header-anchor" href="#route-qui-g%C3%A8re-la-connexion"></a> Route qui gère la connexion</h2><p>Une fois que l'utilisateur est inscrit, il faut qu'il puisse se connecter au site. J'ai donc créer une route qui gère la connexion. Il faut que dans cette route on compare le mot de passe rentré par l'utilisateur dans le form de connexion et celui stocké dans la base de données. Pour cela, lorsque que l'email est rentré dans le form on s'en sert pour faire une requête SQL à la base de données. On demande à la base de nous donner le mot de passe de l'utilisateur ayant l'adresse mail utilisé plus haut. Ensuite on compare le mot de passe rentré dans le form et celui que l'on vient de récupérer. Si ce sont les mêmes alors on renvoie un status 200 et on affiche &quot;Mot de passe correct, connexion réussie&quot;. Si les mots de passe sont différents, on renvoie un status 401 et on affiche : &quot;Mot de passe incorrect&quot;. Si l'adresse mail rentré dans le form n'est pas présente dans la base de données on renvoie un status 404 et on affiche : &quot;Utilisateur non trouvé&quot;.</p><pre class="language-js line-numbers"><code>
+
+app.post('/connection', (req, res) => {
+    const email = req.body.email;
+    const password = req.body.mot_de_passe;
+    const sql = 'SELECT * FROM users WHERE email = ?';
+
+    connection.query(sql, [email], (err, results) => {
+        if (err) {
+            console.log('Erreur pour la connexion', err);
+            res.status(500).json({ message: 'Erreur connexion' });
+        }
+        else {
+            if (results.length > 0) {
+
+                const storedPassword = results[0].mot_de_passe;
+
+                if (password === storedPassword) {
+                    res.status(200).json({ message: 'Mot de passe correct, connexion réussie' });
+                }
+
+                else {
+                    res.status(401).json({ message: 'Mot de passe incorrect' });
+                }
+            }
+            else {
+                res.status(404).json({ message: 'Utilisateur non trouvé' });
+            }
+        }
+    });
+});
+
+
+</code></pre><p>Une fois la route créée, on s'occupe de la requête côté client. On récupère les informations de connexion rentrées dans le form, email et mot de passe, on les passe en format JSON puis on les transfère au serveur à l'URL de la route que nous avons créée. Le serveur fera alors ce que nous avons détaillé au dessus.</p><pre class="language-js line-numbers"><code>
+
+document.getElementById("connectionForm").addEventListener('submit', function (event) {
+
+    event.preventDefault();
+
+    const email = document.getElementById('connexionEmail').value;
+    const mot_de_passe = document.getElementById('connexionMdp').value;
+
+    fetch('http://localhost:3000/connection', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({email, mot_de_passe}),
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Erreur lors de la requête POST de connexion');
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log('Reponse du serveur:', data)
+    })
+    .catch(error => {
+        console.error('Erreur :', error);
+    });
+});
+
+
+</code></pre><h2 id="jeton-d'authentification" tabindex="-1"><a class="header-anchor" href="#jeton-d'authentification"></a> Jeton d'authentification</h2><p>Mais la logique de connexion créée est incomplète, tout ce que fait le serveur c'est vérifier que les mots de passe sont indentiques mais il ne fait rien de plus. L'utilisateur n'est pas réellement connecté. Pour que ce soit le cas il faut utiliser la logique des jetons d'authentification. Le jeton d'authentification est comme un pass que l'utilisateur obtient lorsqu'il se connecte. Ce pass lui permet de rester connecté pendant une certaine période, soit jusqu'à ce qu'il se déconnecte, soit pendant un temps fixé par le développeur. De plus, la façon dont sont stockés les mots de passe n'est pas sécurisée. Ils sont stockés comme de simple chaîne de caractère alors qu'ils devraient être cryptés par un hachage.</p><h2 id="conclusion" tabindex="-1"><a class="header-anchor" href="#conclusion"></a> Conclusion</h2><p>Pour ce qui est du temps passé sur chaque étape pour le sprint 2 :</p><ul><li>Créer une route pour l'inscription et la connexion : 9h -----&gt; +5h</li><li>Créer les requêtes pour s'inscrire et se connecter : 6h -----&gt; +5h</li><li>Gérer les historiques des parties : pas eu le temps de le faire</li></ul><p>J'ai été un peu ambitieux et j'ai sous-estimé la difficulté du back-end pour mon site.</p></article></main><footer class="min-h-[50px] border-t-2 mt-4 border-gray-200 dark:border-neutral-700"><div class="max-w-[1000px] mx-auto px-4"><div class="min-h-[50px] flex justify-center items-center"><p class="text-center">©2025 <b><span style="font-family:Consolas,sans-serif">Do-<span style="color:#4a86e8">It</span></span></b> - Développement, Management et Gestion de projets en IT</p></div></div></footer><script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">window.MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]]},svg:{fontCache:"global"}},document.addEventListener("DOMContentLoaded",(()=>{MathJax.typeset()}))</script><script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">Prism.plugins.NormalizeWhitespace.setDefaults({"remove-trailing":!0,"remove-indent":!0,"left-trim":!0,"right-trim":!0})</script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script></body></html>
