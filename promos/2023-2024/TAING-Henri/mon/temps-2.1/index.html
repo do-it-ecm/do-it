@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="robots" content="index, follow">
+
+        <link rel="canonical" href="https://do-it.aioli.ec-m.fr/promos/2023-2024/TAING-Henri/mon/temps-2.1/">
+
+        
+        
+
+        <meta name="description" content="Un vieux qui apprend à faire des tableaux et des graphes sur Excel/Google Sheets, enfin">
+        <meta property="og:description" content="Un vieux qui apprend à faire des tableaux et des graphes sur Excel/Google Sheets, enfin">
+        <meta name="twitter:description" content="Un vieux qui apprend à faire des tableaux et des graphes sur Excel/Google Sheets, enfin">
+
+        
+            <meta name="author" content="TAING Henri">
+        
+        <meta name="keywords" content="do-it, centrale, centrale méditerranée, ecm, MON, Excel, Google Sheets, Apps Scripts">
+
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png">
+        <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png">
+
+        <link href="/assets/stylesheets/main.css" rel="stylesheet">
+
+        <meta property="og:title" content="Un peu d&#39;Excel/Google Sheets pour mourir moins idiot">
+
+        <meta property="og:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta property="og:url" content="https://do-it.aioli.ec-m.fr/promos/2023-2024/TAING-Henri/mon/temps-2.1/">
+        <meta property="og:type" content="website">
+
+        <meta name="twitter:card" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:title" content="Un peu d&#39;Excel/Google Sheets pour mourir moins idiot">
+        <meta name="twitter:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:url" content="https://do-it.aioli.ec-m.fr/promos/2023-2024/TAING-Henri/mon/temps-2.1/">
+
+        <title>Un peu d&#39;Excel/Google Sheets pour mourir moins idiot</title>
+
+        <!-- Prismjs imports
+                - Prism line numbers
+                - Prism toolbar
+        -->
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet">
+        <link id="prism-theme" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+        <!-- Mermaid import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js "></script>
+
+        <script defer="">
+        // Check if a theme is stored in localStorage. If so, use it, otherwise fallback to the system preference.
+        const storedTheme = localStorage.getItem('theme');
+        if (storedTheme) {
+            document.documentElement.classList.toggle("dark", storedTheme === "dark");
+        } else {
+            // Use system color scheme if there is no stored theme preference.
+            document.documentElement.classList.toggle("dark", window.matchMedia("(prefers-color-scheme: dark)").matches);
+        }
+
+        function loadPrismTheme(isDarkMode) {
+            const newTheme = isDarkMode ? 'prism-okaidia.min.css' : 'prism-solarizedlight.min.css';
+            const newLink = document.createElement('link');
+            newLink.rel = 'stylesheet';
+            newLink.id = 'prism-theme';
+            newLink.href = `https://cdn.jsdelivr.net/npm/prismjs/themes/${newTheme}`;
+
+            newLink.onload = () => {
+                // Reapply highlighting after the new theme loads
+                Prism.highlightAll();
+            };
+
+            const existingLink = document.getElementById('prism-theme');
+            if (existingLink) {
+                document.head.replaceChild(newLink, existingLink);
+            } else {
+                document.head.appendChild(newLink);
+            }
+        }
+
+        function setMermaidTheme(isDarkMode) {
+            const theme = isDarkMode ? 'dark' : 'forest';
+            mermaid.initialize({
+                securityLevel: 'loose',
+                theme,
+                startOnLoad: true,
+            });
+        }
+
+        // Toggle dark and light mode and update localStorage accordingly.
+        function toggleDarkMode() {
+            const dark = document.documentElement.classList.contains("dark");
+            const newTheme = dark ? "light" : "dark";
+            localStorage.setItem('theme', newTheme);
+            document.documentElement.classList.toggle("dark", !dark);
+            loadPrismTheme(!dark);
+            setMermaidTheme(!dark);
+        }
+
+        // On initial load, ensure that Prism and Mermaid are initialized using the current theme.
+        const isDark = document.documentElement.classList.contains("dark");
+        loadPrismTheme(isDark);
+        setMermaidTheme(isDark);
+        </script>
+
+    </head>
+
+    <body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000" class="bg-neutral-50 text-neutral-950 dark:bg-neutral-900 dark:text-neutral-50">
+        <header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white dark:bg-neutral-900 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-between items-center">
+                    <a class="mx-2" href="/">Home</a>
+                    <button class="hidden sm:block text-neutral-950 dark:text-neutral-50 hover:bg-neutral-700 hover:text-neutral-50 hover:dark:bg-neutral-300 hover:dark:text-neutral-950 transition-colors p-2 rounded-full duration-800 ease-in-out" onclick="toggleDarkMode()">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 dark:hidden stroke-current">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <path d="M12 2V4" stroke-linecap="round"></path>
+                            <path d="M12 20V22" stroke-linecap="round"></path>
+                            <path d="M4 12L2 12" stroke-linecap="round"></path>
+                            <path d="M22 12L20 12" stroke-linecap="round"></path>
+                            <path d="M19.7778 4.22266L17.5558 6.25424" stroke-linecap="round"></path>
+                            <path d="M4.22217 4.22266L6.44418 6.25424" stroke-linecap="round"></path>
+                            <path d="M6.44434 17.5557L4.22211 19.7779" stroke-linecap="round"></path>
+                            <path d="M19.7778 19.7773L17.5558 17.5551" stroke-linecap="round"></path>
+                        </svg>
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 stroke-current hidden dark:block">
+                            <path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </button>
+                    <div class="flex items-center gap-4 sm:gap-6 ">
+                        <a class="" href="/cs">CS</a>
+                        <a class="" href="/pok">POK</a>
+                        <a class="" href="/mon">MON</a>
+                        <a class="" href="/projets">Projets</a>
+                        <a class="hidden sm:block" href="/promos">Promos</a>
+                        <a href="/search">
+                            <svg class="h-5 aspect-square stroke-neutral-950 dark:stroke-neutral-300 fill-none stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+                            </svg>
+                        </a>
+                        <a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank">
+                            <svg class="h-5 aspect-square dark:stroke-neutral-300 dark:fill-neutral-300" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body="">
+            
+<article class="relative">
+<h1 class="mb-1">Un peu d&#39;Excel/Google Sheets pour mourir moins idiot</h1>
+<div class="mb-4">
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Tags : </div>
+            <ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags">
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">MON</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">Excel</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">Google Sheets</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">Apps Scripts</li>
+                
+
+            </ul>
+
+            
+            <div class="hidden" data-pagefind-meta="Type" aria-hidden="true">
+                
+                    
+                        <span data-pagefind-filter="Type">MON</span>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Auteur : </div>
+            <ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs">
+                
+                    <li class="bg-blue-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Auteurs">TAING Henri</li>
+                
+            </ul>
+        </div>
+    
+
+    
+        <div class="absolute top-0 right-0">
+            <span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2 text-neutral-950" data-pagefind-filter="Année">
+                2023-2024
+            </span>
+        </div>
+    
+</div>
+
+<p class="mb-4 text-lg">Un vieux qui apprend à faire des tableaux et des graphes sur Excel/Google Sheets, enfin</p>
+
+
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100 dark:border-purple-800 dark:bg-purple-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-purple-500 dark:stroke-purple-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/promos/2023-2024/TAING-Henri/">TAING Henri</a><span class="px-1">/</span><a href="/promos/2023-2024/TAING-Henri/mon/">MON de TAING Henri</a><span class="px-1">/</span><a href="/promos/2023-2024/TAING-Henri/mon/temps-2.1/">Un peu d&#39;Excel/Google Sheets pour mourir moins idiot</a>
+
+</div>
+</div>
+
+
+
+
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100 dark:border-pink-800 dark:bg-pink-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-pink-500 dark:stroke-pink-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p>MON débutant</p>
+</div><div class="pl-8 mr-8">
+<p>Avoir un cerveau à moitié allumé pour la partie Google Sheets, par contre, pour Apps Scripts, si vous n'avez aucune connaissance en programmation, il sera facile de prendre peur, mais encore une fois, comme en amour, il faut savoir prendre son temps...</p>
+</div>
+</div>
+<hr>
+<h2 id="table-des-mati%C3%A8res" tabindex="-1"><a class="header-anchor" href="#table-des-mati%C3%A8res"></a> Table des matières</h2>
+<ol>
+<li><a href="#section-1">Introduction</a></li>
+<li><a href="#section-2">Mes deux bases de données pour appliquer ce que j'ai appris</a></li>
+<li><a href="#section-3">Quelques images</a></li>
+<li><a href="#section-4">Apps Scripts à la rescousse</a></li>
+<li><a href="#section-5">Une étude de cas pour la recherche de données avec INDEX et MATCH</a></li>
+<li><a href="#section-6">Conclusion</a></li>
+<li><a href="#section-7">Sources</a></li>
+</ol>
+<h2 id="1.-introduction" tabindex="-1"><a class="header-anchor" href="#1.-introduction"></a> 1. Introduction <a id="section-1"></a></h2>
+<p>Pendant le premier cours d'éco-système digital, on nous a demandé de faire un tableau de données sur Excel/Google Sheets, quelques calculs et donner une représentation pertinente. N'ayant pas Excel, j'ai utilisé Google Sheets.
+Et je fus incapable de créer un beau graphique. Quelle ne fut pas ma tristesse.
+Il est donc temps de devenir moins idiot. Pour ça, j'ai décidé de faire comme <strong><a href="../../../Lola-Bourdon/mon/temps-1.2/">Lola BOURDON dans son MON 1.2</a></strong> en suivant le cours sur <a href="excel-pratique.com">excel-pratique.com</a>.</p>
+<p>Dans ce MON, vous trouverez ce que j'ai trouvé intéressant à souligner et ce que j'ai fait.</p>
+<p>Au début, j'ai été ralenti par le fait que le tutoriel soit sur Excel et non sur Google Sheets, car je devais toujours trouver l'équivalent sur Google Sheets, et la syntaxe changeait parfois.
+<strong>Puis, quelques jours plus tard</strong>, quand je suis arrivé aux graphiques Sparkline - graphes miniatures qu'on peut mettre dans les cellules - et que je bloquais, car je ne trouvais pas la bonne syntaxe pour la fonction <strong>SPARKLINE</strong>, <strong>j'ai découvert qu'il existait la même formation pour Google Sheets</strong> (<a href="https://www.sheets-pratique.com">sheets-pratique.com</a>)... Comme quoi, je ne suis pas le couteau le plus affûté du tiroir.</p>
+<p>A partir de ce moment-là, tout s'est accéléré.
+Je me suis appuyé sur une base de données que j'ai moi-même faite à l'époque pour rire où avec des amis nous avions mis des notes sur l'apparence des Miss pour Miss France 2022 et des acteurs (égalité des sexes). C'est très superficiel, j'entends. Je m'en excuse.</p>
+<h2 id="2.-mes-deux-bases-de-donn%C3%A9es-sur-lesquelles-je-me-suis-amus%C3%A9" tabindex="-1"><a class="header-anchor" href="#2.-mes-deux-bases-de-donn%C3%A9es-sur-lesquelles-je-me-suis-amus%C3%A9"></a> 2. Mes deux bases de données sur lesquelles je me suis amusé <a id="section-2"></a></h2>
+<p><strong>Base de données 1 sur les Miss</strong>
+<img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//TAING-Henri/mon/temps-2.1/graphiques.png"></p>
+<p><strong>Base de données 2 sur des acteurs/célébrités</strong>
+<img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//TAING-Henri/mon/temps-2.1/repetition_incrementee.png"></p>
+<h2 id="3.-quelques-images" tabindex="-1"><a class="header-anchor" href="#3.-quelques-images"></a> 3. Quelques images <a id="section-3"></a></h2>
+<p><strong>Utilisation de filtres</strong></p>
+<table>
+<tbody>
+<tr>
+<td style="text-align:center"><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//TAING-Henri/mon/temps-2.1/filtre.png" width="350" height="350"></td>
+<td style="text-align:center"><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//TAING-Henri/mon/temps-2.1/filtre2.png" width="350" height="350"></td>
+</tr>
+</tbody>
+</table>
+<img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//TAING-Henri/mon/temps-2.1/vuefiltre.png">
+<p><strong>Mise en forme conditionnelle avec dégradé de couleurs</strong></p>
+<table>
+<tbody>
+<tr>
+<td style="text-align:center"><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//TAING-Henri/mon/temps-2.1/mise_en_forme_conditionnelle_2.png" width="350" height="350"></td>
+<td style="text-align:center"><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//TAING-Henri/mon/temps-2.1/mise_en_forme_conditionnelle_3.png" width="350" height="350"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Graphes</strong></p>
+<table>
+<tbody>
+<tr>
+<td style="text-align:center"><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//TAING-Henri/mon/temps-2.1/graphe1.png" width="350" height="350"></td>
+<td style="text-align:center"><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//TAING-Henri/mon/temps-2.1/graphe2.png" width="350" height="350"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Tableau croisé dynamique à partir du classement des Miss- FAIL</strong></p>
+<table>
+<tbody>
+<tr>
+<td style="text-align:center"><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//TAING-Henri/mon/temps-2.1/tableaudyn_fail.png" width="600" height="600"></td>
+<td style="text-align:center"><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//TAING-Henri/mon/temps-2.1/editeurtableaudyn.png" width="350" height="350"></td>
+</tr>
+</tbody>
+</table>
+<p>Première chose, je suis déçu. Je pensais que la création d'un tableau croisé dynamique était un truc de malade, mais il s'agit simplement de cliquer sur deux boutons...
+Deuxième chose, je me suis rendu compte que la façon avec laquelle j'ai rempli ma base de données ne convenait pas à une analyse par tableaux croisés dynamiques. Doublement déçu.</p>
+<p>Que faire ? Refaire une base de données à la main ? Pfff. Bande de fous. QUE NENNI !</p>
+<p>Il est temps de voir ce qu'est App Scripts, l'équivalent du VBA sur Excel :o.</p>
+<h2 id="4.-app-scripts-%C3%A0-la-rescousse" tabindex="-1"><a class="header-anchor" href="#4.-app-scripts-%C3%A0-la-rescousse"></a> 4. App Scripts à la rescousse <a id="section-4"></a></h2>
+<p>Eh bien, en fait. App Scripts, c'est un langage de programmation. Pourquoi personne ne me l'a jamais dit ?! J'avais toujours cette image obscure de la chose et pis en fait, c'est juste du code. (-.-)
+En plus, c'est un langage qui est plutôt facile à prendre en main pour l'usage que je prévois d'en faire (#J'ai menti, j'ai souffert).</p>
+<p>M'appuyant sur mon B2 en Python et mon A1 en C#, Java, j'ai donc suivi le tutoriel sur (<a href="https://www.sheets-pratique.com/fr/apps-script">sheets-pratique.com/fr/apps-script</a>) avec des étoiles dans les yeux.
+Il est divisé en 12 parties que j'ai survolées (peut-être un peu trop vite parfois).
+Après avoir lu et noté ce dont j'aurai besoin pour ma tâche qui était de réécrire mon tableau sous une forme plus appropriée, je suis parti comme une flèche (ou plutôt une tortue asthmatique et amnnésique).</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Première ébauche de programme pour transformer mes données</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="line-numbers"><code>
+
+function copy(list, count) {
+  var L = [];
+  for (var i = 0; i < count; i++) {
+    for (var j = 0; j < list.length; j++){
+      L.push([list[j]]);
+    }
+
+    }
+
+  return L;
+}
+
+
+function main(){
+
+const feuille = SpreadsheetApp.getActive();
+const f = feuille.getSheetByName('training');
+
+const nom = ['J', 'Vas', 'He', 'Ant', 'Ang', 'Han', 'Val', 'M']
+const regions = [
+    "Alsace", "Aquitaine", "Auvergne", "Bourgogne", "Bretagne", "Centre-Val de Loire",
+    "Champagne-Ardenne", "Corse", "Côte d’Azur", "Franche-Comté", "Guadeloupe", "Guyane",
+    "Ile-de-France", "Languedoc-Rousillon", "Limousin", "Martinique", "Mayotte",
+    "Midi-Pyrénées", "Nord-Pas-de-Calais", "Normandie", "Nouvelle-Calédonie", "Pays de la Loire",
+    "Picardie", "Poitou-Charentes", "Provence", "Réunion", "Rhone-Alpes", "Tahiti"
+  ];
+var L =[]
+for (var i = 0; i < regions.length; i++) {
+  var x = regions[i];
+  for (var j = 0; j < 8; j++) {
+    L.push([x]);
+  }
+}
+
+const plage = f.getRange('A2:A225')
+plage.setValues(L)
+
+const plage2 = f.getRange('B2:B225')
+var L2 = copy(nom, 28)
+plage2.setValues(L2)
+}
+
+
+
+</code></pre></div>
+</details>
+</div>
+<p>Deuxième et finale charge, let's gooooooooooooo !</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Programme que j'ai utilisé à la fin</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="line-numbers"><code>
+
+//Pour avoir les noms des participants à côté des régions
+function copy(list, count) {
+  var L = [];
+  for (var i = 0; i < count; i++) {
+    for (var j = 0; j < list.length; j++){
+      L.push([list[j]]);
+      }
+
+    }
+  return L;
+}
+
+//fonction main pour éxécuter tout ça
+function main(){
+
+  const feuille = SpreadsheetApp.getActive();
+  const f1 = feuille.getSheetByName('Feuille1')
+  const f2 = feuille.getSheetByName('training');
+
+  var regions = f1.getRange("A4:A31").getValues(); //Retourne une liste de liste des régions
+  var noms = f1.getRange("B3:I3").getValues(); //Retourne une liste de liste de noms
+  var notes = f1.getRange("B4:I31").getValues(); //Retourne une matrice de notes
+
+  //Création d'une liste avec les régions*nombre de participants au sondage = 1ère colonne
+  var L1 =[]
+  for (var i = 0; i < regions.length; i++) {
+    var x = regions[i];
+    for (var j = 0; j < 8; j++) {
+      L1.push(x);
+    }
+  }
+  const plage = f2.getRange('A2:A225')
+  plage.setValues(L1)
+
+  //Création de la liste avec les différents noms = 2ème colonne
+  const plage2 = f2.getRange('B2:B225')
+  var L2 = copy(noms[0], 28)
+  plage2.setValues(L2)
+
+  //Création de la liste des notes = 3ème colonne, j'ai eu de la chance que getRange me donne les notes dans une forme qui m'arrange
+  const plage3 = f2.getRange('C2:C225')
+  var L3 = []
+  for (var k = 0; k < notes.length; k++){
+    for (var l = 0; l < notes[0].length; l++){
+      L3.push([notes[k][l]])
+    }
+  }
+  plage3.setValues(L3)
+}
+
+
+</code></pre></div>
+</details>
+</div>
+<p>Voilà le résultat magnifique :
+<strong>Avant</strong>
+<img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//TAING-Henri/mon/temps-2.1/graphiques.png"></p>
+<p><strong>Après</strong></p>
+<table>
+<tbody>
+<tr>
+<td style="text-align:center"><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//TAING-Henri/mon/temps-2.1/training.png" width="350" height="350"></td>
+<td style="text-align:center"><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//TAING-Henri/mon/temps-2.1/menu_yes.png" width="350" height="350"></td>
+</tr>
+</tbody>
+</table>
+<img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//TAING-Henri/mon/temps-2.1/tableaudyn_yes.png">
+<h2 id="5.-une-%C3%A9tude-de-cas-pour-la-recherche-de-donn%C3%A9es-avec-index-et-match" tabindex="-1"><a class="header-anchor" href="#5.-une-%C3%A9tude-de-cas-pour-la-recherche-de-donn%C3%A9es-avec-index-et-match"></a> 5. Une étude de cas pour la recherche de données avec INDEX et MATCH <a id="section-5"></a></h2>
+<p>Le but est de créer une facture qui est complétée automatiquement avec seulement le nom du client, le code et la quantité des articles achetés.</p>
+<p>Voici le document qui est séparée en quatre feuilles.</p>
+<table>
+<tbody>
+<tr>
+<td style="text-align:center"><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//TAING-Henri/mon/temps-2.1/cas_feuille1.png" width="350" height="350"></td>
+<td style="text-align:center"><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//TAING-Henri/mon/temps-2.1/cas_feuille2.png" width="350" height="350"></td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td style="text-align:center"><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//TAING-Henri/mon/temps-2.1/cas_feuille3.png" width="350" height="350"></td>
+<td style="text-align:center"><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//TAING-Henri/mon/temps-2.1/cas_feuille4.png" width="350" height="350"></td>
+</tr>
+</tbody>
+</table>
+<p>Pour ça, j'ai utilisé les fonctions INDEX et MATCH qui sont finalement analogues à VLOOKUP et plusieurs fonctions IF.</p>
+<pre class="line-numbers"><code>
+
+=INDEX(A2:D11; 4; 3)
+INDEX(table; ligne; colonne) retourne la valeur qui se trouve à la ligne 4, colonne 3 dans le tableau qui couvre A2:D11.
+
+=MATCH("drôle"; A2:A11; 0)
+MATCH(valeur; table; 0 pour avoir la valeur exacte et 1 pour approximation) retourne la position de "drôle" dans la colonne A2:A11, qui est donc ici une ligne.
+
+
+</code></pre><p>MATCH peut faire la même recherche dans une ligne et retourner une colonne.
+Et c'est ce qu'on va utiliser pour combiner MATCH et INDEX.
+Adresse! qui est devant la table choisie signifie qu'on extrait les données de la feuille Adresse.</p>
+<pre class="line-numbers"><code>
+
+=INDEX(Adresse!A$1:D$10;MATCH(F$3;Adresse!A$1:A$10;0);MATCH(E4;Adresse!A$1:D$1;0))
+
+
+</code></pre><p>Puis j'ai utilisé des IF pour pouvoir mettre en place la remise automatique/dynamique.</p>
+<pre class="line-numbers"><code>
+
+=IF(E21>=Remise!C1;IF(E21>=Remise!D1;IF(E21>=Remise!E1;IF(E21>=Remise!F1;Remise!F2;Remise!E2);Remise!E2);Remise!D2);Remise!B2)
+
+
+</code></pre><h2 id="6.-conclusion" tabindex="-1"><a class="header-anchor" href="#6.-conclusion"></a> 6. Conclusion <a id="section-6"></a></h2>
+<p>J'ai l'impression à peu près fait le tour de Google Sheets en terme de fonctionnalités. Par contre, quant à Apps Scripts, je n'ai qu'effleuré la surface de son potentiel. A voir si j'en ai besoin dans ma vie.</p>
+<p>Le MON s'est plutôt bien passé, j'ai bien aimé (et beaucoup souffert psychologiquement pendant la partie Apps Scripts, moi qui ne suis pas un fan de programmation).</p>
+<h2 id="7.-sources" tabindex="-1"><a class="header-anchor" href="#7.-sources"></a> 7. Sources <a id="section-7"></a></h2>
+<p><a href="excel-pratique.com">Formation en Excel</a> par <a href="http://excel-pratique.com">excel-pratique.com</a>
+<a href="https://www.sheets-pratique.com/">Formation en Google Sheets</a> par <a href="http://sheets-pratique.com">sheets-pratique.com</a>
+<a href="https://www.sheets-pratique.com/fr/apps-script">Formation en Apps Scripts</a> par <a href="http://sheets-pratique.com">sheets-pratique.com</a></p>
+
+
+
+</article>
+
+        </main>
+
+        <footer class="min-h-[50px] border-t-2 mt-4 border-gray-200 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-center items-center">
+                    <p class="text-center">
+                        ©2025 <b><span style="font-family: Consolas, sans-serif;">Do-<span style="color: #4a86e8">It</span></span></b> - Développement, Management et Gestion de projets en IT
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- MathJax import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">
+            window.MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']], // Delimiters for inline math
+                    displayMath: [['$$', '$$'], ['\\[', '\\]']] // Delimiters for block math
+                },
+                svg: {
+                    fontCache: 'global' // Use global font cache for SVG output
+                }
+            };
+            document.addEventListener('DOMContentLoaded', () => {
+                MathJax.typeset(); // Ensures MathJax processes the content after the page loads
+            });
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">
+            Prism.plugins.NormalizeWhitespace.setDefaults({
+                'remove-trailing': true,
+                'remove-indent': true,
+                'left-trim': true,
+                'right-trim': true,
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script>
+    </body>
+</html>

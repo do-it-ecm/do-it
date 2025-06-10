@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="robots" content="index, follow">
+
+        <link rel="canonical" href="https://do-it.aioli.ec-m.fr/promos/2023-2024/Sarah-Sebastien/pok/temps-1/">
+
+        
+        
+
+        <meta name="description" content="Ayant quelques bases en VBA, j&#39;ai choisi pour ce POK de les approfondir pour aboutir à l&#39;obtention d&#39;une diagramme de GANTT sur Excel qui sera paramétrable par l&#39;utilisateur.">
+        <meta property="og:description" content="Ayant quelques bases en VBA, j&#39;ai choisi pour ce POK de les approfondir pour aboutir à l&#39;obtention d&#39;une diagramme de GANTT sur Excel qui sera paramétrable par l&#39;utilisateur.">
+        <meta name="twitter:description" content="Ayant quelques bases en VBA, j&#39;ai choisi pour ce POK de les approfondir pour aboutir à l&#39;obtention d&#39;une diagramme de GANTT sur Excel qui sera paramétrable par l&#39;utilisateur.">
+
+        
+            <meta name="author" content="Sarah Sebastien">
+        
+        <meta name="keywords" content="do-it, centrale, centrale méditerranée, ecm, POK, Macro VBA, Excel, Diagramme de GANTT, Gestion de projet">
+
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png">
+        <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png">
+
+        <link href="/assets/stylesheets/main.css" rel="stylesheet">
+
+        <meta property="og:title" content="POK 1: Réalisation d&#39;un diagramme de GANTT sous VBA">
+
+        <meta property="og:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta property="og:url" content="https://do-it.aioli.ec-m.fr/promos/2023-2024/Sarah-Sebastien/pok/temps-1/">
+        <meta property="og:type" content="website">
+
+        <meta name="twitter:card" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:title" content="POK 1: Réalisation d&#39;un diagramme de GANTT sous VBA">
+        <meta name="twitter:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:url" content="https://do-it.aioli.ec-m.fr/promos/2023-2024/Sarah-Sebastien/pok/temps-1/">
+
+        <title>POK 1: Réalisation d&#39;un diagramme de GANTT sous VBA</title>
+
+        <!-- Prismjs imports
+                - Prism line numbers
+                - Prism toolbar
+        -->
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet">
+        <link id="prism-theme" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+        <!-- Mermaid import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js "></script>
+
+        <script defer="">
+        // Check if a theme is stored in localStorage. If so, use it, otherwise fallback to the system preference.
+        const storedTheme = localStorage.getItem('theme');
+        if (storedTheme) {
+            document.documentElement.classList.toggle("dark", storedTheme === "dark");
+        } else {
+            // Use system color scheme if there is no stored theme preference.
+            document.documentElement.classList.toggle("dark", window.matchMedia("(prefers-color-scheme: dark)").matches);
+        }
+
+        function loadPrismTheme(isDarkMode) {
+            const newTheme = isDarkMode ? 'prism-okaidia.min.css' : 'prism-solarizedlight.min.css';
+            const newLink = document.createElement('link');
+            newLink.rel = 'stylesheet';
+            newLink.id = 'prism-theme';
+            newLink.href = `https://cdn.jsdelivr.net/npm/prismjs/themes/${newTheme}`;
+
+            newLink.onload = () => {
+                // Reapply highlighting after the new theme loads
+                Prism.highlightAll();
+            };
+
+            const existingLink = document.getElementById('prism-theme');
+            if (existingLink) {
+                document.head.replaceChild(newLink, existingLink);
+            } else {
+                document.head.appendChild(newLink);
+            }
+        }
+
+        function setMermaidTheme(isDarkMode) {
+            const theme = isDarkMode ? 'dark' : 'forest';
+            mermaid.initialize({
+                securityLevel: 'loose',
+                theme,
+                startOnLoad: true,
+            });
+        }
+
+        // Toggle dark and light mode and update localStorage accordingly.
+        function toggleDarkMode() {
+            const dark = document.documentElement.classList.contains("dark");
+            const newTheme = dark ? "light" : "dark";
+            localStorage.setItem('theme', newTheme);
+            document.documentElement.classList.toggle("dark", !dark);
+            loadPrismTheme(!dark);
+            setMermaidTheme(!dark);
+        }
+
+        // On initial load, ensure that Prism and Mermaid are initialized using the current theme.
+        const isDark = document.documentElement.classList.contains("dark");
+        loadPrismTheme(isDark);
+        setMermaidTheme(isDark);
+        </script>
+
+    </head>
+
+    <body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000" class="bg-neutral-50 text-neutral-950 dark:bg-neutral-900 dark:text-neutral-50">
+        <header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white dark:bg-neutral-900 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-between items-center">
+                    <a class="mx-2" href="/">Home</a>
+                    <button class="hidden sm:block text-neutral-950 dark:text-neutral-50 hover:bg-neutral-700 hover:text-neutral-50 hover:dark:bg-neutral-300 hover:dark:text-neutral-950 transition-colors p-2 rounded-full duration-800 ease-in-out" onclick="toggleDarkMode()">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 dark:hidden stroke-current">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <path d="M12 2V4" stroke-linecap="round"></path>
+                            <path d="M12 20V22" stroke-linecap="round"></path>
+                            <path d="M4 12L2 12" stroke-linecap="round"></path>
+                            <path d="M22 12L20 12" stroke-linecap="round"></path>
+                            <path d="M19.7778 4.22266L17.5558 6.25424" stroke-linecap="round"></path>
+                            <path d="M4.22217 4.22266L6.44418 6.25424" stroke-linecap="round"></path>
+                            <path d="M6.44434 17.5557L4.22211 19.7779" stroke-linecap="round"></path>
+                            <path d="M19.7778 19.7773L17.5558 17.5551" stroke-linecap="round"></path>
+                        </svg>
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 stroke-current hidden dark:block">
+                            <path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </button>
+                    <div class="flex items-center gap-4 sm:gap-6 ">
+                        <a class="" href="/cs">CS</a>
+                        <a class="" href="/pok">POK</a>
+                        <a class="" href="/mon">MON</a>
+                        <a class="" href="/projets">Projets</a>
+                        <a class="hidden sm:block" href="/promos">Promos</a>
+                        <a href="/search">
+                            <svg class="h-5 aspect-square stroke-neutral-950 dark:stroke-neutral-300 fill-none stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+                            </svg>
+                        </a>
+                        <a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank">
+                            <svg class="h-5 aspect-square dark:stroke-neutral-300 dark:fill-neutral-300" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body="">
+            
+<article class="relative">
+<h1 class="mb-1">POK 1: Réalisation d&#39;un diagramme de GANTT sous VBA</h1>
+<div class="mb-4">
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Tags : </div>
+            <ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags">
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">POK</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">Macro VBA</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">Excel</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">Diagramme de GANTT</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">Gestion de projet</li>
+                
+
+            </ul>
+
+            
+            <div class="hidden" data-pagefind-meta="Type" aria-hidden="true">
+                
+                    
+                        <span data-pagefind-filter="Type">POK</span>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Auteur : </div>
+            <ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs">
+                
+                    <li class="bg-blue-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Auteurs">Sarah Sebastien</li>
+                
+            </ul>
+        </div>
+    
+
+    
+        <div class="absolute top-0 right-0">
+            <span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2 text-neutral-950" data-pagefind-filter="Année">
+                2023-2024
+            </span>
+        </div>
+    
+</div>
+
+<p class="mb-4 text-lg">Ayant quelques bases en VBA, j'ai choisi pour ce POK de les approfondir pour aboutir à l'obtention d'une diagramme de GANTT sur Excel qui sera paramétrable par l'utilisateur.</p>
+
+
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100 dark:border-purple-800 dark:bg-purple-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-purple-500 dark:stroke-purple-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/promos/2023-2024/Sarah-Sebastien/">Sarah Sebastien</a><span class="px-1">/</span><a href="/promos/2023-2024/Sarah-Sebastien/pok/">POK de Sarah Sebastien</a><span class="px-1">/</span><a href="/promos/2023-2024/Sarah-Sebastien/pok/temps-1/">POK 1: Réalisation d&#39;un diagramme de GANTT sous VBA</a>
+
+</div>
+</div>
+
+
+
+
+<hr>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100 dark:border-pink-800 dark:bg-pink-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-pink-500 dark:stroke-pink-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p>Niveau intermédiaire</p>
+</div><div class="pl-8 mr-8">
+<p>Prérequis : Avoir quelques bases en VBA
+<em>Pour ceux qui veulent débuter en VBA, je conseille de suivre <a href="https://www.excel-pratique.com/fr/vba">ce guide</a></em></p>
+</div>
+</div>
+<p>Télécharger le <a href="POKfinal_GANTT_sous_VBA.zip">fichier Excel</a></p>
+<h2 id="objectif-de-ce-pok" tabindex="-1"><a class="header-anchor" href="#objectif-de-ce-pok"></a> Objectif de ce POK</h2>
+<p>L'objectif de ce POK est de créer un GANTT automatisé. Cette tâche est déjà réalisable sans utiliser VBA mais je trouvais intéressant d'en apprendre plus sur ce langage en automatisant le diagramme avec une macro.</p>
+<h2 id="sommaire" tabindex="-1"><a class="header-anchor" href="#sommaire"></a> Sommaire</h2>
+<ul>
+<li><a href="#presentation">Présentation de l'outil</a></li>
+<li><a href="#sprint1">Résultat du Sprint 1</a></li>
+<li><a href="#final">L'outil final</a></li>
+<li><a href="#ecarts">Analyse des écarts et réflexion</a></li>
+</ul>
+<h2 id="presentation"> Présentation de l'outil </h2>
+<p>L'utilisateur viendra rentrer dans une feuille de données :</p>
+<ul>
+<li>nom du projet</li>
+<li>nom de la tâche</li>
+<li>type de tâche (tâche ou sous tâche)</li>
+<li>le responsable</li>
+<li>la date de début de la tâche</li>
+<li>la durée de la tache</li>
+</ul>
+<p>Il viendra ensuite choisir le projet pour lequel il aimerait visualiser le GANTT et cliquera simplement sur un bouton pour afficher le GANTT du projet sélectionné.</p>
+<h3 id="fonctionnalit%C3%A9s-souhait%C3%A9es" tabindex="-1"><a class="header-anchor" href="#fonctionnalit%C3%A9s-souhait%C3%A9es"></a> Fonctionnalités souhaitées</h3>
+<p>L'outil aura 2 onglets (1 pour remplir les données et l'autre pour visualiser le GANTT)</p>
+<ul>
+<li>onglet &quot;données&quot; avec un tableau contenant les informations sur les projets citées plus haut et un bouton &quot;mettre à jour les données&quot;</li>
+<li>onglet &quot;GANTT&quot; :
+<ul>
+<li>tableau GANTT sur lequel sont affichés tous les jours de l'année</li>
+<li>des colonnes &quot;tâche&quot;, &quot;responsable&quot;, &quot;date de début&quot;, &quot;date de fin&quot;, &quot;durée&quot;</li>
+<li>les cases du GANTT seront coloriées de couleurs différentes en fonction du responsable</li>
+<li>un affichage lisible de la date</li>
+<li>l'affichage du début du tableau au premier jour de la première tâche et la fin du tableau à la fin de la dernière tâche</li>
+<li>une case &quot;Nom de projet:&quot; avec un menu déroulant grâce auquel l'utilisateur peut choisir le projet dont il veut visualiser le gantt</li>
+</ul>
+</li>
+</ul>
+<h2 id="sprint1"> Point d'avancement au 1er sprint : Première version de la macro </h2>
+<h3 id="onglet-%22donn%C3%A9es%22" tabindex="-1"><a class="header-anchor" href="#onglet-%22donn%C3%A9es%22"></a> Onglet &quot;Données&quot;</h3>
+<img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Sarah-Sebastien/pok/temps-1/image_gantt.png"  ="">
+<p>On peut voir qu'il manque la notion de &quot;nom projet&quot; et de type de &quot;tâche&quot;.
+<em>J'ai de plus remarquer qu'il fallait un bouton pour remettre à zéro le tableau de données (comme la macro va jusqu'à la dernière ligne remplie, &quot;effacer le contenu&quot; l'empêche de fonctionner si des lignes du tableau sont vides)</em></p>
+<h3 id="onglet-gantt" tabindex="-1"><a class="header-anchor" href="#onglet-gantt"></a> Onglet Gantt</h3>
+<h4 id="apr%C3%A8s-appui-sur-%22remplir-gantt%22" tabindex="-1"><a class="header-anchor" href="#apr%C3%A8s-appui-sur-%22remplir-gantt%22"></a> <strong>Après appui sur &quot;Remplir GANTT&quot;</strong></h4>
+<img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Sarah-Sebastien/pok/temps-1/image_gantt_2.png"  ="">
+<p>Le remplissage du GANTT fonctionne mais manque encore de lisibilité au niveau des dates.
+La macro ne lit pas les cases fusionnées, il faut donc qu'elles aient toutes du contenu pour pouvoir venir effectuer des tests dessus.</p>
+<h4 id="apr%C3%A8s-appui-sur-%22effacer%22" tabindex="-1"><a class="header-anchor" href="#apr%C3%A8s-appui-sur-%22effacer%22"></a> <strong>Après appui sur &quot;Effacer&quot;</strong></h4>
+<img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Sarah-Sebastien/pok/temps-1/image_gantt_3.png"  ="">
+<h3 id="les-objectifs-r%C3%A9vis%C3%A9s-pour-le-sprint-2" tabindex="-1"><a class="header-anchor" href="#les-objectifs-r%C3%A9vis%C3%A9s-pour-le-sprint-2"></a> Les objectifs révisés pour le sprint 2</h3>
+<p>Voici donc ma liste de fonctionnalités revisitées (en italique les nouvelles fonctionnalités souhaitées)</p>
+<ul>
+<li>onglet &quot;données&quot; :
+<ul>
+<li>[x] un tableau contenant les informations sur les projets citées plus haut</li>
+<li>[ ] <em>ajout au tableau des informations manquantes</em></li>
+<li>[ ] bouton &quot;mettre à jour les données&quot;</li>
+<li>[ ] <em>bouton &quot;effacer le contenu&quot;</em></li>
+</ul>
+</li>
+<li>onglet &quot;GANTT&quot; :
+<ul>
+<li>[x] un tableau GANTT sur lequel sont affichés tous les jours de l'année</li>
+<li>[x] des colonnes &quot;tâche&quot;, &quot;responsable&quot;, &quot;date de début&quot;, &quot;date de fin&quot;, &quot;durée&quot;</li>
+<li>[ ] les cases du GANTT seront coloriées de couleurs différentes en fonction du responsable</li>
+<li>[ ] un affichage lisible de la date</li>
+<li>[ ] l'affichage du début du tableau au premier jour de la première tâche et la fin du tableau à la fin de la dernière tâche</li>
+<li>[ ] une case &quot;Nom de projet:&quot; avec un menu déroulant grâce auquel l'utilisateur peut choisir le projet dont il veut visualiser le gantt</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="final"> Présentation de l'outil final</h2>
+<h3 id="la-gestion-des-donn%C3%A9es" tabindex="-1"><a class="header-anchor" href="#la-gestion-des-donn%C3%A9es"></a> La gestion des données</h3>
+<p>Dans cette première partie, l'utilisateur vient renseigner les données du ou des projets qu'il a planifiés.
+<img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Sarah-Sebastien/pok/temps-1/tableau_projet.png" alt="Image tableau données"></p>
+<blockquote>
+<p>Vue de la feuille &quot;Données&quot; avec un bouton <a href="#valider">Valider</a> et un bouton <a href="#effacer-les-donn%C3%A9es">effacer les données</a></p>
+</blockquote>
+<h4 id="valider"> Valider </h4>
+<p>Lorsqu'il a rempli son tableau, il clique alors sur <em><strong>Valider</strong></em>. La procédure suivante s'exécute:</p>
+<pre class="line-numbers"><code>
+
+Sub Valider()
+
+  Call recuperer_noms_projets
+  Call recuperer_nom_respo
+
+End Sub
+
+
+</code></pre><p>Elle s'effectue en deux temmps:
+Elle vient d'abord récupérer les noms des projets et les ajoute dans un tableau à part, dans une autre feuille appelée &quot;BackData&quot;, en supprimant les doublons.</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Sub recuperer_nom_projets()</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="line-numbers"><code>
+
+'On se place sur la feuille "Données"
+Sheets("Données").Select
+'Fixe le N° de première ligne de la plage à lire
+Dim NoLigDeb As Integer
+NoLigDeb = 2
+'Fixe le N° de la dernière ligne de la plage à lire
+Dim NoLigFin As Integer
+NoLigFin = Range("A" & Rows.Count).End(xlUp).row
+
+'On définit une variable pour le nom du projet
+Dim nom_projet As String
+
+'On définit un compteur
+Dim rowIdx As Integer
+For rowIdx = NoLigDeb To NoLigFin
+
+    'On affecte à nom_projet la valeur de la première ligne renseignée
+    nom_projet = Cells(rowIdx, 1).Value
+
+    'On se place sur la feuille Back Data, que l'on rend visible
+    Sheets("BackData").Visible = True
+    Sheets("BackData").Select
+
+    'On crée une variable tableau qu'on affecte au tableau nommé "tableau_nom_projets"
+    Dim tableau As ListObject
+    Set tableau = ActiveSheet.ListObjects("Tableau_nom_projets")
+    'On créé la variable J qui compte le nombre de lignes de ce tableau
+    J = tableau.ListRows.Count + 1
+
+    'Nouveau compteur
+    Dim i As Integer
+    i = 2
+
+    'On parcourt les lignes du tableau pour voir si le nom du projet n'apparait pas déjà
+    Do While i <> J + 1
+        If Cells(i, 1).Value = nom_projet Then
+            Exit Do
+        End If
+        i = i + 1
+    Loop
+
+    'S'il n'est pas apparu et qu'on se trouve à la fin du tableau
+    If i = J + 1 Then
+        'On ajoute une ligne...
+        tableau.ListRows.Add
+        '...Et on ajoute le nom du projet au tableau
+        J = tableau.ListRows.Count
+        tableau.DataBodyRange(J, 1).Value = nom_projet
+    End If
+
+    'On cache "BackData", on se replace sur la feuille "Données et on réitère
+    Sheets("BackData").Visible = False
+    Sheets("Données").Select
+    Next
+
+End Sub
+
+
+</code></pre></div>
+</details>
+</div>
+<p>Puis elle vient récupérer le noms des responsables, cités dans les projets, dans un tableau à part en supprimant les doublons. <em>Le principe de la procédure est le même que pour celle qui récupère le nom des projets.</em></p>
+<img width="300" src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Sarah-Sebastien/pok/temps-1/tableau_responsable.png"  ="">
+<blockquote>
+<p>Tableau : Nom_respo</p>
+</blockquote>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Sub recuperer_nom_respo()</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="line-numbers"><code>
+
+
+'Fixe le N° de première ligne de la plage à lire
+Dim NoLigDeb As Integer
+NoLigDeb = 2
+'Fixe le N° de la dernière ligne du tableau des tâches
+Dim NoLigFin As Integer
+NoLigFin = Range("Tableau_taches").Rows.Count + 1
+
+Dim nom_respo As String
+
+Dim rowIdx As Integer
+For rowIdx = NoLigDeb To NoLigFin
+
+    nom_respo = Cells(rowIdx, 3).Value
+
+    Dim tableau As ListObject
+    Set tableau = ActiveSheet.ListObjects("Nom_respo")
+    J = tableau.ListRows.Count + 1
+
+    Dim i As Integer
+    i = 2
+
+    Do While i <> J + 1
+        If tableau.DataBodyRange(i - 1, 1).Value = nom_respo Then
+            Exit Do
+        End If
+        i = i + 1
+    Loop
+
+    If i = J + 1 Then
+        tableau.ListRows.Add
+        J = tableau.ListRows.Count
+        tableau.DataBodyRange(J, 1).Value = nom_respo
+        tableau.DataBodyRange(J, 2).Interior.Color = RGB(Int(256 * Rnd), Int(256 * Rnd), Int(256 * Rnd))
+    End If
+
+Next
+
+End Sub
+
+
+</code></pre></div>
+</details>
+</div>
+<p><em>Lors de cette procédure, une autre sous-procédure est appelée qui permet de <em><strong>générer une couleur aléatoirement</strong></em> pour chaque responsable, qui sera ensuite utilisée pour colorier les cases du Gantt.</em></p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Sub couleur_aléatoire()</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="line-numbers"><code>
+
+
+'Fixe le N° de la première ligne de la plage à lire
+Dim NoLigDeb As Integer
+NoLigDeb = 2
+'Fixe le N° de la dernière ligne de la plage à lire
+Dim NoLigFin As Integer
+NoLigFin = Range("L" & Rows.Count).End(xlUp).row
+
+Dim i As Integer
+
+For i = NoLigDeb To NoLigFin
+    Cells(i, 12).Interior.Color = RGB(Int(256 * Rnd), Int(256 * Rnd), Int(256 * Rnd))
+Next i
+
+End Sub
+
+
+</code></pre></div>
+</details>
+</div>
+<h4 id="effacer-les-données"> Effacer les données </h4>
+<p>un clique sur le bouton permet d'appeler directement la procédure suivante qui efface les données des 3 tableaux mentionnés plus haut.</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Sub effacer_données()</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="line-numbers"><code>
+
+Sheets("Données").Select
+
+'effacer la liste des taches
+    Range("A2:F2").Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Do While IsEmpty(Cells(2, 1)) = False
+        Selection.ListObject.ListRows(1).Delete
+    Loop
+
+'effacer la liste des responsables
+    Range("Nom_respo").Select
+    Do While IsEmpty(Cells(2, 10)) = False
+        Selection.ListObject.ListRows(1).Delete
+    Loop
+
+'On rend visible le feuille BackData pour pouvoir la sélectionner
+Sheets("BackData").Visible = True
+Sheets("BackData").Select
+
+'effacer la liste des noms de projets
+    Range("Tableau_nom_projets[[Nom projet ]]").Select
+    Do While IsEmpty(Cells(2, 1)) = False
+        Selection.ListObject.ListRows(1).Delete
+    Loop
+
+'On revient sur la page des données et on cache BackData
+Sheets("BackData").Visible = False
+Sheets("Données").Select
+
+End Sub
+
+
+</code></pre></div>
+</details>
+</div>
+<h3 id="affichage-du-gantt" tabindex="-1"><a class="header-anchor" href="#affichage-du-gantt"></a> Affichage du GANTT</h3>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Sarah-Sebastien/pok/temps-1/diagramme_gantt.png" alt="Image diagramme gantt"></p>
+<blockquote>
+<p>Visuel du tableau de Gantt avec les options de <a href="#choix-titre-date">choix du projet et de la date d'affichage</a>, les boutons qui permettent <a href="#affichage-gantt">l'affichage du Gantt</a> et <a href="#effacer-gantt">d'effacer le contenu du tableau</a></p>
+</blockquote>
+<h4 id="choix-titre-date"> Choix du projet et de la date </h4>
+<p>L'utilisateur peut venir choisir le projet dont il veut afficher le gantt à l'aide du menu déroulant de la cellule D4, qui contient le nom de tous les projets renseignés plus tôt.
+Il peut également paramétrer les caractéristiques du Gantt en choisissant la date de début d'affichage.</p>
+<p>Pour réaliser ces actions j'ai programmé ici directement sur la feuille (<em>&quot;Worksheet&quot;</em>) qui contient le tableau plutôt que sur des <em>modules</em>. Car ici, on va venir effectuer une procédure à chaque fois qu'il y a un changement sur la feuille, c'est à dire, une action de l'utilisateur.</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Private Sub Worksheet_Change(ByVal Target As Range)</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<p><em>Prend en entrée les données de la cellule modifiée par l'utilisateur</em></p>
+<pre class="line-numbers"><code>
+
+    'Si la cellule modifiée est celle qui contient le titre du projet ou celle qui gère la date de début d'affichage du gantt...
+    If Target.Column = 4 And Target.row = 4 Or Target.row = 6 Then
+        '...Alors on appelle la procédure de remplissage du Gantt
+        Call Remplissage_gantt
+    End If
+
+End Sub
+
+
+</code></pre></div>
+</details>
+</div>
+<hr>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100 dark:border-cyan-800 dark:bg-cyan-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-cyan-500 dark:stroke-cyan-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Information</b></p>
+</div><div class="pl-8 mr-8">
+<p><em>Il faut noter que le gantt ne s'affiche que sur 1 an</em>
+Par ailleurs, pour le changement des dates pour l'affichage du GANTT, cela s'effectue grâce à des formules excel qui viennent générer une liste de date sur une année en fonction des données rentrées par l'utilisateur. La procédure &quot;Remplissage du Gantt&quot; permet de gérer la partie relative aux cases coloriées dans le gantt qui vont changer si on change la date de départ.</p>
+</div>
+</div>
+<h4 id="affichage-gantt"> Affichage du Gantt </h4>
+<p><em>Procédure qui s'execute lorsque l'utilisateur appuie sur le bouton <em>Remplir le Gantt</em> ou vient changer le titre du projet ou la date du départ du tableau.</em></p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Sub Remplissage_gantt()</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="line-numbers"><code>
+
+'On efface d'abord le contenu du tableau
+Call effacer_gantt
+
+'On se place sur la feuille de données
+Sheets("Données").Select
+
+    'Fixe le N° de première ligne de la plage à lire
+    Dim NoLigDeb As Integer
+    NoLigDeb = 2
+    'Fixe le N° de la dernière ligne de la plage à lire
+    Dim NoLigFin As Integer
+    NoLigFin = Range("A" & Rows.Count).End(xlUp).row
+
+    'On définit la liste des variables locales que l'on va utiliser
+    Dim nom_projet As String
+    Dim etape As String
+    Dim tache As String
+    Dim date_debut As Date
+    Dim date_fin As Date
+    Dim duree As Integer
+    Dim unit_duree As String
+    Dim responsable As String
+    Dim couleur As Variant
+
+    'On initialise les dimensions du Gantt sur la feuille
+    Dim DepartGanttRow As Integer
+    DepartGanttRow = 14
+    Dim DepartGanttColumn As Integer
+    DepartGanttColumn = 1
+
+    Dim FinGanttColumn As Integer
+    FinGanttColumn = fGantt.Cells(1, 1).End(xlToRight).Column - DepartGanttColumn
+
+    Dim DepartGanttColumn_color As Integer
+    DepartGanttColumn_color = 7
+    Dim DateRows As Integer
+    DateRows = 12
+
+    'On initialise le compteur de lignes à remplir dans le Gantt
+    Dim GanttRow As Integer
+    GanttRow = 0
+
+    'On parcourt ensuite les lignes remplies par l'utilisateur
+    Dim rowIdx As Integer
+    For rowIdx = NoLigDeb To NoLigFin
+
+    'On se place sur la feuille "Données"
+    Sheets("Données").Select
+
+        'On récupère les données d'une ligne rentrée par l'utilisateur
+        nom_projet = Cells(rowIdx, 1).Value
+        tache = Cells(rowIdx, 2).Value
+        responsable = Cells(rowIdx, 3).Value
+        date_debut = Cells(rowIdx, 4).Value
+        duree = Cells(rowIdx, 5).Value
+        unit_duree = Cells(rowIdx, 6).Value
+        couleur = TrouverCouleur(responsable)
+
+        'On trouve alors la date de fin
+        date_fin = DateFin(date_debut, duree, unit_duree)
+        Dim nombre_taches As Integer
+
+        'On récupère le nom du projet sélectionné par l'utilisateur sur la feuille Gantt
+        Dim projet_choisi As String
+        projet_choisi = fGantt.Cells(4, 4).Value
+
+        'Avec cette information, on compte le nombre de tâches dans le projet choisi
+        nombre_taches = 0
+        For i = NoLigDeb To NoLigFin
+            If Cells(i, 1).Value = projet_choisi Then
+                nombre_taches = nombre_taches + 1
+            End If
+        Next
+
+        'On se place sur la feuille du tableau de Gantt
+        Sheets("GANTT").Select
+
+        If projet_choisi = nom_projet Then
+            'On appelle la procédure pour remplir la partie texte du diagramme
+            Call Remplissage_gantt_text(DepartGanttRow, GanttRow, DepartGanttColumn, nom_projet, etape, tache, date_debut, date_fin, duree, unit_duree, responsable)
+
+            'On colorie le tableau de GANTT
+            Call Remplissage_gantt_couleurs(FinGanttColumn, DateRows, DepartGanttColumn_color, DepartGanttRow, GanttRow, date_debut, date_fin, rowIdx, nombre_taches, couleur)
+
+            'On passe à la ligne suivante
+            GanttRow = GanttRow + 1
+
+        End If
+    Next
+
+'on se place sur la première case de la première tache
+Cells(13, 7).Select
+
+End Sub
+
+
+</code></pre></div>
+</details>
+</div>
+<p>Cette procédure fait appel à <strong>deux fonctions</strong> pour trouver la date de fin de la tâche et venir récupérer la couleur de la case correspondante au nom du responsable:</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100 dark:border-cyan-800 dark:bg-cyan-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-cyan-500 dark:stroke-cyan-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Fonction ou Sub?</strong></p>
+</div><div class="pl-8 mr-8">
+<p>La principale différence entre <strong>Sub</strong> et <strong>Function</strong> est qu'une fonction retourne une valeur.</p>
+</div>
+</div>
+<hr>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Private Function DateFin(date_debut As Date, duree As Integer, unit_duree As String) As Date</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<p><em>Fonction qui prend en entrée la date de début d'une tâche, sa durée et l'unité de sa durée et renvoie la date de fin de la tâche</em></p>
+<pre class="line-numbers"><code>
+
+    'Si l'unité est en jours
+    If unit_duree = "jours" Then
+        If duree = 1 Then
+            DateFin = DateAdd("d", duree, date_debut)
+        Else
+            DateFin = DateAdd(interval_date, duree - 1, date_debut)
+        End If
+    'Si l'unité est en semaines
+    ElseIf unit_duree = "semaines" Then
+        DateFin = DateAdd("ww", duree, date_debut)
+    'Si l'unité est en mois
+    ElseIf unit_duree = "mois" Then
+        DateFin = DateAdd("m", duree, date_debut)
+    End If
+
+End Function
+
+
+</code></pre></div>
+</details>
+</div>
+<hr>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Private Function TrouverCouleur(nom_respo As String) As Variant</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<p><em>Prend en entrée le nom du responsable et renvoie la couleur qui lui est associée</em></p>
+<pre class="line-numbers"><code>
+
+  Dim i As Integer
+  Range("Nom_respo[[Responsable]]").Select
+  'On parcourt toutes lignes jusqu'à trouver le nom du responsable
+  Do While i <> Range("Tableau_taches").Rows.Count + 1
+      If ActiveSheet.ListObjects("Nom_respo").DataBodyRange(i, 1).Value = nom_respo Then
+          TrouverCouleur = ActiveSheet.ListObjects("Nom_respo").DataBodyRange(i, 2).Interior.ColorIndex
+          Exit Do
+      End If
+      i = i + 1
+  Loop
+End Function
+
+
+</code></pre></div>
+</details>
+</div>
+<p>On fait également appelle à <strong>trois procédures</strong> :</p>
+<ul>
+<li>une pour <a href="#effacer-gantt">effacer le gantt</a></li>
+<li>une pour <a href="#remplir-texte">remplir le texte</a> du Gantt</li>
+<li>une pour <a href="#colorier-cases">colorier les cases</a> du Gantt</li>
+</ul>
+<h5 id="effacer-gantt"> Effacer le contenu du Gantt</h5>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Sub effacer_gantt()</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="line-numbers"><code>
+
+    'On efface le contenu "texte"
+    Range("A14").Select
+    Range(Selection, Selection.End(xlToRight)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    Selection.ClearContents
+
+    'On enlève la couleur des cases du GANTT
+    Range("G14").Select
+    Range(Selection, Selection.End(xlToRight)).Select
+    Range(Selection, Selection.End(xlDown)).Select
+    With Selection.Interior
+        .PatternColorIndex = xlAutomatic
+        .ThemeColor = xlThemeColorDark1
+        .TintAndShade = 0
+        .PatternTintAndShade = 0
+    End With
+
+    'On affiche toutes les colonnes cachées
+    Range("G14").Select
+    Columns("F:XFD").Select
+    Selection.EntireColumn.Hidden = False
+    Cells(13, 7).Select
+
+End Sub
+
+
+</code></pre></div>
+</details>
+</div>
+<h5 id="remplir-texte"> Remplissage du texte </h5>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Sub Remplissage_gantt_text(DepartGanttRow As Integer, GanttRow As Integer, DepartGanttColumn As Integer, nom_projet As String, etape As String, tache As String, date_debut As Date, date_fin As Date, duree As Integer, unit_duree As String, responsable As String)</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<p><em>Prend en entrée la position du départ du diagramme de Gantt et les informations de la ligne du tableau à remplir. Remplit la partie texte de la ligne du tableau</em></p>
+<pre class="line-numbers"><code>
+
+  'On initialise le compteur qui va parcourir les colonnes du diagramme
+    Dim GanttColumn As Integer
+    GanttColumn = 0
+
+  'Remplissage de la colonne correspondant à la tache
+    Cells(DepartGanttRow + GanttRow, DepartGanttColumn + GanttColumn).Value = tache
+    GanttColumn = GanttColumn + 1
+
+  'Remplissage de la colonne correspondant au responsable
+    Cells(DepartGanttRow + GanttRow, DepartGanttColumn + GanttColumn).Value = responsable
+    GanttColumn = GanttColumn + 1
+
+  'Remplissage de la colonne correspondant à la date de début
+    Cells(DepartGanttRow + GanttRow, DepartGanttColumn + GanttColumn).Value = date_debut
+    GanttColumn = GanttColumn + 1
+
+  'Remplissage de la colonne correspondant à la date de fin
+    Cells(DepartGanttRow + GanttRow, DepartGanttColumn + GanttColumn).Value = date_fin
+    GanttColumn = GanttColumn + 1
+
+  'Remplissage de la colonne correspondant à la duree
+    Cells(DepartGanttRow + GanttRow, DepartGanttColumn + GanttColumn).Value = CStr(duree) & " " & unit_duree
+
+End Sub
+
+
+</code></pre></div>
+</details>
+</div>
+<h5 id="colorier-cases"> Coloriage du Gantt </h5>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Sub Remplissage_gantt_couleurs (FinGanttColumn As Integer, DateRows As Integer, DepartGanttColumn_color As Integer, DepartGanttRow As Integer, GanttRow As Integer, date_debut As Date, date_fin As Date, rowIdx As Integer, nombre_taches As Integer, couleur As Variant)</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<p><em>Prend en entrée la position du départ du diagramme de Gantt et les informations de la ligne du tableau à remplir. Colorie la ligne du tableau</em></p>
+<pre class="line-numbers"><code>
+
+  Dim J As Integer
+  J = 0
+
+    'On parcourt l'ensemble du tableau
+    Do While J < FinGanttColumn
+      'On cherche la case correspondant à la date de début de la tache
+      If Cells(DateRows, DepartGanttColumn_color + J).Value = date_debut Then
+          Exit Do
+      End If
+      J = J + 1
+    Loop
+
+    'Une fois cette case trouvée on la colorie en bleu
+      Cells(DepartGanttRow + GanttRow, DepartGanttColumn_color + J).Interior.ColorIndex = couleur
+
+    'et on cache les colonnes de gauche si c'est la première tache du gantt
+    If Cells(DepartGanttRow + GanttRow, DepartGanttColumn_color + J).row = 14 Then
+      Call Cacher_colonnes(DepartGanttColumn_color + J, "début")
+    End If
+
+    'On colorie ensuite toutes les cases jusqu'à trouver la case correspondant à la date de fin sur le même principe
+      J = J + 1
+    Do While J < FinGanttColumn
+      If Cells(DateRows, DepartGanttColumn_color + J).Value = date_fin Then
+        'On colorie la case en bleu et on sort de la boucle
+        Cells(DepartGanttRow + GanttRow, DepartGanttColumn_color + J).Interior.ColorIndex = couleur
+
+        'Et on masque toutes les colonnes à droite si c'est la dernière tâche du gantt
+        If Cells(DepartGanttRow + GanttRow, DepartGanttColumn_color + J).row = (14 + nombre_taches - 1) Then
+          Call Cacher_colonnes(DepartGanttColumn_color + J, "fin")
+        End If
+        Exit Do
+      End If
+
+      'Sinon on colorie la case sélectionnée en bleu et on passe à la suivante
+      Cells(DepartGanttRow + GanttRow, DepartGanttColumn_color + J).Interior.ColorIndex = couleur
+
+      'case suivante
+      J = J + 1
+    Loop
+
+End Sub
+
+
+</code></pre></div>
+</details>
+</div>
+<p><em>Appelle de la sous-procédure pour cacher les colonnes à la fin au début du Gantt</em></p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Sub Cacher_colonnes(dColumn As Integer, situation As String)</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<p><em>En fonction d'un état donné &quot;fin&quot; ou &quot;début&quot;, permet de cacher les colonnes à droite ou à gauche de la colonne donnée en entrée</em></p>
+<pre class="line-numbers"><code>
+
+If situation = "début" Then
+    If dColumn <> 7 Then
+        Range(Cells(1, 7), Cells(1, dColumn - 1)).Select
+        Selection.EntireColumn.Hidden = True
+    End If
+
+End If
+
+If situation = "fin" Then
+    Range(Cells(1, dColumn + 1), Cells(1, Cells(1, dColumn + 1).End(xlToRight).Column)).Select
+    Selection.EntireColumn.Hidden = True
+End If
+
+End Sub
+
+
+</code></pre></div>
+</details>
+</div>
+<h2 id="ecarts"> Analyse des ecarts et conclusion</h2>
+<p>Voici la liste de fonctionnalités revisitées de la fin du sprint 1 <em>(en barré les fonctionnalités abandonnées et en italique les nouvelles fonctionnalités souhaitées)</em>, à laquelle j'ai</p>
+<ul>
+<li>onglet &quot;données&quot; :
+<ul>
+<li>[x] un tableau contenant les informations sur les projets citées plus haut</li>
+<li>[-] <em>ajout au tableau des informations manquantes</em> <strong>manque la notion de sous-taches ou tache</strong></li>
+<li>[x] bouton &quot;mettre à jour les données&quot;</li>
+<li>[x] <em>bouton &quot;effacer le contenu&quot;</em></li>
+</ul>
+</li>
+<li>onglet &quot;GANTT&quot; :
+<ul>
+<li>[x] un tableau GANTT sur lequel sont affichés tous les jours de l'année</li>
+<li>[-] des colonnes &quot;tâche&quot;, &quot;responsable&quot;, &quot;date de début&quot;, &quot;date de fin&quot;, &quot;durée&quot;</li>
+<li>[x] les cases du GANTT seront coloriées en fonction du responsable</li>
+<li>[~] un affichage lisible de la date</li>
+<li>[~] l'affichage du début du tableau au premier jour de la première tâche et la fin du tableau à la fin de la dernière tâche</li>
+<li>[x] une case &quot;Nom de projet:&quot; avec un menu déroulant grâce auquel l'utilisateur peut choisir le projet dont il veut visualiser le gantt</li>
+</ul>
+</li>
+</ul>
+<p>J'ai réussi à programme presque toutes les fonctionnalités que j'avais souhaitées. Cependant, l'affichage manque encore de lisibilité : j'aurais aimé créer une catégorie &quot;Gantt semaine&quot; et &quot;Gantt jours&quot; à choisir en fonction du projet et de la durée des tâches. De plus, un affichage différent en fonction d'une sous tache ou d'une sous tâche aurait été intéressant, mais ce n'était pas un besoin de premier plan.
+De plus la fonctionnalité d'affichage du début et de fin de gantt en fonction des dates de début et de fin des premières et dernières tâches ne fonctionne pas tout à fait. <em>Si l'utilisateur ne renseigne pas les tâches dans l'ordre la macro ne fonctionne plus</em></p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100 dark:border-yellow-800 dark:bg-yellow-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-yellow-500 dark:stroke-yellow-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p>Retour d'expérience</p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li>Maintenant que nous avons suivi le cours sur la <em>méthode agile</em>, je pense que c'est ce qui aurait été le plus pertinent à appliquer pour ce POK, comme méthode projet, avec notamment la notion de <em>User Stories</em> : une hiérarchisation des besoins/fonctionnalités en fonction de leur pertinence et de leur difficulté m'aurait permis de moins m'éparpiller.</li>
+<li>Les procédures que j'ai réalisées sont loooooooin d'être optimisées en terme de lignes de code. Ce n'était pas du tout le but recherché. Mais j'aurais été curieuse de voir comment les rendre plus efficace.</li>
+<li>il aurait été intéressant de réaliser des <em>interfaces utilisateurs</em> sur ce projet. C'est une notion que je n'ai jamais eu l'occasion d'appliquer alors qu'elle aurait été très adaptée à ce sujet</li>
+</ul>
+</div>
+</div>
+
+
+
+</article>
+
+        </main>
+
+        <footer class="min-h-[50px] border-t-2 mt-4 border-gray-200 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-center items-center">
+                    <p class="text-center">
+                        ©2025 <b><span style="font-family: Consolas, sans-serif;">Do-<span style="color: #4a86e8">It</span></span></b> - Développement, Management et Gestion de projets en IT
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- MathJax import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">
+            window.MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']], // Delimiters for inline math
+                    displayMath: [['$$', '$$'], ['\\[', '\\]']] // Delimiters for block math
+                },
+                svg: {
+                    fontCache: 'global' // Use global font cache for SVG output
+                }
+            };
+            document.addEventListener('DOMContentLoaded', () => {
+                MathJax.typeset(); // Ensures MathJax processes the content after the page loads
+            });
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">
+            Prism.plugins.NormalizeWhitespace.setDefaults({
+                'remove-trailing': true,
+                'remove-indent': true,
+                'left-trim': true,
+                'right-trim': true,
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script>
+    </body>
+</html>

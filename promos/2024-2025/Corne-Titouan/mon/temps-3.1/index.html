@@ -1,0 +1,340 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="index, follow"><link rel="canonical" href="https://do-it.aioli.ec-m.fr/promos/2024-2025/Corne-Titouan/mon/temps-3.1/"><meta name="description" content="Avec ce MON, je compte étudier la méthodologie Test-Driven Development qui repose sur l&#39;écriture de test en amont (généralement les tests sont implémentés après le code). Ainsi, je vais me former à l&#39;écriture de tests. Enfin, j&#39;aimerais me familiariser avec un outil de gestion de tests (Jenkins par exemple) et comprendre comment l&#39;intelligence artificielle (Copilot, GPT) peut être un outil privilégié dans l&#39;écriture de tests. Exceptionnellement, ce MON sera constitué de 15 heures de travail. "><meta property="og:description" content="Avec ce MON, je compte étudier la méthodologie Test-Driven Development qui repose sur l&#39;écriture de test en amont (généralement les tests sont implémentés après le code). Ainsi, je vais me former à l&#39;écriture de tests. Enfin, j&#39;aimerais me familiariser avec un outil de gestion de tests (Jenkins par exemple) et comprendre comment l&#39;intelligence artificielle (Copilot, GPT) peut être un outil privilégié dans l&#39;écriture de tests. Exceptionnellement, ce MON sera constitué de 15 heures de travail. "><meta name="twitter:description" content="Avec ce MON, je compte étudier la méthodologie Test-Driven Development qui repose sur l&#39;écriture de test en amont (généralement les tests sont implémentés après le code). Ainsi, je vais me former à l&#39;écriture de tests. Enfin, j&#39;aimerais me familiariser avec un outil de gestion de tests (Jenkins par exemple) et comprendre comment l&#39;intelligence artificielle (Copilot, GPT) peut être un outil privilégié dans l&#39;écriture de tests. Exceptionnellement, ce MON sera constitué de 15 heures de travail. "><meta name="author" content="Titouan Corne"><meta name="keywords" content="do-it, centrale, centrale méditerranée, ecm, MON, test, vert, méthodologie, Test-Driven Development"><link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon"><link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png"><link rel="apple-touch-icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png"><link href="/assets/stylesheets/main.css" rel="stylesheet"><meta property="og:title" content="Test-Driven Development : les tests au coeur du développement"><meta property="og:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png"><meta property="og:url" content="https://do-it.aioli.ec-m.fr/promos/2024-2025/Corne-Titouan/mon/temps-3.1/"><meta property="og:type" content="website"><meta name="twitter:card" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png"><meta name="twitter:title" content="Test-Driven Development : les tests au coeur du développement"><meta name="twitter:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png"><meta name="twitter:url" content="https://do-it.aioli.ec-m.fr/promos/2024-2025/Corne-Titouan/mon/temps-3.1/"><title>Test-Driven Development : les tests au coeur du développement</title><link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet"><link id="prism-theme" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet"><link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet"><script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script><script defer="">const storedTheme=localStorage.getItem("theme");function loadPrismTheme(e){const t=e?"prism-okaidia.min.css":"prism-solarizedlight.min.css",s=document.createElement("link");s.rel="stylesheet",s.id="prism-theme",s.href=`https://cdn.jsdelivr.net/npm/prismjs/themes/${t}`,s.onload=()=>{Prism.highlightAll()};const m=document.getElementById("prism-theme");m?document.head.replaceChild(s,m):document.head.appendChild(s)}function setMermaidTheme(e){const t=e?"dark":"forest";mermaid.initialize({securityLevel:"loose",theme:t,startOnLoad:!0})}function toggleDarkMode(){const e=document.documentElement.classList.contains("dark"),t=e?"light":"dark";localStorage.setItem("theme",t),document.documentElement.classList.toggle("dark",!e),loadPrismTheme(!e),setMermaidTheme(!e)}storedTheme?document.documentElement.classList.toggle("dark","dark"===storedTheme):document.documentElement.classList.toggle("dark",window.matchMedia("(prefers-color-scheme: dark)").matches);const isDark=document.documentElement.classList.contains("dark");loadPrismTheme(isDark),setMermaidTheme(isDark)</script></head><body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000" class="bg-neutral-50 text-neutral-950 dark:bg-neutral-900 dark:text-neutral-50"><header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white dark:bg-neutral-900 dark:border-neutral-700"><div class="max-w-[1000px] mx-auto px-4"><div class="min-h-[50px] flex justify-between items-center"><a class="mx-2" href="/">Home</a> <button class="hidden sm:block text-neutral-950 dark:text-neutral-50 hover:bg-neutral-700 hover:text-neutral-50 hover:dark:bg-neutral-300 hover:dark:text-neutral-950 transition-colors p-2 rounded-full duration-800 ease-in-out" onclick="toggleDarkMode()"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 dark:hidden stroke-current"><circle cx="12" cy="12" r="5"></circle><path d="M12 2V4" stroke-linecap="round"></path><path d="M12 20V22" stroke-linecap="round"></path><path d="M4 12L2 12" stroke-linecap="round"></path><path d="M22 12L20 12" stroke-linecap="round"></path><path d="M19.7778 4.22266L17.5558 6.25424" stroke-linecap="round"></path><path d="M4.22217 4.22266L6.44418 6.25424" stroke-linecap="round"></path><path d="M6.44434 17.5557L4.22211 19.7779" stroke-linecap="round"></path><path d="M19.7778 19.7773L17.5558 17.5551" stroke-linecap="round"></path></svg> <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 stroke-current hidden dark:block"><path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke-linecap="round" stroke-linejoin="round"></path></svg></button><div class="flex items-center gap-4 sm:gap-6"><a class="" href="/cs">CS</a> <a class="" href="/pok">POK</a> <a class="" href="/mon">MON</a> <a class="" href="/projets">Projets</a> <a class="hidden sm:block" href="/promos">Promos</a> <a href="/search"><svg class="h-5 aspect-square stroke-neutral-950 dark:stroke-neutral-300 fill-none stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path></svg> </a><a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank"><svg class="h-5 aspect-square dark:stroke-neutral-300 dark:fill-neutral-300" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg></a></div></div></div></header><main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body=""><article class="relative"><h1 class="mb-1">Test-Driven Development : les tests au coeur du développement</h1><div class="mb-4"><div class="px-4 flex flex-wrap items-center"><div class="font-bold">Tags :</div><ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags"><li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">MON</li><li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">test</li><li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">vert</li><li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">méthodologie</li><li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">Test-Driven Development</li></ul><div class="hidden" data-pagefind-meta="Type" aria-hidden="true"><span data-pagefind-filter="Type">MON</span></div></div><div class="px-4 flex flex-wrap items-center"><div class="font-bold">Auteur :</div><ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs"><li class="bg-blue-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Auteurs">Titouan Corne</li></ul></div><div class="absolute top-0 right-0"><span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2 text-neutral-950" data-pagefind-filter="Année">2024-2025</span></div></div><p class="mb-4 text-lg">Avec ce MON, je compte étudier la méthodologie Test-Driven Development qui repose sur l'écriture de test en amont (généralement les tests sont implémentés après le code). Ainsi, je vais me former à l'écriture de tests. Enfin, j'aimerais me familiariser avec un outil de gestion de tests (Jenkins par exemple) et comprendre comment l'intelligence artificielle (Copilot, GPT) peut être un outil privilégié dans l'écriture de tests. Exceptionnellement, ce MON sera constitué de 15 heures de travail.</p><div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100 dark:border-purple-800 dark:bg-purple-950"><svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-purple-500 dark:stroke-purple-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path></svg><div class="pl-8 mr-8"><a href="/promos/2024-2025/Corne-Titouan/">Titouan Corne</a><span class="px-1">/</span><a href="/promos/2024-2025/Corne-Titouan/mon/">MON de Titouan Corne</a><span class="px-1">/</span><a href="/promos/2024-2025/Corne-Titouan/mon/temps-3.1/">Test-Driven Development : les tests au coeur du développement</a></div></div><div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100 dark:border-pink-800 dark:bg-pink-950"><svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-pink-500 dark:stroke-pink-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg><div class="pl-8 mb-2 mr-8"><p><b>Prérequis</b></p></div><div class="pl-8 mr-8"><p>Aucun prérequis nécessaire</p></div></div><div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100 dark:border-emerald-800 dark:bg-emerald-950"><svg class="absolute w-6 h-6 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-emerald-500 dark:stroke-emerald-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path></svg><div class="pl-8 mb-2 mr-8"><p><b>Liens</b></p></div><div class="pl-8 mr-8"><ul><li><a href="https://vandangogna.medium.com/a-practical-example-using-test-driven-development-88b4536ac574">A Practical Example using Test Driven Development. Source : Vandan Gogna, an IBM Garage expert, sur Medium (2021)</a></li><li><a href="https://github.com/test-driven-development/kent-beck-money-example/blob/master/kent-beck-test-driven-development-by-example.pdf"><em>Test-Driven Development by example</em> de Kent Beck (2003)</a></li><li><a href="https://jasmine.github.io/">Doc officielle du framework Jasmine</a></li><li><a href="https://github.com/TitouanCorne/morpion_TDD">Lien GitHub : projet morpion en TDD</a></li></ul></div></div><h2 id="table-des-mati%C3%A8res" tabindex="-1"><a class="header-anchor" href="#table-des-mati%C3%A8res"></a> Table des matières</h2><ul><li><a href="#table-des-mati%C3%A8res">Table des matières</a></li><li><a href="#1-test-driven-development--comprendre-la-m%C3%A9thodologie-">1. Test-Driven Development : Comprendre la méthodologie</a></li><li><a href="#2-exemple-perturbant-de-mise-en-application-">2. Exemple (perturbant) de mise en application</a></li><li><a href="#3-les-principaux-tests-rencontr%C3%A9s-en-informatique-">3. Les principaux tests rencontrés en informatique</a></li><li><a href="#4-framework-de-test-pour-javascript-">4. Framework de test pour Javascript</a></li><li><a href="#5-mise-en-pratique-du-tdd--morpion-angular--jasmine-">5. Mise en pratique du tdd : morpion (Angular + Jasmine)</a></li><li><a href="#6-utiliser-github-copilot-pour-impl%C3%A9menter-ses-tests-">6. Utiliser GitHub Copilot pour implémenter ses tests</a><ul><li><a href="#ma-question">Ma question</a></li><li><a href="#la-r%C3%A9ponse-de-github-copilot-chat">La réponse de GitHub Copilot Chat</a></li><li><a href="#analyse-de-sa-r%C3%A9ponse">Analyse de sa réponse</a></li></ul></li><li><a href="#sources-utiles">Sources utiles</a></li></ul><h2 id="1.-test-driven-development-%3A-comprendre-la-m%C3%A9thodologie" tabindex="-1"><a class="header-anchor" href="#1.-test-driven-development-%3A-comprendre-la-m%C3%A9thodologie"></a> 1. Test-Driven Development : Comprendre la méthodologie <a id="section1"></a></h2><p>La méthodologie Test-Driven Development (tdd) consiste à concevoir un logiciel par des itérations successives courtes, telles que chacune de ses itérations correspond à un problème à résoudre formulé sous forme de test.</p><p>Le tdd suit généralement un cycle en trois étapes :</p><ol><li><strong>Red :</strong> Ecrire un test qui échoue (car le code pour le satisfaire n'existe pas encore, puisqu'on écrit <strong>le test en amont</strong> du code).</li><li><strong>Green :</strong> Ecrire le <strong>minimum</strong> de code nécessaire pour que le test réussisse. On ne s'occupe pas ici de l'algorithme utilisé ou de sa performance.</li><li><strong>Refactor :</strong> Améliorer le code tout en gardant les tests au &quot;vert&quot;, de sorte à ce que sa performance soit optimale.</li></ol><div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950"><details class="group"><summary class="list-none py-0.5"><svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg> <svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg><div class="pl-8 font-bold inline-block group-open:select-text"><p>Exemple illustratif simple en python</p></div><svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path></svg></summary><div class="mx-8 pb-2 cursor-auto select-text"><ul><li><strong>Etape 1 : Ecrire le test (Red)</strong></li></ul><p>On écrit un test qui vérifie que la fonction <code>add(a,b)</code> renvoie bien la somme de <code>a</code> et de <code>b</code>. Par exemple, add(4,3) devrait retourner 7</p><pre class="language-python line-numbers"><code>
+
+import unittest
+
+class TestAddition(unittest.TestCase):
+    def test_add_two_numbers(self):
+        self.assertEqual(add(4, 3), 7)  # étant donné qu'on écrit le test en amont, la fonction add n'a pas encore été codée
+
+
+</code></pre><p>Si on exécute le test à cette étape, on va obtenir une erreur qui est normale et voulue puisque la fonction <code>add</code> n'a pas été codée.</p><div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100 dark:border-cyan-800 dark:bg-cyan-950"><svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-cyan-500 dark:stroke-cyan-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg><div class="pl-8 mb-2 mr-8"><p><b>Information</b></p></div><div class="pl-8 mr-8"><p><code>unittest</code> est le module intégré de Python pour créer et exécuter des tests unitaires. Il fournit une infrastructure pour écrire, organiser, et exécuter des tests de manière systématique et automatisée.</p></div></div><ul><li><strong>Etape 2 : Implémenter le code minimal (Green)</strong></li></ul><p>A présent on code la fonction <code>add</code> :</p><pre class="language-python line-numbers"><code>
+
+def add(a,b):
+  return a + b
+
+
+</code></pre><p>A ce stade, si on exécute le test, il devrait réussir.</p><ul><li><strong>Etape 3 : Optimiser le code (Refactor)</strong></li></ul><p>Dans ce cas simple, il n'y a pas vraiment de besoin de refactoriser, car la fonction est déjà concise et claire. Cependant, dans des cas plus complexes, cette étape consiste à nettoyer ou optimiser le code tout en gardant les tests au &quot;vert&quot;.</p><p>Ensuite on peut continuer la méthodologie en entammant un nouveau cycle =&gt; nouvelle étape <em>red</em>, avec l'écriture d'un nouveau test.</p></div></details></div><p>Les <strong>erreurs récurrentes</strong> à ne pas faire en tdd :</p><ul><li>Oublier d'exécuter régulièrement les tests</li><li>Ecrire trop de tests à la fois, ou des tests trop complexes. Il est important d'avancer par petits pas.</li><li>Ecrire des tests qui manquent d'assertions, c'est-à-dire des tests qui ne vérifient pas correctement que le code fonctionne comme souhaité. Exemple d'assertion en Python avec unittest : <code>self.assertEqual(add(2, 3), 5)</code></li></ul><p>Les (nombreux) <strong>avantages</strong> du tdd :</p><ul><li>Amélioration de la qualité du code : code robuste, bien structuré et moins sujet aux bugs.</li><li>Réduction des bugs et régressions : suite de tests automatisée qui garantit que chaque modification du code est validée. Cela aide à prévenir les régressions lorsque de nouvelles fonctionnalités ou des corrections de bugs sont introduites.</li><li>Conception guidée par les tests : cela évite le surdéveloppement ou l'écriture de code inutile, ce qui améliore la clarté et la maintenabilité.</li><li>Conception axée sur les résultats : on se concentre sur les objectifs fonctionnels (ce que le code doit faire) au lieu de se perdre dans les détails de l'implémentation.</li><li>Documentation vivante : les tests eux-mêmes servent de documentation technique vivante qui décrit comment chaque fonctionnalité est censée fonctionner.</li><li>Méthodologie adapté à l'intégration continue : le tdd garantit un flux de développement fluide, avec des livraisons fréquentes et fiables. On avance continuement petit pas par petit pas</li></ul><h2 id="2.-exemple-(perturbant)-de-mise-en-application" tabindex="-1"><a class="header-anchor" href="#2.-exemple-(perturbant)-de-mise-en-application"></a> 2. Exemple (perturbant) de mise en application <a id="section2"></a></h2><p>J'ai lu un exemple bien détaillé (<em>&quot;The Money Example&quot;</em> écrit en java) respectant à la lettre la méthodologie du tdd dans le livre <em>Tesr-Driven Development by example</em> écrit par Kent Beck (disponible au centre de documentation). C'est assez perturbant lorsqu'on n'est pas familier avec le tdd ! Par exemple, pour son premier test :</p><pre class="language-java line-numbers"><code>
+
+  public void testMultiplication(){
+    Dollar five = new Dollar(5);
+    five.times(2);
+    assertEquals(10, five.amount)
+  }
+
+
+</code></pre><p>Kent Beck va au plus simple (comme le veut le tdd) et implémente cette classe Dollar :</p><pre class="language-java line-numbers"><code>
+
+  class Dollar
+
+  Dollar(int amount){ //constructeur qui ne fait rien
+  }
+  void times(int multiplier){ //méthode times utilisée dans le test, mais qui ne fait/renvoie rien
+  }
+  int amount = 10; //Pour passer le test
+
+
+</code></pre><p>On voit ici qu'il n'a pas du tout écrit un code qui permet de multiplier deux nomnres... Il a simplement cherché à réussir le premier test de la manière la plus simple possible !</p><p>En plus, de toutes les règles explicitées dans la partie 1, Kent Beck souligne l'importance d'<strong>éviter la duplication</strong> entre test et code lors de la phase <strong>refactor</strong> de chaque cycle du tdd. C'est ainsi qu'il va revoir le code précédement écrit pour son premier test et l'améliorer (car il y a une répétition du nombre 10 qu'on trouve à la fois dans <code>testMultiplication</code> et dans <code>int amount = 10</code>).</p><p>De plus il montre que le principe de <strong>triangularisation</strong> dans les tests est important. Ce principe veut qu'on parte de tests simples et larges, dans un premier temps. Puis, au fur et à mesure, qu'on les affine pour se concentrer sur les détails en garantissant que l'<strong>ensemble des scénarios sont couverts par des tests</strong>.</p><h2 id="3.-les-principaux-tests-rencontr%C3%A9s-en-informatique" tabindex="-1"><a class="header-anchor" href="#3.-les-principaux-tests-rencontr%C3%A9s-en-informatique"></a> 3. Les principaux tests rencontrés en informatique <a id="section3"></a></h2><p><strong>Test unitaire</strong> : petite portion de code écrite pour vérifier qu'une <strong>partie spécifique</strong> de l'application fonctionne comme prévu. Cela aide à identifier rapidement des erreurs ou régressions (bugs ou comportements incorrects introduits dans une fonctionnalité qui fonctionnait correctement auparavant).</p><p><strong>Test d'intégration</strong> : il vérifie que plusieurs composants ou modules d'une application fonctionnent correctement <strong>ensemble</strong>.</p><p><strong>Test end-to-end (E2E)</strong> : il simule l'interaction complète d'un utilisateur avec l'application dans un environnement réel ou presque réel. Il permet de tester l'<strong>application dans son ensemble</strong>, en vérifiant que toutes les parties du système fonctionnent correctement ensemble, y compris l'interface utilisateur, les services backend, les bases de données, etc</p><h2 id="4.-framework-de-test-pour-javascript" tabindex="-1"><a class="header-anchor" href="#4.-framework-de-test-pour-javascript"></a> 4. Framework de test pour Javascript <a id="section4"></a></h2><p>En faisant quelques recherches, j'ai réalisé qu'il y avait de nombreux outils utilisés pour faciliter l'écriture, l'exécution et l'organisation des tests. Parmi ces outils :</p><ul><li><a href="https://jestjs.io/"><strong>Jest</strong></a> : un framework de tests complet et très populaire développé par Facebook. Ce framework permet d'implémenter des tests unitaires, d'intégration et E2E. Il peut être utilisé pour une multitude de projets dont des projets TypeScript, Node, React, Angular, Vue, ...</li><li><a href="https://jasmine.github.io/"><strong>Jasmine</strong></a> : framework de test complet et populaire. Il offre une syntaxe claire et simple qui se prète bien à l'écriture de tests unitaires et d'intégration. Angular utilise Jasmine comme framework de tests par défaut. On l'utilise souvent en duo avec <strong>Karma</strong> (outil d'exécution des tests qui s'assure que ces tests sont exécutés dans des navigateurs et fournit des rapports sur leur réussite ou échec).</li></ul><p>Pour la suite, nous allons utiliser <em>Jasmine</em>, dans un environnement Angular.</p><h2 id="5.-mise-en-pratique-du-tdd-%3A-morpion-(angular-%2B-jasmine)" tabindex="-1"><a class="header-anchor" href="#5.-mise-en-pratique-du-tdd-%3A-morpion-(angular-%2B-jasmine)"></a> 5. Mise en pratique du tdd : morpion (Angular + Jasmine) <a id="section5"></a></h2><div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950"><details class="group"><summary class="list-none py-0.5"><svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg> <svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg><div class="pl-8 font-bold inline-block group-open:select-text"><p>Structure des tests avec Jamsine (BDD)</p></div><svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path></svg></summary><div class="mx-8 pb-2 cursor-auto select-text"><p>Jasmine s'inspire du concept de <strong>Behavior-Driven Development (BDD)</strong>. Ce concept de développement se concentre sur la spécification du comportement d'une application, <strong>en mettant l'accent sur la compréhension et la communication</strong> entre les développeurs, les testeurs et les parties prenantes. Dans le contexte de Jasmine, le BDD est utilisé pour écrire des tests qui décrivent le comportement attendu de ton code d'une manière claire et lisible.</p><p>Les concepts clés de BDD dans Jasmine :</p><ul><li><strong>describe()</strong> : Utilisé pour regrouper des tests qui concernent une même fonctionnalité ou un même comportement. Il décrit un comportement spécifique.</li><li><strong>it()</strong> : Spécifie un cas de test concret, c’est-à-dire un exemple qui démontre un comportement attendu.</li><li><strong>expect()</strong> : Sert à faire des assertions sur le résultat obtenu pour vérifier si le comportement attendu est bien respecté. Chaque attente (construite avec la fonction <em>expect()</em> qui prend la valeur réelle) est chaînée avec une fonction <strong>Matcher</strong>, qui prend la valeur attendue.</li></ul><p>Exemples simples créés par ChatGPT :</p><pre class="language-javascript line-numbers"><code>
+
+describe("Addition", function() {
+  it("should add two numbers correctly", function() {
+    const result = 2 + 3;
+    expect(result).toBe(5);  // Vérification de la valeur obtenue
+  });
+});
+
+describe('Authentification', function() {
+  let authService;
+
+  beforeEach(function() {
+    authService = new AuthService();  // Initialisation du service d'authentification
+  });
+
+  it('should log in successfully with valid credentials', function() {
+    const result = authService.login('user@example.com', 'password123');
+    expect(result).toBe(true);
+  });
+
+  it('should fail login with invalid credentials', function() {
+    const result = authService.login('user@example.com', 'wrongpassword');
+    expect(result).toBe(false);
+  });
+
+  it('should return user info on successful login', function() {
+    const result = authService.login('user@example.com', 'password123');
+    expect(result.user).toEqual({ email: 'user@example.com' });
+  });
+});
+
+
+</code></pre></div></details></div><div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950"><details class="group"><summary class="list-none py-0.5"><svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg> <svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg><div class="pl-8 font-bold inline-block group-open:select-text"><p>Mise en place de l'environnement Angular + Jasmine</p></div><svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path></svg></summary><div class="mx-8 pb-2 cursor-auto select-text"><p>Créer un nouveau projet avec Angular CLI : <code>ng new nom-du-projet</code></p><p>Un projet Angular est alors généré avec la configuration par défaut, y compris Jasmine et Karma pour les tests unitaires.</p><p>Pour vérifier que Jasmine et Karma sont bien installés, il suffit d'aller dans le dossier <em>angular.json</em> :</p><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Corne-Titouan/mon/temps-3.1/img/verification_karma.png" alt="Vérification installation"> <em>Capture d'écran personnelle (2025)</em></p><p>On peut ensuite voir qu'un fichier <strong>app.component.spec.ts</strong>, associé au composant <strong>&quot;app.component.ts&quot;</strong>, a été créé. C'est dans ce fichier TypeScript, qu'on retrouvera les tests du AppComponent ! Voici à quoi il ressemble dès l'initialisation du projet :</p><pre class="language-javascript line-numbers"><code>
+
+import { TestBed } from '@angular/core/testing';
+import { AppComponent } from './app.component';
+
+describe('AppComponent', () => {
+  beforeEach(async () => {
+    await TestBed.configureTestingModule({
+      imports: [AppComponent],
+    }).compileComponents();
+  });
+
+  it('should create the app', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    expect(app).toBeTruthy();
+  });
+
+  it(`should have the 'morpion' title`, () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    expect(app.title).toEqual('morpion');
+  });
+
+  it('should render title', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, morpion');
+  });
+});
+
+
+</code></pre><p>On remarque l'import de <strong>TestBed</strong> qui est un outil d'Angular permettant de configurer et de manipuler l'environnement de test.</p><p>Pour lancer les tests, il suffit d'exécuter la commande <code>ng test</code> dans le terminal.</p><div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100 dark:border-cyan-800 dark:bg-cyan-950"><svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-cyan-500 dark:stroke-cyan-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg><div class="pl-8 mb-2 mr-8"><p><b>Information</b></p></div><div class="pl-8 mr-8"><ul><li><code>fit</code> (à la place de <code>it</code>) : Focus sur un seul test — celui-ci est le seul à être exécuté, les autres sont ignorés.</li><li><code>xit</code> (à la place de <code>it</code>) : Ignore un test — ce test ne sera pas exécuté, même s'il est défini dans le fichier.</li></ul></div></div></div></details></div><div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950"><details class="group"><summary class="list-none py-0.5"><svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg> <svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg><div class="pl-8 font-bold inline-block group-open:select-text"><p>Code : Générer un premier composant : case</p></div><svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path></svg></summary><div class="mx-8 pb-2 cursor-auto select-text"><p>Je décide tout d'abord de créer un composant <strong>case</strong> (<code>ng generate component case</code>) qui sera répété 9 fois sur le tableau de jeu.</p><p>Ensuite, place au <strong>tdd</strong> :</p><div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950"><details class="group"><summary class="list-none py-0.5"><svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg> <svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg><div class="pl-8 font-bold inline-block group-open:select-text"><p>Premier cycle</p></div><svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path></svg></summary><div class="mx-8 pb-2 cursor-auto select-text"><p><strong>Phase 1 (red)</strong> : On écrit un test qui vérifie que le composant case s'affiche sous forme de box.</p><pre class="language-javascript line-numbers"><code>
+
+describe('CaseComponent', () => {
+  let component: CaseComponent;
+  let fixture: ComponentFixture<casecomponent>;
+
+  // ...
+
+  it('should render a box',() => {
+    const boxElement = fixture.nativeElement.querySelector('.case');
+    expect(boxElement).toBeTruthy(); //vérifie qu'un élément avec la class .case est présent
+  });
+});
+
+
+</casecomponent></code></pre><p>Bien évidemment le test échoue !</p><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Corne-Titouan/mon/temps-3.1/img/test1.png" alt="test 1 échoue"> <em>Capture d'écran (2025)</em></p><p><strong>Phase 2 (green)</strong> : On écrit un code simple de façon à ce que le test réussisse. Pour cela, il suffit de créer un bouton dans le fichier case.component.html :</p><pre class="language-html line-numbers"><code>
+
+&lt;button class="case"&gt;
+&lt;/button&gt;
+
+
+</code></pre><p>Le test passe !</p><p><strong>Phase 3 (refactor)</strong> : Rien besoin de faire à ce stade.</p></div></details></div><div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950"><details class="group"><summary class="list-none py-0.5"><svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg> <svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg><div class="pl-8 font-bold inline-block group-open:select-text"><p>Deuxième cycle</p></div><svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path></svg></summary><div class="mx-8 pb-2 cursor-auto select-text"><p><strong>Phase 1 (red)</strong> : On écrit un nouveau test qui vérifie si la case est cliquable.</p><pre class="language-javascript line-numbers"><code>
+
+describe('CaseComponent', () => {
+  let component: CaseComponent;
+  let fixture: ComponentFixture<casecomponent>;
+
+  // ...
+
+  it('should trigger a click event',() => {
+    spyOn(component,'onClick'); //espion de la méthode onClick (créer d'abord la méthode dans case.component.ts)
+    const boxElement = fixture.nativeElement.querySelector('.case');
+    boxElement.click(); //Simule le click
+    expect(component.onClick).toHaveBeenCalled(); //Vérifie que la méthode `onClick` a été appelée
+  });
+});
+
+
+</casecomponent></code></pre><p>Bien évidemment le test échoue ! (j'arrêterai de le préciser pour les prochains tests, c'est promis !)</p><p><strong>Phase 2 (green)</strong> : On écrit un code simple de façon à ce que le test réussisse :</p><pre class="language-html line-numbers"><code>
+
+&lt;button class="case" (click)="onClick()"&gt;
+&lt;/button&gt;
+
+
+</code></pre><p>Le test passe !</p><p><strong>Phase 3 (refactor)</strong> : Rien besoin de faire à ce stade.</p></div></details></div><div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950"><details class="group"><summary class="list-none py-0.5"><svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg> <svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg><div class="pl-8 font-bold inline-block group-open:select-text"><p>Troisième cycle</p></div><svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path></svg></summary><div class="mx-8 pb-2 cursor-auto select-text"><p><strong>Phase 1 (red)</strong> : On écrit un nouveau test qui vérifie que la box peut seulement prendre les valeurs X, O ou null.</p><pre class="language-javascript line-numbers"><code>
+
+describe('CaseComponent', () => {
+  let component: CaseComponent;
+  let fixture: ComponentFixture<casecomponent>;
+
+  // ...
+
+  it('should accept only values : X or O or empty',()=>{
+    component.value = 'X'; //on assigne une valeur valide
+    expect(component.value).toBe('X'); // Vérifie que la valeur est bien "X"
+
+    component.value = 'O';
+    expect(component.value).toBe('O');
+
+    component.value = null;
+    expect(component.value).toBe(null);
+
+    component.value = 'valeur invalide' as any; // Cas pour tester une valeur invalide
+    expect(component.value).not.toBe('Valeur invalide');  // Vérifie que la valeur invalide n'a pas été acceptée
+  });
+});
+
+
+</casecomponent></code></pre><p><strong>Phase 2 (green)</strong> : On écrit un code simple de façon à ce que le test réussisse :</p><pre class="language-javascript line-numbers"><code>
+
+export class CaseComponent {
+  onClick(){
+  };
+
+  private _value: string | null = null; // Stockage interne de la valeur
+
+  get value(): string | null {
+    return this._value;
+  }
+
+  set value(val: string | null) {
+    if (val === 'X' || val === 'O' || val === null) {
+      this._value = val;
+    } else {
+      console.warn('Valeur invalide : ', val);
+    }
+  }
+
+}
+
+
+</code></pre><p>Le test passe !</p><p><strong>Phase 3 (refactor)</strong> : Rien besoin de faire à ce stade.</p></div></details></div><div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950"><details class="group"><summary class="list-none py-0.5"><svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg> <svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg><div class="pl-8 font-bold inline-block group-open:select-text"><p>Quatrième cycle</p></div><svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path></svg></summary><div class="mx-8 pb-2 cursor-auto select-text"><p><strong>Phase 1 (red)</strong> : On écrit un nouveau test qui changer la valeur d'une case vide (null) après un clic, mais qui empêcher le changement de la valeur si la case contient déjà X ou O.</p><pre class="language-javascript line-numbers"><code>
+
+describe('CaseComponent', () => {
+  let component: CaseComponent;
+  let fixture: ComponentFixture<casecomponent>;
+
+  // ...
+
+  it('should change value when clicked (null --> X or null --> O)',()=>{
+    const boxElement = fixture.nativeElement.querySelector('.case');
+
+    component.value = null; //si on clique sur une case vide, on change sa valeur
+    boxElement.click();
+    expect(component.value).not.toBeNull();
+
+    component.value = 'X'; //si on clique sur une case avec une croix, sa valeur doit rester la même
+    boxElement.click();
+    expect(component.value).toBe('X');
+
+    component.value = 'O'; //si on clique sur une case avec un cercle, sa valeur doit rester la même
+    boxElement.click();
+    expect(component.value).toBe('O');
+  });
+});
+
+
+</casecomponent></code></pre><p><strong>Phase 2 (green)</strong> : On modifie légèrement la méthode <code>onClick</code> :</p><pre class="language-javascript line-numbers"><code>
+
+onClick(){
+    if(this.value === null){
+      this._value = 'X';
+    }
+  };
+
+
+</code></pre><p>Le test passe !</p><p><strong>Phase 3 (refactor)</strong> : Rien besoin de faire à ce stade.</p></div></details></div><div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950"><details class="group"><summary class="list-none py-0.5"><svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg> <svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg><div class="pl-8 font-bold inline-block group-open:select-text"><p>Un dernier test pour le CaseComponent</p></div><svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path></svg></summary><div class="mx-8 pb-2 cursor-auto select-text"><pre class="language-javascript line-numbers"><code>
+
+describe('CaseComponent', () => {
+  let component: CaseComponent;
+  let fixture: ComponentFixture<casecomponent>;
+
+  // ...
+
+  it('should display the correct value inside the box',()=>{
+    const boxElement = fixture.nativeElement.querySelector('.case');
+
+    component.value = 'X';
+    fixture.detectChanges(); //pour que le html affiche bien la nouvelle valeur !
+    expect(boxElement.textContent.trim()).toBe('X');
+
+    component.value = 'O';
+    fixture.detectChanges();
+    expect(boxElement.textContent.trim()).toBe('O');
+
+    component.value = null;
+    fixture.detectChanges();
+    expect(boxElement.textContent.trim()).toBe('');
+  });
+});
+
+
+</casecomponent></code></pre><p>Voici le dernier test que j'ai écrit pour que les fonctionnalités du composant soient aux mieux couvertes. Normalement, dès qu'on change une ligne de code, un des tests doit échouer !</p><div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100 dark:border-cyan-800 dark:bg-cyan-950"><svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-cyan-500 dark:stroke-cyan-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg><div class="pl-8 mb-2 mr-8"><p><b>Information</b></p></div><div class="pl-8 mr-8"><p>La méthode <code>.trim()</code> en JavaScript est utilisée pour supprimer les espaces blancs en début et en fin de chaîne de caractères.</p></div></div></div></details></div></div></details></div><div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950"><details class="group"><summary class="list-none py-0.5"><svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg> <svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg><div class="pl-8 font-bold inline-block group-open:select-text"><p>Code : Générer un second composant : grille</p></div><svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path></svg></summary><div class="mx-8 pb-2 cursor-auto select-text"><p>Je décide ensuite de créer un deuxième composant <strong>grille</strong> (<code>ng generate component grille</code>) qui va afficher les 9 cases du morpion.</p><p>Comme précédemment, place au <strong>tdd</strong> :</p><div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950"><details class="group"><summary class="list-none py-0.5"><svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg> <svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg><div class="pl-8 font-bold inline-block group-open:select-text"><p>Premier cycle</p></div><svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path></svg></summary><div class="mx-8 pb-2 cursor-auto select-text"><p><strong>Phase 1 (red)</strong> : On écrit un premier test qui vérifie qu'on a bien neuf cases dans la grille.</p><pre class="language-javascript line-numbers"><code>
+
+describe('GrilleComponent', () => {
+  let component: GrilleComponent;
+  let fixture: ComponentFixture<grillecomponent>;
+
+  // ...
+
+  it('should render 9 boxes',()=>{
+    const boxElements = fixture.debugElement.queryAll(By.css('.app-case')); //sélectionne tous les éléments app-case
+    expect(boxElements.length).toBe(9); //on vérifie qu'il y en a bien neuf
+  })
+});
+
+
+</grillecomponent></code></pre><p><strong>Phase 2 (green)</strong> : On modifie le code du component pour afficher les neufs cases :</p><p>Dans le fichier grille.component.ts :</p><pre class="language-javascript line-numbers"><code>
+
+import { Component } from '@angular/core';
+import { CaseComponent } from '../case/case.component';
+import { CommonModule } from '@angular/common';
+
+@Component({
+  selector: 'app-grille',
+  standalone: true,
+  imports: [CommonModule, CaseComponent],
+  templateUrl: './grille.component.html',
+  styleUrl: './grille.component.css'
+})
+export class GrilleComponent {
+  cases = Array(9).fill(null); // Tableau pour générer 9 cases
+}
+
+
+</code></pre><p>Dans le fichier grille.component.html :</p><pre class="language-html line-numbers"><code>
+
+&lt;div class="grille"&gt;
+    &lt;app-case *ngFor="let case of cases"&gt;&lt;/app-case&gt;
+&lt;/div&gt;
+
+
+</code></pre><p>Le test passe !</p><p><strong>Phase 3 (refactor)</strong> : Rien besoin de faire à ce stade.</p></div></details></div><p>Pour le bien de tous, j'arrête les explications détaillées à partir d'ici. Le projet <strong>morpion</strong> est disponible sur mon github (lien à venir) !</p></div></details></div><h2 id="6.-utiliser-github-copilot-pour-impl%C3%A9menter-ses-tests" tabindex="-1"><a class="header-anchor" href="#6.-utiliser-github-copilot-pour-impl%C3%A9menter-ses-tests"></a> 6. Utiliser GitHub Copilot pour implémenter ses tests <a id="section6"></a></h2><p>suite à venir (en cours de rédaction)</p><p>Pour ceux qui ne connaissent pas cet outil, GitHub Copilot c'est une IA, plus précisément un LMM (comme chatGPT), utilisé pour le développement informatique. Son plus grand atout : un gain d'efficacité remarquable.</p><p>Cet outil est payant, mais il y a une offre étudiante (<a href="https://docs.github.com/fr/education/explore-the-benefits-of-teaching-and-learning-with-github-education/github-education-for-students/apply-to-github-education-as-a-student">GitHub Copilot Student</a>) qui est gratuite. C'est celle-ci, que j'utilise.</p><p>GitHub Copilot peut être ajouté, en tant qu'extension, à son IDE (par exemple à Visual Studio Code). Quand tu installes Copilot sur VS Code, deux extensions sont ajoutées :</p><ul><li><strong>GitHub Copilot</strong>, qui propose de compléter le code de façon &quot;intelligente&quot; (auto-completion).</li><li><strong>GitHub Copilot Chat</strong>, qui permet d'avoir une <em>conversation</em> avec l'IA via une interface conversationnelle, similaire à ChatGPT.</li></ul><p>GitHub Copilot, une fois intégré à VS Code est un outil très puissant puisqu'il peut scanner le code déjà écrit et proposer des améliorations sur le code existant, ou des suggestions pour continuer le développement.</p><div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950"><details class="group"><summary class="list-none py-0.5"><svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg> <svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg><div class="pl-8 font-bold inline-block group-open:select-text"><p>Exemple illustratif</p></div><svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path></svg></summary><div class="mx-8 pb-2 cursor-auto select-text"><p>GitHub Copilot m'a grandement aidé pour développer la fin du jeu de <strong>morpion</strong>. Voici un exemple de <em>conversation</em> qu'on a pu avoir :</p><h3 id="ma-question" tabindex="-1"><a class="header-anchor" href="#ma-question"></a> Ma question</h3><p>For now, I haven't written anything to end the game ... What do you suggest ?</p><h3 id="la-r%C3%A9ponse-de-github-copilot-chat" tabindex="-1"><a class="header-anchor" href="#la-r%C3%A9ponse-de-github-copilot-chat"></a> La réponse de GitHub Copilot Chat</h3><p>To handle the end of the game in a Tic-Tac-Toe application, you need to implement a method to check for a win or a draw after each move. Here's a step-by-step plan:</p><p>Check for Win: Create a method to check if the current player has won the game. Check for Draw: Create a method to check if the game is a draw. Update Game State: Modify the game state accordingly when a win or draw is detected. Here's an example implementation:</p><pre class="language-javascript line-numbers"><code>
+
+// ...existing code...
+
+// Method to check for a win
+checkWin(): boolean {
+  const winPatterns = [
+    [0, 1, 2], [3, 4, 5], [6, 7, 8], // Rows
+    [0, 3, 6], [1, 4, 7], [2, 5, 8], // Columns
+    [0, 4, 8], [2, 4, 6]             // Diagonals
+  ];
+
+  return winPatterns.some(pattern =>
+    pattern.every(index => this.board[index] === this.currentPlayer)
+  );
+}
+
+// Method to check for a draw
+checkDraw(): boolean {
+  return this.board.every(cell => cell !== null);
+}
+
+// Method to handle the end of the game
+handleEndGame() {
+  if (this.checkWin()) {
+    console.log(`Player ${this.currentPlayer} wins!`);
+    // Additional logic to handle win (e.g., disable further moves)
+  } else if (this.checkDraw()) {
+    console.log("It's a draw!");
+    // Additional logic to handle draw
+  } else {
+    this.changePlayer(this.currentPlayer);
+  }
+}
+
+// Modify the onClick method to include end game check
+onClick(index: number) {
+  if (!this.board[index]) {
+    this.board[index] = this.currentPlayer;
+    this.handleEndGame();
+  }
+}
+
+// ...existing code...
+
+
+</code></pre><p>In this example:</p><p>checkWin checks if the current player has a winning combination. checkDraw checks if all cells are filled without a winner. handleEndGame calls these methods and handles the game state accordingly. The onClick method is modified to call handleEndGame after a move.</p><h3 id="analyse-de-sa-r%C3%A9ponse" tabindex="-1"><a class="header-anchor" href="#analyse-de-sa-r%C3%A9ponse"></a> Analyse de sa réponse</h3><p>L'IA a dirctement compris qu'il s'agissait d'un jeu de <strong>morpion</strong> (Tic-Tac-Toe en anglais). Sa proposition de code est tout à fait cohérente, elle respecte les règles du jeu et elle est complètement en phase avec le code existant (nom de variables, etc)</p></div></details></div><p>GitHub Copilot est excellent pour l'auto-completion, il m'a devancé à de nombreuses reprises. Il m'a été d'une grande utilité pour implémenter le design du jeu, en me proposant des feuilles CSS toutes faites ! Quel grand gain de temps.</p><p>Je sais dorénavant que j'utiliserai GitHub Copilot sur d'autres projets !</p><h2 id="sources-utiles" tabindex="-1"><a class="header-anchor" href="#sources-utiles"></a> Sources utiles</h2><div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100 dark:border-emerald-800 dark:bg-emerald-950"><svg class="absolute w-6 h-6 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-emerald-500 dark:stroke-emerald-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path></svg><div class="pl-8 mb-2 mr-8"><p><b>Liens</b></p></div><div class="pl-8 mr-8"><ul><li><a href="https://vandangogna.medium.com/a-practical-example-using-test-driven-development-88b4536ac574">A Practical Example using Test Driven Development. Source : Vandan Gogna, an IBM Garage expert, sur Medium (2021)</a></li><li><a href="https://github.com/test-driven-development/kent-beck-money-example/blob/master/kent-beck-test-driven-development-by-example.pdf"><em>Test-Driven Development by example</em> de Kent Beck (2003)</a></li><li><a href="https://jasmine.github.io/">Doc officielle du framework Jasmine</a></li><li><a href="https://www.youtube.com/watch?v=2CzwdX3jLX4">Vidéo Youtube : Apprendre GitHub COPILOT en juste 5 MINUTES (2024) de Melvynx</a></li></ul></div></div></article></main><footer class="min-h-[50px] border-t-2 mt-4 border-gray-200 dark:border-neutral-700"><div class="max-w-[1000px] mx-auto px-4"><div class="min-h-[50px] flex justify-center items-center"><p class="text-center">©2025 <b><span style="font-family:Consolas,sans-serif">Do-<span style="color:#4a86e8">It</span></span></b> - Développement, Management et Gestion de projets en IT</p></div></div></footer><script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">window.MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]]},svg:{fontCache:"global"}},document.addEventListener("DOMContentLoaded",(()=>{MathJax.typeset()}))</script><script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">Prism.plugins.NormalizeWhitespace.setDefaults({"remove-trailing":!0,"remove-indent":!0,"left-trim":!0,"right-trim":!0})</script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script></body></html>

@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="robots" content="index, follow">
+
+        <link rel="canonical" href="https://do-it.aioli.ec-m.fr/promos/2023-2024/Vladimir-Jeantroux/mon/temps-2.1/">
+
+        
+        
+
+        <meta name="description" content="Do-It, cours et travaux des élèves de l&#39;école Centrale Méditerranée">
+        <meta property="og:description" content="Do-It, cours et travaux des élèves de l&#39;école Centrale Méditerranée">
+        <meta name="twitter:description" content="Do-It, cours et travaux des élèves de l&#39;école Centrale Méditerranée">
+
+        
+            <meta name="author" content="Vladimir Jeantroux">
+        
+        <meta name="keywords" content="do-it, centrale, centrale méditerranée, ecm, MON, React, Développement Web">
+
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png">
+        <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png">
+
+        <link href="/assets/stylesheets/main.css" rel="stylesheet">
+
+        <meta property="og:title" content="React Native et back end">
+
+        <meta property="og:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta property="og:url" content="https://do-it.aioli.ec-m.fr/promos/2023-2024/Vladimir-Jeantroux/mon/temps-2.1/">
+        <meta property="og:type" content="website">
+
+        <meta name="twitter:card" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:title" content="React Native et back end">
+        <meta name="twitter:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:url" content="https://do-it.aioli.ec-m.fr/promos/2023-2024/Vladimir-Jeantroux/mon/temps-2.1/">
+
+        <title>React Native et back end</title>
+
+        <!-- Prismjs imports
+                - Prism line numbers
+                - Prism toolbar
+        -->
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet">
+        <link id="prism-theme" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+        <!-- Mermaid import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js "></script>
+
+        <script defer="">
+        // Check if a theme is stored in localStorage. If so, use it, otherwise fallback to the system preference.
+        const storedTheme = localStorage.getItem('theme');
+        if (storedTheme) {
+            document.documentElement.classList.toggle("dark", storedTheme === "dark");
+        } else {
+            // Use system color scheme if there is no stored theme preference.
+            document.documentElement.classList.toggle("dark", window.matchMedia("(prefers-color-scheme: dark)").matches);
+        }
+
+        function loadPrismTheme(isDarkMode) {
+            const newTheme = isDarkMode ? 'prism-okaidia.min.css' : 'prism-solarizedlight.min.css';
+            const newLink = document.createElement('link');
+            newLink.rel = 'stylesheet';
+            newLink.id = 'prism-theme';
+            newLink.href = `https://cdn.jsdelivr.net/npm/prismjs/themes/${newTheme}`;
+
+            newLink.onload = () => {
+                // Reapply highlighting after the new theme loads
+                Prism.highlightAll();
+            };
+
+            const existingLink = document.getElementById('prism-theme');
+            if (existingLink) {
+                document.head.replaceChild(newLink, existingLink);
+            } else {
+                document.head.appendChild(newLink);
+            }
+        }
+
+        function setMermaidTheme(isDarkMode) {
+            const theme = isDarkMode ? 'dark' : 'forest';
+            mermaid.initialize({
+                securityLevel: 'loose',
+                theme,
+                startOnLoad: true,
+            });
+        }
+
+        // Toggle dark and light mode and update localStorage accordingly.
+        function toggleDarkMode() {
+            const dark = document.documentElement.classList.contains("dark");
+            const newTheme = dark ? "light" : "dark";
+            localStorage.setItem('theme', newTheme);
+            document.documentElement.classList.toggle("dark", !dark);
+            loadPrismTheme(!dark);
+            setMermaidTheme(!dark);
+        }
+
+        // On initial load, ensure that Prism and Mermaid are initialized using the current theme.
+        const isDark = document.documentElement.classList.contains("dark");
+        loadPrismTheme(isDark);
+        setMermaidTheme(isDark);
+        </script>
+
+    </head>
+
+    <body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000" class="bg-neutral-50 text-neutral-950 dark:bg-neutral-900 dark:text-neutral-50">
+        <header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white dark:bg-neutral-900 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-between items-center">
+                    <a class="mx-2" href="/">Home</a>
+                    <button class="hidden sm:block text-neutral-950 dark:text-neutral-50 hover:bg-neutral-700 hover:text-neutral-50 hover:dark:bg-neutral-300 hover:dark:text-neutral-950 transition-colors p-2 rounded-full duration-800 ease-in-out" onclick="toggleDarkMode()">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 dark:hidden stroke-current">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <path d="M12 2V4" stroke-linecap="round"></path>
+                            <path d="M12 20V22" stroke-linecap="round"></path>
+                            <path d="M4 12L2 12" stroke-linecap="round"></path>
+                            <path d="M22 12L20 12" stroke-linecap="round"></path>
+                            <path d="M19.7778 4.22266L17.5558 6.25424" stroke-linecap="round"></path>
+                            <path d="M4.22217 4.22266L6.44418 6.25424" stroke-linecap="round"></path>
+                            <path d="M6.44434 17.5557L4.22211 19.7779" stroke-linecap="round"></path>
+                            <path d="M19.7778 19.7773L17.5558 17.5551" stroke-linecap="round"></path>
+                        </svg>
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 stroke-current hidden dark:block">
+                            <path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </button>
+                    <div class="flex items-center gap-4 sm:gap-6 ">
+                        <a class="" href="/cs">CS</a>
+                        <a class="" href="/pok">POK</a>
+                        <a class="" href="/mon">MON</a>
+                        <a class="" href="/projets">Projets</a>
+                        <a class="hidden sm:block" href="/promos">Promos</a>
+                        <a href="/search">
+                            <svg class="h-5 aspect-square stroke-neutral-950 dark:stroke-neutral-300 fill-none stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+                            </svg>
+                        </a>
+                        <a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank">
+                            <svg class="h-5 aspect-square dark:stroke-neutral-300 dark:fill-neutral-300" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body="">
+            
+<article class="relative">
+<h1 class="mb-1">React Native et back end</h1>
+<div class="mb-4">
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Tags : </div>
+            <ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags">
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">MON</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">React</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">Développement Web</li>
+                
+
+            </ul>
+
+            
+            <div class="hidden" data-pagefind-meta="Type" aria-hidden="true">
+                
+                    
+                        <span data-pagefind-filter="Type">MON</span>
+                    
+                
+                    
+                
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Auteur : </div>
+            <ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs">
+                
+                    <li class="bg-blue-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Auteurs">Vladimir Jeantroux</li>
+                
+            </ul>
+        </div>
+    
+
+    
+        <div class="absolute top-0 right-0">
+            <span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2 text-neutral-950" data-pagefind-filter="Année">
+                2023-2024
+            </span>
+        </div>
+    
+</div>
+
+
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100 dark:border-purple-800 dark:bg-purple-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-purple-500 dark:stroke-purple-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/promos/2023-2024/Vladimir-Jeantroux/">Vladimir Jeantroux</a><span class="px-1">/</span><a href="/promos/2023-2024/Vladimir-Jeantroux/mon/">MON de Vladimir Jeantroux</a><span class="px-1">/</span><a href="/promos/2023-2024/Vladimir-Jeantroux/mon/temps-2.1/">React Native et back end</a>
+
+</div>
+</div>
+
+
+
+
+<h2 id="description" tabindex="-1"><a class="header-anchor" href="#description"></a> Description</h2>
+<p>Ce MON vise à enseigner des bases de React Native aux débutants. React Native est un framework open-source de Facebook permettant de développer des applications iOS et Android, grâce aux langages Javascript et React. L'intérêt principal de React Native est qu'il permet de gérer à la fois le front et le back-end, en faisant un outil très polyvalent.</p>
+<p>J'ai choisi ce MON pour pouvoir approfondir et développer du front et back-end sur mon projet 3A, l'application <a href="https://do-it.aioli.ec-m.fr/projets/2023-2024/Killer/">Killer</a>.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100 dark:border-pink-800 dark:bg-pink-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-pink-500 dark:stroke-pink-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Prérequis</b></p>
+</div><div class="pl-8 mr-8">
+<p>Pré-requis :</p>
+<p>Des bases de Javascript et de React.js sont requises pour mieux comprendre le contenu de ce MON. Pas de problème pour ceux ayant suivi le cours dev web 0 to hero, mais sinon il y a quelques MON des temps et années précédentes traitant de React.js.</p>
+<p>Outils requis :</p>
+<ul>
+<li>Un IDE (Visual Studio Code, par exemple) pour écrire et éditer le code</li>
+<li>Node.js pour pouvoir exécuter le code et créer un serveur local</li>
+<li>Expo Go sur son téléphone pour éventuellement tester l'application (Ne fonctionne que sur les réseaux wifi privés, sinon il faut télécharger un émulateur Android sur son ordinateur.)</li>
+</ul>
+</div>
+</div>
+<h2 id="la-syntaxe-de-react-native" tabindex="-1"><a class="header-anchor" href="#la-syntaxe-de-react-native"></a> La syntaxe de React Native</h2>
+<p>La syntaxe de React Native repose principalement sur l'utilisation de composants, écrits en JavaScript ou TypeScript, qui représentent des éléments d'interface utilisateur. Ces composants sont créés en utilisant la bibliothèque React et sont structurés de manière modulaire et réutilisable.</p>
+<p>Par exemple, disons que je veux coder une page comportant simplement le texte &quot;Bonjour, ça va ?&quot;.</p>
+<pre class="language-js line-numbers"><code>
+
+import React from 'react';
+import { View, Text,} from 'react-native';
+
+const Page = () => {
+  return (
+    <View>
+      <Text>Bonjour, ça va ?</Text>
+    </View>
+  );
+};
+
+export default Page
+
+
+</code></pre><p>Ce qu'on a fait, dans l'ordre : on commence tout d'abord par importer les composants dont on a besoin, ici 'React' pour créer les composants, ainsi que les composants 'View', qui est un conteneur de base et 'Text', permettant d'afficher du texte. On crée ensuite le composant &quot;Page&quot; qui ne prend aucun argument, et à l'intérieur on crée un espace d'affichage contenant un élément textuel qui affiche &quot;Bonjour, ça va ?&quot; La dernière ligne permet d'exporter le composant &quot;Page&quot;, et signifie qu'il pourra être réutilisé ailleurs.</p>
+<h2 id="une-application-simple" tabindex="-1"><a class="header-anchor" href="#une-application-simple"></a> Une application simple</h2>
+<p>Ajoutons maintenant un composant plus complexe : une boîte où l'utilisateur peut taper, ainsi qu'un bouton.</p>
+<pre class="language-js line-numbers"><code>
+
+import React, { useState } from 'react';
+import { View, Text, Button, TextInput} from 'react-native';
+
+const App = () => {
+  const [userInput, setUserInput] = useState('');
+
+  const handleInputChange = (text) => {
+    setUserInput(text);
+  };
+
+  const clearInput = () => {
+    setUserInput('');
+  };
+
+  return (
+    <View>
+      <Text>Bonjour, ça va ?</Text>
+      <TextInput placeholder="Entrez votre texte ici" onChangeText="{handleInputChange}" value="{userInput}" multiline="{true}">
+      <Text>Vous avez écrit : {userInput}</Text>
+      <Button title="Effacer" onPress="{clearInput}">
+    </Button></TextInput></View>
+  );
+};
+
+
+</code></pre><p>On commence par importer 'useState' qui est un hook qui permet de gérer l'état dans les composants fonctionnels. On initialise ainsi une variable 'userInput' pour stocker le texte saisi par l'utilisateur. 'setUserInput' est une fonction qui permet de mettre à jour cette variable d'état.</p>
+<p>On définit une fonction 'handleInputChange' qui prend le texte entré par l'utilisateur en paramètre et met à jour l'état 'userInput' en utilisant 'setUserInput'.</p>
+<p>Dans 'View', on ajoute l'objet 'TextInput', et les changements de texte seront gérés par la fonction 'handleInputChange', et le texte de l'utilisateur sera même réaffiché en bas de la boîte de texte. On a aussi créé un bouton qui lorsqu'il est pressé, efface le texte écrit grâce à la fonction 'clearInput', définie au préalable.
+Cet exemple permet de montrer que React Native permet de gérer des éléments visuels, ainsi que le stockage d'informations.</p>
+<p>Notons qu'il est aussi possible d'ajouter une Stylesheet CSS dans un fichier React pour gérer l'apparence de la page.</p>
+<h2 id="projet-%3A-base-de-donn%C3%A9es" tabindex="-1"><a class="header-anchor" href="#projet-%3A-base-de-donn%C3%A9es"></a> Projet : Base de données</h2>
+<p>Pour aller plus loin, créons une base de données grâce à SQLite. Pour commencer, créons un projet avec la commande suivante :</p>
+<pre class="line-numbers"><code>
+
+npx create-expo-app my-app
+
+
+</code></pre><p>Un nouveau dossier est alors créé, et on va travailler dans le fichier 'App.js', où on va coder. On lance ensuite pour installer les composants nécessaires :</p>
+<pre class="line-numbers"><code>
+
+npm install
+
+
+</code></pre><p>On pourra par la suite lancer le projet avec</p>
+<pre class="line-numbers"><code>
+
+npx expo start
+
+
+</code></pre><p>On va commencer par créer une manière d'ajouter des entrées à la base de données.</p>
+<pre class="language-js line-numbers"><code>
+
+const addName = () => {
+  db.transaction(tx => {
+    tx.executeSql('INSERT INTO names (name) values (?)', [currentName],
+      (txObj, resultSet) => {
+        let existingNames = [...names];
+        existingNames.push({ id: resultSet.insertId, name: currentName});
+        setNames(existingNames);
+        setCurrentName(undefined);
+      },
+      (txObj, error) => console.log(error)
+    );
+  });
+}
+
+
+</code></pre><p>Cette fonction sera liée à un espace où l'utilisateur peut taper du texte. La fonction va exécuter une requête SQL pour insérer le nom que l'utilisateur a tapé dans la base de données. Le '?' est remplacé par le nom entré par l'utilisateur. En cas de succès de la requête, une fonction reçoit l'objet de la transaction avec la base de données (le nom de l'objet), et le résultat de la requête, et va ajouter un nouvel objet au tableau des noms.</p>
+<pre class="language-js line-numbers"><code>
+
+const deleteName = (id) => {
+  db.transaction(tx => {
+    tx.executeSql('DELETE FROM names WHERE id = ?', [id],
+      (txObj, resultSet) => {
+        if (resultSet.rowsAffected > 0) {
+          let existingNames = [...names].filter(name => name.id !== id);
+          setNames(existingNames);
+        }
+      },
+      (txObj, error) => console.log(error)
+    );
+  });
+};
+
+const showNames = () => {
+return names.map((name, index) => {
+  return (
+    <View key="{index}" style="{styles.row}">
+      <Text>{name.name}</Text>
+      <Button title="Delete" onPress="{()" ==""> deleteName(name.id)} />
+    </Button></View>
+  );
+});
+};
+
+
+</code></pre><p>On ajoute aussi les fonctions pour supprimer une entrée, ainsi que pour afficher les entrées existantes.</p>
+<pre class="language-js line-numbers"><code>
+
+return (
+    <View style="{styles.container}">
+      <TextInput value="{currentName}" placeholder="name" onChangeText="{setCurrentName}">
+      <Button title="Add Name" onPress="{addName}">
+      {showNames()}
+      <StatusBar style="auto">
+    </StatusBar></Button></TextInput></View>
+  );
+
+
+</code></pre><p>Ce dernier bloc de code permet de tout afficher : un espace d'entrée du texte, un bouton pour ajouter le nom, ainsi que la liste des noms 'showNames'. Ces éléments permettent de retourner une base de données basique.</p>
+<p>Le source code complet peut être trouvé <a href="https://github.com/chelseafarley/expo-sqlite-tutorial">ici</a>. Il comporte des fonctions plus avancées comme l'importation et l'exportation de bases de données, mais je ne me sens pas assez à l'aise en React pour pouvoir l'expliquer dans ce MON.</p>
+<h2 id="bibliographie" tabindex="-1"><a class="header-anchor" href="#bibliographie"></a> Bibliographie</h2>
+<ul>
+<li>Documentation de React Native <a href="https://reactnative.dev/docs/getting-started">https://reactnative.dev/docs/getting-started</a></li>
+<li>React Native Course <a href="https://www.youtube.com/watch?v=obH0Po_RdWk">https://www.youtube.com/watch?v=obH0Po_RdWk</a></li>
+<li>Local SQLite Database for Expo React Native App with Import and Export Database from Device Files <a href="https://www.youtube.com/watch?v=1kSLd9oQX7c">https://www.youtube.com/watch?v=1kSLd9oQX7c</a></li>
+<li>Installer un émulateur Android (Nécessite un pc puissant) <a href="https://docs.expo.dev/workflow/android-studio-emulator/">https://docs.expo.dev/workflow/android-studio-emulator/</a></li>
+<li>Faire tourner un projet Expo sur un émulateur Android <a href="https://www.brainstormcreative.co.uk/react-native-expo/how-to-run-an-expo-app-on-android-emulator/">https://www.brainstormcreative.co.uk/react-native-expo/how-to-run-an-expo-app-on-android-emulator/</a></li>
+<li>MON précédents sur React.js de <a href="https://do-it.aioli.ec-m.fr/promos/2022-2023/Duroy-Thomas/mon/MON_3.1/">Thomas Duroy</a> et <a href="https://do-it.aioli.ec-m.fr/promos/2023-2024/Rioual-Lucas/mon/temps-2.1/">Lucas Rioual</a>.</li>
+</ul>
+<h2 id="horodatage" tabindex="-1"><a class="header-anchor" href="#horodatage"></a> Horodatage</h2>
+<blockquote>
+<p>Mardi 5/12 - Mercredi 6/12 - Jeudi 7/12 : Visionnage de la vidéo React Native Course (2h-2h-1h)
+Jeudi 7/12 : Visionnage de la vidéo Créer une base de données (1h)
+Jeudi 7/12 : Application simple (1h)
+Jeudi 7/12 : Codage de la base de données (2h30)</p>
+</blockquote>
+
+
+
+</article>
+
+        </main>
+
+        <footer class="min-h-[50px] border-t-2 mt-4 border-gray-200 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-center items-center">
+                    <p class="text-center">
+                        ©2025 <b><span style="font-family: Consolas, sans-serif;">Do-<span style="color: #4a86e8">It</span></span></b> - Développement, Management et Gestion de projets en IT
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- MathJax import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">
+            window.MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']], // Delimiters for inline math
+                    displayMath: [['$$', '$$'], ['\\[', '\\]']] // Delimiters for block math
+                },
+                svg: {
+                    fontCache: 'global' // Use global font cache for SVG output
+                }
+            };
+            document.addEventListener('DOMContentLoaded', () => {
+                MathJax.typeset(); // Ensures MathJax processes the content after the page loads
+            });
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">
+            Prism.plugins.NormalizeWhitespace.setDefaults({
+                'remove-trailing': true,
+                'remove-indent': true,
+                'left-trim': true,
+                'right-trim': true,
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script>
+    </body>
+</html>

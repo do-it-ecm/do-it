@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="robots" content="index, follow">
+
+        <link rel="canonical" href="https://do-it.aioli.ec-m.fr/promos/2023-2024/Beyaert-Alexandre/mon/temps-2.2/">
+
+        
+        
+
+        <meta name="description" content="Un MON traitant de l&#39;utilisation des bibliothèques Python pour la Data Science.">
+        <meta property="og:description" content="Un MON traitant de l&#39;utilisation des bibliothèques Python pour la Data Science.">
+        <meta name="twitter:description" content="Un MON traitant de l&#39;utilisation des bibliothèques Python pour la Data Science.">
+
+        
+            <meta name="author" content="Alexandre Beyaert">
+        
+        <meta name="keywords" content="do-it, centrale, centrale méditerranée, ecm, MON">
+
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png">
+        <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png">
+
+        <link href="/assets/stylesheets/main.css" rel="stylesheet">
+
+        <meta property="og:title" content="Bibliothèques Python pour la Data Science (Partie 2/2) : Seaborn, Scikit Learn">
+
+        <meta property="og:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta property="og:url" content="https://do-it.aioli.ec-m.fr/promos/2023-2024/Beyaert-Alexandre/mon/temps-2.2/">
+        <meta property="og:type" content="website">
+
+        <meta name="twitter:card" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:title" content="Bibliothèques Python pour la Data Science (Partie 2/2) : Seaborn, Scikit Learn">
+        <meta name="twitter:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:url" content="https://do-it.aioli.ec-m.fr/promos/2023-2024/Beyaert-Alexandre/mon/temps-2.2/">
+
+        <title>Bibliothèques Python pour la Data Science (Partie 2/2) : Seaborn, Scikit Learn</title>
+
+        <!-- Prismjs imports
+                - Prism line numbers
+                - Prism toolbar
+        -->
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet">
+        <link id="prism-theme" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+        <!-- Mermaid import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js "></script>
+
+        <script defer="">
+        // Check if a theme is stored in localStorage. If so, use it, otherwise fallback to the system preference.
+        const storedTheme = localStorage.getItem('theme');
+        if (storedTheme) {
+            document.documentElement.classList.toggle("dark", storedTheme === "dark");
+        } else {
+            // Use system color scheme if there is no stored theme preference.
+            document.documentElement.classList.toggle("dark", window.matchMedia("(prefers-color-scheme: dark)").matches);
+        }
+
+        function loadPrismTheme(isDarkMode) {
+            const newTheme = isDarkMode ? 'prism-okaidia.min.css' : 'prism-solarizedlight.min.css';
+            const newLink = document.createElement('link');
+            newLink.rel = 'stylesheet';
+            newLink.id = 'prism-theme';
+            newLink.href = `https://cdn.jsdelivr.net/npm/prismjs/themes/${newTheme}`;
+
+            newLink.onload = () => {
+                // Reapply highlighting after the new theme loads
+                Prism.highlightAll();
+            };
+
+            const existingLink = document.getElementById('prism-theme');
+            if (existingLink) {
+                document.head.replaceChild(newLink, existingLink);
+            } else {
+                document.head.appendChild(newLink);
+            }
+        }
+
+        function setMermaidTheme(isDarkMode) {
+            const theme = isDarkMode ? 'dark' : 'forest';
+            mermaid.initialize({
+                securityLevel: 'loose',
+                theme,
+                startOnLoad: true,
+            });
+        }
+
+        // Toggle dark and light mode and update localStorage accordingly.
+        function toggleDarkMode() {
+            const dark = document.documentElement.classList.contains("dark");
+            const newTheme = dark ? "light" : "dark";
+            localStorage.setItem('theme', newTheme);
+            document.documentElement.classList.toggle("dark", !dark);
+            loadPrismTheme(!dark);
+            setMermaidTheme(!dark);
+        }
+
+        // On initial load, ensure that Prism and Mermaid are initialized using the current theme.
+        const isDark = document.documentElement.classList.contains("dark");
+        loadPrismTheme(isDark);
+        setMermaidTheme(isDark);
+        </script>
+
+    </head>
+
+    <body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000" class="bg-neutral-50 text-neutral-950 dark:bg-neutral-900 dark:text-neutral-50">
+        <header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white dark:bg-neutral-900 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-between items-center">
+                    <a class="mx-2" href="/">Home</a>
+                    <button class="hidden sm:block text-neutral-950 dark:text-neutral-50 hover:bg-neutral-700 hover:text-neutral-50 hover:dark:bg-neutral-300 hover:dark:text-neutral-950 transition-colors p-2 rounded-full duration-800 ease-in-out" onclick="toggleDarkMode()">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 dark:hidden stroke-current">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <path d="M12 2V4" stroke-linecap="round"></path>
+                            <path d="M12 20V22" stroke-linecap="round"></path>
+                            <path d="M4 12L2 12" stroke-linecap="round"></path>
+                            <path d="M22 12L20 12" stroke-linecap="round"></path>
+                            <path d="M19.7778 4.22266L17.5558 6.25424" stroke-linecap="round"></path>
+                            <path d="M4.22217 4.22266L6.44418 6.25424" stroke-linecap="round"></path>
+                            <path d="M6.44434 17.5557L4.22211 19.7779" stroke-linecap="round"></path>
+                            <path d="M19.7778 19.7773L17.5558 17.5551" stroke-linecap="round"></path>
+                        </svg>
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 stroke-current hidden dark:block">
+                            <path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </button>
+                    <div class="flex items-center gap-4 sm:gap-6 ">
+                        <a class="" href="/cs">CS</a>
+                        <a class="" href="/pok">POK</a>
+                        <a class="" href="/mon">MON</a>
+                        <a class="" href="/projets">Projets</a>
+                        <a class="hidden sm:block" href="/promos">Promos</a>
+                        <a href="/search">
+                            <svg class="h-5 aspect-square stroke-neutral-950 dark:stroke-neutral-300 fill-none stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+                            </svg>
+                        </a>
+                        <a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank">
+                            <svg class="h-5 aspect-square dark:stroke-neutral-300 dark:fill-neutral-300" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body="">
+            
+<article class="relative">
+<h1 class="mb-1">Bibliothèques Python pour la Data Science (Partie 2/2) : Seaborn, Scikit Learn</h1>
+<div class="mb-4">
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Tag : </div>
+            <ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags">
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">MON</li>
+                
+
+            </ul>
+
+            
+            <div class="hidden" data-pagefind-meta="Type" aria-hidden="true">
+                
+                    
+                        <span data-pagefind-filter="Type">MON</span>
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Auteur : </div>
+            <ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs">
+                
+                    <li class="bg-blue-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Auteurs">Alexandre Beyaert</li>
+                
+            </ul>
+        </div>
+    
+
+    
+        <div class="absolute top-0 right-0">
+            <span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2 text-neutral-950" data-pagefind-filter="Année">
+                2023-2024
+            </span>
+        </div>
+    
+</div>
+
+<p class="mb-4 text-lg">Un MON traitant de l'utilisation des bibliothèques Python pour la Data Science.</p>
+
+
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100 dark:border-purple-800 dark:bg-purple-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-purple-500 dark:stroke-purple-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/promos/2023-2024/Beyaert-Alexandre/">Alexandre BEYAERT</a><span class="px-1">/</span><a href="/promos/2023-2024/Beyaert-Alexandre/mon/">MON de Alexandre Beyaert</a><span class="px-1">/</span><a href="/promos/2023-2024/Beyaert-Alexandre/mon/temps-2.2/">Bibliothèques Python pour la Data Science (Partie 2/2) : Seaborn, Scikit Learn</a>
+
+</div>
+</div>
+
+
+
+
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100 dark:border-pink-800 dark:bg-pink-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-pink-500 dark:stroke-pink-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Prérequis</b></p>
+</div><div class="pl-8 mr-8">
+<p><strong>Niveau :</strong> Moyen
+<strong>Prérequis :</strong> Bases en Python</p>
+</div>
+</div>
+<h2 id="sommaire" tabindex="-1"><a class="header-anchor" href="#sommaire"></a> Sommaire</h2>
+<ol>
+<li>Introduction</li>
+<li>Bibliothèque Seaborn</li>
+<li>Bibliothèque Scikit Learn</li>
+<li>Application : combinaison des bibliothèques</li>
+<li>Conclusion</li>
+<li>Bibliographie</li>
+</ol>
+<h2 id="1.-introduction" tabindex="-1"><a class="header-anchor" href="#1.-introduction"></a> 1. Introduction</h2>
+<p>La vocation de ce MON est d'introduire de façon non exhaustive aux bibliothèques python utiles pour la DataScience.
+Ce second MON introduit aux bibliothèques Seaborn et Scikit Leanr qui servent respectivement à la <strong>visualisation des données et au Machine Learning.</strong></p>
+<p>Le MON 2.2 est une suite du <a href="https://do-it.aioli.ec-m.fr/promos/2023-2024/Beyaert-Alexandre/mon/temps-2.1/">MON 2.1</a> qui lui introduit les bibliothèques NumPy, Matplotlib et Pandas.</p>
+<h2 id="2.-biblioth%C3%A8que-seaborn" tabindex="-1"><a class="header-anchor" href="#2.-biblioth%C3%A8que-seaborn"></a> 2. Bibliothèque Seaborn</h2>
+<pre class="language-python line-numbers"><code>
+
+import seaborn as sns
+
+
+</code></pre><p>La bibliothèque Seaborn va permettre d'obtenir de la <strong>visualisation avancée</strong> en comparaison à Matplotlib et ce en simplifiant les lignes de code.</p>
+<p>Reprenons l'exemple du <strong>dataset iris</strong> <em>(cf MON 2.1)</em>.
+En lisant ce dataset sous forme de dataframe pandas, il va être possible en une seule ligne de code de produire une figure montrant toutes les différentes relations entre nos différentes variables.</p>
+<pre class="language-python line-numbers"><code>
+
+chemin = 'C:\MOOC_Data_Sciences\Machine_Learnia\iris.csv'
+iris = pd.read_csv(chemin)
+sns.pairplot(iris)
+
+
+</code></pre><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beyaert-Alexandre/mon/temps-2.2/pairplot.png" alt="Figure des relations entre variables du dataset iris"></p>
+<p>Pour aller plus loin, il va même être possible d'analyser les sépales et pétales par variété de fleur grâce à l'ajout d'un seul paramètre.</p>
+<pre class="language-python line-numbers"><code>
+
+sns.pairplot(iris, hue = 'variety')
+
+
+</code></pre><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beyaert-Alexandre/mon/temps-2.2/pairplot_variety.png" alt="Distinction par variété"></p>
+<p>Les possibilités de seaborn sont multiples, <a href="https://seaborn.pydata.org/">la documentation officielle</a> répertorie les différents graphiques réalisables en fonction des besoins :</p>
+<ul>
+<li>distributions</li>
+<li>regressions</li>
+<li>catégories...</li>
+</ul>
+<p>Et ces possibilités ont presque toujours la même structure : <strong>sns.fonction(x, y, data, hue, size, style)</strong></p>
+<p>À titre d'exemple, reprenons désormais <strong>le dataset titanic.</strong> Il va être possible d'étudier la répartition des âges des passagers en fonction de leur classe et de leur sexe, sous forme de categorical plot ou de box plot.</p>
+<pre class="language-python line-numbers"><code>
+
+titanic = sns.load_dataset('titanic')
+sns.catplot(x='pclass', y='age', data=titanic, hue='sex')
+sns.boxplot(x='pclass', y='age', data=titanic, hue='sex')
+
+
+</code></pre><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beyaert-Alexandre/mon/temps-2.2/catplot_titanic.png" alt="Répartition des passagers"></p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beyaert-Alexandre/mon/temps-2.2/boxplot_titanic.png" alt="Répartition des passagers"></p>
+<p>On va également pouvoir visualiser la relation entre 2 distributions.</p>
+<pre class="language-python line-numbers"><code>
+
+sns.jointplot(x='age', y='fare', data=titanic, kind='hex')
+
+
+</code></pre><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beyaert-Alexandre/mon/temps-2.2/jointplot_titanic.png" alt="Tarif en fonction de l'âge"></p>
+<p>Ou encore visualiser les matrices de corrélation sous forme de heatmap.</p>
+<p><strong>NB :</strong> Attention, il s'avère au préalable nécessaire de supprimer les colonnes contenant autre chose que des int ou float ou de convertir des colonnes. <em>(cf partie 3.3 Préparation des données)</em></p>
+<pre class="language-python line-numbers"><code>
+
+sns.heatmap(titanic.corr())
+
+
+</code></pre><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beyaert-Alexandre/mon/temps-2.2/heatmap_titanic.png" alt="Heatmap de corrélation"></p>
+<h2 id="3.-biblioth%C3%A8que-scikit-learn" tabindex="-1"><a class="header-anchor" href="#3.-biblioth%C3%A8que-scikit-learn"></a> 3. Bibliothèque Scikit Learn</h2>
+<p>La bibliothèque Scikit Learn va permettre d'<strong>effectuer du Machine Learning.</strong></p>
+<p>C'est cette bibliothèque qui répertorie toutes les méthodes d'apprentissage et prêtes à l'emploi. <a href="https://scikit-learn.org/stable/#">La documentation Scikit-Learn</a> va alors être très utile. Elle répertorie ces différentes méthodes : classification, régression, clustering... et explique leur fonctionnement. Ainsi, il n'y aura plus qu'à appeler les différentes fonctions déjà codées en python orienté objet pour effectuer du Machine Learning.</p>
+<p>Les programmes utilisant Sckit Learn auront tous le même schéma :</p>
+<ul>
+<li>Sélection du modèle et précision de ses hyperpramètres : <strong>model = LinearRegression(...)</strong></li>
+<li>Entraînement du modèle : <strong>model.fit(X, Y)</strong></li>
+<li>Évaluation du modèle : <strong>model.score(X, Y)</strong></li>
+<li>Utilisation du modèle : <strong>model.predict(X)</strong></li>
+</ul>
+<h3 id="3.1-r%C3%A9gression" tabindex="-1"><a class="header-anchor" href="#3.1-r%C3%A9gression"></a> 3.1 Régression</h3>
+<p>Voici ci-dessous une façon de réaliser une régression linéaire en suivante le schéma <strong>&quot;choix du modèle - entraînement - évaluation - utilisation&quot;</strong>.</p>
+<pre class="language-python line-numbers"><code>
+
+## Création des données
+np.random.seed(0)
+X = np.linspace(0, 10, 100).reshape(100, 1)
+Y = X + np.random.randn(100, 1)
+
+## Modèle
+from sklearn.linear_model import LinearRegression
+
+model = LinearRegression()
+model.fit(X, Y)
+model.score(X, Y) ## renvoie le coefficient de détermination
+predictions = model.predict(X) ## renvoie un tableau Numpy des prédictions
+
+## Visualisation
+plt.scatter(X, Y)
+plt.plot(X,predictions, c='r')
+
+
+</code></pre><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beyaert-Alexandre/mon/temps-2.2/regression_lineaire.png" alt="Régression linéaire"></p>
+<p>Pour s'adapter à un cas où la relation entre les données ne serait plus linéaire, il ne suffira que de changer de modèle. Nous pourrions envisager le modèle SVR <em>(Support Vector Regression)</em>.</p>
+<p><strong>NB :</strong> En regardant la <a href="https://scikit-learn.org/stable/modules/generated/sklearn.svm.SVR.html">documentation de ce modèle</a>, on comprend que pour ce modèle, seuls 2 hyperparamètres peuvent être ajustés :</p>
+<ul>
+<li>C : paramètre de régularisation. Il détermine la marge d'erreur tolérée par le modèle. (attention au surapprentissage si celui-ci est choisi trop grand)</li>
+<li>epsilon : l'erreur par rapport à la prédiction, comme en prépa lors de la détermination de limites, il s'agit du tunnel de tolérance autour d'une courbe. Plus epsilon est grand, plus le modèle est tolérant aux erreurs.</li>
+</ul>
+<pre class="language-python line-numbers"><code>
+
+...
+Y = X**2 + np.random.randn(100, 1)
+
+## Modèle
+from sklearn.svm import SVR
+model = SVR(C=100)
+...
+
+
+</code></pre><p>Et voici notre nouvelle régression.</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beyaert-Alexandre/mon/temps-2.2/SVR.png" alt="Régression SVR"></p>
+<h3 id="3.2-classification" tabindex="-1"><a class="header-anchor" href="#3.2-classification"></a> 3.2 Classification</h3>
+<p>Basons nous une nouvelle fois le dataset titanic pour effectuer de la classification et ainsi déterminer les chances de survie d'un passager.</p>
+<p>Un modèle approprié pourrait être le <a href="https://scikit-learn.org/stable/modules/neighbors.html#nearest-neighbors-classification">KNeighborsClassifier</a>. Celui-ci va analyser les K plus proches voisins d'un élément et tirer la classification la plus probable qui en ressort.</p>
+<p>Commençons par <strong>importer</strong> et <strong>filtrer</strong> le dataset.</p>
+<pre class="language-python line-numbers"><code>
+
+titanic = sns.load_dataset('titanic')
+
+titanic = titanic[['survived', 'pclass', 'sex', 'age']]
+titanic.dropna(axis=0, inplace=True)
+titanic['sex'].replace(['male', 'female'], [0, 1], inplace=True)
+
+
+</code></pre><p>Puis <strong>implémentons</strong> le modèle.</p>
+<pre class="language-python line-numbers"><code>
+
+from sklearn.neighbors import KNeighborsClassifier
+
+model = KNeighborsClassifier()
+
+Y = titanic['survived']
+X = titanic[['pclass', 'sex', 'age']]
+
+model.fit(X, Y)
+model.score(X, Y)
+model.predict(X)
+
+
+</code></pre><p>Le score qui en ressort est alors de 84% : les prédictions du modèle sont bonnes dans 84% des cas et la fonction model.predict(X) renvoie un tableau de 0 et de 1 indiquant les passagers qui survivraient.</p>
+<p>Pour aller plus loin, créons une fonction permettant de déterminer si un individu lambda aurait survécu et avec quelle probabilité.</p>
+<pre class="language-python line-numbers"><code>
+
+def survie(model, pclass, sex, age):
+    x = np.array([pclass, sex, age]).reshape(1, 3)
+    return(model.predict(x), model.predict_proba(x))
+
+
+</code></pre><p>Ainsi en testant la fonction sur moi : pclass=3, sex=0, age=24 ; le modèle prédit que je ne survivrai pas avec une probabilité de 80%.</p>
+<p>En suivant ces précédentes manipulations, on biaise toutefois le résultat puisque l'on teste notre modèle sur les données d'entraînement. En pratique, il est <strong>nécessaire de diviser notre dataset en données d'entraînement et données de test.</strong></p>
+<pre class="language-python line-numbers"><code>
+
+from sklearn.model_selection import train_test_split
+
+X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.2)
+
+model = KNeighborsClassifier(n_neighbors=1) # On choisit le nombre de plus proches voisins
+
+model.fit(X_train, Y_train)
+print('Train score:', model.score(X_train, Y_train))
+print('Test score:', model.score(X_test, Y_test))
+
+
+</code></pre><p>En sortie, on observe que sur les données d'entraînement l'algorithme est fiable à 89% contre 79% pour les données de test.</p>
+<p>Puisque l'on choisit le nombre de plus proches voisins, vient alors la question de l'optimisation de cet hyperparamètre et des performances de l'algorithme.</p>
+<p>Il peut être intéressant de diviser notre dataset en plusieurs parties dont l'une d'entre elle sert à la validation. En réitérant cette étape plusieurs fois, nous pourrions alors déterminer la meilleure façon d'optimiser l'algorithme.</p>
+<pre class="language-python line-numbers"><code>
+
+from sklearn.model_selection import validation_curve
+
+model = KNeighborsClassifier()
+k = np.arange(1, 50) # tableau Numpy répertoriant le nombre de plus proches voisins que nous allons tester
+
+train_score, val_score = validation_curve(model, X_train, Y_train, param_name='n_neighbors', param_range=k, cv=5) # on teste le paramètre n_neighbors sur le tableau k et l'on divise nos données en 5 parties (cross validation)
+
+train_score.shape # train_score est alors un tableau à 49 lignes (les itérations du tableau k) et à 5 colonnes issues de la cross validation
+
+plt.plot(k, val_score.mean(axis=1), label='validation')
+plt.plot(k, train_score.mean(axis=1), label='train')
+plt.xlabel('n_neighbors')
+plt.ylabel('score')
+plt.legend()
+plt.show()
+
+
+</code></pre><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beyaert-Alexandre/mon/temps-2.2/cross_validation.png" alt="Recherche du meilleur nombre de plus proches voisins"></p>
+<p>L'écart entre la courbe train et celle validation est très important lorsqu'on ne sélectionne qu'un seul plus proche voisin, il y a de l'<strong>overfitting</strong>. Le modèle essaye trop de se rapprocher des données qu'il apprend et en déforme la réalité. Cet écart diminue plus le nombre de plus proches voisins augmente. Cependant, lorsque l'on choisit trop de plus proches voisins, la performance de la courbe validation diminue puisque certains plus proches voisins sont en réalité éloignés de l'élément à analyser.</p>
+<p><strong>Une dizaine de plus proches voisins semble être la solution la plus appropriée</strong>, il s'agit de celle maximisant la précision des données de validation et minimisant l'écart avec le train.</p>
+<p>Vérifions désormais cette supposition grâce aux fonctions de la bibliothèque Scikit-Learn.</p>
+<p>Le module <strong>GridSearchCV</strong> est capable de donner le meilleur score atteignable pour un modèle et les paramètres associés.</p>
+<pre class="language-python line-numbers"><code>
+
+from sklearn.model_selection import GridSearchCV
+
+param_grid = {'n_neighbors': np.arange(1, 20), 'metric': ['euclidiean', 'manhattan']} # on crée un dictionnaire avec les paramètres à tester : n_neigbors et la mesure de distance parmi différentes possibilités
+
+grid = GridSearchCV(KNeighborsClassifier(), param_grid, cv=5)
+
+grid.fit(X_train, Y_train) # on entraîne la grille comme précédemment
+
+# La grille est prête à renvoyer les différents éléments par exemple
+grid.best_score_ # renvoie le meilleur score atteignable, dans notre cas 77%
+
+grid.best_params_ # renvoie les meilleurs paramètres, dans notre cas 9 plus proches voisins (ce qui confirme la 10aine observée précédemment) et la distance manhattan
+
+
+</code></pre><p>Si on le souhaite, il va ainsi être possible de régler notre modèle avec ces paramètres optimums et d'observer la matrice de confusion : la matrice retournant le nombre de bonnes réponses et d'erreurs.</p>
+<pre class="language-python line-numbers"><code>
+
+model = grid.best_estimator_
+
+model.score(X_test, Y_test) # renvoie le 71% précédent
+
+confusion_matrix(Y_test, model.predict(X_test)) # renvoie la matrice ci-dessous
+#array([[65, 20],
+#       [21, 37]], dtype=int64)
+# 65 survivants ont bien été trouvé par l'algorithme mais 20 d'entre eux sont manquants et ont été classés comme morts
+# à l'inverse, 37 morts ont bien été trouvé mais 21 d'entre eux ont été prédits comme survivants alors qu'ils sont morts
+
+# Nous pouvons retrouver notre 71% de performances en vérifiant le rapport (bonnes prédictions / nombre de prédictions)
+# (65 + 37)/(65 + 20 + 21 + 37) = 71%
+
+
+</code></pre><h3 id="3.3-pr%C3%A9paration-des-donn%C3%A9es" tabindex="-1"><a class="header-anchor" href="#3.3-pr%C3%A9paration-des-donn%C3%A9es"></a> 3.3 Préparation des données</h3>
+<h4 id="3.3.1-encodage" tabindex="-1"><a class="header-anchor" href="#3.3.1-encodage"></a> 3.3.1 Encodage</h4>
+<p>Je l'ai déjà mentionné précédemment, avant de pouvoir effectuer du machine learning, j'effectue un pré-traitement des données. Par exemple, pour effectuer des calculs (régressions, classifications...) il est très souvent nécessaire de travailler avec des valeurs numériques. Certaines valeurs vont alors poser problèmes :</p>
+<ul>
+<li>les données manquantes 'NaN'</li>
+<li>les chaînes de caractères telles que 'male' ou 'female' dans la colonne 'sex' du dataset titanic</li>
+</ul>
+<p>Dans le premier cas, un simple usage de la fonction <strong>dropna()</strong> résoudra notre problème. Pour ce qui est du second cas, il sera nécessaire d'effectuer de l'<strong>encodage</strong>.</p>
+<p>2 types d'encodages sont envisageables :
+<strong>- l'encodage Ordinal :</strong> il associe chaque catégorie d'une variable à une valeur décimale unique</p>
+<table>
+<thead>
+<tr>
+<th>chat</th>
+<th>chien</th>
+<th>oiseau</th>
+<th>chien</th>
+<th>chat</th>
+<th>lion</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>1</td>
+<td>3</td>
+<td>1</td>
+<td>0</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<p>Lorsque nous avons une simple liste, la fonction à utiliser sera alors <strong>LabelEncoder()</strong>.</p>
+<pre class="language-python line-numbers"><code>
+
+from sklearn.preprocessing import LabelEncoder
+
+y = np.array(['chat', 'chien', 'oiseau', 'chien', 'chat', 'lion'])
+
+encoder = LabelEncoder() # création de l'objet
+
+# Méthode 1
+encoder.fit(y) # développement de l'encoder
+print(encoder.classes_) # renvoie les différentes classes existantes
+# ['chat' 'chien' 'lion' 'oiseau']
+encoder.transform(y) # appliquer la transformation
+# array([0, 1, 3, 1, 0, 2])
+
+# Méthode 2
+encoder.fit_transform(y) # fais tout en 1
+# array([0, 1, 3, 1, 0, 2])
+
+
+</code></pre><p>À l'inverse, on peut retrouver ces chaînes de caractère à partir des nombres.</p>
+<pre class="language-python line-numbers"><code>
+
+encoder.inverse_transform((np.array([3, 2, 3, 0, 1, 3])))
+# renvoie : array(['oiseau', 'lion', 'oiseau', 'chat', 'chien', 'oiseau'], dtype='<U6') <="" code=""></U6')></code></pre><p>Dans le cas d'un tableau à plusieurs variables, il faudra opter pour la fonction <strong>OrdinalEncoder()</strong>.</p>
+<pre class="language-python line-numbers"><code>
+
+from sklearn.preprocessing import OrdinalEncoder
+
+X = np.array([['Chat', 'Poils'],
+              ['Chien', 'Poils'],
+              ['Chat', 'Poils'],
+              ['Oiseau', 'Plumes']])
+
+encoder = OrdinalEncoder()
+encoder.fit_transform(X) # Renvoie le tableau ci-dessous
+
+array([[0., 1.],
+       [1., 1.],
+       [0., 1.],
+       [2., 0.]])
+
+
+</code></pre><p>Le problème de l'encodage ordinal est qu'il <strong>crée un ordre</strong> 0 &lt; 1 &lt; 2... et cet ordre risque de pénaliser des modèles de Machine Learning. Pour y remédier, il faudra opter pour l'encodage One Hot.</p>
+<p><strong>- L'encodage One Hot :</strong> permet d'éviter l'ordonancement, il va représenter chacune des valeurs sous forme de vecteurs, empêchant ainsi les comparaisons.</p>
+<p>Pour une simple liste, il faut utiliser <strong>LabelBinarizer()</strong>.</p>
+<pre class="language-python line-numbers"><code>
+
+from sklearn.preprocessing import LabelBinarizer
+
+y = np.array(['chat', 'chien', 'oiseau', 'chien', 'chat', 'lion'])
+
+encoder = LabelBinarizer()
+encoder.fit_transform(y) # Renvoie le tableau ci-dessous
+
+array([[1, 0, 0, 0],
+       [0, 1, 0, 0],
+       [0, 0, 0, 1],
+       [0, 1, 0, 0],
+       [1, 0, 0, 0],
+       [0, 0, 1, 0]])
+
+
+</code></pre><p>Et pour un tableau, <strong>OneHotEncoder()</strong>.</p>
+<pre class="language-python line-numbers"><code>
+
+from sklearn.preprocessing import OneHotEncoder
+
+X = np.array([['Chat', 'Poils'],
+              ['Chien', 'Poils'],
+              ['Chat', 'Poils'],
+              ['Oiseau', 'Plumes']])
+
+encoder = OneHotEncoder()
+encoder.fit_transform(X) # Renvoie un tableau compressé ci-dessous
+<4x5 sparse matrix of type '<class 'numpy.float64'="">'
+	with 8 stored elements in Compressed Sparse Row format>
+
+
+</class></code></pre><h4 id="3.3.2-normalisation" tabindex="-1"><a class="header-anchor" href="#3.3.2-normalisation"></a> 3.3.2 Normalisation</h4>
+<p>La normalisation est également une étape très importante du pré-traitement.
+Elle va notamment permettre à l'algorithme de converger plus facilement vers sa valeur finale.</p>
+<p>3 types de normalisation sont principalement utilisés :</p>
+<ul>
+<li>MinMax : la plage de données initiale va être rapportée à l'intervalle [0, 1]</li>
+</ul>
+<pre class="language-python line-numbers"><code>
+
+from sklearn.preprocessing import MinMaxScaler
+
+X = np.array([[70],
+              [80],
+              [120]])
+
+scaler = MinMaxScaler()
+scaler.fit_transform(X) # Renvoie le tableau ci-dessous
+
+array([[0. ],
+       [0.2],
+       [1. ]])
+
+
+</code></pre><ul>
+<li>Standardisation : les données seront normalisées de sorte à obtenir une moyenne nulle et un écart type égal à 1</li>
+</ul>
+<pre class="language-python line-numbers"><code>
+
+from sklearn.preprocessing import StandardScaler
+
+X = np.array...
+
+scaler = StandardScaler()
+scaler.fit_transform(X)
+
+array([[-0.9258201 ],
+       [-0.46291005],
+       [ 1.38873015]])
+
+
+</code></pre><p>Le problème de ces 2 premières techniques est qu'elles sont très sensibles aux valeurs aberrantes.</p>
+<ul>
+<li>RobustScaler : chaque donnée sera soustraite à la médiane le tout divisé par l'interquartile (X-mediane)/(Q3-Q1)</li>
+</ul>
+<h2 id="4.-application-%3A-combinaison-des-biblioth%C3%A8ques" tabindex="-1"><a class="header-anchor" href="#4.-application-%3A-combinaison-des-biblioth%C3%A8ques"></a> 4. Application : combinaison des bibliothèques</h2>
+<p>Pour terminer ce MON, je vous propose d'effectuer un algorithme combinant nos différentes bibliothèques et incluant un  pipeline complet de Machine Learning &quot;pré-traitement - modèle - entraînement - évaluation - visualisation&quot; afin de prédire la survie des passagers du Titanic.</p>
+<p>Le score sera ensuite comparé à celui obtenu sans pré-traitement.</p>
+<pre class="language-python line-numbers"><code>
+
+# imports
+import numpy as np
+import pandas as pd
+import seaborn as sns
+from sklearn.pipeline import make_pipeline
+from sklearn.preprocessing import StandardScaler
+from sklearn.model_selection import GridSearchCV
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import LabelEncoder
+from sklearn.metrics import confusion_matrix
+
+# import du dataset
+titanic = sns.load_dataset('titanic')
+
+# sélection des colonnes et supression des NaN
+titanic = titanic[['survived', 'pclass', 'sex', 'age']]
+titanic.dropna(axis=0, inplace=True)
+
+Y = titanic['survived']
+X = titanic[['pclass', 'sex', 'age']]
+
+# encodage de la colonne 'sex'
+encoder = LabelEncoder()
+X['sex'] = encoder.fit_transform(X['sex'])
+
+# division en test, train
+X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.2)
+
+# choix du modèle, sous forme d'un pipeline pour appliquer les mêmes opérations au train et au test
+model = make_pipeline(StandardScaler(), KNeighborsClassifier())
+
+param = {
+    'kneighborsclassifier__n_neighbors': np.arange(1, 20)}
+
+# création de la grille de recherche
+grid = GridSearchCV(model, param_grid=param, cv=4)
+
+# entraînement
+grid.fit(X_train, Y_train)
+
+# résultats
+grid.best_params_
+
+grid.score(X_test, Y_test)
+
+# calcul de la matrice de confusion
+Y_pred = grid.predict(X_test)
+conf_matrix = confusion_matrix(Y_test, Y_pred)
+
+# affichage de la matrice de confusion
+sns.heatmap(conf_matrix, annot=True, fmt='d', cmap='Blues', cbar=False,
+            xticklabels=['Not Survived', 'Survived'], yticklabels=['Not Survived', 'Survived'])
+
+
+</code></pre><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beyaert-Alexandre/mon/temps-2.2/combinaison.png" alt="Matrice de confusion"></p>
+<p>On remarque ainsi que la performance est de 81%, alors que pour un modèle sans pré-traitement :</p>
+<pre class="language-python line-numbers"><code>
+
+titanic = sns.load_dataset('titanic') # import du dataset
+
+titanic = titanic[['survived', 'pclass', 'sex', 'age']]
+titanic.dropna(axis=0, inplace=True)
+
+Y = titanic['survived']
+X = titanic[['pclass', 'sex', 'age']]
+
+encoder = LabelEncoder()
+X['sex'] = encoder.fit_transform(X['sex'])
+
+
+X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.2)
+
+model = KNeighborsClassifier()
+model.fit(X_train, Y_train)
+model.score(X_test, Y_test)
+
+
+</code></pre><p>La performance est de 74% soit une amélioration de la performance de (81-74)/74 = 8% avec les simples opérations de pré-traitement.</p>
+<h2 id="5.-conclusion" tabindex="-1"><a class="header-anchor" href="#5.-conclusion"></a> 5. Conclusion</h2>
+<h4 id="r%C3%A9partition-du-temps" tabindex="-1"><a class="header-anchor" href="#r%C3%A9partition-du-temps"></a> Répartition du temps</h4>
+<table>
+<thead>
+<tr>
+<th>Timing</th>
+<th>Seaborn</th>
+<th>Sklearn modèle</th>
+<th>Sklearn pré-traitement</th>
+<th>Combinaison des bibliothèques</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Temps prévu (en heures)</td>
+<td>2</td>
+<td>3</td>
+<td>3</td>
+<td>2</td>
+</tr>
+<tr>
+<td>Temps dédié (en heures)</td>
+<td>2</td>
+<td>4</td>
+<td>2</td>
+<td>2</td>
+</tr>
+</tbody>
+</table>
+<h2 id="6.-bibliographie" tabindex="-1"><a class="header-anchor" href="#6.-bibliographie"></a> 6. Bibliographie</h2>
+<p><a href="https://seaborn.pydata.org/">Documentation Seaborn</a>
+<a href="https://scikit-learn.org/stable/#">Documentation Scikit Learn</a>
+<a href="https://scikit-learn.org/stable/tutorial/machine_learning_map/index.html">Choisir le bon estimateur</a>
+<a href="https://www.youtube.com/playlist?list=PLO_fdPEVlfKqMDNmCFzQISI2H_nJcEDJq">Chaine YouTube Machine Learnia</a></p>
+
+
+
+</article>
+
+        </main>
+
+        <footer class="min-h-[50px] border-t-2 mt-4 border-gray-200 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-center items-center">
+                    <p class="text-center">
+                        ©2025 <b><span style="font-family: Consolas, sans-serif;">Do-<span style="color: #4a86e8">It</span></span></b> - Développement, Management et Gestion de projets en IT
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- MathJax import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">
+            window.MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']], // Delimiters for inline math
+                    displayMath: [['$$', '$$'], ['\\[', '\\]']] // Delimiters for block math
+                },
+                svg: {
+                    fontCache: 'global' // Use global font cache for SVG output
+                }
+            };
+            document.addEventListener('DOMContentLoaded', () => {
+                MathJax.typeset(); // Ensures MathJax processes the content after the page loads
+            });
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">
+            Prism.plugins.NormalizeWhitespace.setDefaults({
+                'remove-trailing': true,
+                'remove-indent': true,
+                'left-trim': true,
+                'right-trim': true,
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script>
+    </body>
+</html>

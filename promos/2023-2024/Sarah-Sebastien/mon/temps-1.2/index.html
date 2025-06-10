@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="robots" content="index, follow">
+
+        <link rel="canonical" href="https://do-it.aioli.ec-m.fr/promos/2023-2024/Sarah-Sebastien/mon/temps-1.2/">
+
+        
+        
+
+        <meta name="description" content="Do-It, cours et travaux des élèves de l&#39;école Centrale Méditerranée">
+        <meta property="og:description" content="Do-It, cours et travaux des élèves de l&#39;école Centrale Méditerranée">
+        <meta name="twitter:description" content="Do-It, cours et travaux des élèves de l&#39;école Centrale Méditerranée">
+
+        
+            <meta name="author" content="Sarah Sebastien">
+        
+        <meta name="keywords" content="do-it, centrale, centrale méditerranée, ecm, MON, Lean Management, 5S, Standard">
+
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png">
+        <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png">
+
+        <link href="/assets/stylesheets/main.css" rel="stylesheet">
+
+        <meta property="og:title" content="MON 1.2. Une approche du Lean Management">
+
+        <meta property="og:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta property="og:url" content="https://do-it.aioli.ec-m.fr/promos/2023-2024/Sarah-Sebastien/mon/temps-1.2/">
+        <meta property="og:type" content="website">
+
+        <meta name="twitter:card" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:title" content="MON 1.2. Une approche du Lean Management">
+        <meta name="twitter:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:url" content="https://do-it.aioli.ec-m.fr/promos/2023-2024/Sarah-Sebastien/mon/temps-1.2/">
+
+        <title>MON 1.2. Une approche du Lean Management</title>
+
+        <!-- Prismjs imports
+                - Prism line numbers
+                - Prism toolbar
+        -->
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet">
+        <link id="prism-theme" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+        <!-- Mermaid import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js "></script>
+
+        <script defer="">
+        // Check if a theme is stored in localStorage. If so, use it, otherwise fallback to the system preference.
+        const storedTheme = localStorage.getItem('theme');
+        if (storedTheme) {
+            document.documentElement.classList.toggle("dark", storedTheme === "dark");
+        } else {
+            // Use system color scheme if there is no stored theme preference.
+            document.documentElement.classList.toggle("dark", window.matchMedia("(prefers-color-scheme: dark)").matches);
+        }
+
+        function loadPrismTheme(isDarkMode) {
+            const newTheme = isDarkMode ? 'prism-okaidia.min.css' : 'prism-solarizedlight.min.css';
+            const newLink = document.createElement('link');
+            newLink.rel = 'stylesheet';
+            newLink.id = 'prism-theme';
+            newLink.href = `https://cdn.jsdelivr.net/npm/prismjs/themes/${newTheme}`;
+
+            newLink.onload = () => {
+                // Reapply highlighting after the new theme loads
+                Prism.highlightAll();
+            };
+
+            const existingLink = document.getElementById('prism-theme');
+            if (existingLink) {
+                document.head.replaceChild(newLink, existingLink);
+            } else {
+                document.head.appendChild(newLink);
+            }
+        }
+
+        function setMermaidTheme(isDarkMode) {
+            const theme = isDarkMode ? 'dark' : 'forest';
+            mermaid.initialize({
+                securityLevel: 'loose',
+                theme,
+                startOnLoad: true,
+            });
+        }
+
+        // Toggle dark and light mode and update localStorage accordingly.
+        function toggleDarkMode() {
+            const dark = document.documentElement.classList.contains("dark");
+            const newTheme = dark ? "light" : "dark";
+            localStorage.setItem('theme', newTheme);
+            document.documentElement.classList.toggle("dark", !dark);
+            loadPrismTheme(!dark);
+            setMermaidTheme(!dark);
+        }
+
+        // On initial load, ensure that Prism and Mermaid are initialized using the current theme.
+        const isDark = document.documentElement.classList.contains("dark");
+        loadPrismTheme(isDark);
+        setMermaidTheme(isDark);
+        </script>
+
+    </head>
+
+    <body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000" class="bg-neutral-50 text-neutral-950 dark:bg-neutral-900 dark:text-neutral-50">
+        <header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white dark:bg-neutral-900 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-between items-center">
+                    <a class="mx-2" href="/">Home</a>
+                    <button class="hidden sm:block text-neutral-950 dark:text-neutral-50 hover:bg-neutral-700 hover:text-neutral-50 hover:dark:bg-neutral-300 hover:dark:text-neutral-950 transition-colors p-2 rounded-full duration-800 ease-in-out" onclick="toggleDarkMode()">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 dark:hidden stroke-current">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <path d="M12 2V4" stroke-linecap="round"></path>
+                            <path d="M12 20V22" stroke-linecap="round"></path>
+                            <path d="M4 12L2 12" stroke-linecap="round"></path>
+                            <path d="M22 12L20 12" stroke-linecap="round"></path>
+                            <path d="M19.7778 4.22266L17.5558 6.25424" stroke-linecap="round"></path>
+                            <path d="M4.22217 4.22266L6.44418 6.25424" stroke-linecap="round"></path>
+                            <path d="M6.44434 17.5557L4.22211 19.7779" stroke-linecap="round"></path>
+                            <path d="M19.7778 19.7773L17.5558 17.5551" stroke-linecap="round"></path>
+                        </svg>
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 stroke-current hidden dark:block">
+                            <path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </button>
+                    <div class="flex items-center gap-4 sm:gap-6 ">
+                        <a class="" href="/cs">CS</a>
+                        <a class="" href="/pok">POK</a>
+                        <a class="" href="/mon">MON</a>
+                        <a class="" href="/projets">Projets</a>
+                        <a class="hidden sm:block" href="/promos">Promos</a>
+                        <a href="/search">
+                            <svg class="h-5 aspect-square stroke-neutral-950 dark:stroke-neutral-300 fill-none stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+                            </svg>
+                        </a>
+                        <a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank">
+                            <svg class="h-5 aspect-square dark:stroke-neutral-300 dark:fill-neutral-300" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body="">
+            
+<article class="relative">
+<h1 class="mb-1">MON 1.2. Une approche du Lean Management</h1>
+<div class="mb-4">
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Tags : </div>
+            <ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags">
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">MON</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">Lean Management</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">5S</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">Standard</li>
+                
+
+            </ul>
+
+            
+            <div class="hidden" data-pagefind-meta="Type" aria-hidden="true">
+                
+                    
+                        <span data-pagefind-filter="Type">MON</span>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Auteur : </div>
+            <ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs">
+                
+                    <li class="bg-blue-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Auteurs">Sarah Sebastien</li>
+                
+            </ul>
+        </div>
+    
+
+    
+        <div class="absolute top-0 right-0">
+            <span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2 text-neutral-950" data-pagefind-filter="Année">
+                2023-2024
+            </span>
+        </div>
+    
+</div>
+
+
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100 dark:border-purple-800 dark:bg-purple-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-purple-500 dark:stroke-purple-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/promos/2023-2024/Sarah-Sebastien/">Sarah Sebastien</a><span class="px-1">/</span><a href="/promos/2023-2024/Sarah-Sebastien/mon/">MON de Sarah Sebastien</a><span class="px-1">/</span><a href="/promos/2023-2024/Sarah-Sebastien/mon/temps-1.2/">MON 1.2. Une approche du Lean Management</a>
+
+</div>
+</div>
+
+
+
+
+<hr>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100 dark:border-pink-800 dark:bg-pink-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-pink-500 dark:stroke-pink-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p>Niveau débutant</p>
+</div><div class="pl-8 mr-8">
+<p>Prérequis : Aucun.</p>
+</div>
+</div>
+<h2 id="sommaire" tabindex="-1"><a class="header-anchor" href="#sommaire"></a> Sommaire</h2>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#partie1">PARTIE 1 : L'histoire du Lean Management</a>
+<ul>
+<li><a href="#partie1a">A. Un concept qui naît d'une entreprise de machines à coudre</a></li>
+<li><a href="partie1b">B. Un concept qui révolutionne le monde automobile</a></li>
+<li><a href="#partie1c">C. Avant de révolutionner le monde industriel</a></li>
+</ul>
+</li>
+<li><a href="#partie2">PARTIE 2 : Les fondements du Lean</a>
+<ul>
+<li><a href="#partie2a">A. Le concept du &quot;gaspillage&quot; : l'essence du Lean</a></li>
+<li><a href="#partie2b">B. Le Lean et la recherche de l'efficacité</a></li>
+<li><a href="#partie2c">C. Les trois axes du Lean</a></li>
+</ul>
+</li>
+<li><a href="#partie3">PARTIE 3 : Illustration du Lean au travers de la méthode 5S</a>
+<ul>
+<li><a href="#partie3a">A. Une définition de la méthode</a></li>
+<li><a href="#partie3b">B. La théorie de son implémentation</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="introduction"> Introduction </h2>
+<p>L'amélioration continue est au cœur de la réussite de multiples organisations dans le monde. Dans un environnement commercial en constante évolution, les entreprises cherchent des moyens d'optimiser leurs opérations, d'éliminer le gaspillage et d'accroître leur efficacité pour rester compétitives. Le Lean Management, une philosophie de gestion d'origine japonaise qui a gagné en popularité au fil des décennies, offre une approche systématique pour atteindre ces objectifs. Nous découvrirons dans ce MON, les origines de cette façon de penser, ses piliers et nous essayerons de penser Lean au travers d'une illustration d'un de ses outils principaux : le 5S.</p>
+<h2 id="partie1"> PARTIE 1 : L'histoire du Lean Management </h2>
+<h3 id="partie1a"> A. Un concept qui naît d'une entreprise de machines à coudre </h3>
+<p>Il faut savoir avant tout que l'entreprise <strong>Toyota Motor Corporation</strong> connue aujourd'hui dans le monde entier, a été fondée en 1826 au Japon par Sakichi Toyoda sous le nom de <strong>Toyoda Automatic Loom Works</strong>. Cette entreprise vendait à l'origine des machine à tisser dernier cri. Elles avaient la particularité de s’arrêter automatiquement dès qu'un fil se brisait.</p>
+<p>En 1933, avant la seconde guerre mondiale, la compagnie avait établi un département automobile dirigé par le fils de Toyoda, Kichiro. A son lancement en 1935, elle produisait des camions militaires et s’est ensuite tournée vers l’automobile.
+A la fin de la seconde guerre mondiale, l’économie Japonaise était dévastée. Et l’entreprise a dû faire face à plusieurs challenges dans l’autombolie :</p>
+<ul>
+<li>Le marché domestique au Japon était trop faible pour rivaliser avec la production de masse des Etats-Unis</li>
+<li>Un manque de capital pour investir dans de l’équipement et des machines de production</li>
+</ul>
+<h3 id="partie1b"> B. Un concept qui révolutionne le monde automobile </h3>
+<p>C’est Eiji Toyoda qui a transformé la compagnie de son oncle, en grande entreprise. Il cherchait un modèle de production à adopter pour améliorer les installations dont il avait héritées.</p>
+<p>A la fin des années 40, l’entreprise Toyota Motor Company produisait <strong>200 voitures par an</strong>.</p>
+<blockquote>
+<p>Par comparaison, l'entreprise <strong>Ford Motor Company</strong> à Détroit réalisait <strong>7 000 voitures par jour</strong>.</p>
+</blockquote>
+<p>Le système duquel Eiji a été témoin durant sa visite à Détroit en 1950, l’a beaucoup inspiré : il voyait dans les défauts qu’il avait notés, des leviers d’améliorations possibles. Il a donc construit un nouveau système dans lequel il cherchait à éliminer le gaspillage dans la production tout en augmentant la valeur ajoutée.
+Le terme <strong>« Lean Manufacturing »</strong> désigne alors ce modèle de production, créé par Toyota qui a pour but de produire des marchandises de <strong>bonne qualité</strong>, en <strong>bonne quantité</strong> et à un <strong>juste prix</strong>, pour répondre au besoin du client.</p>
+<h3 id="partie1c"> C. Avant de révolutionner le monde industriel </h3>
+<p>Les objectifs du <strong>TPS</strong> (Toyota Production System) sont donc de maximiser la part des activités génératrices de valeur ajoutée, en éliminant les déchets. Pour cela, il faut s'efforcer de minimiser la taille des lots, idéalement en ayant un flux de pièces uniques dans la production, et faire en sorte de construire les processus de production sur les exigences des clients. Ces processus stables et standardisés, peuvent s’obtenir par l'organisation du lieu de travail, l'établissement de procédures opérationnelles normalisées et des processus à sécurité intégrée connus sous le nom de <strong>jidoka</strong> (comme les machines à coudre qui s’arrêtaient lorsqu’un fil se cassait)</p>
+<p>C’est dans les années 1980 que des industriels et des chercheurs se sont penchés sur le cas Toyota, ont essayé d’en extraire l’essence. Ils ont ainsi identifier ses outils et ses concepts pour  en déduire un système de production.
+En 1990, James Womack et Daniel Jones, chercheurs au MIT (USA), ont proposé le terme &quot;Lean&quot; (&quot;mince&quot; ou &quot;sans superflu&quot; ) dans leur livre &quot;The Machine That Changed the World&quot; qui retrace l'histoire de Toyota.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100 dark:border-cyan-800 dark:bg-cyan-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-cyan-500 dark:stroke-cyan-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Lean Manufacturing ou Lean Management ?</strong></p>
+</div><div class="pl-8 mr-8">
+<p>La différence entre les deux termes fait référence à leur déploiement:</p>
+<ul>
+<li>le <em>lean manufacturing</em> a pour but d'optimiser les méthodes de production. Il s’adresse aux opérationnels et aux ouvriers.</li>
+<li>le <em>lean management</em> a pour but d'optimiser les méthodes de gestion de l’entreprisse et la stratégie commerciale. Il se positionne sur les zones managériales.
+Mais il faut savoir qu'on parle aujourd'hui de Lean dans une multitude de domaines. &quot;Lean Office&quot;, &quot;Lean Services&quot;, ou encore même de &quot;Lean Engineering&quot; pour contrer le gaspillage qui consiste à ré-inventer à chaque fois sans capitaliser correctement sur la connaissance acquise.</li>
+</ul>
+</div>
+</div>
+<hr>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100 dark:border-pink-800 dark:bg-pink-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-pink-500 dark:stroke-pink-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><u>Sources partie 1</u></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li><a href="https://www.institut-lean-france.fr/portfolio-item/ingenierie/">Institut Lean France</a>
+<em>De nombreux articles gratuits traitant du Lean et de questionnements intéressants sur le sujet</em></li>
+<li><a href="https://www.edx.org/learn/manufacturing/technische-universitat-munchen-lean-production">TUMx: Lean Production</a>
+<em>MOOC en anglais intéressant pour découvrir le Lean, mais je ne l'ai pas fait en entier car trop long et certaines notions abordées ne concernaient pas ce que je voulais étudier dans ce MON (N.B. peut être intéressant d'aborder les autres notions dans un futur MON?)</em></li>
+</ul>
+</div>
+</div>
+<hr>
+<h2 id="partie2"> PARTIE 2 : Les fondements du Lean </h2>
+<h3 id="partie2a"> A. Le concept du "gaspillage" : l'essence du Lean </h3>
+<h4 id="les-3m-(mura%2C-muri%2C-muda)" tabindex="-1"><a class="header-anchor" href="#les-3m-(mura%2C-muri%2C-muda)"></a> Les 3M (Mura, Muri, Muda)</h4>
+<table>
+<thead>
+<tr>
+<th>Mura</th>
+<th>Muri</th>
+<th>Muda</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><em>signifie &quot;inconsistance&quot; ou &quot;irrégulier&quot;</em></td>
+<td><em>signifie &quot;surcharge&quot; ou &quot;excès&quot;</em></td>
+<td>*signifie &quot;gaspillage&quot;, &quot;inutile&quot; ou &quot;futile&quot;</td>
+</tr>
+</tbody>
+</table>
+<p>Quand on parle d’élimination des déchets, on parle surtout du dernier M. Mais il est important de noter que <strong>Muda</strong> peut être la conséquences des autres M:</p>
+<blockquote>
+<p><em>Les déchets ne sont que le symptôme de causes sous-jacentes plus profondes</em></p>
+</blockquote>
+<p>Ainsi, dans le Lean, il est important de s’occuper également de <strong>Mura</strong> et <strong>Muri</strong>:</p>
+<p><strong>De Mura</strong>
+L’inconsistance peut être le résultat de plusieurs facteurs qui ne sont <strong>pas contrôlables</strong> (par exemple, une demande inégale de la part des clients ou de la répartition de la charge de travail, une qualité insuffisante des fournitures et des outils, ou une planification irrégulière du travail)
+<strong>A Muri</strong>
+Dans ce cas, il semble logique de <em>travailler plus dur</em> et se <em>surcharger</em> pour surmonter ces <em>irrégularités</em> ou ces problèmes dans les flux de travail. Les personnes travaillent donc de longues heures pour rattraper le temps perdu pour répondre à la demande.Cela peut aussi signifier faire tourner les machines trop vite pour atteindre les objectifs de production ou les surcharger pour en tirer le meilleur parti, en omettant l'entretien afin de réduire les temps d'arrêt. Ainsi, lors d’une <em>surcharge</em> nous avons tendance à vouloir faire des économies en <em>commettant des erreurs</em>
+<strong>Jusqu'à Muda</strong>
+L’environnement de travail devient alors <em>désorganisé</em> et <em>désordonné</em>. Nous <em>perdons du temps et des efforts</em> à résoudre les problèmes causés par la <em>surcharge</em>.</p>
+<p>Avant d'entreprendre toute action d’amélioration il est conseillé d'abord par éliminer le stress et les surcharges (<em>Muri</em>), puis de diminuer la variabilité et la fatigue (<em>Mura</em>). Car les éléments de gaspillage (<em>Muda</em>) sont plus faciles à détecter quand l'environnement de travail est plus serein.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100 dark:border-cyan-800 dark:bg-cyan-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-cyan-500 dark:stroke-cyan-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Information</b></p>
+</div><div class="pl-8 mr-8">
+<p>Il est cependant important de se rappeler que les déchets ne sont pas simplement un sous produits des processus que l’on jette à la poubelle. Le gaspillage comprend toute activité qui ne produit pas de valeur pour le client. Muda est typiquement définie par <em>le principe des 7 déchets</em></p>
+</div>
+</div>
+<h4 id="les-7-types-de-d%C3%A9chets" tabindex="-1"><a class="header-anchor" href="#les-7-types-de-d%C3%A9chets"></a> Les 7 types de déchets</h4>
+<table>
+<tbody>
+<tr>
+<td><strong>La surproduction</strong></td>
+<td>concerne tout ce qui est produit en surplux, ou trop tôt par rapport à la demande du client. <em>Il est souvent la source des autres gaspillages</em></td>
+</tr>
+<tr>
+<td><strong>Le stock</strong></td>
+<td>concerne l’entreposage de matières premières, en-cours ou produits finis en excès qui nécessite de la place ou des moyens techniques , humains et financiers de gestion</td>
+</tr>
+<tr>
+<td><strong>Le transport</strong></td>
+<td>concernent le déplacement des marchandises plus qu'il n'est nécessaire : c'est un gaspillage d'efforts. <em>Le transport est nécessaire mais n’apporte aucune valeur ajoutée et doit donc être minimisé</em></td>
+</tr>
+<tr>
+<td><strong>Les attentes</strong></td>
+<td>concernent le personnel ou les équipements (ex: manque de pièces, décision retardée du client ou du management, etc...)</td>
+</tr>
+<tr>
+<td><strong>Les mouvements</strong></td>
+<td>deviennent un gaspillages lorsqu'ils sont pénibles, superflus, non ergonomiques: ils génèrent alors des pertes de temps et peuvent dégrader les conditions de travail et compromettre la sécurité</td>
+</tr>
+<tr>
+<td><strong>Le <em>overprocessing</em></strong></td>
+<td>concerne des tâches supplémentaires qui ne sont pas demandées par le client, donc à non-valeur ajoutée (ex: trop de contrôles dans le processus de fabrication)</td>
+</tr>
+<tr>
+<td><strong>La non-qualité</strong></td>
+<td>peut être sous forme de rebuts, d'erreurs, de corrections, et il faut donc utiliser du temps et de l'agent à corriger le(s) problème(s)</td>
+</tr>
+</tbody>
+</table>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100 dark:border-cyan-800 dark:bg-cyan-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-cyan-500 dark:stroke-cyan-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><em><strong>Un huitième Muda ?</strong></em></p>
+</div><div class="pl-8 mr-8">
+<p>Depuis quelque temps, un 8e gaspillage est de plus en plus cité : la sous-utilisation des compétences, des idées, et des initiatives des salariés. C'est à dire le gaspillage du <em>potentiel humain</em> (ex: ne pas impliquer les acteurs du terrain, qui connaissent les détails des opérations et sont des experts dans l’exécution des tâches correspondantes, est un gaspillage d’opportunités et de ressources.)</p>
+</div>
+</div>
+<h3 id="partie2b"> B. Le Lean et la recherche de l'efficacité  </h3>
+<p>La méthode &quot;Lean&quot; consiste donc, comme on vient de le voir, à <em>éliminer les gaspillages</em> d'un processus pour se concentrer sur <em>la création de valeur</em>. Cette méthode vise à améliorer <em>l’efficacité</em>, ce qui permet de libérer des ressources pour se concentrer sur <em>l'efficience</em>.</p>
+<h4 id="efficace-%26-efficient" tabindex="-1"><a class="header-anchor" href="#efficace-%26-efficient"></a> Efficace &amp; efficient</h4>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100 dark:border-pink-800 dark:bg-pink-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-pink-500 dark:stroke-pink-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><em>Efficace &amp; efficient</em></p>
+</div><div class="pl-8 mr-8">
+<p><strong>L'efficacité</strong> mesure la capacité à produire un résultat souhaité, tandis que <strong>l'efficience</strong> mesure dans quelle mesure la plus petite quantité de ressources est utilisée pour produire la plus grande quantité de résultats.
+<em>Ex : un boulanger est efficace si le gâteau qu'il fabrique est savoureux. Mais un boulanger n'est efficient que s'il peut faire le même gâteau avec deux fois moins de farine ou deux fois moins de temps que ses pairs.</em>
+<strong>L’efficience c’est l’efficacité au moindre coût.</strong></p>
+</div>
+</div>
+<p>Le client ne verra que <strong>l’efficacité</strong>. L’efficience du processus pour obtenir le résultat attendu n’est absolument pas son problème. L'entreprise, elle, ne verra que <strong>l’efficience</strong> du processus, pour obtenir le résultat attendu par le client.</p>
+<h5 id="l'efficacit%C3%A9" tabindex="-1"><a class="header-anchor" href="#l'efficacit%C3%A9"></a> L'efficacité</h5>
+<p>Pour être efficace, il faut donc savoir répondre aux besoins du client en <strong>les hiérarchisant par ordre de priorité</strong>, ou encore s'assurer également du <strong>bien être et des besoins et des employés du projet</strong>, et de s'assurer que la <strong>vision</strong> de l'organisation soit partagée et connue de tous. (<em>Par manque de temps je ne vais pas approfondie cette partie, mais on peut se référer à la première ressource citées dans les sources de la partie 2, qui explique plus en détails les enjeux et les outils derrières ces notions</em>)</p>
+<blockquote>
+<p>L'efficacité va consister à faire les bons choix de positionnement sur la matrice d'efficience. L'efficience va en être la résultante.</p>
+</blockquote>
+<h5 id="l'efficience" tabindex="-1"><a class="header-anchor" href="#l'efficience"></a> L'efficience</h5>
+<p><strong>Matrice d'efficience</strong></p>
+<p>On construit la <strong>matrice d'efficience</strong> en trouvant le juste milieu entre <strong>l'optimisation des ressources</strong> et <strong>l'optimisation des flux</strong>.</p>
+<img width="350" src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Sarah-Sebastien/mon/temps-1.2/matrice_efficience.png"  ="">
+> Source :"Lean à 540° : D’abord faire un virage de pensée à 180° puis explorer à 360°", Gaudichau, Matsumoto, Magnani (2019)
+<table>
+<thead>
+<tr>
+<th>Optimisation des ressources</th>
+<th>Optimisation des flux</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>L'efficience s’obtient en faisant travailler chaque ressource le plus possible</td>
+<td>L’efficience s’obtient avec l’execution la plus rapide possible du flux</td>
+</tr>
+<tr>
+<td><strong>Caractéristiques</strong> : <br> - Complexité et nombre d'unités (tâches dans un flux) additionnelles : <em>niveau de stress et charge mentale plus élevés</em> <br> - Nombres de redémarrages (passage d’une activité à une autre) plus important : <em>source de plus d'erreurs</em></td>
+<td><strong>Caractéristiques</strong>: <br> - Peu d’unités traitées (on limite le nombre de taches effectuées en parallèle) <br> - Faible complexité des tâches et peu de redémarrage</td>
+</tr>
+<tr>
+<td><em>ex: on remplit au maximum l'agenda d'un médecin sans prendre en compte l'attente d'un patient</em></td>
+<td><em>ex: on fait en sorte que toutes les unités des urgences puissent prendre en charge un patient urgent</em></td>
+</tr>
+</tbody>
+</table>
+<p>La stratégie opérationnelle du Lean se focalise d’abord sur l’efficience du flux, et vient ensuite optimiser les ressources. C'est à ce moment là que devient accessible &quot;l'état parfait&quot;, trouver le juste milieu entre les deux.</p>
+<h3 id="partie2c"> C. Les trois axes du Lean  </h3>
+<p>L'objectif du Lean est donc de viser une efficience <strong>opérationnelle</strong>, comme vu juste au dessus.
+Pour ce faire, il existe 3 grands aspects du Lean :</p>
+<ul>
+<li><a href="#rendre-visible"><strong>rendre visible</strong></a></li>
+<li><a href="#resoudre"><strong>résoudre des problèmes</strong></a></li>
+<li><a href="#capitaliser"><strong>capitaliser</strong></a></li>
+</ul>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100 dark:border-cyan-800 dark:bg-cyan-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-cyan-500 dark:stroke-cyan-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><em><strong>Efficience relationnelle</strong></em></p>
+</div><div class="pl-8 mr-8">
+<p>A côté de l'efficience opérationnelle, il existe également <strong>l'efficience relationnelle</strong> qui consiste à promouvoir la communication des informations et améliorer l'efficience des relations et des apprentissages.
+<em>(mais cette notion ne sera pas abordée dans ce MON)</em></p>
+</div>
+</div>
+<h4 id="rendre-visible"> Rendre visible </h4>
+<blockquote>
+<p>L’homme enregistre 83% des informations qu’on lui transmet, grâce à la vue.</p>
+</blockquote>
+<p><strong>Rendre visuel</strong> permet donc de :</p>
+<ul>
+<li>mieux comprendre une situation et d'en apprendre par la suite</li>
+<li>mesurer et rendre plus tangibles des informations</li>
+<li>communiquer plus facilement aux autres</li>
+<li>résoudre un problème et trouver un moyen d’agir plus facilement en ayant un certain recul</li>
+</ul>
+<blockquote>
+<p>Rendre visuel et ainsi accéder à l’information avec un minimum d’effort et en un minimum de temps s’inscrit bien dans la démarche du lean de limiter le gaspillage.</p>
+</blockquote>
+<h4 id="resoudre"> Résoudre les problèmes </h4>
+<p>Les problèmes sont au coeur de la culture lean et font partie du quotidien des sites de production. Une démarche de résolution de problème structurée et suivie sur le terrain permet d’améliorer durablement la performance. Cependant, en entreprise, un problème est souvent considéré comme <strong>un objectif non atteint</strong>, alors que le Lean le définit comme étant <strong>un écart de performance</strong>. C'est cette définition qui permet de définir précisément un problème et de mettre en place les bonnes étapes pour le traiter, car la résolution d’un problème est un processus à suivre.</p>
+<h4 id="capitaliser"> Capitaliser </h4>
+<p>En Lean, une notion importante est celle de &quot;capitalisation&quot; des acquis. Celle ci passe également par la culture et l'entretient d'un état d'esprit <em>d'amélioration continue</em> en promouvant <em>les bonnes pratiques</em>.
+Elle s'illustre au travers des <strong>standards</strong></p>
+<p>Le <strong>standard</strong>, aussi appelé mode opératoire ou instruction, est considéré comme la base sur laquelle s'appuie tous les outils du Lean. Il est indispensable pour s’assurer qu'une activité est réalisée par toute une équipe donnée selon les meilleures pratiques du moment. Un standard est :</p>
+<ul>
+<li><strong>évolutif</strong> : doit être mis à jour dès qu'il y a une évolution du meilleure savoir faire</li>
+<li><strong>ne doit pas être imposé par la hiérarchie</strong> mais élaboré en mode participatif par les
+opérationnels: <em>ils sont faits par et pour eux.</em></li>
+<li><strong>évident</strong> : il doit être <em>simple</em>, <em>accessible</em> et <em>visible</em> par tous les utilisateurs</li>
+</ul>
+<p>on distingue 3 types de <strong>standards</strong></p>
+<table>
+<tbody>
+<tr>
+<td><strong>Les standards de travail</strong></td>
+<td>qui permettent de capitaliser les meilleures pratiques et indiquer aux opérationnels ce qu’ils ont à faire et comment bien le faire</td>
+</tr>
+<tr>
+<td><strong>Les standards de management visuel</strong></td>
+<td>qui permettent de voir ce qui se passe, de se repérer, de comprendre et dd'avoir un suivi des activités</td>
+</tr>
+<tr>
+<td><strong>Les standards de réaction</strong></td>
+<td>qui décrivent les modalités d'action associées à la détection d'un problème, (ie écart au standard) susceptible d'impacter de client</td>
+</tr>
+</tbody>
+</table>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100 dark:border-cyan-800 dark:bg-cyan-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-cyan-500 dark:stroke-cyan-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>En résumé</strong></p>
+</div><div class="pl-8 mr-8">
+<p>En résumé, le standard est la formalisation et la capitalisation du meilleur savoir-faire existant et évolutif pour devenir une référence.</p>
+</div>
+</div>
+<hr>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100 dark:border-pink-800 dark:bg-pink-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-pink-500 dark:stroke-pink-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><u>Sources partie 2</u></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li>Gaudichau, Olivier &amp; Matsumoto, Eduardo &amp; Magnani, Florian. (2019). Lean à 540° : D’abord faire un virage de pensée à 180° puis explorer à 360°.
+<em>Offre un autre angle d'approche du Lean de celui qu'on retrouve sur internet, illustre bien les notions d'efficience et efficace, se lit vite et est très accessible</em></li>
+<li>Demetrescoux, Radu. “La boîte à outils du Lean Ed. 2.” (2019)
+<em>Je conseille vivement pour approfondir le sujet. Traite d'une quantité très importante d'outils du Lean avec de nombreuses méthodologies d'application et des conseils. Est très accessible</em></li>
+</ul>
+</div>
+</div>
+<hr>
+<h2 id="partie3"> PARTIE 3 : Illustration du Lean au travers de la méthode 5S </h2>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100 dark:border-red-800 dark:bg-red-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-red-500 dark:stroke-red-800 stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Attention</b></p>
+</div><div class="pl-8 mr-8">
+<p><em>Au départ de ce MON, je voulais expliciter plusieurs outils du Lean. Mais en plus d'être trop nombreux et souvent interdépendants les uns des autres, ils remplissent tous un objectif précis et il ne me semblait pas très pertinent de n'en choisir que quelques uns. <br> J'ai choisi à la place de me focaliser sur une explication du concept et des idées qu'ils est important d'avoir en tête lorsque l'on parle de Lean, ou que l'on veut l'appliquer. <br> Pour rendre ce MON tout de même plus parlant, j'ai choisi de présenter la méthode 5S, qui selon moi, vient reprendre les <a href="#partie2c">3 fondements du Lean</a> expliqués plus tôt, et offre une bonne démonstration de la logique Lean.</em></p>
+</div>
+</div>
+<h3 id="partie3a"> A. Une définition de la méthode </h3>
+<blockquote>
+<p>Le 5S c'est sûrement l'outil du Lean le plus facile à comprendre mais le plus compliqué à appliquer,
+Florian Magnani</p>
+</blockquote>
+<p>C'est Taïchi Ohno au sein de Toyota dans les années 50 qui créé le concept 4S. Ce dernier a été ensuite affiné en 5S au cours des années 60.
+Les 5S fixent les bases de l'ordre et de la <strong>standardisation</strong> : les salariés qui travaillent dans un environnement plus propre, sécurisé et ordonné, fournissent un travail de qualité supérieure.</p>
+<h3 id="partie3b"> B. La théorie de son implémentation </h3>
+<h5 id="seiri-(d%C3%A9barasser)" tabindex="-1"><a class="header-anchor" href="#seiri-(d%C3%A9barasser)"></a> Seiri (<em>Débarasser</em>)</h5>
+<blockquote>
+<p>Uniquement ce qui est utile</p>
+</blockquote>
+<p>On trie le contenu de la zone :</p>
+<ul>
+<li>éliminer l'inutile</li>
+<li>stocker à l’écart ce qui est rarement utilisé</li>
+<li>faire réparer ce qui est cassé ou détériorer</li>
+<li>commencer à prévoir des idées pour le rangement de l'utile</li>
+</ul>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100 dark:border-cyan-800 dark:bg-cyan-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-cyan-500 dark:stroke-cyan-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Information</b></p>
+</div><div class="pl-8 mr-8">
+<p>Si on a un doute sur l'utilité de quelque chose, on place l’objet dans la « zone en attente de décision » (ZAD). On considère que tout ce qui n’a pas été utilisé sous un mois doit être considéré comme inutile.</p>
+</div>
+</div>
+<h5 id="seiton-(ranger)" tabindex="-1"><a class="header-anchor" href="#seiton-(ranger)"></a> Seiton (<em>Ranger</em>)</h5>
+<blockquote>
+<p>Chaque chose a sa place, une place pour chaque chose</p>
+</blockquote>
+<p>Allouer une place bien identifiée pour chaque objet de la zone et les ranger en fonction de la fréquence d’utilisation, dans des conditions ergonomiques. On peut également établir une carte de zones où chacune est nommée, pour localiser les objets.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100 dark:border-cyan-800 dark:bg-cyan-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-cyan-500 dark:stroke-cyan-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Information</b></p>
+</div><div class="pl-8 mr-8">
+<p>Pour réaliser cette étape, on peut par exemple dessiner un diagramme spaghetti, qui représente les déplacement d’un opérateur autour d’un poste considéré.</p>
+</div>
+</div>
+<h5 id="seiso-(nettoyer)" tabindex="-1"><a class="header-anchor" href="#seiso-(nettoyer)"></a> Seiso (<em>Nettoyer</em>)</h5>
+<blockquote>
+<p>Le meilleur nettoyage est de ne pas avoir besoin de nettoyer</p>
+</blockquote>
+<p>Réaliser un programme de nettoyage à faire respecter.  Il faut d'abord effectuer un nettoyage initial puis faire en sorte de maintenir un nettoyage régulier. La propreté permettra d'améliorer la qualité de vie au travail et facilitera aussi la détection les défauts et les pannes.</p>
+<h5 id="seiketsu-(standardiser)" tabindex="-1"><a class="header-anchor" href="#seiketsu-(standardiser)"></a> Seiketsu (<em>Standardiser</em>)</h5>
+<blockquote>
+<p>Pour voir et identifier ce qui doit être fait</p>
+</blockquote>
+<p>Il faut identifier, étiqueter, adopter des codes couleurs, et définir des standards visuels en concertation avec les équipes (ex: choix des couleurs ou des formes).  On doit également inclure dans ces standards des zone de communications contenants des indicateurs des éléments de sécurité ou de nettoyage.</p>
+<h5 id="seiketsu-(maintenir)" tabindex="-1"><a class="header-anchor" href="#seiketsu-(maintenir)"></a> Seiketsu (<em>Maintenir</em>)</h5>
+<blockquote>
+<p>Moins il faut de discipline mieux c’est</p>
+</blockquote>
+<p>Il faut assurer le respect des règles à travers un audit régulier.</p>
+<p>On appelle ces audits <strong>audit 5S</strong> ou <em>audit anti-récurrence</em>. Ils sont conçus pour s'assurer de la correction des non-conformités, de la pérennisation des standards, et pour promouvoir un esprit d’amélioration continue.
+Il est effectué par le management local chaque semaine.
+Une non-conformité vaut un point. En dessous de 20% de points de démérite, l'audit est dit réussi. Si une non conformité n'est pas corrigée la semaine suivante ses points sont doublés.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100 dark:border-cyan-800 dark:bg-cyan-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-cyan-500 dark:stroke-cyan-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>5S environnement &amp; 5S machine</strong></p>
+</div><div class="pl-8 mr-8">
+<p>On parle de &quot;5S environnement&quot; par rapport à l’aménagement des espaces de travail (atelier, lignes et postes de travail, bureaux, magasins). Le &quot;5S machine&quot;, quant à lui, se pratique lors de la première étape de la maintenance d'une machine.</p>
+</div>
+</div>
+<h3 id="partie3c"> C. Cas d'application de l'outil </h3>
+<p>Je conseille vivement cette vidéo : <a href="https://www.youtube.com/watch?v=aMkXICM1-98">Lean 5S in MSICU</a>
+Le 5S tel que connu aujourd’hui est nés dans les ateliers industriels. Certains pensent alors que c’est plutôt un outil de la production. Il est intéressant de voir une application dans un hôpital.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100 dark:border-pink-800 dark:bg-pink-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-pink-500 dark:stroke-pink-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><u>Sources partie 3</u></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li>La boîte à outils du Lean, (2019) de RaduDemetrescoux.</li>
+<li>Hohmann, Christian. “Guide pratique des 5S et du management visuel : pour les managers et les encadrants.” (2010).
+<em>Très bon ouvrage assez exhaustif sur le 5S, qui permet de bien comprendre la méthode et ses enjeux</em></li>
+</ul>
+</div>
+</div>
+<hr>
+<blockquote>
+<p><strong>Horodateur</strong> :
+Jeudi 29/09 : 30 mins (Premières recherches de ressources et définition d’une structure pour le MON)
+Vendredi 30/09 : 1h30 (Réalisation des parties choisies du MON)
+Vendredi 6/10 : 2h (Recherches approfondies sur les concepts généraux du Lean)
+Dimanche 8/10 : 1h30 (Focus sur le fonctionnement de plusieurs outils du Lean)
+Jeudi 12/10 : 1h30 (Mise en forme des recherches selon le plan défini)
+Dimanche 15/10 : 3h (Lecture des ressources données par Florian Magnani, redéfinition du MON et du plan)
+Mardi 17/1° : 1h (Ajout de compléments aux notions manquantes de ce MOn par rapport au plan redéfini)</p>
+</blockquote>
+
+
+
+</article>
+
+        </main>
+
+        <footer class="min-h-[50px] border-t-2 mt-4 border-gray-200 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-center items-center">
+                    <p class="text-center">
+                        ©2025 <b><span style="font-family: Consolas, sans-serif;">Do-<span style="color: #4a86e8">It</span></span></b> - Développement, Management et Gestion de projets en IT
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- MathJax import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">
+            window.MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']], // Delimiters for inline math
+                    displayMath: [['$$', '$$'], ['\\[', '\\]']] // Delimiters for block math
+                },
+                svg: {
+                    fontCache: 'global' // Use global font cache for SVG output
+                }
+            };
+            document.addEventListener('DOMContentLoaded', () => {
+                MathJax.typeset(); // Ensures MathJax processes the content after the page loads
+            });
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">
+            Prism.plugins.NormalizeWhitespace.setDefaults({
+                'remove-trailing': true,
+                'remove-indent': true,
+                'left-trim': true,
+                'right-trim': true,
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script>
+    </body>
+</html>

@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="robots" content="index, follow">
+
+        <link rel="canonical" href="https://do-it.aioli.ec-m.fr/promos/2022-2023/Laeuffer-Savinien/mon/temps-2.2/">
+
+        
+        
+
+        <meta name="description" content="Do-It, cours et travaux des élèves de l&#39;école Centrale Méditerranée">
+        <meta property="og:description" content="Do-It, cours et travaux des élèves de l&#39;école Centrale Méditerranée">
+        <meta name="twitter:description" content="Do-It, cours et travaux des élèves de l&#39;école Centrale Méditerranée">
+
+        
+            <meta name="author" content="Savinien Laeuffer">
+        
+        <meta name="keywords" content="do-it, centrale, centrale méditerranée, ecm, MON">
+
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png">
+        <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png">
+
+        <link href="/assets/stylesheets/main.css" rel="stylesheet">
+
+        <meta property="og:title" content="C# et .NET (Bases, création d&#39;une API)">
+
+        <meta property="og:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta property="og:url" content="https://do-it.aioli.ec-m.fr/promos/2022-2023/Laeuffer-Savinien/mon/temps-2.2/">
+        <meta property="og:type" content="website">
+
+        <meta name="twitter:card" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:title" content="C# et .NET (Bases, création d&#39;une API)">
+        <meta name="twitter:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:url" content="https://do-it.aioli.ec-m.fr/promos/2022-2023/Laeuffer-Savinien/mon/temps-2.2/">
+
+        <title>C# et .NET (Bases, création d&#39;une API)</title>
+
+        <!-- Prismjs imports
+                - Prism line numbers
+                - Prism toolbar
+        -->
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet">
+        <link id="prism-theme" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+        <!-- Mermaid import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js "></script>
+
+        <script defer="">
+        // Check if a theme is stored in localStorage. If so, use it, otherwise fallback to the system preference.
+        const storedTheme = localStorage.getItem('theme');
+        if (storedTheme) {
+            document.documentElement.classList.toggle("dark", storedTheme === "dark");
+        } else {
+            // Use system color scheme if there is no stored theme preference.
+            document.documentElement.classList.toggle("dark", window.matchMedia("(prefers-color-scheme: dark)").matches);
+        }
+
+        function loadPrismTheme(isDarkMode) {
+            const newTheme = isDarkMode ? 'prism-okaidia.min.css' : 'prism-solarizedlight.min.css';
+            const newLink = document.createElement('link');
+            newLink.rel = 'stylesheet';
+            newLink.id = 'prism-theme';
+            newLink.href = `https://cdn.jsdelivr.net/npm/prismjs/themes/${newTheme}`;
+
+            newLink.onload = () => {
+                // Reapply highlighting after the new theme loads
+                Prism.highlightAll();
+            };
+
+            const existingLink = document.getElementById('prism-theme');
+            if (existingLink) {
+                document.head.replaceChild(newLink, existingLink);
+            } else {
+                document.head.appendChild(newLink);
+            }
+        }
+
+        function setMermaidTheme(isDarkMode) {
+            const theme = isDarkMode ? 'dark' : 'forest';
+            mermaid.initialize({
+                securityLevel: 'loose',
+                theme,
+                startOnLoad: true,
+            });
+        }
+
+        // Toggle dark and light mode and update localStorage accordingly.
+        function toggleDarkMode() {
+            const dark = document.documentElement.classList.contains("dark");
+            const newTheme = dark ? "light" : "dark";
+            localStorage.setItem('theme', newTheme);
+            document.documentElement.classList.toggle("dark", !dark);
+            loadPrismTheme(!dark);
+            setMermaidTheme(!dark);
+        }
+
+        // On initial load, ensure that Prism and Mermaid are initialized using the current theme.
+        const isDark = document.documentElement.classList.contains("dark");
+        loadPrismTheme(isDark);
+        setMermaidTheme(isDark);
+        </script>
+
+    </head>
+
+    <body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000" class="bg-neutral-50 text-neutral-950 dark:bg-neutral-900 dark:text-neutral-50">
+        <header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white dark:bg-neutral-900 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-between items-center">
+                    <a class="mx-2" href="/">Home</a>
+                    <button class="hidden sm:block text-neutral-950 dark:text-neutral-50 hover:bg-neutral-700 hover:text-neutral-50 hover:dark:bg-neutral-300 hover:dark:text-neutral-950 transition-colors p-2 rounded-full duration-800 ease-in-out" onclick="toggleDarkMode()">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 dark:hidden stroke-current">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <path d="M12 2V4" stroke-linecap="round"></path>
+                            <path d="M12 20V22" stroke-linecap="round"></path>
+                            <path d="M4 12L2 12" stroke-linecap="round"></path>
+                            <path d="M22 12L20 12" stroke-linecap="round"></path>
+                            <path d="M19.7778 4.22266L17.5558 6.25424" stroke-linecap="round"></path>
+                            <path d="M4.22217 4.22266L6.44418 6.25424" stroke-linecap="round"></path>
+                            <path d="M6.44434 17.5557L4.22211 19.7779" stroke-linecap="round"></path>
+                            <path d="M19.7778 19.7773L17.5558 17.5551" stroke-linecap="round"></path>
+                        </svg>
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 stroke-current hidden dark:block">
+                            <path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </button>
+                    <div class="flex items-center gap-4 sm:gap-6 ">
+                        <a class="" href="/cs">CS</a>
+                        <a class="" href="/pok">POK</a>
+                        <a class="" href="/mon">MON</a>
+                        <a class="" href="/projets">Projets</a>
+                        <a class="hidden sm:block" href="/promos">Promos</a>
+                        <a href="/search">
+                            <svg class="h-5 aspect-square stroke-neutral-950 dark:stroke-neutral-300 fill-none stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+                            </svg>
+                        </a>
+                        <a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank">
+                            <svg class="h-5 aspect-square dark:stroke-neutral-300 dark:fill-neutral-300" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body="">
+            
+<article class="relative">
+<h1 class="mb-1">C# et .NET (Bases, création d&#39;une API)</h1>
+<div class="mb-4">
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Tag : </div>
+            <ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags">
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">MON</li>
+                
+
+            </ul>
+
+            
+            <div class="hidden" data-pagefind-meta="Type" aria-hidden="true">
+                
+                    
+                        <span data-pagefind-filter="Type">MON</span>
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Auteur : </div>
+            <ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs">
+                
+                    <li class="bg-blue-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Auteurs">Savinien Laeuffer</li>
+                
+            </ul>
+        </div>
+    
+
+    
+        <div class="absolute top-0 right-0">
+            <span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2 text-neutral-950" data-pagefind-filter="Année">
+                2022-2023
+            </span>
+        </div>
+    
+</div>
+
+
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100 dark:border-purple-800 dark:bg-purple-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-purple-500 dark:stroke-purple-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/promos/2022-2023/Laeuffer-Savinien/">Savinien Laeuffer</a><span class="px-1">/</span><a href="/promos/2022-2023/Laeuffer-Savinien/mon/">MONs de Savinien</a><span class="px-1">/</span><a href="/promos/2022-2023/Laeuffer-Savinien/mon/temps-2.2/">C# et .NET (Bases, création d&#39;une API)</a>
+
+</div>
+</div>
+
+
+
+
+<!-- début résumé -->
+<p>C# et .NET (Bases, création d'une API)</p>
+<!-- fin résumé -->
+<h2 id="description" tabindex="-1"><a class="header-anchor" href="#description"></a> Description</h2>
+<p>Ayant trouvé mon stage de fin d'études chez Lucca, j'aurai besoin de connaître le langage C# et la plateforme .NET. J'ai donc cherché sur internet des cours afin d'apprendre ce langage et j'ai trouvé ce que je cherchais sur le site de Microsoft, qui propose de nombreux cours pour faire de différentes choses en C#.</p>
+<p>Microsoft fournit beaucoup de cours, de videos et de documentations afin d'apprendre le C# et .NET, c'est donc de ça dont je me suis servi afin d'apprendre.</p>
+<h2 id="pr%C3%A9sentation-de-c%23-et-.net" tabindex="-1"><a class="header-anchor" href="#pr%C3%A9sentation-de-c%23-et-.net"></a> Présentation de C# et .NET</h2>
+<h5 id="c%23" tabindex="-1"><a class="header-anchor" href="#c%23"></a> C#</h5>
+<p>C# est un langage de programmation orienté objet créé par Microsoft en 2000. Il est principalement utilisé pour développer des applications Windows mais peut également être utilisé pour développer des applications web, des jeux vidéo, des applications mobiles et des applications de réalité virtuelle. C# est basé sur le langage C++ et est similaire à Java en termes de syntaxe. Il est utilisé dans le développement d'applications avec la plateforme .NET de Microsoft. Il est également utilisé pour développer des applications avec les frameworks <a href="http://ASP.NET">ASP.NET</a> et Xamarin pour développer des applications mobiles multiplateformes.</p>
+<div style="width:100%;">
+  <figure style="text-align:center">
+    <img style="height:200px; margin-left: auto; margin-right: auto" src="https://raw.githubusercontent.com/do-it-ecm/promo-2022-2023/refs/heads/main//Laeuffer-Savinien/mon/csharp.png">
+    <figcaption>C#</figcaption>
+  </figure>
+</div>
+<h5 id=".net" tabindex="-1"><a class="header-anchor" href="#.net"></a> .NET</h5>
+<p>.NET est un framework de développement d'applications créé par Microsoft. Il permet aux développeurs de créer des applications pour Windows, web, mobile, jeux, IoT et d'autres types d'applications en utilisant des langages de programmation tels que C#, F#, et Visual Basic. Il fournit un ensemble de bibliothèques de classes, un runtime pour l'exécution des applications, ainsi qu'un environnement de développement intégré (IDE) pour faciliter le développement d'applications.</p>
+<p>.NET est conçu pour être une plateforme de développement moderne et polyvalente, il offre des fonctionnalités telles que la gestion de la mémoire automatique, la sécurité, les services Web, et un support pour les applications multi-plateformes. .NET Core est une version open-source de .NET qui peut être utilisée sur différentes plateformes comme Windows, Linux et macOS.</p>
+<div style="width:100%;">
+  <figure style="text-align:center">
+    <img style="height:200px; margin-left: auto; margin-right: auto" src="https://raw.githubusercontent.com/do-it-ecm/promo-2022-2023/refs/heads/main//Laeuffer-Savinien/mon/dotnet.png">
+    <figcaption>C#</figcaption>
+  </figure>
+</div>
+<p>Voici un tableau résumant les différents frameworks .NET:</p>
+<table>
+<thead>
+<tr>
+<th>Modèle d’application</th>
+<th>Infrastructure</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Web</td>
+<td><a href="http://ASP.NET">ASP.NET</a> Core</td>
+<td>Infrastructure pour générer une logique côté serveur.</td>
+</tr>
+<tr>
+<td>Web</td>
+<td><a href="http://ASP.NET">ASP.NET</a> Core MVC</td>
+<td>Infrastructure pour générer une logique côté serveur pour les pages ou les API web.</td>
+</tr>
+<tr>
+<td>Web</td>
+<td><a href="http://ASP.NET">ASP.NET</a> Core Razor Pages</td>
+<td>Infrastructure pour créer une application HTML générée par le serveur.</td>
+</tr>
+<tr>
+<td>Client web</td>
+<td>Blazor</td>
+<td>Blazor fait partie de <a href="http://ASP.NET">ASP.NET</a> Core. Ses deux modes autorisent soit la manipulation de Document Object Model (DOM) par le biais de sockets en tant que véhicule de communication pour l’exécution de code côté serveur, soit une implémentation de WebAssembly pour l’exécution du langage C# compilé sur un navigateur.</td>
+</tr>
+<tr>
+<td>Bureau</td>
+<td>WinForms</td>
+<td>Infrastructure pour créer des applications de style Windows « battleship gray ».</td>
+</tr>
+<tr>
+<td>Bureau</td>
+<td>Windows Presentation Foundation (WPF)</td>
+<td>Framework pour la génération d’applications de bureau dynamiques conformes à différents facteurs de forme. WPF permet aux éléments de formulaire d’effectuer des mouvements, des fondus, des glissements et d’autres effets à l’aide d’une bibliothèque enrichie d’animations.</td>
+</tr>
+<tr>
+<td>Mobile</td>
+<td>Xamarin</td>
+<td>Permet aux développeurs .NET de créer des applications pour les appareils iOS et Android.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="bases-en-c%23" tabindex="-1"><a class="header-anchor" href="#bases-en-c%23"></a> Bases en C#</h2>
+<h5 id="pr%C3%A9requis" tabindex="-1"><a class="header-anchor" href="#pr%C3%A9requis"></a> Prérequis</h5>
+<p>Pour coder en C# il faut quelques prérequis:</p>
+<ul>
+<li>On installe <a href="https://code.visualstudio.com/">Visual Studio Code</a> ou un autre editeur de code.</li>
+<li>On installe aussi <a href="https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp">l'extension C#</a> pour VSCode.</li>
+<li>On installe localement le <a href="https://dotnet.microsoft.com/en-us/download">SDK .NET</a> pour VSCode.</li>
+</ul>
+<h5 id="hello-world" tabindex="-1"><a class="header-anchor" href="#hello-world"></a> Hello World</h5>
+<p>Le tutoriel Hello World n'est pas très utile en soi, mais il faut bien commencer quelque part, j'ai donc passé moins de 2 minutes sur l'exécution de la commande:</p>
+<pre class="line-numbers"><code>
+
+Console.WriteLine("Hello World!");
+
+
+</code></pre><p>Ce premier cours est disponible <a href="https://learn.microsoft.com/fr-fr/training/modules/csharp-write-first/2-exercise-hello-world?WT.mc_id=dotnet-35129-website&amp;ns-enrollment-type=learningpath&amp;ns-enrollment-id=learn.build-dotnet-applications-csharp">ici</a></p>
+<h2 id="cr%C3%A9er-une-api-web-avec-asp.net-core" tabindex="-1"><a class="header-anchor" href="#cr%C3%A9er-une-api-web-avec-asp.net-core"></a> Créer une API web avec <a href="http://ASP.NET">ASP.NET</a> Core</h2>
+<p>Supposons que nous souhaitons créer une gestion de profils d'utilisateurs pour une application web quelconque. Un utilisateur doit comporter un pseudo, un numéro unique en guise d'id, un âge, et un booléen indiquant si le compte a été activé ou non.
+Le service créer permettra d'ajouter, d'afficher, de modifier et de supprimer des utilisateurs. On cherche donc à créer des requêtes CRUD (Create, Read, Update, Delete) en C# pour des objets User.</p>
+<p>On apprendra ici à créer une application d'API web grâce à <a href="http://ASP.NET">ASP.NET</a> Core. On executera cette API et on pourra la tester à partir du CLI en ajoutant, supprimant, updatant, lisant des utilisateurs.</p>
+<p>Les méthodes HTTP que nous allons créer seront les méthodes</p>
+<ul>
+<li><code>GET</code></li>
+<li><code>POST</code></li>
+<li><code>PUT</code></li>
+<li><code>DELETE</code></li>
+</ul>
+<h3 id="cr%C3%A9ation-du-projet" tabindex="-1"><a class="header-anchor" href="#cr%C3%A9ation-du-projet"></a> Création du projet</h3>
+<p>Tout d'abord, afin d'utiliser le module nécessaire à la création de l'API, on vérifie que .NET 6.0 est correctement installé en entrant la commande suivante:</p>
+<pre class="line-numbers"><code>
+
+dotnet --list-sdks
+
+
+</code></pre><p>Si la sortie ressemble à ceci, alors c'est bon.</p>
+<pre class="line-numbers"><code>
+
+3.1.100 [C:\program files\dotnet\sdk]
+5.0.100 [C:\program files\dotnet\sdk]
+6.0.100 [C:\program files\dotnet\sdk]
+
+
+</code></pre><p>Dans Visual Studio Code, on commence par ouvrir un dossier au nom de notre projet, ici je l'appelerai &quot;APIUser&quot;
+Une fois le dossier ouvert, on créer notre projet d'API web de base en entrant dans le terminal</p>
+<pre class="line-numbers"><code>
+
+dotnet new webapi -f net6.0
+
+
+</code></pre><p>On aura maintenant accès à ces dossiers et fichiers dans notre répertoire:</p>
+<pre class="language-bash line-numbers"><code>
+
+-| Controllers
+-| obj
+-| Properties
+-| appsettings.Development.json
+-| appsettings.json
+-| APIWeb.csproj
+-| Program.cs
+-| WeatherForecast.cs
+
+
+</code></pre><p>Ces fichiers correspondent à une API météo. On peut se baser sur le contenu de ces fichiers pour créer notre API, mais dans notre cas nous crérons un autre contrôleur.</p>
+<h3 id="la-classe-user" tabindex="-1"><a class="header-anchor" href="#la-classe-user"></a> La classe User</h3>
+<p>Dans un dossier Models que l'on crée avec la commande <code>mkdir Models</code> on créera notre fichier <code>User.cs</code> qui comportera notre classe utilisateur.</p>
+<p>Dans ce fichier on écrit le code suivant afin de définir la classe User:</p>
+<pre class="language-csharp line-numbers"><code>
+
+namespace APIUser.Models;
+
+public class User
+{
+    public int Id { get; set; }
+    public int? Age { get; set; }
+    public string? Name { get; set; }
+    public bool IsActivated { get; set; }
+}
+
+
+</code></pre><h3 id="le-service-de-donn%C3%A9es" tabindex="-1"><a class="header-anchor" href="#le-service-de-donn%C3%A9es"></a> Le service de données</h3>
+<p>Pareil que précédemment, on se sert de la commande <code>mkdir Services</code> pour créer un dossier Services dans lequel nous créerons le fichier <code>UserService.cs</code>.
+Ce fichier va nous permettre de créer des méthodes de stockage d'utilisateur en local.</p>
+<p>On entre le code suivant:</p>
+<pre class="language-csharp line-numbers"><code>
+
+using APIUser.Models;
+
+namespace APIUser.Services;
+
+public static class UserService
+{
+    static List<User> Users { get; }
+    static int nextId = 2;
+    static UserService()
+    {
+        Users = new List<User>
+        {
+            new User { Id = 1, Name = "admin", Age = "99", IsActivated = true },
+        };
+    }
+
+    public static List<User> GetAll() => Users;
+
+    public static User? Get(int id) => Users.FirstOrDefault(u => u.Id == id);
+
+    public static void Add(User user)
+    {
+        user.Id = nextId++;
+        Users.Add(user);
+    }
+
+    public static void Delete(int id)
+    {
+        var user = Get(id);
+        if(user is null)
+            return;
+
+        Users.Remove(user);
+    }
+
+    public static void Update(User user)
+    {
+        var index = Users.FindIndex(u => u.Id == user.Id);
+        if(index == -1)
+            return;
+
+        Users[index] = user;
+    }
+}
+
+
+</User></User></User></code></pre><p>Les méthodes Get, GetAll, Add, Delete et Update sont maintenant créées afin de gérer la liste d'utilisateur stockée localement dans la variable de liste Users. Le code est assez facile à comprendre, il faut simplement réapprendre la syntaxe de ce langage.</p>
+<h3 id="ajout-d'un-contr%C3%B4leur" tabindex="-1"><a class="header-anchor" href="#ajout-d'un-contr%C3%B4leur"></a> Ajout d'un contrôleur</h3>
+<p>Dans le dossier <code>Controllers</code> déjà existant, on crée notre fichier <code>UserController</code>, et dans ce fichier on ajoute le code suivant:</p>
+<pre class="language-csharp line-numbers"><code>
+
+using APIUser.Models;
+using APIUser.Services;
+using Microsoft.AspNetCore.Mvc;
+
+namespace APIUser.Controllers;
+
+[ApiController]
+[Route("[controller]")]
+public class UserController : ControllerBase
+{
+    public UserController()
+    {
+    }
+
+    // C'est ici que nous rédigerons nos fonction GET, GETALL, POST, PUT, et DELETE
+}
+
+
+</code></pre><p>Notre classe UserController fraichement créée se base sur la classe ControllerBase fournit par <a href="http://ASP.NET">ASP.NET</a> Core pour l'utilisation des requêtes HTTP.</p>
+<p>Dans la suite, il faut savoir que les attributs entre crochets vont définir quel type de méthode on aura affaire. Le type ActionResult est la classe de base pour les résultats d'action d'<a href="http://ASP.NET">ASP.NET</a> Core</p>
+<h5 id="m%C3%A9thode-getall" tabindex="-1"><a class="header-anchor" href="#m%C3%A9thode-getall"></a> Méthode GETALL</h5>
+<p>Pour afficher tous les utilisateurs on se sert donc de l'attribut <code>[HttpGet]</code>:</p>
+<pre class="language-csharp line-numbers"><code>
+
+[HttpGet]
+public ActionResult<List<User>> GetAll() =>
+    UserService.GetAll();
+
+
+</List<User></code></pre><h5 id="m%C3%A9thode-get(id)" tabindex="-1"><a class="header-anchor" href="#m%C3%A9thode-get(id)"></a> Méthode GET(id)</h5>
+<p>Pour afficher un seul utilisateur on se sert de l'attribut <code>[HttpGet]</code> en ajoutant le fait que l'on veuille le chercher par ID. Si l'utilisateur n'existe pas, on renvoie le résultat NotFound() qui renvoie un code 404:</p>
+<pre class="language-csharp line-numbers"><code>
+
+[HttpGet("{id}")]
+public ActionResult<User> Get(int id)
+{
+    var user = UserService.Get(id);
+
+    if(user == null)
+        return NotFound();
+
+    return user;
+}
+
+
+</User></code></pre><h5 id="m%C3%A9thode-post(user)" tabindex="-1"><a class="header-anchor" href="#m%C3%A9thode-post(user)"></a> Méthode POST(user)</h5>
+<p>Pour ajouter un nouvel utilisateur, on se sert de l'attribut <code>[HttpPost]</code>. Ici on remplace ActionResult par IActionResult qui est un type permettant de savoir si la demande a bien réussi et fournit l'ID de l'utilisateur fraichement créé.</p>
+<pre class="language-csharp line-numbers"><code>
+
+[HttpPost]
+public IActionResult Create(User user)
+{            
+    UserService.Add(user);
+    return CreatedAtAction(nameof(Get), new { id = user.Id }, user);
+}
+
+
+</code></pre><h5 id="m%C3%A9thode-put(user)" tabindex="-1"><a class="header-anchor" href="#m%C3%A9thode-put(user)"></a> Méthode PUT(user)</h5>
+<p>Pour update un utilisateur, , on se sert de l'attribut <code>[HttpPut]</code>. On vérifie bien sûr que l'élément existe avant de l'updater. Elle prend deux paramètres qui sont l'id et l'objet User que l'on veut mettre à jour.</p>
+<pre class="language-csharp line-numbers"><code>
+
+[HttpPut("{id}")]
+public IActionResult Update(int id, User user)
+{
+    if (id != user.Id)
+        return BadRequest();
+           
+    var existingUser = UserService.Get(id);
+    if(existingUser is null)
+        return NotFound();
+   
+    UserService.Update(user);           
+   
+    return NoContent();
+}
+
+
+</code></pre><h5 id="m%C3%A9thode-delete(id)" tabindex="-1"><a class="header-anchor" href="#m%C3%A9thode-delete(id)"></a> Méthode DELETE(id)</h5>
+<p>Pour supprimer un utilisateur on utilise <code>[HttpDelete(&quot;{id}&quot;)]</code>. On cherche si l'utilisateur existe bien avant de le supprimer à l'aide de la méthode GET par id, sinon on renvoie une erreur 404 NotFound().</p>
+<pre class="language-csharp line-numbers"><code>
+
+[HttpDelete("{id}")]
+public IActionResult Delete(int id)
+{
+    var user = UserService.Get(id);
+   
+    if (user is null)
+        return NotFound();
+       
+    UserService.Delete(id);
+   
+    return NoContent();
+}
+
+
+</code></pre><h3 id="execution-de-l'api" tabindex="-1"><a class="header-anchor" href="#execution-de-l'api"></a> Execution de l'API</h3>
+<p>Pour générer l'API web, on peut exécuter la commande suivante:</p>
+<pre class="line-numbers"><code>
+
+dotnet run
+
+
+</code></pre><p>Dans un autre terminal (on peut ouvrir un 2ème terminal dans Visual Studio Code), on accède à l'API Web grâce à la commande:</p>
+<pre class="line-numbers"><code>
+
+httprepl https://localhost:{PORT}
+
+
+</code></pre><p>Il faut bien sûr renseigner le port adéquat qui est fournit dans le CLI après avoir lancé la première commande.</p>
+<p>On accède au point de terminaison <code>User</code> grâce à la commande:</p>
+<pre class="line-numbers"><code>
+
+cd User
+
+
+</code></pre><p>Puis pour afficher les actions que l'on peut faire sur l'API User, on exécute la commande suivante:</p>
+<pre class="line-numbers"><code>
+
+ls
+
+
+</code></pre><p>Si tout est correct, on devrait voir afficher ceci:</p>
+<pre class="line-numbers"><code>
+
+    https://localhost:{PORT}/User> ls
+    .      [GET|POST]
+    ..     []
+    {id}   [GET|PUT|DELETE]
+
+
+</code></pre><p>Ce qui indique que les méthodes ont bien été compilées.</p>
+<h3 id="exemple-de-requ%C3%AAtes" tabindex="-1"><a class="header-anchor" href="#exemple-de-requ%C3%AAtes"></a> Exemple de requêtes</h3>
+<p>On peut exécuter une requête POST pour ajouter un nouvel User dans HttpRepl en utilisant la commande suivante :</p>
+<pre class="line-numbers"><code>
+
+post -c "{"age":90, "name":"Savinien",, "isActivated":false}"
+
+
+</code></pre><p>On peut le mettre à jour grâce à la commande (il faut préciser l'id):</p>
+<pre class="line-numbers"><code>
+
+put 2 -c "{"age":90, "name":"Savinien",, "isActivated":true}"
+
+
+</code></pre><p>Si la sortie est la suivante alors ça a fonctionné:</p>
+<pre class="line-numbers"><code>
+
+HTTP/1.1 204 No Content
+Date: Fri, 20 Jan 2022 22:14:43 GMT
+Server: Kestrel
+
+
+</code></pre><p>Pour vérifier que l'utilisateur a été mis à jour on essaye de l'afficher:</p>
+<pre class="line-numbers"><code>
+
+get 2
+
+
+</code></pre><p>Notre utilisateur devrait donc s'afficher:</p>
+<pre class="line-numbers"><code>
+
+HTTP/1.1 200 OK
+Content-Type: application/json; charset=utf-8
+Date: Fri, 20 Jan 2022 22:15:55 GMT
+Server: Kestrel
+Transfer-Encoding: chunked
+
+{
+    "id": 2,
+    "age": 90, 
+    "name": "Savinien", 
+    "isActivated": true
+}
+
+
+</code></pre><p>Pour le supprimer, il suffit d'exécuter:</p>
+<pre class="line-numbers"><code>
+
+delete 2
+
+
+</code></pre><p>Cette commande renvoie un résultat 204 No Content pour une réussite, et affiche:</p>
+<pre class="line-numbers"><code>
+
+HTTP/1.1 204 No Content
+Date: Fri, 20 Jan 2022 22:18:20 GMT
+Server: Kestrel
+
+
+</code></pre><p>En exécutant la commande suivante, on affiche tous les utilisateurs et on se rend compte que l'utilisateur précédemment créé est bien supprimé et ne figure plus dans la liste.</p>
+<pre class="line-numbers"><code>
+
+get
+
+
+</code></pre><h2 id="ressources" tabindex="-1"><a class="header-anchor" href="#ressources"></a> Ressources</h2>
+<p>La plupart des ressources utilises pour apprendre le C# se trouvent sur le site web de Microsoft et sont très bien faites.</p>
+<ul>
+<li>
+<p><a href="https://learn.microsoft.com/fr-fr/">Microsoft Learn</a></p>
+</li>
+<li>
+<p><a href="https://dotnet.microsoft.com/en-us/learn/videos">Video .NET</a></p>
+</li>
+<li>
+<p><a href="https://learn.microsoft.com/fr-fr/training/modules/csharp-write-first/">Écrire vos premières lignes de code en C#</a></p>
+</li>
+<li>
+<p><a href="https://learn.microsoft.com/fr-fr/training/modules/build-web-api-aspnet-core/">Créer une API web avec des contrôleurs ASP.NET Core</a></p>
+</li>
+</ul>
+
+
+
+</article>
+
+        </main>
+
+        <footer class="min-h-[50px] border-t-2 mt-4 border-gray-200 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-center items-center">
+                    <p class="text-center">
+                        ©2025 <b><span style="font-family: Consolas, sans-serif;">Do-<span style="color: #4a86e8">It</span></span></b> - Développement, Management et Gestion de projets en IT
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- MathJax import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">
+            window.MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']], // Delimiters for inline math
+                    displayMath: [['$$', '$$'], ['\\[', '\\]']] // Delimiters for block math
+                },
+                svg: {
+                    fontCache: 'global' // Use global font cache for SVG output
+                }
+            };
+            document.addEventListener('DOMContentLoaded', () => {
+                MathJax.typeset(); // Ensures MathJax processes the content after the page loads
+            });
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">
+            Prism.plugins.NormalizeWhitespace.setDefaults({
+                'remove-trailing': true,
+                'remove-indent': true,
+                'left-trim': true,
+                'right-trim': true,
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script>
+    </body>
+</html>

@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="robots" content="index, follow">
+
+        <link rel="canonical" href="https://do-it.aioli.ec-m.fr/promos/2024-2025/Sophia-Capdevielle/mon/temps-1.1/">
+
+        
+        
+
+        <meta name="description" content="Do-It, cours et travaux des élèves de l&#39;école Centrale Méditerranée">
+        <meta property="og:description" content="Do-It, cours et travaux des élèves de l&#39;école Centrale Méditerranée">
+        <meta name="twitter:description" content="Do-It, cours et travaux des élèves de l&#39;école Centrale Méditerranée">
+
+        
+            <meta name="author" content="Sophia Capdevielle">
+        
+        <meta name="keywords" content="do-it, centrale, centrale méditerranée, ecm, MON, frontend, html, css, vue.js">
+
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png">
+        <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png">
+
+        <link href="/assets/stylesheets/main.css" rel="stylesheet">
+
+        <meta property="og:title" content="Bases du front et du framework Vue">
+
+        <meta property="og:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta property="og:url" content="https://do-it.aioli.ec-m.fr/promos/2024-2025/Sophia-Capdevielle/mon/temps-1.1/">
+        <meta property="og:type" content="website">
+
+        <meta name="twitter:card" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:title" content="Bases du front et du framework Vue">
+        <meta name="twitter:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:url" content="https://do-it.aioli.ec-m.fr/promos/2024-2025/Sophia-Capdevielle/mon/temps-1.1/">
+
+        <title>Bases du front et du framework Vue</title>
+
+        <!-- Prismjs imports
+                - Prism line numbers
+                - Prism toolbar
+        -->
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet">
+        <link id="prism-theme" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+        <!-- Mermaid import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js "></script>
+
+        <script defer="">
+        // Check if a theme is stored in localStorage. If so, use it, otherwise fallback to the system preference.
+        const storedTheme = localStorage.getItem('theme');
+        if (storedTheme) {
+            document.documentElement.classList.toggle("dark", storedTheme === "dark");
+        } else {
+            // Use system color scheme if there is no stored theme preference.
+            document.documentElement.classList.toggle("dark", window.matchMedia("(prefers-color-scheme: dark)").matches);
+        }
+
+        function loadPrismTheme(isDarkMode) {
+            const newTheme = isDarkMode ? 'prism-okaidia.min.css' : 'prism-solarizedlight.min.css';
+            const newLink = document.createElement('link');
+            newLink.rel = 'stylesheet';
+            newLink.id = 'prism-theme';
+            newLink.href = `https://cdn.jsdelivr.net/npm/prismjs/themes/${newTheme}`;
+
+            newLink.onload = () => {
+                // Reapply highlighting after the new theme loads
+                Prism.highlightAll();
+            };
+
+            const existingLink = document.getElementById('prism-theme');
+            if (existingLink) {
+                document.head.replaceChild(newLink, existingLink);
+            } else {
+                document.head.appendChild(newLink);
+            }
+        }
+
+        function setMermaidTheme(isDarkMode) {
+            const theme = isDarkMode ? 'dark' : 'forest';
+            mermaid.initialize({
+                securityLevel: 'loose',
+                theme,
+                startOnLoad: true,
+            });
+        }
+
+        // Toggle dark and light mode and update localStorage accordingly.
+        function toggleDarkMode() {
+            const dark = document.documentElement.classList.contains("dark");
+            const newTheme = dark ? "light" : "dark";
+            localStorage.setItem('theme', newTheme);
+            document.documentElement.classList.toggle("dark", !dark);
+            loadPrismTheme(!dark);
+            setMermaidTheme(!dark);
+        }
+
+        // On initial load, ensure that Prism and Mermaid are initialized using the current theme.
+        const isDark = document.documentElement.classList.contains("dark");
+        loadPrismTheme(isDark);
+        setMermaidTheme(isDark);
+        </script>
+
+    </head>
+
+    <body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000" class="bg-neutral-50 text-neutral-950 dark:bg-neutral-900 dark:text-neutral-50">
+        <header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white dark:bg-neutral-900 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-between items-center">
+                    <a class="mx-2" href="/">Home</a>
+                    <button class="hidden sm:block text-neutral-950 dark:text-neutral-50 hover:bg-neutral-700 hover:text-neutral-50 hover:dark:bg-neutral-300 hover:dark:text-neutral-950 transition-colors p-2 rounded-full duration-800 ease-in-out" onclick="toggleDarkMode()">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 dark:hidden stroke-current">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <path d="M12 2V4" stroke-linecap="round"></path>
+                            <path d="M12 20V22" stroke-linecap="round"></path>
+                            <path d="M4 12L2 12" stroke-linecap="round"></path>
+                            <path d="M22 12L20 12" stroke-linecap="round"></path>
+                            <path d="M19.7778 4.22266L17.5558 6.25424" stroke-linecap="round"></path>
+                            <path d="M4.22217 4.22266L6.44418 6.25424" stroke-linecap="round"></path>
+                            <path d="M6.44434 17.5557L4.22211 19.7779" stroke-linecap="round"></path>
+                            <path d="M19.7778 19.7773L17.5558 17.5551" stroke-linecap="round"></path>
+                        </svg>
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 stroke-current hidden dark:block">
+                            <path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </button>
+                    <div class="flex items-center gap-4 sm:gap-6 ">
+                        <a class="" href="/cs">CS</a>
+                        <a class="" href="/pok">POK</a>
+                        <a class="" href="/mon">MON</a>
+                        <a class="" href="/projets">Projets</a>
+                        <a class="hidden sm:block" href="/promos">Promos</a>
+                        <a href="/search">
+                            <svg class="h-5 aspect-square stroke-neutral-950 dark:stroke-neutral-300 fill-none stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+                            </svg>
+                        </a>
+                        <a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank">
+                            <svg class="h-5 aspect-square dark:stroke-neutral-300 dark:fill-neutral-300" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body="">
+            
+<article class="relative">
+<h1 class="mb-1">Bases du front et du framework Vue</h1>
+<div class="mb-4">
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Tags : </div>
+            <ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags">
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">MON</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">frontend</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">html</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">css</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">vue.js</li>
+                
+
+            </ul>
+
+            
+            <div class="hidden" data-pagefind-meta="Type" aria-hidden="true">
+                
+                    
+                        <span data-pagefind-filter="Type">MON</span>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Auteur : </div>
+            <ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs">
+                
+                    <li class="bg-blue-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Auteurs">Sophia Capdevielle</li>
+                
+            </ul>
+        </div>
+    
+
+    
+        <div class="absolute top-0 right-0">
+            <span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2 text-neutral-950" data-pagefind-filter="Année">
+                2024-2025
+            </span>
+        </div>
+    
+</div>
+
+
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100 dark:border-purple-800 dark:bg-purple-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-purple-500 dark:stroke-purple-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/promos/2024-2025/Sophia-Capdevielle/">Sophia Capdevielle</a><span class="px-1">/</span><a href="/promos/2024-2025/Sophia-Capdevielle/mon/">MON de Sophia Capdevielle</a><span class="px-1">/</span><a href="/promos/2024-2025/Sophia-Capdevielle/mon/temps-1.1/">Bases du front et du framework Vue</a>
+
+</div>
+</div>
+
+
+
+
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100 dark:border-pink-800 dark:bg-pink-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-pink-500 dark:stroke-pink-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Prérequis</b></p>
+</div><div class="pl-8 mr-8">
+<p>Pas de prérequis</p>
+</div>
+</div>
+<p>Ce MON pose les bases du font-end: HTML, CSS, JavaScript (un peu) et présente un framework: Vue.js; le tout permettant de créer des sites internets interactifs.</p>
+<h2 id="bases-du-front-end" tabindex="-1"><a class="header-anchor" href="#bases-du-front-end"></a> Bases du front-end</h2>
+<h3 id="html" tabindex="-1"><a class="header-anchor" href="#html"></a> HTML</h3>
+<p>HTML pour HyperText Markup Language permet de structurer la page web. Tout est défini à l'aide de balises &lt;&gt;.
+Un fichier html commence par <code>&lt;!DOCTYPE html&gt;</code>, puis <code>&lt;html&gt;</code> et se termine par <code>&lt;/html&gt;</code>; l'intégralité du code se trouve entre ces deux balises.
+On retrouve ensuite <code>&lt;head&gt; &lt;/head&gt;</code>: avec à l'intérieur toutes les données dont on a besoin mais qu'on ne souhaite pas afficher; y compris le <code>&lt;title&gt;</code>.
+Puis <code>&lt;body&gt; &lt;/body&gt;</code> avec à l'intérieur les données visibles sur la page web.</p>
+<p>Quelques balises basiques que l'on trouve au sein du <code>&lt;body&gt;</code>:</p>
+<ul>
+<li><code>&lt;p&gt; &lt;/p&gt;</code> pour paragraphes</li>
+<li><code>&lt;h1&gt;&lt;/h1&gt;</code> à <code>&lt;h6&gt;&lt;/h6&gt;</code> pour les titres 1 à 6</li>
+<li><code>&lt;ul&gt; &lt;/ul&gt;</code> pour les listes désordonnées, et <code>&lt;li&gt; &lt;/li&gt;</code> pour chaque élément de la liste</li>
+<li><code>&lt;ol&gt; &lt;/ol&gt;</code> pour les listes ordonnées et donc numérotées</li>
+<li><code>&lt;header&gt; &lt;/header&gt;</code> , <code>&lt;footer&gt; &lt;/footer&gt; </code></li>
+<li><code>&lt;span&gt; &lt;/span&gt;</code> pour regrouper des éléments d'une même ligne</li>
+<li><code>&lt;div&gt; &lt;/div&gt;</code>pour regrouper des éléments de la page
+Ces deux dernières balises sont notamment utiles quand on fait entrer en jeu le style de la page avec CSS: on applique le style directement au <code>&lt;span&gt;</code> ou <code>&lt;div&gt;</code>.</li>
+</ul>
+<p>On peut également rajouter des éléments à une balise ouvrante: des <strong>attributs</strong>.
+On a par exemple &quot;id&quot; qui permet de donner un identifiant à notre élément:
+<code>&lt;p id=&quot;parag1&quot;&gt; &lt;/p&gt;</code> -&gt; ce paragraphe est désormais identifié comme &quot;parag1&quot;.
+De même avec &quot;class&quot;. Cela permet ensuite de cibler le paragraphe ou le titre que l'on veut stylisé.</p>
+<ul>
+<li><code>&lt;a href=&quot;autre_page.html&quot;&gt;Cliquez ici pour vous rendre sur une autre page&lt;/a&gt;</code> pour faire un lien cliquable</li>
+<li><code>&lt;img src=&quot;image.jpg&quot; alt=&quot;descrption&quot;/&gt;</code> (balise à la fois ouvrante et fermante) pour insérer une image</li>
+</ul>
+<p>Niveau style de texte, on trouve:</p>
+<ul>
+<li>
+<p><code>&lt;em&gt; texte &lt;/em&gt;</code> permet d'écrire <em>texte</em> (en italique)</p>
+</li>
+<li>
+<p><code>&lt;strong&gt; texte &lt;/strong&gt;</code> permet d'écrire <strong>texte</strong> (en gras)</p>
+</li>
+<li>
+<p><code>&lt;u&gt; texte &lt;/u&gt;</code> permet décrire en souligné
+NB: on peut imbriquer <code>&lt;em&gt;&lt;strong&gt; texte &lt;/strong&gt;&lt;/em&gt;</code> qui nous donne <em><strong>texte</strong></em></p>
+</li>
+<li>
+<p><code>&lt;br/&gt;</code> pour un saut de ligne définitif</p>
+</li>
+</ul>
+<h3 id="css" tabindex="-1"><a class="header-anchor" href="#css"></a> CSS</h3>
+<p>CSS pour Cascading Style Sheets permet de styliser le page web, la rendre plus jolie et agréable.
+Dans le même dossier que notre fichier html, on crée un fichier .css dans lequel on va mettre nos éléments de style.
+Pour lier le fichier html au css, on entre <code>&lt;link rel='stylesheet' href='styles.css'/&gt;</code> (styles.css étant notre fichier css) dans le <code>&lt;head&gt; &lt;/head&gt;</code> du html. Désormais, tous les éléments de styles ajoutés au fichier css seront visibles sur la page web.</p>
+<p>Pour ajouter les éléments de style:</p>
+<ul>
+<li>On note la partie du site que l'on veut stylisé; par exemple &quot;body&quot;</li>
+<li>On ouvre {}</li>
+<li>On met différents attributs à l'intérieur; par exemple &quot;color&quot;, &quot;background-color&quot;</li>
+</ul>
+<p>Voilà ce que ça donne: (!! penser aux ;!!)</p>
+<p>body { <br>
+color: #FFC0CB;<br>
+background-color: #0000FF; <br>
+text-align: left;<br>
+}</p>
+<p>Un autre exemple:</p>
+<p>h1 { <br>
+font-size: 36px; <br>
+}</p>
+<p>On peut le faire sur plusieurs éléments à la fois:</p>
+<p>h1, h2, h3, h4, h5, h6 { <br>
+font-family: &quot;Helvetica&quot;, &quot;Arial&quot;, sans-serif; <br>
+}</p>
+<h3 id="javascript-(un-peu)" tabindex="-1"><a class="header-anchor" href="#javascript-(un-peu)"></a> JavaScript (un peu)</h3>
+<p>JavaScript est le language permettant de rendre les pages web dynamiques et interactives. Il permet de réagir aux actions de l'utilisateur: clics, mouvements de la souris,...On a donc: HTML qui structure, CSS qui stylise, et Js qui dynamise.</p>
+<p>Voici les bases:</p>
+<p>Les variables sont utilisées pour stocker des données. Elles peuvent être définies avec let ou const.</p>
+<ul>
+<li>let : permet de déclarer une variable qui peut changer de valeur.</li>
+<li>const : permet de déclarer une variable dont la valeur ne change pas.</li>
+</ul>
+<p>Par exemple:</p>
+<pre class="line-numbers"><code>
+
+let age = 21;
+const name = "Sophia";
+
+
+</code></pre><ol start="2">
+<li>Types
+Les principaux types sont :</li>
+</ol>
+<ul>
+<li>Nombre (Number) : 42, 3.14</li>
+<li>Chaîne de caractères (String) : &quot;Hello&quot;</li>
+<li>Booléen (Boolean) : true ou false</li>
+<li>Tableau (Array) : [1, 2, 3]</li>
+<li>Objet (Object) : { nom: &quot;Sophia&quot;, âge: 21 }</li>
+</ul>
+<ol start="3">
+<li>Opérateurs
+Les opérateurs permettent de manipuler les données :</li>
+</ol>
+<p>Mathématiques : +, -, *, /
+Comparaison : ==, === (égalité stricte), !=, &gt;, &lt;
+Logiques : &amp;&amp; (ET), || (OU), ! (NON)</p>
+<p>Voici un exemple:</p>
+<pre class="line-numbers"><code>
+
+let a = 10;
+let b = 5;
+console.log(a + b); // 15
+console.log(a === 10); // true
+
+
+</code></pre><p>À noter que la fonction console.log() permet d'afficher des informations dans la console du navigateur ou de l'environnement de développement.</p>
+<ol start="4">
+<li>Conditions: &quot;if&quot;</li>
+</ol>
+<p>Un exemple de la syntaxe:</p>
+<pre class="line-numbers"><code>
+
+let age = 20;
+if (age >= 18) {
+  console.log("Majeur");
+} else {
+  console.log("Mineur");
+}
+
+
+</code></pre><ol start="5">
+<li>Boucles: &quot;for&quot; et &quot;while&quot;</li>
+</ol>
+<p>for : pour itérer un nombre déterminé de fois.
+while : pour itérer tant qu'une condition est vraie.</p>
+<pre class="line-numbers"><code>
+
+for (let i = 0; i < 5; i++) {
+  console.log(i); 
+}
+
+
+</code></pre><pre class="line-numbers"><code>
+
+let i = 0;
+while (i < 5) { 
+  console.log(i); 
+  i++; //
+}
+
+
+</code></pre><ol start="6">
+<li>Fonctions</li>
+</ol>
+<p>function hello(name) {
+return &quot;hello &quot; + name;
+}
+console.log(hello(&quot;Sophia&quot;)); // hello Sophia</p>
+<ol start="7">
+<li>Manipulation du DOM
+En Js, on peut interagir avec le HTML en utilisant le DOM (Document Object Model).</li>
+</ol>
+<p>document.getElementById(&quot;myButton&quot;).addEventListener(&quot;click&quot;, function() {
+alert(&quot;Button clicked!&quot;);
+});</p>
+<p>document étant la page HTML
+getElementById(&quot;myButton&quot;) sélectionne un élément HTML en fonction de son id, ce qui signifie que dasn document on peut retrouver:
+<code>&lt;button id=&quot;myButton&quot;&gt;Clique-moi&lt;/button&gt;</code>
+ici, on a donc fait en sorte que lorsque ce bouton est cliqué, une alerte &quot;Button clicked&quot; est créée</p>
+<h2 id="qu'est-ce-que-vue%3F-les-bases" tabindex="-1"><a class="header-anchor" href="#qu'est-ce-que-vue%3F-les-bases"></a> Qu'est-ce-que Vue? Les bases</h2>
+<p>Vue est un framework JavaScript qui se repose sur les standards HTML, CSS et JavaScript. Il propose une manière efficace de déclarer des composants pour la construction d'interfaces utilisateur dynamiques.</p>
+<h3 id="composant-monofichier-(single-file-components)" tabindex="-1"><a class="header-anchor" href="#composant-monofichier-(single-file-components)"></a> Composant monofichier (Single-File Components)</h3>
+<p>Dans la plupart des projets Vue dotés d'outils de construction, nous créons des composants Vue en utilisant un format de fichier semblable à HTML appelé <strong>Composant monofichier</strong>, ou <strong>Single-File Component</strong> en anglais (également connu sous le nom de fichiers <code>*.vue</code>). Celui-ci encapsule la partie JavaScript, HTML et les styles (CSS) du composant dans un seul fichier.</p>
+<h3 id="api" tabindex="-1"><a class="header-anchor" href="#api"></a> API</h3>
+<p>Les composants Vue peuvent être créés dans deux styles d'API différents: <strong>Options API</strong> et <strong>Composition API</strong>.</p>
+<h3 id="d%C3%A9marrage" tabindex="-1"><a class="header-anchor" href="#d%C3%A9marrage"></a> Démarrage</h3>
+<p>Installation CLI Vue: 'npm install -g @vue/cli'<br>
+'vue create mon-projet-vue' <br>
+Voilà on a créer notre premier projet Vue !</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Sophia-Capdevielle/mon/temps-1.1/VueCLI.png" alt="Vue CLI"></p>
+<p>Ici, on choisira &quot;Default&quot; avec Vue3.<br>
+Tous les fichiers nécessaires sont ensuite générés automatiquement: structure de base, Babel, ESLint, scripts de base. Voilà ce à quoi ressemble le base créée:</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Sophia-Capdevielle/mon/temps-1.1/AppVuebase.png" alt="App Vue Base"></p>
+<p>Et voilà les dossiers et fichiers créés:</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Sophia-Capdevielle/mon/temps-1.1/DossiersAppVue.png" alt="Dossiers App Vue"></p>
+<p>App.vue est appelé <strong>composant racine</strong></p>
+<p>Sinon, j'ai aussi regardé quelques vidéos Youtube qui décrivent les fonctions et éléments de base et notamment celles de Net Ninja.</p>
+<ol>
+<li>Les variables
+Les variables ou données réactives, sont définies dans l'ibjet data.
+data() {
+}</li>
+<li>Les directives</li>
+</ol>
+<p>Elles permettent de rendre le HTML interactif. Voici quelques exemples:</p>
+<ul>
+<li><code>v-bind</code></li>
+<li><code>v-model</code></li>
+<li><code>v-for</code></li>
+<li><code>v-if</code>, <code>v-else</code></li>
+</ul>
+<ol start="3">
+<li>Les méthodes</li>
+</ol>
+<p>Elles permettent de manipuler les données réactives et les événements.
+methods:{
+}</p>
+<h2 id="conclusion" tabindex="-1"><a class="header-anchor" href="#conclusion"></a> Conclusion</h2>
+<p>Maintenant que l'on a quelques bases, on peut passer au POK 1 afin de prendre en main ces outils à travers la réalisation d'une application concrète: un calendrier.</p>
+<h3 id="sources" tabindex="-1"><a class="header-anchor" href="#sources"></a> Sources</h3>
+<p><a href="https://fr.vuejs.org/tutorial/">Documentation Vue.js</a></p>
+<p><a href="https://developer.mozilla.org/fr/docs/Web/JavaScript">JavaScript</a></p>
+<p><a href="https://internetingishard.netlify.app/html-and-css/css-box-model/">HTML et CSS</a></p>
+
+
+
+</article>
+
+        </main>
+
+        <footer class="min-h-[50px] border-t-2 mt-4 border-gray-200 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-center items-center">
+                    <p class="text-center">
+                        ©2025 <b><span style="font-family: Consolas, sans-serif;">Do-<span style="color: #4a86e8">It</span></span></b> - Développement, Management et Gestion de projets en IT
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- MathJax import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">
+            window.MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']], // Delimiters for inline math
+                    displayMath: [['$$', '$$'], ['\\[', '\\]']] // Delimiters for block math
+                },
+                svg: {
+                    fontCache: 'global' // Use global font cache for SVG output
+                }
+            };
+            document.addEventListener('DOMContentLoaded', () => {
+                MathJax.typeset(); // Ensures MathJax processes the content after the page loads
+            });
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">
+            Prism.plugins.NormalizeWhitespace.setDefaults({
+                'remove-trailing': true,
+                'remove-indent': true,
+                'left-trim': true,
+                'right-trim': true,
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script>
+    </body>
+</html>

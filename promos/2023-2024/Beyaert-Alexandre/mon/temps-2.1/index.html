@@ -1,0 +1,407 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="index, follow"><link rel="canonical" href="https://do-it.aioli.ec-m.fr/promos/2023-2024/Beyaert-Alexandre/mon/temps-2.1/"><meta name="description" content="Un MON traitant de l&#39;utilisation des bibliothèques Python pour la Data Science."><meta property="og:description" content="Un MON traitant de l&#39;utilisation des bibliothèques Python pour la Data Science."><meta name="twitter:description" content="Un MON traitant de l&#39;utilisation des bibliothèques Python pour la Data Science."><meta name="author" content="Alexandre Beyaert"><meta name="keywords" content="do-it, centrale, centrale méditerranée, ecm, MON"><link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon"><link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png"><link rel="apple-touch-icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png"><link href="/assets/stylesheets/main.css" rel="stylesheet"><meta property="og:title" content="Bibliothèques Python pour la Data Science : NumPy, Matplotlib et Pandas"><meta property="og:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png"><meta property="og:url" content="https://do-it.aioli.ec-m.fr/promos/2023-2024/Beyaert-Alexandre/mon/temps-2.1/"><meta property="og:type" content="website"><meta name="twitter:card" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png"><meta name="twitter:title" content="Bibliothèques Python pour la Data Science : NumPy, Matplotlib et Pandas"><meta name="twitter:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png"><meta name="twitter:url" content="https://do-it.aioli.ec-m.fr/promos/2023-2024/Beyaert-Alexandre/mon/temps-2.1/"><title>Bibliothèques Python pour la Data Science : NumPy, Matplotlib et Pandas</title><link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet"><link id="prism-theme" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet"><link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet"><script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script><script defer="">const storedTheme=localStorage.getItem("theme");function loadPrismTheme(e){const t=e?"prism-okaidia.min.css":"prism-solarizedlight.min.css",s=document.createElement("link");s.rel="stylesheet",s.id="prism-theme",s.href=`https://cdn.jsdelivr.net/npm/prismjs/themes/${t}`,s.onload=()=>{Prism.highlightAll()};const m=document.getElementById("prism-theme");m?document.head.replaceChild(s,m):document.head.appendChild(s)}function setMermaidTheme(e){const t=e?"dark":"forest";mermaid.initialize({securityLevel:"loose",theme:t,startOnLoad:!0})}function toggleDarkMode(){const e=document.documentElement.classList.contains("dark"),t=e?"light":"dark";localStorage.setItem("theme",t),document.documentElement.classList.toggle("dark",!e),loadPrismTheme(!e),setMermaidTheme(!e)}storedTheme?document.documentElement.classList.toggle("dark","dark"===storedTheme):document.documentElement.classList.toggle("dark",window.matchMedia("(prefers-color-scheme: dark)").matches);const isDark=document.documentElement.classList.contains("dark");loadPrismTheme(isDark),setMermaidTheme(isDark)</script></head><body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000" class="bg-neutral-50 text-neutral-950 dark:bg-neutral-900 dark:text-neutral-50"><header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white dark:bg-neutral-900 dark:border-neutral-700"><div class="max-w-[1000px] mx-auto px-4"><div class="min-h-[50px] flex justify-between items-center"><a class="mx-2" href="/">Home</a> <button class="hidden sm:block text-neutral-950 dark:text-neutral-50 hover:bg-neutral-700 hover:text-neutral-50 hover:dark:bg-neutral-300 hover:dark:text-neutral-950 transition-colors p-2 rounded-full duration-800 ease-in-out" onclick="toggleDarkMode()"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 dark:hidden stroke-current"><circle cx="12" cy="12" r="5"></circle><path d="M12 2V4" stroke-linecap="round"></path><path d="M12 20V22" stroke-linecap="round"></path><path d="M4 12L2 12" stroke-linecap="round"></path><path d="M22 12L20 12" stroke-linecap="round"></path><path d="M19.7778 4.22266L17.5558 6.25424" stroke-linecap="round"></path><path d="M4.22217 4.22266L6.44418 6.25424" stroke-linecap="round"></path><path d="M6.44434 17.5557L4.22211 19.7779" stroke-linecap="round"></path><path d="M19.7778 19.7773L17.5558 17.5551" stroke-linecap="round"></path></svg> <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 stroke-current hidden dark:block"><path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke-linecap="round" stroke-linejoin="round"></path></svg></button><div class="flex items-center gap-4 sm:gap-6"><a class="" href="/cs">CS</a> <a class="" href="/pok">POK</a> <a class="" href="/mon">MON</a> <a class="" href="/projets">Projets</a> <a class="hidden sm:block" href="/promos">Promos</a> <a href="/search"><svg class="h-5 aspect-square stroke-neutral-950 dark:stroke-neutral-300 fill-none stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path></svg> </a><a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank"><svg class="h-5 aspect-square dark:stroke-neutral-300 dark:fill-neutral-300" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg></a></div></div></div></header><main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body=""><article class="relative"><h1 class="mb-1">Bibliothèques Python pour la Data Science : NumPy, Matplotlib et Pandas</h1><div class="mb-4"><div class="px-4 flex flex-wrap items-center"><div class="font-bold">Tag :</div><ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags"><li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">MON</li></ul><div class="hidden" data-pagefind-meta="Type" aria-hidden="true"><span data-pagefind-filter="Type">MON</span></div></div><div class="px-4 flex flex-wrap items-center"><div class="font-bold">Auteur :</div><ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs"><li class="bg-blue-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Auteurs">Alexandre Beyaert</li></ul></div><div class="absolute top-0 right-0"><span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2 text-neutral-950" data-pagefind-filter="Année">2023-2024</span></div></div><p class="mb-4 text-lg">Un MON traitant de l'utilisation des bibliothèques Python pour la Data Science.</p><div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100 dark:border-purple-800 dark:bg-purple-950"><svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-purple-500 dark:stroke-purple-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path></svg><div class="pl-8 mr-8"><a href="/promos/2023-2024/Beyaert-Alexandre/">Alexandre BEYAERT</a><span class="px-1">/</span><a href="/promos/2023-2024/Beyaert-Alexandre/mon/">MON de Alexandre Beyaert</a><span class="px-1">/</span><a href="/promos/2023-2024/Beyaert-Alexandre/mon/temps-2.1/">Bibliothèques Python pour la Data Science : NumPy, Matplotlib et Pandas</a></div></div><div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100 dark:border-pink-800 dark:bg-pink-950"><svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-pink-500 dark:stroke-pink-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg><div class="pl-8 mb-2 mr-8"><p><b>Prérequis</b></p></div><div class="pl-8 mr-8"><p><strong>Niveau :</strong> Facile <strong>Prérequis :</strong> Bases en Python</p></div></div><h2 id="sommaire" tabindex="-1"><a class="header-anchor" href="#sommaire"></a> Sommaire</h2><ol><li>Introduction</li><li>Bibliothèque NumPy</li><li>Bibliothèque Matplotlib</li><li>Bibliothèque Pandas</li><li>Conclusion</li><li>Bibliographie</li></ol><h2 id="1.-introduction" tabindex="-1"><a class="header-anchor" href="#1.-introduction"></a> 1. Introduction</h2><p>La vocation de ce MON est d'introduire de façon non exhaustive aux bibliothèques python utiles pour la DataScience. Ce premier MON introduit aux bibliothèques Numpy, Matplotlib et Pandas qui servent respectivement au calcul numérique, à la visualisation basique des données et à leur analyse.</p><p>Le MON 2.1 va de pair avec le MON 2.2 qui lui introduit les bibliothèques Seaborn et Scikit Learn. Celles-ci permettent d'effectuer d'une part de la visualisation plus poussée, très adaptée aux dataframe issus de Pandas, d'autre part appelle aux algorithmes d'apprentissage pour effectuer de la classification, de la régression et du clustering.</p><h2 id="2.-biblioth%C3%A8que-numpy" tabindex="-1"><a class="header-anchor" href="#2.-biblioth%C3%A8que-numpy"></a> 2. Bibliothèque NumPy</h2><pre class="language-python line-numbers"><code>
+
+import numpy as np
+
+
+</code></pre><p>La bibliothèque NumPy permet de faciliter l'application de calculs numériques en Python en introduisant aux tableaux.</p><p>Ces tableaux à N dimensions s'avèrent être bien plus utiles que les listes en Data Science dans la mesure où :</p><ul><li>leur coût mémoire est moins important que celui des séquences</li><li>ils présentent beaucoup plus de méthodes que ces dernières et permettent une plus grande flexibilité et facilité dans les calculs.</li></ul><h3 id="construire-un-tableau-numpy" tabindex="-1"><a class="header-anchor" href="#construire-un-tableau-numpy"></a> Construire un tableau NumPy</h3><p><strong>Construction à la main np.array(object, dtype)</strong></p><pre class="language-python line-numbers"><code>
+
+>>>np.array([1, 2, 3])
+array([1, 2, 3])
+>>>np.array([[0, 2 ,4], [1, 2, 3]])
+array([[0, 2, 4],
+       [1, 2, 3]])
+
+
+</code></pre><p><strong>En 2D avec NumPy, l'axe 0 est celui selon les lignes, l'axe 1 celui selon les colonnes.</strong> Ainsi, notre tableau B est bien une matrice à 2 lignes et 3 colonnes.</p><p><strong>Remplissage automatique : 0, 1 ou identité</strong></p><pre class="language-python line-numbers"><code>
+
+#np.zeros((shape), dtype)
+>>>np.zeros((3,2))
+array([[0., 0.],
+       [0., 0.],
+       [0., 0.]])
+
+#np.ones((shape), dtype)
+>>>np.ones((3,4))
+array([[1., 1., 1., 1.],
+       [1., 1., 1., 1.],
+       [1., 1., 1., 1.]])
+
+#np.ones(shape, dtype)
+>>>np.ones(2)
+array([[1., 0.],
+       [0., 1.]])
+
+
+</code></pre><p><strong>Remplissage aléatoire</strong></p><ul><li>rand génère des valeurs aléatoires issues de la distribution uniforme sur l'intervalle [0,1]</li><li>randn génère des valeurs aléatoires issues de la distribution normale centrée en 0</li><li>randint génère des valeurs entières aléatoires issues d'une distribution uniforme sur un intervalle donné</li></ul><pre class="language-python line-numbers"><code>
+
+#np.random.randn(lignes, colonnes)
+>>>np.random.randn(3,4)
+array([[ 0.32146014, -1.38563513,  0.346344  , -1.60361699],
+       [-0.26914238,  0.156633  , -0.16439682, -0.96573034],
+       [ 0.27903539,  0.69972398, -0.73055932,  0.47816189]])
+
+
+</code></pre><p><strong>Arange &amp; linspace</strong> Chacun de ces constructeurs renvoie une matrice de dimension 1 dont les nombres sont régulièrement espacés sur un intervalle spécifié. Linspace permet de choisir le nombre de points alors qu'arange permet de définir l'intervalle entre ces points.</p><pre class="language-python line-numbers"><code>
+
+#np.linspace(start, stop, num)
+>>>np.linspace(0,10,5)
+array([ 0. ,  2.5,  5. ,  7.5, 10. ])
+
+#np.arange(start, stop, step)
+>>>np.arange(0,10,2)
+array([0, 2, 4, 6, 8])
+
+
+</code></pre><h3 id="quelques-attributs-utiles" tabindex="-1"><a class="header-anchor" href="#quelques-attributs-utiles"></a> Quelques attributs utiles</h3><p><strong>- ndim :</strong> dimension du tableau <strong>- shape :</strong> forme du tableau (tuple) <strong>- size :</strong> nombre d'éléments dans le tableau</p><pre class="language-python line-numbers"><code>
+
+>>>A = np.array([[1,2],[2,3],[4,5]])
+>>>A.ndim
+2
+>>>A.shape
+(3, 2)
+>>>A.size
+6
+
+
+</code></pre><h3 id="manipulation-de-tableaux" tabindex="-1"><a class="header-anchor" href="#manipulation-de-tableaux"></a> Manipulation de tableaux</h3><p><strong>concatenate</strong></p><pre class="language-python line-numbers"><code>
+
+>>>A = np.zeros((3,2))
+>>>A
+array([[0., 0.],
+       [0., 0.],
+       [0., 0.]])
+>>>B = np.ones((3,2))
+>>>B
+array([[1., 1.],
+       [1., 1.],
+       [1., 1.]])
+
+#np.concatenate((shape), axis=?)
+>>>np.concatenate((A,B), axis=0)
+array([[0., 0.],
+       [0., 0.],
+       [0., 0.],
+       [1., 1.],
+       [1., 1.],
+       [1., 1.]])
+
+>>>np.concatenate((A,B), axis=1)
+array([[0., 0., 1., 1.],
+       [0., 0., 1., 1.],
+       [0., 0., 1., 1.]])
+
+
+</code></pre><p>En 2D, il est également possible d'utiliser <strong>np.hstack</strong> et <strong>np.vstack</strong> afin d'assembler selon l'axe 0 (vertical), l'axe 1 (horizontal)...</p><p><strong>reshape</strong> La fonction reshape est utilisée pour redimensionner la forme d'un tableau sans modifier les données qu'il contient.</p><pre class="language-python line-numbers"><code>
+
+>>>A = np.zeros((3,2)), B = np.ones((3,2))
+>>>C = F = np.concatenate((D,E), axis=0)
+print('La forme de C est', C.shape, 'et son nombre d\'items', C.size)
+La forme de la matrice est (6, 2) et son nombre d'items 12
+
+#C.reshape((shape))
+>>>C.reshape((3,4))
+array([[0., 0., 0., 0.],
+       [0., 0., 1., 1.],
+       [1., 1., 1., 1.]])
+>>>print('La forme de C est', C.shape, 'et son nombre d\'items', C.size)
+La forme de C est (3, 4) et son nombre d'items 12
+
+
+</code></pre><p>Cette méthode est particulièrement utile lorsque l'on crée un tableau à une dimension afin d'éviter des erreurs de calcul matriciel.</p><pre class="language-python line-numbers"><code>
+
+>>>E = np.array([1, 2, 3])
+>>>E.shape
+(3,)
+>>>E.reshape((E.shape[0], 1))
+>>>E.shape
+(3,1)
+
+
+</code></pre><p><strong>ravel</strong></p><p>Enfin ravel permet &quot;d'aplatir&quot; un tableau pour qu'il n'ait plus qu'une seule dimension.</p><pre class="language-python line-numbers"><code>
+
+>>>D = np.array(([1,2,3], [4,5,6], [7,8,9]))
+>>>D
+array([[1, 2, 3],
+       [4, 5, 6],
+       [7, 8, 9]])
+
+#D.ravel()
+>>>D.ravel()
+array([1, 2, 3, 4, 5, 6, 7, 8, 9])
+
+
+</code></pre><h3 id="indexing%2C-slicing-et-masking" tabindex="-1"><a class="header-anchor" href="#indexing%2C-slicing-et-masking"></a> Indexing, Slicing et Masking</h3><p>Il faut désormais pouvoir parcourir un tableau et atteindre certains de leurs items.</p><pre class="language-python line-numbers"><code>
+
+A = np.array([[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+
+# Indexing
+>>>A[1, 2]
+6
+
+# Slicing
+>>>A[:,0]
+array([1, 4, 7])
+
+>>>A[::2,::2]
+array([[1, 3],
+       [7, 9]])
+
+>>>A[::2,::2] = 10
+array([[10,  2, 10],
+       [ 4,  5,  6],
+       [10,  8, 10]])
+
+# Masking (utile pour du filtrage/traitement d'image)
+>>>B = np.random.randint(0, 255, [1024, 720])
+array([[169, 231,   7, ...,  16, 243,  95],
+       [248,  80, 175, ..., 196,  95, 205],
+       [214, 218,   9, ...,  12,   7, 119],
+       ...,
+       [ 86, 133,  92, ...,  97,  47,   7],
+       [125, 133, 108, ..., 239, 114, 107],
+       [240,  45, 106, ...,  46, 214,  74]])
+
+>>>B[B>200] = 255
+
+>>>B
+array([[169, 255,   7, ...,  16, 255,  95],
+       [255,  80, 175, ..., 196,  95, 255],
+       [255, 255,   9, ...,  12,   7, 119],
+       ...,
+       [ 86, 133,  92, ...,  97,  47,   7],
+       [125, 133, 108, ..., 255, 114, 107],
+       [255,  45, 106, ...,  46, 255,  74]])
+
+
+</code></pre><p><strong>Exemple d'un traitement d'image</strong></p><pre class="language-python line-numbers"><code>
+
+#import de l'image d'origine et affichage
+
+from scipy import misc
+import matplotlib.pyplot as plt
+face = misc.face(gray=True)
+plt.imshow(face, cmap=plt.cm.gray)
+plt.show()
+face.shape
+
+# traitement (zoom + éclaircissement des pixels proches du blanc)
+h = face.shape[0]
+w = face.shape[1]
+A = face[int(h/4):int(3*h/4),int(w/4):int(3*w/4)]
+A[A > 200] = 255
+plt.imshow(A, cmap=plt.cm.gray)
+plt.show()
+
+
+</code></pre><p>Voici l'image d'origine : <img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beyaert-Alexandre/mon/temps-2.1/image_origine.jpg" alt="Image d'origine"> Et ici l'image traitée : <img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beyaert-Alexandre/mon/temps-2.1/zoom_et_blanc.jpg" alt="Image zoomée et éclaircié"></p><h3 id="alg%C3%A8bre-lin%C3%A9aire-avec-les-tableaux" tabindex="-1"><a class="header-anchor" href="#alg%C3%A8bre-lin%C3%A9aire-avec-les-tableaux"></a> Algèbre linéaire avec les tableaux</h3><p>A+B : addition classique A*B : produit terme à terme np.dot(A,B) : produit matriciel classique np.transpose(A) : transposée de A</p><p>Différentes routines pour trouver le déterminant d'une matrice, ses valeurs propres et vecteurs propres, sa matrice inverse... sont disponibles dans la documentation <a href="https://docs.scipy.org/doc/numpy-1.13.0/reference/routines.linalg.html">scipy routines.linalg</a></p><h3 id="m%C3%A9thodes-utiles" tabindex="-1"><a class="header-anchor" href="#m%C3%A9thodes-utiles"></a> Méthodes utiles</h3><pre class="language-python line-numbers"><code>
+
+>>>A = np.array([[1, 2, 3], [4, 5, 6]])
+>>>A
+array([[1, 2, 3],
+       [4, 5, 6]])
+
+>>>A.sum(axis=0)
+array([5, 7, 9])
+
+>>>A.sum(axis=1)
+array([ 6, 15])
+
+
+</code></pre><ul><li>A.prod() : effectue le produit des nombres de la matrice</li><li>A.min(axis=?) : renvoie le minimum selon l'axe</li><li>A.max(axis=?) : renvoie le maximum selon l'axe</li><li>A.argmin(axis=?) : renvoie la position du min</li><li>A.argmax(axis=?) : renvoie la position du max</li><li>A.sort(axis=?) : trie le tableau selon l'axe</li><li>A.argsort(axis=?) : retourne les index dans l'ordre de tri du tableau ( ne modifie pas le tableau)</li></ul><p>D'autres routines mathématiques sont égalements décrites dans la documentation : <a href="https://docs.scipy.org/doc/numpy-1.13.0/reference/routines.math.html">Scipy routines.math</a></p><p>Et statistiques : <a href="https://docs.scipy.org/doc/numpy-1.13.0/reference/routines.statistics.html">Scipy routines.statistics</a></p><p>Il est également intéressant de remarquer :</p><ul><li>np.corrcoef(A) qui permet d'obtenir la matrice de corrélation de A : l'élément à l'emplacement (i, j) représente la corrélation entre la i-ème et la j-ème colonnes de la matrice A.</li><li>np.unique(A, return_counts=True) qui va sortir un tableau indiquant le nombre de fois d'apparition d'un item de la matrice A.</li><li>np.isnan(A) : renvoie un masque de A avec des False et True si isnan permettant ainsi de corriger ces NaN</li></ul><h2 id="3.-biblioth%C3%A8que-matplotlib" tabindex="-1"><a class="header-anchor" href="#3.-biblioth%C3%A8que-matplotlib"></a> 3. Bibliothèque Matplotlib</h2><pre class="language-python line-numbers"><code>
+
+import matplotlib.pyplot as plt
+
+
+</code></pre><p>La bibliothèque Matplolib permet de créer des visualisations statiques, animées et interactives en Python.</p><h3 id="fonction-pyplot" tabindex="-1"><a class="header-anchor" href="#fonction-pyplot"></a> Fonction Pyplot</h3><p><strong>Arguments de la fonction</strong> plot(x, y, label=..., lw=..., ls=..., c=...)</p><ul><li>label : nom de la courbe</li><li>lw : épaisseur du trait</li><li>ls : style du trait</li><li>c : couleur du trait</li></ul><p>Attention, x et y doivent être de même dimension !</p><p><strong>Corps type de l'affichage d'une figure</strong></p><pre class="language-python line-numbers"><code>
+
+# définition de la fonction
+import numpy as np
+x = np.linspace(0, 2, 10)
+y = x**2
+
+# début de la figure
+plt.figure(figsize=(12, 8)) #dimensions en pouces et non en centimètres
+
+# contenu
+plt.plot(x, y, label='quadratique', lw=6, ls='--', c='red')
+plt.plot(x, x**3, label='cubique', lw=4, c='blue')
+plt.title('figure 1')
+plt.xlabel('abscisses')
+plt.ylabel('ordonnées')
+plt.legend()
+
+# affichage
+plt.show()
+
+# sauvegarde dans le répertoire
+plt.savefig('figure_type.png')
+
+
+</code></pre><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beyaert-Alexandre/mon/temps-2.1/figure_type.jpg" alt="Figure type"></p><p>Il est également possible d'afficher plusieurs graphique avec subplot.</p><pre class="language-python line-numbers"><code>
+
+plt.figure()
+
+#plt.subplot(lignes, colonnes, position)
+
+plt.subplot(2, 2, 1)
+plt.plot(x, x)
+plt.title('courbe1')
+
+plt.subplot(2, 2, 2)
+plt.plot(x, np.cos(x))
+plt.title('courbe2')
+
+plt.subplot(2, 2, 3)
+plt.plot(x, y)
+
+plt.subplot(2, 2, 4)
+plt.plot(x, np.cos(x))
+plt.plot(x, np.sin(x))
+
+
+</code></pre><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beyaert-Alexandre/mon/temps-2.1/subplot.jpg" alt="Utilisation de subplot"></p><h3 id="diff%C3%A9rents-graphiques" tabindex="-1"><a class="header-anchor" href="#diff%C3%A9rents-graphiques"></a> Différents graphiques</h3><p>Afin de visualiser les différents graphiques que l'on peut tracer avec matlpolib, nous allons nous servir du dataset iris flower qui contient 150 exemples de fleurs d'iris répartis en 3 classes. 4 variables permettent alors de classer la fleur :</p><ul><li>longueur et largeur du pétale</li><li>longeur et largeur du sépal</li></ul><pre class="language-python line-numbers"><code>
+
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.datasets import load_iris
+
+iris = load_iris()
+
+x = iris.data  # Correction ici
+y = iris.target
+names = list(iris.target_names)
+
+print(f'x contient {x.shape[0]} exemples et {x.shape[1]} variables')  # Correction ici
+print(f'il y a {np.unique(y).size} classes')
+
+#exécution du code*
+x contient 150 exemples et 4 variables
+il y a 3 classes
+
+
+</code></pre><p><strong>Classification avec un nuage de points : plt.scatter</strong></p><pre class="language-python line-numbers"><code>
+
+plt.scatter(x[:, 0], x[:, 1], c=y, alpha=0.5, s=100)
+plt.xlabel('longueur sépale')
+plt.ylabel('largeur sépale')
+
+
+</code></pre><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beyaert-Alexandre/mon/temps-2.1/scatter.jpg" alt="Classification avec scatter"></p><p><strong>Visualisation 3D avec mpl_toolkits</strong></p><pre class="language-python line-numbers"><code>
+
+from mpl_toolkits.mplot3d import Axes3D
+ax = plt.axes(projection='3d')
+ax.scatter(x[:, 0], x[:, 1], x[:, 2], c=y)
+
+
+</code></pre><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beyaert-Alexandre/mon/temps-2.1/visu3D.jpg" alt="Visualisation 3D"></p><pre class="language-python line-numbers"><code>
+
+f = lambda x, y: np.sin(x) + np.cos(x+y)
+X = np.linspace(0, 5, 100)
+Y = np.linspace(0, 5, 100)
+X, Y = np.meshgrid(X, Y)
+Z = f(X, Y)
+
+ax = plt.axes(projection='3d')
+ax.plot_surface(X, Y, Z, cmap='plasma')
+
+
+</code></pre><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beyaert-Alexandre/mon/temps-2.1/surface.jpg" alt="Visualisation 3D d'une surface"></p><p><strong>Contour plots</strong></p><pre class="language-python line-numbers"><code>
+
+f = lambda x, y: np.sin(x) + np.cos(x+y)*np.cos(x)
+X = np.linspace(0, 5, 100)
+Y = np.linspace(0, 5, 100)
+X, Y = np.meshgrid(X, Y)
+Z = f(X, Y)
+plt.contour(X, Y, Z, 20, colors='black')
+
+plt.contourf(X, Y, Z, 20, cmap='RdGy')
+plt.colorbar()
+
+
+</code></pre><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beyaert-Alexandre/mon/temps-2.1/contour_plot.jpg" alt="Contour plot"> <img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beyaert-Alexandre/mon/temps-2.1/contour_plotv2.jpg" alt="Contour plot V2"></p><p><strong>Histogramme</strong></p><pre class="language-python line-numbers"><code>
+
+plt.hist(x[:,0], bins=20)
+plt.xlabel('longueur sépale')
+plt.ylabel('nombre de sépales')
+
+plt.hist2d(x[:,0], x[:, 1], cmap='Blues')
+plt.xlabel('longueur sépale')
+plt.ylabel('largeur sépale')
+plt.colorbar()
+
+
+</code></pre><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beyaert-Alexandre/mon/temps-2.1/histogramme.jpg" alt="Histogramme des longueurs de sépale"> <img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beyaert-Alexandre/mon/temps-2.1/histogramme2d.jpg" alt="Histogramme 2D des longueurs et largeurs de sépale"></p><h2 id="4.-biblioth%C3%A8que-pandas" tabindex="-1"><a class="header-anchor" href="#4.-biblioth%C3%A8que-pandas"></a> 4. Bibliothèque Pandas</h2><pre class="language-python line-numbers"><code>
+
+import pandas as pd
+
+
+</code></pre><p>La bibliothèque Pandas permet de d'effectuer de l'analyse de données de manière simple et intuitive. Basée sur NumPy, elle fournit une structure de donnée appelée Dataframe adaptée pour lire et écrire dans différents formats : .csv, .txt, .xls, .sql...)</p><h3 id="application-au-dataframe" tabindex="-1"><a class="header-anchor" href="#application-au-dataframe"></a> Application au DataFrame</h3><p><strong>Dataset Titanic</strong> Pour mettre en lumière les possibilités de la bibliothèque Pandas, je vous propose de nous pencher sur le dataset Titanic disponible en suivant ce lien : <a href="https://github.com/MachineLearnia/Python-Machine-Learning/tree/master/Dataset">Dataset Titanic</a></p><p><strong>Charger le fichier</strong></p><pre class="language-python line-numbers"><code>
+
+pd.read_excel('titanic.xls')
+# .csv : pd.read_csv()
+# .json : pd.read_json()
+...
+
+
+</code></pre><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beyaert-Alexandre/mon/temps-2.1/titanic.jpg" alt="Aperçu du dataset Titanic"></p><p><strong>Fonctions utiles</strong></p><pre class="language-python line-numbers"><code>
+
+df.head() # Afficher le début du DataFrame
+df.describe() # Statistiques sur le DataFrame
+df.drop(['column', 'column',...]) # Éliminer des colonnes
+df.dropna(axis=0) # Éliminer les lignes aux données manquantes
+df.['column'].value_counts() # Compter les répétitions
+df.groupby(['column']) # Analyser par groupe
+
+df.shape # Afficher les dimensions du DataFrame
+df.columns # Renvoie les différentes colonnes du DataFrame
+
+
+</code></pre><p><strong>Application</strong></p><pre class="language-python line-numbers"><code>
+
+>>>file_path = r"C:\MOOC_Data_Sciences\Machine_Learnia\titanic3.xls"
+>>>df = pd.read_excel(file_path)
+
+>>>df.shape
+(1309, 14) # 1309 lignes et 14 colonnes
+
+>>>df.columns
+Index(['pclass', 'survived', 'name', 'sex', 'age', 'sibsp', 'parch', 'ticket',
+       'fare', 'cabin', 'embarked', 'boat', 'body', 'home.dest'],
+      dtype='object')
+
+
+</code></pre><p>Afin d'analyser les données, supprimons quelques colonnes.</p><pre class="language-python line-numbers"><code>
+
+>>>df_bis = data.drop(['name', 'parch', 'sibsp', 'ticket', 'fare', 'cabin', 'embarked', 'boat', 'body', 'home.dest'], axis=1)
+
+>>>df_bis.head()
+# cf image retournée ci-dessous
+>>>df_bis.describe()
+# cf image retournée ci dessous
+
+
+</code></pre><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beyaert-Alexandre/mon/temps-2.1/dataset_bis.jpg" alt="Nouveau dataset"> <img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beyaert-Alexandre/mon/temps-2.1/describe.jpg" alt="Describe"></p><p>On peut remarquer via le &quot;describe&quot; que 1309 lignes sont présentes dans les 2 premières colonnes contre 1046 dans la troisième. Il manque des données concernant l'âge de certains passagers, 2 options sont alors envisageable pour palier ce problème :</p><ul><li>compléter par une valeur par défaut, par exemple par l'âge moyen de la colonne avec la commande &quot;data.fillna(df['age].mean())&quot;</li><li>supprimer les lignes pour lesquelles ces données sont manquantes &quot;data.dropna(axis=0)&quot;</li></ul><p>Poussons l'analyse pour désormais déterminer la répartition de ces 1046 passagers par classe.</p><pre class="language-python line-numbers"><code>
+
+>>>df_bis['pclass'].value_counts()
+pclass
+3    501
+1    284
+2    261
+
+>>>df_bis.groupby(['sex', 'pclass']).mean() #cf image retournée ci-dessous
+
+
+</code></pre><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beyaert-Alexandre/mon/temps-2.1/groupby.jpg" alt="Utilité de la fonction groupby"></p><p><strong>Combinaison Matplotlib et Pandas</strong> Pandas fonctionne en collaboration avec Matplotlib, il va donc être possible de réaliser des graphiques simples sur le dataframe.</p><pre class="language-python line-numbers"><code>
+
+df.plot()
+df.plot.bar()
+df.hist(bins=...)
+df.plot.scatter(x=...,y=...)
+
+pd.plotting.scatter_matrix(df)
+
+# répartition des âges du DataFrame
+>>>df_bis['age'].hist()
+
+
+</code></pre><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beyaert-Alexandre/mon/temps-2.1/histo_ages.jpg" alt="Répartition des âges"></p><h2 id="5.-conclusion" tabindex="-1"><a class="header-anchor" href="#5.-conclusion"></a> 5. Conclusion</h2><p>En somme, l'utilisation des bibliothèques NumPy, Matplotlib et Pandas s'avère essentielle pour l'analyse de données. NumPy facilite la manipulation des données, Matplotlib offre des outils graphiques puissants, et Pandas simplifie le traitement des données tabulaires.</p><p><strong>Ensemble</strong>, ces bibliothèques forment un arsenal efficace, accélérant le processus d'exploration, de visualisation et d'interprétation des données. Qui plus est, il est <strong>très facile de prendre en main ces bibliothèques et ainsi aboutir à des traitements intéressants en peu de temps.</strong></p><h4 id="r%C3%A9partition-du-temps" tabindex="-1"><a class="header-anchor" href="#r%C3%A9partition-du-temps"></a> Répartition du temps</h4><table><thead><tr><th>Timing</th><th>NumPy</th><th>Matplotlib</th><th>Pandas</th></tr></thead><tbody><tr><td>Temps prévu (en heures)</td><td>4</td><td>4</td><td>2</td></tr><tr><td>Temps dédié (en heures)</td><td>5</td><td>3</td><td>2</td></tr></tbody></table><h2 id="6.-bibliographie" tabindex="-1"><a class="header-anchor" href="#6.-bibliographie"></a> 6. Bibliographie</h2><p><a href="https://numpy.org/doc/stable/user/absolute_beginners.html">Documentation NumPy</a> <a href="https://courspython.com/apprendre-numpy.html">Documentation Scipy</a> <a href="https://www.youtube.com/playlist?list=PLO_fdPEVlfKqMDNmCFzQISI2H_nJcEDJq">Chaine YouTube Machine Learnia</a></p></article></main><footer class="min-h-[50px] border-t-2 mt-4 border-gray-200 dark:border-neutral-700"><div class="max-w-[1000px] mx-auto px-4"><div class="min-h-[50px] flex justify-center items-center"><p class="text-center">©2025 <b><span style="font-family:Consolas,sans-serif">Do-<span style="color:#4a86e8">It</span></span></b> - Développement, Management et Gestion de projets en IT</p></div></div></footer><script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">window.MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]]},svg:{fontCache:"global"}},document.addEventListener("DOMContentLoaded",(()=>{MathJax.typeset()}))</script><script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">Prism.plugins.NormalizeWhitespace.setDefaults({"remove-trailing":!0,"remove-indent":!0,"left-trim":!0,"right-trim":!0})</script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script></body></html>

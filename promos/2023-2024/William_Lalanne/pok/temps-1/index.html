@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="robots" content="index, follow">
+
+        <link rel="canonical" href="https://do-it.aioli.ec-m.fr/promos/2023-2024/William_Lalanne/pok/temps-1/">
+
+        
+        
+
+        <meta name="description" content="Création d&#39;un site web avec HTML, CSS et JS pour jouer au memory.">
+        <meta property="og:description" content="Création d&#39;un site web avec HTML, CSS et JS pour jouer au memory.">
+        <meta name="twitter:description" content="Création d&#39;un site web avec HTML, CSS et JS pour jouer au memory.">
+
+        
+            <meta name="author" content="William Lalanne">
+        
+        <meta name="keywords" content="do-it, centrale, centrale méditerranée, ecm, POK">
+
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png">
+        <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png">
+
+        <link href="/assets/stylesheets/main.css" rel="stylesheet">
+
+        <meta property="og:title" content="Site web pour jouer au memory">
+
+        <meta property="og:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta property="og:url" content="https://do-it.aioli.ec-m.fr/promos/2023-2024/William_Lalanne/pok/temps-1/">
+        <meta property="og:type" content="website">
+
+        <meta name="twitter:card" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:title" content="Site web pour jouer au memory">
+        <meta name="twitter:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:url" content="https://do-it.aioli.ec-m.fr/promos/2023-2024/William_Lalanne/pok/temps-1/">
+
+        <title>Site web pour jouer au memory</title>
+
+        <!-- Prismjs imports
+                - Prism line numbers
+                - Prism toolbar
+        -->
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet">
+        <link id="prism-theme" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+        <!-- Mermaid import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js "></script>
+
+        <script defer="">
+        // Check if a theme is stored in localStorage. If so, use it, otherwise fallback to the system preference.
+        const storedTheme = localStorage.getItem('theme');
+        if (storedTheme) {
+            document.documentElement.classList.toggle("dark", storedTheme === "dark");
+        } else {
+            // Use system color scheme if there is no stored theme preference.
+            document.documentElement.classList.toggle("dark", window.matchMedia("(prefers-color-scheme: dark)").matches);
+        }
+
+        function loadPrismTheme(isDarkMode) {
+            const newTheme = isDarkMode ? 'prism-okaidia.min.css' : 'prism-solarizedlight.min.css';
+            const newLink = document.createElement('link');
+            newLink.rel = 'stylesheet';
+            newLink.id = 'prism-theme';
+            newLink.href = `https://cdn.jsdelivr.net/npm/prismjs/themes/${newTheme}`;
+
+            newLink.onload = () => {
+                // Reapply highlighting after the new theme loads
+                Prism.highlightAll();
+            };
+
+            const existingLink = document.getElementById('prism-theme');
+            if (existingLink) {
+                document.head.replaceChild(newLink, existingLink);
+            } else {
+                document.head.appendChild(newLink);
+            }
+        }
+
+        function setMermaidTheme(isDarkMode) {
+            const theme = isDarkMode ? 'dark' : 'forest';
+            mermaid.initialize({
+                securityLevel: 'loose',
+                theme,
+                startOnLoad: true,
+            });
+        }
+
+        // Toggle dark and light mode and update localStorage accordingly.
+        function toggleDarkMode() {
+            const dark = document.documentElement.classList.contains("dark");
+            const newTheme = dark ? "light" : "dark";
+            localStorage.setItem('theme', newTheme);
+            document.documentElement.classList.toggle("dark", !dark);
+            loadPrismTheme(!dark);
+            setMermaidTheme(!dark);
+        }
+
+        // On initial load, ensure that Prism and Mermaid are initialized using the current theme.
+        const isDark = document.documentElement.classList.contains("dark");
+        loadPrismTheme(isDark);
+        setMermaidTheme(isDark);
+        </script>
+
+    </head>
+
+    <body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000" class="bg-neutral-50 text-neutral-950 dark:bg-neutral-900 dark:text-neutral-50">
+        <header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white dark:bg-neutral-900 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-between items-center">
+                    <a class="mx-2" href="/">Home</a>
+                    <button class="hidden sm:block text-neutral-950 dark:text-neutral-50 hover:bg-neutral-700 hover:text-neutral-50 hover:dark:bg-neutral-300 hover:dark:text-neutral-950 transition-colors p-2 rounded-full duration-800 ease-in-out" onclick="toggleDarkMode()">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 dark:hidden stroke-current">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <path d="M12 2V4" stroke-linecap="round"></path>
+                            <path d="M12 20V22" stroke-linecap="round"></path>
+                            <path d="M4 12L2 12" stroke-linecap="round"></path>
+                            <path d="M22 12L20 12" stroke-linecap="round"></path>
+                            <path d="M19.7778 4.22266L17.5558 6.25424" stroke-linecap="round"></path>
+                            <path d="M4.22217 4.22266L6.44418 6.25424" stroke-linecap="round"></path>
+                            <path d="M6.44434 17.5557L4.22211 19.7779" stroke-linecap="round"></path>
+                            <path d="M19.7778 19.7773L17.5558 17.5551" stroke-linecap="round"></path>
+                        </svg>
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 stroke-current hidden dark:block">
+                            <path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </button>
+                    <div class="flex items-center gap-4 sm:gap-6 ">
+                        <a class="" href="/cs">CS</a>
+                        <a class="" href="/pok">POK</a>
+                        <a class="" href="/mon">MON</a>
+                        <a class="" href="/projets">Projets</a>
+                        <a class="hidden sm:block" href="/promos">Promos</a>
+                        <a href="/search">
+                            <svg class="h-5 aspect-square stroke-neutral-950 dark:stroke-neutral-300 fill-none stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+                            </svg>
+                        </a>
+                        <a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank">
+                            <svg class="h-5 aspect-square dark:stroke-neutral-300 dark:fill-neutral-300" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body="">
+            
+<article class="relative">
+<h1 class="mb-1">Site web pour jouer au memory</h1>
+<div class="mb-4">
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Tag : </div>
+            <ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags">
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">POK</li>
+                
+
+            </ul>
+
+            
+            <div class="hidden" data-pagefind-meta="Type" aria-hidden="true">
+                
+                    
+                        <span data-pagefind-filter="Type">POK</span>
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Auteur : </div>
+            <ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs">
+                
+                    <li class="bg-blue-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Auteurs">William Lalanne</li>
+                
+            </ul>
+        </div>
+    
+
+    
+        <div class="absolute top-0 right-0">
+            <span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2 text-neutral-950" data-pagefind-filter="Année">
+                2023-2024
+            </span>
+        </div>
+    
+</div>
+
+<p class="mb-4 text-lg">Création d'un site web avec HTML, CSS et JS pour jouer au memory.</p>
+
+
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100 dark:border-purple-800 dark:bg-purple-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-purple-500 dark:stroke-purple-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/promos/2023-2024/William_Lalanne/">William Lalanne</a><span class="px-1">/</span><a href="/promos/2023-2024/William_Lalanne/pok/">POK de William Lalanne</a><span class="px-1">/</span><a href="/promos/2023-2024/William_Lalanne/pok/temps-1/">Site web pour jouer au memory</a>
+
+</div>
+</div>
+
+
+
+
+<h2 id="objectif-de-ce-pok" tabindex="-1"><a class="header-anchor" href="#objectif-de-ce-pok"></a> Objectif de ce POK</h2>
+<p>L'objectif de ce POK est de créer un site web permettant de jouer au memory. Ce genre de site existe déjà le but est seulement de s'entraîner à utiliser HTML, CSS et JavaScript.</p>
+<h2 id="les-%C3%A9tapes-%C3%A0-r%C3%A9aliser-pendant-le-sprint-1" tabindex="-1"><a class="header-anchor" href="#les-%C3%A9tapes-%C3%A0-r%C3%A9aliser-pendant-le-sprint-1"></a> Les étapes à réaliser pendant le Sprint 1</h2>
+<p>Comme je n'avais pas encore fini mon MON pour le premier sprint j'ai choisi de dédier mon temps au projet sur le Sprint 2.</p>
+<h2 id="les-%C3%A9tapes-%C3%A0-r%C3%A9aliser-pendant-le-sprint-2" tabindex="-1"><a class="header-anchor" href="#les-%C3%A9tapes-%C3%A0-r%C3%A9aliser-pendant-le-sprint-2"></a> Les étapes à réaliser pendant le Sprint 2</h2>
+<p>Pour le sprint 2, voici les différentes étapes :</p>
+<ul>
+<li>[X] Trouver une idée de site web à implémenter</li>
+<li>[X] Réfléchir au design des différentes pages</li>
+<li>[X] Permettre au joueur de configurer sa partie sur la page d'accueil</li>
+<li>[X] Faire en sorte que les cartes se retournent quand on clique dessus</li>
+<li>[X] Si les deux cartes sont les mêmes, faire en sorte que cela se voit et qu'il soit impossible de les retoruner à nouveau</li>
+<li>[X] Si les cartes sont différentes, le montrer à l'utilisateur et retourner les cartes après un certain temps</li>
+<li>[X] Montrer au joueur qu'il a gagné quand toutes les cartes sont retournées</li>
+<li>[X] Permettre au joueur de faire une nouvelle partie</li>
+</ul>
+<h2 id="fonctionnalit%C3%A9s-du-site" tabindex="-1"><a class="header-anchor" href="#fonctionnalit%C3%A9s-du-site"></a> Fonctionnalités du site</h2>
+<p>Pour ce qui est des fonctionnalités, lorsqu'on arrive sur la première page du jeu, il sera possible de paramétrer sa partie (nombre de joueurs, nombres de carte...). Ensuite il faut que l'utilisateur puisse retourner les cartes et qu'un signal visuel lui indique si les cartes sont identiques ou différentes. Une fois que toutes les cartes ont été trouvées, un message indique que la partie est finie et un bouton permet de retourner sur la page d'accueil.</p>
+<h2 id="les-diff%C3%A9rentes-%C3%A9tapes" tabindex="-1"><a class="header-anchor" href="#les-diff%C3%A9rentes-%C3%A9tapes"></a> Les différentes étapes</h2>
+<p>Pour réaliser ce site il fallait que je code 3 pages web différentes :</p>
+<ul>
+<li>La page d'accueil où l'on définit les paramètres de la partie</li>
+<li>La page où se déroule une partie avec 16 cartes à retourner</li>
+<li>La page où se déroule une partie avec 36 cartes à retourner</li>
+</ul>
+<p>Le plus dur étant de coder l'une des deux dernières pages car lorsque l'une et faite, il suffit de la modifier légèrement pour avoir l'autre.</p>
+<p>Pour la page d'accueil, j'ai distingué 4 parties à faire :</p>
+<ul>
+<li>Une partie où l'on choisit si les cartes sont des numéros ou des formes</li>
+<li>Une autre où l'on choisit si on joue à 1 ou 2 joueurs</li>
+<li>Une partie où l'on choisit 16 ou 36 cartes</li>
+<li>Enfin le bouton pour commencer la partie</li>
+</ul>
+<p>Pour les pages de jeux, la mécanique sera la suivante :</p>
+<ul>
+<li>Les cartes sont des ronds noirs lorsqu'elles sont face cachée.</li>
+<li>Lorsque le joueur appuie sur une carte, son style change et le numéro ou la forme apparaît.</li>
+<li>Lorsqu'il clique sur une deuxième carte, si elle est identique à la première, elles deviennent vertes, si elles sont différentes elles deviennent rouges puis se retourne à nouveau.</li>
+<li>Quand toutes les cartes sont vertes, la partie est terminée.</li>
+<li>Un bouton permet au joueur de revenir à la page d'accueil.</li>
+</ul>
+<h2 id="cr%C3%A9ation-de-la-page-d'accueil" tabindex="-1"><a class="header-anchor" href="#cr%C3%A9ation-de-la-page-d'accueil"></a> Création de la page d'accueil</h2>
+<p>La page d'accueil est la suivante :</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//William_Lalanne/pok/temps-1/pageAccueilPOK1.png" alt="Page d'accueil"></p>
+<p>Pour faire ça, je me suis servi des connaissances acquises avec mon premier MON sur les grid et le flexbox.
+J'ai aussi du apprendre ce qu'était les radio button et comment les modifier pour créer les petites cases à cocher.
+Sur cette page on peut paramétrer la partie, d'abord on choisit si on veut des numéros ou des images sur les cartes. Ensuite on choisit si on veut jouer seul ou à deux et enfin la taille du jeu, 4x4 ou 6x6.
+Pour l'instant on ne peut pas choisir si l'on veut des numéros ou des images, seuls les numéros sont disponibles. De plus on ne peut pour l'instant jouer qu'à deux. Ainsi l'utilisateur doit seulement choisir le nombre de cartes. S'il ne choisit pas, un message d'erreur apparaît et il ne peut pas démarrer la partie.</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//William_Lalanne/pok/temps-1/memoryErrorMessage.png" alt="message d'erreur"></p>
+<pre class="language-javascript line-numbers"><code>
+
+newGameButton.addEventListener("click", function () {
+    location.href = "http://127.0.0.1:5501/index.html";
+})
+
+
+</code></pre><p>Voici tout le code qui a permis de construire la page d'accueil :</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Cliquez pour afficher le code <strong>HTML</strong> de <strong>l'en-tête</strong></p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-html line-numbers"><code>
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="memory.css" media="screen">
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
+    <title>Memory | William Lalanne </title>
+  </head>
+  <body>
+  <main>
+
+    <div class="container">
+      <div class="themeSelection">
+        <p>Select theme</p>
+      </div>
+
+      <section class="radio-section">
+        <div class="radio-item">
+          <input type="radio" name="radio" class="themesButton" id="numbersButton">
+          <label for="numbersButton">Numbers</label>
+        </div>
+        <div class="radio-item">
+          <input type="radio" name="radio" class="themesButton" id="iconsButton">
+          <label for="iconsButton">Icons</label>
+        </div>
+      </section>
+
+      <div class="playerSelection">
+         <p>Number of Players</p>
+        </div>
+
+      <section class="radio-section">
+        <div class="radio-item">
+          <input type="radio" name="radio" class="playersButton" id="oneButton">
+          <label for="playersButton">1</label>
+        </div>
+        <div class="radio-item">
+          <input type="radio" name="radio" class="playersButton" id="twoButton">
+          <label for="playersButton">2</label>
+        </div>
+      </section>
+
+      <div class="gridSelection" id="selectGrid">
+        <p>Grid size</p>
+      </div>
+
+      <section class="radio-section">
+        <div class="radio-item">
+          <input type="radio" name="radio" class="gridButton" id="4x4">
+          <label for="4x4">4x4</label>
+        </div>
+        <div class="radio-item">
+          <input type="radio" name="radio" class="gridButton" id="6x6">
+          <label for="6x6">6x6</label>
+        </div>
+      </section>
+
+      <button class="start" id="start">Start Game</button>
+
+      </div>
+    </main></body></html></code></pre></div>
+  </details></div></article></main>
+  <script type="text/javascript" src="startGame.js"></script>
+  </body>
+</html>
+
+
+
+
+
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Cliquez pour afficher le code <strong>CSS</strong> de la <strong>page d'accueil</strong></p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-css line-numbers"><code>
+
+@charset "UTF-8";
+
+body {
+    background-color: black;
+}
+
+.container {
+    width: 700px;
+    height: 650px;
+    border-radius: 30px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+
+}
+
+div.themeSelection {
+    font-size: 30px;
+    margin-left: 50px;
+    margin-top: 20px;
+
+}
+
+.themesButton {
+    width: 250px;
+    height: 50px;
+    background-color: rgb(128, 128, 128);
+    color: white;
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+    font-size: 20px;
+    border: none;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+
+div.playerSelection {
+    font-size: 30px;
+    margin-left: 50px;
+}
+
+.playersButton {
+    width: 250px;
+    height: 50px;
+    background-color: gray;
+    color: white;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-top-left-radius: 30px;
+    font-size: 20px;
+    border: none;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.gridButton {
+    width: 250px;
+    height: 50px;
+    background-color: gray;
+    color: white;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-top-left-radius: 30px;
+    font-size: 20px;
+    border: none;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+div.gridSelection  {
+    display: flex;
+    flex-direction: row;
+    font-size: 30px;
+}
+
+div.gridSelection p {
+    font-size: 30px;
+    margin-left: 50px;
+}
+
+.start {
+    background-color: orange;
+    width: 400px;
+    height: 50px;
+    font-weight: 600;
+    font-size: 20px;
+    color: white;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-top-left-radius: 30px;
+    align-self: center;
+    margin-top: 60px;
+}
+
+.start:hover {
+    background-color: orange;
+    width: 400px;
+    height: 50px;
+    font-weight: 600;
+    font-size: 20px;
+    color: white;
+    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 30px;
+    border-top-right-radius: 30px;
+    border-top-left-radius: 30px;
+    align-self: center;
+    margin-top: 60px;
+    border: 3px white;
+}
+
+.selected {
+    display: none;
+}
+
+.gridButton {
+    display: none;
+    border-color: #524eee;
+}
+
+.radio-section {
+	display: flex;
+    flex-direction: row;
+	align-items: center;
+    justify-items: center;
+	align-content: center;
+    justify-content: center;
+	width: 700px;
+}
+
+.radio-item [type="radio"] {
+	display: none;
+}
+
+.radio-item {
+    margin-top: -10px;
+}
+
+.radio-item + .radio-item {
+    margin-left: 30px;
+}
+
+.radio-item label {
+	display: block;
+	padding: 20px 60px;
+	background: #1d1d42;
+	border: 2px solid rgba(255, 255, 255, 0.1);
+	border-radius: 8px;
+	cursor: pointer;
+	font-size: 22px;
+	font-weight: 600;
+	min-width: 150px;
+	white-space: nowrap;
+	position: relative;
+	transition: 0.4s ease-in-out 0s;
+    color: white;
+}
+
+.radio-item label:after,
+.radio-item label:before {
+	content: "";
+	position: absolute;
+	border-radius: 50%;
+}
+.radio-item label:after {
+	height: 19px;
+	width: 19px;
+	border: 2px solid #524eee;
+	left: 19px;
+	top: calc(50% - 12px);
+}
+.radio-item label:before {
+	background: #524eee;
+	height: 20px;
+	width: 20px;
+	left: 21px;
+	top: calc(50%-5px);
+	transform: scale(5);
+	opacity: 0;
+	visibility: hidden;
+	transition: 0.4s ease-in-out 0s;
+}
+.radio-item [type="radio"]:checked ~ label {
+	border-color: #524eee;
+}
+.radio-item [type="radio"]:checked ~ label::before {
+	opacity: 1;
+	visibility: visible;
+	transform: scale(1);
+}
+
+.errorMessage {
+    font-size: 10px;
+    color: red;
+}
+
+
+</code></pre></div>
+</details>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Cliquez pour afficher le code <strong>JavaScript</strong> de la <strong>page d'accueil</strong></p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-javascript line-numbers"><code>
+
+const startGame = document.getElementById("start");
+const x4 = document.getElementById("4x4");
+const x6 = document.getElementById("6x6");
+var errorMessageAppear = false;
+
+
+x4.addEventListener("click", function () {
+    x4.classList.add("selected");
+    x4.classList.remove("gridButton");
+})
+
+
+x6.addEventListener("click", function () {
+    x6.classList.add("selected");
+    x6.classList.remove("gridButton");
+} )
+
+
+startGame.addEventListener("click", function () {
+
+    if (x4.classList.contains("selected")) {
+        location.href = "http://127.0.0.1:5501/game4x4.html";
+    }
+    else if(x6.classList.contains("selected")) {
+        location.href = "http://127.0.0.1:5501/game6x6.html"
+    }
+    else if (x4.classList.contains("gridButton") && x6.classList.contains("gridButton") && errorMessageAppear==false) {
+        var div = document.getElementById("selectGrid");
+        var para = document.createElement("p");
+        var node = document.createTextNode("Choose a grid size");
+        para.classList.add("errorMessage");
+        para.appendChild(node);
+        div.appendChild(para);
+        errorMessageAppear=true;
+    }
+})
+
+
+</code></pre></div>
+</details>
+</div>
+<h2 id="cr%C3%A9ation-de-la-page-de-jeu" tabindex="-1"><a class="header-anchor" href="#cr%C3%A9ation-de-la-page-de-jeu"></a> Création de la page de jeu</h2>
+<p>La page de jeu est la plus difficile à coder. Toutes les actions sont basées sur des cliques :</p>
+<ul>
+<li>Quand on clique sur une carte pas retournée, cela déclenche le retournement de la carte</li>
+<li>Quand on clique sur une deuxième carte une autre action se déclenche
+Pour faire cela, on se sert de la méthode addEventListener. Elle permet de déclencher une fonction suite à une action de l'utilisateur qui peut être un clique ou un mouvement de souris.
+Il suffit d'indiquer sur quel bouton ou élément on veut utiliser addEventListener.</li>
+</ul>
+<p>Par exemple, chaque carte du jeu est un bouton avec un identifiant. On ajoute à chacun des boutons un addEventListener qui déclenche la fonction returnCard() à chaque clique.</p>
+<pre class="language-javascript line-numbers"><code>
+
+card.addEventListener("click", returnCard(card));
+
+
+</code></pre><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//William_Lalanne/pok/temps-1/memoryCardReturn.png" alt="carte retournée"></p>
+<p>On ajoute aussi un addEventListener qui permet quand deux cartes sont retournés de comparer leur valeur.</p>
+<pre class="language-javascript line-numbers"><code>
+
+card.addEventListener("click", checkCardPair());
+
+
+</code></pre><p>Puis si les cartes sont les mêmes ont les ajoutes dans une liste et on leur attribut la class &quot;found&quot; pour signifier que la paire est trouvée. Un fond vert apparaît sur les cartes pour montrer au joueur qu'elles sont identiques.</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//William_Lalanne/pok/temps-1/memoryCardFound.png" alt="cartes identiques"></p>
+<p>Si les cartes sont différentes, on leur attribut la class &quot;notFound&quot; qui affiche un fond rouge sur les cartes pour montrer au joueur qu'elles sont différentes. Après 2 secondes, les cartes se retournent.</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//William_Lalanne/pok/temps-1/memoryCardNotFound.png" alt="cartes differentes"></p>
+<p>Lorsque toutes les cartes ont été trouvées, un message s'affiche pour dire au joueur qu'il a gagné la partie.</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//William_Lalanne/pok/temps-1/gameWon.png" alt="partie gagnee"></p>
+<p>En cliquant sur le bouton <strong>&quot;new game&quot;</strong> en haut à droite, on retourne à la page d'accueil.</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Cliquez pour afficher le code <strong>HTML</strong> de la <strong>page d'accueil</strong></p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-html line-numbers"><code>
+
+!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="game4x4.css" media="screen">
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
+    <title>Memory | William Lalanne </title>
+  </head>
+  <body>
+  <h1 class="victory" id="victory">You win !</h1>
+  <header>
+    <h1>memory</h1>
+    <button class="gameButton" id="restart">Restart</button>
+    <button class="gameButton" id="newGame">New Game</button>
+  </header>
+  <main>
+    <div class="container2">
+      <div class="card" id="0">
+      </div>
+      <div class="card" id="1">
+      </div>
+      <div class="card" id="2">
+      </div>
+      <div class="card" id="3">
+      </div>
+      <div class="card" id="4">
+      </div>
+      <div class="card" id="5">
+      </div>
+      <div class="card" id="6">
+      </div>
+      <div class="card" id="7">
+      </div>
+      <div class="card" id="8">
+      </div>
+      <div class="card" id="9">
+      </div>
+      <div class="card" id="10">
+      </div>
+      <div class="card" id="11">
+      </div>
+      <div class="card" id="12">
+      </div>
+      <div class="card" id="13">
+      </div>
+      <div class="card" id="14">
+      </div>
+      <div class="card" id="15">
+      </div>
+    </div>
+  </main>
+  <script type="text/javascript" src="memory4x4.js"></script>
+  </body>
+</html>
+
+
+</code></pre></div>
+</details>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Cliquez pour afficher le code <strong>CSS</strong> de la <strong>page de jeu</strong></p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-css line-numbers"><code>
+
+@charset "UTF-8";
+
+body {
+    background-color: white;
+}
+
+header {
+    margin-left: 400px;
+    margin-right: 400px;
+}
+
+h1 {
+    display: inline;
+    margin-left: 30px;
+    margin-right: 700px;
+
+}
+
+.gameButton {
+    width: 200px;
+    height: 40px;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-size: 20px;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.container2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    justify-content: end;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 80px;
+    width: 800px;
+    height: 700px;
+}
+
+.card {
+    width: 120px;
+    height: 120px;
+    border-radius: 100%;
+    background-color: black;
+    align-self: center;
+    justify-self: center;
+    border: solid;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+.visible, .found, .notFound {
+    visibility: visible;
+    color: black;
+    font-size: 55px;
+    position: relative;
+    bottom: 20px;
+    left: 45px;
+}
+
+
+.victory {
+    visibility: hidden;
+    font-size: 130px;
+    position: relative;
+    top: 530px;
+    left: 790px;
+}
+
+
+</code></pre></div>
+</details>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Cliquez pour afficher le code <strong>JavaScript</strong> de la <strong>page d'accueil</strong></p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-javascript line-numbers"><code>
+
+const iconsArray = [0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7];
+const newGameButton = document.getElementById("newGame");
+const cardButtons = Array.from(document.querySelectorAll('.card'));
+let turnedCards = [];
+
+const COLOR_BLACK = 'rgb(0, 0, 0)';
+const COLOR_WHITE = 'rgb(255, 255, 255)';
+const COLOR_GREEN = 'rgb(0, 255, 0)';
+const COLOR_RED = 'rgb(255, 0, 0)';
+var greenCards = 0;
+
+for (var card of cardButtons) {
+    card.style.backgroundColor=COLOR_BLACK;
+}
+
+function allocateCard () {
+    for (let i=0; i<16; i++) {
+        var randomNumberIndex = Math.floor(Math.random() * (16-i));
+        const card = document.getElementById(String(i));
+        const para = document.createElement("p");
+        para.classList.add("hidden");
+        console.log(iconsArray[randomNumberIndex]);
+        const icon = document.createTextNode(String(iconsArray[randomNumberIndex]));
+        para.appendChild(icon);
+        iconsArray.splice(randomNumberIndex, 1);
+        card.appendChild(para);
+    }
+}
+
+function returnCard (card) {
+    const value = card.children[0];
+    if (card.style.backgroundColor===COLOR_BLACK && !value.classList.contains("found"))  {
+        card.style.backgroundColor=COLOR_WHITE;
+        value.classList.add('visible');
+        value.classList.remove('hidden');
+    }
+    else if (card.style.backgroundColor===COLOR_WHITE && !value.classList.contains("found")) {
+        card.style.backgroundColor=COLOR_BLACK;
+        value.classList.add('hidden');
+        value.classList.remove('visible');
+    }
+
+    else if (value.classList.contains("found")) {
+        console.log("can't turn it");
+    }
+    else if (value.classList.contains("notFound")) {
+        card.style.backgroundColor=COLOR_BLACK;
+        value.classList.add("hidden");
+        value.classList.remove("notFound");
+    }
+}
+
+
+function checkCardsPair () {
+    if (turnedCards.length===2) {
+        const firstCard = turnedCards[0];
+        const secondCard = turnedCards[1];
+
+       if (firstCard.children[0].textContent==secondCard.children[0].textContent) {
+            //console.log(firstCard.value.backgroundColor);
+            firstCard.children[0].classList.add('found');
+            firstCard.style.backgroundColor=COLOR_GREEN;
+            firstCard.children[0].classList.remove('hidden');
+            firstCard.children[0].classList.remove('visible');
+            secondCard.children[0].classList.add('found');
+            secondCard.style.backgroundColor=COLOR_GREEN;
+            secondCard.children[0].classList.remove('hidden');
+            secondCard.children[0].classList.remove('visible');
+            greenCards+=2;
+            console.log(greenCards);
+
+       }
+
+       else {
+            firstCard.children[0].classList.add('notFound');
+            firstCard.style.backgroundColor=COLOR_RED;
+            firstCard.children[0].classList.remove('hidden');
+            firstCard.children[0].classList.remove('visible');
+            secondCard.children[0].classList.add('notFound');
+            secondCard.style.backgroundColor=COLOR_RED;
+            secondCard.children[0].classList.remove('hidden');
+            secondCard.children[0].classList.remove('visible');
+            setTimeout(() => {
+                returnCard(firstCard);
+                firstCard.style.backgroundColor=COLOR_BLACK;
+                returnCard(secondCard);
+                secondCard.style.backgroundColor=COLOR_BLACK;
+            }, 1500);
+
+       }
+       turnedCards=[];
+    }
+}
+
+allocateCard();
+for (const card of cardButtons) {
+    card.addEventListener("click", function () {
+        returnCard(card);
+        turnedCards.push(card);
+        checkCardsPair();
+        if (greenCards==16) {
+            document.getElementById("victory").style.visibility="visible";
+        }
+    });
+
+}
+
+newGameButton.addEventListener("click", function () {
+    location.href = "http://127.0.0.1:5501/index.html";
+}
+)
+
+
+</code></pre></div>
+</details>
+</div>
+<h2 id="conclusion" tabindex="-1"><a class="header-anchor" href="#conclusion"></a> Conclusion</h2>
+
+
+
+
+
+        
+
+        <footer class="min-h-[50px] border-t-2 mt-4 border-gray-200 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-center items-center">
+                    <p class="text-center">
+                        ©2025 <b><span style="font-family: Consolas, sans-serif;">Do-<span style="color: #4a86e8">It</span></span></b> - Développement, Management et Gestion de projets en IT
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- MathJax import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">
+            window.MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']], // Delimiters for inline math
+                    displayMath: [['$$', '$$'], ['\\[', '\\]']] // Delimiters for block math
+                },
+                svg: {
+                    fontCache: 'global' // Use global font cache for SVG output
+                }
+            };
+            document.addEventListener('DOMContentLoaded', () => {
+                MathJax.typeset(); // Ensures MathJax processes the content after the page loads
+            });
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">
+            Prism.plugins.NormalizeWhitespace.setDefaults({
+                'remove-trailing': true,
+                'remove-indent': true,
+                'left-trim': true,
+                'right-trim': true,
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script>
+    
+

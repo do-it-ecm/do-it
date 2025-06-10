@@ -1,0 +1,258 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="index, follow"><link rel="canonical" href="https://do-it.aioli.ec-m.fr/promos/2022-2023/Bert-Nicolas/mon/temps-2.2/"><meta name="description" content="Do-It, cours et travaux des élèves de l&#39;école Centrale Méditerranée"><meta property="og:description" content="Do-It, cours et travaux des élèves de l&#39;école Centrale Méditerranée"><meta name="twitter:description" content="Do-It, cours et travaux des élèves de l&#39;école Centrale Méditerranée"><meta name="author" content="Nicolas BERT"><meta name="keywords" content="do-it, centrale, centrale méditerranée, ecm, MON"><link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon"><link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png"><link rel="apple-touch-icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png"><link href="/assets/stylesheets/main.css" rel="stylesheet"><meta property="og:title" content="GraphQL"><meta property="og:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png"><meta property="og:url" content="https://do-it.aioli.ec-m.fr/promos/2022-2023/Bert-Nicolas/mon/temps-2.2/"><meta property="og:type" content="website"><meta name="twitter:card" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png"><meta name="twitter:title" content="GraphQL"><meta name="twitter:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png"><meta name="twitter:url" content="https://do-it.aioli.ec-m.fr/promos/2022-2023/Bert-Nicolas/mon/temps-2.2/"><title>GraphQL</title><link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet"><link id="prism-theme" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet"><link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet"><script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script><script defer="">const storedTheme=localStorage.getItem("theme");function loadPrismTheme(e){const t=e?"prism-okaidia.min.css":"prism-solarizedlight.min.css",s=document.createElement("link");s.rel="stylesheet",s.id="prism-theme",s.href=`https://cdn.jsdelivr.net/npm/prismjs/themes/${t}`,s.onload=()=>{Prism.highlightAll()};const m=document.getElementById("prism-theme");m?document.head.replaceChild(s,m):document.head.appendChild(s)}function setMermaidTheme(e){const t=e?"dark":"forest";mermaid.initialize({securityLevel:"loose",theme:t,startOnLoad:!0})}function toggleDarkMode(){const e=document.documentElement.classList.contains("dark"),t=e?"light":"dark";localStorage.setItem("theme",t),document.documentElement.classList.toggle("dark",!e),loadPrismTheme(!e),setMermaidTheme(!e)}storedTheme?document.documentElement.classList.toggle("dark","dark"===storedTheme):document.documentElement.classList.toggle("dark",window.matchMedia("(prefers-color-scheme: dark)").matches);const isDark=document.documentElement.classList.contains("dark");loadPrismTheme(isDark),setMermaidTheme(isDark)</script></head><body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000" class="bg-neutral-50 text-neutral-950 dark:bg-neutral-900 dark:text-neutral-50"><header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white dark:bg-neutral-900 dark:border-neutral-700"><div class="max-w-[1000px] mx-auto px-4"><div class="min-h-[50px] flex justify-between items-center"><a class="mx-2" href="/">Home</a> <button class="hidden sm:block text-neutral-950 dark:text-neutral-50 hover:bg-neutral-700 hover:text-neutral-50 hover:dark:bg-neutral-300 hover:dark:text-neutral-950 transition-colors p-2 rounded-full duration-800 ease-in-out" onclick="toggleDarkMode()"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 dark:hidden stroke-current"><circle cx="12" cy="12" r="5"></circle><path d="M12 2V4" stroke-linecap="round"></path><path d="M12 20V22" stroke-linecap="round"></path><path d="M4 12L2 12" stroke-linecap="round"></path><path d="M22 12L20 12" stroke-linecap="round"></path><path d="M19.7778 4.22266L17.5558 6.25424" stroke-linecap="round"></path><path d="M4.22217 4.22266L6.44418 6.25424" stroke-linecap="round"></path><path d="M6.44434 17.5557L4.22211 19.7779" stroke-linecap="round"></path><path d="M19.7778 19.7773L17.5558 17.5551" stroke-linecap="round"></path></svg> <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 stroke-current hidden dark:block"><path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke-linecap="round" stroke-linejoin="round"></path></svg></button><div class="flex items-center gap-4 sm:gap-6"><a class="" href="/cs">CS</a> <a class="" href="/pok">POK</a> <a class="" href="/mon">MON</a> <a class="" href="/projets">Projets</a> <a class="hidden sm:block" href="/promos">Promos</a> <a href="/search"><svg class="h-5 aspect-square stroke-neutral-950 dark:stroke-neutral-300 fill-none stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path></svg> </a><a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank"><svg class="h-5 aspect-square dark:stroke-neutral-300 dark:fill-neutral-300" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg></a></div></div></div></header><main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body=""><article class="relative"><h1 class="mb-1">GraphQL</h1><div class="mb-4"><div class="px-4 flex flex-wrap items-center"><div class="font-bold">Tag :</div><ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags"><li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">MON</li></ul><div class="hidden" data-pagefind-meta="Type" aria-hidden="true"><span data-pagefind-filter="Type">MON</span></div></div><div class="px-4 flex flex-wrap items-center"><div class="font-bold">Auteur :</div><ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs"><li class="bg-blue-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Auteurs">Nicolas BERT</li></ul></div><div class="absolute top-0 right-0"><span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2 text-neutral-950" data-pagefind-filter="Année">2022-2023</span></div></div><div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100 dark:border-purple-800 dark:bg-purple-950"><svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-purple-500 dark:stroke-purple-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path></svg><div class="pl-8 mr-8"><a href="/promos/2022-2023/Bert-Nicolas/">Nicolas BERT</a><span class="px-1">/</span><a href="/promos/2022-2023/Bert-Nicolas/mon/">MONs</a><span class="px-1">/</span><a href="/promos/2022-2023/Bert-Nicolas/mon/temps-2.2/">GraphQL</a></div></div><p>Interface d'API GraphQL avec Express, Prisma (ORM) et PostgreSQL</p><div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100 dark:border-pink-800 dark:bg-pink-950"><svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-pink-500 dark:stroke-pink-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg><div class="pl-8 mb-2 mr-8"><p><b>Prérequis</b></p></div><div class="pl-8 mr-8"><p><strong>Niveau :</strong> intermédiaire/avancé <strong>Prérequis :</strong></p><ul><li>Connaître le contexte de développement backend</li><li>Connaître les bases du langage Javascript</li></ul><p><em>Pour la partie POC:</em></p><ul><li>Avoir une version de Node.js assez récente installé sur sa machine</li><li>Avoir Docker et Docker Compose sur sa machine (ou bien avoir une instance de PostgreSQL installée)</li></ul></div></div><div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100 dark:border-cyan-800 dark:bg-cyan-950"><svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-cyan-500 dark:stroke-cyan-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg><div class="pl-8 mb-2 mr-8"><p><b>Information</b></p></div><div class="pl-8 mr-8"><p>Le dépot GitHub du POC : <a href="https://github.com/nbert71/graphql-express">https://github.com/nbert71/graphql-express</a></p></div></div><h2 id="graphql-ou-rest-%3F" tabindex="-1"><a class="header-anchor" href="#graphql-ou-rest-%3F"></a> GraphQL ou REST ?</h2><div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100 dark:border-cyan-800 dark:bg-cyan-950"><svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-cyan-500 dark:stroke-cyan-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg><div class="pl-8 mb-2 mr-8"><p>Qu'est-ce qu'une <strong>API</strong> ?</p></div><div class="pl-8 mr-8"><p>Selon la CNIL, une <strong>API</strong> (<em>application programming interface</em> ou « interface de programmation d’application ») est une interface logicielle qui permet de « connecter » un logiciel ou un service à un autre logiciel ou service afin d’échanger des données et des fonctionnalités.</p><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2022-2023/refs/heads/main//Bert-Nicolas/mon/temps-2.2/api.png" alt="API"></p><p>Une API va alors exposer des <strong>routes</strong> (que l'on appelle aussi <strong>endpoints</strong> en anglais) afin que le client puisse dialoguer avec les services. Il existe différentes manières de structurer les routes: ici nous allons parler des API REST et des API GraphQL.</p></div></div><h3 id="les-api-rest" tabindex="-1"><a class="header-anchor" href="#les-api-rest"></a> Les API REST</h3><p>Une API REST (<em>Representational State Transfer</em>) est une architecture de développement d'API qui utilise les différentes méthodes HTTP (GET, POST, PUT, DELETE, PATCH ...) pour interagir avec les autres services (généralement les bases de données). Ces différentes méthodes vont être exposées sur une même route ou sur des routes distinctes et vont répondre au client avec des <a href="http://http.cat">status code</a> afin d'indiquer si la requête c'est bien passée ou s'il y a eu des erreurs. Les API REST sont très utilisées pour construire des applications web et mobiles car elles sont simples à utiliser et mettre en place. Les données transmises au client sont souvent au format JSON.</p><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2022-2023/refs/heads/main//Bert-Nicolas/mon/temps-2.2/api_rest.png" alt="REST API"></p><p>Chaque méthode HTTP permet d'effectuer des actions bien particulières. Voilà un exemple pour expliquer les méthodes les plus utilisées.</p><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2022-2023/refs/heads/main//Bert-Nicolas/mon/temps-2.2/rest_methods" alt="REST methods"></p><p>Ainsi, en suivant les routes de l'image ci-dessus, en appelant <em>&quot;/posts&quot;</em> en méthode GET, l'API nous répondra en nous donnant la liste de tous les posts. Si j'envoie une requête POST à <em>&quot;/posts&quot;</em> en mettant des données dans ma requête je vais créer dans la base de données un post...</p><p>Pour plus d'informations, je vous invite à consulter <a href="https://phauer.com/2015/restful-api-design-best-practices/">https://phauer.com/2015/restful-api-design-best-practices/</a>.</p><h3 id="les-api-graphql" tabindex="-1"><a class="header-anchor" href="#les-api-graphql"></a> Les API GraphQL</h3><p>Le modèle d'API GraphQL est une autre manière de structurer les routes. Il n'y a en général qu'<strong>un seul endpoint</strong> qui est de type <strong>POST</strong> et c'est le client qui, en paramètres de la requête POST va définir les données qu'il souhaite obtenir. On gagne ainsi en flexibilité en permettant au client d'obtenir ce qu'il a besoin sans être figé par un modèle REST.</p><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2022-2023/refs/heads/main//Bert-Nicolas/mon/temps-2.2/rest_graphql.png" alt="REST GraphQL"> <img src="https://raw.githubusercontent.com/do-it-ecm/promo-2022-2023/refs/heads/main//Bert-Nicolas/mon/temps-2.2/REST-and-GraphQL.png" alt="REST GraphQL"></p><h3 id="rest-ou-graphql-%3F-avantages-et-inconv%C3%A9nients" tabindex="-1"><a class="header-anchor" href="#rest-ou-graphql-%3F-avantages-et-inconv%C3%A9nients"></a> REST ou GraphQL ? Avantages et inconvénients</h3><p>Il s'agit donc d'un autre paradigme pour la construction d'API qui a ses avantages et ses inconvénients par rapport aux API REST :</p><ul><li><p>✅ <strong>Flexibilité</strong> : les API GraphQL permettent aux clients de demander des donnée spécifiques plutôt que de recevoir un format de données prédéfini, cela offre donc une grande flexibilité pour les développeurs.</p></li><li><p>✅ <strong>Spécificité</strong> : les API GraphQL permettent de demander plusieurs donner en une seule requête alors qu'il en aura fallu plusieurs dans le cas d'un modèle REST.</p></li><li><p>✅ <strong>Évolutivité</strong> : GraphQL est conçu pour évoluer avec les besoins du client et lui permet de faire des manipulations spécifiques telles que les opérations en lots ou bien les subscriptions pour les données en temps réel.</p></li><li><p>❌ <strong>Apprentissage</strong> : GraphQL est un langage d'API complètement différent, il peut donc être difficile pour les développeurs de s'adapter.</p></li><li><p>❌ <strong>Débogage</strong> : le débogage est plus difficile à cause de la flexibilité des requêtes.</p></li><li><p>❌ <strong>Support</strong> : GraphQL est très largement moins utilisé que REST, il y a donc moins de bibliothèques, frameworks et documentations ...</p></li></ul><h2 id="proof-of-concept" tabindex="-1"><a class="header-anchor" href="#proof-of-concept"></a> Proof Of Concept</h2><div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100 dark:border-pink-800 dark:bg-pink-950"><svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-pink-500 dark:stroke-pink-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg><div class="pl-8 mb-2 mr-8"><p>Prérequis pour le POC :</p></div><div class="pl-8 mr-8"><ul><li>Avoir une version de Node.js installé sur sa machine</li><li>Avoir Docker et Docker Compose sur sa machine (ou bien avoir une instance de PostgreSQL installée)</li></ul></div></div><p>Pour utiliser GraphQL, j'ai décidé d'utiliser un backend réalisé avec Express, connecté à une base de données PostgreSQL via l'ORM (Object Relation Mapping) <a href="https://www.prisma.io/">Prisma</a>. Il y aura ensuite une route statique renvoyant une page HTML afin d'indiquer la structure de la base de données (relations, entités ...) et une unique route d'API qui sera servie par GraphQL. Voici un petit schéma d'explications :</p><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2022-2023/refs/heads/main//Bert-Nicolas/mon/temps-2.2/graphql-archi.png" alt="Archi GraphQL"></p><p>Nous allons désormais voir pas à pas comment créer un tel projet.</p><h3 id="initialisation-du-projet-express" tabindex="-1"><a class="header-anchor" href="#initialisation-du-projet-express"></a> Initialisation du projet Express</h3><p>Nous allons donc initialiser un projet <strong>npm</strong> puis installer quelques librairies dont <code>express</code>.</p><pre class="language-bash line-numbers"><code>
+
+mkdir graphql-express
+cd graphql-express
+npm init -y
+npm i express dotenv dotenv-expand nodemon
+
+
+</code></pre><p>Nous allons ensuite créer le fichier <code>.env</code> qui contiendra toutes les variables d'environnement du projet. Nous le compléterons au fur et à mesure. Pour l'instant, écrivez-y :</p><pre class="line-numbers"><code>
+
+NODE_PORT=3000
+
+
+</code></pre><p>Créons ensuite le fichier <code>index.js</code>qui contiendra la configuration express.</p><pre class="language-javascript line-numbers"><code>
+
+require('dotenv').config()
+
+const express = require('express')
+
+const app = express()
+const port = process.env.NODE_PORT  // on récupère la variable NODE_PORT définie dans le fichier .env
+
+app.get('/', (req, res) => {
+  res.send('Hello World')
+})
+
+app.listen(port, () => {
+  console.log(`The app is running on port ${port}`);
+})
+
+
+</code></pre><p>Allons désormais dans le fichier <code>package.json</code> pour y écrire la commande de lancement du projet :</p><pre class="language-json line-numbers"><code>
+
+{
+  ...
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  ...
+}
+
+
+</code></pre><p><em>Ici, la commande <code>npm run dev</code>sert uniquement à recharger automatiquement le serveur lorsqu'il y a une modification, c'est pour cela qu'on ne l'utilise qu'en dev.</em> Lançons <code>npm run dev</code>, aller sur <a href="localhost:3000">localhost:3000</a> et vous devriez voir un magnifique Hello World !</p><h3 id="mise-en-place-de-postgresql-via-docker-compose" tabindex="-1"><a class="header-anchor" href="#mise-en-place-de-postgresql-via-docker-compose"></a> Mise en place de PostgreSQL via docker compose</h3><p>Afin d'éviter d'avoir à installer une instance de PostgreSQL sur la machine, on va utiliser la version plus rapide avec docker compose. Si jamais vous ne connaissez pas docker, vous pouvez consulter le <a href="/do-it/mon/TBi/MON/Docker">magnifique MON de Tunçay sur Docker</a>. Voilà le fichier <code>docker-compose.yml</code> qu'il faut créer à la racine.</p><pre class="language-yml line-numbers"><code>
+
+version: '3.8'
+
+services:
+  db:
+    image: postgres:13-alpine
+    container_name: db
+    ports:
+      - "${PG_PORT}:5432"
+    environment:
+      POSTGRES_DB: ${PG_DB}
+      POSTGRES_USER: ${PG_USER}
+      POSTGRES_PASSWORD: ${PG_PASSWORD}
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+volumes:
+  db_data:
+
+
+</code></pre><p>On voit que le service <code>db</code>a besoin de variables d'environnement (POSTGRES_DB, POSTGRES_USER, POSTGRES_PASSWORD ainsi que le port). Au lieu d'écrire directement les valeurs de ces variables dans le fichier, nous allons les écrire dans le <code>.env</code>.</p><pre class="line-numbers"><code>
+
+# Database connection
+PG_PORT=5432
+PG_DB=graphql-db
+PG_USER=admin 
+PG_PASSWORD=password
+DATABASE_URL=postgresql://${PG_USER}:${PG_PASSWORD}@localhost:${PG_PORT}/${PG_DB}
+
+
+</code></pre><p>On crée également grâce à la librairie <code>dotenv-expand</code> la variable d'environnement composée <code>DATABASE_URL</code>dont nous allons avoir besoin plus tard.</p><p>Afin de lancer le service PostgreSQL, il suffit juste de lancer la commande <code>docker compose up -d</code> en ayant au préalable lancer Docker.</p><h3 id="mise-en-place-du-sch%C3%A9ma-de-base-de-donn%C3%A9es-et-manipulations-prisma" tabindex="-1"><a class="header-anchor" href="#mise-en-place-du-sch%C3%A9ma-de-base-de-donn%C3%A9es-et-manipulations-prisma"></a> Mise en place du schéma de base de données et manipulations Prisma</h3><p>Pour communiquer avec la base de données j'ai choisi un ORM que je ne connaissais pas <a href="https://www.prisma.io/">Prisma</a>. Nous allons donc installer la CLI de Prisma en dev ainsi que le client Prisma.</p><pre class="language-bash line-numbers"><code>
+
+npm i -D prisma 
+npm i @prisma/client
+
+
+</code></pre><p>Nous allons désormais initialiser Prisma avec <code>npx prisma init</code>. Cela crée un dossier <code>prisma</code> avec un fichier <code>schema.prisma</code> que nous allons modifier.</p><pre class="language-javascript line-numbers"><code>
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+</code></pre><p>Nous allons ensuite spécifier notre schéma de base de données dans le fichier <code>schema.prisma</code>.</p><pre class="line-numbers"><code>
+
+model Post {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  title     String   @db.VarChar(255)
+  content   String?
+  published Boolean  @default(false)
+  author    User     @relation(fields: [author_id], references: [id])
+  author_id  Int
+}
+
+model Profile {
+  id     Int     @id @default(autoincrement())
+  bio    String?
+  user   User    @relation(fields: [user_id], references: [id])
+  user_id Int     @unique
+}
+
+model User {
+  id      Int      @id @default(autoincrement())
+  email   String   @unique
+  name    String?
+  posts   Post[]
+  profile Profile?
+}
+
+
+</code></pre><p>On va désormais créer une migration et l'appliquer en même temps à la base de données avec <code>npx prisma migrate dev --name init</code>.</p><div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100 dark:border-cyan-800 dark:bg-cyan-950"><svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-cyan-500 dark:stroke-cyan-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg><div class="pl-8 mb-2 mr-8"><p><b>Information</b></p></div><div class="pl-8 mr-8"><p><strong>Quelques commandes Prisma à connaître :</strong></p><ul><li><code>npx prisma validate</code>: permet de vérifier si le schéma Prisma est correct</li><li><code>npx prisma studio</code> : lance une interface web pour visualiser le contenu de la base données</li><li><code>npx prisma db pull</code> : récupère le schéma existant dans la base de données et met à jour le schéma Prisma</li><li><code>npx prisma db push</code> : met à jour la base de données à partir des données du schéma Prisma</li><li><code>npx prisma migrate dev --name my_migration</code> : crée un fichier de migration comportant les derniers changements du schéma Prisma et applique ce changement à la base de données</li><li><code>npx prisma migrate reset</code> : réinitialise la base de données et applique toutes les migrations</li><li><code>npx prisma migrate deploy</code> : applique les dernières migrations en cours à la base de données</li><li><code>npx prisma generate</code>: permet de modifier le PrismaClient (outil utilisé dans le backend pour envoyer des requêtes) afin qu'il soit à jour avec le schéma de db</li></ul></div></div><p>A ce stade en lançant la commande <code>npx prisma studio</code>nous devrions voir nos tables avec les différents champs.</p><p>&lt;<img src="https://raw.githubusercontent.com/do-it-ecm/promo-2022-2023/refs/heads/main//Bert-Nicolas/mon/temps-2.2/prisma-studio.png" alt="Prisma Studio"></p><div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100 dark:border-red-800 dark:bg-red-950"><svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-red-500 dark:stroke-red-800 stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg><div class="pl-8 mb-2 mr-8"><p><b>Attention</b></p></div><div class="pl-8 mr-8"><p>Il faut faire attention aux pratiques que l'on souhaite avoir. Il est possible de travailler uniquement avec le schéma Prisma et faire des <code>db push</code>cependant des changements plus important en base de données pourrait être critique en production, c'est pour cela que l'on utilise les migrations.</p><p>Selon moi, à chaque modification du schéma de base de données, on modifie le schéma Prisma et on lance <code>npx prisma migrate dev --name &quot;ma migration&quot;</code>.</p></div></div><h3 id="cr%C3%A9ation-de-fausses-donn%C3%A9es" tabindex="-1"><a class="header-anchor" href="#cr%C3%A9ation-de-fausses-donn%C3%A9es"></a> Création de fausses données</h3><p>Nous allons désormais créer un fichier de fausses données à charger dans la base de données. Ce fichier s'appelle <code>prisma/seed.js</code>. Afin de pouvoir charger ces fausses données nous devons modifier le <code>package.json</code>.</p><pre class="language-json line-numbers"><code>
+
+{
+  ...
+  "prisma": {
+    "seed": "node prisma/seed.js"
+  }
+}
+
+
+</code></pre><h3 id="installation-de-graphql-et-param%C3%A9trisation" tabindex="-1"><a class="header-anchor" href="#installation-de-graphql-et-param%C3%A9trisation"></a> Installation de GraphQL et paramétrisation</h3><p>Comme nous l'avons au début de ce MON, GraphQL est un langage de requête API. Pour fonctionner, nos serveur express a besoin d'un serveur GraphQL afin d'interpréter les requêtes et les transformer en requête Prisma qui les transformera ensuite en requête SQL. Nous allons utiliser <code>express-graphql</code>.</p><pre class="language-bash line-numbers"><code>
+
+npm i express-graphql graphql
+
+
+</code></pre><p>GraphQL fonctionne avec des types, des queries et des mutations. Ici nous allons montrer en exemple la class User. On commence pas créer un type User qui va définir les types de données que nous allons renvoyer au client.</p><pre class="language-js line-numbers"><code>
+
+const UserType = new GraphQLObjectType({
+    name: "User",
+    fields: () => ({
+        id: {type: GraphQLInt},
+        email: {type: GraphQLString},
+        first_name: {type: GraphQLString},
+        last_name: {type: GraphQLString},
+        posts: {type: GraphQLList(PostType)},
+        profile: {type: ProfileType}
+    })
+})
+
+
+</code></pre><p>On peut ensuite définir une query associée qui permet de récupérer la liste de tous les users.</p><pre class="language-js line-numbers"><code>
+
+const RootQuery = new GraphQLObjectType({
+    name: "RootQueryType",
+    fields: {
+        getAllUsers: {
+            type: GraphQLList(UserType),
+            async resolve(parent, args) {
+                return await prisma.user.findMany()
+            }
+        }
+    }
+})
+
+
+</code></pre><p>On met en place ensuite la mutation pour créer un user.</p><pre class="language-js line-numbers"><code>
+
+const Mutation = new GraphQLObjectType({
+    name: "Mutation",
+    fields: {
+        createUser: {
+            type: UserType,
+            args: {
+                email: {type: GraphQLString},
+                first_name: {type: GraphQLString},
+                last_name: {type: GraphQLString},
+            },
+            async resolve(parent, args) {
+                await prisma.user.create({data: {
+                    email: args.email,
+                    first_name: args.first_name,
+                    last_name: args.last_name
+                }})
+                return args
+            }
+        }
+    }
+})
+
+
+</code></pre><p>On crée ensuite le schéma GraphQL qui va nous permette de gérer les requêtes et la route Express associée.</p><pre class="language-js line-numbers"><code>
+
+const schema = new GraphQLSchema({query: RootQuery, mutation: Mutation})
+
+app.use('/api', graphqlHTTP({
+    schema,
+    graphiql: true
+}))
+
+
+</code></pre><div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100 dark:border-cyan-800 dark:bg-cyan-950"><svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-cyan-500 dark:stroke-cyan-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg><div class="pl-8 mb-2 mr-8"><p><b>Information</b></p></div><div class="pl-8 mr-8"><p>L'option <code>graphiql: true</code>nous permet d'avoir un GUI sur la route <em>&quot;/api&quot;</em> et ainsi pour voir faire les requêtes plus simplement pour la période de test.</p></div></div><p>Testons désormais notre api !</p><pre class="language-graphql line-numbers"><code>
+
+# je demande la liste de tous les users et pour chaque user je veux son mail son nom et son prénom
+query {
+    getAllUsers {
+        email
+        first_name
+        last_name
+    }
+}
+
+
+</code></pre><p>Le serveur répond alors :</p><pre class="language-json line-numbers"><code>
+
+{
+  "data": {
+    "getAllUsers": [
+      {
+        "email": "alice@prisma.io",
+        "first_name": "Alice",
+        "last_name": "Prisma"
+      },
+      {
+        "email": "bob@prisma.io",
+        "first_name": "Bob",
+        "last_name": "Prisma"
+      }
+    ]
+  }
+}
+
+
+</code></pre><p>On teste maintenant la mutation !</p><pre class="language-graphql line-numbers"><code>
+
+mutation {
+  createUser(email: "mrbean@email.com", first_name:"Harry", last_name:"Cover"){
+    email
+    first_name
+    last_name
+  }
+}
+
+
+</code></pre><p>Le serveur répond alors :</p><pre class="language-json line-numbers"><code>
+
+{
+  "data": {
+    "createUser": {
+      "email": "mrbean@email.com",
+      "first_name": "Harry",
+      "last_name": "Cover"
+    }
+  }
+}
+
+
+</code></pre><p>On peut ainsi continuer et créer d'autres requêtes....</p><h2 id="conclusion" tabindex="-1"><a class="header-anchor" href="#conclusion"></a> Conclusion</h2><p>Pour conclure, GraphQL est un langage de requête API qui est assez novateur. Toutes les requêtes client sont des requêtes POST et se font sur un seul endpoint. Je pensais qu'il suffisait d'exposer ses données sur une route et que le client pouvait ensuite demander n'importe quoi sous le format qu'il veut mais en fait le développeur doit quand même tout définir à la main comme à la manière d'une API REST. Ainsi, GraphQL est censé apporter de la flexibilité aux développeurs mais le travail reste tout aussi fastidieux qu'une API REST, voire plus...</p><h2 id="sources" tabindex="-1"><a class="header-anchor" href="#sources"></a> Sources</h2><ul><li><a href="https://openclassrooms.com/fr/courses/6573181-adoptez-les-api-rest-pour-vos-projets-web/6816951-initiez-vous-au-fonctionnement-des-api">https://openclassrooms.com/fr/courses/6573181-adoptez-les-api-rest-pour-vos-projets-web/6816951-initiez-vous-au-fonctionnement-des-api</a></li><li><a href="https://blog.hubvisory.com/blog/api-rest-comment-ca-fonctionne-et-pourquoi-l-utiliser/">https://blog.hubvisory.com/blog/api-rest-comment-ca-fonctionne-et-pourquoi-l-utiliser/</a></li><li><a href="https://stackoverflow.com/questions/73103901/api-endpoint-for-a-single-item-post-vs-put">https://stackoverflow.com/questions/73103901/api-endpoint-for-a-single-item-post-vs-put</a></li><li><a href="https://medium.com/nerd-for-tech/graphql-vs-restful-e1a99fd14285">https://medium.com/nerd-for-tech/graphql-vs-restful-e1a99fd14285</a></li><li><a href="https://kinsta.com/fr/blog/graphql-vs-rest/">https://kinsta.com/fr/blog/graphql-vs-rest/</a></li></ul></article></main><footer class="min-h-[50px] border-t-2 mt-4 border-gray-200 dark:border-neutral-700"><div class="max-w-[1000px] mx-auto px-4"><div class="min-h-[50px] flex justify-center items-center"><p class="text-center">©2025 <b><span style="font-family:Consolas,sans-serif">Do-<span style="color:#4a86e8">It</span></span></b> - Développement, Management et Gestion de projets en IT</p></div></div></footer><script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">window.MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]]},svg:{fontCache:"global"}},document.addEventListener("DOMContentLoaded",(()=>{MathJax.typeset()}))</script><script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">Prism.plugins.NormalizeWhitespace.setDefaults({"remove-trailing":!0,"remove-indent":!0,"left-trim":!0,"right-trim":!0})</script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script></body></html>

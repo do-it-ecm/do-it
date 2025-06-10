@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="robots" content="index, follow">
+
+        <link rel="canonical" href="https://do-it.aioli.ec-m.fr/promos/2022-2023/Gacoin-Louise/mon/temps-2.1/">
+
+        
+        
+
+        <meta name="description" content="Do-It, cours et travaux des élèves de l&#39;école Centrale Méditerranée">
+        <meta property="og:description" content="Do-It, cours et travaux des élèves de l&#39;école Centrale Méditerranée">
+        <meta name="twitter:description" content="Do-It, cours et travaux des élèves de l&#39;école Centrale Méditerranée">
+
+        
+            <meta name="author" content="Louise Gacoin">
+        
+        <meta name="keywords" content="do-it, centrale, centrale méditerranée, ecm, MON, programmation objet, python, debutant">
+
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png">
+        <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png">
+
+        <link href="/assets/stylesheets/main.css" rel="stylesheet">
+
+        <meta property="og:title" content="MON de Louise ">
+
+        <meta property="og:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta property="og:url" content="https://do-it.aioli.ec-m.fr/promos/2022-2023/Gacoin-Louise/mon/temps-2.1/">
+        <meta property="og:type" content="website">
+
+        <meta name="twitter:card" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:title" content="MON de Louise ">
+        <meta name="twitter:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:url" content="https://do-it.aioli.ec-m.fr/promos/2022-2023/Gacoin-Louise/mon/temps-2.1/">
+
+        <title>MON de Louise </title>
+
+        <!-- Prismjs imports
+                - Prism line numbers
+                - Prism toolbar
+        -->
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet">
+        <link id="prism-theme" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+        <!-- Mermaid import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js "></script>
+
+        <script defer="">
+        // Check if a theme is stored in localStorage. If so, use it, otherwise fallback to the system preference.
+        const storedTheme = localStorage.getItem('theme');
+        if (storedTheme) {
+            document.documentElement.classList.toggle("dark", storedTheme === "dark");
+        } else {
+            // Use system color scheme if there is no stored theme preference.
+            document.documentElement.classList.toggle("dark", window.matchMedia("(prefers-color-scheme: dark)").matches);
+        }
+
+        function loadPrismTheme(isDarkMode) {
+            const newTheme = isDarkMode ? 'prism-okaidia.min.css' : 'prism-solarizedlight.min.css';
+            const newLink = document.createElement('link');
+            newLink.rel = 'stylesheet';
+            newLink.id = 'prism-theme';
+            newLink.href = `https://cdn.jsdelivr.net/npm/prismjs/themes/${newTheme}`;
+
+            newLink.onload = () => {
+                // Reapply highlighting after the new theme loads
+                Prism.highlightAll();
+            };
+
+            const existingLink = document.getElementById('prism-theme');
+            if (existingLink) {
+                document.head.replaceChild(newLink, existingLink);
+            } else {
+                document.head.appendChild(newLink);
+            }
+        }
+
+        function setMermaidTheme(isDarkMode) {
+            const theme = isDarkMode ? 'dark' : 'forest';
+            mermaid.initialize({
+                securityLevel: 'loose',
+                theme,
+                startOnLoad: true,
+            });
+        }
+
+        // Toggle dark and light mode and update localStorage accordingly.
+        function toggleDarkMode() {
+            const dark = document.documentElement.classList.contains("dark");
+            const newTheme = dark ? "light" : "dark";
+            localStorage.setItem('theme', newTheme);
+            document.documentElement.classList.toggle("dark", !dark);
+            loadPrismTheme(!dark);
+            setMermaidTheme(!dark);
+        }
+
+        // On initial load, ensure that Prism and Mermaid are initialized using the current theme.
+        const isDark = document.documentElement.classList.contains("dark");
+        loadPrismTheme(isDark);
+        setMermaidTheme(isDark);
+        </script>
+
+    </head>
+
+    <body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000" class="bg-neutral-50 text-neutral-950 dark:bg-neutral-900 dark:text-neutral-50">
+        <header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white dark:bg-neutral-900 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-between items-center">
+                    <a class="mx-2" href="/">Home</a>
+                    <button class="hidden sm:block text-neutral-950 dark:text-neutral-50 hover:bg-neutral-700 hover:text-neutral-50 hover:dark:bg-neutral-300 hover:dark:text-neutral-950 transition-colors p-2 rounded-full duration-800 ease-in-out" onclick="toggleDarkMode()">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 dark:hidden stroke-current">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <path d="M12 2V4" stroke-linecap="round"></path>
+                            <path d="M12 20V22" stroke-linecap="round"></path>
+                            <path d="M4 12L2 12" stroke-linecap="round"></path>
+                            <path d="M22 12L20 12" stroke-linecap="round"></path>
+                            <path d="M19.7778 4.22266L17.5558 6.25424" stroke-linecap="round"></path>
+                            <path d="M4.22217 4.22266L6.44418 6.25424" stroke-linecap="round"></path>
+                            <path d="M6.44434 17.5557L4.22211 19.7779" stroke-linecap="round"></path>
+                            <path d="M19.7778 19.7773L17.5558 17.5551" stroke-linecap="round"></path>
+                        </svg>
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 stroke-current hidden dark:block">
+                            <path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </button>
+                    <div class="flex items-center gap-4 sm:gap-6 ">
+                        <a class="" href="/cs">CS</a>
+                        <a class="" href="/pok">POK</a>
+                        <a class="" href="/mon">MON</a>
+                        <a class="" href="/projets">Projets</a>
+                        <a class="hidden sm:block" href="/promos">Promos</a>
+                        <a href="/search">
+                            <svg class="h-5 aspect-square stroke-neutral-950 dark:stroke-neutral-300 fill-none stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+                            </svg>
+                        </a>
+                        <a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank">
+                            <svg class="h-5 aspect-square dark:stroke-neutral-300 dark:fill-neutral-300" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body="">
+            
+<article class="relative">
+<h1 class="mb-1">MON de Louise </h1>
+<div class="mb-4">
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Tags : </div>
+            <ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags">
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">MON</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">programmation objet</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">python</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">debutant</li>
+                
+
+            </ul>
+
+            
+            <div class="hidden" data-pagefind-meta="Type" aria-hidden="true">
+                
+                    
+                        <span data-pagefind-filter="Type">MON</span>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Auteur : </div>
+            <ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs">
+                
+                    <li class="bg-blue-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Auteurs">Louise Gacoin</li>
+                
+            </ul>
+        </div>
+    
+
+    
+        <div class="absolute top-0 right-0">
+            <span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2 text-neutral-950" data-pagefind-filter="Année">
+                2022-2023
+            </span>
+        </div>
+    
+</div>
+
+
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100 dark:border-purple-800 dark:bg-purple-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-purple-500 dark:stroke-purple-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/promos/2022-2023/Gacoin-Louise/">Louise Gacoin</a><span class="px-1">/</span><a href="/promos/2022-2023/Gacoin-Louise/mon/">MON de Louise </a><span class="px-1">/</span><a href="/promos/2022-2023/Gacoin-Louise/mon/temps-2.1/">MON de Louise </a>
+
+</div>
+</div>
+
+
+
+
+<p>L'objectif de ce MON est d'acquérir les bases en programmation objet sur python. Pour cela j'ai suivis [le cours de Monsieur Brucker ][<a href="https://francoisbrucker.github.io/cours_informatique/cours/algorithme-code-th%C3%A9orie/code/programmation-objet/">https://francoisbrucker.github.io/cours_informatique/cours/algorithme-code-théorie/code/programmation-objet/</a>].
+Ce MON s'adresse aux débutants en informatique. Si vous maîtrisez déjà les bases de la POO, dirigez vous vers les MON suivants:</p>
+<ul>
+<li>MON 1.2 de Nicolas BERT <a href="https://do-it.aioli.ec-m.fr/mon/NB/mes-mon/poo-python/">Programmation objet en Python</a> (Bon exemple de programme )</li>
+<li>MON 1.1 de Tuncay Bilgi <a href="https://do-it.aioli.ec-m.fr/mon/TBi/MON/POO/">POO</a> (fonctionnalités avancées)</li>
+</ul>
+<h1 id="sommaire%3A" tabindex="-1"><a class="header-anchor" href="#sommaire%3A"></a> Sommaire:</h1>
+<ol>
+<li>Qu'est ce que la programmation objet</li>
+<li>Composition et agrégation</li>
+<li>Héritage</li>
+<li>Retour sur le cours de M.Brucker</li>
+</ol>
+<h2 id="1.-qu'est-ce-que-la-programmation-objet" tabindex="-1"><a class="header-anchor" href="#1.-qu'est-ce-que-la-programmation-objet"></a> 1. Qu'est ce que la programmation objet</h2>
+<h1 id="cours" tabindex="-1"><a class="header-anchor" href="#cours"></a> Cours</h1>
+<p>Une vidéo explicative sympa pour commencer: <a href="https://www.youtube.com/watch?v=3-qqjlY3tCM">https://www.youtube.com/watch?v=3-qqjlY3tCM</a></p>
+<p>La programmation objet permet de découper son code en petites parties simples, faciles à lire. Pour ce faire on utilise des classes.
+Une classe permet de créer un type d'objet et de définir les opérations que l'on peut effectuer dessus.</p>
+<p>Un objet issu d'une certaine classe :
+• possède des attributs uniques. (Chaque objet de la classe possèdent les mêmes caractéristiques mais leur valeurs sont différentes pour chaque objet)
+• possède des méthodes définies dans sa classe</p>
+<p>Pour représenter un objet on utilise la représentation ULM.</p>
+<img src="https://raw.githubusercontent.com/do-it-ecm/promo-2022-2023/refs/heads/main//Gacoin-Louise/mon/temps-2.1/ulm.png">
+<p>On voit bien ce qui compose la classe:</p>
+<ul>
+<li>Un nom</li>
+<li>Des méthodes (= fonctionnalités  qui sont pareilles pour tous les objets)</li>
+<li>Un attribut (= qui est différent pour chaque objet)</li>
+</ul>
+<p>Finalement, une classe python s'écrira de cette manière:</p>
+<img src="https://raw.githubusercontent.com/do-it-ecm/promo-2022-2023/refs/heads/main//Gacoin-Louise/mon/temps-2.1/classe_.png">
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100 dark:border-pink-800 dark:bg-pink-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-pink-500 dark:stroke-pink-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p>Source</p>
+</div><div class="pl-8 mr-8">
+<p><a href="https://francoisbrucker.github.io/cours_informatique/cours/algorithme-code-th%C3%A9orie/code/programmation-objet/classes-et-objets/">Classes et objet</a>
+<a href="https://francoisbrucker.github.io/cours_informatique/cours/algorithme-code-th%C3%A9orie/code/programmation-objet/coder-ses-objets/">Coder ses objets</a></p>
+</div>
+</div>
+<p><em>Espaces de noms</em>:
+ce sont des espaces où sont stockés les noms de variables. Dans un espace de noms, chaque nom est différent. Réutiliser le même nom fait que l'on réécrit sur le précédent (ex:si on donne le même noms à 2 variables, la 2nde valeur écrase la 1ère :x=1 et x=3, on aura x=3)
+Lorsque l'on définit une classe, python lui associe un espace de noms. Les différents noms définits dans la classes y seront consignés.</p>
+<p><em>Conventions importantes</em>:</p>
+<ul>
+<li>Les noms de classe commencent par une majuscule</li>
+<li>L'implémentation de la classe est placée dans un fichier de même nom mais avec une minuscule</li>
+<li>Il faut tester ses fonctionnalités au fur et à mesure qu'on les écrit</li>
+</ul>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100 dark:border-cyan-800 dark:bg-cyan-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-cyan-500 dark:stroke-cyan-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p>Remarques</p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li>Le cours permet de bien comprendre ce que sont les objets et les classes avec des exemples simples. Cependant j'ai peur de ne pas m'en sortir quand la diffciluté augmentera</li>
+<li>J'ai encore du mal à comprendre les subtilités des espaces de noms. Je retiens surtout que si on utilise deux fois le même nom à l'intérieur d'une même classe on risque d'avoir des soucis...</li>
+</ul>
+</div>
+</div>
+<h1 id="pratique%3A-bataille-navale" tabindex="-1"><a class="header-anchor" href="#pratique%3A-bataille-navale"></a> Pratique: Bataille navale</h1>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100 dark:border-pink-800 dark:bg-pink-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-pink-500 dark:stroke-pink-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p>Source</p>
+</div><div class="pl-8 mr-8">
+<p><a href="https://francoisbrucker.github.io/cours_informatique/cours/algorithme-code-th%C3%A9orie/code/programmation-objet/projet-code-objets/">projet : coder des objets</a></p>
+</div>
+</div>
+<p>On commence par coder la classe Grille:</p>
+<pre class="language-python line-numbers"><code>
+
+
+from bateau import Bateau
+
+class Grille:
+    def __init__(self,nb_ligne, nb_colonne):
+        self.nb_ligne = nb_ligne
+        self.nb_colonne = nb_colonne
+        self.carte=[["."]*self.nb_ligne for i in range(self.nb_colonne)]
+
+
+    def affiche(self):
+        print (self.carte)
+
+
+    def tirer(self,ligne,colonne):
+        x=ligne-1 # self.qqch signifie qu'on créer un attribut.
+        #  Imposible dans une fonction. Ne pas rajouter des attributs qui sont pas dans le constructeur
+        y=colonne-1
+        if x>self.nb_ligne or y>self.nb_colonne:
+            return self
+            print("Tir hors de la grille")
+
+        else:
+            self.carte[x][y]='o'
+            return self
+
+    def ajoute(self,bateau):
+        if bateau.vertical== True:
+            if self.nb_ligne>= bateau.ligne+bateau.longueur:
+                for i in range (bateau.longueur):
+                    self.carte[bateau.ligne+i-1][bateau.colonne-1]='X'
+        if bateau.vertical== False:
+            if self.nb_ligne>= bateau.colonne+bateau.longueur:
+                for i in range (bateau.longueur):
+                    self.carte[bateau.ligne-1][bateau.colonne+i-1]='X'
+
+
+
+</code></pre><p>La méthode tirer remplace le &quot;.&quot; par un &quot;o&quot; dans la grille à l'endroit du tir</p>
+<p>On code ensuite la classe Bateau:</p>
+<pre class="language-python line-numbers"><code>
+
+
+class Bateau :
+    def __init__(self, ligne, colonne, longueur=1, vertical=False):
+        self.ligne = ligne
+        self.colonne = colonne
+        self.longueur= longueur
+        self.vertical= vertical
+
+
+    def touché(self,y,x):
+        if self.vertical== True:
+            if self.ligne==y:
+               if  x in range(self.colonne,  self.colonne+self.longueur):
+                   return True
+        else:
+            if self.colonne==x:
+                if  y in range(self.ligne,  self.ligne+self.longueur):
+                    return True
+        return False
+
+    def coulé(self,grille):
+        if self.vertical== True:
+            for i in range (self.longueur):
+                if grille.carte[self.ligne+i-1][self.colonne-1]=='o':
+                    return True
+        else:
+             for i in range (self.longueur):
+                if grille.carte[self.ligne-1][self.colonne+i-1]=='o':
+                    return True
+
+
+
+</code></pre><p>La méthode &quot;touché&quot; permet de savoir si un tir  a atteint le bateau ou non.
+Enfin on ajoute les méthodes ajoute(Bateau) à Grille et coulé() à Bateau  qui vont lier les 2 classes.</p>
+<p>Le code final du jeu de la bataille final est:</p>
+<pre class="language-python line-numbers"><code>
+
+
+from grille import Grille
+from bateau import Bateau
+
+b=Bateau(1,3,2,True)
+g1= Grille(4,5)
+
+while b.coulé(g1)!= True:
+    g1.affiche()
+    x=int(input("Saisissez une coordonnée x : "))
+    y=int(input("Saisissez une coordonnée y : "))
+    g1.tirer(x,y)
+    b.touché(x,y)
+    if b.touché(x,y)==True:
+        print("C'est touché")
+        g1.carte[x-1][y-1]="X"
+
+g1.affiche()
+
+
+
+</code></pre><p>Tous cela est très imparfait bien sûr et j'ai eu pas mal de problèmes d'index.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100 dark:border-cyan-800 dark:bg-cyan-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-cyan-500 dark:stroke-cyan-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p>Difficultés</p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li>J'ai eu du mal à comprendre comment bien utiliser &quot;self&quot;. J'ai pas mal pataugé au début à cause de cela</li>
+<li>L'appel d'un objet de la classe Bateau dans l'écriture d'une méthode de la classe Grille m'a aussi posé problème</li>
+<li>J'ai bien compris la théorie des tests mais la réalisation de vrais tests vraiment efficaces reste assez mystérieuse</li>
+<li>Petit bonus: j'ai appris à utiliser le débogueur pour comprendre les problèmes de mon code</li>
+</ul>
+</div>
+</div>
+<h2 id="2-composition-et-agr%C3%A9gation" tabindex="-1"><a class="header-anchor" href="#2-composition-et-agr%C3%A9gation"></a> 2 Composition et agrégation</h2>
+<h1 id="cours-1" tabindex="-1"><a class="header-anchor" href="#cours-1"></a> Cours</h1>
+<p>Une composition est crée avec un ensemble d'objets. Elle est crée avec une classe.
+Une agrégation représente un ensemble d'objets ajoutés par une méthode dans l'objet principale. Ils ne possèdent pas de classe propre.</p>
+<p>exemple du panier de fruits:</p>
+<ul>
+<li>le panier est une composition de fruits</li>
+<li>les fruits sont une agrégation (il n'existe pas de classe Fruit)</li>
+</ul>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100 dark:border-pink-800 dark:bg-pink-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-pink-500 dark:stroke-pink-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p>Source</p>
+</div><div class="pl-8 mr-8">
+<p><a href="https://francoisbrucker.github.io/cours_informatique/cours/algorithme-code-th%C3%A9orie/code/programmation-objet/composition-agr%C3%A9gation/">composition et agrégation</a></p>
+</div>
+</div>
+<h1 id="pratique%3A-on-lance-5-d%C3%A9s" tabindex="-1"><a class="header-anchor" href="#pratique%3A-on-lance-5-d%C3%A9s"></a> Pratique: On lance 5 dés</h1>
+<p>Dans ce projet, on créé un TapisVert qui contient 5 dés que l'on peut lancer.
+Représentation UML:</p>
+<img src="https://raw.githubusercontent.com/do-it-ecm/promo-2022-2023/refs/heads/main//Gacoin-Louise/mon/temps-2.1/ulm_tapis.png">
+<p>Code:</p>
+<pre class="language-python line-numbers"><code>
+
+from random import *
+
+
+class Dice:
+
+    def __init__(self,nb_faces,valeur):
+        self.nb_faces=nb_faces
+        self.valeur=valeur
+
+    def set_valeur(self,x):
+        self.valeur= x
+
+    def get_valeur(self):
+        return self.valeur
+
+    def roll(self):
+        self.valeur=randint(0,self.nb_faces)
+
+
+class TapisV:
+    def __init__(self):
+        self.liste = (1,1,1,1,1)
+
+    def lancer(self):
+        for i in range (5):
+            self.liste[i]=randint(1,6)
+
+    def get_valeur(self):
+        return self.liste
+
+
+
+</code></pre><p>Tests associés:</p>
+<pre class="language-python line-numbers"><code>
+
+from dice import *
+
+def test_init():
+    de = Dice(6,1)
+    assert de is not None
+
+
+def test_get_valeur():
+    de = Dice(6,1)
+    assert de() == int()
+
+def test_get_valeur():
+    de = Dice(6,1)
+    de.set_valeur(3)
+    assert de== 3
+
+
+def test_roll():
+    de= Dice(6,1)
+    de.roll()
+    if de < 7:
+        if de>0:
+            return True
+
+
+def test_init():
+    tapis = TapisV()
+    assert tapis is not None
+
+
+def test_montre_valeur():
+    tapis = TapisV()
+    assert tapis() == tuple()
+
+
+def test_objet():
+    tapis=TapisV()
+    tapis[2]=3
+    if tapis.get_valeur() == (1,1,3,1,1):
+        return True
+
+
+</code></pre><h2 id="3.h%C3%A9ritage" tabindex="-1"><a class="header-anchor" href="#3.h%C3%A9ritage"></a> 3.Héritage</h2>
+<h1 id="cours-2" tabindex="-1"><a class="header-anchor" href="#cours-2"></a> Cours</h1>
+<p>L'héritage permet de créer des classes filles qui sont des cas particuliers de leur classe mère.
+Une classe fille hérite de tous les attributs et méthodes de sa mère. On peut lui ajouter  des méthodes spécifiques.</p>
+<p>Par exemple:</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100 dark:border-pink-800 dark:bg-pink-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-pink-500 dark:stroke-pink-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p>Source</p>
+</div><div class="pl-8 mr-8">
+<p><a href="https://francoisbrucker.github.io/cours_informatique/cours/algorithme-code-th%C3%A9orie/code/programmation-objet/h%C3%A9ritage/">Héritage</a></p>
+</div>
+</div>
+<p>Un bon exemple de programme qui utilise l'héritage :</p>
+<p>-MON 1.2 de Nicolas BERT <a href="https://do-it.aioli.ec-m.fr/mon/NB/mes-mon/poo-python/">Programmation objet en Python</a></p>
+<h1 id="pratique" tabindex="-1"><a class="header-anchor" href="#pratique"></a> Pratique</h1>
+<p>Pour tester l'héritage j'ai ajouté une classe de sous-marins à ma bataille navale.
+Ces sous marins peuvent plonger. Ils sont alors invisibles et intouchables:</p>
+<pre class="language-python line-numbers"><code>
+
+
+class Sous_marin(Bateau):
+
+    def __init__(self, ligne, colonne, longueur=1, vertical=False, visibilité=True):
+        super().__init__(ligne, colonne, longueur, vertical)
+        self.visiblité= visibilité
+        self.longueur= 3
+
+    def touché (self,x,y):
+        if self.visible==True:
+            super().touché(x,y)
+        else:
+             print("c'est raté ")
+
+
+    def coulé(self, grille):
+        if self.visible==True:
+            super().coulé(grille)
+        else:
+            print("c'est raté ")
+
+
+
+</code></pre><h2 id="4.-retour-sur-le-cours-de-m.brucker" tabindex="-1"><a class="header-anchor" href="#4.-retour-sur-le-cours-de-m.brucker"></a> 4. Retour sur le cours de M.Brucker</h2>
+<p>Pour conclure ce MON voici un petit retour d'expérience concernant le cours de Monsieur Brucker.</p>
+<p>Le cours est clair avec des exemples simples à comprendre. La première partie du cours est celle qui m'a posée le plus de diffcultées car elle introduit beaucoup de notions. La différence de difficulté entre les exemples du cours et la bataille navale m'a paru trop grande.
+Les parties suivantes sur l'héritage et les compositions,agrégations n'ont pas posé problème.</p>
+<p>En résumé ce cours permet de bien comprendre les basses de la POO. Cependant il sera sans doute un peu compliqué à suivre pour les débutants (surtout en ce qui concerne les notions complexes). De plus il manque d'exemple plus compliqués, ce qui a rendu la bataille navale très dure à mettre en place pour moi.
+Si vous êtes 100% débutant en informatique je vous conseille de compléter ce cours avec d'autres ressources internet (comme des petites vidéos par exemple) et de faire des exemples simples, qui montent en difficulté progressivement avant de vous attaquer à la bataille navale.</p>
+
+
+
+</article>
+
+        </main>
+
+        <footer class="min-h-[50px] border-t-2 mt-4 border-gray-200 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-center items-center">
+                    <p class="text-center">
+                        ©2025 <b><span style="font-family: Consolas, sans-serif;">Do-<span style="color: #4a86e8">It</span></span></b> - Développement, Management et Gestion de projets en IT
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- MathJax import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">
+            window.MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']], // Delimiters for inline math
+                    displayMath: [['$$', '$$'], ['\\[', '\\]']] // Delimiters for block math
+                },
+                svg: {
+                    fontCache: 'global' // Use global font cache for SVG output
+                }
+            };
+            document.addEventListener('DOMContentLoaded', () => {
+                MathJax.typeset(); // Ensures MathJax processes the content after the page loads
+            });
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">
+            Prism.plugins.NormalizeWhitespace.setDefaults({
+                'remove-trailing': true,
+                'remove-indent': true,
+                'left-trim': true,
+                'right-trim': true,
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script>
+    </body>
+</html>

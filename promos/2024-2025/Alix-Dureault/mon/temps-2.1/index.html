@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="robots" content="index, follow">
+
+        <link rel="canonical" href="https://do-it.aioli.ec-m.fr/promos/2024-2025/Alix-Dureault/mon/temps-2.1/">
+
+        
+        
+
+        <meta name="description" content="Ce MON a pour but de me former en Java Script et en React.">
+        <meta property="og:description" content="Ce MON a pour but de me former en Java Script et en React.">
+        <meta name="twitter:description" content="Ce MON a pour but de me former en Java Script et en React.">
+
+        
+            <meta name="author" content="Alix Duréault">
+        
+        <meta name="keywords" content="do-it, centrale, centrale méditerranée, ecm, MON, info, React, JS">
+
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png">
+        <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png">
+
+        <link href="/assets/stylesheets/main.css" rel="stylesheet">
+
+        <meta property="og:title" content="Javascript et React">
+
+        <meta property="og:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta property="og:url" content="https://do-it.aioli.ec-m.fr/promos/2024-2025/Alix-Dureault/mon/temps-2.1/">
+        <meta property="og:type" content="website">
+
+        <meta name="twitter:card" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:title" content="Javascript et React">
+        <meta name="twitter:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:url" content="https://do-it.aioli.ec-m.fr/promos/2024-2025/Alix-Dureault/mon/temps-2.1/">
+
+        <title>Javascript et React</title>
+
+        <!-- Prismjs imports
+                - Prism line numbers
+                - Prism toolbar
+        -->
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet">
+        <link id="prism-theme" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+        <!-- Mermaid import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js "></script>
+
+        <script defer="">
+        // Check if a theme is stored in localStorage. If so, use it, otherwise fallback to the system preference.
+        const storedTheme = localStorage.getItem('theme');
+        if (storedTheme) {
+            document.documentElement.classList.toggle("dark", storedTheme === "dark");
+        } else {
+            // Use system color scheme if there is no stored theme preference.
+            document.documentElement.classList.toggle("dark", window.matchMedia("(prefers-color-scheme: dark)").matches);
+        }
+
+        function loadPrismTheme(isDarkMode) {
+            const newTheme = isDarkMode ? 'prism-okaidia.min.css' : 'prism-solarizedlight.min.css';
+            const newLink = document.createElement('link');
+            newLink.rel = 'stylesheet';
+            newLink.id = 'prism-theme';
+            newLink.href = `https://cdn.jsdelivr.net/npm/prismjs/themes/${newTheme}`;
+
+            newLink.onload = () => {
+                // Reapply highlighting after the new theme loads
+                Prism.highlightAll();
+            };
+
+            const existingLink = document.getElementById('prism-theme');
+            if (existingLink) {
+                document.head.replaceChild(newLink, existingLink);
+            } else {
+                document.head.appendChild(newLink);
+            }
+        }
+
+        function setMermaidTheme(isDarkMode) {
+            const theme = isDarkMode ? 'dark' : 'forest';
+            mermaid.initialize({
+                securityLevel: 'loose',
+                theme,
+                startOnLoad: true,
+            });
+        }
+
+        // Toggle dark and light mode and update localStorage accordingly.
+        function toggleDarkMode() {
+            const dark = document.documentElement.classList.contains("dark");
+            const newTheme = dark ? "light" : "dark";
+            localStorage.setItem('theme', newTheme);
+            document.documentElement.classList.toggle("dark", !dark);
+            loadPrismTheme(!dark);
+            setMermaidTheme(!dark);
+        }
+
+        // On initial load, ensure that Prism and Mermaid are initialized using the current theme.
+        const isDark = document.documentElement.classList.contains("dark");
+        loadPrismTheme(isDark);
+        setMermaidTheme(isDark);
+        </script>
+
+    </head>
+
+    <body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000" class="bg-neutral-50 text-neutral-950 dark:bg-neutral-900 dark:text-neutral-50">
+        <header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white dark:bg-neutral-900 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-between items-center">
+                    <a class="mx-2" href="/">Home</a>
+                    <button class="hidden sm:block text-neutral-950 dark:text-neutral-50 hover:bg-neutral-700 hover:text-neutral-50 hover:dark:bg-neutral-300 hover:dark:text-neutral-950 transition-colors p-2 rounded-full duration-800 ease-in-out" onclick="toggleDarkMode()">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 dark:hidden stroke-current">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <path d="M12 2V4" stroke-linecap="round"></path>
+                            <path d="M12 20V22" stroke-linecap="round"></path>
+                            <path d="M4 12L2 12" stroke-linecap="round"></path>
+                            <path d="M22 12L20 12" stroke-linecap="round"></path>
+                            <path d="M19.7778 4.22266L17.5558 6.25424" stroke-linecap="round"></path>
+                            <path d="M4.22217 4.22266L6.44418 6.25424" stroke-linecap="round"></path>
+                            <path d="M6.44434 17.5557L4.22211 19.7779" stroke-linecap="round"></path>
+                            <path d="M19.7778 19.7773L17.5558 17.5551" stroke-linecap="round"></path>
+                        </svg>
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 stroke-current hidden dark:block">
+                            <path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </button>
+                    <div class="flex items-center gap-4 sm:gap-6 ">
+                        <a class="" href="/cs">CS</a>
+                        <a class="" href="/pok">POK</a>
+                        <a class="" href="/mon">MON</a>
+                        <a class="" href="/projets">Projets</a>
+                        <a class="hidden sm:block" href="/promos">Promos</a>
+                        <a href="/search">
+                            <svg class="h-5 aspect-square stroke-neutral-950 dark:stroke-neutral-300 fill-none stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+                            </svg>
+                        </a>
+                        <a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank">
+                            <svg class="h-5 aspect-square dark:stroke-neutral-300 dark:fill-neutral-300" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body="">
+            
+<article class="relative">
+<h1 class="mb-1">Javascript et React</h1>
+<div class="mb-4">
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Tags : </div>
+            <ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags">
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">MON</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">info</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">React</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">JS</li>
+                
+
+            </ul>
+
+            
+            <div class="hidden" data-pagefind-meta="Type" aria-hidden="true">
+                
+                    
+                        <span data-pagefind-filter="Type">MON</span>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Auteur : </div>
+            <ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs">
+                
+                    <li class="bg-blue-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Auteurs">Alix Duréault</li>
+                
+            </ul>
+        </div>
+    
+
+    
+        <div class="absolute top-0 right-0">
+            <span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2 text-neutral-950" data-pagefind-filter="Année">
+                2024-2025
+            </span>
+        </div>
+    
+</div>
+
+<p class="mb-4 text-lg">Ce MON a pour but de me former en Java Script et en React.</p>
+
+
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100 dark:border-purple-800 dark:bg-purple-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-purple-500 dark:stroke-purple-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/promos/2024-2025/Alix-Dureault/">Alix DUREAULT</a><span class="px-1">/</span><a href="/promos/2024-2025/Alix-Dureault/mon/">MON de Alix Duréault</a><span class="px-1">/</span><a href="/promos/2024-2025/Alix-Dureault/mon/temps-2.1/">Javascript et React</a>
+
+</div>
+</div>
+
+
+
+
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100 dark:border-pink-800 dark:bg-pink-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-pink-500 dark:stroke-pink-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Prérequis</b></p>
+</div><div class="pl-8 mr-8">
+<p>Ce MON est fait pour débuter en JS et React mais quelques connaissances en HTML et CSS peuvent être utiles.</p>
+</div>
+</div>
+<p>Le but de ce MON est de me former à l'utilisation de React afin que je puisse derrière l'utiliser pour la deuxième partie de mon POK et pour mon projet 3A.</p>
+<p>React est un framework front-end qui permet d’avoir accès à des librairies de composants et de simplifier le code du front-end de nos apps. A l'intérieur de ce framework, les composants sont codés en Javascript. Ainsi, ce MON est divisé en 2 parties, une sur les bases de JavaScript et une sur les bases de React.</p>
+<h2 id="javascript" tabindex="-1"><a class="header-anchor" href="#javascript"></a> Javascript</h2>
+<p>Pour apprendre les bases de JS, j'ai suivi le parcours de formation proposé sur le site suivant : <a href="https://roadmap.sh/javascript">JavaScript Roadmap</a>.</p>
+<p>Le langage JavaScript est une des bases d’Internet avec HTML et CSS. Souvent abréviée en JS. C’est un langage de programmation compilé qui fonctionne avec des fonctions de premier ordre.</p>
+<p>Il permet d’ajouter de l’intéractivité aux pages (sliders, allertes, boutons en interactions, popups,…). Il est aussi utilisé pour d’autres raisons come sur Node.js, React, Apache CouchDB, Adobe Acrobat ou Electron.</p>
+<h3 id="quel-est-l'int%C3%A9r%C3%AAt-de-ce-langage-et-son-histoire-%3F" tabindex="-1"><a class="header-anchor" href="#quel-est-l'int%C3%A9r%C3%AAt-de-ce-langage-et-son-histoire-%3F"></a> Quel est l'intérêt de ce langage et son histoire ?</h3>
+<p>Pour résumer rapidement, le langage a été crée par Brendan Eich of NetScape en 1995. Il a été crée dans le but de rendre les sites web dynamiques. Au début, il avait été nommé Mocha, puis LiveScript. En 1996, il a été renommé JavaScript dans le but de capitaliser sur la communauté de Java. En 1997, le langage a été standardisé pour la première fois.</p>
+<p>Les sources suivantes sont intéressantes pour en apprendre plus sur le sujet :</p>
+<ul>
+<li><a href="https://roadmap.sh/guides/history-of-javascript">Historique des différentes versions du langage</a></li>
+<li><a href="https://dev.to/codediodeio/the-weird-history-of-javascript-2bnb">Histoire du langage et des stratégies mises en place pour son développement</a></li>
+<li><a href="https://www.educative.io/blog/javascript-versions-history">Historique des versions et de leurs apports</a></li>
+</ul>
+<h3 id="comment-int%C3%A9grer-le-fichier-js-dans-la-structure-html-et-css-%3F" tabindex="-1"><a class="header-anchor" href="#comment-int%C3%A9grer-le-fichier-js-dans-la-structure-html-et-css-%3F"></a> Comment intégrer le fichier JS dans la structure HTML et CSS ?</h3>
+<p>Pour en apprendre plus sur le sujet, j'ai lu les pages :</p>
+<ul>
+<li><a href="https://www.w3schools.com/js/js_whereto.asp">Où placer le code JS</a></li>
+<li><a href="https://www.digitalocean.com/community/tutorials/how-to-add-javascript-to-html">Lier JS au code HTML</a></li>
+</ul>
+<p>Pour intégrer le JS dans le reste du code pour le front, il y a 2 solutions</p>
+<h4 id="placer-le-js-dans-le-code-html" tabindex="-1"><a class="header-anchor" href="#placer-le-js-dans-le-code-html"></a> Placer le JS dans le code HTML</h4>
+<p>On peut placer le code JS dans le code HTML, entre les balises <code>&lt;script&gt;&lt;/script&gt;</code>.</p>
+<pre class="language-html line-numbers"><code>
+
+<script>
+document.getElementById("demo").innerHTML = "My First JavaScript";
+</script>
+
+
+</code></pre><p>On peut placer autant de fonctions JS que l’on veut dans le code. A l’intérieur des balises <code>&lt;head&gt;</code> ou <code>&lt;body&gt;</code>.  On le place dans le body généralement quand on modifie un élément du body et head quand l’action est extérieure au corps du texte, par exemple pour un pop up.</p>
+<h4 id="placer-le-js-dans-un-fichier-s%C3%A9par%C3%A9" tabindex="-1"><a class="header-anchor" href="#placer-le-js-dans-un-fichier-s%C3%A9par%C3%A9"></a> Placer le JS dans un fichier séparé</h4>
+<p>Le script peut aussi être placé dans un fichier .js séparé.</p>
+<p>Si on l’utilise, il faut ajouté la référence dans le code html, soit dans le <code>&lt;head&gt;</code> ou alors dans le <code>&lt;body&gt;</code>.</p>
+<pre class="language-html line-numbers"><code>
+
+<script src="myScript.js"></script>
+
+
+</code></pre><p>On peut ajouter plusieurs script sur une seule page en écrivant plusieurs fois cette même ligne avec les différents fichiers .js. La <code>src</code> peut être un URL, un chemin de fichier ou n’importe quel chemin d’accès.</p>
+<h4 id="quelle-m%C3%A9thode-est-la-plus-int%C3%A9ressante-%3F" tabindex="-1"><a class="header-anchor" href="#quelle-m%C3%A9thode-est-la-plus-int%C3%A9ressante-%3F"></a> Quelle méthode est la plus intéressante ?</h4>
+<p>Avantages d’un code externe :</p>
+<ul>
+<li>Le même code peut être utilisé sur plusieurs pages web différentes.</li>
+<li>Le HTML et le JS sont séparés.</li>
+<li>Plus lisible et plus facile à maintenir.</li>
+<li>Peut améliorer la rapidité de chargement des pages.</li>
+</ul>
+<h3 id="quelles-formes-prennent-les-variables-en-js-%3F" tabindex="-1"><a class="header-anchor" href="#quelles-formes-prennent-les-variables-en-js-%3F"></a> Quelles formes prennent les variables en JS ?</h3>
+<p>Sur le sujet j'ai lu les sources suivantes :</p>
+<ul>
+<li><a href="https://javascript.info/variables">Introduction sur les variables</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/Variables">Plus de détails et quelques exercices</a></li>
+<li><a href="https://www.codeguage.com/courses/js/variables">Aller un peu plus loin</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Glossary/Hoisting">Notion de hoisting</a></li>
+<li><a href="https://www.w3schools.com/js/js_scope.asp">Notion de scope</a></li>
+</ul>
+<p>Un script js a besoin de travailler avec des informations. On utilise des variables dans le but de les stocker. Elles sont très utiles pour paramétrer différentes actions sur le site.</p>
+<p><strong>Déclarer une variable :</strong></p>
+<pre class="language-JS line-numbers"><code>
+
+let message;
+
+
+</code></pre><p>En utilisant l’opérateur “=”, on peut en modifier sa valeur.</p>
+<pre class="language-JS line-numbers"><code>
+
+sage = 'Hello'; // store the string 'Hello' in the variable named message
+
+
+</code></pre><p>On peut condenser les deux action ensemble :</p>
+<pre class="language-JS line-numbers"><code>
+
+let message = 'Hello!';
+
+let user = 'John',
+	age = 25,
+	message = 'Hello';
+
+
+</code></pre><p>On peut changer la valeur en réutilisant l’opérateur “=”. On peut aussi copier la valeur d’une variable dans une autre. Mais par contre, on ne peut pas déclarer deux fois la même variable.</p>
+<p>Il y a quelques règles pour nommer une variable :</p>
+<ul>
+<li>Le nom ne peut être composé que de lettres, chiffres et les symboles $ ou _</li>
+<li>Le premier caractère ne peut pas être un chiffre</li>
+<li>Si le nom est composé de plusieurs mots, l’écrire dans la structure camelCase</li>
+<li>Les majuscules sont importantes</li>
+<li>Les lettres d’autres alphabet que le latin sont autorisées</li>
+<li>La convention est d’utiliser l’anglais pour nommer les variables</li>
+<li>Les mots “let”, “class”, “return”, “function”, “this” sont interdits</li>
+<li>Le nom ne doit pas contenir d’espace</li>
+</ul>
+<p>Une variable peut contenir du texte, des nombres (entier ou décimaux), des fonctions, des données complexes. Il n’y a pas besoin de déclarer le type de la variable.</p>
+<p>On peut aussi déclarer des variables constantes. Ce sont des variables dont on ne peut pas changer la valeur. Il faut leur assigner leur valeurs au moment de la déclaration. Ces constantes sont souvent utilisées pour les valeurs difficiles à retenir  ou prônes à des fautes d’orthographes ET connues avant l’exécution comme les codes hexagonales des couleurs. La convention pour les nommer est de les écrire en utilisant des majuscules et des “_”.</p>
+<pre class="language-JS line-numbers"><code>
+
+const myBirthday = '18.04.1982';
+
+
+</code></pre><p>L’hoisting fait référence au process utilisé par l’interpréteur qui consiste à bouger toutes les déclarations de fonctions, variables, classes et imports avant le reste du code. Ces effets ne sont pas valables pour tous les outils de déclaration. <code>var</code>, <code>let</code> et <code>class</code> sont considérés comme non hoisting.</p>
+<p>Le scope d'une variable correspond à la visibilité de la variable ou de comment elle peut être utilisé après avoir été déclarée. Ce scope dépend de comment la variable a été déclarée. Il en existe 3 types :</p>
+<ul>
+<li>Global Scope : variables déclarées en dehors de fonctions ou de <code>{ }</code>. Elles sont accessibles dans l’ensemble du code. <code>var</code>, <code>let</code> et <code>const</code> donnent ce type de scope</li>
+<li>Function Scope : variables déclarées dans une fonction et ne peuvent être utilisées que dans celle-ci. <code>var</code>, <code>let</code> et <code>const</code> donnent ce type de scope</li>
+<li>Block Scope : Un block est une partie du code entourée de <code>{ }</code>. variables déclarées dans un block et ne peuvent être utilisées hors de celui-ci. <code>let</code> et <code>const</code> donnent ce type de scope</li>
+</ul>
+<h3 id="quels-sont-les-diff%C3%A9rents-types-de-variables" tabindex="-1"><a class="header-anchor" href="#quels-sont-les-diff%C3%A9rents-types-de-variables"></a> Quels sont les différents types de variables</h3>
+<p>Mes sources pour cette partie sont les suivantes :</p>
+<ul>
+<li><a href="https://www.codeguage.com/courses/js/data-types">Primitives et Objects</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Data_structures">Types et structures</a></li>
+<li><a href="https://www.w3schools.com/js/js_datatypes.asp">Data types</a></li>
+<li><a href="https://javascript.info/object">Objects</a></li>
+<li><a href="https://www.w3schools.com/js/js_object_definition.asp">Définition des Objects</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Working_with_objects">Travailler avec les objects</a></li>
+</ul>
+<p>Cela fait référence au type de donnée que peut contenir une variable. Il décrit un ensemble de valeurs et les opérations possibles sur ces valeurs.</p>
+<p>JS est un langage dynamique. Une variable n’est pas assigné à un certain type et on peut donc lui assigner n’importe quel type de données.</p>
+<p>JS sépare les données en deux grandes catégories : <strong>primitives</strong> et <strong>objects</strong>.</p>
+<h4 id="primitive" tabindex="-1"><a class="header-anchor" href="#primitive"></a> Primitive</h4>
+<p>Un primitive regroupe les formes simples de données. Il existe 7 types associés à cette catégorie : undefined, null, numbers, strings, Booleans, Symbols and BigInt. Ils n’ont aucune propriété ou méthode qui leurs sont attachées.</p>
+<ul>
+<li><strong>Number :</strong> nombre, utilisé dans les calculs, les algorithmes,… Ils peuvent être entiers ou décimaux.</li>
+<li><strong>Strings :</strong> chaînes de caractères. Elle peut être délimité par des apostrophes : “ “ ou ‘ ‘ ou <code> </code>.</li>
+<li><strong>Booleans :</strong> valeur true ou false. Utilisé avec des opérateurs conditionnels.</li>
+<li><strong>Null :</strong> 1 seule valeur, la valeur <strong>null</strong>.</li>
+<li><strong>Undefined</strong> : 1 seule valeur, la valeur <strong>undefined</strong>. Cela indique l’absence de valeur.</li>
+<li><strong>BigInt :</strong> type numérique qui peut représenter les valeurs de valeurs arbitraires. Permet de faire des opérations avec les grands entiers.</li>
+<li><strong>Symbol :</strong> valeur unique et immuable. Peut être usée comme une clé pour une propriété d’objet.</li>
+</ul>
+<h4 id="object" tabindex="-1"><a class="header-anchor" href="#object"></a> Object</h4>
+<p>Un object, ou reference, est l’opposé d’un primitive : une valeur composé de primitives. Donc tous ce qui n’est pas primitive est un object.</p>
+<p>Ils sont écrits à l’intérieur de <code>{ }</code> et composés de valeurs. Leur valeurs sont accessibles à l’aide de la notation avec un point. Les valeurs peuvent être de n’importe quel type.</p>
+<p>Une valeur peut être une fonction et dans ce cas là, elle est appelée méthode de l’objet.</p>
+<p>On peut créer une fonction constructrice d’objet de même structure quand on a plein d’objets qui vont tous avoir la même structure.</p>
+<h3 id="quelle-forme-prend-une-fonction-en-js-%3F" tabindex="-1"><a class="header-anchor" href="#quelle-forme-prend-une-fonction-en-js-%3F"></a> Quelle forme prend une fonction en JS ?</h3>
+<p>Sur le sujet, j'ai lu les ressources :</p>
+<ul>
+<li><a href="https://www.codeguage.com/courses/js/functions-basics">Bases sur les fonctions</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions">Fonctions</a></li>
+</ul>
+<p>Les fonctions sont des blocs de codes qui sont utilisables plusieurs fois quand on les appellent. Elles sont codées pour exécuter une tâche particulière.</p>
+<p>Il existe plusieurs moyens de déclarer une fonction en JS.</p>
+<pre class="language-JS line-numbers"><code>
+
+function square(number) {
+  return number * number;
+}
+
+const square = function (number) {
+  return number * number;
+};
+
+const factorial = function fac(n) {
+  return n < 2 ? 1 : n * fac(n - 1);
+};
+
+var utils = [
+   function(a, b) { return a + b; },
+   function(a, b) { return a - b; }
+];
+
+
+</code></pre><p>Seule la première façon de déclarer une fonction permet d’appeler une fonction avant de l’avoir déclarer.</p>
+<p>La deuxième façon à d'autres avantages :</p>
+<ul>
+<li>avoir des fonctions anonymes ou non</li>
+<li>référer à la fonction à l’intérieur d’elle même</li>
+<li>utiliser la fonction comme paramètre d’une autre fonction</li>
+<li>définir plusieurs fonctions en une seule</li>
+</ul>
+<p>Les fonctions ne peuvent être appeler que dans le scope (fonction, code entier,…) de là où elles ont été déclarées. Les arguments d’une fonction peuvent être des chaînes de caractères, des nombres, des objets et autres.</p>
+<p>En JS, on peut utiliser la récursivité de 3 manières différentes :</p>
+<ol>
+<li>par son nom</li>
+<li>avec “arguments.callee”</li>
+<li>une variable définie localement qui fait référence à cette fonction</li>
+</ol>
+<p>On peut aussi déclarer une fonction à l’intérieur de la déclaration d’une autre. En faisant cela, la fonction ébergé n’est appelable seulement à l’intérieur de sa fonction parente.</p>
+<p>D'autres propriété à regarder dans les sources fournies sont :</p>
+<ul>
+<li>Les rest parameters</li>
+<li>la mise en place de valeur par défaut aux paramètres</li>
+<li>les IIFE</li>
+</ul>
+<h2 id="react" tabindex="-1"><a class="header-anchor" href="#react"></a> React</h2>
+<p>Mes sources principales pour cette partie du MON ont été :</p>
+<ul>
+<li><a href="https://react.dev/learn">Documentation React</a></li>
+<li><a href="https://roadmap.sh/react">Roadmap sur React</a></li>
+</ul>
+<h3 id="comment-cr%C3%A9er-un-nouveau-projet-react-%3F" tabindex="-1"><a class="header-anchor" href="#comment-cr%C3%A9er-un-nouveau-projet-react-%3F"></a> Comment créer un nouveau projet React ?</h3>
+<p>Pour cela le MON de Thomas Duroy <a href="https://do-it.aioli.ec-m.fr/promos/2022-2023/Duroy-Thomas/mon/MON_3.1/">Débuter avec React.js</a> explique bien comment créer un projet.</p>
+<h3 id="que-contient-le-code-d'une-application-react-%3F" tabindex="-1"><a class="header-anchor" href="#que-contient-le-code-d'une-application-react-%3F"></a> Que contient le code d'une application React ?</h3>
+<p>Une app REACT est constituée de composants. Un composants fait partie de l’UI et chacun à sa propre logique et apparence. Un composant peut aller d’un bouton à une page entière. Les composants React sont des fonctions JavaScript qui rendent du markup, comme par exemple, cette fonction qui donne un bouton :</p>
+<pre class="line-numbers"><code>
+
+function MyButton() {
+  return (
+    <button>I'm a button</button>
+  );
+}
+
+
+</code></pre><p>Une fois qu’on a déclaré un composant, on peut l’appeler dans un autre composant :</p>
+<pre class="line-numbers"><code>
+
+export default function MyApp() {
+  return (
+    <div>
+      <h1>Welcome to my app</h1>
+      <MyButton>
+    </MyButton></div>
+  );
+}
+
+
+</code></pre><p>Les noms de composants React doivent toujours commencés par une majuscule. Les tags en HTML doivent toujours être en minuscules.</p>
+<p>La partie <code>export default</code> indique quel est le composant principale dans le fichier.</p>
+<p>Le mot clé <code>export</code> permet de rendre cette fonction accessible à l’extérieur du fichier.</p>
+<p>React utilise la syntaxe markup JSX (optionnelle) qui est plus rigoureuse que HTML. Attention, un composant ne peut pas renvoyer plusieurs balises JSX ou HTML. On doit les envelopper dans une balise parent qui englobe toutes les autres de type <code>&lt;div&gt;…&lt;/div&gt;</code> ou <code>&lt;&gt;…&lt;/&gt;</code>.</p>
+<h3 id="comment-ajoute-ton-le-style-%C3%A0-la-page-%3F" tabindex="-1"><a class="header-anchor" href="#comment-ajoute-ton-le-style-%C3%A0-la-page-%3F"></a> Comment ajoute ton le style à la page ?</h3>
+<p>En React, on sépcifie une classe CSS avec la propriété <code>className</code>. Elle fonctionne comme l’attribut <code>class</code> en HTML.</p>
+<pre class="line-numbers"><code>
+
+<img className="avatar">
+
+
+</code></pre><p>Ensuite, dans un fichier css séparé, on écrit le style en css qui correspond.</p>
+<pre class="language-CSS line-numbers"><code>
+
+/* Dans le code CSS */
+.avatar {
+  border-radius: 50\%;
+}
+
+
+</code></pre><p>Pour lier le fichier de style et le fichier on ajoute un tag de type <code>&lt;link&gt;</code> dans le code html.</p>
+<h3 id="quelle-est-l'utilit%C3%A9-du-js-dans-le-framework-react-%3F" tabindex="-1"><a class="header-anchor" href="#quelle-est-l'utilit%C3%A9-du-js-dans-le-framework-react-%3F"></a> Quelle est l'utilité du JS dans le framework React ?</h3>
+<p>JSX permet d’intégrer du markup dans le code JavaScript. Grâce aux délimitateurs <code>{ }</code>, on peut retourner dans le JS. Ainsi, cela peut nous permettre de coder des variables dans le code et les afficher dans l’app ou encore d’utiliser des paramètres comme valeurs pour une balise JSX ou l’utiliser dans le style ou encore concatener la donnée avec du texte. Comme par exemple :</p>
+<pre class="line-numbers"><code>
+
+return (
+  <>
+    <h1>{user.name}</h1>
+    <img className="avatar" src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Alix-Dureault/mon/temps-2.1/{user.imageUrl}" alt="{'Photo" of="" '="" +="" user.name}="" style="{{" width:="" user.imageSize,="" height:="" user.imageSize="" }}="">
+  </>
+);
+
+
+</code></pre><p>Pour intégrer des variables JS dans le css pour le style, il faut utiliser l’attribut “style” comme dans l’exemple ci-dessus, avec la syntaxe : <code>style = </code>.</p>
+<h3 id="peut-on-afficher-une-information-sous-certaines-conditions-%3F" tabindex="-1"><a class="header-anchor" href="#peut-on-afficher-une-information-sous-certaines-conditions-%3F"></a> Peut-on afficher une information sous certaines conditions ?</h3>
+<p>Il n’y a pas de syntaxe particulière dans React pour cela. Ainsi, on utilise la syntaxes JS pour cela. Voici plusieurs exemples :</p>
+<pre class="line-numbers"><code>
+
+let content;
+if (isLoggedIn) {
+  content = <AdminPanel>;
+} else {
+  content = <LoginForm>;
+}
+return (
+  <div>
+    {content}
+  </div>
+);
+
+<div>
+  {isLoggedIn ? (
+    <AdminPanel>
+  ) : (
+    <LoginForm>
+  )}
+</LoginForm></AdminPanel></div>
+
+<div>
+  {isLoggedIn && <AdminPanel>}
+</AdminPanel></div>
+
+
+</LoginForm></AdminPanel></code></pre><h3 id="comment-rendre-l'application-react-interactive-a-des-%C3%A9v%C3%A8nements-%3F" tabindex="-1"><a class="header-anchor" href="#comment-rendre-l'application-react-interactive-a-des-%C3%A9v%C3%A8nements-%3F"></a> Comment rendre l'application React interactive a des évènements ?</h3>
+<p>Pour répondre à des évènements sur l’app, on déclare des fonctions “event handler” à l’intérieur des composants comme la fonction <code>handleClick</code> dans l’exemple suivant.</p>
+<pre class="line-numbers"><code>
+
+function MyButton() {
+  function handleClick() {
+    alert('You clicked me!');
+  }
+
+  return (
+    <button onClick="{handleClick}">
+      Click me
+    </button>
+  );
+}
+
+
+</code></pre><p>Attention, on n’appelle pas la fonction qui gère l’évènement. On la donne seulement au composant. React l’appellera lorsque l’évènement sera déclenché.</p>
+<h3 id="comment-bien-d%C3%A9composer-sont-projet-react-%3F" tabindex="-1"><a class="header-anchor" href="#comment-bien-d%C3%A9composer-sont-projet-react-%3F"></a> Comment bien décomposer sont projet React ?</h3>
+<p>Pour cette partie, j'ai utilisé ces deux sources :</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=Rh3tobg7hEo">Premier projet sur React</a></li>
+<li><a href="https://fr.react.dev/learn/thinking-in-react">Penser en React</a></li>
+</ul>
+<p>La première chose à faire lorsque l’on commence un projet React est de penser à l’UI directement, à quoi va ressembler l’application finale, quels sont ses composants, … Dans un code JS habituel, le programme se compose en plusieurs étapes qui sont exécutés les unes après les autres. En React, la logique se décompose plutôt en “je veux tel rendu visuel”.</p>
+<p>Voici un petit résumé des étapes de la construction d’une app React en partant de la maquette :</p>
+<ol>
+<li><strong>Décomposer l’UI en une hiérarchie de composants :</strong> Délimiter les composants, sous-composants, les nommer et déterminer leur hiérarchie.</li>
+<li><strong>Construire une version statique en React :</strong> Construire une version qui affiche l’UI à partir du modèle de données sans en gérer l’interactivité.</li>
+<li><strong>Trouver une représentation minimale suffisante de l’état de l’UI :</strong> Déterminer la plus petite représentation possible de l’état dont l’application a besoin.</li>
+<li><strong>Identifier où l’état devrait vivre :</strong> Déterminer quel composant est responsable de faire évoluer cet état en identifiant les composants évoluant en fonction de cet état, trouvant leur plus proche ancêtre commun et en décidant où placer l’état.</li>
+<li><strong>Ajouter un flux de données inverse :</strong> Permettre aux composants de modifier les états en fonction de l’interaction avec l’utilisateur.</li>
+</ol>
+
+
+
+</article>
+
+        </main>
+
+        <footer class="min-h-[50px] border-t-2 mt-4 border-gray-200 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-center items-center">
+                    <p class="text-center">
+                        ©2025 <b><span style="font-family: Consolas, sans-serif;">Do-<span style="color: #4a86e8">It</span></span></b> - Développement, Management et Gestion de projets en IT
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- MathJax import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">
+            window.MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']], // Delimiters for inline math
+                    displayMath: [['$$', '$$'], ['\\[', '\\]']] // Delimiters for block math
+                },
+                svg: {
+                    fontCache: 'global' // Use global font cache for SVG output
+                }
+            };
+            document.addEventListener('DOMContentLoaded', () => {
+                MathJax.typeset(); // Ensures MathJax processes the content after the page loads
+            });
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">
+            Prism.plugins.NormalizeWhitespace.setDefaults({
+                'remove-trailing': true,
+                'remove-indent': true,
+                'left-trim': true,
+                'right-trim': true,
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script>
+    </body>
+</html>

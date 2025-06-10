@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="robots" content="index, follow">
+
+        <link rel="canonical" href="https://do-it.aioli.ec-m.fr/promos/2024-2025/Billa-Valentin/pok/temps-3/">
+
+        
+        
+
+        <meta name="description" content="Tentative d&#39;optimisation d&#39;un algorithme de génération de labyrinthe grâce à des structures de données appropriées en Rust.">
+        <meta property="og:description" content="Tentative d&#39;optimisation d&#39;un algorithme de génération de labyrinthe grâce à des structures de données appropriées en Rust.">
+        <meta name="twitter:description" content="Tentative d&#39;optimisation d&#39;un algorithme de génération de labyrinthe grâce à des structures de données appropriées en Rust.">
+
+        
+            <meta name="author" content="Valentin Billa">
+        
+        <meta name="keywords" content="do-it, centrale, centrale méditerranée, ecm, POK, vert, avancé, optimisation, benchmarking, rust">
+
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png">
+        <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png">
+
+        <link href="/assets/stylesheets/main.css" rel="stylesheet">
+
+        <meta property="og:title" content="Optimisation">
+
+        <meta property="og:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta property="og:url" content="https://do-it.aioli.ec-m.fr/promos/2024-2025/Billa-Valentin/pok/temps-3/">
+        <meta property="og:type" content="website">
+
+        <meta name="twitter:card" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:title" content="Optimisation">
+        <meta name="twitter:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:url" content="https://do-it.aioli.ec-m.fr/promos/2024-2025/Billa-Valentin/pok/temps-3/">
+
+        <title>Optimisation</title>
+
+        <!-- Prismjs imports
+                - Prism line numbers
+                - Prism toolbar
+        -->
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet">
+        <link id="prism-theme" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+        <!-- Mermaid import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js "></script>
+
+        <script defer="">
+        // Check if a theme is stored in localStorage. If so, use it, otherwise fallback to the system preference.
+        const storedTheme = localStorage.getItem('theme');
+        if (storedTheme) {
+            document.documentElement.classList.toggle("dark", storedTheme === "dark");
+        } else {
+            // Use system color scheme if there is no stored theme preference.
+            document.documentElement.classList.toggle("dark", window.matchMedia("(prefers-color-scheme: dark)").matches);
+        }
+
+        function loadPrismTheme(isDarkMode) {
+            const newTheme = isDarkMode ? 'prism-okaidia.min.css' : 'prism-solarizedlight.min.css';
+            const newLink = document.createElement('link');
+            newLink.rel = 'stylesheet';
+            newLink.id = 'prism-theme';
+            newLink.href = `https://cdn.jsdelivr.net/npm/prismjs/themes/${newTheme}`;
+
+            newLink.onload = () => {
+                // Reapply highlighting after the new theme loads
+                Prism.highlightAll();
+            };
+
+            const existingLink = document.getElementById('prism-theme');
+            if (existingLink) {
+                document.head.replaceChild(newLink, existingLink);
+            } else {
+                document.head.appendChild(newLink);
+            }
+        }
+
+        function setMermaidTheme(isDarkMode) {
+            const theme = isDarkMode ? 'dark' : 'forest';
+            mermaid.initialize({
+                securityLevel: 'loose',
+                theme,
+                startOnLoad: true,
+            });
+        }
+
+        // Toggle dark and light mode and update localStorage accordingly.
+        function toggleDarkMode() {
+            const dark = document.documentElement.classList.contains("dark");
+            const newTheme = dark ? "light" : "dark";
+            localStorage.setItem('theme', newTheme);
+            document.documentElement.classList.toggle("dark", !dark);
+            loadPrismTheme(!dark);
+            setMermaidTheme(!dark);
+        }
+
+        // On initial load, ensure that Prism and Mermaid are initialized using the current theme.
+        const isDark = document.documentElement.classList.contains("dark");
+        loadPrismTheme(isDark);
+        setMermaidTheme(isDark);
+        </script>
+
+    </head>
+
+    <body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000" class="bg-neutral-50 text-neutral-950 dark:bg-neutral-900 dark:text-neutral-50">
+        <header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white dark:bg-neutral-900 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-between items-center">
+                    <a class="mx-2" href="/">Home</a>
+                    <button class="hidden sm:block text-neutral-950 dark:text-neutral-50 hover:bg-neutral-700 hover:text-neutral-50 hover:dark:bg-neutral-300 hover:dark:text-neutral-950 transition-colors p-2 rounded-full duration-800 ease-in-out" onclick="toggleDarkMode()">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 dark:hidden stroke-current">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <path d="M12 2V4" stroke-linecap="round"></path>
+                            <path d="M12 20V22" stroke-linecap="round"></path>
+                            <path d="M4 12L2 12" stroke-linecap="round"></path>
+                            <path d="M22 12L20 12" stroke-linecap="round"></path>
+                            <path d="M19.7778 4.22266L17.5558 6.25424" stroke-linecap="round"></path>
+                            <path d="M4.22217 4.22266L6.44418 6.25424" stroke-linecap="round"></path>
+                            <path d="M6.44434 17.5557L4.22211 19.7779" stroke-linecap="round"></path>
+                            <path d="M19.7778 19.7773L17.5558 17.5551" stroke-linecap="round"></path>
+                        </svg>
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 stroke-current hidden dark:block">
+                            <path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </button>
+                    <div class="flex items-center gap-4 sm:gap-6 ">
+                        <a class="" href="/cs">CS</a>
+                        <a class="" href="/pok">POK</a>
+                        <a class="" href="/mon">MON</a>
+                        <a class="" href="/projets">Projets</a>
+                        <a class="hidden sm:block" href="/promos">Promos</a>
+                        <a href="/search">
+                            <svg class="h-5 aspect-square stroke-neutral-950 dark:stroke-neutral-300 fill-none stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+                            </svg>
+                        </a>
+                        <a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank">
+                            <svg class="h-5 aspect-square dark:stroke-neutral-300 dark:fill-neutral-300" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body="">
+            
+<article class="relative">
+<h1 class="mb-1">Optimisation</h1>
+<div class="mb-4">
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Tags : </div>
+            <ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags">
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">POK</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">vert</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">avancé</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">optimisation</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">benchmarking</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">rust</li>
+                
+
+            </ul>
+
+            
+            <div class="hidden" data-pagefind-meta="Type" aria-hidden="true">
+                
+                    
+                        <span data-pagefind-filter="Type">POK</span>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Auteur : </div>
+            <ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs">
+                
+                    <li class="bg-blue-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Auteurs">Valentin Billa</li>
+                
+            </ul>
+        </div>
+    
+
+    
+        <div class="absolute top-0 right-0">
+            <span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2 text-neutral-950" data-pagefind-filter="Année">
+                2024-2025
+            </span>
+        </div>
+    
+</div>
+
+<p class="mb-4 text-lg">Tentative d'optimisation d'un algorithme de génération de labyrinthe grâce à des structures de données appropriées en Rust.</p>
+
+
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100 dark:border-purple-800 dark:bg-purple-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-purple-500 dark:stroke-purple-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/promos/2024-2025/Billa-Valentin/">Valentin Billa</a><span class="px-1">/</span><a href="/promos/2024-2025/Billa-Valentin/pok/">POKs Valentin Billa</a><span class="px-1">/</span><a href="/promos/2024-2025/Billa-Valentin/pok/temps-3/">Optimisation</a>
+
+</div>
+</div>
+
+
+
+
+<script>
+let lastScrollYSummary = window.scrollY;
+
+function toggleSummarySidebar() {
+    document.getElementById('toc-sidebar').classList.toggle('open');
+}
+
+window.addEventListener('scroll', () => {
+    const burger = document.getElementById('toc-burger-button');
+    const sidebar = document.getElementById('toc-sidebar');
+    const currentScroll = window.scrollY;
+    // Hide the burger button if max width is reached
+    if (currentScroll < 10 || currentScroll < lastScrollYSummary) {
+        burger.classList.remove('hidden');
+    } else if (!sidebar || !sidebar.classList.contains('open')) {
+        burger.classList.add('hidden');
+    }
+
+    lastScrollYSummary = currentScroll;
+});
+</script>
+<p><button id="toc-burger-button" class="sidebar-burger-button right-2" onclick="toggleSummarySidebar()">☰</button></p>
+<nav id="toc-sidebar" class="sidebar right-0 border-l-2 translate-x-full 3xl:translate-x-0">
+<h2>Sommaire</h2>
+<nav class="toc"><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#objectifs"> Objectifs</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#rudiments-de-rust"> Rudiments de Rust</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#sprint-1"> Sprint 1</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#planning-pr%C3%A9visionnel"> Planning Prévisionnel</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#1.1-mise-en-place-et-tests"> 1.1 Mise en place et tests</a></li><li class="toc-item"><a class="toc-link" href="#1.2-impl%C3%A9mentation-de-l'interface"> 1.2 Implémentation de l&#39;interface</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#optimisation"> Optimisation</a></li><li class="toc-item"><a class="toc-link" href="#interface"> Interface</a></li><li class="toc-item"><a class="toc-link" href="#tests"> Tests</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#rstest"> rstest</a></li><li class="toc-item"><a class="toc-link" href="#fuzzy-testing"> Fuzzy Testing</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#structure-na%C3%AFve"> Structure naïve</a></li><li class="toc-item"><a class="toc-link" href="#visualisation"> Visualisation</a></li><li class="toc-item"><a class="toc-link" href="#horodatage"> Horodatage</a></li><li class="toc-item"><a class="toc-link" href="#r%C3%A9tro"> Rétro</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#sprint-2"> Sprint 2</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#planning-pr%C3%A9visionnel-1"> Planning Prévisionnel</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#1.2"> 1.2</a></li><li class="toc-item"><a class="toc-link" href="#2.1-benchmarking"> 2.1 Benchmarking</a></li><li class="toc-item"><a class="toc-link" href="#2.2-optimization"> 2.2 Optimization</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#algorithme-de-g%C3%A9n%C3%A9ration"> Algorithme de génération</a></li><li class="toc-item"><a class="toc-link" href="#am%C3%A9liorations"> Améliorations</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#bitset"> BitSet</a></li><li class="toc-item"><a class="toc-link" href="#fen%C3%AAtre"> Fenêtre</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#benchmarking"> Benchmarking</a></li><li class="toc-item"><a class="toc-link" href="#profilage"> Profilage</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#flame-graph"> Flame Graph</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#structures-test%C3%A9es"> Structures testées</a></li><li class="toc-item"><a class="toc-link" href="#horodatage-1"> Horodatage</a></li><li class="toc-item"><a class="toc-link" href="#r%C3%A9tro-1"> Rétro</a></li></ol></li></ol></nav></nav>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100 dark:border-pink-800 dark:bg-pink-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-pink-500 dark:stroke-pink-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Prérequis</b></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li>Bases de Rust</li>
+<li>Connaissances en structures de données</li>
+</ul>
+</div>
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100 dark:border-emerald-800 dark:bg-emerald-950">
+<svg class="absolute w-6 h-6 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-emerald-500 dark:stroke-emerald-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Code Source</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Le code lié au POK est disponible sur mon Github
+<a href="https://github.com/ValentinBilla/rust-mazes">ValentinBilla/rust-mazes</a>.</p>
+</div>
+</div>
+<h2 id="objectifs" tabindex="-1"><a class="header-anchor" href="#objectifs"></a> Objectifs</h2>
+<p>Je souhaite approfondir mes connaissances en rust et apprendre à mieux m'y prendre pour optimiser des algorithmes.
+L'objectif est de créer un générateur de labyrinthe pour ensuite utiliser ce projet comme prétexte pour en
+apprendre plus sur les techniques d'optimisation ainsi que les structures de données plus niches en Rust.</p>
+<p>Aussi, j'ai aussi utilisé les connaissances acquises lors de ce POK pour réécrire un algorithme initialement
+rédigé en Python vers Rust, pour générer des mosaïques à la vitesse de la lumière (ou presque) pour notre projet 3A.</p>
+<p></p><div class="m-3 p-3 border-solid border-2 rounded relative flex flex-col">
+<div class="text-lg mb-3">
+<a href="/promos/2024-2025/_projets/mosaiques/#frontend">Mosaïques Interactives</a>
+</div>
+<span class="line-clamp-3">Création d'une plateforme web de publication de nos mosaïques photographiques.</span>
+<div class="flex flex-wrap flex-row grow justify-between items-end not-prose list-none mt-3 mb-1 mx-0 px-1 gap-1">
+<div class="flex-1">
+<span class="bg-blue-200 rounded-full p-2 text-neutral-950">Barreto Manuela,Billa Valentin,Duréault Alix,Gonin Emma</span>
+</div>
+<div>
+<span class="bg-purple-200 rounded-full p-2 text-neutral-950">10/06/2025</span>
+</div>
+</div>
+</div><p></p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100 dark:border-amber-800 dark:bg-amber-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-amber-800 dark:stroke-amber-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Mauvaises pratiques</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Ce sera abordé dans la partie <a href="#Optimisation">Optimisation</a>, mais il faut savoir que généralement optimiser juste
+pour optimiser est généralement <strong>mauvaise idée</strong>. Ce POK n'étant pas lié à project concret, c'est sans
+trop de vergogne que je vais me déroger aux bonnes pratiques à des fins d'expérimentation !</p>
+</div>
+</div>
+<h3 id="rudiments-de-rust" tabindex="-1"><a class="header-anchor" href="#rudiments-de-rust"></a> Rudiments de Rust</h3>
+<p>Plusieurs POK&amp;MONs ont déjà été réalisés sur les rudiments de Rust, je ne m'y attarderais donc pas.
+Entre autres, je peux recommander la lecture des deux suivants (non pas que je ne
+recommande pas les autres, je ne les ai simplement pas tous lus).</p>
+<p></p><div class="m-3 p-3 border-solid border-2 rounded relative flex flex-col">
+<div class="text-lg mb-3">
+<a href="/promos/2023-2024/Diouf-Asssane/mon/Rust/">Introduction à Rust</a>
+</div>
+<span class="line-clamp-3">Découvrons ensemble le langage Rust. Il est de plus en plus adopté dans l'industrie pour ses performances et ses idées nouvelles, comme l'ownership.</span>
+<div class="flex flex-wrap flex-row grow justify-between items-end not-prose list-none mt-3 mb-1 mx-0 px-1 gap-1">
+<div class="flex-1">
+<span class="bg-blue-200 rounded-full p-2 text-neutral-950">Assane Diouf</span>
+</div>
+<div>
+<span class="bg-purple-200 rounded-full p-2 text-neutral-950">27/09/2023</span>
+</div>
+</div>
+</div><p></p>
+<p></p><div class="m-3 p-3 border-solid border-2 rounded relative flex flex-col">
+<div class="text-lg mb-3">
+<a href="/promos/2023-2024/Victor-Ory/pok/temps-1/">Apprendre un language Rust(ique) </a>
+</div>
+<span class="line-clamp-3">Description indisponible</span>
+<div class="flex flex-wrap flex-row grow justify-between items-end not-prose list-none mt-3 mb-1 mx-0 px-1 gap-1">
+<div class="flex-1">
+<span class="bg-blue-200 rounded-full p-2 text-neutral-950">ORY Victor</span>
+</div>
+<div>
+<span class="bg-purple-200 rounded-full p-2 text-neutral-950">19/09/2024</span>
+</div>
+</div>
+</div><p></p>
+<h2 id="sprint-1" tabindex="-1"><a class="header-anchor" href="#sprint-1"></a> Sprint 1</h2>
+<h3 id="planning-pr%C3%A9visionnel" tabindex="-1"><a class="header-anchor" href="#planning-pr%C3%A9visionnel"></a> Planning Prévisionnel</h3>
+<h4 id="1.1-mise-en-place-et-tests" tabindex="-1"><a class="header-anchor" href="#1.1-mise-en-place-et-tests"></a> 1.1 Mise en place et tests</h4>
+<ul>
+<li>[X] Création d'une interface labyrinthe qu'implémenteront mes structures de données.</li>
+<li>[X] Création de tests pour les implémentations de cette interface.</li>
+</ul>
+<h4 id="1.2-impl%C3%A9mentation-de-l'interface" tabindex="-1"><a class="header-anchor" href="#1.2-impl%C3%A9mentation-de-l'interface"></a> 1.2 Implémentation de l'interface</h4>
+<ul>
+<li>[X] Implémentation de l'interface de façon naïve.</li>
+<li>[X] Création d'une fonction permettant de visualiser un labyrinthe.</li>
+<li>[] Rédaction d'un algorithme de génération utilisant l'interface.</li>
+</ul>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100 dark:border-cyan-800 dark:bg-cyan-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-cyan-500 dark:stroke-cyan-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Information</b></p>
+</div><div class="pl-8 mr-8">
+<p>J'ai dû créer l'implémentation de l'interface naïve avant les tests, pour pouvoir tester les tests...
+Ce sera abordé plus tard, mais les tests m'ont donné par mal de fil à retordre.</p>
+</div>
+</div>
+<h3 id="optimisation" tabindex="-1"><a class="header-anchor" href="#optimisation"></a> Optimisation</h3>
+<p>L'optimisation est un sujet délicat en développement logiciel, au croisement entre performance et complexité.
+Bien que cela semble contre-intuitif, beaucoup de professionnels, à commencer par des experts, conseillent la prudence.
+La raison ? Optimiser prématurément un code peut introduire des bugs, rendre la maintenance plus complexe et détourner
+l'énergie de problèmes critiques. C'est un travail qui coûte cher si mal planifié, tant en temps qu'en effort.</p>
+<p><a href="https://en.wikipedia.org/wiki/Donald_Knuth">Donald Knuth</a></p>
+<blockquote>
+<p>Premature optimization is the root of all evil.</p>
+</blockquote>
+<p><a href="https://en.wikipedia.org/wiki/Michael_A._Jackson_(computer_scientist)">Michael A. Jackson</a> <br>
+<em>À ne pas confondre avec Michael Jackson tout court dont l'opinion en informatique est probablement
+beaucoup moins pertinente.</em> 🕺</p>
+<blockquote>
+<p>Rules of Optimization: <br>
+• Rule 1: Don't do it. <br>
+• Rule 2 (for experts only): Don't do it yet.</p>
+</blockquote>
+<p>Cela dit, optimiser peut s'avérer nécessaire dans des contextes spécifiques : améliorer la rapidité d'un processus
+crucial pour l'utilisateur final, ajuster un programme pour fonctionner sur des systèmes aux ressources limitées
+ou encore réduire les coûts d'infrastructure pour un logiciel gourmand en ressources.
+La clé réside dans une analyse objective : mesurer les performances actuelles, identifier les goulots d’étranglement
+et aborder les optimisations de manière réfléchie, après s’être assuré que l'application fonctionne comme prévu.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100 dark:border-emerald-800 dark:bg-emerald-950">
+<svg class="absolute w-6 h-6 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-emerald-500 dark:stroke-emerald-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Ressource</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Je me suis inspiré d'un cours de l'université de Princeton sur
+l'<a href="https://www.cs.princeton.edu/courses/archive/spring19/cos217/lectures/11_Performance.pdf">amélioration de la performance</a>
+pour écrire cette partie.</p>
+</div>
+</div>
+<h3 id="interface" tabindex="-1"><a class="header-anchor" href="#interface"></a> Interface</h3>
+<p>Pour commencer, j'ai défini une interface (<a href="https://doc.rust-lang.org/book/ch10-02-traits.html"><code>trait</code></a>) <code>Maze</code>
+et une énumération (<a href="https://doc.rust-lang.org/book/ch06-00-enums.html"><code>enum</code></a>) <code>Direction</code>
+pour intéragir avec les structures de donnés qui serviront de labyrinthe. Peu importe
+leur fonctionnement interne, elles devront implémenter les fonctions suivantes :</p>
+<pre class="language-rust line-numbers"><code>
+
+/* Directions cardinales pour préciser l'orientation des murs lors des appels de fonctions */
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
+pub enum Direction {
+    North, East, South, West,
+}
+
+/* Interface à implémenter pour les différentes structures de données */
+pub trait Maze {
+    /* Instancie un labyrinthe de taille données dont tout les murs sont dans un état par défaut. */
+    fn new(size: usize, default_state: bool) -> Self;
+
+    /* Donne la taille du labyrinthe. */
+    fn get_size(&self) -> usize;
+
+    /* Renvoie si un mur est activé ou désactivé en fonction de sa position */
+    fn is_wall(&self, x: usize, y: usize, d: &Direction) -> bool;
+
+    /* Met le mur dans une position donnée dans l'état 'state' */
+    fn change_wall(&mut self, x: usize, y: usize, d: &Direction, state: bool);
+
+    /* Implémentation par défaut pour rajouter un mur */
+    fn add_wall(&mut self, x: usize, y: usize, d: &Direction) {
+        self.change_wall(x, y, d, true);
+    }
+
+    /* Implémentation par défaut pour rajouter un mur */
+    fn remove_wall(&mut self, x: usize, y: usize, d: &Direction) {
+        self.change_wall(x, y, d, false);
+    }
+}
+
+
+</code></pre><div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100 dark:border-cyan-800 dark:bg-cyan-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-cyan-500 dark:stroke-cyan-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Trait VS Interface</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Les <strong>traits</strong> en Rust sont similaires aux <strong>interfaces</strong> des langages orientés objet, mais avec des différences
+notables :</p>
+<ul>
+<li>Les traits permettent des <strong>implémentations par défaut</strong> pour les méthodes.</li>
+<li>Ils supportent des <strong>types et constantes associées</strong>.</li>
+<li>Ils sont intégrés au système de typage pour un polymorphisme sécurisé au moment de la compilation.</li>
+</ul>
+<p>En somme, les traits offrent plus de flexibilité tout en respectant les contraintes de sécurité de Rust.</p>
+<p>Pour plus de détails voici une <a href="https://stackoverflow.com/a/69485860">réponse StackOverflow</a> plutôt complète
+ainsi qu'un <a href="https://en.wikipedia.org/wiki/Trait_(computer_programming)">article Wikipédia</a> cité dans la réponse.</p>
+</div>
+</div>
+<h3 id="tests" tabindex="-1"><a class="header-anchor" href="#tests"></a> Tests</h3>
+<p>Les tests ont été, d'après moi la partie la plus compliquée et par temps, frustrante, de ce POK.
+Initialement, j'ai fait quelques expériences et j'ai trouvé l'écriture de tests plutôt intuitive.
+Il suffit de créer un fichier juste à côté des fichiers sources et d'y placer un code similaire au suivant.</p>
+<pre class="language-rust line-numbers"><code>
+
+#[cfg(test)] // Permet de ne compiler ce code que quand on souaite exécuter des tests.
+mod tests {
+    use super::*;
+
+    #[test] // Annote que la fonction est un test (c'est aussi simple que ça)
+    fn it_works() {
+        let result = 2 + 2;
+        assert_eq!(result, 4); // On utilise des assertion, si aucune n'a de problème, le test passe
+    }
+
+    #[test]
+    fn it_fails() {
+        let result = 2 + 2;
+        assert_eq!(result, 5); // Ici, 4 != 5, le test ne va pas fonctionner.
+    }
+}
+
+
+</code></pre><p>Pour lancer les tests, toujours plutôt simple, on utilise la commande <code>cargo test</code> <em>(le tooling de Rust, c'est un plaisir)</em></p>
+<pre class="language-shell line-numbers"><code>
+
+$ cargo test
+running 2 tests
+test tests::it_works ... ok
+test tests::it_fails ... FAILED
+
+failures:
+    tests::it_fails
+
+test result: FAILED. 1 passed; 1 failed; 0 ignored; 0 measured; 0 filtered out
+
+
+</code></pre><p>Je souhaitais écrire des tests faciles à faire tourner sur toutes les structures qui implémentent
+le trait <code>Maze</code>. Et c'est là que j'ai dû me heurter à plus fort que moi : l'écriture de
+<strong>macros</strong>...</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100 dark:border-cyan-800 dark:bg-cyan-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-cyan-500 dark:stroke-cyan-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Macros</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Les macros sont des outils puissants en Rust permettant de générer du code à la compilation. Contrairement aux
+fonctions, les macros opèrent de manière plus flexible puisqu'elles prennent du code en entrée pour créer un nouvel
+ensemble de comportements. Voici un exemple très simple d'une macro en Rust :</p>
+<pre class="language-rust line-numbers"><code>
+
+macro_rules! say_hello {
+    () => {
+        println!("Bonjour!");
+    };
+}
+
+
+</code></pre><p>Vous pouvez appeler cette macro avec <code>say_hello!();</code>, et elle affichera &quot;Bonjour!&quot; sur la console.</p>
+<p>Il existe plusieurs types de macros en Rust :</p>
+<ul>
+<li><strong><code>macro_rules!</code></strong> : très utilisées pour des cas simples et souvent suffisantes pour une grande partie des besoins.</li>
+<li><strong>Macros procédurales</strong> : permettant des opérations plus complexes, mais demandant d'importer des crates spécifiques
+comme <code>syn</code> ou <code>quote</code> et étant souvent utilisées pour le code dérivé des traits (e.g., <code>#[derive(...)]</code>).</li>
+</ul>
+<p>Pour plus de détails la <a href="https://doc.rust-lang.org/book/ch20-06-macros.html">documentation Rust</a> est plutôt bien écrite
+et très complète.</p>
+</div>
+</div>
+<p>En tout cas, ce qu'il faut savoir, c'est que débugger une macro relativement complexe (et mal comprise par manque
+d'expérience), ce n'est pas forcément une mince affaire. Après avoir passé un LONG moment dessus, j'ai réussi à faire
+marcher la macro disponible ci-dessous pour laquelle j'ai fait serment de ne plus toucher tant qu'elle fonctionne.
+J'ai pu au fur et à mesure y rajouter des tests plus avancés.</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p><strong>La Bête</strong></p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<p>Pour résumer brièvement son rôle, elle va générer du code en fonction d'une liste de couples de paramètres :</p>
+<ul>
+<li><code>name</code>, le nom que l'on souhaite donner au module de test généré (besoin de noms distincts pour éviter les conflits)</li>
+<li><code>type</code>, le type de la structure de donnée que l'on souhaite tester</li>
+</ul>
+<p><em>Ici le seul couple donné est <code>vecmaze: crate::vecmaze::VecMaze</code>, c'est la structure naïve que j'ai créée en première</em></p>
+<p>Dans le code généré, on crée un module avec le nom demandé, on y importe les dépendances du module parent puis
+on écrit des tests qui au lieu de faire référence à un type en particulier, utilisent l'alias <code>&lt;$type&gt;</code>.
+Un gros désavantage est que l'éditeur de texte a un peu du mal à deviner les fonctions à nous proposer à l'intérieur
+de la macro, trouve parfois des erreurs qui n'existent pas et ne colorie pas correctement la syntaxe. Ça rends
+l'expérience de développement sous optimale...</p>
+<pre class="language-rust line-numbers"><code>
+
+macro_rules! maze_tests {
+    ($($name:ident: $type:ty,)*) => {
+    $(
+        mod $name {
+            use super::*;
+
+            #[test] // Un exemple de test
+            #[should_panic(expected = "Maze size must be less than 1000")]
+            pub fn test_creation_size_too_big() {
+                let _maze = <$type>::new(MAX_MAZE_SIZE + 1, true);
+            }
+        }
+    )*
+    }
+}
+
+#[cfg(test)]
+mod tests {
+use rstest::rstest;
+use crate::maze::*;
+
+maze_tests ! {
+vecmaze: crate::vecmaze::VecMaze, // Le type qu'on souhaite tester.
+}
+}
+
+
+</code></pre></div>
+</details>
+</div>
+<p>J'ai commencé par créer des tests conjointement à la structure de donnée VecMaze pour évaluer mon avancement
+au fur et à mesure. Lors de cette partie, j'ai malheureusement écrit plein de petits bugs au fur et à mesure,
+le problème étant que ces mêmes bugs étaient non pas seulement dans le code de VecMaze mais aussi
+dans mes tests. C'est d'ailleurs une raison pour laquelle il est systématiquement recommandé, d'essayer d'écrire les
+tests les plus simples possibles.</p>
+<h4 id="rstest" tabindex="-1"><a class="header-anchor" href="#rstest"></a> rstest</h4>
+<p>Pour m'assister, j'ai utilisé le module <code>rstest</code> qui permet entre autre d'écrire des fonctions de test
+paramétrisées.</p>
+<pre class="language-rust line-numbers"><code>
+
+#[rstest]
+#[case::south_upper_left_corner(0, 0, Direction::South)]
+                    ...
+#[case::west_random_inside(134, 553, Direction::West)]
+pub fn test_add_wall_inside(
+    #[case] i: usize,
+    #[case] j: usize,
+    #[case] direction: Direction,
+) {
+    let size = MAX_MAZE_SIZE;
+    let mut maze = <$type>::new(size, false);
+
+    maze.add_wall(i, j, &direction);
+
+    // Fonction qui véfie un a un que tous les murs du labyrinthe sont dans leur position attentue
+    is_wall_correctly_located(&maze, i, j, direction, false);
+}
+
+
+</code></pre><p>Ce test par exemple a été écrit pour essayer d'ajouter un mur dans CHACUN des edge cases du labyrinthe.</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p><strong>Off by One Errors</strong></p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<p>LE type d'erreurs et bugs que j'ai le plus couramment écris lors de ce POK sont les
+<a href="https://en.wikipedia.org/wiki/Off-by-one_error">OBOE ou Off-By-One-Error</a> traduisible par
+<em>&quot;erreur de décalage unitaire&quot;</em> et qui consiste en gros à mettre un <code>-1</code> à un endroit où il n'en fallait pas
+ou oublier un <code>+1</code> là où il était nécessaire.</p>
+<p>Voici un exemple en C++.</p>
+<pre class="language-cpp line-numbers"><code>
+
+void foo (char *s)
+{
+    char buf[15];
+    memset(buf, 0, sizeof(buf));
+    strncat(buf, s, sizeof(buf)); // Le paramètre final devrait être sizeof(buf)-1
+}
+
+
+</code></pre></div>
+</details>
+</div>
+<h4 id="fuzzy-testing" tabindex="-1"><a class="header-anchor" href="#fuzzy-testing"></a> Fuzzy Testing</h4>
+<p>Une autre stratégie que j'ai décidée de mettre en place est l'écriture de <strong>fuzzy tests</strong>.
+Le fuzzy testing est une méthode qui consiste à générer des <strong>entrées aléatoires ou semi-aléatoires</strong>
+afin de tester la robustesse et la fiabilité du code face à des cas imprévus.
+Ils permettent ainsi de détecter des bugs difficiles à anticiper avec des tests classiques.</p>
+<p>En l'occurrence, je ne pouvais pas me permettre d'écrire un test case par mur possible du labyrinthe ainsi,
+j'ai plutôt choisi de générer des cas aléatoires à chaque <code>cargo test</code> ce qui me permettrait avec un peu
+de chance de tout de même déceler quelques problèmes et edge cases en avance.</p>
+<pre class="language-rust line-numbers"><code>
+
+#[rstest]
+#[case::small_mazes(10, 1000)]
+#[case::medium_mazes(100, 1000)]
+#[case::large_mazes(1000, 10)] // Peu de tests pour la taille 1000 car vérifier chaque mur prends beaucoup de temps.
+pub fn fuzzy_test_add_wall_inside(#[case] size: usize, #[case] number_of_tests: usize) {
+    let mut rng = rand::rng();
+
+    for _ in 0..number_of_tests {
+        // Génération d'un mur au hasard.
+        let i = rng.random_range(0..size);
+        let j = rng.random_range(0..size);
+        let d = DIRECTIONS[rng.random_range(0..4)];
+        if (!is_inside_maze(size, i, j, &d)) {
+            continue;
+        }
+
+        let mut maze = <$type>::new(size, false);
+
+        maze.add_wall(i, j, &d);
+
+        is_wall_correctly_located(&maze, i, j, d, false);
+    }
+}
+
+
+</code></pre><h3 id="structure-na%C3%AFve" tabindex="-1"><a class="header-anchor" href="#structure-na%C3%AFve"></a> Structure naïve</h3>
+<p>Pour la structure naïve de labyrinthe, j'ai opté pour un vecteur de vecteurs de cellules.</p>
+<pre class="language-rust line-numbers"><code>
+
+#[derive(Clone)]
+struct VecMazeCell {
+    north: bool,
+    west: bool,
+    south: bool,
+    east: bool,
+}
+
+pub struct VecMaze {
+    size: usize,
+    cells: Vec<Vec<VecMazeCell>>,
+}
+
+
+</Vec<VecMazeCell></code></pre><p>Pour un labyrinthe de 1000x1000 fait 4 bytes par <code>VecMazeCell</code>, soit 4 * 1000 * 1000 = 4 Mo par labyrinthe.
+On est loin de la valeur minimale en terme d'information à stocker : 2 * (n-1) * n &lt; 200 ko.</p>
+<h3 id="visualisation" tabindex="-1"><a class="header-anchor" href="#visualisation"></a> Visualisation</h3>
+<p>J'ai créé une fonction <code>draw_maze_to_png</code> qui permet de dessiner un labyrinthe avec un nombre de pixels spécifiques
+par cellule et de le sauvegarder en tant que fichier. Pour ce faire, j'ai utilisé la crate <code>image</code> qui contient
+tout le nécessaire pour faire des dessins simples.</p>
+<ol>
+<li>On commence par créer une image de taille appropriée que dont on remplit l'intérieur de blanc.</li>
+<li>Ensuite, on colore le début et la fin</li>
+<li>Enfin, on dessine un par un chacun des murs.</li>
+</ol>
+<div class="flex w-full gap-4 justify-center items-center mb-4">
+    <figure style="margin: 0; image-rendering: crisp-edges;">
+        <img class="labyrinth-img" width="204" src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Billa-Valentin/pok/temps-3/images/draw-maze_step-1.png" alt="">
+        <figcaption class="text-center">Étape 1</figcaption>
+    </figure>
+    <figure style="margin: 0; image-rendering: crisp-edges;">
+        <img class="labyrinth-img" width="204" src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Billa-Valentin/pok/temps-3/images/draw-maze_step-2.png" alt="">
+        <figcaption class="text-center">Étape 2</figcaption>
+    </figure>
+    <figure style="margin: 0; image-rendering: crisp-edges;">
+        <img class="labyrinth-img" width="204" src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Billa-Valentin/pok/temps-3/images/draw-maze_step-3.png" alt="">
+        <figcaption class="text-center">Étape 3</figcaption>
+    </figure>
+</div>
+<p>N'ayant pas pu terminer mon algorithme de génération, j'ai utilisé un petit script pour créer ce labyrinthe de test.</p>
+<pre class="language-rust line-numbers"><code>
+
+let size: usize = 10;
+let mut maze = VecMaze::new(size, true);
+for i in 0..size-1 {
+    maze.remove_wall(i, i, &Direction::East);
+    maze.remove_wall(i+1, i, &Direction::South);
+}
+draw_maze_to_png(&maze, 5, "draw-maze.png").unwrap();
+
+
+</code></pre><div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100 dark:border-cyan-800 dark:bg-cyan-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-cyan-500 dark:stroke-cyan-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p>Interpolation</p>
+</div><div class="pl-8 mr-8">
+<figure style="float: right; margin: 0 10px;">
+    <img width="102" src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Billa-Valentin/pok/temps-3/images/maze_10x10_manual.png" alt="Image d'un labyrinthe 10x10 avec interpolation" style="margin: 0;">
+    <figcaption class="text-center">Image interpolée</figcaption>
+</figure>
+<p>Par défaut les navigateurs essaient d'<strong>interpoler</strong> les détails de l'image, quand on zoome dessus.
+Généralement, c'est un comportement voulu, ça permet de ne pas avoir des images toutes pixelisées.
+Mais dans notre cas, c'est *exactement l'inverse de ce qu'on souhaite.
+<br><br>
+La <a href="https://developer.mozilla.org/fr/docs/Web/CSS/image-rendering">propriété CSS</a> suivante force à interpoler au plus proche voisin :</p>
+<pre class="language-css line-numbers"><code>
+
+img {
+    image-rendering: crisp-edges; /* `pixelated` also works */
+}
+
+
+</code></pre></div>
+</div>
+<h3 id="horodatage" tabindex="-1"><a class="header-anchor" href="#horodatage"></a> Horodatage</h3>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Heures passées</th>
+<th>Indications</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>16 Janvier (Jeu.)</td>
+<td>2H</td>
+<td>Interface &amp; Tests</td>
+</tr>
+<tr>
+<td>19 Janvier (Dim.)</td>
+<td>5H</td>
+<td>Tests</td>
+</tr>
+<tr>
+<td>25 Janvier (Sam.)</td>
+<td>3H</td>
+<td>Visualisation &amp; Début de génération</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>10H</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="r%C3%A9tro" tabindex="-1"><a class="header-anchor" href="#r%C3%A9tro"></a> Rétro</h3>
+<p>Pas mal de difficultés sur la rédaction de test qui a impacté mon temps total, je n'ai donc pas
+eu le temps de faire tout ce que je voulais en 1.2.
+Maintenant que j'y pense, j'aurais peut-être mieux fait d'écrire la fonction de visualisation avant l'écriture de test,
+ce qui m'aurait permis de plus facilement détecter mes problèmes visuellement.</p>
+<h2 id="sprint-2" tabindex="-1"><a class="header-anchor" href="#sprint-2"></a> Sprint 2</h2>
+<h3 id="planning-pr%C3%A9visionnel-1" tabindex="-1"><a class="header-anchor" href="#planning-pr%C3%A9visionnel-1"></a> Planning Prévisionnel</h3>
+<h4 id="1.2" tabindex="-1"><a class="header-anchor" href="#1.2"></a> 1.2</h4>
+<ul>
+<li>[X] Rédaction de l'algorithme de génération.</li>
+</ul>
+<h4 id="2.1-benchmarking" tabindex="-1"><a class="header-anchor" href="#2.1-benchmarking"></a> 2.1 Benchmarking</h4>
+<ul>
+<li>[X] Créer des fonctions permettant de tester l'efficacité de l'algorithme de génération.</li>
+</ul>
+<h4 id="2.2-optimization" tabindex="-1"><a class="header-anchor" href="#2.2-optimization"></a> 2.2 Optimization</h4>
+<ul>
+<li>[X] Identifier les bottle necks avec un flame graph.</li>
+<li>[X] Améliorer l'algorithme de génération.</li>
+<li>[X] Proposer d'autres structures de données.</li>
+</ul>
+<h3 id="algorithme-de-g%C3%A9n%C3%A9ration" tabindex="-1"><a class="header-anchor" href="#algorithme-de-g%C3%A9n%C3%A9ration"></a> Algorithme de génération</h3>
+<figure style="float: right; margin: 0; image-rendering: crisp-edges;">
+    <img width="204" src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Billa-Valentin/pok/temps-3/images/wilson-algorithm.gif" alt="">
+    <figcaption class="text-center">Algorithme de Wilson</figcaption>
+</figure>
+<p>Pour générer mon labyrinthe, j'ai choisi d'implémenter l'<strong>algorithme de Wilson</strong> qui est mon favori depuis
+un moment en matière de labyrinthe, il donne des résultats esthétiquement plus équilibrés que les alternatives.
+Je vous invite à lire l'<a href="https://en.wikipedia.org/wiki/Maze_generation_algorithm">article Wikipédia</a>
+qui est plutôt complet sur le sujet.</p>
+<p>C'est un algorithme à priori relativement simple à décrire :</p>
+<ol>
+<li>Commencez avec une grille remplie de murs. Choisissez une cellule au hasard et marquez-la comme faisant partie du labyrinthe.</li>
+<li>Pour chaque cellule non incluse dans le labyrinthe :
+<ol>
+<li>Choisissez une cellule non marquée au hasard et démarrez une &quot;marche aléatoire&quot; (random walk) à partir de cette cellule.</li>
+<li>Effectuez la marche aléatoire jusqu'à atteindre une cellule déjà incluse dans le labyrinthe :
+<ol>
+<li>Si la marche visite une cellule déjà visitée dans cette marche en cours (avant d'atteindre le labyrinthe), retirez la boucle formée en revenant en arrière jusqu'à cette cellule (formez un chemin sans cycles).</li>
+</ol>
+</li>
+<li>Connectez toutes les cellules de la marche au labyrinthe en transformant les murs rencontrés en passages.</li>
+</ol>
+</li>
+<li>Répétez jusqu'à ce que toutes les cellules soient incluses dans le labyrinthe.</li>
+</ol>
+<figure style="float: right; margin: 0; image-rendering: crisp-edges;">
+    <img width="204" src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Billa-Valentin/pok/temps-3/images/maze_10x10.png" alt="">
+    <figcaption class="text-center">Labyrinthe généré avec <br> l'algorithme de Wilson</figcaption>
+</figure>
+<p>J'ai donc créé une fonction ayant la signature ci-dessous qui implémente l'algorithme de Wilson pour n'importe
+quelle structure qui implémente le <code>trait Maze</code>.</p>
+<pre class="language-rust line-numbers"><code>
+
+pub fn generate_maze<T: Maze="">(size: usize) -> T {
+    ...
+}
+
+
+</T:></code></pre><p>J'ai pu générer un labyrinthe de 10x10 avec, puis 100x100 mais pour 1000x1000 la fonction semblait tourner infiniment.
+Pour y remédier, j'ai dû faire quelques améliorations de performance et prendre quelques libertés avec l'algorithme,
+que nous allons voir en suivant.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100 dark:border-cyan-800 dark:bg-cyan-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-cyan-500 dark:stroke-cyan-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Fun Fact</strong> 🎮</p>
+</div><div class="pl-8 mr-8">
+<p>Certains joueurs de <strong>Minecraft</strong> sont aussi amateurs de labyrinthes. Ils se sont lancés le défi de créer
+des générateurs dans le jeu, ce qui a récemment mené à l'invention d'un algorithme que je trouve
+particulièrement élégant le <a href="https://www.youtube.com/watch?v=o7OhjEqCvSo">'Hilbert Lookahead'</a>
+qui utilise des courbes de remplissage de l'espace pour aiguiller les choix de mur à détruire.</p>
+</div>
+</div>
+<h3 id="am%C3%A9liorations" tabindex="-1"><a class="header-anchor" href="#am%C3%A9liorations"></a> Améliorations</h3>
+<h4 id="bitset" tabindex="-1"><a class="header-anchor" href="#bitset"></a> BitSet</h4>
+<p>Tout d'abord, une chose intéressante à savoir est qu'un booléen prend systématiquement au moins 8 bits en mémoire.
+Un ordinateur ne sait en pratique pas stocker et récupérer des bits un par un, il stocke les informations en bytes.
+Pour optimiser l'utilisation de la mémoire, j'ai remplacé mon vecteur de booléens par un <code>BitSet</code>.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100 dark:border-cyan-800 dark:bg-cyan-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-cyan-500 dark:stroke-cyan-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>BitSet</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Un <code>BitSet</code> ou <a href="https://en.wikipedia.org/wiki/Bit_array">bit array</a> c'est un tableau de bits
+où chaque élément est représenté par un seul bit plutôt qu'un byte entier. Cela permet de gagner
+considérablement en mémoire pour des structures booléennes lorsque la taille augmente.</p>
+<p>Pour le mettre en place, on crée, un tableau de byte puis on utilise des opérations binaires pour récupérer les bits
+un à un.</p>
+</div>
+</div>
+<p>Ce changement bien que peu impactant sur le temps d'exécution permet de réduire l'espace mémoire nécessaire
+au programme et puisqu'il est vraiment simple à mettre en place, ce doit être un réflexe de l'utiliser quand on voit
+un tableau de booléens traîner.</p>
+<pre class="language-rust line-numbers"><code>
+
+let mut visited = vec![true; size * size]
+/* --- deviens --- */
+use bit_set::BitSet;
+let mut visited = BitSet::with_capacity(size * size);
+
+
+</code></pre><h4 id="fen%C3%AAtre" tabindex="-1"><a class="header-anchor" href="#fen%C3%AAtre"></a> Fenêtre</h4>
+<p>Un problème que j'avais remarqué dans le passé avec l'algorithme de Wilson est que pour de très gros labyrinthes,
+la marche aléatoire a peu de chances de tomber sur les cellules déjà dans le labyrinthe tant qu'elles sont peu
+nombreuses. Une solution que j'ai trouvée est de réduire l'espace de travail temporairement tant que les nombre
+de cellules visitées est encore faible.</p>
+<p>Par exemple, pour un labyrinthe de 1000x1000 je commence par générer des chemins uniquement dans un coin de 100x100
+puis au fur et à mesure que le coin se rempli, j'élargis la fenêtre. Cet ajout, plus complexe m'a permis de générer
+une grille 1000x1000 en quelques secondes.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100 dark:border-purple-800 dark:bg-purple-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-purple-500 dark:stroke-purple-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>GROS Labyrinthe</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Voici un <a href="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Billa-Valentin/pok/temps-3/images/maze_1000x1000.png">labyrinthe 1000x1000</a> généré par mon algorithme.
+J'ai ensuite fait passer l'image dans l'utilitaire <code>pngcrush</code> pour réduire la taille de
+l'image de 4Mo à 700ko.</p>
+<p>🔎 <em>Pour l'observer correctement, je vous conseille de l'ouvrir dans un visualiseur d'image plutôt
+que dans le navigateur.</em></p>
+</div>
+</div>
+<h3 id="benchmarking" tabindex="-1"><a class="header-anchor" href="#benchmarking"></a> Benchmarking</h3>
+<p>Le <strong>benchmarking</strong> est une méthode qui consiste à mesurer les performances d'un programme ou d'un algorithme en évaluant
+des aspects tels que le temps d'exécution, l'utilisation des ressources ou encore l'efficacité globale,
+afin d'identifier des pistes d'optimisation ou de comparer différentes implémentations.</p>
+<p><a href="https://bheisler.github.io/criterion.rs/book/getting_started.html"><code>criterion</code></a> est un super outil pour faire des
+benchmarks et générer des rapports sur l'efficacité d'une fonction.</p>
+<p>Je l'ai utilisé pour tester l'algorithme de génération au fur et à mesure que je tentais de l'optimiser.
+Benchmarker est plutôt long, en effet pour éviter de tomber sur des cas exceptionnels, <code>criterion</code> fait
+tourner les fonctions plusieurs fois (environ une centaine dans mon cas).</p>
+<p>Dans la partie <a href="#structures-test%C3%A9es">Structures testées</a>, vous trouverez un lien vers le genre de rapports
+générés par <code>criterion</code>.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100 dark:border-amber-800 dark:bg-amber-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-amber-800 dark:stroke-amber-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Compilation Optimisée</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Dans beaucoup de langages, il existe une distinction entre 'dev' et 'prod', généralement celle-ci permet :</p>
+<ul>
+<li>de compiler rapidement lors du développement, mais avoir un code pas très optimisé par le compilateur</li>
+<li>inversement, au coût d'une compilation plus longue, laisser le compilateur optimiser à fond</li>
+</ul>
+<p>Quand on teste la performance d'une application, il est <strong>primordial</strong> de la benchmarker dans des conditions
+les plus proches du réel possible. En fait, c'est encore mieux quand c'est fait grâce à des métriques
+disponibles quant aux applications qui tournent en production. Dans notre cas, on va donc utiliser le mode
+~ 'prod' pour compiler notre librairie en utilisant le flag <code>--release</code>.</p>
+<p>Aussi, je profite de cette note pour mentionner que dans la plupart des cas, écrire de
+l'assembleur à la main est une mauvaise idée aujourd'hui. Les compilateurs modernes sont devenus
+extrêmement performants pour optimiser le code, exploitant des techniques complexes et spécifiques
+au matériel, souvent mieux que ce qu'un humain pourrait produire manuellement, sauf dans des
+cas très précis ou critiques.</p>
+</div>
+</div>
+<h3 id="profilage" tabindex="-1"><a class="header-anchor" href="#profilage"></a> Profilage</h3>
+<p>Le <strong>profilage</strong> est une technique d'analyse utilisée pour examiner en détail l'exécution d'un programme afin d'identifier
+les parties du code qui consomment le plus de ressources (temps ou mémoire).
+Cela permet de repérer les <strong>goulots d'étranglement</strong> et d'orienter les efforts
+d'optimisation de manière ciblée et efficace.</p>
+<p>Pour profiler mon programme, j'ai utilisé les outils disponibles dans mon IDE (RustRover). Il utilise de
+l'échantillonnage pour estimer le pourcentage de temps passé dans chaque fonction et produire des statistiques
+visualisables entre autre sur un flame graph.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100 dark:border-cyan-800 dark:bg-cyan-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-cyan-500 dark:stroke-cyan-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Échantillonnage</strong></p>
+</div><div class="pl-8 mr-8">
+<blockquote>
+<p>Echantillonnage : l’exécution est échantillonnée régulièrement
+pour savoir quelles fonctions sont appelées. Pas d’intrusion, mais
+résultat dépendant notamment de la fréquence d’échantillonnage.
+Plus la durée d’exécution est longue, plus les résultats sont précis</p>
+</blockquote>
+<p><em><a href="http://lyoncalcul.univ-lyon1.fr/ed/DOCS_2015-2016/debogage_profiling.pdf">cours de &quot;Debogage / Profiling&quot; donné pour LyonCalcul</a></em></p>
+</div>
+</div>
+<h4 id="flame-graph" tabindex="-1"><a class="header-anchor" href="#flame-graph"></a> Flame Graph</h4>
+<p>Un flame graphe permet de représenter la répartition du temps passé dans chacune des fonctions du programme
+lors d'une exécution. De bas en haut, un rectangle représente une fonction et les rectangles au-dessus, les
+fonctions appelées par cette dernière. Par exemple, on peut voir que quasiment 50% du temps total est passé
+à générer des nombres aléatoires dans <code>rust-mazes'rand_chacha::guts::refill_wide::impl_avx2</code>.</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Billa-Valentin/pok/temps-3/images/generation-flamegraph.webp" alt="Flame graph de la génération d'un labyrinthe"></p>
+<p>Mon IDE peut aussi générer des différences de flame graph entre deux versions, très utile pour identifier
+d'un coup d'œil les améliorations de performance.
+Ici, j'ai rajouté une condition pour que l'algorithme choisisse des directions aléatoires plus cohérentes
+lors de la marche aléatoire eg. ne pas repartir en arrière (c'est ok pour une loop erased random walk).</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Billa-Valentin/pok/temps-3/images/generation-flamegraph-diff.webp" alt="Flame graph de différence entre deux versions"></p>
+<h3 id="structures-test%C3%A9es" tabindex="-1"><a class="header-anchor" href="#structures-test%C3%A9es"></a> Structures testées</h3>
+<p>J'ai décidé d'implémenter une structure de bitset, pour optimiser la place mémoire utilisée par le</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100 dark:border-purple-800 dark:bg-purple-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-purple-500 dark:stroke-purple-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Rapports</strong></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li><a href="reports/vecmaze/index.html">Génération avec VecMaze</a></li>
+<li><a href="reports/bitsetmaze/index.html">Génération avec BitSetMaze</a></li>
+</ul>
+</div>
+</div>
+<h3 id="horodatage-1" tabindex="-1"><a class="header-anchor" href="#horodatage-1"></a> Horodatage</h3>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Heures passées</th>
+<th>Indications</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>03 Mars (Lun.)</td>
+<td>2h</td>
+<td>Algorithme de génération &amp; d'autres tests...</td>
+</tr>
+<tr>
+<td>08 Mars (Sam.)</td>
+<td>4h</td>
+<td>[^1]</td>
+</tr>
+<tr>
+<td>09 Mars (Dim.)</td>
+<td>4h</td>
+<td>Bidouilles avec différentes structures de données</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>10H</strong></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>[^1] Fonction de benchmarking, ajout de seeding dans l'algorithme de génération, identification de bottle
+necks et premières optimisations.</p>
+<h3 id="r%C3%A9tro-1" tabindex="-1"><a class="header-anchor" href="#r%C3%A9tro-1"></a> Rétro</h3>
+<!-- Loads directly CSS & Rust prism js extensions without waiting for autoloader -->
+<script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-css.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs/components/prism-rust.min.js"></script>
+
+
+
+</article>
+
+        </main>
+
+        <footer class="min-h-[50px] border-t-2 mt-4 border-gray-200 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-center items-center">
+                    <p class="text-center">
+                        ©2025 <b><span style="font-family: Consolas, sans-serif;">Do-<span style="color: #4a86e8">It</span></span></b> - Développement, Management et Gestion de projets en IT
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- MathJax import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">
+            window.MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']], // Delimiters for inline math
+                    displayMath: [['$$', '$$'], ['\\[', '\\]']] // Delimiters for block math
+                },
+                svg: {
+                    fontCache: 'global' // Use global font cache for SVG output
+                }
+            };
+            document.addEventListener('DOMContentLoaded', () => {
+                MathJax.typeset(); // Ensures MathJax processes the content after the page loads
+            });
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">
+            Prism.plugins.NormalizeWhitespace.setDefaults({
+                'remove-trailing': true,
+                'remove-indent': true,
+                'left-trim': true,
+                'right-trim': true,
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script>
+    </body>
+</html>

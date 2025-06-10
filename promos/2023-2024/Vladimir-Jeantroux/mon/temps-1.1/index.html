@@ -1,0 +1,150 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="index, follow"><link rel="canonical" href="https://do-it.aioli.ec-m.fr/promos/2023-2024/Vladimir-Jeantroux/mon/temps-1.1/"><meta name="description" content="Do-It, cours et travaux des élèves de l&#39;école Centrale Méditerranée"><meta property="og:description" content="Do-It, cours et travaux des élèves de l&#39;école Centrale Méditerranée"><meta name="twitter:description" content="Do-It, cours et travaux des élèves de l&#39;école Centrale Méditerranée"><meta name="author" content="Vladimir Jeantroux"><meta name="keywords" content="do-it, centrale, centrale méditerranée, ecm, MON, Développement Web"><link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon"><link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png"><link rel="apple-touch-icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png"><link href="/assets/stylesheets/main.css" rel="stylesheet"><meta property="og:title" content="Bases d&#39;HTML et CSS"><meta property="og:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png"><meta property="og:url" content="https://do-it.aioli.ec-m.fr/promos/2023-2024/Vladimir-Jeantroux/mon/temps-1.1/"><meta property="og:type" content="website"><meta name="twitter:card" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png"><meta name="twitter:title" content="Bases d&#39;HTML et CSS"><meta name="twitter:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png"><meta name="twitter:url" content="https://do-it.aioli.ec-m.fr/promos/2023-2024/Vladimir-Jeantroux/mon/temps-1.1/"><title>Bases d&#39;HTML et CSS</title><link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet"><link id="prism-theme" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet"><link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet"><script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script><script defer="">const storedTheme=localStorage.getItem("theme");function loadPrismTheme(e){const t=e?"prism-okaidia.min.css":"prism-solarizedlight.min.css",s=document.createElement("link");s.rel="stylesheet",s.id="prism-theme",s.href=`https://cdn.jsdelivr.net/npm/prismjs/themes/${t}`,s.onload=()=>{Prism.highlightAll()};const m=document.getElementById("prism-theme");m?document.head.replaceChild(s,m):document.head.appendChild(s)}function setMermaidTheme(e){const t=e?"dark":"forest";mermaid.initialize({securityLevel:"loose",theme:t,startOnLoad:!0})}function toggleDarkMode(){const e=document.documentElement.classList.contains("dark"),t=e?"light":"dark";localStorage.setItem("theme",t),document.documentElement.classList.toggle("dark",!e),loadPrismTheme(!e),setMermaidTheme(!e)}storedTheme?document.documentElement.classList.toggle("dark","dark"===storedTheme):document.documentElement.classList.toggle("dark",window.matchMedia("(prefers-color-scheme: dark)").matches);const isDark=document.documentElement.classList.contains("dark");loadPrismTheme(isDark),setMermaidTheme(isDark)</script></head><body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000" class="bg-neutral-50 text-neutral-950 dark:bg-neutral-900 dark:text-neutral-50"><header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white dark:bg-neutral-900 dark:border-neutral-700"><div class="max-w-[1000px] mx-auto px-4"><div class="min-h-[50px] flex justify-between items-center"><a class="mx-2" href="/">Home</a> <button class="hidden sm:block text-neutral-950 dark:text-neutral-50 hover:bg-neutral-700 hover:text-neutral-50 hover:dark:bg-neutral-300 hover:dark:text-neutral-950 transition-colors p-2 rounded-full duration-800 ease-in-out" onclick="toggleDarkMode()"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 dark:hidden stroke-current"><circle cx="12" cy="12" r="5"></circle><path d="M12 2V4" stroke-linecap="round"></path><path d="M12 20V22" stroke-linecap="round"></path><path d="M4 12L2 12" stroke-linecap="round"></path><path d="M22 12L20 12" stroke-linecap="round"></path><path d="M19.7778 4.22266L17.5558 6.25424" stroke-linecap="round"></path><path d="M4.22217 4.22266L6.44418 6.25424" stroke-linecap="round"></path><path d="M6.44434 17.5557L4.22211 19.7779" stroke-linecap="round"></path><path d="M19.7778 19.7773L17.5558 17.5551" stroke-linecap="round"></path></svg> <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 stroke-current hidden dark:block"><path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke-linecap="round" stroke-linejoin="round"></path></svg></button><div class="flex items-center gap-4 sm:gap-6"><a class="" href="/cs">CS</a> <a class="" href="/pok">POK</a> <a class="" href="/mon">MON</a> <a class="" href="/projets">Projets</a> <a class="hidden sm:block" href="/promos">Promos</a> <a href="/search"><svg class="h-5 aspect-square stroke-neutral-950 dark:stroke-neutral-300 fill-none stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path></svg> </a><a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank"><svg class="h-5 aspect-square dark:stroke-neutral-300 dark:fill-neutral-300" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg></a></div></div></div></header><main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body=""><article class="relative"><h1 class="mb-1">Bases d&#39;HTML et CSS</h1><div class="mb-4"><div class="px-4 flex flex-wrap items-center"><div class="font-bold">Tags :</div><ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags"><li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">MON</li><li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">Développement Web</li></ul><div class="hidden" data-pagefind-meta="Type" aria-hidden="true"><span data-pagefind-filter="Type">MON</span></div></div><div class="px-4 flex flex-wrap items-center"><div class="font-bold">Auteur :</div><ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs"><li class="bg-blue-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Auteurs">Vladimir Jeantroux</li></ul></div><div class="absolute top-0 right-0"><span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2 text-neutral-950" data-pagefind-filter="Année">2023-2024</span></div></div><div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100 dark:border-purple-800 dark:bg-purple-950"><svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-purple-500 dark:stroke-purple-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path></svg><div class="pl-8 mr-8"><a href="/promos/2023-2024/Vladimir-Jeantroux/">Vladimir Jeantroux</a><span class="px-1">/</span><a href="/promos/2023-2024/Vladimir-Jeantroux/mon/">MON de Vladimir Jeantroux</a><span class="px-1">/</span><a href="/promos/2023-2024/Vladimir-Jeantroux/mon/temps-1.1/">Bases d&#39;HTML et CSS</a></div></div><h2 id="pr%C3%A9-requis-%3A" tabindex="-1"><a class="header-anchor" href="#pr%C3%A9-requis-%3A"></a> Pré-requis :</h2><div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100 dark:border-pink-800 dark:bg-pink-950"><svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-pink-500 dark:stroke-pink-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg><div class="pl-8 mb-2 mr-8"><p>Niveau débutant</p></div><div class="pl-8 mr-8"><p>Pré-requis :</p><ul><li>Aucun</li></ul></div></div><h2 id="r%C3%A9sum%C3%A9-%3A" tabindex="-1"><a class="header-anchor" href="#r%C3%A9sum%C3%A9-%3A"></a> Résumé :</h2><p>Dans ce premier MON, nous reverrons les bases d'HTML et de CSS. J'ai choisi ce MON afin d'appuyer mon premier POK, qui consiste à créer un site web. Pour ce faire, j'ai suivi le cours HTML/CSS <a href="https://openclassrooms.com/fr/courses/1603881-creez-votre-site-web-avec-html5-et-css3">d'OpenClassroom</a> pour m'introduire aux notions de base, et si je bloquais sur certaines notions je me renseignais sur <a href="https://www.w3schools.com/html/">W3Schools</a>. Ce MON vise à reprendre des notions basiques d'HTML et de CSS, et est illustré par la création pas-à-pas des pages du site de mon POK.</p><h3 id="1.-html" tabindex="-1"><a class="header-anchor" href="#1.-html"></a> 1. HTML</h3><p>Un fichier HTML (extension .html) est le fichier qui dicte l'agencement des éléments sur une page web : l'emplacement du texte, des images, boutons, etc. C'est la partie purement fonctionnelle du site. A l'inverse, le fichier .css va dicter le style de la page et tout ce que ça implique : couleurs, police, disposition,... C'est en combinant ces deux fichiers là que l'on obtient la page web, ce que l'on appelle le &quot;front end&quot; : toute la partie visible du site, avec laquelle l'utilisateur peut interagir. A l'inverse, le back end est toute la partie interne du site et qui permet son fonctionnement, inaccessible à l'utilisateur. Généralement, le back end se fait en langage Javascript, Node.js, etc. Ici, on ne s'intéressera qu'au front end, à commencer avec HTML.</p><p>Un document HTML est structuré avec des balises. Pour insérer un élément, on va le déclarer avec lesdites balises. La plupart d'entre elles sont couplées, c'est à dire qu'il y a une balise ouvrante pour déclarer le type d'élément, et une balise fermante pour marquer la fin de l'élément. Prenons un exemple avec la balise &lt;p&gt; permettant d'indiquer un paragraphe.</p><pre class="language-html line-numbers"><code>
+
+<p> Voici le début de ma phrase, mais à mesure qu'elle progresse je me rapproche de la fin et je vais devoir la terminer. </p><p>
+
+
+</p></code></pre><p>Voyons maintenant la structure basique d'un fichier HTML. On note que les éléments dans entourés par &lt;!-- et --&gt; sont des commentaires, et ne sont pas pris en compte par la machine.</p><pre class="language-html line-numbers"><code>
+
+<!doctype html> 
+<html lang="fr">  
+    <head>        
+        <meta charset="utf-8">
+        <title>Nom de l'onglet</title>
+    </head>
+    <body> 
+    </body>
+</html>
+
+
+</code></pre><p>Voici comment fonctionne la structure HTML : les éléments sont des blocs délimités par des balises, qui s'imbriquent les uns dans les autres dans un ordre précis.</p><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Vladimir-Jeantroux/mon/temps-1.1/structure_html.jpg" alt="Structure HTML" title="Structure HTML"></p><p>Image : &quot;La structure de base en HTML&quot; OpenClassrooms, <a href="https://openclassrooms.com/fr/courses/1603881-creez-votre-site-web-avec-html5-et-css3/8061261-creez-votre-premiere-page-web-en-html">https://openclassrooms.com/fr/courses/1603881-creez-votre-site-web-avec-html5-et-css3/8061261-creez-votre-premiere-page-web-en-html</a>.</p><p>Pour s'entraîner, on va créer la page d'accueil d'un blog de cuisine comme point de départ de mon POK. Pour commencer, on va insérer un en-tête avec le nom de la page, un onglet de navigation, et une barre de recherche (non-fonctionnelle pour le moment).</p><pre class="language-html line-numbers"><code>
+
+<!doctype html> 
+<html lang="fr">  
+    <head>        
+        <meta charset="utf-8">
+        <title>Accueil de la Cuisine de Vlad</title>
+    </head>
+    <body>
+      <header>
+        <div class="entete">
+          <h1>La Cuisine de Vlad</h1>
+            <a href="a-propos.html" class="apropos">À propos du créateur</a>
+            <div class="search-bar">
+              <input type="text" placeholder="Rechercher recette, ingrédient,...">
+              <button type="button">Rechercher</button>
+            </div>
+        </div>
+      </header>
+    </body>
+</html>
+
+
+</code></pre><p>On en profite au passage pour créer la page &quot;à-propos&quot; en question, qui contiendra une image de son créateur. Le body contiendra donc un en-tête et le contenu suivant :</p><pre class="language-html line-numbers"><code>
+
+ <main class="main-content">
+    <h2>Vladimir Jeantroux</h2>
+    <div class="autobio">
+      <p>Vladimir est le créateur de ce site, c'est un étudiant de Centrale Méditerannée, et c'est aussi un homme très
+      intelligent en plus d'être super drôle. Il n'y a pas grand-chose d'autre à dire.</p>
+      <img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Vladimir-Jeantroux/mon/temps-1.1/images/moi.jpg" alt="Vladimir à la plage" height="300" width="auto">
+    </div>
+</main>
+
+
+</code></pre><p>Notons que l'on peut donner des attributs à un éléments directement dans la balise : on règle la taille de l'image lorsqu'on la déclare. La balise déclarant une image est ce qu'on appelle une balise orpheline, c'est à dire qu'elle n'a pas besoin de balise fermante.</p><p>La balise &quot;h1&quot; permet d'indiquer un titre , &quot;header&quot; un en-tête, et &quot;a&quot; transforme une portion de texte en lien cliquable.&quot;div&quot; est une balise dite universelle, elle n'indique rien en soi mais va permettre d'attribuer des classes à des éléments de la page. Nous reparlerons des classes au moment d'aborder CSS.</p><p>Maintenant, on va créer le contenu principal de la page. On va rapidement évoquer le but du site, et les fonctionnalités qu'on veut proposer. Mettons à jour notre code dans la section &quot;body&quot; en rajoutant une nouvelle section.</p><pre class="language-html line-numbers"><code>
+
+<main class="main-content">
+  <h2>A propos du site</h2>
+    <p>Voici le début de commencement de mon site. Ce sera comme une base de données des recettes que j'ai pu faire 
+    au fil de mes années d'étudiants, que je pourrai trier et rechercher selon des critères particuliers.</p>
+    <h2>Contenu</h2>
+      <p>Il y aura des recettes faites par moi car je ne sais jamais quoi manger. <strong>Il sera possible de rechercher une recette en 
+      particulier,des ingrédients ou une difficulté, pour les plus ou moins motivés. </strong><br>Quelques exemples : </p>
+      <ul>
+        <li>Nouilles instantanés</li>
+          <li>Poelée de poireaux à la crème</li>
+          <li>Bouchées de brownie</li>
+          <li>Pancakes</li>
+          <li>Burgers maison</li>
+      </ul>
+      <p>Je souhaite m'inspirer du site de <a href="https://www.marmiton.org">Marmiton</a>, et créer ma version 
+      personnelle. </p>
+      <p>Voici ma première recette : les <a href="recette_test.html">Nouilles Instantanées.</a>
+</p></main>
+
+
+</code></pre><p>La balise &lt;ul&gt; permet de créer une liste à puce, avec chaque point indiqué par &lt;li&gt;. On aurait pu faire une liste ordonnée avec &lt;ol&gt;, qui aurait été une liste numérotée. &lt;main&gt; permet d'indiquer le contenu principal de la page. Cette balise sert autant à la machine qu'à l'humain, car elle permet de créer une catégorie clair et rendre le code plus lisible.</p><p>Nous avons maintenant une page d'accueil qui indique ce qu'il y a à savoir sur le site. Voyons voir à quoi elle ressemble !!</p><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Vladimir-Jeantroux/mon/temps-1.1/site_moche.jpg" alt="Résultat"></p><p>C'est laid.</p><p>En effet, nous n'avons pas encore parlé de CSS, qui contient toutes les informations par rapport au style de la page. Il faut donc s'y intéresser afin de pouvoir disposer les éléments de la page de façon plus lisible, claire et plaisante visuellement.</p><h3 id="2.-css" tabindex="-1"><a class="header-anchor" href="#2.-css"></a> 2. CSS</h3><p>Sans CSS, toutes les pages Internet ressembleraient à des documents Microsoft Word sans mise en page. Pour pouvoir utiliser CSS, on va créer un fichier &quot;style.css&quot; qu'on va lier au document HTML en mettant la ligne suivante dans la partie &lt;head&gt; :</p><pre class="line-numbers"><code>
+
+<link rel="stylesheet" href="style.css">
+
+
+</code></pre><p>A partir d'ici, on va pouvoir travailler sur le fichier style.css, et tous les changements effectués se répercuteront sur la page web.</p><p>La structure d'un fichier .css est très différente d'un fichier .html. Ici, on va attribuer à des éléments et des catégories d'éléments des propriétés particulières. Par exemple, je veux que mes gros titres soient de la couleur violette, centrés et dans la police MingLiU. J'écrirai dans mon fichier .css :</p><pre class="language-css line-numbers"><code>
+
+h1{
+    color: darkviolet; 
+    text-align: center;
+    font-family: "MingLiU-ExtB";
+}
+
+
+</code></pre><p>Je peux aussi appliquer ces propriétés à plusieurs éléments en une seule fois, il suffit de les lister en les séparant d'une virgule. Par exemple, appliquant ces propriétés aux titres, mais aussi aux sous-titres plus petits. Il suffit d'écrire :</p><pre class="language-css line-numbers"><code>
+
+h1, h2, h3{
+    color: darkviolet; 
+    text-align: center;
+    font-family: "MingLiU-ExtB";
+}
+
+
+</code></pre><p>On peut maintenant exploiter les classes que nous avions défini précédemment. Prenons par exemple l'en-tête, auquel on avait donné la classe &quot;entete&quot;. Dans le fichier .css, nous pouvons donner des attributs à tous les éléments de cette classe, avec la syntaxe &quot;.nomdelaclasse&quot; comme suit (en css les commentaires sont entourés par /* */):</p><pre class="language-css line-numbers"><code>
+
+.entete {
+    max-width: 1200px; /* Largeur maximale du contenu du header */
+    margin: 0 auto; /* Centre le contenu horizontalement */
+    display: flex; /* Utilise la disposition flexbox */
+    justify-content: space-between; /* Place les éléments à l'extrémité gauche et droite */
+    align-items: center; /* Centre les éléments verticalement */
+}
+
+
+</code></pre><p>Grâce à ces attributs, on a donc un en-tête centré verticalement sur la page (grâce à &quot;align-items&quot;), avec des éléments également espacés au sein de l'en-tête (justify-content). Cette dernière propriété est une fonctionnalité de Flexbox. Flexbox permet d'ordonner des éléments au sein d'un conteneur, pour les aligner verticalement, horizontalement, ou encore régler l'espacement entre les éléments du conteneur. Flexbox permet aussi d'adapter le conteneur à la taille de l'écran avec la fonction &quot;flex-wrap&quot;. Si il n'y a plus d'espace horizontal, les éléments retournent à la ligne au lieu de dépasser de l'écran.</p><p>On peut aussi très bien agir sur les éléments de type &quot;header&quot; comme suit :</p><pre class="language-css line-numbers"><code>
+
+header {
+    color: #fff; 
+    position: fixed; 
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100; /* Assure que le header est au-dessus du contenu de la page */
+}
+
+
+</code></pre><p>Cela nous permet d'obtenir un en-tête noir, fixé en haut de l'écran même si l'utilisateur défile vers le bas.</p><p>Nous voulons maintenant un arrière plan plus lisible et esthétique. Pour cela, je compte mettre le texte de la page dans une fenêtre blanche qui sera centrée au milieu de l'écran, et l'arrière plan sera un dégradé de couleurs pour donner un peu de vie au site. On va commencer par le fond, où il suffit de changer l'attribut de l'arrière plan du corps du site :</p><pre class="language-css line-numbers"><code>
+
+body{
+    background: linear-gradient(to bottom, #800080, #ffc0cb);
+}
+
+
+</code></pre><p>On crée donc un dégradé qui va du haut vers le bas et du violet vers un blanc rosé. On peut maintenant agir sur le texte principal de la page, cette fois en agissant sur le main de la page, auquel on a donné la classe &quot;main-content&quot;.</p><pre class="language-css line-numbers"><code>
+
+.main-content {
+    max-width: 800px; /* Largeur maximale du contenu principal */
+    padding:20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 80px;
+}
+
+
+</code></pre><p>Ainsi le texte est maintenant inséré dans une boîte centrée verticalement sur la page. La propriété &quot;border-radius&quot; permet d'avoir des coins arrondis et avoir un visuel plus plaisant, et &quot;padding&quot; permet de mettre de l'espace entre les bords et le contenu de la boîte pour avoir un texte plus aéré.</p><p>Enfin, on peut terminer avec un effet mineur mais qui peut donner un peu de vie au site sont les animations jouant lors d'interactions avec la souris. On utilise alors ce qu'on appelle des pseudos-classes. C'est un mot-clé qu'on peut associer à un élément qui précise l'état spécifique dans lequel l'élément doit se trouver pour être ciblé par la déclaration. On va par exemple faire en sorte que les liens hypertexte changent de couleur lorsqu'ils sont survolés ou cliqués par la souris.</p><pre class="language-css line-numbers"><code>
+
+a:hover, a:active{
+    color:deeppink
+}
+
+
+</code></pre><p>Voici le résultat final :</p><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Vladimir-Jeantroux/mon/temps-1.1/site_beau.jpg" alt="Page d'accueil"></p><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Vladimir-Jeantroux/mon/temps-1.1/presentation.jpg" alt="Présentation élève"></p><h3 id="bibliographie" tabindex="-1"><a class="header-anchor" href="#bibliographie"></a> Bibliographie</h3><ul><li>Schéma &quot;La structure de base en HTML&quot; « Créez votre première page web en HTML ». OpenClassrooms, <a href="https://openclassrooms.com/fr/courses/1603881-creez-votre-site-web-avec-html5-et-css3/8061261-creez-votre-premiere-page-web-en-html">https://openclassrooms.com/fr/courses/1603881-creez-votre-site-web-avec-html5-et-css3/8061261-creez-votre-premiere-page-web-en-html</a>.</li></ul></article></main><footer class="min-h-[50px] border-t-2 mt-4 border-gray-200 dark:border-neutral-700"><div class="max-w-[1000px] mx-auto px-4"><div class="min-h-[50px] flex justify-center items-center"><p class="text-center">©2025 <b><span style="font-family:Consolas,sans-serif">Do-<span style="color:#4a86e8">It</span></span></b> - Développement, Management et Gestion de projets en IT</p></div></div></footer><script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">window.MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]]},svg:{fontCache:"global"}},document.addEventListener("DOMContentLoaded",(()=>{MathJax.typeset()}))</script><script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">Prism.plugins.NormalizeWhitespace.setDefaults({"remove-trailing":!0,"remove-indent":!0,"left-trim":!0,"right-trim":!0})</script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script></body></html>

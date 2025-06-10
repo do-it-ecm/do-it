@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="robots" content="index, follow">
+
+        <link rel="canonical" href="https://do-it.aioli.ec-m.fr/promos/2023-2024/Vladimir-Jeantroux/mon/temps-1.2/">
+
+        
+        
+
+        <meta name="description" content="Do-It, cours et travaux des élèves de l&#39;école Centrale Méditerranée">
+        <meta property="og:description" content="Do-It, cours et travaux des élèves de l&#39;école Centrale Méditerranée">
+        <meta name="twitter:description" content="Do-It, cours et travaux des élèves de l&#39;école Centrale Méditerranée">
+
+        
+            <meta name="author" content="Vladimir Jeantroux">
+        
+        <meta name="keywords" content="do-it, centrale, centrale méditerranée, ecm, MON, C">
+
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png">
+        <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png">
+
+        <link href="/assets/stylesheets/main.css" rel="stylesheet">
+
+        <meta property="og:title" content="Introduction au C#">
+
+        <meta property="og:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta property="og:url" content="https://do-it.aioli.ec-m.fr/promos/2023-2024/Vladimir-Jeantroux/mon/temps-1.2/">
+        <meta property="og:type" content="website">
+
+        <meta name="twitter:card" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:title" content="Introduction au C#">
+        <meta name="twitter:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:url" content="https://do-it.aioli.ec-m.fr/promos/2023-2024/Vladimir-Jeantroux/mon/temps-1.2/">
+
+        <title>Introduction au C#</title>
+
+        <!-- Prismjs imports
+                - Prism line numbers
+                - Prism toolbar
+        -->
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet">
+        <link id="prism-theme" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+        <!-- Mermaid import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js "></script>
+
+        <script defer="">
+        // Check if a theme is stored in localStorage. If so, use it, otherwise fallback to the system preference.
+        const storedTheme = localStorage.getItem('theme');
+        if (storedTheme) {
+            document.documentElement.classList.toggle("dark", storedTheme === "dark");
+        } else {
+            // Use system color scheme if there is no stored theme preference.
+            document.documentElement.classList.toggle("dark", window.matchMedia("(prefers-color-scheme: dark)").matches);
+        }
+
+        function loadPrismTheme(isDarkMode) {
+            const newTheme = isDarkMode ? 'prism-okaidia.min.css' : 'prism-solarizedlight.min.css';
+            const newLink = document.createElement('link');
+            newLink.rel = 'stylesheet';
+            newLink.id = 'prism-theme';
+            newLink.href = `https://cdn.jsdelivr.net/npm/prismjs/themes/${newTheme}`;
+
+            newLink.onload = () => {
+                // Reapply highlighting after the new theme loads
+                Prism.highlightAll();
+            };
+
+            const existingLink = document.getElementById('prism-theme');
+            if (existingLink) {
+                document.head.replaceChild(newLink, existingLink);
+            } else {
+                document.head.appendChild(newLink);
+            }
+        }
+
+        function setMermaidTheme(isDarkMode) {
+            const theme = isDarkMode ? 'dark' : 'forest';
+            mermaid.initialize({
+                securityLevel: 'loose',
+                theme,
+                startOnLoad: true,
+            });
+        }
+
+        // Toggle dark and light mode and update localStorage accordingly.
+        function toggleDarkMode() {
+            const dark = document.documentElement.classList.contains("dark");
+            const newTheme = dark ? "light" : "dark";
+            localStorage.setItem('theme', newTheme);
+            document.documentElement.classList.toggle("dark", !dark);
+            loadPrismTheme(!dark);
+            setMermaidTheme(!dark);
+        }
+
+        // On initial load, ensure that Prism and Mermaid are initialized using the current theme.
+        const isDark = document.documentElement.classList.contains("dark");
+        loadPrismTheme(isDark);
+        setMermaidTheme(isDark);
+        </script>
+
+    </head>
+
+    <body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000" class="bg-neutral-50 text-neutral-950 dark:bg-neutral-900 dark:text-neutral-50">
+        <header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white dark:bg-neutral-900 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-between items-center">
+                    <a class="mx-2" href="/">Home</a>
+                    <button class="hidden sm:block text-neutral-950 dark:text-neutral-50 hover:bg-neutral-700 hover:text-neutral-50 hover:dark:bg-neutral-300 hover:dark:text-neutral-950 transition-colors p-2 rounded-full duration-800 ease-in-out" onclick="toggleDarkMode()">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 dark:hidden stroke-current">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <path d="M12 2V4" stroke-linecap="round"></path>
+                            <path d="M12 20V22" stroke-linecap="round"></path>
+                            <path d="M4 12L2 12" stroke-linecap="round"></path>
+                            <path d="M22 12L20 12" stroke-linecap="round"></path>
+                            <path d="M19.7778 4.22266L17.5558 6.25424" stroke-linecap="round"></path>
+                            <path d="M4.22217 4.22266L6.44418 6.25424" stroke-linecap="round"></path>
+                            <path d="M6.44434 17.5557L4.22211 19.7779" stroke-linecap="round"></path>
+                            <path d="M19.7778 19.7773L17.5558 17.5551" stroke-linecap="round"></path>
+                        </svg>
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 stroke-current hidden dark:block">
+                            <path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </button>
+                    <div class="flex items-center gap-4 sm:gap-6 ">
+                        <a class="" href="/cs">CS</a>
+                        <a class="" href="/pok">POK</a>
+                        <a class="" href="/mon">MON</a>
+                        <a class="" href="/projets">Projets</a>
+                        <a class="hidden sm:block" href="/promos">Promos</a>
+                        <a href="/search">
+                            <svg class="h-5 aspect-square stroke-neutral-950 dark:stroke-neutral-300 fill-none stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+                            </svg>
+                        </a>
+                        <a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank">
+                            <svg class="h-5 aspect-square dark:stroke-neutral-300 dark:fill-neutral-300" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body="">
+            
+<article class="relative">
+<h1 class="mb-1">Introduction au C#</h1>
+<div class="mb-4">
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Tags : </div>
+            <ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags">
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">MON</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">C</li>
+                
+
+            </ul>
+
+            
+            <div class="hidden" data-pagefind-meta="Type" aria-hidden="true">
+                
+                    
+                        <span data-pagefind-filter="Type">MON</span>
+                    
+                
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Auteur : </div>
+            <ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs">
+                
+                    <li class="bg-blue-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Auteurs">Vladimir Jeantroux</li>
+                
+            </ul>
+        </div>
+    
+
+    
+        <div class="absolute top-0 right-0">
+            <span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2 text-neutral-950" data-pagefind-filter="Année">
+                2023-2024
+            </span>
+        </div>
+    
+</div>
+
+
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100 dark:border-purple-800 dark:bg-purple-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-purple-500 dark:stroke-purple-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/promos/2023-2024/Vladimir-Jeantroux/">Vladimir Jeantroux</a><span class="px-1">/</span><a href="/promos/2023-2024/Vladimir-Jeantroux/mon/">MON de Vladimir Jeantroux</a><span class="px-1">/</span><a href="/promos/2023-2024/Vladimir-Jeantroux/mon/temps-1.2/">Introduction au C#</a>
+
+</div>
+</div>
+
+
+
+
+<h2 id="r%C3%A9sum%C3%A9-%3A" tabindex="-1"><a class="header-anchor" href="#r%C3%A9sum%C3%A9-%3A"></a> Résumé :</h2>
+<p>C# (prononcer C Sharp) est un langage orienté objet prédominant dans le domaine du développement de jeux vidéos, très utilisé dans les moteurs tels que Unity ou Godot.</p>
+<h2 id="pr%C3%A9-requis-%3A" tabindex="-1"><a class="header-anchor" href="#pr%C3%A9-requis-%3A"></a> Pré-requis :</h2>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100 dark:border-pink-800 dark:bg-pink-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-pink-500 dark:stroke-pink-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Prérequis</b></p>
+</div><div class="pl-8 mr-8">
+<p>Pré-requis :</p>
+<p>Aucun bagage théorique n'est requis</p>
+</div>
+</div>
+<p>Contrairement à ce que son nom indique, C# na aucun rapport avec C ou C++, il n'y a pas besoin d'avoir de connaissances quelconques dans ces langages pour démarrer en C#. C'est même un bon langage pour les débutants car il est plutôt simple à prendre en main, et très polyvalent. Pour ce qui est des prérequis techniques, on va avoir besoin d'un IDE comme <a href="https://code.visualstudio.com">Visual Studio Code</a>, avec <a href="https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp">l'extension C#</a> et le <a href="https://dotnet.microsoft.com/en-us/download">framework .NET</a>.</p>
+<h2 id="c'est-quoi-.net-et-pourquoi-j'en-ai-besoin-%3F" tabindex="-1"><a class="header-anchor" href="#c'est-quoi-.net-et-pourquoi-j'en-ai-besoin-%3F"></a> C'est quoi .NET et pourquoi j'en ai besoin ?</h2>
+<p>.NET (prononcer dot net) est un framework qui fournit un environnement de développement et d'exécution pour le développement d'applications web. Il contient des librairies et des outils de base qui permettent de faciliter la tâche du développeur. L'intérêt pour C# est d'avoir des outils pour coder son application sans avoir à tout réinventer, et simplement pouvoir construire par-dessus les templates qu'offre .NET.</p>
+<p>L'intérêt principal de .NET est qu'il est polyvalent, avec plusieurs composants avec des fonctions différentes, comme une bibliothèque de classes ou de frameworks pour différents types d'application. Un tableau complet recensant les composants et leurs fonctionnalités peuvent être trouvés dans le <a href="https://do-it.aioli.ec-m.fr/promos/2022-2023/Laeuffer-Savinien/mon/csharp/">MON de Savinien Laeuffer</a>, MON qui m'a permis de bien comprendre les différents aspects de ce langage.</p>
+<h2 id="notions-basiques" tabindex="-1"><a class="header-anchor" href="#notions-basiques"></a> Notions basiques</h2>
+<h3 id="la-programmation-orient%C3%A9e-objet-(poo)" tabindex="-1"><a class="header-anchor" href="#la-programmation-orient%C3%A9e-objet-(poo)"></a> La programmation orientée objet (POO)</h3>
+<p>C# est un langage orienté objet, ce qui signifie qu'il repose sur la notion d'objets et de classes. Elle se fonde sur l'idée de modéliser des entités du monde réel ou des abstractions informatiques sous forme d'objets, qui possèdent des caractéristiques (appelées attributs) et des comportements (appelés méthodes). La POO permet de structurer et d'organiser le code de manière plus modulaire, ce qui facilite la compréhension, la maintenance et la réutilisation du code. C'est une notion centrale à C# qu'il faut bien comprendre avant de vouloir commencer à coder.</p>
+<h4 id="1.-classes" tabindex="-1"><a class="header-anchor" href="#1.-classes"></a> 1. Classes</h4>
+<p>Une classe est un modèle pour créer des objets. Elle définit les attributs (variables) et les méthodes (fonctions) que les objets auront. Voici un exemple simple de définition de classe :</p>
+<pre class="language-csharp line-numbers"><code>
+
+class Personne
+{
+    public string Nom;
+    public int Age;
+
+    public void Parler()
+    {
+        Console.WriteLine("Bonjour");
+    }
+}
+
+
+</code></pre><p>On a déclaré une classe s'appelant &quot;Personne&quot;. Un objet de la catégorie Personne aura deux attributs : son nom et son âge. Cet objet a aussi une fonction Parler qui renvoie simplement dans le terminal le texte &quot;Bonjour&quot;. L'intérêt de cette méthode est que c'est ensuite facile de définir des Personnes, et on peut en avoir plusieurs représentants dans le programme.</p>
+<h4 id="2.-objets" tabindex="-1"><a class="header-anchor" href="#2.-objets"></a> 2. Objets</h4>
+<p>Les objets sont les instances de classe. Par exemple, si je veux créer une nouvelle personne :</p>
+<pre class="language-csharp line-numbers"><code>
+
+Personne personne1 = new Personne();
+personne1.Nom = "Alice";
+personne1.Age = 25;
+personne1.Parler();
+
+
+</code></pre><p>Cela me permet de définir un représentant de la classe Personne avec tous les attributs et méthodes qui vont avec. Ceux qui ont bien suivi les cours d'informatique en 1A se rendront compte qu'on se rapproche beaucoup de la structure en Java, à quelques différences de syntaxe près. On a aussi les notions de constructeurs, qui permettent de faciliter la création d'objets.</p>
+<pre class="language-csharp line-numbers"><code>
+
+class Personne
+{
+    public string Nom;
+    public int Age;
+
+    // Constructeur
+    public Personne(string nom, int age)
+    {
+        Nom = nom;
+        Age = age;
+    }
+
+    public void Parler()
+    {
+        Console.WriteLine("Bonjour");
+    }
+}
+
+
+</code></pre><p>Cela peut paraître fastidieux à implémenter au début, mais la création d'objets par la suite devient beaucoup plus simple.</p>
+<pre class="language-csharp line-numbers"><code>
+
+Personne personne1 = new Personne("Alice", 25);
+
+
+</code></pre><p>En une seule ligne, on a créé un nouvel objet; les constructeurs permettent de créer plusieurs objets très rapidement et accélèrent le développement.</p>
+<h2 id="exemples-d'application" tabindex="-1"><a class="header-anchor" href="#exemples-d'application"></a> Exemples d'application</h2>
+<p>Pour apprendre à me servir de C#, j'ai codé quelques exemples simples pour me familiariser avec les méthodes. On a d'abord le plus simple, l'incontournable :</p>
+<pre class="language-csharp line-numbers"><code>
+
+using System;
+
+class Program
+{
+    static void Main()
+    {
+        Console.WriteLine("Hello, World!");
+    }
+}
+
+
+</code></pre><p>J'ai aussi expérimenté avec des boucles et des conditions, en créant un programme qui liste les nombres premiers jusqu'à une certaine limite :</p>
+<pre class="language-csharp line-numbers"><code>
+
+using System;
+
+class Program
+{
+    static bool EstNombrePremier(int nombre)
+    {
+        if (nombre <= 1)
+            return false;
+
+        for (int i = 2; i * i <= nombre; i++)
+        {
+            if (nombre % i == 0)
+                return false;
+        }
+        return true;
+    }
+
+    static void Main()
+    {
+        int limite = 50;
+
+        for (int nombre = 2; nombre <= limite; nombre++)
+        {
+            if (EstNombrePremier(nombre))
+            {
+                Console.Write(nombre + " ");
+            }
+        }
+    }
+}
+
+
+</code></pre><p>Pour exécuter ce fichier, on se place dans le dossier où se trouve le fichier avec le code (au format .cs) et on exécute dans le terminal :</p>
+<pre class="language-powershell line-numbers"><code>
+
+dotnet new console
+
+
+</code></pre><p>Cela nous crée un environnement de projet. On peut maintenant compiler le code et le faire tourner et avoir la sortie :</p>
+<pre class="language-powershell line-numbers"><code>
+
+dotnet build
+dotnet run
+
+
+</code></pre><p>Output :</p>
+<pre class="line-numbers"><code>
+
+2 3 5 7 11 13 17 19 23 29 31 37 41 43 47
+
+
+</code></pre><p>IMPORTANT ! Une bonne pratique est de nommer son fichier à partir du nom de la classe, cela peut éviter certaines erreurs.</p>
+<h2 id="bilan-et-ouverture" tabindex="-1"><a class="header-anchor" href="#bilan-et-ouverture"></a> Bilan et ouverture</h2>
+<p>J'ai trouvé le C# très clair et bien structuré; le code produit en C# est selon généralement compréhensible et facile à cerner. Cependant, cette rigueur dans la structure m'a aussi posé quelques difficultés quand il s'agissait de coder. Le seul autre langage dans lequel je suis vraiment à l'aise est Python, qui est bien moins rigoureux sur les définitions et les structures, donc lors de mon apprentissage il y a eu un considérable temps d'adaptation.
+Après avoir cerné C# et ses bases, je me suis lancé dans plusieurs travaux qui n'ont pas pu aboutir par manque de temps, mais qui pourraient être abordés dans le futur :</p>
+<ul>
+<li>Créer un  jeu vidéo de type Snake ou Morpion, pour tester ses connaissances et faire ses premiers pas dans le gamedev.</li>
+<li>S'intéresser à l'utilisation des différents frameworks .NET : après avoir lu la 2e partie du MON de Savinien Laueffer, il serait intéressant de voir comment développer une application web (ou mobile).</li>
+<li>Voir comment fonctionne Rust : un autre langage qui gagne de la popularité chez les développeurs. (Après quelques révisions en C) Il y a beaucoup de ressources accessibles, ainsi que des MONs pour apprendre, notamment ceux d'Assane Diouf et de Paul Vietor.</li>
+</ul>
+<h2 id="annexes" tabindex="-1"><a class="header-anchor" href="#annexes"></a> Annexes</h2>
+<h3 id="bibliographie" tabindex="-1"><a class="header-anchor" href="#bibliographie"></a> Bibliographie</h3>
+<ul>
+<li>
+<p>MON de Savinien Laeuffer : <a href="https://do-it.aioli.ec-m.fr/promos/2022-2023/Laeuffer-Savinien/mon/csharp/">https://do-it.aioli.ec-m.fr/promos/2022-2023/Laeuffer-Savinien/mon/csharp/</a></p>
+</li>
+<li>
+<p>Tutoriel C# de W3Schools : <a href="https://www.w3schools.com/cs/cs_getstarted.php">https://www.w3schools.com/cs/cs_getstarted.php</a></p>
+</li>
+<li>
+<p>Documentation de Microsoft : <a href="https://learn.microsoft.com/fr-fr/dotnet/csharp/">https://learn.microsoft.com/fr-fr/dotnet/csharp/</a></p>
+</li>
+<li>
+<p>MON Rust de Assane Diouf : <a href="https://do-it.aioli.ec-m.fr/promos/2023-2024/Diouf-Asssane/mon/Rust/">https://do-it.aioli.ec-m.fr/promos/2023-2024/Diouf-Asssane/mon/Rust/</a></p>
+</li>
+<li>
+<p>MON d'introduction à Rust de Paul Vietor : <a href="https://do-it.aioli.ec-m.fr/promos/2023-2024/Vietor-Paul/mon/temps-1.2/">https://do-it.aioli.ec-m.fr/promos/2023-2024/Vietor-Paul/mon/temps-1.2/</a></p>
+</li>
+</ul>
+
+
+
+</article>
+
+        </main>
+
+        <footer class="min-h-[50px] border-t-2 mt-4 border-gray-200 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-center items-center">
+                    <p class="text-center">
+                        ©2025 <b><span style="font-family: Consolas, sans-serif;">Do-<span style="color: #4a86e8">It</span></span></b> - Développement, Management et Gestion de projets en IT
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- MathJax import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">
+            window.MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']], // Delimiters for inline math
+                    displayMath: [['$$', '$$'], ['\\[', '\\]']] // Delimiters for block math
+                },
+                svg: {
+                    fontCache: 'global' // Use global font cache for SVG output
+                }
+            };
+            document.addEventListener('DOMContentLoaded', () => {
+                MathJax.typeset(); // Ensures MathJax processes the content after the page loads
+            });
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">
+            Prism.plugins.NormalizeWhitespace.setDefaults({
+                'remove-trailing': true,
+                'remove-indent': true,
+                'left-trim': true,
+                'right-trim': true,
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script>
+    </body>
+</html>

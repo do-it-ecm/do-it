@@ -1,0 +1,155 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="index, follow"><link rel="canonical" href="https://do-it.aioli.ec-m.fr/contribuer/markdown/"><meta name="description" content="Do-It, cours et travaux des élèves de l&#39;école Centrale Méditerranée"><meta property="og:description" content="Do-It, cours et travaux des élèves de l&#39;école Centrale Méditerranée"><meta name="twitter:description" content="Do-It, cours et travaux des élèves de l&#39;école Centrale Méditerranée"><meta name="author" content="François Brucker, Loïck Goupil-Hallay"><meta name="keywords" content="do-it, centrale, centrale méditerranée, ecm, HOME, GUIDE, markdown"><link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon"><link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png"><link rel="apple-touch-icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png"><link href="/assets/stylesheets/main.css" rel="stylesheet"><meta property="og:title" content="Markdown"><meta property="og:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png"><meta property="og:url" content="https://do-it.aioli.ec-m.fr/contribuer/markdown/"><meta property="og:type" content="website"><meta name="twitter:card" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png"><meta name="twitter:title" content="Markdown"><meta name="twitter:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png"><meta name="twitter:url" content="https://do-it.aioli.ec-m.fr/contribuer/markdown/"><title>Markdown</title><link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet"><link id="prism-theme" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet"><link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet"><script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script><script defer="">const storedTheme=localStorage.getItem("theme");function loadPrismTheme(e){const t=e?"prism-okaidia.min.css":"prism-solarizedlight.min.css",s=document.createElement("link");s.rel="stylesheet",s.id="prism-theme",s.href=`https://cdn.jsdelivr.net/npm/prismjs/themes/${t}`,s.onload=()=>{Prism.highlightAll()};const m=document.getElementById("prism-theme");m?document.head.replaceChild(s,m):document.head.appendChild(s)}function setMermaidTheme(e){const t=e?"dark":"forest";mermaid.initialize({securityLevel:"loose",theme:t,startOnLoad:!0})}function toggleDarkMode(){const e=document.documentElement.classList.contains("dark"),t=e?"light":"dark";localStorage.setItem("theme",t),document.documentElement.classList.toggle("dark",!e),loadPrismTheme(!e),setMermaidTheme(!e)}storedTheme?document.documentElement.classList.toggle("dark","dark"===storedTheme):document.documentElement.classList.toggle("dark",window.matchMedia("(prefers-color-scheme: dark)").matches);const isDark=document.documentElement.classList.contains("dark");loadPrismTheme(isDark),setMermaidTheme(isDark)</script></head><body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000" class="bg-neutral-50 text-neutral-950 dark:bg-neutral-900 dark:text-neutral-50"><header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white dark:bg-neutral-900 dark:border-neutral-700"><div class="max-w-[1000px] mx-auto px-4"><div class="min-h-[50px] flex justify-between items-center"><a class="mx-2" href="/">Home</a> <button class="hidden sm:block text-neutral-950 dark:text-neutral-50 hover:bg-neutral-700 hover:text-neutral-50 hover:dark:bg-neutral-300 hover:dark:text-neutral-950 transition-colors p-2 rounded-full duration-800 ease-in-out" onclick="toggleDarkMode()"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 dark:hidden stroke-current"><circle cx="12" cy="12" r="5"></circle><path d="M12 2V4" stroke-linecap="round"></path><path d="M12 20V22" stroke-linecap="round"></path><path d="M4 12L2 12" stroke-linecap="round"></path><path d="M22 12L20 12" stroke-linecap="round"></path><path d="M19.7778 4.22266L17.5558 6.25424" stroke-linecap="round"></path><path d="M4.22217 4.22266L6.44418 6.25424" stroke-linecap="round"></path><path d="M6.44434 17.5557L4.22211 19.7779" stroke-linecap="round"></path><path d="M19.7778 19.7773L17.5558 17.5551" stroke-linecap="round"></path></svg> <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 stroke-current hidden dark:block"><path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke-linecap="round" stroke-linejoin="round"></path></svg></button><div class="flex items-center gap-4 sm:gap-6"><a class="" href="/cs">CS</a> <a class="" href="/pok">POK</a> <a class="" href="/mon">MON</a> <a class="" href="/projets">Projets</a> <a class="hidden sm:block" href="/promos">Promos</a> <a href="/search"><svg class="h-5 aspect-square stroke-neutral-950 dark:stroke-neutral-300 fill-none stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path></svg> </a><a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank"><svg class="h-5 aspect-square dark:stroke-neutral-300 dark:fill-neutral-300" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg></a></div></div></div></header><main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body=""><article class="relative"><h1 class="mb-1">Markdown</h1><div class="mb-4"><div class="px-4 flex flex-wrap items-center"><div class="font-bold">Tags :</div><ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags"><li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">HOME</li><li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">GUIDE</li><li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">markdown</li></ul><div class="hidden" data-pagefind-meta="Type" aria-hidden="true"></div></div><div class="px-4 flex flex-wrap items-center"><div class="font-bold">Auteurs :</div><ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs"><li class="bg-blue-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Auteurs">François Brucker</li><li class="bg-blue-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Auteurs">Loïck Goupil-Hallay</li></ul></div></div><script>let lastScrollYSummary=window.scrollY;function toggleSummarySidebar(){document.getElementById("toc-sidebar").classList.toggle("open")}window.addEventListener("scroll",(()=>{const t=document.getElementById("toc-burger-button"),e=document.getElementById("toc-sidebar"),l=window.scrollY;l<10||l<lastScrollYSummary?t.classList.remove("hidden"):e&&e.classList.contains("open")||t.classList.add("hidden"),lastScrollYSummary=l}))</script><p><button id="toc-burger-button" class="sidebar-burger-button right-2" onclick="toggleSummarySidebar()">☰</button></p><nav id="toc-sidebar" class="sidebar right-0 border-l-2 translate-x-full 3xl:translate-x-0"><h2>Sommaire</h2><nav class="toc"><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#html">HTML</a></li><li class="toc-item"><a class="toc-link" href="#titres">Titres</a></li><li class="toc-item"><a class="toc-link" href="#texte">Texte</a></li><li class="toc-item"><a class="toc-link" href="#liens">Liens</a></li><li class="toc-item"><a class="toc-link" href="#images-%26-vid%C3%A9os">Images &amp; Vidéos</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#image">Image</a></li><li class="toc-item"><a class="toc-link" href="#vid%C3%A9o">Vidéo</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#tables">Tables</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#table-avec-titre">Table avec titre</a></li><li class="toc-item"><a class="toc-link" href="#tables-sans-titre">Tables sans titre</a></li><li class="toc-item"><a class="toc-link" href="#tables-multi-colonnes">Tables multi-colonnes</a></li><li class="toc-item"><a class="toc-link" href="#tables-multi-lignes">Tables multi-lignes</a></li><li class="toc-item"><a class="toc-link" href="#plusieurs-ligne-dans-une-cellule">plusieurs ligne dans une cellule</a></li><li class="toc-item"><a class="toc-link" href="#alignement-horizontal">Alignement horizontal</a></li><li class="toc-item"><a class="toc-link" href="#alignement-vertical">Alignement vertical</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#code">Code</a></li><li class="toc-item"><a class="toc-link" href="#autres-guides">Autres guides</a></li></ol></nav></nav><div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100 dark:border-emerald-800 dark:bg-emerald-950"><svg class="absolute w-6 h-6 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-emerald-500 dark:stroke-emerald-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path></svg><div class="pl-8 mb-2 mr-8"><p><strong>Liens utiles</strong></p></div><div class="pl-8 mr-8"><ul><li><a href="https://francoisbrucker.github.io/cours_informatique/tutoriels/format-markdown/">Cours Markdown - François Brucker</a></li><li><a href="../extensions">Guide des extensions apportées par Eleventy</a></li><li><a href="../shortcodes">Guide ShortCodes pour le site</a></li><li><a href="../">Guide de contribution au site</a></li><li><a href="https://github.com/do-it-ecm/do-it/blob/main/README.md">Documentation du site (anglais)</a></li><li><a href="https://github.com/do-it-ecm/do-it/blob/main/CONTRIBUTING.md">Guide de contribution complet (anglais)</a></li></ul></div></div><p>Pour rédiger en Markdown, il faut connaître les bases de ce langage de balisage léger.</p><h2 id="html" tabindex="-1"><a class="header-anchor" href="#html"></a> HTML <a id="html"></a></h2><p>Markdown permet d'utiliser pleinement le HTML, le CSS et le JavaScript ! A vous les joies de la personnalisation !</p><pre class="language-markdown line-numbers"><code>
+
+&lt;div style="border: 1px solid black; padding: 10px; margin: auto; width: fit-content;"&gt;
+    &lt;div style="display: flex; gap: 15px; align-items: center; flex-direction: row"&gt;
+        &lt;p&gt;Hello World!&lt;/p&gt;
+        &lt;button&gt;Click me!&lt;/button&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+
+</code></pre><div style="border:1px solid #000;padding:10px;margin:auto;width:fit-content"><div style="display:flex;gap:15px;align-items:center;flex-direction:row"><p>Hello World!</p><button>Click me!</button></div></div><h2 id="titres" tabindex="-1"><a class="header-anchor" href="#titres"></a> Titres <a id="titres"></a></h2><p>Pour créer un titre, il suffit de mettre un <code>#</code> devant le texte du titre.<br>Il existe 6 niveaux de titres, du plus grand au plus petit qui permettent de structurer votre contenu.</p><pre class="language-markdown line-numbers"><code>
+
+# Titre 1
+## Titre 2
+### Titre 3
+#### Titre 4
+##### Titre 5
+###### Titre 6
+
+
+</code></pre><h2 id="texte" tabindex="-1"><a class="header-anchor" href="#texte"></a> Texte <a id="texte"></a></h2><p>Il est possible de mettre en forme le texte en gras, en italique, en barré, en souligné, en couleur, etc.</p><p>Pour mettre un texte en gras, il suffit de mettre le texte entre deux <code>**</code> ou deux <code>__</code>.</p><pre class="language-markdown line-numbers"><code>
+
+**Texte en gras**
+__Texte en gras__
+
+
+</code></pre><p>Pour mettre un texte en italique, il suffit de mettre le texte entre deux <code>*</code> ou deux <code>_</code>.</p><pre class="language-markdown line-numbers"><code>
+
+*Texte en italique*
+_Texte en italique_
+
+
+</code></pre><p>Pour mettre un texte en barré, il suffit de mettre le texte entre deux <code>~~</code>.</p><pre class="language-markdown line-numbers"><code>
+
+~~Texte barré~~
+
+
+</code></pre><p>Pour mettre un texte en souligné, il suffit de mettre le texte entre deux <code>&lt;u&gt;</code>.</p><pre class="language-markdown line-numbers"><code>
+
+&lt;u&gt;Texte souligné&lt;/u&gt;
+
+
+</code></pre><p>Pour mettre un texte en couleur, il suffit de mettre le texte entre deux <code>&lt;span style=&quot;color: couleur;&quot;&gt;</code>.</p><pre class="language-markdown line-numbers"><code>
+
+&lt;span style="color: red;"&gt;Texte en rouge&lt;/span&gt;
+
+
+</code></pre><p>Pour afficher le texte en gras et le faire ressortir, il suffit d'utiliser un backtick ` avant et après le texte.</p><pre class="language-markdown line-numbers"><code>
+
+&#96;Texte en gras&#96;
+
+
+</code></pre><h2 id="liens" tabindex="-1"><a class="header-anchor" href="#liens"></a> Liens <a id="liens"></a></h2><p>Pour insérer un lien, il suffit de mettre le texte du lien entre crochets, suivi du lien entre parenthèses.</p><p>Cela peut être un lien vers une page web, un fichier à télécharger, une autre page de votre site, etc.</p><pre class="language-markdown line-numbers"><code>
+
+[Texte du lien](https://www.lien-du-site.com)
+
+
+</code></pre><p><a href="https://do-it.aioli.ec-m.fr">Do-It</a></p><div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100 dark:border-red-800 dark:bg-red-950"><svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-red-500 dark:stroke-red-800 stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg><div class="pl-8 mb-2 mr-8"><p><b>Attention</b></p></div><div class="pl-8 mr-8"><p>Si vous nommez votre fichier autrement que <code>index.md</code>, il faut mettre <code>../</code> devant le chargement de votre ressource (ex : <code>![image à voir](../mon-image.png)</code>).</p><p>En effet, si vous utilisez par exemple <code>mon_fichier.md</code> comme nom de post, eleventy va :</p><ol><li>créer un dossier nommer <code>mon_fichier</code></li><li>placer votre post dans ce dossier et le renommer <code>index.md</code></li></ol><p>Vos images ne se retrouvent du coup plus dans le bon dossier...</p><p>C'est pourquoi, il est recommandé de toujours créer un dossier avec le nom de votre post et d'y mettre vos données,fichier <code>index.md</code> et ressources.</p></div></div><h2 id="images-%26-vid%C3%A9os" tabindex="-1"><a class="header-anchor" href="#images-%26-vid%C3%A9os"></a> Images &amp; Vidéos <a id="images-videos"></a></h2><h3 id="image" tabindex="-1"><a class="header-anchor" href="#image"></a> Image</h3><p>Pour insérer une image, il suffit de mettre un point d'exclamation, le texte alternatif de l'image entre crochets, suivi du lien de l'image entre parenthèses.</p><p>Vous pouvez également ajouter des légendes à vos images en ajoutant un texte après le lien de l'image. Ces légendes s'afficheront en passant la souris sur l'image.</p><pre class="language-markdown line-numbers"><code>
+
+![image à voir](./mon-image.png "Légende visible en passant la souris")
+
+
+</code></pre><p>Vous pouvez utiliser une taille personnalisée pour vos images en utilisant le shortcode <a href="../shortcodes#sizedimage">sizedImage</a>.</p><h3 id="vid%C3%A9o" tabindex="-1"><a class="header-anchor" href="#vid%C3%A9o"></a> Vidéo</h3><p>Pour insérer une vidéo, vous devez utiliser la balise <code>&lt;video&gt;</code> de HTML.<br>Vous pouvez ainsi paramétrer la vidéo comme vous le souhaitez.</p><pre class="language-markdown line-numbers"><code>
+
+&lt;div style="margin: auto; width: fit-content"&gt;
+  &lt;video style="max-height: min(50vh, 300px)" controls loop&gt;
+    &lt;source src="/assets/video/maid_knight.mp4" type="video/mp4"&gt;
+    Votre navigateur ne supporte pas la balise video.
+  &lt;/video&gt;
+&lt;/div&gt;
+
+
+</code></pre><div style="margin:auto;width:fit-content"><video style="max-height:min(50vh,300px)" controls="" loop=""><source src="https://raw.githubusercontent.com/do-it-ecm/do-it/refs/heads/main/src/assets/video/maid_knight.mp4" type="video/mp4">Votre navigateur ne supporte pas la balise video.</video></div><h2 id="tables" tabindex="-1"><a class="header-anchor" href="#tables"></a> Tables <a id="tables"></a></h2><p>Markdown permet de créer des <strong>jolis tableaux</strong> pour structurer les données. La syntaxe est simple et intuitive.<br>On utilise les possibilités de <a href="https://fletcher.github.io/MultiMarkdown-6/syntax/tables.html">multimarkdown</a></p><h3 id="table-avec-titre" tabindex="-1"><a class="header-anchor" href="#table-avec-titre"></a> Table avec titre</h3><table><thead><tr><th>titre colonne 1</th><th>titre colonne 2</th></tr></thead><tbody><tr><td>Content Cell</td><td>Content Cell</td></tr><tr><td>Content Cell</td><td>Content Cell</td></tr></tbody></table><p>Code :</p><pre class="language-markdown line-numbers"><code>
+
+| titre colonne 1  | titre colonne 2 |
+| ---------------- | --------------- |
+| Content Cell     | Content Cell    |
+| Content Cell     | Content Cell    |
+
+
+</code></pre><h3 id="tables-sans-titre" tabindex="-1"><a class="header-anchor" href="#tables-sans-titre"></a> Tables sans titre</h3><table><tbody><tr><td>Content Cell</td><td>Content Cell</td></tr><tr><td>Content Cell</td><td>Content Cell</td></tr></tbody></table><p>Code :</p><pre class="language-markdown line-numbers"><code>
+
+| ------------- | ------------- |
+| Content Cell  | Content Cell  |
+| Content Cell  | Content Cell  |
+
+
+</code></pre><h3 id="tables-multi-colonnes" tabindex="-1"><a class="header-anchor" href="#tables-multi-colonnes"></a> Tables multi-colonnes</h3><table><tbody><tr><td colspan="2">Je prends 2 colonnes</td></tr><tr><td>Content Cell</td><td>Content Cell</td></tr></tbody></table><p>Code :</p><pre class="language-markdown line-numbers"><code>
+
+| ------------- | ------------- |
+| Je prends 2 colonnes ||
+| Content Cell | Content Cell |
+
+
+</code></pre><h3 id="tables-multi-lignes" tabindex="-1"><a class="header-anchor" href="#tables-multi-lignes"></a> Tables multi-lignes</h3><table><tbody><tr><td rowspan="2">Je prends 2 lignes</td><td>Content Cell</td></tr><tr><td>Content Cell</td></tr><tr><td>Content Cell</td><td>Content Cell</td></tr></tbody></table><p>Code :</p><pre class="language-markdown line-numbers"><code>
+
+| ------------- | ------------- |
+| Je prends 2 lignes |Content Cell |
+| ^^ |Content Cell |
+| Content Cell | Content Cell |
+
+
+</code></pre><h3 id="plusieurs-ligne-dans-une-cellule" tabindex="-1"><a class="header-anchor" href="#plusieurs-ligne-dans-une-cellule"></a> plusieurs ligne dans une cellule</h3><table><tbody><tr><td><ol><li>ligne colonne 1</li><li>ligne colonne 1</li></ol></td><td><ol><li>ligne colonne 2</li><li>ligne colonne 2</li></ol></td></tr><tr><td>Content Cell</td><td>Content Cell</td></tr></tbody></table><p>Code :</p><pre class="language-markdown line-numbers"><code>
+
+| ------------- | ------------- |
+| 1. ligne colonne 1 | 1. ligne colonne 2 | \
+| 1. ligne colonne 1 | 2. ligne colonne 2 |
+| Content Cell | Content Cell |
+
+
+</code></pre><h3 id="alignement-horizontal" tabindex="-1"><a class="header-anchor" href="#alignement-horizontal"></a> Alignement horizontal</h3><table><tbody><tr><td style="text-align:left">Content Cell</td><td style="text-align:center">Content Cell</td><td style="text-align:right">Content Cell</td></tr><tr><td style="text-align:left">Content Cell</td><td style="text-align:center">Content Cell</td><td style="text-align:right">Content Cell</td></tr><tr><td style="text-align:left">Content Cell</td><td style="text-align:center">Content Cell</td><td style="text-align:right">Content Cell</td></tr></tbody></table><p>Code :</p><pre class="language-markdown line-numbers"><code>
+
+| :- | :-: | -: |
+| Content Cell | Content Cell | Content Cell |
+| Content Cell | Content Cell |Content Cell |
+| Content Cell | Content Cell |Content Cell |
+
+
+</code></pre><h3 id="alignement-vertical" tabindex="-1"><a class="header-anchor" href="#alignement-vertical"></a> Alignement vertical</h3><p>On ajoute un style, mais il ne faut pas que ce soit la dernière colonne. Exemple sur une colonne multi-ligne :</p><table><tbody><tr><td rowspan="2">Content Cell {style=&quot;vertical-align:middle&quot;}</td><td>Content Cell</td></tr><tr><td>Content Cell</td></tr><tr><td>Content Cell</td><td>Content Cell</td></tr></tbody></table><p>Code :</p><pre class="language-markdown line-numbers"><code>
+
+| ------------- | ------------- |
+| Content Cell {style="vertical-align:middle"}| Content Cell |
+| ^^| Content Cell |
+| Content Cell | Content Cell |
+
+
+</code></pre><p>Si l'on veut avoir un alignement vertical de la dernière colonne, il faut ajouter une colonne vide (je ne sais pas trop pourquoi) :</p><table><tbody><tr><td>Content Cell</td><td rowspan="2">Content Cell {style=&quot;vertical-align:middle&quot;}</td><td></td></tr><tr><td>Content Cell</td><td></td></tr><tr><td>Content Cell</td><td>Content Cell</td><td></td></tr></tbody></table><p>Code :</p><pre class="language-markdown line-numbers"><code>
+
+| ------------- | ------------- | - |
+| Content Cell | Content Cell {style="vertical-align:middle"}| |
+| Content Cell | ^^ | |
+| Content Cell | Content Cell | |
+
+
+</code></pre><h2 id="code" tabindex="-1"><a class="header-anchor" href="#code"></a> Code <a id="code"></a></h2><p>Pour insérer du code, il suffit de mettre le code entre trois backticks.<br>Vous pouvez également spécifier le langage de programmation pour avoir une coloration syntaxique grâce à PrismJS.</p><p>PrismJS ajoute automatiquement la <strong>coloration syntaxique</strong>, affiche le <strong>langage utilisé</strong> et permet de <strong>copier</strong> directement le code.</p><pre class="language-markdown line-numbers"><code>
+
+&#96;&#96;&#96;python
+def hello():
+    print("Hello World!")
+
+if __name__ == "__main__":
+    hello()
+&#96;&#96;&#96;
+
+
+</code></pre><pre class="language-python line-numbers"><code>
+
+def hello():
+    print("Hello World!")
+
+if __name__ == "__main__":
+    hello()
+
+
+</code></pre><h2 id="autres-guides" tabindex="-1"><a class="header-anchor" href="#autres-guides"></a> Autres guides</h2><ul><li><a href="../extensions">Guide des extensions apportées par Eleventy</a></li><li><a href="../shortcodes">Guide ShortCodes pour le site</a></li><li><a href="../">Guide de contribution au site</a></li><li><a href="https://github.com/do-it-ecm/do-it/blob/main/README.md">Documentation du site (anglais)</a></li><li><a href="https://github.com/do-it-ecm/do-it/blob/main/CONTRIBUTING.md">Guide de contribution complet (anglais)</a></li></ul></article></main><footer class="min-h-[50px] border-t-2 mt-4 border-gray-200 dark:border-neutral-700"><div class="max-w-[1000px] mx-auto px-4"><div class="min-h-[50px] flex justify-center items-center"><p class="text-center">©2025 <b><span style="font-family:Consolas,sans-serif">Do-<span style="color:#4a86e8">It</span></span></b> - Développement, Management et Gestion de projets en IT</p></div></div></footer><script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">window.MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]]},svg:{fontCache:"global"}},document.addEventListener("DOMContentLoaded",(()=>{MathJax.typeset()}))</script><script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">Prism.plugins.NormalizeWhitespace.setDefaults({"remove-trailing":!0,"remove-indent":!0,"left-trim":!0,"right-trim":!0})</script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script></body></html>

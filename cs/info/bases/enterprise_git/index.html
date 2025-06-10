@@ -1,0 +1,1244 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="robots" content="index, follow">
+
+        <link rel="canonical" href="https://do-it.aioli.ec-m.fr/cs/info/bases/enterprise_git/">
+
+        
+        
+
+        <meta name="description" content="Do-It, cours et travaux des élèves de l&#39;école Centrale Méditerranée">
+        <meta property="og:description" content="Do-It, cours et travaux des élèves de l&#39;école Centrale Méditerranée">
+        <meta name="twitter:description" content="Do-It, cours et travaux des élèves de l&#39;école Centrale Méditerranée">
+
+        
+            <meta name="author" content="Loïck Goupil-Hallay">
+        
+        <meta name="keywords" content="do-it, centrale, centrale méditerranée, ecm, COURS, git, bonnes pratiques, versioning">
+
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png">
+        <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png">
+
+        <link href="/assets/stylesheets/main.css" rel="stylesheet">
+
+        <meta property="og:title" content="Enterprise Git">
+
+        <meta property="og:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta property="og:url" content="https://do-it.aioli.ec-m.fr/cs/info/bases/enterprise_git/">
+        <meta property="og:type" content="website">
+
+        <meta name="twitter:card" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:title" content="Enterprise Git">
+        <meta name="twitter:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:url" content="https://do-it.aioli.ec-m.fr/cs/info/bases/enterprise_git/">
+
+        <title>Enterprise Git</title>
+
+        <!-- Prismjs imports
+                - Prism line numbers
+                - Prism toolbar
+        -->
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet">
+        <link id="prism-theme" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+        <!-- Mermaid import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js "></script>
+
+        <script defer="">
+        // Check if a theme is stored in localStorage. If so, use it, otherwise fallback to the system preference.
+        const storedTheme = localStorage.getItem('theme');
+        if (storedTheme) {
+            document.documentElement.classList.toggle("dark", storedTheme === "dark");
+        } else {
+            // Use system color scheme if there is no stored theme preference.
+            document.documentElement.classList.toggle("dark", window.matchMedia("(prefers-color-scheme: dark)").matches);
+        }
+
+        function loadPrismTheme(isDarkMode) {
+            const newTheme = isDarkMode ? 'prism-okaidia.min.css' : 'prism-solarizedlight.min.css';
+            const newLink = document.createElement('link');
+            newLink.rel = 'stylesheet';
+            newLink.id = 'prism-theme';
+            newLink.href = `https://cdn.jsdelivr.net/npm/prismjs/themes/${newTheme}`;
+
+            newLink.onload = () => {
+                // Reapply highlighting after the new theme loads
+                Prism.highlightAll();
+            };
+
+            const existingLink = document.getElementById('prism-theme');
+            if (existingLink) {
+                document.head.replaceChild(newLink, existingLink);
+            } else {
+                document.head.appendChild(newLink);
+            }
+        }
+
+        function setMermaidTheme(isDarkMode) {
+            const theme = isDarkMode ? 'dark' : 'forest';
+            mermaid.initialize({
+                securityLevel: 'loose',
+                theme,
+                startOnLoad: true,
+            });
+        }
+
+        // Toggle dark and light mode and update localStorage accordingly.
+        function toggleDarkMode() {
+            const dark = document.documentElement.classList.contains("dark");
+            const newTheme = dark ? "light" : "dark";
+            localStorage.setItem('theme', newTheme);
+            document.documentElement.classList.toggle("dark", !dark);
+            loadPrismTheme(!dark);
+            setMermaidTheme(!dark);
+        }
+
+        // On initial load, ensure that Prism and Mermaid are initialized using the current theme.
+        const isDark = document.documentElement.classList.contains("dark");
+        loadPrismTheme(isDark);
+        setMermaidTheme(isDark);
+        </script>
+
+    </head>
+
+    <body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000" class="bg-neutral-50 text-neutral-950 dark:bg-neutral-900 dark:text-neutral-50">
+        <header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white dark:bg-neutral-900 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-between items-center">
+                    <a class="mx-2" href="/">Home</a>
+                    <button class="hidden sm:block text-neutral-950 dark:text-neutral-50 hover:bg-neutral-700 hover:text-neutral-50 hover:dark:bg-neutral-300 hover:dark:text-neutral-950 transition-colors p-2 rounded-full duration-800 ease-in-out" onclick="toggleDarkMode()">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 dark:hidden stroke-current">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <path d="M12 2V4" stroke-linecap="round"></path>
+                            <path d="M12 20V22" stroke-linecap="round"></path>
+                            <path d="M4 12L2 12" stroke-linecap="round"></path>
+                            <path d="M22 12L20 12" stroke-linecap="round"></path>
+                            <path d="M19.7778 4.22266L17.5558 6.25424" stroke-linecap="round"></path>
+                            <path d="M4.22217 4.22266L6.44418 6.25424" stroke-linecap="round"></path>
+                            <path d="M6.44434 17.5557L4.22211 19.7779" stroke-linecap="round"></path>
+                            <path d="M19.7778 19.7773L17.5558 17.5551" stroke-linecap="round"></path>
+                        </svg>
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 stroke-current hidden dark:block">
+                            <path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </button>
+                    <div class="flex items-center gap-4 sm:gap-6 ">
+                        <a class="" href="/cs">CS</a>
+                        <a class="" href="/pok">POK</a>
+                        <a class="" href="/mon">MON</a>
+                        <a class="" href="/projets">Projets</a>
+                        <a class="hidden sm:block" href="/promos">Promos</a>
+                        <a href="/search">
+                            <svg class="h-5 aspect-square stroke-neutral-950 dark:stroke-neutral-300 fill-none stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+                            </svg>
+                        </a>
+                        <a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank">
+                            <svg class="h-5 aspect-square dark:stroke-neutral-300 dark:fill-neutral-300" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body="">
+            
+<script>
+    const SIDEBAR_STATE_KEY = "courseSidebarState";
+
+    function toggleFold(button) {
+        // Find the closest parent <li> and its corresponding nested <ul>
+        const listItem = button.closest('li');
+        const nestedList = listItem.querySelector('.nested');
+
+        if (nestedList) {
+            const isActive = nestedList.classList.toggle('active'); // Toggle the 'active' class
+            button.classList.toggle('active', isActive); // Toggle button rotation
+            saveSidebarState();
+        }
+    }
+
+    function saveSidebarState() {
+        const state = {};
+        const nestedLists = document.querySelectorAll('.sidebar-navigation .nested');
+        nestedLists.forEach((list, index) => {
+            state[index] = list.classList.contains('active');
+        });
+        localStorage.setItem(SIDEBAR_STATE_KEY, JSON.stringify(state));
+    }
+
+    function restoreSidebarState() {
+        const state = JSON.parse(localStorage.getItem(SIDEBAR_STATE_KEY));
+        if (!state) return;
+
+        const nestedLists = document.querySelectorAll('.sidebar-navigation .nested');
+        nestedLists.forEach((list, index) => {
+            if (state[index]) {
+                list.classList.add('active');
+                const button = list.parentNode.querySelector('.course-sidebar-item-toggle-button'); // Correctly locate the button
+                if (button) {
+                    button.classList.add('active'); // Rotate the button
+                }
+            }
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        restoreSidebarState();
+    });
+
+let lastScrollYCourses = window.scrollY;
+
+function toggleCourseSidebar() {
+    document.getElementById('course-sidebar').classList.toggle('open');
+}
+
+window.addEventListener('scroll', () => {
+    const burger = document.getElementById('course-burger-button');
+    const sidebar = document.getElementById('course-sidebar');
+    const currentScroll = window.scrollY;
+    // Hide the burger button if max width is reached
+    if (currentScroll < 10 || currentScroll < lastScrollYCourses) {
+        burger.classList.remove('hidden');
+    } else if (!sidebar || !sidebar.classList.contains('open')) {
+        burger.classList.add('hidden');
+    }
+
+    lastScrollYCourses = currentScroll;
+});
+</script>
+
+<button id="course-burger-button" class="sidebar-burger-button left-2" onclick="toggleCourseSidebar()">☰</button>
+
+<nav id="course-sidebar" class="sidebar left-0 border-r-2 -translate-x-full 3xl:translate-x-0">
+    <article><h2>Cours</h2></article>
+    <ul class="sidebar-navigation space-y-2">
+        
+        
+            
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700  bg-info dark:text-neutral-950">
+        <a class="flex-1 text-left pr-2 text-lg">Informatique</a>
+        
+            <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a class="flex-1 text-left pr-2 text-lg">Bases</a>
+        
+            <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/info/bases/git" class="flex-1 text-left pr-2 text-lg">Git</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/info/bases/enterprise_git" class="flex-1 text-left pr-2 text-lg">Enterprise Git</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/info/bases/linux" class="flex-1 text-left pr-2 text-lg">Linux</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/info/bases/ordinateur" class="flex-1 text-left pr-2 text-lg">Ordinateur</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a class="flex-1 text-left pr-2 text-lg">Structures de données</a>
+        
+            <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/info/bases/struct_donnees/linkedlist" class="flex-1 text-left pr-2 text-lg">Listes Chaînées</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/info/bases/struct_donnees/arbres_dict" class="flex-1 text-left pr-2 text-lg">Arbres et Dictionnaires</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/info/bases/struct_donnees/hash" class="flex-1 text-left pr-2 text-lg">Hachage</a>
+        
+    </div>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a class="flex-1 text-left pr-2 text-lg">Dev</a>
+        
+            <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a class="flex-1 text-left pr-2 text-lg">Web</a>
+        
+            <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/info/dev/web/fullstack" class="flex-1 text-left pr-2 text-lg">Fullstack</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/info/dev/web/websocket" class="flex-1 text-left pr-2 text-lg">WebSocket</a>
+        
+    </div>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/info/dev/bash" class="flex-1 text-left pr-2 text-lg">Bash</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/info/dev/java" class="flex-1 text-left pr-2 text-lg">Java</a>
+        
+    </div>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a class="flex-1 text-left pr-2 text-lg">Ops</a>
+        
+            <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/info/ops/ssh" class="flex-1 text-left pr-2 text-lg">SSH</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/info/ops/aioli" class="flex-1 text-left pr-2 text-lg">aioli</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/info/ops/postgres" class="flex-1 text-left pr-2 text-lg">PostgreSQL</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/info/ops/reseaux" class="flex-1 text-left pr-2 text-lg">Réseaux</a>
+        
+    </div>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+        
+            
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700  bg-mgt dark:text-neutral-950">
+        <a class="flex-1 text-left pr-2 text-lg">Management</a>
+        
+            <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a class="flex-1 text-left pr-2 text-lg">SI</a>
+        
+            <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/management/si/management" class="flex-1 text-left pr-2 text-lg">Management</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/management/si/audit" class="flex-1 text-left pr-2 text-lg">Audit</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/management/si/conception" class="flex-1 text-left pr-2 text-lg">Conception SI</a>
+        
+    </div>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a class="flex-1 text-left pr-2 text-lg">Agilité</a>
+        
+            <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/management/agile/gdp" class="flex-1 text-left pr-2 text-lg">Gestion Agile</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/management/agile/scrum" class="flex-1 text-left pr-2 text-lg">SCRUM</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/management/agile/cristal_clear" class="flex-1 text-left pr-2 text-lg">Cristal Clear</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/management/agile/methodes_agiles" class="flex-1 text-left pr-2 text-lg">Autres méthodes agiles</a>
+        
+    </div>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/management/cyber" class="flex-1 text-left pr-2 text-lg">CyberSécurité</a>
+        
+            <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/management/cyber/crise" class="flex-1 text-left pr-2 text-lg">CyberSécurité - Crises</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/management/cyber/rssi" class="flex-1 text-left pr-2 text-lg">CyberSécurité - RSSI</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/management/cyber/soc" class="flex-1 text-left pr-2 text-lg">CyberSécurité - SOC</a>
+        
+    </div>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a class="flex-1 text-left pr-2 text-lg">Sobriété Numérique</a>
+        
+            <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/management/sobriete/numerique" class="flex-1 text-left pr-2 text-lg">Sobriété Numérique</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/management/sobriete/accessibilite" class="flex-1 text-left pr-2 text-lg">Accessibilité Numérique</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/management/sobriete/fresque_numerique" class="flex-1 text-left pr-2 text-lg">Fresque du Numérique</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/management/sobriete/impacts" class="flex-1 text-left pr-2 text-lg">Impacts du Numérique</a>
+        
+    </div>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+        
+            
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700  bg-gp dark:text-neutral-950">
+        <a class="flex-1 text-left pr-2 text-lg">Gestion &amp; Modélisation Projet</a>
+        
+            <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/gestion_modelisation/service_design" class="flex-1 text-left pr-2 text-lg">Service Design</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/gestion_modelisation/gdp" class="flex-1 text-left pr-2 text-lg">Gestion de Projet</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/gestion_modelisation/uiux" class="flex-1 text-left pr-2 text-lg">UI/UX</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/gestion_modelisation/hpt" class="flex-1 text-left pr-2 text-lg">High Performance Team</a>
+        
+    </div>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+        
+            
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a class="flex-1 text-left pr-2 text-lg">Tronc Commun</a>
+        
+            <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/tronc_commun/change_management" class="flex-1 text-left pr-2 text-lg">Conduite du Changement</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/tronc_commun/ethique" class="flex-1 text-left pr-2 text-lg">Ethique et Responsabilité</a>
+        
+    </div>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+        
+    </ul>
+</nav>
+
+<article>
+<h1 class="mb-1">Enterprise Git</h1>
+<div class="mb-4">
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Tags : </div>
+            <ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags">
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">COURS</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">git</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">bonnes pratiques</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">versioning</li>
+                
+
+            </ul>
+
+            
+            <div class="hidden" data-pagefind-meta="Type" aria-hidden="true">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Auteurs : </div>
+            <ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs">
+                
+                    <li class="bg-blue-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Auteurs">Loïck Goupil-Hallay</li>
+                
+            </ul>
+        </div>
+    
+
+    
+</div>
+
+
+<script>
+let lastScrollYSummary = window.scrollY;
+
+function toggleSummarySidebar() {
+    document.getElementById('toc-sidebar').classList.toggle('open');
+}
+
+window.addEventListener('scroll', () => {
+    const burger = document.getElementById('toc-burger-button');
+    const sidebar = document.getElementById('toc-sidebar');
+    const currentScroll = window.scrollY;
+    // Hide the burger button if max width is reached
+    if (currentScroll < 10 || currentScroll < lastScrollYSummary) {
+        burger.classList.remove('hidden');
+    } else if (!sidebar || !sidebar.classList.contains('open')) {
+        burger.classList.add('hidden');
+    }
+
+    lastScrollYSummary = currentScroll;
+});
+</script>
+<p><button id="toc-burger-button" class="sidebar-burger-button right-2" onclick="toggleSummarySidebar()">☰</button></p>
+<nav id="toc-sidebar" class="sidebar right-0 border-l-2 translate-x-full 3xl:translate-x-0">
+<h2>Sommaire</h2>
+<nav class="toc"><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#configuration"> Configuration</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#configuration-%22profil%22"> Configuration &quot;profil&quot;</a></li><li class="toc-item"><a class="toc-link" href="#configuration-%22pr%C3%A9f%C3%A9rences%22"> Configuration &quot;préférences&quot;</a></li><li class="toc-item"><a class="toc-link" href="#configuration-%22signature%22"> Configuration &quot;signature&quot;</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#bonnes-pratiques"> Bonnes pratiques</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#branches"> Branches</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#conventional-branches"> Conventional Branches</a></li><li class="toc-item"><a class="toc-link" href="#branches-de-travail"> Branches de travail</a></li><li class="toc-item"><a class="toc-link" href="#rapatriement-du-code"> Rapatriement du code</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#merge"> Merge</a></li><li class="toc-item"><a class="toc-link" href="#rebase"> Rebase</a></li><li class="toc-item"><a class="toc-link" href="#cherry-pick"> Cherry-pick</a></li></ol></li></ol></li><li class="toc-item"><a class="toc-link" href="#commits"> Commits</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#conventional-commits"> Conventional Commits</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#header"> header</a></li><li class="toc-item"><a class="toc-link" href="#body"> body</a></li><li class="toc-item"><a class="toc-link" href="#footer"> footer</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#atomiser-les-commits"> Atomiser les commits</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#tags"> Tags</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#semver"> SemVer</a></li></ol></li></ol></li><li class="toc-item"><a class="toc-link" href="#tips"> Tips</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#stash"> Stash</a></li><li class="toc-item"><a class="toc-link" href="#fermer-automatiquement-une-issue"> Fermer automatiquement une issue</a></li><li class="toc-item"><a class="toc-link" href="#rebase-interactif"> Rebase interactif</a></li><li class="toc-item"><a class="toc-link" href="#squash"> Squash</a></li><li class="toc-item"><a class="toc-link" href="#alias"> Alias</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#fichiers-sp%C3%A9cifiques"> Fichiers spécifiques</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#contributing.md"> CONTRIBUTING.md</a></li><li class="toc-item"><a class="toc-link" href="#.gitignore"> .gitignore</a></li><li class="toc-item"><a class="toc-link" href="#.gitmessage.txt"> .gitmessage.txt</a></li><li class="toc-item"><a class="toc-link" href="#.git%2F"> .git/</a></li><li class="toc-item"><a class="toc-link" href="#.gitconfig"> .gitconfig</a></li></ol></li></ol></nav></nav>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100 dark:border-emerald-800 dark:bg-emerald-950">
+<svg class="absolute w-6 h-6 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-emerald-500 dark:stroke-emerald-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Liens utiles</strong></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li><a href="https://git-scm.com/doc">Documentation officielle de Git</a></li>
+<li><a href="../git">Cours Git Bases</a></li>
+<li><a href="https://francoisbrucker.github.io/cours_informatique/cours/gestion-des-sources/">Cours Git / GitHub</a></li>
+</ul>
+</div>
+</div>
+<p>Git est un logiciel de gestion de versions décentralisé. C'est un logiciel libre créé par Linus Torvalds, le créateur de Linux. Il est utilisé pour le suivi des modifications apportées à un ensemble de fichiers. Il permet de travailler à plusieurs sur un même projet, de suivre l'évolution du code, de revenir en arrière, de gérer des branches, etc.</p>
+<ul>
+<li><strong>Gestion de versions</strong>: Processus de suivi et de gestion des modifications apportées à un ensemble de fichiers au fil du temps, permettant de conserver un historique complet, de revenir à des versions antérieures et de gérer les contributions de plusieurs personnes</li>
+<li><strong>Décentralisé</strong>: Modèle de gestion de versions dans lequel chaque utilisateur possède une copie complète du dépôt, incluant tout l'historique des modifications, ce qui permet de travailler de manière autonome sans connexion permanente à un serveur central</li>
+</ul>
+<p>Ce guide est destiné à vous aider à maîtriser Git dans un contexte <strong>professionnel</strong>, en suivant les <strong>bonnes pratiques</strong> et en utilisant les <strong>fonctionnalités avancées</strong> de Git. Il est important de comprendre que Git est un outil puissant qui peut être utilisé de manière très flexible, mais il est également crucial de suivre certaines <strong>règles</strong> pour éviter les erreurs et garantir la qualité du code.</p>
+<p>Par conséquent, ce guide considère que vous avez déjà une connaissance des concepts de base de Git (stages, status, commits, branches, etc.). Si ce n'est pas le cas, nous vous recommandons de lire le <a href="https://git-scm.com/book/fr/v2/">guide de prise en main de Git</a> avant de continuer.</p>
+<h2 id="configuration" tabindex="-1"><a class="header-anchor" href="#configuration"></a> Configuration</h2>
+<p>La <a href="https://git-scm.com/docs/git-config">configuration de Git</a> est essentielle pour l'utiliser de manière efficace et professionnelle. Elle permet de personnaliser le comportement de Git, de configurer son identité, ses préférences, et d'assurer la sécurité des commits.</p>
+<ul>
+<li><strong>Liste des configurations</strong>: <code>git config --list</code></li>
+<li><strong>Fichier de configuration global</strong>: <code>~/.gitconfig</code> (ou <code>%USERPROFILE%\.gitconfig</code> sous Windows)</li>
+<li><strong>Fichier de configuration local</strong>: <code>.git/config</code> (dans le répertoire du projet)</li>
+<li><strong>Fichier de configuration système</strong>: <code>/etc/gitconfig</code> (pour les configurations système, nécessite des droits d'administrateur)</li>
+</ul>
+<p>Git interprète les configurations dans l'ordre suivant (du plus au moins prioritaire):</p>
+<ol>
+<li>Paramètres de la ligne de commande (par exemple, <code>git commit --author=&quot;John Doe &lt;foo@bar.com&gt;&quot;</code>)</li>
+<li>Fichier de configuration du worktree (<code>$GIT_DIR/config.worktree</code>) (accessible via <code>git config --worktree</code>) (si le worktree est utilisé, accessible via <code>git config --worktree</code>)</li>
+<li>Fichier de configuration local du projet (<code>.git/config</code>) (accessible via <code>git config --local</code>)</li>
+<li>Fichier de configuration global de l'utilisateur (<code>~/.gitconfig</code>) (accessible via <code>git config --global</code>)</li>
+<li>Fichier de configuration système (<code>/etc/gitconfig</code>) (accessible via <code>git config --system</code>)</li>
+</ol>
+<h3 id="configuration-%22profil%22" tabindex="-1"><a class="header-anchor" href="#configuration-%22profil%22"></a> Configuration &quot;profil&quot;</h3>
+<p>Pour pouvoir effectuer des commits et des opérations Git, il est nécessaire de configurer son identité (nom et email).</p>
+<ul>
+<li><strong>Identité</strong> (OBLIGATOIRE): <code>git config --global user.name &quot;John Doe&quot;</code></li>
+<li><strong>Email</strong> (OBLIGATOIRE): <code>git config --global user.email &quot;example@email.com&quot;</code></li>
+</ul>
+<h3 id="configuration-%22pr%C3%A9f%C3%A9rences%22" tabindex="-1"><a class="header-anchor" href="#configuration-%22pr%C3%A9f%C3%A9rences%22"></a> Configuration &quot;préférences&quot;</h3>
+<ul>
+<li><strong>Éditeur de texte</strong> (OPTIONNEL): <code>git config --global core.editor &quot;vim&quot;</code></li>
+<li><strong>Navigateur web</strong> (OPTIONNEL): <code>git config --global web.browser &quot;firefox&quot;</code></li>
+<li><strong>Autocorrection des fautes de frappe</strong> (OPTIONNEL): <code>git config --global help.autocorrect 1</code></li>
+<li><strong>Couleur de l'interface</strong> (OPTIONNEL): <code>git config --global color.ui auto</code></li>
+<li><strong>Nom de branche par défaut</strong> (OPTIONNEL): <code>git config --global init.defaultBranch main</code></li>
+<li><strong>.gitignore global</strong> (OPTIONNEL): <code>git config --global core.excludesfile ~/.gitignore</code></li>
+<li><strong>Message de commit par défaut</strong> (OPTIONNEL): <code>git config --global commit.template ~/.gitmessage.txt</code></li>
+<li><strong>Alias de commandes</strong> (OPTIONNEL): <code>git config --global alias.co checkout</code></li>
+</ul>
+<h3 id="configuration-%22signature%22" tabindex="-1"><a class="header-anchor" href="#configuration-%22signature%22"></a> Configuration &quot;signature&quot;</h3>
+<p>Afin de garantir de l'intégrité (et de l'auteur) des commits, il est possible de signer ses commits avec une clé GPG.</p>
+<ul>
+<li><strong>Signature des commits</strong> (OPTIONNEL): <code>git config --global commit.gpgSign true</code></li>
+<li><strong>Signature des tags</strong> (OPTIONNEL): <code>git config --global tag.gpgSign true</code></li>
+<li><strong>Clé GPG</strong> (OPTIONNEL): <code>git config --global user.signingkey &quot;GPG_KEY_ID&quot;</code></li>
+</ul>
+<p>Cela permet notamment d'ajouter le badge &quot;verified&quot; lors de commits sur GitHub / GitLab (il faut penser à ajouter la clé GPG sur GitHub / GitLab).
+<img src="https://docs.github.com/assets/cb-17614/mw-1440/images/help/commits/verified-commit.webp" alt="Verified GitHub Commit"></p>
+<ul>
+<li><a href="https://docs.github.com/en/authentication/managing-commit-signature-verification/signing-commits">Guide Signature de commits GitHub</a></li>
+<li><a href="https://docs.gitlab.com/user/project/repository/signed_commits/gpg/">Guide Signature de commits GitLab</a></li>
+</ul>
+<h2 id="bonnes-pratiques" tabindex="-1"><a class="header-anchor" href="#bonnes-pratiques"></a> Bonnes pratiques</h2>
+<p>Malgré le nombre important de conventions et de bonnes pratiques qui existent, certaines sont beaucoup plus adoptées que d'autres. Voici les plus importantes à suivre pour garantir la qualité du code et la lisibilité de l'historique git.</p>
+<h3 id="branches" tabindex="-1"><a class="header-anchor" href="#branches"></a> Branches</h3>
+<p>En entreprise, il est obligatoire d'utiliser des branches pour gérer les modifications du code. Cela permet de modifier le code sans affecter la branche principale. Par principe, le code de la branche principale doit <strong>toujours être fonctionnel</strong> et <strong>prêt à être déployé en production</strong>.</p>
+<p>Les branches permettent de travailler sur des fonctionnalités, des corrections de bugs, des améliorations, etc., sans affecter le code de la branche principale tant que le travail n'est pas terminé. Une fois le travail terminé, la branche peut être fusionnée (merge ou rebase) dans la branche principale.</p>
+<h4 id="conventional-branches" tabindex="-1"><a class="header-anchor" href="#conventional-branches"></a> Conventional Branches</h4>
+<p>La convention la plus répandue pour le nommage des branches est la <a href="https://conventional-branch.github.io/">Conventional Branches</a>. Elle permet de structurer les noms de branches de manière cohérente et lisible, facilitant ainsi la compréhension de l'historique des modifications et la gestion des branches.</p>
+<p>Les noms de branches doivent être rédigés en utilisant des mots-clés qui indiquent le type de modification apportée, par exemple:</p>
+<ul>
+<li><code>feat/&lt;nom-de-la-fonctionnalité&gt;</code>: pour une nouvelle fonctionnalité</li>
+<li><code>bugfix/&lt;nom-du-bug&gt;</code>: pour la correction d'un bug</li>
+<li><code>hotfix/&lt;nom-du-hotfix&gt;</code>: pour un correctif urgent</li>
+<li><code>release/&lt;version&gt;</code>: pour la préparation d'une nouvelle version de release</li>
+<li><code>chore/&lt;tâche&gt;</code>: pour une tâche qui n'affecte pas le code source (par exemple, mise à jour des dépendances, nettoyage du code, documentation, etc.)</li>
+</ul>
+<p>Il y a quelques règles à respecter pour le nommage des branches:</p>
+<ul>
+<li><strong>Utiliser l'anglais</strong>: Les noms de branches doivent être en anglais, même si le projet est en français. Cela permet de garantir la cohérence et la lisibilité des noms de branches, surtout si le projet est open source ou collaboratif.</li>
+<li><strong>Utiliser des caractères alphanumériques minuscule et des tirets</strong>: Les noms de branches doivent être en minuscules et ne doivent contenir que des caractères alphanumériques et des tirets. Les espaces et les caractères spéciaux sont à éviter.</li>
+<li><strong>Pas de tirets consécutifs ni de tirets en début ou fin de nom</strong>: Les noms de branches ne doivent pas contenir de tirets consécutifs ni de tirets en début ou en fin de nom. Par exemple, <code>feat/my-feature</code> est valide, mais <code>feat/my-feature-</code> et <code>feat/my--feature</code> ne le sont pas.</li>
+<li><strong>Clarté et concision</strong>: Les noms de branches doivent être clairs et concis, en décrivant brièvement la modification apportée. Par exemple, <code>feat/user-authentication</code> est préférable à <code>feat/ajout-de-la-fonctionnalité-d'authentification-utilisateur</code>.</li>
+<li><strong>Référencer des tickets</strong>: Si la branche est liée à un ticket, il est recommandé d'inclure le numéro du ticket dans le nom de la branche. Par exemple, <code>feat/123-user-authentication</code> pour une nouvelle fonctionnalité liée au ticket #123.</li>
+</ul>
+<h4 id="branches-de-travail" tabindex="-1"><a class="header-anchor" href="#branches-de-travail"></a> Branches de travail</h4>
+<p>Pour des petits projets, il est recommandé de merge / rebase les branches de développement dans la branche principale (par exemple <code>main</code>) une fois que le travail est terminé. Cela permet de garder l'historique git propre et lisible, et de ne pas avoir de branches inutiles qui polluent l'historique.</p>
+<p>Pour des projets plus importants ou plus sensibles, il y a souvent des branches de travail / staging qui sont utilisées pour tester les modifications (par exemple une branche <code>develop</code>, <code>latest</code>, <code>staging</code>, <code>preprod</code>, etc.). Ces branches permettent de tester les modifications avant de les merger dans la branche principale. Elles sont souvent utilisées pour les tests automatisés, les tests manuels, et la validation des modifications avant de les déployer en production.
+Les branches de feature, bugfix,... sont tirées de ces branches de travail, et sont ensuite fusionnées dans ces branches une fois le travail terminé. Quand le travail est terminé, la branche de travail est fusionnée dans la branche principale (par exemple <code>main</code>).</p>
+<h4 id="rapatriement-du-code" tabindex="-1"><a class="header-anchor" href="#rapatriement-du-code"></a> Rapatriement du code</h4>
+<p>Il existe plusieurs manières de rapatrier le code d'une branche dans une autre. Nous allons nous concentrer sur 3 méthodes principales: <code>merge</code>, <code>rebase</code>, et <code>cherry-pick</code>. Chacune a ses avantages et inconvénients, et le choix de la méthode dépend du contexte et des préférences de l'équipe.</p>
+<h5 id="merge" tabindex="-1"><a class="header-anchor" href="#merge"></a> Merge</h5>
+<pre class="mermaid" style="background-color: transparent;">
+gitGraph
+  commit id: "ZERO-0"
+  commit
+  branch "feature/dashboard"
+  commit
+  checkout main
+  branch "feature/user-authentication"
+  commit id: "authentication"
+  checkout main
+  merge feature/user-authentication
+  merge feature/dashboard
+  commit
+</pre>
+<p>La méthode <code>merge</code> permet de fusionner deux branches en créant un commit de fusion. Cela permet de conserver l'historique des modifications des deux branches et de créer un commit de fusion qui indique que les deux branches ont été fusionnées. On peut ainsi voir clairement l'historique des modifications et les branches qui ont été fusionnées.</p>
+<h5 id="rebase" tabindex="-1"><a class="header-anchor" href="#rebase"></a> Rebase</h5>
+<p>Le méthode <code>rebase</code> permet de réappliquer les commits d'une branche sur une autre branche. Cela permet de conserver un historique linéaire et de ne pas créer de commit de fusion. C'est une méthode souvent utilisée pour garder l'historique git propre et lisible, surtout pour les petites modifications.</p>
+<pre class="mermaid" style="background-color: transparent;">
+gitGraph
+  commit id: "ZERO-0"
+  commit
+  commit
+  commit id: "authentication"
+</pre>
+<p>Ainsi tout l'historique de la branche <code>feature/user-authentication</code> est réappliqué sur la branche <code>feature/dashboard</code> puis sur main, ce qui permet de conserver un historique linéaire et de ne pas créer de commit de fusion. Sur GitLab, cette fonctionnalité est appelée &quot;Fast-forward merge&quot; et permet de fusionner une branche sans créer de commit de fusion.</p>
+<h5 id="cherry-pick" tabindex="-1"><a class="header-anchor" href="#cherry-pick"></a> Cherry-pick</h5>
+<p>La méthode <code>cherry-pick</code> permet de sélectionner un ou plusieurs commits d'une branche et de les appliquer sur une autre branche. Cela permet de récupérer des modifications spécifiques sans fusionner l'ensemble de la branche. C'est une méthode souvent utilisée pour récupérer des correctifs ou des fonctionnalités spécifiques sans affecter l'ensemble de la branche.</p>
+<pre class="mermaid" style="background-color: transparent;">
+gitGraph
+  commit id: "ZERO-0"
+  branch "feature/user-authentication"
+  commit id: "authentication"
+  checkout main
+  branch "hotfix/0day"
+  commit id: "fix-0day"
+  checkout feature/user-authentication
+  cherry-pick id: "fix-0day"
+  checkout main
+  merge feature/user-authentication
+</pre>
+<h3 id="commits" tabindex="-1"><a class="header-anchor" href="#commits"></a> Commits</h3>
+<p>Par principe, en entreprise un commit sur la branche principale est immuable et ne doit pas être modifié. Il est donc important de bien rédiger les messages de commit et de s'assurer que le code est fonctionnel avant de faire un commit sur la branche principale.</p>
+<h4 id="conventional-commits" tabindex="-1"><a class="header-anchor" href="#conventional-commits"></a> Conventional Commits</h4>
+<p>La convention la plus répandue pour les messages de commit est la <a href="https://www.conventionalcommits.org/">Conventional Commits</a>. Elle permet de structurer les messages de commit de manière cohérente et lisible, facilitant ainsi la compréhension de l'historique des modifications.</p>
+<p>Pour résumer la convention, les messages de commit doivent s'écrire de la manière suivante:</p>
+<pre class="language-plaintext line-numbers"><code>
+
+<type>[optional scope]: <description>
+
+[optional body]
+
+[optional footer(s)]
+
+
+</description></type></code></pre><h5 id="header" tabindex="-1"><a class="header-anchor" href="#header"></a> header</h5>
+<p>Le <code>header</code> est la première ligne du message de commit, qui doit être concise et informative. Il doit commencer par un <code>type</code> suivi d'un <code>scope</code> optionnel, puis d'une description courte et claire de la modification apportée. La description doit être rédigée à l'infinitif et ne pas dépasser 72 caractères. Si ce n'est pas assez, il est possible de continuer la description sur plusieurs lignes dans le <code>body</code>.</p>
+<p>Le <code>type</code> est un mot-clé qui indique le type de modification apportée, par exemple:</p>
+<ul>
+<li><code>feat</code>: ajout d'une nouvelle fonctionnalité</li>
+<li><code>fix</code>: correction d'un bug</li>
+<li><code>docs</code>: modification de la documentation</li>
+<li><code>style</code>: modification du style du code qui n'affecte pas le comportement du code (espaces, formatage, etc.)</li>
+<li><code>refactor</code>: modification du code qui n'ajoute pas de fonctionnalité ni ne corrige de bug</li>
+<li><code>perf</code>: amélioration des performances du code</li>
+<li><code>test</code>: ajout ou modification de tests</li>
+<li><code>build</code>: modification des outils de build ou des dépendances</li>
+<li><code>ci</code>: modification des scripts d'intégration continue</li>
+<li><code>chore</code>: modification de tâches de maintenance qui n'affectent pas le code source</li>
+<li><code>revert</code>: annulation d'un commit précédent</li>
+</ul>
+<p>Le <code>scope</code> est optionnel et permet de préciser la portée de la modification, par exemple le nom du module ou du composant concerné. Par exemple, <code>feat(auth):</code> pour une nouvelle fonctionnalité dans le module d'authentification.</p>
+<h5 id="body" tabindex="-1"><a class="header-anchor" href="#body"></a> body</h5>
+<p>Le <code>body</code> est optionnel, doit être rédigé au temps présent et peut contenir des détails supplémentaires sur la modification, comme les raisons de la modification, les impacts, etc. Il doit être rédigé en utilisant des phrases complètes et claires. Il doit être séparé du header par une ligne vide.</p>
+<h5 id="footer" tabindex="-1"><a class="header-anchor" href="#footer"></a> footer</h5>
+<p>Le <code>footer</code> est également optionnel et peut contenir des informations supplémentaires, comme des références à des tickets, des issues, des pull requests, ou des notes de version. Il peut également contenir des informations sur les changements majeurs (breaking changes) qui nécessitent une attention particulière lors de la mise à jour du code.<br>
+Il doit être séparé du body par une ligne vide.</p>
+<p>Les références aux tickets peuvent être ajoutées en utilisant les mots-clés <code>Closes</code>, <code>Fixes</code>, <code>Refs</code>, <code>Resolves</code>, ou <code>See</code>, suivis du numéro du ticket. Cela permet de <strong>fermer automatiquement</strong> les tickets quand le commit se retrouve sur la default branch (par exemple, <code>Closes #123</code> fermera le ticket #123).</p>
+<p>Il est recommandé de faire référence à un / des tickets dans le footer, afin de pouvoir suivre de manière agile l'évolution du projet et de l'historique des modifications.</p>
+<p>Cette convention va de pair avec l'utilisation de la convention de versionnage sémantique <a href="https://semver.org/">SemVer</a>, qui permet de gérer les versions du logiciel en fonction des modifications apportées.</p>
+<h4 id="atomiser-les-commits" tabindex="-1"><a class="header-anchor" href="#atomiser-les-commits"></a> Atomiser les commits</h4>
+<p>Il est recommandé de faire des commits atomiques, c'est-à-dire de faire des commits qui ne contiennent qu'une seule modification logique. Cela permet de faciliter la compréhension de l'historique des modifications et de revenir en arrière plus facilement si nécessaire.
+Un commit atomique doit être cohérent et ne pas contenir de modifications qui ne sont pas liées entre elles. Par exemple, si vous ajoutez une nouvelle fonctionnalité et corrigez un bug dans le même commit, cela rendra l'historique des modifications plus difficile à comprendre.</p>
+<p><strong>Cela ne veut pas dire qu'il faut faire un commit par ligne de code modifiée</strong>, mais plutôt que chaque commit doit être cohérent et contenir une seule modification logique.</p>
+<h3 id="tags" tabindex="-1"><a class="header-anchor" href="#tags"></a> Tags</h3>
+<p>Les tags sont utilisés pour marquer des points spécifiques dans l'historique des commits, généralement pour indiquer des versions de release ou des jalons importants. Ils permettent de référencer facilement une version spécifique du code et de revenir à cette version si nécessaire.</p>
+<h4 id="semver" tabindex="-1"><a class="header-anchor" href="#semver"></a> SemVer</h4>
+<p>L'intégralité du dévelopmment logiciel mondial suit la convention de versionnage sémantique <a href="https://semver.org/">SemVer</a>. Cette convention permet de gérer les versions du logiciel en fonction des modifications apportées. Elle utilise trois nombres séparés par des points, par exemple <code>1.0.0</code>, où:</p>
+<ul>
+<li>Chaque nombre est un entier positif, qui ne doit pas être précédenté par des zéros (par exemple, <code>01.0.0</code> n'est pas valide).</li>
+<li>Le premier nombre (MAJOR) est incrémenté pour les <strong>changements majeurs</strong> qui introduisent des modifications <strong>incompatibles</strong> avec les versions précédentes.</li>
+<li>Le deuxième nombre (MINOR) est incrémenté pour les <strong>ajouts de fonctionnalités</strong> <strong>compatibles</strong> avec les versions précédentes.</li>
+<li>Le troisième nombre (PATCH) est incrémenté pour les <strong>corrections de bugs</strong> <strong>compatibles</strong> avec les versions précédentes.</li>
+</ul>
+<p>Des suffixes optionnels peuvent être ajoutés pour indiquer des pré-releases ou des builds spécifiques, par exemple <code>1.0.0-alpha.1</code> ou <code>1.0.0+build.123</code>.</p>
+<ul>
+<li>Le <code>-</code> indique une pré-release, qui est une version instable ou incomplète du logiciel.</li>
+<li>Le <code>+</code> (et ce qui suit) correspond aux métadonnées de build, qui sont des informations supplémentaires sur la version, comme le numéro de build, la date de build, etc.</li>
+</ul>
+<h2 id="tips" tabindex="-1"><a class="header-anchor" href="#tips"></a> Tips</h2>
+<p>Voici quelques astuces et fonctionnalités avancées de Git qui peuvent vous aider à travailler plus efficacement et à éviter les erreurs courantes. Ainsi vous pourrez tout faire en ligne de commande, et en local pour briller en entreprise.</p>
+<h3 id="stash" tabindex="-1"><a class="header-anchor" href="#stash"></a> Stash</h3>
+<p>La commande <code>git stash</code> permet de sauvegarder temporairement les modifications en cours dans un &quot;stash&quot; (une pile de modifications) pour pouvoir revenir à un état propre du code. Cela est utile lorsque vous devez changer de branche ou effectuer une autre opération sans vouloir commettre les modifications en cours.
+Pour utiliser <code>git stash</code>, il suffit de taper la commande <code>git stash</code></p>
+<p>Cela va sauvegarder les modifications en cours et revenir à l'état du dernier commit. Vous pouvez ensuite changer de branche ou effectuer d'autres opérations sans perdre vos modifications.<br>
+Pour récupérer les modifications sauvegardées dans le stash, vous pouvez utiliser <code>git stash pop</code> ou <code>git stash apply</code> (la différence est que <code>pop</code> supprime le stash après l'avoir appliqué, tandis que <code>apply</code> le laisse dans la pile).</p>
+<p>Cette commande est très utile pour éviter de faire des commits temporaires ou de devoir annuler des modifications non désirées.</p>
+<h3 id="fermer-automatiquement-une-issue" tabindex="-1"><a class="header-anchor" href="#fermer-automatiquement-une-issue"></a> Fermer automatiquement une issue</h3>
+<p>Lorsque vous faites un commit qui corrige un bug ou ajoute une fonctionnalité liée à une issue, vous pouvez fermer automatiquement cette issue en utilisant des mots-clés spécifiques dans le message de commit. Par exemple, si vous faites un commit qui corrige l'issue #123, vous pouvez ajouter <code>Closes #123</code> ou <code>Fixes #123</code> dans le footer du message de commit. Cela fermera automatiquement l'issue lorsque le commit sera fusionné dans la branche principale.</p>
+<h3 id="rebase-interactif" tabindex="-1"><a class="header-anchor" href="#rebase-interactif"></a> Rebase interactif</h3>
+<p>Le <code>git rebase -i</code> (rebase interactif) permet de modifier l'historique des commits en réécrivant les commits existants. Cela est utile pour nettoyer l'historique des commits, par exemple en fusionnant plusieurs commits en un seul, en modifiant les messages de commit, ou en supprimant des commits inutiles.
+Pour utiliser le rebase interactif, il suffit de taper la commande <code>git rebase -i HEAD~n</code>, où <code>n</code> est le nombre de commits à réécrire. Cela ouvrira un éditeur de texte avec la liste des commits à réécrire, où vous pourrez choisir les actions à effectuer sur chaque commit (par exemple, <code>pick</code>, <code>squash</code>, <code>edit</code>, <code>drop</code>, etc.).<br>
+Ensuite, vous utiliserez votre éditeur de texte favori pour modifier les commits, puis vous enregistrerez et quitterez l'éditeur pour appliquer les modifications.</p>
+<h3 id="squash" tabindex="-1"><a class="header-anchor" href="#squash"></a> Squash</h3>
+<p>Le <code>git squash</code> permet de combiner plusieurs commits en un seul commit. Cela est utile pour nettoyer l'historique des commits avant de fusionner une branche dans la branche principale, en regroupant les modifications liées à une fonctionnalité ou à un bug en un seul commit.</p>
+<p>Pour utiliser le squash, vous pouvez utiliser la commande <code>git rebase -i HEAD~n</code>, où <code>n</code> est le nombre de commits à combiner. Cela ouvrira un éditeur de texte avec la liste des commits, où vous pourrez choisir l'action <code>squash</code>(<code>s</code>) pour les commits que vous souhaitez combiner.</p>
+<p>C'est une pratique courante de faire un squash avant de fusionner une branche dans la branche principale, afin de garder l'historique des commits propre et lisible. Cela permet de regrouper les modifications liées à une fonctionnalité ou à un bug en un seul commit, ce qui facilite la compréhension de l'historique des modifications.</p>
+<h3 id="alias" tabindex="-1"><a class="header-anchor" href="#alias"></a> Alias</h3>
+<p>Les alias de commandes permettent de créer des raccourcis pour les commandes Git couramment utilisées. Cela permet de gagner du temps et de simplifier l'utilisation de Git en évitant de taper des commandes longues ou complexes.</p>
+<p>Pour créer un alias, vous pouvez utiliser la commande <code>git config --global alias.&lt;nom&gt; &lt;commande&gt;</code>. Par exemple, pour créer un alias <code>cap</code> pour commit toutes les modifications actuelles, vous pouvez utiliser la commande suivante:</p>
+<pre class="language-bash line-numbers"><code>
+
+# Commit toutes les modifications actuelles et push
+git config --global alias.cap '!git add . && git commit && git push'
+
+
+</code></pre><p>Vous pouvez ensuite utiliser l'alias <code>git cap</code> pour exécuter la commande complète.</p>
+<h2 id="fichiers-sp%C3%A9cifiques" tabindex="-1"><a class="header-anchor" href="#fichiers-sp%C3%A9cifiques"></a> Fichiers spécifiques</h2>
+<p>Il existe plusieurs fichiers spécifiques à Git qui sont utilisés pour configurer le comportement de Git, stocker des informations sur le repository, et gérer les contributions. Voici une liste des fichiers les plus courants et leur utilisation:</p>
+<h3 id="contributing.md" tabindex="-1"><a class="header-anchor" href="#contributing.md"></a> <a href="http://CONTRIBUTING.md">CONTRIBUTING.md</a></h3>
+<p>Le fichier <code>CONTRIBUTING.md</code> est un fichier de documentation qui décrit les règles et les bonnes pratiques à suivre pour contribuer à un projet. Il est généralement situé à la racine du repository et est utilisé pour guider les contributeurs sur la manière de soumettre des modifications, de signaler des problèmes, de rédiger des messages de commit, etc.
+Il peut contenir des sections sur la configuration de l'environnement de développement, les tests, le style de code, les conventions de nommage, les processus de revue de code, etc. Ce fichier est essentiel pour garantir la cohérence et la qualité des contributions au projet.</p>
+<h3 id=".gitignore" tabindex="-1"><a class="header-anchor" href="#.gitignore"></a> .gitignore</h3>
+<p>Le fichier <code>.gitignore</code> permet d'ignorer certains fichiers ou répertoires lors des opérations de suivi des modifications. Il est utile pour exclure des fichiers temporaires, des fichiers de configuration locaux, des fichiers de build, des fichiers sensibles, etc. <strong>C'est un fichier qu'il est impératif de maîtriser en entreprise</strong>, car il permet de ne pas polluer le repository.</p>
+<p>Pour créer un fichier <code>.gitignore</code>, il suffit de créer un fichier nommé <code>.gitignore</code> à la racine du repository et d'y ajouter les fichiers ou répertoires à ignorer, un par ligne. Les règles de syntaxe permettent d'utiliser des wildcards (*) pour spécifier des motifs de fichiers à ignorer.<br>
+Pour spécifier un directory entier, il suffit de mettre le nom du directory suivi d'un <code>/</code>.</p>
+<p>Exemple de contenu d'un fichier <code>.gitignore</code>:</p>
+<pre class="language-plaintext line-numbers"><code>
+
+# IDE
+.vscode
+.vs
+.idea
+.idea/
+*.iml
+.idea_modules
+*.ipr
+*.iws
+*.bak
+*.swp
+*.swo
+*.swn
+*.suo
+*.workspace
+
+# Compile output
+dist/
+build/
+
+# Node.js
+node_modules/
+npm-debug.log
+yarn-error.log
+yarn-debug.log*
+yarn.lock
+
+# Python
+__pycache__/
+*.pyc
+.env/
+.venv/
+venv/
+env/
+
+# Mac
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Keys
+*.key
+*.pem
+*.p12
+*.pfx
+*.crt
+*.csr
+*.cer
+*.jks
+*.pub
+*.env
+
+# SonarQube
+sonar-project.properties
+.scannerwork/
+
+# Logs
+*.log
+logs/
+*.log.*
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+*.swn
+*.suo
+*.workspace
+*.pid
+*.seed
+*.pid.lock
+*.pid.lock.*
+
+
+</code></pre><h3 id=".gitmessage.txt" tabindex="-1"><a class="header-anchor" href="#.gitmessage.txt"></a> .gitmessage.txt</h3>
+<p>Le fichier <code>.gitmessage.txt</code> est un modèle de message de commit qui peut être utilisé pour standardiser les messages de commit dans un projet. Il est généralement utilisé pour fournir une structure et des instructions sur la façon de rédiger des messages de commit clairs et informatifs.</p>
+<p>Il peut contenir des sections pour le titre, la description, les références aux tickets, les auteurs, etc. Ce fichier est utilisé comme modèle lors de la rédaction de messages de commit, ce qui permet de garantir une cohérence dans les messages de commit.</p>
+<p>Exemple de contenu d'un fichier <code>.gitmessage.txt</code>:</p>
+<pre class="language-plaintext line-numbers"><code>
+
+<type>(<scope>): <description> (<=72 chars)
+
+# comment
+
+# BREAKING CHANGE: break
+# Closes #EXAMPLE
+# Fixes #EXAMPLE
+# Refs #EXAMPLE
+# Resolves #EXAMPLE
+# See #EXAMPLE
+
+
+</description></scope></type></code></pre><h3 id=".git%2F" tabindex="-1"><a class="header-anchor" href="#.git%2F"></a> .git/</h3>
+<p>Le répertoire <code>.git/</code> est le répertoire caché qui contient l'ensemble des fichiers et répertoires nécessaires au fonctionnement de Git dans un repository. Il stocke les métadonnées, l'historique des commits, les branches, les tags, les configurations, les hooks, etc.</p>
+<p>Il est généralement situé à la racine du repository et ne doit pas être modifié manuellement, sauf si vous savez ce que vous faites. Il est essentiel au fonctionnement de Git et permet de conserver l'historique des modifications et les informations nécessaires à la gestion de versions.</p>
+<h3 id=".gitconfig" tabindex="-1"><a class="header-anchor" href="#.gitconfig"></a> .gitconfig</h3>
+<p>Le fichier <code>.gitconfig</code> est un fichier de configuration global de Git qui stocke les paramètres de configuration spécifiques à l'utilisateur. Il est généralement situé dans le répertoire utilisateur (<code>~/.gitconfig</code> == <code>$HOME/.gitconfig</code>) et peut contenir des configurations telles que le nom d'utilisateur, l'adresse e-mail, les alias de commandes, les couleurs de l'interface, etc.</p>
+
+
+</article>
+
+        </main>
+
+        <footer class="min-h-[50px] border-t-2 mt-4 border-gray-200 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-center items-center">
+                    <p class="text-center">
+                        ©2025 <b><span style="font-family: Consolas, sans-serif;">Do-<span style="color: #4a86e8">It</span></span></b> - Développement, Management et Gestion de projets en IT
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- MathJax import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">
+            window.MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']], // Delimiters for inline math
+                    displayMath: [['$$', '$$'], ['\\[', '\\]']] // Delimiters for block math
+                },
+                svg: {
+                    fontCache: 'global' // Use global font cache for SVG output
+                }
+            };
+            document.addEventListener('DOMContentLoaded', () => {
+                MathJax.typeset(); // Ensures MathJax processes the content after the page loads
+            });
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">
+            Prism.plugins.NormalizeWhitespace.setDefaults({
+                'remove-trailing': true,
+                'remove-indent': true,
+                'left-trim': true,
+                'right-trim': true,
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script>
+    </body>
+</html>

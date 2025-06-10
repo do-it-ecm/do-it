@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="robots" content="index, follow">
+
+        <link rel="canonical" href="https://do-it.aioli.ec-m.fr/cs/info/bases/ordinateur/">
+
+        
+        
+
+        <meta name="description" content="Do-It, cours et travaux des élèves de l&#39;école Centrale Méditerranée">
+        <meta property="og:description" content="Do-It, cours et travaux des élèves de l&#39;école Centrale Méditerranée">
+        <meta name="twitter:description" content="Do-It, cours et travaux des élèves de l&#39;école Centrale Méditerranée">
+
+        
+            <meta name="author" content="François Brucker, Loïck Goupil-Hallay">
+        
+        <meta name="keywords" content="do-it, centrale, centrale méditerranée, ecm, COURS, informatique, hardware, software, OS, fondamentaux">
+
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png">
+        <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png">
+
+        <link href="/assets/stylesheets/main.css" rel="stylesheet">
+
+        <meta property="og:title" content="Fondamentaux de l&#39;ordinateur">
+
+        <meta property="og:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta property="og:url" content="https://do-it.aioli.ec-m.fr/cs/info/bases/ordinateur/">
+        <meta property="og:type" content="website">
+
+        <meta name="twitter:card" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:title" content="Fondamentaux de l&#39;ordinateur">
+        <meta name="twitter:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:url" content="https://do-it.aioli.ec-m.fr/cs/info/bases/ordinateur/">
+
+        <title>Fondamentaux de l&#39;ordinateur</title>
+
+        <!-- Prismjs imports
+                - Prism line numbers
+                - Prism toolbar
+        -->
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet">
+        <link id="prism-theme" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+        <!-- Mermaid import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js "></script>
+
+        <script defer="">
+        // Check if a theme is stored in localStorage. If so, use it, otherwise fallback to the system preference.
+        const storedTheme = localStorage.getItem('theme');
+        if (storedTheme) {
+            document.documentElement.classList.toggle("dark", storedTheme === "dark");
+        } else {
+            // Use system color scheme if there is no stored theme preference.
+            document.documentElement.classList.toggle("dark", window.matchMedia("(prefers-color-scheme: dark)").matches);
+        }
+
+        function loadPrismTheme(isDarkMode) {
+            const newTheme = isDarkMode ? 'prism-okaidia.min.css' : 'prism-solarizedlight.min.css';
+            const newLink = document.createElement('link');
+            newLink.rel = 'stylesheet';
+            newLink.id = 'prism-theme';
+            newLink.href = `https://cdn.jsdelivr.net/npm/prismjs/themes/${newTheme}`;
+
+            newLink.onload = () => {
+                // Reapply highlighting after the new theme loads
+                Prism.highlightAll();
+            };
+
+            const existingLink = document.getElementById('prism-theme');
+            if (existingLink) {
+                document.head.replaceChild(newLink, existingLink);
+            } else {
+                document.head.appendChild(newLink);
+            }
+        }
+
+        function setMermaidTheme(isDarkMode) {
+            const theme = isDarkMode ? 'dark' : 'forest';
+            mermaid.initialize({
+                securityLevel: 'loose',
+                theme,
+                startOnLoad: true,
+            });
+        }
+
+        // Toggle dark and light mode and update localStorage accordingly.
+        function toggleDarkMode() {
+            const dark = document.documentElement.classList.contains("dark");
+            const newTheme = dark ? "light" : "dark";
+            localStorage.setItem('theme', newTheme);
+            document.documentElement.classList.toggle("dark", !dark);
+            loadPrismTheme(!dark);
+            setMermaidTheme(!dark);
+        }
+
+        // On initial load, ensure that Prism and Mermaid are initialized using the current theme.
+        const isDark = document.documentElement.classList.contains("dark");
+        loadPrismTheme(isDark);
+        setMermaidTheme(isDark);
+        </script>
+
+    </head>
+
+    <body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000" class="bg-neutral-50 text-neutral-950 dark:bg-neutral-900 dark:text-neutral-50">
+        <header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white dark:bg-neutral-900 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-between items-center">
+                    <a class="mx-2" href="/">Home</a>
+                    <button class="hidden sm:block text-neutral-950 dark:text-neutral-50 hover:bg-neutral-700 hover:text-neutral-50 hover:dark:bg-neutral-300 hover:dark:text-neutral-950 transition-colors p-2 rounded-full duration-800 ease-in-out" onclick="toggleDarkMode()">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 dark:hidden stroke-current">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <path d="M12 2V4" stroke-linecap="round"></path>
+                            <path d="M12 20V22" stroke-linecap="round"></path>
+                            <path d="M4 12L2 12" stroke-linecap="round"></path>
+                            <path d="M22 12L20 12" stroke-linecap="round"></path>
+                            <path d="M19.7778 4.22266L17.5558 6.25424" stroke-linecap="round"></path>
+                            <path d="M4.22217 4.22266L6.44418 6.25424" stroke-linecap="round"></path>
+                            <path d="M6.44434 17.5557L4.22211 19.7779" stroke-linecap="round"></path>
+                            <path d="M19.7778 19.7773L17.5558 17.5551" stroke-linecap="round"></path>
+                        </svg>
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 stroke-current hidden dark:block">
+                            <path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </button>
+                    <div class="flex items-center gap-4 sm:gap-6 ">
+                        <a class="" href="/cs">CS</a>
+                        <a class="" href="/pok">POK</a>
+                        <a class="" href="/mon">MON</a>
+                        <a class="" href="/projets">Projets</a>
+                        <a class="hidden sm:block" href="/promos">Promos</a>
+                        <a href="/search">
+                            <svg class="h-5 aspect-square stroke-neutral-950 dark:stroke-neutral-300 fill-none stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+                            </svg>
+                        </a>
+                        <a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank">
+                            <svg class="h-5 aspect-square dark:stroke-neutral-300 dark:fill-neutral-300" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body="">
+            
+<script>
+    const SIDEBAR_STATE_KEY = "courseSidebarState";
+
+    function toggleFold(button) {
+        // Find the closest parent <li> and its corresponding nested <ul>
+        const listItem = button.closest('li');
+        const nestedList = listItem.querySelector('.nested');
+
+        if (nestedList) {
+            const isActive = nestedList.classList.toggle('active'); // Toggle the 'active' class
+            button.classList.toggle('active', isActive); // Toggle button rotation
+            saveSidebarState();
+        }
+    }
+
+    function saveSidebarState() {
+        const state = {};
+        const nestedLists = document.querySelectorAll('.sidebar-navigation .nested');
+        nestedLists.forEach((list, index) => {
+            state[index] = list.classList.contains('active');
+        });
+        localStorage.setItem(SIDEBAR_STATE_KEY, JSON.stringify(state));
+    }
+
+    function restoreSidebarState() {
+        const state = JSON.parse(localStorage.getItem(SIDEBAR_STATE_KEY));
+        if (!state) return;
+
+        const nestedLists = document.querySelectorAll('.sidebar-navigation .nested');
+        nestedLists.forEach((list, index) => {
+            if (state[index]) {
+                list.classList.add('active');
+                const button = list.parentNode.querySelector('.course-sidebar-item-toggle-button'); // Correctly locate the button
+                if (button) {
+                    button.classList.add('active'); // Rotate the button
+                }
+            }
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        restoreSidebarState();
+    });
+
+let lastScrollYCourses = window.scrollY;
+
+function toggleCourseSidebar() {
+    document.getElementById('course-sidebar').classList.toggle('open');
+}
+
+window.addEventListener('scroll', () => {
+    const burger = document.getElementById('course-burger-button');
+    const sidebar = document.getElementById('course-sidebar');
+    const currentScroll = window.scrollY;
+    // Hide the burger button if max width is reached
+    if (currentScroll < 10 || currentScroll < lastScrollYCourses) {
+        burger.classList.remove('hidden');
+    } else if (!sidebar || !sidebar.classList.contains('open')) {
+        burger.classList.add('hidden');
+    }
+
+    lastScrollYCourses = currentScroll;
+});
+</script>
+
+<button id="course-burger-button" class="sidebar-burger-button left-2" onclick="toggleCourseSidebar()">☰</button>
+
+<nav id="course-sidebar" class="sidebar left-0 border-r-2 -translate-x-full 3xl:translate-x-0">
+    <article><h2>Cours</h2></article>
+    <ul class="sidebar-navigation space-y-2">
+        
+        
+            
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700  bg-info dark:text-neutral-950">
+        <a class="flex-1 text-left pr-2 text-lg">Informatique</a>
+        
+            <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a class="flex-1 text-left pr-2 text-lg">Bases</a>
+        
+            <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/info/bases/git" class="flex-1 text-left pr-2 text-lg">Git</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/info/bases/enterprise_git" class="flex-1 text-left pr-2 text-lg">Enterprise Git</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/info/bases/linux" class="flex-1 text-left pr-2 text-lg">Linux</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/info/bases/ordinateur" class="flex-1 text-left pr-2 text-lg">Ordinateur</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a class="flex-1 text-left pr-2 text-lg">Structures de données</a>
+        
+            <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/info/bases/struct_donnees/linkedlist" class="flex-1 text-left pr-2 text-lg">Listes Chaînées</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/info/bases/struct_donnees/arbres_dict" class="flex-1 text-left pr-2 text-lg">Arbres et Dictionnaires</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/info/bases/struct_donnees/hash" class="flex-1 text-left pr-2 text-lg">Hachage</a>
+        
+    </div>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a class="flex-1 text-left pr-2 text-lg">Dev</a>
+        
+            <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a class="flex-1 text-left pr-2 text-lg">Web</a>
+        
+            <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/info/dev/web/fullstack" class="flex-1 text-left pr-2 text-lg">Fullstack</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/info/dev/web/websocket" class="flex-1 text-left pr-2 text-lg">WebSocket</a>
+        
+    </div>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/info/dev/bash" class="flex-1 text-left pr-2 text-lg">Bash</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/info/dev/java" class="flex-1 text-left pr-2 text-lg">Java</a>
+        
+    </div>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a class="flex-1 text-left pr-2 text-lg">Ops</a>
+        
+            <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/info/ops/ssh" class="flex-1 text-left pr-2 text-lg">SSH</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/info/ops/aioli" class="flex-1 text-left pr-2 text-lg">aioli</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/info/ops/postgres" class="flex-1 text-left pr-2 text-lg">PostgreSQL</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/info/ops/reseaux" class="flex-1 text-left pr-2 text-lg">Réseaux</a>
+        
+    </div>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+        
+            
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700  bg-mgt dark:text-neutral-950">
+        <a class="flex-1 text-left pr-2 text-lg">Management</a>
+        
+            <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a class="flex-1 text-left pr-2 text-lg">SI</a>
+        
+            <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/management/si/management" class="flex-1 text-left pr-2 text-lg">Management</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/management/si/audit" class="flex-1 text-left pr-2 text-lg">Audit</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/management/si/conception" class="flex-1 text-left pr-2 text-lg">Conception SI</a>
+        
+    </div>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a class="flex-1 text-left pr-2 text-lg">Agilité</a>
+        
+            <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/management/agile/gdp" class="flex-1 text-left pr-2 text-lg">Gestion Agile</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/management/agile/scrum" class="flex-1 text-left pr-2 text-lg">SCRUM</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/management/agile/cristal_clear" class="flex-1 text-left pr-2 text-lg">Cristal Clear</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/management/agile/methodes_agiles" class="flex-1 text-left pr-2 text-lg">Autres méthodes agiles</a>
+        
+    </div>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/management/cyber" class="flex-1 text-left pr-2 text-lg">CyberSécurité</a>
+        
+            <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/management/cyber/crise" class="flex-1 text-left pr-2 text-lg">CyberSécurité - Crises</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/management/cyber/rssi" class="flex-1 text-left pr-2 text-lg">CyberSécurité - RSSI</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/management/cyber/soc" class="flex-1 text-left pr-2 text-lg">CyberSécurité - SOC</a>
+        
+    </div>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a class="flex-1 text-left pr-2 text-lg">Sobriété Numérique</a>
+        
+            <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/management/sobriete/numerique" class="flex-1 text-left pr-2 text-lg">Sobriété Numérique</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/management/sobriete/accessibilite" class="flex-1 text-left pr-2 text-lg">Accessibilité Numérique</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/management/sobriete/fresque_numerique" class="flex-1 text-left pr-2 text-lg">Fresque du Numérique</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/management/sobriete/impacts" class="flex-1 text-left pr-2 text-lg">Impacts du Numérique</a>
+        
+    </div>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+        
+            
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700  bg-gp dark:text-neutral-950">
+        <a class="flex-1 text-left pr-2 text-lg">Gestion &amp; Modélisation Projet</a>
+        
+            <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/gestion_modelisation/service_design" class="flex-1 text-left pr-2 text-lg">Service Design</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/gestion_modelisation/gdp" class="flex-1 text-left pr-2 text-lg">Gestion de Projet</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/gestion_modelisation/uiux" class="flex-1 text-left pr-2 text-lg">UI/UX</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/gestion_modelisation/hpt" class="flex-1 text-left pr-2 text-lg">High Performance Team</a>
+        
+    </div>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+        
+            
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a class="flex-1 text-left pr-2 text-lg">Tronc Commun</a>
+        
+            <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/tronc_commun/change_management" class="flex-1 text-left pr-2 text-lg">Conduite du Changement</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/tronc_commun/ethique" class="flex-1 text-left pr-2 text-lg">Ethique et Responsabilité</a>
+        
+    </div>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+        
+    </ul>
+</nav>
+
+<article>
+<h1 class="mb-1">Fondamentaux de l&#39;ordinateur</h1>
+<div class="mb-4">
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Tags : </div>
+            <ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags">
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">COURS</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">informatique</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">hardware</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">software</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">OS</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">fondamentaux</li>
+                
+
+            </ul>
+
+            
+            <div class="hidden" data-pagefind-meta="Type" aria-hidden="true">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Auteurs : </div>
+            <ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs">
+                
+                    <li class="bg-blue-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Auteurs">François Brucker</li>
+                
+                    <li class="bg-blue-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Auteurs">Loïck Goupil-Hallay</li>
+                
+            </ul>
+        </div>
+    
+
+    
+</div>
+
+
+<script>
+let lastScrollYSummary = window.scrollY;
+
+function toggleSummarySidebar() {
+    document.getElementById('toc-sidebar').classList.toggle('open');
+}
+
+window.addEventListener('scroll', () => {
+    const burger = document.getElementById('toc-burger-button');
+    const sidebar = document.getElementById('toc-sidebar');
+    const currentScroll = window.scrollY;
+    // Hide the burger button if max width is reached
+    if (currentScroll < 10 || currentScroll < lastScrollYSummary) {
+        burger.classList.remove('hidden');
+    } else if (!sidebar || !sidebar.classList.contains('open')) {
+        burger.classList.add('hidden');
+    }
+
+    lastScrollYSummary = currentScroll;
+});
+</script>
+<p><button id="toc-burger-button" class="sidebar-burger-button right-2" onclick="toggleSummarySidebar()">☰</button></p>
+<nav id="toc-sidebar" class="sidebar right-0 border-l-2 translate-x-full 3xl:translate-x-0">
+<h2>Sommaire</h2>
+<nav class="toc"><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#th%C3%A9or%C3%A8me-fondamental-de-l'ing%C3%A9ni%C3%A9rie-logicielle"> Théorème fondamental de l&#39;ingéniérie logicielle</a></li><li class="toc-item"><a class="toc-link" href="#architecture-ordinateur"> Architecture ordinateur</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#hardware"> Hardware</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#cpu"> CPU</a></li><li class="toc-item"><a class="toc-link" href="#m%C3%A9moire"> Mémoire</a></li><li class="toc-item"><a class="toc-link" href="#disque-dur"> Disque dur</a></li><li class="toc-item"><a class="toc-link" href="#carte-m%C3%A8re"> Carte mère</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#software"> Software</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#daemon"> Daemon</a></li><li class="toc-item"><a class="toc-link" href="#shell"> Shell</a></li><li class="toc-item"><a class="toc-link" href="#gui"> GUI</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#operating-system"> Operating System</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#kernel"> Kernel</a></li><li class="toc-item"><a class="toc-link" href="#interface-logicielle"> Interface logicielle</a></li></ol></li></ol></li><li class="toc-item"><a class="toc-link" href="#uefi"> UEFI</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#uefi-manager"> UEFI manager</a></li><li class="toc-item"><a class="toc-link" href="#boot"> Boot</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#lexique"> Lexique</a></li></ol></nav></nav>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100 dark:border-emerald-800 dark:bg-emerald-950">
+<svg class="absolute w-6 h-6 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-emerald-500 dark:stroke-emerald-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Liens utiles</strong></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li><a href="https://francoisbrucker.github.io/cours_informatique/cours/syst%C3%A8me-et-r%C3%A9seau/architecture-ordinateur/">Cours Architecture Ordinateur</a></li>
+</ul>
+</div>
+</div>
+<h2 id="th%C3%A9or%C3%A8me-fondamental-de-l'ing%C3%A9ni%C3%A9rie-logicielle" tabindex="-1"><a class="header-anchor" href="#th%C3%A9or%C3%A8me-fondamental-de-l'ing%C3%A9ni%C3%A9rie-logicielle"></a> Théorème fondamental de l'ingéniérie logicielle</h2>
+<p>On peut régler tous les problèmes en ajoutant une <strong>couche d'indirection</strong>. Autrement dit,<br>
+Si le passage d'un état A à un état B est complexe, on peut établir un état intermédiaire C, pour lequel la transition de A à C et de C à B est plus simple.</p>
+<pre class="mermaid" style="background-color: transparent;">
+graph LR
+    A[A] -->|Complexe| B[B]
+
+    AA[A] -->|Simple| CC[C]
+    CC -->|Simple| BB[B]
+</pre>
+<h2 id="architecture-ordinateur" tabindex="-1"><a class="header-anchor" href="#architecture-ordinateur"></a> Architecture ordinateur</h2>
+<pre class="mermaid" style="background-color: transparent;">
+architecture-beta
+    service users(random)[Utilisateurs]
+
+    group computer(server)[Ordinateur]
+    service software(cloud)[Logiciel] in computer
+    service os(database)[OS] in computer
+    service hardware(disk)[Hardware] in computer
+
+    users:B <--> T:software
+    software:R <--> L:os
+    os:R <--> L:hardware
+</pre>
+<h3 id="hardware" tabindex="-1"><a class="header-anchor" href="#hardware"></a> Hardware</h3>
+<p>L'Hardware est la partie matérielle de l'ordinateur, c'est-à-dire les composants physiques qui lui permettent de fonctionner.<br>
+Il comprend:</p>
+<ul>
+<li>Le processeur (CPU)</li>
+<li>La mémoire (RAM)</li>
+<li>Le disque dur (HDD/SSD)</li>
+<li>La carte mère</li>
+<li>Les périphériques (clavier, souris, écran, etc.)</li>
+<li>Carte graphique (GPU)</li>
+<li>Carte réseau</li>
+<li>Péripériques de stockage (clé USB, disque dur externe, etc.)</li>
+</ul>
+<h4 id="cpu" tabindex="-1"><a class="header-anchor" href="#cpu"></a> CPU</h4>
+<p>Le processeur (en anglais, <strong>Central Processing Unit</strong> ou <strong>CPU</strong>) est le composant central de l'ordinateur, responsable de l'exécution des instructions et du traitement des données.<br>
+Il est composé de plusieurs unités de calcul appelées <strong>coeurs</strong>, qui peuvent exécuter des instructions en parallèle.<br>
+Le processeur communique avec la mémoire et les périphériques via des <strong>bus</strong> (canaux de communication) et des <strong>registres</strong> (mémoire intégrée au processeur).<br>
+Il effectue des opérations arithmétiques et logiques sur les données, contrôle le flux d'exécution des programmes et gère les interruptions matérielles.</p>
+<pre class="mermaid" style="background-color: transparent;">
+flowchart LR
+    subgraph CPU["CPU"]
+        direction TB
+
+        subgraph CP["Central Processing"]
+            direction TB
+            ArithmeticUnit["Arithmetic & Logic Unit"]
+            ControlUnit["Control Unit"]
+
+            ArithmeticUnit<-->ControlUnit
+        end
+
+        subgraph MemoryUnit["Memory Unit"]
+            direction TB
+            Register["Register"]
+            Cache["Cache"]
+            RAM["RAM"]
+            Disk["Disk"]
+        end
+
+        MemoryUnit<-->CP
+    end
+
+    InputUnit["Input Unit"]-->CPU
+    CPU-->OutputUnit["Output Unit"]
+</pre>
+<p>Le processeur est composé de plusieurs parties:</p>
+<ul>
+<li><strong>Unité arithmétique et logique (ALU)</strong>: Responsable des opérations arithmétiques (addition, soustraction, multiplication, division) et logiques (ET, OU, NON) sur les données.</li>
+<li><strong>Unité de contrôle</strong>: Responsable de la gestion du flux d'exécution des instructions, de la récupération des instructions en mémoire, de leur décodage et de leur exécution.</li>
+<li><strong>Unité de mémoire</strong>: Responsable de la gestion de la mémoire, des registres internes, des caches de données et d'instructions, de la RAM et du disque dur.</li>
+</ul>
+<h4 id="m%C3%A9moire" tabindex="-1"><a class="header-anchor" href="#m%C3%A9moire"></a> Mémoire</h4>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100 dark:border-red-800 dark:bg-red-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-red-500 dark:stroke-red-800 stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Attention</b></p>
+</div><div class="pl-8 mr-8">
+<p><strong>Ne pas confondre mémoire (vive) avec stockage (disque)</strong></p>
+</div>
+</div>
+<p>La mémoire est un composant essentiel de l'ordinateur qui permet de stocker <strong>temporairement</strong> les données et les instructions nécessaires à l'exécution des programmes. Son rôle est de stocker et restituer <strong>très rapidement</strong> les données pour que le processeur puisse les traiter.<br>
+Sa forme la plus connue est la <strong>RAM</strong> (Random Access Memory). Physiquement, elle est composée de barrettes électroniques qui stockent les données sous forme de bits (0 ou 1).</p>
+<p>On différencie plusieurs types de mémoire:</p>
+<ul>
+<li><strong>Volatile</strong>: La mémoire est effacée lorsque l'ordinateur est éteint (RAM)
+<ul>
+<li><strong>Dynamique</strong>: Les données sont stockées sous forme de charges électriques, nécessite un rafraîchissement régulier</li>
+<li><strong>Statique</strong>: Les données sont stockées sous forme de circuits, plus rapide et plus cher</li>
+</ul>
+</li>
+<li><strong>Non-volatile</strong>: La mémoire conserve les données même lorsque l'ordinateur est éteint (disque dur, SSD)</li>
+</ul>
+<p>Il existe plusieurs types de composants de stockage (<em>classées par ordre de vitesse d'accès</em>):</p>
+<table>
+<thead>
+<tr>
+<th>Niveau</th>
+<th>Capacité</th>
+<th>Vitesse d'accès</th>
+<th>Localisation</th>
+<th>Quantité / Nombre d'unités</th>
+<th>Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Registres</td>
+<td>~128 bits</td>
+<td>~0,3 ns</td>
+<td>Intégrés dans le CPU</td>
+<td>Variable selon l'architecture</td>
+<td>Volatile</td>
+<td>Stockage minuscule très rapide, mémoire éphémère</td>
+</tr>
+<tr>
+<td>Cache L1</td>
+<td>~64 KB par cœur</td>
+<td>~1 ns</td>
+<td>Intégré dans le CPU</td>
+<td>1 par cœur</td>
+<td>Volatile</td>
+<td>Mémoire cache de premier niveau, très rapide, spécifique à chaque cœur</td>
+</tr>
+<tr>
+<td>Cache L2</td>
+<td>~256 KB à 1 MB par cœur</td>
+<td>~3-5 ns</td>
+<td>Intégré dans le CPU</td>
+<td>1 par cœur</td>
+<td>Volatile</td>
+<td>Mémoire cache de deuxième niveau, plus grande mais légèrement moins rapide que L1</td>
+</tr>
+<tr>
+<td>Cache L3</td>
+<td>~2 à 16 MB partagés</td>
+<td>~10-15 ns</td>
+<td>Partagé au sein du CPU</td>
+<td>1 pour l'ensemble des cœurs</td>
+<td>Volatile</td>
+<td>Mémoire cache de troisième niveau, partagée entre tous les cœurs du processeur</td>
+</tr>
+<tr>
+<td>RAM</td>
+<td>8 à 64 GB</td>
+<td>~50-100 ns</td>
+<td>Sur la carte mère</td>
+<td>1 module ou plus</td>
+<td>Volatile</td>
+<td>Mémoire principale de l'ordinateur, stocke les données et programmes en cours d'utilisation</td>
+</tr>
+<tr>
+<td>SSD (Disque Flash)</td>
+<td>200 GB à 1 TB</td>
+<td>~0,1 ms</td>
+<td>Interne ou externe</td>
+<td>1 ou plus</td>
+<td>Non-volatile</td>
+<td>Disque à semi-conducteurs, offre des temps d'accès rapides et une bonne fiabilité</td>
+</tr>
+<tr>
+<td>HDD (Disque dur)</td>
+<td>1 à 5 TB</td>
+<td>~5-10 ms</td>
+<td>Interne ou externe</td>
+<td>1 ou plus</td>
+<td>Non-volatile</td>
+<td>Disque mécanique traditionnel, offre une grande capacité de stockage à moindre coût</td>
+</tr>
+</tbody>
+</table>
+<p>En tant que développeur, vous utiliserez <strong>principalement</strong> la RAM pour stocker les données et les instructions nécessaires à l'exécution de vos programmes. Il est important de gérer efficacement la mémoire pour éviter les <strong>fuites de mémoire</strong> et les <strong>problèmes de performance</strong>.<br>
+Vous serez également amené à réaliser des opérations de lecture et d'écriture sur le disque dur pour stocker des données de manière permanente.<br>
+Il est important de comprendre les <strong>différences de vitesse d'accès</strong> entre ces différents types de mémoire pour <strong>optimiser</strong> les performances de vos applications.</p>
+<h4 id="disque-dur" tabindex="-1"><a class="header-anchor" href="#disque-dur"></a> Disque dur</h4>
+<p>Le disque dur est un composant de stockage non-volatile qui permet de stocker des données de manière permanente. Il est composé de plateaux magnétiques qui tournent à grande vitesse et d'une tête de lecture/écriture qui se déplace sur ces plateaux pour accéder aux données.<br>
+Les disques durs sont utilisés pour stocker des fichiers, des programmes, des systèmes d'exploitation et d'autres données qui doivent être conservées même lorsque l'ordinateur est éteint.</p>
+<p>Pour stocker, lire ou écrire des données, le disque dur utilise des <strong>plateaux magnétiques</strong> (circulaires) qui tournent à grande vitesse (jusqu'à 15 000 tours par minute). Les bits sont stockés sous forme de <strong>charges magnétiques</strong> sur ces plateaux, et la tête de lecture/écriture se déplace sur ces plateaux pour accéder aux données. Pour les écritures, la tête de lecture/écriture modifie les charges magnétiques à l'emplacement souhaité.</p>
+<p>Les disques durs sont caractérisés par plusieurs paramètres:</p>
+<ul>
+<li><strong>Capacité de stockage</strong>: La quantité de données qu'ils peuvent stocker (exprimée en gigaoctets ou téraoctets).</li>
+<li><strong>Vitesse de rotation</strong>: La vitesse à laquelle les plateaux tournent (exprimée en tours par minute).</li>
+<li><strong>Temps d'accès</strong>: Le temps nécessaire pour accéder à une donnée spécifique sur le disque (exprimé en millisecondes).</li>
+<li><strong>Débit de transfert</strong>: La vitesse à laquelle les données peuvent être lues ou écrites sur le disque (exprimée en mégaoctets par seconde).</li>
+</ul>
+<h4 id="carte-m%C3%A8re" tabindex="-1"><a class="header-anchor" href="#carte-m%C3%A8re"></a> Carte mère</h4>
+<p>La carte mère est le composant principal de l'ordinateur sur lequel sont connectés tous les autres composants matériels. Elle est composée de circuits imprimés et de connecteurs qui permettent de relier le processeur, la mémoire, le disque dur, les cartes d'extension et les périphériques.<br>
+La carte mère contient également le BIOS (Basic Input/Output System) ou l'UEFI (Unified Extensible Firmware Interface), qui est un logiciel intégré qui permet de démarrer l'ordinateur et de contrôler les composants matériels.</p>
+<h3 id="software" tabindex="-1"><a class="header-anchor" href="#software"></a> Software</h3>
+<p>Le Software est la partie logicielle de l'ordinateur, c'est-à-dire les programmes et les données qui permettent à l'ordinateur de fonctionner.<br>
+D'un point de vue système, les logiciels que l'on peut appeler <strong>process</strong> ont besoin d'accéder:</p>
+<ul>
+<li>Au processeur pour effectuer les différentes opérations (calculs, déplacements de données, ...)</li>
+<li>A la mémoire pour stocker les données et les instructions</li>
+<li>Aux périphériques pour communiquer avec l'utilisateur ou d'autres systèmes</li>
+</ul>
+<h4 id="daemon" tabindex="-1"><a class="header-anchor" href="#daemon"></a> Daemon</h4>
+<p>Un <strong>daemon</strong> est un programme informatique qui s'exécute en <strong>arrière-plan</strong>, sans interaction directe avec l'utilisateur. Les daemons sont souvent utilisés pour des tâches de maintenance, de surveillance ou de gestion des ressources. Ils peuvent être lancés au démarrage du système et s'exécuter en continu, prêts à répondre à des événements spécifiques.<br>
+Les daemons sont des interfaces comme les autres, la plupart du temps exécutés par l'utilisateur root, car ils nécessitent des privilèges élevés pour accéder à certaines ressources système.</p>
+<h4 id="shell" tabindex="-1"><a class="header-anchor" href="#shell"></a> Shell</h4>
+<p>Un <strong>shell</strong> est une interface en ligne de commande qui permet à l'utilisateur d'interagir avec le système d'exploitation en saisissant des commandes textuelles. Les shells sont utilisés pour exécuter des programmes, naviguer dans le système de fichiers, gérer les processus et les utilisateurs, etc.<br>
+Il existe plusieurs shells disponibles sur les systèmes Unix et Linux, tels que Bash, Zsh, Ksh, etc. Chaque shell a ses propres fonctionnalités et syntaxe, mais ils partagent des concepts de base tels que les variables, les boucles, les conditions,...</p>
+<h4 id="gui" tabindex="-1"><a class="header-anchor" href="#gui"></a> GUI</h4>
+<p>Une <strong>interface graphique</strong> (GUI) est un environnement visuel qui permet à l'utilisateur d'interagir avec le système d'exploitation à l'aide de fenêtres, de menus, de boutons
+et d'autres éléments graphiques. Les interfaces graphiques offrent une expérience utilisateur plus conviviale et intuitive que les interfaces en ligne de commande (CLI).<br>
+Les GUI sont utilisées dans de nombreux systèmes d'exploitation modernes, tels que Windows, macOS et les distributions Linux avec des environnements de bureau tels que GNOME, KDE, etc.</p>
+<h3 id="operating-system" tabindex="-1"><a class="header-anchor" href="#operating-system"></a> Operating System</h3>
+<p>Un système d'exploitation est un (ensemble de) programme(s) qui permettent de gérer les ressources matérielles de l'ordinateur et de fournir une interface entre l'utilisateur et le matériel.<br>
+Le but d'un système d'exploitation est double:</p>
+<ul>
+<li>Permettre d'utiliser les périphériques de l'ordinateur grâce à des <strong>pilotes</strong></li>
+<li>Permettre l'éxécution de programmes grâce à un <strong>kernel</strong>
+<ul>
+<li>De façon concurrente grâce à des <strong>threads</strong></li>
+<li>De façon sécurisée, les programmes ne peuvent pas accéder à la mémoire d'autres programmes</li>
+</ul>
+</li>
+</ul>
+<p>Le système d'exploitation est séparé en plusieurs couches:</p>
+<ul>
+<li><strong>Kernel</strong> qui gère les appels systèmes, l'ordonnancement des process, la communication entre les process, le matériel et le kernel</li>
+<li><strong>Interfaces logicielles</strong> permettant d'accéder aux périphériques</li>
+<li><strong>Daemons</strong> qui sont des programmes qui tournent en arrière-plan</li>
+</ul>
+<h4 id="kernel" tabindex="-1"><a class="header-anchor" href="#kernel"></a> Kernel</h4>
+<p>Un système d'exploitation n'est pas un bloc monolithique, il est composé de plusieurs parties, dont le <strong>kernel</strong>.</p>
+<p>Le kernel est la partie centrale du système d'exploitation qui gère les ressources matérielles (processeur, mémoire, périphériques) et les interactions logicielles (processus, threads, fichiers). Il gère également les appels système, qui permettent aux programmes d'interagir avec le matériel. Il est aussi responsable de la gestion des processus.</p>
+<p>Le kernel a un accès matériel et un contrôle total sur la machine. Il est par conséquent le plus critique et le plus sensible des composants du système d'exploitation. Il est par principe le plus petit possible pour minimiser les risques de bugs et de failles de sécurité.</p>
+<h4 id="interface-logicielle" tabindex="-1"><a class="header-anchor" href="#interface-logicielle"></a> Interface logicielle</h4>
+<p>Une <strong>interface logicielle</strong> est un ensemble de fonctions, de procédures ou de méthodes qui permettent à un programme d'interagir avec un périphérique matériel ou un autre logiciel.</p>
+<p>Les interfaces logicielles sont utilisées pour abstraire la complexité des interactions matérielles et logicielles, permettant aux développeurs de créer des applications sans avoir à se soucier des détails de bas niveau. Elles fournissent un moyen standardisé et simplifié d'accéder aux fonctionnalités des périphériques, en masquant les spécificités de leur implémentation.</p>
+<h2 id="uefi" tabindex="-1"><a class="header-anchor" href="#uefi"></a> UEFI</h2>
+<p>L'UEFI (Unified Extensible Firmware Interface) est un logiciel sur la carte mère qui est lancé dès l'allumage de l'ordinateur.<br>
+Il est en charge de la <strong>vérification</strong>, la <strong>synchronisation</strong>, et éventuellement la <strong>configuration</strong> des composants matériels de l'ordinateur.<br>
+Il est également responsable de déterminer le dispositif de démarrage (disque dur, clé USB, CD-ROM, etc.) et de lancer le système d'exploitation.</p>
+<p>Elle remplace l'ancien BIOS (Basic Input/Output System) et offre de nombreuses améliorations en termes de performances, de sécurité et de fonctionnalités.</p>
+<h3 id="uefi-manager" tabindex="-1"><a class="header-anchor" href="#uefi-manager"></a> UEFI manager</h3>
+<p>L'UEFI manager est une interface graphique qui permet de lire et de configurer les paramètres de l'UEFI, de gérer les périphériques de démarrage, de mettre à jour le micrologiciel (firmware) de la carte mère, installer des pilotes, etc.<br>
+On y accède généralement en appuyant sur une touche spécifique au démarrage de l'ordinateur (par exemple, F2, F10, F12, ESC).</p>
+<h3 id="boot" tabindex="-1"><a class="header-anchor" href="#boot"></a> Boot</h3>
+<p>Le processus de démarrage d'un ordinateur consiste à charger le système d'exploitation en mémoire pour permettre à l'utilisateur d'interagir avec l'ordinateur.<br>
+Il consiste en plusieurs étapes:</p>
+<ol>
+<li>Mise sous tension de l'ordinateur.</li>
+<li>L'UEFI initialise le matériel (la carte mère, les disques durs, la mémoire, ...) et vérifie que les périphériques connectés sont reconnus et fonctionnels.</li>
+<li>Pour chaque périphérique de démarrage, l'UEFI recherche un chargeur d'amorçage (bootloader) qui permet de lancer le système d'exploitation, s'il n'y en a pas, il passe au périphérique suivant.</li>
+</ol>
+<h2 id="lexique" tabindex="-1"><a class="header-anchor" href="#lexique"></a> Lexique</h2>
+<ul>
+<li><strong>BIOS</strong>: Basic Input/Output System, ancien logiciel de démarrage des ordinateurs, remplacé par l'UEFI</li>
+<li><strong>UEFI</strong>: Unified Extensible Firmware Interface, logiciel de démarrage moderne offrant des fonctionnalités avancées</li>
+<li><strong>Firmware</strong>: Logiciel intégré dans un composant matériel, comme le micrologiciel de la carte mère</li>
+<li><strong>Périphérique de démarrage</strong>: Dispositif (disque dur, clé USB, CD-ROM) à partir duquel l'ordinateur démarre</li>
+<li><strong>Interface graphique</strong>: Environnement visuel permettant d'interagir avec un système informatique</li>
+<li><strong>Pilote</strong>: Logiciel permettant à un système d'exploitation de communiquer avec un périphérique matériel</li>
+<li><strong>Micrologiciel</strong>: Logiciel intégré dans un composant matériel, comme le BIOS ou l'UEFI</li>
+<li><strong>Thread</strong>: Fil d'exécution, unité de base d'un processus permettant l'exécution simultanée de plusieurs tâches</li>
+<li><strong>Kernel</strong>: Noyau, partie centrale du système d'exploitation gérant les ressources matérielles et les interactions logicielles</li>
+<li><strong>Shell</strong>: Interface en ligne de commande permettant d'interagir avec le système d'exploitation</li>
+<li><strong>Bootloader</strong>: Chargeur d'amorçage, logiciel permettant de lancer le système d'exploitation au démarrage de l'ordinateur</li>
+<li><strong>Concurrent</strong>: Le début d'un process est entre le début et la fin d'un autre process</li>
+<li><strong>Parallel</strong>: Qui se déroule en même temps que d'autres opérations, mais sur des ressources différentes</li>
+</ul>
+
+
+</article>
+
+        </main>
+
+        <footer class="min-h-[50px] border-t-2 mt-4 border-gray-200 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-center items-center">
+                    <p class="text-center">
+                        ©2025 <b><span style="font-family: Consolas, sans-serif;">Do-<span style="color: #4a86e8">It</span></span></b> - Développement, Management et Gestion de projets en IT
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- MathJax import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">
+            window.MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']], // Delimiters for inline math
+                    displayMath: [['$$', '$$'], ['\\[', '\\]']] // Delimiters for block math
+                },
+                svg: {
+                    fontCache: 'global' // Use global font cache for SVG output
+                }
+            };
+            document.addEventListener('DOMContentLoaded', () => {
+                MathJax.typeset(); // Ensures MathJax processes the content after the page loads
+            });
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">
+            Prism.plugins.NormalizeWhitespace.setDefaults({
+                'remove-trailing': true,
+                'remove-indent': true,
+                'left-trim': true,
+                'right-trim': true,
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script>
+    </body>
+</html>

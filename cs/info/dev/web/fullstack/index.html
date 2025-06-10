@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="robots" content="index, follow">
+
+        <link rel="canonical" href="https://do-it.aioli.ec-m.fr/cs/info/dev/web/fullstack/">
+
+        
+        
+
+        <meta name="description" content="Do-It, cours et travaux des élèves de l&#39;école Centrale Méditerranée">
+        <meta property="og:description" content="Do-It, cours et travaux des élèves de l&#39;école Centrale Méditerranée">
+        <meta name="twitter:description" content="Do-It, cours et travaux des élèves de l&#39;école Centrale Méditerranée">
+
+        
+            <meta name="author" content="Loïck Goupil-Hallay, Adrien Brunet">
+        
+        <meta name="keywords" content="do-it, centrale, centrale méditerranée, ecm, COURS, informatique, développement, web">
+
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png">
+        <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png">
+
+        <link href="/assets/stylesheets/main.css" rel="stylesheet">
+
+        <meta property="og:title" content="Développement Web">
+
+        <meta property="og:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta property="og:url" content="https://do-it.aioli.ec-m.fr/cs/info/dev/web/fullstack/">
+        <meta property="og:type" content="website">
+
+        <meta name="twitter:card" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:title" content="Développement Web">
+        <meta name="twitter:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:url" content="https://do-it.aioli.ec-m.fr/cs/info/dev/web/fullstack/">
+
+        <title>Développement Web</title>
+
+        <!-- Prismjs imports
+                - Prism line numbers
+                - Prism toolbar
+        -->
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet">
+        <link id="prism-theme" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+        <!-- Mermaid import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js "></script>
+
+        <script defer="">
+        // Check if a theme is stored in localStorage. If so, use it, otherwise fallback to the system preference.
+        const storedTheme = localStorage.getItem('theme');
+        if (storedTheme) {
+            document.documentElement.classList.toggle("dark", storedTheme === "dark");
+        } else {
+            // Use system color scheme if there is no stored theme preference.
+            document.documentElement.classList.toggle("dark", window.matchMedia("(prefers-color-scheme: dark)").matches);
+        }
+
+        function loadPrismTheme(isDarkMode) {
+            const newTheme = isDarkMode ? 'prism-okaidia.min.css' : 'prism-solarizedlight.min.css';
+            const newLink = document.createElement('link');
+            newLink.rel = 'stylesheet';
+            newLink.id = 'prism-theme';
+            newLink.href = `https://cdn.jsdelivr.net/npm/prismjs/themes/${newTheme}`;
+
+            newLink.onload = () => {
+                // Reapply highlighting after the new theme loads
+                Prism.highlightAll();
+            };
+
+            const existingLink = document.getElementById('prism-theme');
+            if (existingLink) {
+                document.head.replaceChild(newLink, existingLink);
+            } else {
+                document.head.appendChild(newLink);
+            }
+        }
+
+        function setMermaidTheme(isDarkMode) {
+            const theme = isDarkMode ? 'dark' : 'forest';
+            mermaid.initialize({
+                securityLevel: 'loose',
+                theme,
+                startOnLoad: true,
+            });
+        }
+
+        // Toggle dark and light mode and update localStorage accordingly.
+        function toggleDarkMode() {
+            const dark = document.documentElement.classList.contains("dark");
+            const newTheme = dark ? "light" : "dark";
+            localStorage.setItem('theme', newTheme);
+            document.documentElement.classList.toggle("dark", !dark);
+            loadPrismTheme(!dark);
+            setMermaidTheme(!dark);
+        }
+
+        // On initial load, ensure that Prism and Mermaid are initialized using the current theme.
+        const isDark = document.documentElement.classList.contains("dark");
+        loadPrismTheme(isDark);
+        setMermaidTheme(isDark);
+        </script>
+
+    </head>
+
+    <body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000" class="bg-neutral-50 text-neutral-950 dark:bg-neutral-900 dark:text-neutral-50">
+        <header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white dark:bg-neutral-900 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-between items-center">
+                    <a class="mx-2" href="/">Home</a>
+                    <button class="hidden sm:block text-neutral-950 dark:text-neutral-50 hover:bg-neutral-700 hover:text-neutral-50 hover:dark:bg-neutral-300 hover:dark:text-neutral-950 transition-colors p-2 rounded-full duration-800 ease-in-out" onclick="toggleDarkMode()">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 dark:hidden stroke-current">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <path d="M12 2V4" stroke-linecap="round"></path>
+                            <path d="M12 20V22" stroke-linecap="round"></path>
+                            <path d="M4 12L2 12" stroke-linecap="round"></path>
+                            <path d="M22 12L20 12" stroke-linecap="round"></path>
+                            <path d="M19.7778 4.22266L17.5558 6.25424" stroke-linecap="round"></path>
+                            <path d="M4.22217 4.22266L6.44418 6.25424" stroke-linecap="round"></path>
+                            <path d="M6.44434 17.5557L4.22211 19.7779" stroke-linecap="round"></path>
+                            <path d="M19.7778 19.7773L17.5558 17.5551" stroke-linecap="round"></path>
+                        </svg>
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 stroke-current hidden dark:block">
+                            <path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </button>
+                    <div class="flex items-center gap-4 sm:gap-6 ">
+                        <a class="" href="/cs">CS</a>
+                        <a class="" href="/pok">POK</a>
+                        <a class="" href="/mon">MON</a>
+                        <a class="" href="/projets">Projets</a>
+                        <a class="hidden sm:block" href="/promos">Promos</a>
+                        <a href="/search">
+                            <svg class="h-5 aspect-square stroke-neutral-950 dark:stroke-neutral-300 fill-none stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+                            </svg>
+                        </a>
+                        <a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank">
+                            <svg class="h-5 aspect-square dark:stroke-neutral-300 dark:fill-neutral-300" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body="">
+            
+<script>
+    const SIDEBAR_STATE_KEY = "courseSidebarState";
+
+    function toggleFold(button) {
+        // Find the closest parent <li> and its corresponding nested <ul>
+        const listItem = button.closest('li');
+        const nestedList = listItem.querySelector('.nested');
+
+        if (nestedList) {
+            const isActive = nestedList.classList.toggle('active'); // Toggle the 'active' class
+            button.classList.toggle('active', isActive); // Toggle button rotation
+            saveSidebarState();
+        }
+    }
+
+    function saveSidebarState() {
+        const state = {};
+        const nestedLists = document.querySelectorAll('.sidebar-navigation .nested');
+        nestedLists.forEach((list, index) => {
+            state[index] = list.classList.contains('active');
+        });
+        localStorage.setItem(SIDEBAR_STATE_KEY, JSON.stringify(state));
+    }
+
+    function restoreSidebarState() {
+        const state = JSON.parse(localStorage.getItem(SIDEBAR_STATE_KEY));
+        if (!state) return;
+
+        const nestedLists = document.querySelectorAll('.sidebar-navigation .nested');
+        nestedLists.forEach((list, index) => {
+            if (state[index]) {
+                list.classList.add('active');
+                const button = list.parentNode.querySelector('.course-sidebar-item-toggle-button'); // Correctly locate the button
+                if (button) {
+                    button.classList.add('active'); // Rotate the button
+                }
+            }
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        restoreSidebarState();
+    });
+
+let lastScrollYCourses = window.scrollY;
+
+function toggleCourseSidebar() {
+    document.getElementById('course-sidebar').classList.toggle('open');
+}
+
+window.addEventListener('scroll', () => {
+    const burger = document.getElementById('course-burger-button');
+    const sidebar = document.getElementById('course-sidebar');
+    const currentScroll = window.scrollY;
+    // Hide the burger button if max width is reached
+    if (currentScroll < 10 || currentScroll < lastScrollYCourses) {
+        burger.classList.remove('hidden');
+    } else if (!sidebar || !sidebar.classList.contains('open')) {
+        burger.classList.add('hidden');
+    }
+
+    lastScrollYCourses = currentScroll;
+});
+</script>
+
+<button id="course-burger-button" class="sidebar-burger-button left-2" onclick="toggleCourseSidebar()">☰</button>
+
+<nav id="course-sidebar" class="sidebar left-0 border-r-2 -translate-x-full 3xl:translate-x-0">
+    <article><h2>Cours</h2></article>
+    <ul class="sidebar-navigation space-y-2">
+        
+        
+            
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700  bg-info dark:text-neutral-950">
+        <a class="flex-1 text-left pr-2 text-lg">Informatique</a>
+        
+            <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a class="flex-1 text-left pr-2 text-lg">Bases</a>
+        
+            <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/info/bases/git" class="flex-1 text-left pr-2 text-lg">Git</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/info/bases/enterprise_git" class="flex-1 text-left pr-2 text-lg">Enterprise Git</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/info/bases/linux" class="flex-1 text-left pr-2 text-lg">Linux</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/info/bases/ordinateur" class="flex-1 text-left pr-2 text-lg">Ordinateur</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a class="flex-1 text-left pr-2 text-lg">Structures de données</a>
+        
+            <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/info/bases/struct_donnees/linkedlist" class="flex-1 text-left pr-2 text-lg">Listes Chaînées</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/info/bases/struct_donnees/arbres_dict" class="flex-1 text-left pr-2 text-lg">Arbres et Dictionnaires</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/info/bases/struct_donnees/hash" class="flex-1 text-left pr-2 text-lg">Hachage</a>
+        
+    </div>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a class="flex-1 text-left pr-2 text-lg">Dev</a>
+        
+            <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a class="flex-1 text-left pr-2 text-lg">Web</a>
+        
+            <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/info/dev/web/fullstack" class="flex-1 text-left pr-2 text-lg">Fullstack</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/info/dev/web/websocket" class="flex-1 text-left pr-2 text-lg">WebSocket</a>
+        
+    </div>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/info/dev/bash" class="flex-1 text-left pr-2 text-lg">Bash</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/info/dev/java" class="flex-1 text-left pr-2 text-lg">Java</a>
+        
+    </div>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a class="flex-1 text-left pr-2 text-lg">Ops</a>
+        
+            <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/info/ops/ssh" class="flex-1 text-left pr-2 text-lg">SSH</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/info/ops/aioli" class="flex-1 text-left pr-2 text-lg">aioli</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/info/ops/postgres" class="flex-1 text-left pr-2 text-lg">PostgreSQL</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/info/ops/reseaux" class="flex-1 text-left pr-2 text-lg">Réseaux</a>
+        
+    </div>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+        
+            
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700  bg-mgt dark:text-neutral-950">
+        <a class="flex-1 text-left pr-2 text-lg">Management</a>
+        
+            <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a class="flex-1 text-left pr-2 text-lg">SI</a>
+        
+            <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/management/si/management" class="flex-1 text-left pr-2 text-lg">Management</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/management/si/audit" class="flex-1 text-left pr-2 text-lg">Audit</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/management/si/conception" class="flex-1 text-left pr-2 text-lg">Conception SI</a>
+        
+    </div>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a class="flex-1 text-left pr-2 text-lg">Agilité</a>
+        
+            <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/management/agile/gdp" class="flex-1 text-left pr-2 text-lg">Gestion Agile</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/management/agile/scrum" class="flex-1 text-left pr-2 text-lg">SCRUM</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/management/agile/cristal_clear" class="flex-1 text-left pr-2 text-lg">Cristal Clear</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/management/agile/methodes_agiles" class="flex-1 text-left pr-2 text-lg">Autres méthodes agiles</a>
+        
+    </div>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/management/cyber" class="flex-1 text-left pr-2 text-lg">CyberSécurité</a>
+        
+            <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/management/cyber/crise" class="flex-1 text-left pr-2 text-lg">CyberSécurité - Crises</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/management/cyber/rssi" class="flex-1 text-left pr-2 text-lg">CyberSécurité - RSSI</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/management/cyber/soc" class="flex-1 text-left pr-2 text-lg">CyberSécurité - SOC</a>
+        
+    </div>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a class="flex-1 text-left pr-2 text-lg">Sobriété Numérique</a>
+        
+            <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/management/sobriete/numerique" class="flex-1 text-left pr-2 text-lg">Sobriété Numérique</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/management/sobriete/accessibilite" class="flex-1 text-left pr-2 text-lg">Accessibilité Numérique</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/management/sobriete/fresque_numerique" class="flex-1 text-left pr-2 text-lg">Fresque du Numérique</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/management/sobriete/impacts" class="flex-1 text-left pr-2 text-lg">Impacts du Numérique</a>
+        
+    </div>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+        
+            
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700  bg-gp dark:text-neutral-950">
+        <a class="flex-1 text-left pr-2 text-lg">Gestion &amp; Modélisation Projet</a>
+        
+            <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/gestion_modelisation/service_design" class="flex-1 text-left pr-2 text-lg">Service Design</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/gestion_modelisation/gdp" class="flex-1 text-left pr-2 text-lg">Gestion de Projet</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/gestion_modelisation/uiux" class="flex-1 text-left pr-2 text-lg">UI/UX</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/gestion_modelisation/hpt" class="flex-1 text-left pr-2 text-lg">High Performance Team</a>
+        
+    </div>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+        
+            
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a class="flex-1 text-left pr-2 text-lg">Tronc Commun</a>
+        
+            <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/tronc_commun/change_management" class="flex-1 text-left pr-2 text-lg">Conduite du Changement</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/tronc_commun/ethique" class="flex-1 text-left pr-2 text-lg">Ethique et Responsabilité</a>
+        
+    </div>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+        
+    </ul>
+</nav>
+
+<article>
+<h1 class="mb-1">Développement Web</h1>
+<div class="mb-4">
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Tags : </div>
+            <ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags">
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">COURS</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">informatique</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">développement</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">web</li>
+                
+
+            </ul>
+
+            
+            <div class="hidden" data-pagefind-meta="Type" aria-hidden="true">
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Auteurs : </div>
+            <ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs">
+                
+                    <li class="bg-blue-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Auteurs">Loïck Goupil-Hallay</li>
+                
+                    <li class="bg-blue-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Auteurs">Adrien Brunet</li>
+                
+            </ul>
+        </div>
+    
+
+    
+</div>
+
+
+<script>
+let lastScrollYSummary = window.scrollY;
+
+function toggleSummarySidebar() {
+    document.getElementById('toc-sidebar').classList.toggle('open');
+}
+
+window.addEventListener('scroll', () => {
+    const burger = document.getElementById('toc-burger-button');
+    const sidebar = document.getElementById('toc-sidebar');
+    const currentScroll = window.scrollY;
+    // Hide the burger button if max width is reached
+    if (currentScroll < 10 || currentScroll < lastScrollYSummary) {
+        burger.classList.remove('hidden');
+    } else if (!sidebar || !sidebar.classList.contains('open')) {
+        burger.classList.add('hidden');
+    }
+
+    lastScrollYSummary = currentScroll;
+});
+</script>
+<p><button id="toc-burger-button" class="sidebar-burger-button right-2" onclick="toggleSummarySidebar()">☰</button></p>
+<nav id="toc-sidebar" class="sidebar right-0 border-l-2 translate-x-full 3xl:translate-x-0">
+<h2>Sommaire</h2>
+<nav class="toc"><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#introduction"> Introduction</a></li><li class="toc-item"><a class="toc-link" href="#requ%C3%AAte-web-(http)"> Requête Web (HTTP)</a></li><li class="toc-item"><a class="toc-link" href="#frontend"> Frontend</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#librairies-de-styles-%2F-composants"> Librairies de Styles / Composants</a></li><li class="toc-item"><a class="toc-link" href="#frameworks-frontend"> Frameworks Frontend</a></li><li class="toc-item"><a class="toc-link" href="#cors"> CORS</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#backend"> Backend</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#serveurs-web"> Serveurs Web</a></li><li class="toc-item"><a class="toc-link" href="#bases-de-donn%C3%A9es"> Bases de Données</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#mod%C3%A8le-relationnel"> Modèle Relationnel</a></li><li class="toc-item"><a class="toc-link" href="#orm"> ORM</a></li><li class="toc-item"><a class="toc-link" href="#migration-de-donn%C3%A9es"> Migration de Données</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#apis"> APIs</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#restful-apis"> RESTful APIs</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#routes"> Routes</a></li><li class="toc-item"><a class="toc-link" href="#sp%C3%A9cifications-openapi"> Spécifications OpenAPI</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#graphql"> GraphQL</a></li><li class="toc-item"><a class="toc-link" href="#rpc"> RPC</a></li></ol></li></ol></li></ol></nav></nav>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100 dark:border-emerald-800 dark:bg-emerald-950">
+<svg class="absolute w-6 h-6 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-emerald-500 dark:stroke-emerald-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Liens utiles</strong></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li><a href="https://www.w3schools.com/tags/">Tags HTML</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/First_steps/How_CSS_is_structured">Débuter CSS</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/JavaScript_basics">JavaScript Basics</a></li>
+<li><a href="https://www.javascript.com/learn">Découvrir JavaScript</a></li>
+<li><a href="https://graphql.org/learn/">Apprendre GraphQL</a></li>
+<li><a href="https://www.openapis.org/">Découvrir OpenAPI</a></li>
+</ul>
+</div>
+</div>
+<h2 id="introduction" tabindex="-1"><a class="header-anchor" href="#introduction"></a> Introduction</h2>
+<div class="mx-8">
+  <div class="text-xl italic text-neutral-700 mx-auto w-fit dark:text-neutral-200">
+    <svg class="w-8 h-8 text-red-800 scale-x-[-1]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 14"><path d="M6 0H2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4v1a3 3 0 0 1-3 3H2a1 1 0 0 0 0 2h1a5.006 5.006 0 0 0 5-5V2a2 2 0 0 0-2-2Zm10 0h-4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4v1a3 3 0 0 1-3 3h-1a1 1 0 0 0 0 2h1a5.006 5.006 0 0 0 5-5V2a2 2 0 0 0-2-2Z"></path></svg>
+    <div class="px-9 w-fit">
+Un site web est un ensemble de <a href="https://fr.wikipedia.org/wiki/Page_web">pages web</a> et de <a href="https://fr.wikipedia.org/wiki/Ressource_du_World_Wide_Web">ressources</a> reliées par des <a href="https://fr.wikipedia.org/wiki/Hyperlien">hyperliens</a>, déﬁni et accessible par une <a href="https://fr.wikipedia.org/wiki/Uniform_Resource_Locator">adresse web</a>. Un site est développé à l'aide de langages de <a href="https://fr.wikipedia.org/wiki/Programmation_web">programmation web</a>, puis hébergé sur un <a href="https://fr.wikipedia.org/wiki/Serveur_web">serveur web</a> accessible via le <a href="https://fr.wikipedia.org/wiki/R%C3%A9seau_informatique">réseau</a> mondial <a href="https://fr.wikipedia.org/wiki/Internet">Internet</a>, un <a href="https://fr.wikipedia.org/wiki/Intranet">intranet</a> local, ou n'importe quel autre réseau, tel que le <a href="https://fr.wikipedia.org/wiki/Tor_(r%C3%A9seau)">réseau Tor</a>. L'ensemble des sites web publics constituent le <a href="https://fr.wikipedia.org/wiki/World_Wide_Web">World Wide Web</a>.
+</div>
+    <svg class="w-8 h-8 text-red-800 mb-4 ml-auto scale-y-[-1]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 14"><path d="M6 0H2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4v1a3 3 0 0 1-3 3H2a1 1 0 0 0 0 2h1a5.006 5.006 0 0 0 5-5V2a2 2 0 0 0-2-2Zm10 0h-4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4v1a3 3 0 0 1-3 3h-1a1 1 0 0 0 0 2h1a5.006 5.006 0 0 0 5-5V2a2 2 0 0 0-2-2Z"></path></svg>
+    <a href="https://fr.wikipedia.org/wiki/Site_web" class="ml-auto"><div class="text-right text-neutral-600 ml-auto dark:text-neutral-300">Wikipedia (fr)</div></a>
+  </div>
+</div>
+<p>Le <strong>développement web</strong> désigne l'ensemble des tâches liées à la <strong>conception</strong>, au <strong>développement</strong> et à la <strong>maintenance</strong> de sites web et d'applications web. Il englobe plusieurs domaines, tels que le <strong>design web</strong>, le <strong>développement front-end</strong>, le <strong>développement back-end</strong> et leur enfant caché, le <strong>développement full-stack</strong>.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100 dark:border-red-800 dark:bg-red-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-red-500 dark:stroke-red-800 stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Attention</b></p>
+</div><div class="pl-8 mr-8">
+<p>Cela ne désigne pas uniquement les sites web que vous consultez tous les jours, c'est en fait beaucoup plus vaste que cela.<br>
+Il existe des applications web qui sont utilisées par des millions de personnes <strong>sans interaction avec un navigateur web</strong>.</p>
+</div>
+</div>
+<h2 id="requ%C3%AAte-web-(http)" tabindex="-1"><a class="header-anchor" href="#requ%C3%AAte-web-(http)"></a> Requête Web (HTTP)</h2>
+<p>Le <strong>protocole HTTP</strong> (HyperText Transfer Protocol) est un protocole de communication client-serveur. Il permet de transférer des données sur le web.<br>
+Il est basé sur un modèle de requête-réponse, où le client envoie une requête au serveur, qui lui répond.</p>
+<pre class="mermaid" style="background-color: transparent;">
+sequenceDiagram
+    actor Client
+    participant DNS
+    participant Server
+    Client->>DNS: DNS Request
+    DNS->>Client: DNS Response (IP Address)
+    Client-->>Server: TCP SYN
+    Server-->>Client: TCP SYN-ACK
+    Client-->>Server: TCP ACK
+    Client->>Server: HTTP Request
+    Server->>Client: HTTP Response (HTML, JSON, XML, file, etc.)
+</pre>
+<p>Lorsque vous envoyez une requête HTTP et recevez une réponse, plusieurs étapes et protocoles sont impliqués. Voici une explication détaillée du processus :</p>
+<ol>
+<li>
+<p><strong>Résolution DNS</strong> :</p>
+<ul>
+<li>Le client (votre navigateur ou application) envoie une requête DNS pour obtenir l'adresse IP du serveur à partir du nom de domaine.</li>
+<li>Le serveur DNS répond avec l'adresse IP correspondante.</li>
+</ul>
+</li>
+<li>
+<p><strong>Établissement de la connexion TCP</strong> :</p>
+<ul>
+<li>Le client envoie un paquet SYN (synchronize) au serveur pour initier une connexion.</li>
+<li>Le serveur répond avec un paquet SYN-ACK (synchronize-acknowledge) pour accepter la connexion.</li>
+<li>Le client envoie un paquet ACK (acknowledge) pour confirmer la connexion. La connexion TCP est maintenant établie.</li>
+</ul>
+</li>
+<li>
+<p><strong>Envoi de la requête HTTP</strong> :</p>
+<ul>
+<li>Une fois la connexion TCP établie, le client envoie la requête HTTP au serveur. Cette requête peut être de différents types (GET, POST, PUT, DELETE, etc.) en fonction de l'action souhaitée.</li>
+</ul>
+</li>
+<li>
+<p><strong>Traitement de la requête par le serveur</strong> :</p>
+<ul>
+<li>Le serveur reçoit la requête HTTP et la traite. Cela peut impliquer la récupération de données, l'exécution de scripts, l'accès à une base de données, etc.</li>
+</ul>
+</li>
+<li>
+<p><strong>Réponse du serveur</strong> :</p>
+<ul>
+<li>Le serveur envoie une réponse HTTP au client. Cette réponse peut contenir du HTML, du JSON, du XML, ou d'autres types de fichiers en fonction de la requête.</li>
+</ul>
+</li>
+<li>
+<p><strong>Fermeture de la connexion TCP</strong> :</p>
+<ul>
+<li>Après avoir envoyé la réponse, le serveur ou le client peut initier la fermeture de la connexion TCP en envoyant un paquet FIN (finish).</li>
+<li>L'autre partie répond avec un paquet ACK, et ensuite envoie également un paquet FIN.</li>
+<li>La partie initiale répond avec un dernier paquet ACK. La connexion TCP est maintenant fermée.</li>
+</ul>
+</li>
+</ol>
+<p>Ce processus assure que la communication entre le client et le serveur est <strong>fiable</strong> et que les données sont transmises correctement.<br>
+C'est la base de <strong>toute communication sur le web</strong>, que ce soit pour afficher une page web, envoyer des données à un serveur, ou interagir avec une API.</p>
+<h2 id="frontend" tabindex="-1"><a class="header-anchor" href="#frontend"></a> Frontend</h2>
+<p>Le <strong>développement front-end</strong> concerne la <strong>partie visible</strong> d'une application web ou d'un site web. Il s'agit de la <strong>présentation</strong> et de l'<strong>interaction utilisateur</strong>.<br>
+Les technologies de base front-end sont le <strong>HTML</strong>, le <strong>CSS</strong> et le <strong>JavaScript</strong>.</p>
+<h3 id="librairies-de-styles-%2F-composants" tabindex="-1"><a class="header-anchor" href="#librairies-de-styles-%2F-composants"></a> Librairies de Styles / Composants</h3>
+<p>Il existe de nombreuses bibliothèques et outils qui permettent d'améliorer l'expérience utilisateur en proposant des <strong>styles</strong>, des <strong>animations</strong>, des <strong>transitions</strong>, des <strong>effets visuels</strong> préfaits:</p>
+<ul>
+<li><a href="https://tailwindcss.com/">TailwindCSS</a></li>
+<li><a href="https://getbootstrap.com/">Bootstrap</a></li>
+<li><a href="https://animate.style/">Animate.css</a></li>
+<li><a href="https://www.framer.com/motion/">Framer Motion</a></li>
+</ul>
+<h3 id="frameworks-frontend" tabindex="-1"><a class="header-anchor" href="#frameworks-frontend"></a> Frameworks Frontend</h3>
+<p>Il existe également de nombreux <strong>frameworks</strong> et <strong>bibliothèques</strong> qui facilitent le développement front-end. Ils permettent notamment de gérer l'<strong>état</strong> de l'application, de créer des <strong>composants réutilisables</strong> et d'<strong>optimiser</strong> les performances.</p>
+<ul>
+<li><a href="https://reactjs.org/">React</a></li>
+<li><a href="https://vuejs.org/">Vue.js</a></li>
+<li><a href="https://angular.io/">Angular</a></li>
+</ul>
+<p>Pour les développeurs front-end, il est important de comprendre les principes de base du <strong>design web</strong>, de l'<strong>accessibilité</strong>, de la <strong>performance</strong> et de la <strong>sécurité</strong>.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100 dark:border-amber-800 dark:bg-amber-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-amber-800 dark:stroke-amber-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Important</b></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li>Utilisez un <a href="https://validator.w3.org/">Linter HTML</a> pour vérifier que votre code HTML est correct et <strong>respecte les normes</strong>.</li>
+<li>Utilisez un <a href="https://jigsaw.w3.org/css-validator/">Linter CSS</a> pour vérifier que votre code CSS est correct et <strong>respecte les normes</strong>.</li>
+<li>Utilisez un <a href="https://eslint.org/">Linter JavaScript</a> pour vérifier que votre code JavaScript est correct et <strong>respecte les normes</strong>.</li>
+</ul>
+</div>
+</div>
+<h3 id="cors" tabindex="-1"><a class="header-anchor" href="#cors"></a> CORS</h3>
+<p><strong>CORS</strong> (Cross-Origin Resource Sharing) est un mécanisme qui permet à des ressources web d'être <strong>partagées entre différents domaines</strong>.<br>
+Il est utilisé pour <strong>contrôler l'accès</strong> aux ressources d'un site web depuis un autre site web, en définissant des <strong>politiques de sécurité</strong> qui spécifient quels domaines sont autorisés à accéder aux ressources.</p>
+<p>En tant que développeur front-end, il est important de comprendre comment fonctionne CORS et de mettre en place les <strong>en-têtes CORS</strong> appropriés pour garantir la <strong>sécurité</strong> et la <strong>fiabilité</strong> de l'application. <em>Dans le cas contraire, vous allez passer un temps fou à débugger des erreurs</em>.</p>
+<h2 id="backend" tabindex="-1"><a class="header-anchor" href="#backend"></a> Backend</h2>
+<p>Le <strong>développement back-end</strong> concerne la <strong>partie serveur</strong> d'une application web ou d'un site web. Il s'agit de la <strong>logique métier</strong>, de l'<strong>accès aux données</strong> et de la <strong>gestion des requêtes</strong>.</p>
+<h3 id="serveurs-web" tabindex="-1"><a class="header-anchor" href="#serveurs-web"></a> Serveurs Web</h3>
+<p>Les serveurs web sont des logiciels qui permettent de <strong>gérer les requêtes HTTP</strong> et de <strong>renvoyer des réponses</strong>. Ils peuvent également exécuter des scripts, accéder à des bases de données, et effectuer d'autres tâches liées au back-end.</p>
+<ul>
+<li><a href="https://www.nginx.com/">Nginx</a> (serveur web et reverse proxy)</li>
+<li><a href="https://expressjs.com/">Express.js</a> (framework Node.js serveur web)</li>
+<li><a href="https://www.djangoproject.com/">Django</a> (framework Python serveur web)</li>
+<li><a href="https://flask.palletsprojects.com/">Flask</a> (micro-framework Python serveur web)</li>
+<li><a href="https://spring.io/projects/spring-boot">Spring Boot</a> (framework Java serveur web)</li>
+<li><a href="https://github.com/go-chi/chi#readme">Chi</a> (routeur Go)</li>
+</ul>
+<h3 id="bases-de-donn%C3%A9es" tabindex="-1"><a class="header-anchor" href="#bases-de-donn%C3%A9es"></a> Bases de Données</h3>
+<p>Les bases de données sont des systèmes de stockage de données qui permettent de <strong>stocker</strong>, <strong>modifier</strong> et <strong>récupérer</strong> des informations. Elles sont essentielles pour l'intégralité des applications web qui apportent de la <strong>shareholder value</strong>.</p>
+<p>Il existe plusieurs types de bases de données, chacune adaptée à des besoins spécifiques :</p>
+<ul>
+<li><strong>SQL</strong> (Structured Query Language) : bases de données relationnelles, telles que MySQL, PostgreSQL, SQLite.</li>
+<li><strong>NoSQL</strong> : bases de données non relationnelles, telles que MongoDB, Cassandra, Redis.</li>
+</ul>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100 dark:border-amber-800 dark:bg-amber-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-amber-800 dark:stroke-amber-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Note</b></p>
+</div><div class="pl-8 mr-8">
+<p>Il est important de choisir une base de données adaptée aux besoins de l'application, en tenant compte de la <strong>scalabilité</strong>, de la <strong>performance</strong> et de la <strong>sécurité</strong>.</p>
+</div>
+</div>
+<h4 id="mod%C3%A8le-relationnel" tabindex="-1"><a class="header-anchor" href="#mod%C3%A8le-relationnel"></a> Modèle Relationnel</h4>
+<p>Un modèle relationnel est une représentation des données sous forme de <strong>tables</strong> (ou relations) qui sont liées par des <strong>clés</strong>. Chaque table représente une <strong>entité</strong> (par exemple, un utilisateur, un produit) et chaque ligne de la table représente une <strong>instance</strong> de cette entité.</p>
+<p>Les bases de données relationnelles utilisent le langage SQL pour effectuer des <strong>requêtes</strong> et des <strong>opérations</strong> sur les données. Elles sont largement utilisées dans le développement d'applications web pour leur <strong>fiabilité</strong> et leur <strong>robustesse</strong>.</p>
+<pre class="mermaid" style="background-color: transparent;">
+---
+title: Animal example
+---
+classDiagram
+    note "From Duck till Zebra"
+    Animal <|-- Duck
+    note for Duck "can fly, can swim, can dive, can help in debugging"
+    Animal <|-- Fish
+    Animal <|-- Zebra
+    Animal : +int age
+    Animal : +String gender
+    Animal: +isMammal()
+    Animal: +mate()
+    class Duck{
+        +String beakColor
+        +swim()
+        +quack()
+    }
+    class Fish{
+        -int sizeInFeet
+        -canEat()
+    }
+    class Zebra{
+        +bool is_wild
+        +run()
+    }
+</pre>
+<h4 id="orm" tabindex="-1"><a class="header-anchor" href="#orm"></a> ORM</h4>
+<p>Les <strong>ORM</strong> (Object-Relational Mapping) sont des outils qui permettent de <strong>mapper</strong> des objets de programmation à des <strong>tables de base de données</strong>. Ils facilitent l'accès aux données et permettent de manipuler les données de manière <strong>orientée objet</strong>.</p>
+<p>Ils représentent un moyen de <strong>simplifier</strong> et de <strong>sécuriser</strong> les interactions avec la base de données, en évitant les <strong>injections SQL</strong> et en facilitant la <strong>gestion des relations</strong> entre les tables.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100 dark:border-red-800 dark:bg-red-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-red-500 dark:stroke-red-800 stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Attention</b></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li>Utiliser un ORM peut simplifier le développement, mais il est important de comprendre comment fonctionne la base de données sous-jacente pour éviter les <strong>problèmes de performance</strong> et les <strong>erreurs de conception</strong>.</li>
+<li>Un ORM ajoute une <strong>couche d'abstraction</strong> entre l'application et la base de données, cela entraîne souvent une perte (parfois significative) de <strong>performance</strong>.</li>
+</ul>
+</div>
+</div>
+<h4 id="migration-de-donn%C3%A9es" tabindex="-1"><a class="header-anchor" href="#migration-de-donn%C3%A9es"></a> Migration de Données</h4>
+<p>La <strong>migration de données</strong> est le processus de <strong>transfert</strong> des données d'une base de données à une autre. Elle est souvent utilisée lors de la <strong>mise à jour</strong> d'une application ou lors de la <strong>migration</strong> vers une nouvelle base de données.</p>
+<p>Les migrations de données peuvent être <strong>automatisées</strong> à l'aide d'outils spécifiques, tels que <strong>Flyway</strong> ou <strong>Liquibase</strong>, qui permettent de gérer les <strong>versions</strong> des schémas de base de données et de <strong>suivre</strong> les changements apportés aux données.<br>
+La plupart des frameworks back-end proposent des outils intégrés pour gérer les migrations de données.</p>
+<p>Il est essentiel de penser à la <strong>migration des données</strong> dès le début du développement d'une application, car elle peut avoir un impact significatif sur la <strong>stabilité</strong> et la <strong>performance</strong> de l'application.</p>
+<h3 id="apis" tabindex="-1"><a class="header-anchor" href="#apis"></a> APIs</h3>
+<p>Les <strong>APIs</strong> (Application Programming Interfaces) sont des interfaces qui permettent à des applications de <strong>communiquer entre elles</strong>. Elles définissent les <strong>méthodes</strong> et les <strong>formats de données</strong> qui peuvent être utilisés pour échanger des informations.</p>
+<p>Les APIs sont essentielles pour le développement d'applications web modernes, car elles permettent de <strong>séparer la logique métier</strong> du front-end et du back-end, et de <strong>faciliter l'intégration</strong> avec d'autres services et applications.</p>
+<pre class="mermaid" style="background-color: transparent;">
+architecture-beta
+    group api(cloud)[API]
+
+    service db(database)[Database] in api
+    service disk1(disk)[Storage] in api
+    service disk2(disk)[Storage] in api
+    service server(server)[Server] in api
+
+    db:L -- R:server
+    disk1:T -- B:server
+    disk2:T -- B:db
+</pre>
+<h4 id="restful-apis" tabindex="-1"><a class="header-anchor" href="#restful-apis"></a> RESTful APIs</h4>
+<p>Les <strong>APIs RESTful</strong> (Representational State Transfer) sont un style d'architecture qui définit des <strong>conventions</strong> pour la création, la lecture, la mise à jour et la suppression de ressources. Elles utilisent les <strong>méthodes HTTP</strong> (GET, POST, PUT, DELETE) pour effectuer des opérations sur les ressources.</p>
+<p>Les APIs RESTful sont largement utilisées dans le développement d'applications web, car elles sont <strong>simples</strong>, <strong>flexibles</strong> et <strong>faciles à comprendre</strong>.</p>
+<h5 id="routes" tabindex="-1"><a class="header-anchor" href="#routes"></a> Routes</h5>
+<p>Les <strong>routes</strong> sont des <strong>URLs</strong> qui sont associées à des <strong>méthodes</strong> (GET, POST, PUT, DELETE) et des <strong>fonctions</strong> qui définissent le comportement de l'application.<br>
+Elles permettent de <strong>définir des points d'entrée</strong> pour les requêtes HTTP et de <strong>gérer</strong> les interactions avec les ressources de l'application.</p>
+<p>Par exemple, une route <code>/users</code> peut être associée à une fonction qui renvoie la liste des utilisateurs, tandis qu'une route <code>/users/:id</code> peut être associée à une fonction qui renvoie les détails d'un utilisateur spécifique.</p>
+<p>Les routes sont essentielles pour organiser le code back-end et définir les <strong>actions</strong> que l'application peut effectuer. Elles permettent de <strong>séparer</strong> la logique métier de l'application et de <strong>faciliter</strong> la gestion des requêtes.</p>
+<h5 id="sp%C3%A9cifications-openapi" tabindex="-1"><a class="header-anchor" href="#sp%C3%A9cifications-openapi"></a> Spécifications OpenAPI</h5>
+<p><strong>OpenAPI</strong> (anciennement Swagger) est une spécification qui permet de décrire les APIs RESTful de manière <strong>standardisée</strong> et <strong>lisible</strong>. Elle définit les <strong>endpoints</strong>, les <strong>méthodes</strong>, les <strong>paramètres</strong> et les <strong>réponses</strong> des APIs de manière structurée et standardisée.</p>
+<p>Cela permet de <strong>documenter</strong> les APIs de manière <strong>automatique</strong> et de faciliter l'intégration avec d'autres services et applications.</p>
+<h4 id="graphql" tabindex="-1"><a class="header-anchor" href="#graphql"></a> GraphQL</h4>
+<p><strong>GraphQL</strong> est une alternative aux APIs RESTful qui permet de <strong>demander des données spécifiques</strong> à un serveur. Au lieu de récupérer toutes les données d'une ressource, l'application peut demander uniquement les champs dont elle a besoin.</p>
+<p>GraphQL est particulièrement utile pour les applications qui nécessitent des <strong>requêtes complexes</strong> ou qui ont besoin de <strong>récupérer des données de plusieurs sources</strong>.</p>
+<p>En bonus, les requêtes GraphQL communiquent souvent directement avec la base de données, ce qui peut <strong>améliorer les performances</strong> en évitant les <strong>requêtes multiples</strong> / les <strong>intermédiaires</strong>.</p>
+<h4 id="rpc" tabindex="-1"><a class="header-anchor" href="#rpc"></a> RPC</h4>
+<p><strong>RPC</strong> (Remote Procedure Call) est un protocole qui permet à un programme de <strong>demander l'exécution d'une procédure</strong> sur un serveur distant. Il est utilisé pour <strong>appeler des fonctions</strong> sur un serveur à distance et récupérer les résultats.</p>
+<p>RPC est souvent utilisé pour <strong>intégrer des services</strong> et des applications qui doivent communiquer entre eux. Il est plus <strong>simple</strong> que les APIs RESTful, mais il peut être <strong>moins flexible</strong> en termes de gestion des ressources.</p>
+
+
+</article>
+
+        </main>
+
+        <footer class="min-h-[50px] border-t-2 mt-4 border-gray-200 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-center items-center">
+                    <p class="text-center">
+                        ©2025 <b><span style="font-family: Consolas, sans-serif;">Do-<span style="color: #4a86e8">It</span></span></b> - Développement, Management et Gestion de projets en IT
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- MathJax import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">
+            window.MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']], // Delimiters for inline math
+                    displayMath: [['$$', '$$'], ['\\[', '\\]']] // Delimiters for block math
+                },
+                svg: {
+                    fontCache: 'global' // Use global font cache for SVG output
+                }
+            };
+            document.addEventListener('DOMContentLoaded', () => {
+                MathJax.typeset(); // Ensures MathJax processes the content after the page loads
+            });
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">
+            Prism.plugins.NormalizeWhitespace.setDefaults({
+                'remove-trailing': true,
+                'remove-indent': true,
+                'left-trim': true,
+                'right-trim': true,
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script>
+    </body>
+</html>

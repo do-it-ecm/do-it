@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="robots" content="index, follow">
+
+        <link rel="canonical" href="https://do-it.aioli.ec-m.fr/promos/2024-2025/Baptiste-Audouin/pok/temps-1/">
+
+        
+        
+
+        <meta name="description" content="POK traitant du langage VBA avec une mise en application concrète">
+        <meta property="og:description" content="POK traitant du langage VBA avec une mise en application concrète">
+        <meta name="twitter:description" content="POK traitant du langage VBA avec une mise en application concrète">
+
+        
+            <meta name="author" content="Baptiste Audouin">
+        
+        <meta name="keywords" content="do-it, centrale, centrale méditerranée, ecm, POK, vba, Excel">
+
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png">
+        <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png">
+
+        <link href="/assets/stylesheets/main.css" rel="stylesheet">
+
+        <meta property="og:title" content="Découverte de VBA pour créer un outil de calcul de coûts de déplacements.">
+
+        <meta property="og:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta property="og:url" content="https://do-it.aioli.ec-m.fr/promos/2024-2025/Baptiste-Audouin/pok/temps-1/">
+        <meta property="og:type" content="website">
+
+        <meta name="twitter:card" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:title" content="Découverte de VBA pour créer un outil de calcul de coûts de déplacements.">
+        <meta name="twitter:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:url" content="https://do-it.aioli.ec-m.fr/promos/2024-2025/Baptiste-Audouin/pok/temps-1/">
+
+        <title>Découverte de VBA pour créer un outil de calcul de coûts de déplacements.</title>
+
+        <!-- Prismjs imports
+                - Prism line numbers
+                - Prism toolbar
+        -->
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet">
+        <link id="prism-theme" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+        <!-- Mermaid import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js "></script>
+
+        <script defer="">
+        // Check if a theme is stored in localStorage. If so, use it, otherwise fallback to the system preference.
+        const storedTheme = localStorage.getItem('theme');
+        if (storedTheme) {
+            document.documentElement.classList.toggle("dark", storedTheme === "dark");
+        } else {
+            // Use system color scheme if there is no stored theme preference.
+            document.documentElement.classList.toggle("dark", window.matchMedia("(prefers-color-scheme: dark)").matches);
+        }
+
+        function loadPrismTheme(isDarkMode) {
+            const newTheme = isDarkMode ? 'prism-okaidia.min.css' : 'prism-solarizedlight.min.css';
+            const newLink = document.createElement('link');
+            newLink.rel = 'stylesheet';
+            newLink.id = 'prism-theme';
+            newLink.href = `https://cdn.jsdelivr.net/npm/prismjs/themes/${newTheme}`;
+
+            newLink.onload = () => {
+                // Reapply highlighting after the new theme loads
+                Prism.highlightAll();
+            };
+
+            const existingLink = document.getElementById('prism-theme');
+            if (existingLink) {
+                document.head.replaceChild(newLink, existingLink);
+            } else {
+                document.head.appendChild(newLink);
+            }
+        }
+
+        function setMermaidTheme(isDarkMode) {
+            const theme = isDarkMode ? 'dark' : 'forest';
+            mermaid.initialize({
+                securityLevel: 'loose',
+                theme,
+                startOnLoad: true,
+            });
+        }
+
+        // Toggle dark and light mode and update localStorage accordingly.
+        function toggleDarkMode() {
+            const dark = document.documentElement.classList.contains("dark");
+            const newTheme = dark ? "light" : "dark";
+            localStorage.setItem('theme', newTheme);
+            document.documentElement.classList.toggle("dark", !dark);
+            loadPrismTheme(!dark);
+            setMermaidTheme(!dark);
+        }
+
+        // On initial load, ensure that Prism and Mermaid are initialized using the current theme.
+        const isDark = document.documentElement.classList.contains("dark");
+        loadPrismTheme(isDark);
+        setMermaidTheme(isDark);
+        </script>
+
+    </head>
+
+    <body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000" class="bg-neutral-50 text-neutral-950 dark:bg-neutral-900 dark:text-neutral-50">
+        <header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white dark:bg-neutral-900 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-between items-center">
+                    <a class="mx-2" href="/">Home</a>
+                    <button class="hidden sm:block text-neutral-950 dark:text-neutral-50 hover:bg-neutral-700 hover:text-neutral-50 hover:dark:bg-neutral-300 hover:dark:text-neutral-950 transition-colors p-2 rounded-full duration-800 ease-in-out" onclick="toggleDarkMode()">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 dark:hidden stroke-current">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <path d="M12 2V4" stroke-linecap="round"></path>
+                            <path d="M12 20V22" stroke-linecap="round"></path>
+                            <path d="M4 12L2 12" stroke-linecap="round"></path>
+                            <path d="M22 12L20 12" stroke-linecap="round"></path>
+                            <path d="M19.7778 4.22266L17.5558 6.25424" stroke-linecap="round"></path>
+                            <path d="M4.22217 4.22266L6.44418 6.25424" stroke-linecap="round"></path>
+                            <path d="M6.44434 17.5557L4.22211 19.7779" stroke-linecap="round"></path>
+                            <path d="M19.7778 19.7773L17.5558 17.5551" stroke-linecap="round"></path>
+                        </svg>
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 stroke-current hidden dark:block">
+                            <path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </button>
+                    <div class="flex items-center gap-4 sm:gap-6 ">
+                        <a class="" href="/cs">CS</a>
+                        <a class="" href="/pok">POK</a>
+                        <a class="" href="/mon">MON</a>
+                        <a class="" href="/projets">Projets</a>
+                        <a class="hidden sm:block" href="/promos">Promos</a>
+                        <a href="/search">
+                            <svg class="h-5 aspect-square stroke-neutral-950 dark:stroke-neutral-300 fill-none stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+                            </svg>
+                        </a>
+                        <a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank">
+                            <svg class="h-5 aspect-square dark:stroke-neutral-300 dark:fill-neutral-300" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body="">
+            
+<article class="relative">
+<h1 class="mb-1">Découverte de VBA pour créer un outil de calcul de coûts de déplacements.</h1>
+<div class="mb-4">
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Tags : </div>
+            <ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags">
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">POK</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">vba</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">Excel</li>
+                
+
+            </ul>
+
+            
+            <div class="hidden" data-pagefind-meta="Type" aria-hidden="true">
+                
+                    
+                        <span data-pagefind-filter="Type">POK</span>
+                    
+                
+                    
+                
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Auteur : </div>
+            <ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs">
+                
+                    <li class="bg-blue-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Auteurs">Baptiste Audouin</li>
+                
+            </ul>
+        </div>
+    
+
+    
+        <div class="absolute top-0 right-0">
+            <span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2 text-neutral-950" data-pagefind-filter="Année">
+                2024-2025
+            </span>
+        </div>
+    
+</div>
+
+<p class="mb-4 text-lg">POK traitant du langage VBA avec une mise en application concrète</p>
+
+
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100 dark:border-purple-800 dark:bg-purple-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-purple-500 dark:stroke-purple-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/promos/2024-2025/Baptiste-Audouin/">Baptiste Audouin</a><span class="px-1">/</span><a href="/promos/2024-2025/Baptiste-Audouin/pok/">POK de Baptiste Audouin</a><span class="px-1">/</span><a href="/promos/2024-2025/Baptiste-Audouin/pok/temps-1/">Découverte de VBA pour créer un outil de calcul de coûts de déplacements.</a>
+
+</div>
+</div>
+
+
+
+
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100 dark:border-pink-800 dark:bg-pink-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-pink-500 dark:stroke-pink-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Prérequis</b></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li>Connaissances de base en Excel</li>
+<li>Ce POK est très peu compatible avec les mac</li>
+</ul>
+</div>
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100 dark:border-emerald-800 dark:bg-emerald-950">
+<svg class="absolute w-6 h-6 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-emerald-500 dark:stroke-emerald-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Liens</b></p>
+</div><div class="pl-8 mr-8">
+<p><a href="https://excel-pratique.com">Excel pratique</a>
+<a href="https://voiture.car2db.com">Bases de données véhiculaires</a>
+<a href="https://www.data.gouv.fr/fr/datasets/villes-de-france/#/resources">Bases de données géographiques</a>
+<a href="https://openrouteservice.org">API Open Route Service</a></p>
+</div>
+</div>
+<p>J'aimerai à travers se POK me former au langage VBA qui est très souvent utilisé en entreprise.
+En mise en application j'aimerai créer un outil permettant aux commerciaux d'une entreprise de calculer les coûts de leurs déplacements afin de créer des notes de frais.</p>
+<h2 id="t%C3%A2ches" tabindex="-1"><a class="header-anchor" href="#t%C3%A2ches"></a> Tâches</h2>
+<h5 id="sprint-1-%3A" tabindex="-1"><a class="header-anchor" href="#sprint-1-%3A"></a> Sprint 1 :</h5>
+<ul>
+<li>[ ] Découvrir et me former en VBA <em>(Temps estimé : 4h)</em></li>
+<li>[ ] Définir le visuel et les fonctionnalités du rendu final <em>(Temps estimé : 1h)</em></li>
+<li>[ ] Ecrire une première version du code avec les éléments de base <em>(Temps estimé : 4h)</em></li>
+<li>[ ] Tester les fonctionnalités et réfléchir à des améliorations à réaliser lors du second sprint <em>(Temps estimé : 1h)</em></li>
+</ul>
+<h5 id="sprint-2-%3A" tabindex="-1"><a class="header-anchor" href="#sprint-2-%3A"></a> Sprint 2 :</h5>
+<ul>
+<li>[ ] Définir les améliorations à implémenter <em>(Temps estimé : 1h)</em></li>
+<li>[ ] Améliorer et compléter l'outil avec les améliorations définies <em>(Temps estimé : 2h30)</em></li>
+<li>[ ] Appliquer les connaissances acquises lors du MON 1 avec une connexion API REST <em>(Temps estimé : 5h)</em></li>
+<li>[ ] Documenter le projet et préparer la présentation finale <em>(Temps estimé : 1h30)</em></li>
+</ul>
+<h2 id="premier-sprint-%3A-d%C3%A9couverte-de-vba-et-premi%C3%A8re-version-de-l'outil" tabindex="-1"><a class="header-anchor" href="#premier-sprint-%3A-d%C3%A9couverte-de-vba-et-premi%C3%A8re-version-de-l'outil"></a> Premier Sprint : découverte de VBA et première version de l'outil</h2>
+<h3 id="horodatage-%3A" tabindex="-1"><a class="header-anchor" href="#horodatage-%3A"></a> Horodatage  :</h3>
+<p>Dans ce premier sprint j'ai pu réaliser toutes les tâches prévues pour une durée d'environ dix heures :</p>
+<table>
+<thead>
+<tr>
+<th>Tâches</th>
+<th>Heures passées</th>
+<th>Heures prévues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Découvrir et me former en VBA</td>
+<td>4h</td>
+<td>4h</td>
+</tr>
+<tr>
+<td>Définir le visuel et les fonctionnalités du rendu final</td>
+<td>2h</td>
+<td>1h</td>
+</tr>
+<tr>
+<td>Ecrire une première version du code avec les éléments de base</td>
+<td>3h30</td>
+<td>4h</td>
+</tr>
+<tr>
+<td>Tester les fonctionnalités et réfléchir à des améliorations à réaliser lors du second sprint</td>
+<td>45min</td>
+<td>1h</td>
+</tr>
+</tbody>
+</table>
+<h3 id="1.-formation-vba" tabindex="-1"><a class="header-anchor" href="#1.-formation-vba"></a> 1. Formation VBA</h3>
+<p>J'ai commencé ce sprint par me documenter et me former en VBA. J'avais déjà utilisé des fichiers Excel avec des macro mais sans coder et apprendre ce langage. J'ai donc suivi les cours du site <a href="https://excel-pratique.com">Excel pratique</a> sur les <a href="https://excel-pratique.com/fr/vba/variables">variables</a>, les <a href="https://excel-pratique.com/fr/vba/boucles">boucles</a> mais aussi sur les <a href="https://excel-pratique.com/fr/formation/creation_userform">UserForm</a> avant de découvrir que ceux-ci n'étaient pas disponible sur mac...</p>
+<h3 id="2.-d%C3%A9finitions-des-fonctionnalit%C3%A9s-de-la-premiere-version" tabindex="-1"><a class="header-anchor" href="#2.-d%C3%A9finitions-des-fonctionnalit%C3%A9s-de-la-premiere-version"></a> 2. Définitions des fonctionnalités de la premiere version</h3>
+<p>Voici les différents points que j'ai retenu durant cette seconde tâche pour définir les premières fonctionnalités :</p>
+<ul>
+<li>Formulaire avec les champs nom, prénom, date, ville de départ, ville d'arrivée, véhicule.</li>
+<li>Utilisation de deux bases de données :
+<ul>
+<li>Véhicules : utilisation de cette <a href="https://voiture.car2db.com">base de données</a> qui permet de répertorier plus d'une centaine de véhicules avec leur type de carburant ainsi que leur consommation en vue des calculs de frais de déplacements.</li>
+<li>Villes de France avec les coordonnées : utilisation des <a href="https://www.data.gouv.fr/fr/datasets/villes-de-france/#/resources">données</a> disponibles sur le site du gouvernement.</li>
+</ul>
+</li>
+</ul>
+<h3 id="3.-premi%C3%A8re-version" tabindex="-1"><a class="header-anchor" href="#3.-premi%C3%A8re-version"></a> 3. Première version</h3>
+<p>La première version de l'outil utilise deux feuilles Excel, une feuille <em>Déplacements</em> où l'utilisateur remplis ses déplacements et une seconde feuille <em>Récap</em> qui récapitule tous les déplacements :</p>
+<div>
+  <img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Baptiste-Audouin/pok/temps-1/Deplacements_V1.png">
+  <img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Baptiste-Audouin/pok/temps-1/Recap_V1.png">
+</div>
+<p>Le bouton <em>Enregistrer</em>fait référence à la première macro du projet qui, lors d'un clique, va remplir le tableau sur la page Récap en ajoutant une ligne et en la remplissant suivant les données entrées dans le formulaire.
+Voici une explication détaillée du code VBA en utilisant un format Markdown :
+Ce code est coposé d'une macro principale <code>new_drive</code> qui utilise également une autre macro que j'ai créé <code>add_empty_row</code>.</p>
+<h4 id="sub-add_empty_row()" tabindex="-1"><a class="header-anchor" href="#sub-add_empty_row()"></a> <code>Sub add_empty_row()</code></h4>
+<p>Ce code ajoute une ligne vide en dessous de la dernière ligne non-vide dans le tableau de la feuille <code>Récap</code>.</p>
+<ul>
+<li><strong>Déclaration des variables</strong> :
+<ul>
+<li><code>ligne</code> est un entier long qui permet de parcourir les lignes de la feuille.</li>
+<li><code>feuille</code> est un objet représentant la feuille <code>Récap</code>.</li>
+<li><code>r_min</code> stocke la première ligne vide trouvée.</li>
+</ul>
+</li>
+</ul>
+<pre class="language-vba line-numbers"><code>
+
+Dim ligne As Long
+Dim feuille As Worksheet
+Dim r_min As Long
+Set feuille = Sheets("Récap")
+
+
+</code></pre><ul>
+<li><strong>Insertion d'une nouvelle ligne en bas de tableau'</strong> :
+Le programme parcourt le tableau de la feuille <code>Récap</code> en cherchant le dernière ligne non-vide avant d'en ajouter une en dessous.</li>
+</ul>
+<pre class="language-vba line-numbers"><code>
+
+For ligne = 3 To feuille.Rows.Count
+    If IsEmpty(feuille.Cells(ligne, 2).Value) Then
+        r_min = ligne
+        Exit For
+    End If
+Next ligne
+feuille.Rows(r_min).Insert Shift:=xlDown, CopyOrigin:=xlFormatFromLeftOrAbove
+
+
+</code></pre><h4 id="sub-new_drive()" tabindex="-1"><a class="header-anchor" href="#sub-new_drive()"></a> <code>Sub new_drive()</code></h4>
+<p>Une fois la macro <code>add_empty_row</code> créée, on peut code la macro générale <code>new_drive</code>.</p>
+<ul>
+<li><strong>Définition des feuilles</strong> :
+Les objets <code>sourceFeuille</code> et <code>destinationFeuille</code> sont assignés aux feuilles respectives.</li>
+</ul>
+<pre class="language-vba line-numbers"><code>
+
+Set sourceFeuille = Sheets("Déplacements")
+Set destinationFeuille = Sheets("Récap")
+
+
+</code></pre><ul>
+<li><strong>Initialisation de la variable <code>ligne</code></strong> :
+Le programme commence à chercher une ligne vide à partir de la ligne 5 dans la feuille <code>Récap</code>.
+La procédure <code>add_empty_row</code> est appelée pour ajouter une ligne vide.</li>
+</ul>
+<pre class="language-vba line-numbers"><code>
+
+ligne = 4
+Call add_empty_row
+
+
+</code></pre><ul>
+<li><strong>Boucle de recherche de la première ligne vide</strong> :
+Cette boucle vérifie la colonne B à partir de la ligne 5 pour trouver la première cellule vide, puis stocke le numéro de cette ligne.</li>
+</ul>
+<pre class="language-vba line-numbers"><code>
+
+Do While destinationFeuille.Range("b" & ligne) <> ""
+    ligne = ligne + 1
+Loop
+
+
+</code></pre><ul>
+<li><strong>Copie des valeurs</strong> :
+Le programme copie les valeurs des cellules D6, D8, D10, etc. de la feuille <code>Déplacements</code> vers les colonnes B, C, D, etc. de la feuille <code>Récap</code>, à la ligne trouvée.</li>
+</ul>
+<pre class="language-vba line-numbers"><code>
+
+destinationFeuille.Range("b" & ligne) = sourceFeuille.Range("D6").Value
+destinationFeuille.Range("c" & ligne) = sourceFeuille.Range("D8").Value
+...
+
+
+</code></pre><ul>
+<li><strong>Nettoyage des données sources</strong> :
+Après avoir copié les données, le contenu des cellules D6, D8, D10, etc. de la feuille <code>Déplacements</code> est effacé pour les préparer à de nouvelles entrées.</li>
+</ul>
+<pre class="language-vba line-numbers"><code>
+
+sourceFeuille.Range("D6").ClearContents
+sourceFeuille.Range("D8").ClearContents
+...
+
+
+</code></pre><p>Ainsi, cette macro permet d'envoyer les informations du formulaire dans le tableau récapitulatif.</p>
+<h3 id="4.-am%C3%A9liorations-pour-le-second-sprint" tabindex="-1"><a class="header-anchor" href="#4.-am%C3%A9liorations-pour-le-second-sprint"></a> 4. Améliorations pour le second sprint</h3>
+<p>Comme prévue lors de la définition des tâches de mon POK j'avais prévu un temps de relecture et de réflexion pour les futures améliorations envisagées dans le second sprint :</p>
+<ul>
+<li>Revoir le visuel de l'outil</li>
+<li>Intégrer une API pour avoir le calcul d'itinéraire</li>
+<li>Recherche d'une API pour avoir le prix du carburant actualisé</li>
+<li>Calcul du coût de déplacement</li>
+<li>Intégrer un envoie automatique de mail</li>
+</ul>
+<h2 id="second-sprint-%3A-int%C3%A9gration-d'api-et-automatisation-d'envoie-de-mail-en-vba" tabindex="-1"><a class="header-anchor" href="#second-sprint-%3A-int%C3%A9gration-d'api-et-automatisation-d'envoie-de-mail-en-vba"></a> Second Sprint : Intégration d'API et automatisation d'envoie de mail en VBA</h2>
+<h3 id="horodatage-%3A-1" tabindex="-1"><a class="header-anchor" href="#horodatage-%3A-1"></a> Horodatage  :</h3>
+<p>Dans ce second sprint j'ai été énormément ralenti par l'incompatibilité entre mac et Excel qui bloque l'utilisation d'API et l'envoie de mail. J'ai tout de même réussi à avancer en utilisant un autre ordinateur :</p>
+<table>
+<thead>
+<tr>
+<th>Tâches</th>
+<th>Heures passées</th>
+<th>Heures prévues</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Intégrer une API pour avoir le calcul d'itinéraire</td>
+<td>3h</td>
+<td>4h</td>
+</tr>
+<tr>
+<td>Intégrer un envoi automatique de mail</td>
+<td>3h</td>
+<td>5h</td>
+</tr>
+<tr>
+<td>Calcul du coût de déplacement</td>
+<td>1h</td>
+<td>45min</td>
+</tr>
+<tr>
+<td>Recherche et intégration d'une API pour obtenir le prix du carburant actualisé</td>
+<td>3h</td>
+<td>x</td>
+</tr>
+<tr>
+<td>Revoir le visuel de l'outil</td>
+<td>1h</td>
+<td>x</td>
+</tr>
+<tr>
+<td>Rédaction</td>
+<td>1h</td>
+<td>1h</td>
+</tr>
+</tbody>
+</table>
+<h3 id="1.-int%C3%A9gration-d'une-api" tabindex="-1"><a class="header-anchor" href="#1.-int%C3%A9gration-d'une-api"></a> 1. Intégration d'une API</h3>
+<p>Comme évoqué précédemment, cette partie m'a pris beaucoup plus de temps que prévu mais, en utilisant un autre ordinateur j'ai pu la réaliser.
+Après quelques recherches j'ai choisi l'API <a href="https://openrouteservice.org">Open Route Service</a> qui permet de faire des requêtes de navigation et donc de donner la distance en km d'un itinéraire entre deux villes et non de la distance à vol d'oiseau comme calculée jusque là.
+Voici le code correspondant à cette requête où la fonction <code>GetDirections</code>prend en argument une ligne et renvoie la distance entre les deux villes entrées dans les cellules de cette ligne. Cette fonction sera appelée dans notre fonction <code>new_drive</code> et appliquée à la ligne qui vient d'être ajoutée dans le tableau de la feuille <code>Recap</code> afin d'afficher la distance du trajet.</p>
+<pre class="language-vba line-numbers"><code>
+
+Sub GetDirections(ligne As Integer)
+    'Definition des coordonnees
+    Dim startcoord As String
+    Dim endcoord As String
+
+    'Attribution des coordonnées
+    startcoord = Application.WorksheetFunction.Index(Sheets("Villes").Range("L:L"), Application.WorksheetFunction.Match(Sheets("Recap").Range("e" & ligne).Value, Sheets("Villes").Range("D:D"), 0))
+    endcoord = Application.WorksheetFunction.Index(Sheets("Villes").Range("L:L"), Application.WorksheetFunction.Match(Sheets("Recap").Range("f" & ligne).Value, Sheets("Villes").Range("D:D"), 0))
+    ' Creer la requete HTTP vers l'API OpenRouteService
+    Dim request As Object
+    Set request = CreateObject("MSXML2.ServerXMLHTTP.6.0")
+    request.Open "GET", "https://api.openrouteservice.org/v2/directions/driving-car?api_key=5b3ce3597851110001cf624851d78afb034647d69ce565d480d3b168&start=&startcoord&&end=&endcoord&", False
+    ' Definir les en-tetes de la requete
+    request.setRequestHeader "Accept", "application/json, application/geo+json, application/gpx+xml, img/png; charset=utf-8"
+
+    ' Envoyer la requete
+    request.Send
+    ' Recuperer et traiter la reponse
+    Dim responseContent As String
+    responseContent = request.responseText
+
+    ThisWorkbook.Sheets("Parametres").Range("F6").Value = responseContent
+End Sub
+
+
+</code></pre><h3 id="2.-int%C3%A9grer-l'envoie-automatique-de-mail" tabindex="-1"><a class="header-anchor" href="#2.-int%C3%A9grer-l'envoie-automatique-de-mail"></a> 2. Intégrer l'envoie automatique de mail</h3>
+<p>D'après mes recherches lors de la fin du sprint 1, il est possible d'automatiser l'envoie de mail avec des macros en utilisant l'application <strong>Outlook</strong> de <strong>Microsoft</strong>. Cependant, la configuration d'Outlook ainsi que l'élaboration du code m'ont pris beaucoup plus de temps que ce que j'avais envisagé.
+Le code suivant permet d'envoyer par mail le tableau de la feuille <code>recap</code> après avoir cliqué sur le bouton envoyer présent sur cette même page :</p>
+<pre class="language-vba line-numbers"><code>
+
+  Sub EnvoyerMailAvecTableau(tableau As Range)
+      Dim OutlookApp As Object
+      Dim OutlookMail As Object
+      Dim Feuille As Workshee
+      Dim CorpsMessage As String
+      Dim i As Integer, j As Integer
+      ' Initialiser la feuille et le tableau
+      Set Feuille = ThisWorkbook.Sheets("Recap")
+      Set tableau = Feuille.Range(tableau)
+      ' Creer un nouveau mail
+      Set OutlookMail = OutlookApp.CreateItem(0)
+      ' on intègre le tableau au corps du mail
+      CorpsMessage = "<html><body><table border="1" cellspacing="0" cellpadding="3">"
+      For i = 1 To tableau.Rows.Count
+          CorpsMessage = CorpsMessage & "<tr>"
+          For j = 1 To tableau.Columns.Count
+              CorpsMessage = CorpsMessage & "<td>" & tableau.Cells(i, j).Value & "</td>"
+          Next j
+          CorpsMessage = CorpsMessage & "</tr>"
+      Next i
+      CorpsMessage = CorpsMessage & "</table></body></html>"
+      ' Configurer les proprietes du mail
+      With OutlookMail
+          .To = "baptisteaudouin.ba@gmail.com" '
+          .CC = ""
+          .BCC = ""
+          .Subject = "Note de frais"
+          .Send
+      End With
+      ' Nettoyage des objets
+      Set OutlookMail = Nothing
+      Set OutlookApp = Nothing
+      MsgBox "E-mail evoyé avec succès  !"
+  End Sub
+
+
+</code></pre><h3 id="3.-calcul-du-co%C3%BBt-de-d%C3%A9placement" tabindex="-1"><a class="header-anchor" href="#3.-calcul-du-co%C3%BBt-de-d%C3%A9placement"></a> 3. Calcul du coût de déplacement</h3>
+<p>Il était prévu d'utiliser également une API afin d'avoir le prix du carburant actualisé en temps réel mais en vu du temps restant j'ai choisi de prendre un prix fixe (celui du 13/10/2024) et privilégier le calcul du prix du trajet qui est le but même de ce projet.
+Voici la formule que j'applique dans la cellule correspondant au coût du trajet à l'aide de la macro :</p>
+<pre class="language-vba line-numbers"><code>
+
+destinationFeuille.Range("i" & ligne).Formula = "= (INDEX(Parametres!$H$2:$H$4, MATCH(INDEX(Véhicules!AT:AT, MATCH(Recap!G" & ligne & ", Véhicules!C:C, 0)), Parametres!$G$2:$G$4, 0)) * Recap!H" & ligne & " / 100) * INDEX(Véhicules!AW:AW, MATCH(Recap!G" & ligne & ", Véhicules!C:C, 0))"
+
+
+</code></pre><p>Voici quelques explications concernant cette formule :</p>
+<ul>
+<li><code>INDEX(Véhicules!AT:AT, MATCH(Recap!G&quot; &amp; ligne &amp; &quot;, Véhicules!C:C, 0))</code> : Cette séquence permet d'obtenir le type du carburant utilisé</li>
+<li><code>INDEX(Parametres!$H$2:$H$4, MATCH(INDEX(Véhicules!AT:AT, MATCH(Recap!G&quot; &amp; ligne &amp; &quot;, Véhicules!C:C, 0)), Parametres!$G$2:$G$4, 0))</code>: Ici on réutulise la formule précédente pour obtenir le prix du Litre de carburant.</li>
+<li><code>INDEX(Véhicules!AW:AW, MATCH(Recap!G&quot; &amp; ligne &amp; &quot;, Véhicules!C:C, 0))</code>: Cette dernière partie permet d'avoir la consomation du véhicule pour 100km.</li>
+<li><code>Recap!H&quot; &amp; ligne &amp; &quot; / 100</code> : Enfin on mutiplie par la distance parcourue divisé par 100 pour homogénéisée la formule et avoir le résultat souhaité.
+Notre tableau est donc finalement complété automatiquement à chaque fois que l'utilisateur entre un déplacement dans le formulaire de la feuille du même nom.</li>
+</ul>
+<h3 id="4.-int%C3%A9gration-des-nouvelles-fonctions-dans-new_drive()" tabindex="-1"><a class="header-anchor" href="#4.-int%C3%A9gration-des-nouvelles-fonctions-dans-new_drive()"></a> 4. Intégration des nouvelles fonctions dans <code>new_drive()</code></h3>
+<p>Maintenant que toutes nos fonctionnalités ont été implémenter, on peut appeler les nouvelles fonctions et obtenir le code final qui s'execute à chaque clique sur le bouton <code>Enregistrer</code>:</p>
+<pre class="language-vba line-numbers"><code>
+
+Sub new_drive()
+    Dim ligne As Integer
+    Dim sourceFeuille As Worksheet
+    Dim destinationFeuille As Worksheet
+
+    ' Définir la feuille source (Deplacements)
+    Set sourceFeuille = Sheets("Deplacements")
+
+    ' Définir la feuille de destination (Recap)
+    Set destinationFeuille = Sheets("Recap")
+
+    ' Commencer à la ligne 5
+    ligne = 4
+    'Ajout d'une ligne vide
+    Call add_empty_row
+    ' Boucle pour trouver la première ligne vide dans la colonne F de la feuille Récap
+    Do While destinationFeuille.Range("b" & ligne) <> ""
+        ligne = ligne + 1
+    Loop
+
+    ' Copier les valeurs depuis la feuille Sheet1 et les coller dans la feuille Récap
+    destinationFeuille.Range("b" & ligne) = sourceFeuille.Range("D6").Value
+    destinationFeuille.Range("c" & ligne) = sourceFeuille.Range("D8").Value
+    destinationFeuille.Range("d" & ligne) = sourceFeuille.Range("D10").Value
+    destinationFeuille.Range("e" & ligne) = sourceFeuille.Range("D12").Value
+    destinationFeuille.Range("f" & ligne) = sourceFeuille.Range("D14").Value
+    destinationFeuille.Range("g" & ligne) = sourceFeuille.Range("D16").Value
+
+    'Vide les valeurs du formulaire
+
+    sourceFeuille.Range("D6").ClearContents
+    sourceFeuille.Range("D8").ClearContents
+    sourceFeuille.Range("D10").ClearContents
+    sourceFeuille.Range("D12").ClearContents
+    sourceFeuille.Range("D14").ClearContents
+    sourceFeuille.Range("D16").ClearContents
+
+    'Appel de l'API pour calculer la distance
+
+    Call GetDirections(ligne)
+
+    destinationFeuille.Range("h" & ligne) = Sheets("Parametres").Range("F12").Value
+    destinationFeuille.Range("i" & ligne).Formula = "= (INDEX(Parametres!$H$2:$H$4, MATCH(INDEX(Véhicules!AT:AT, MATCH(Recap!G" & ligne & ", Véhicules!C:C, 0)), Parametres!$G$2:$G$4, 0)) * Recap!H" & ligne & " / 100) * INDEX(Véhicules!AW:AW, MATCH(Recap!G" & ligne & ", Véhicules!C:C, 0))"
+
+End Sub
+
+
+</code></pre><h2 id="conclusion" tabindex="-1"><a class="header-anchor" href="#conclusion"></a> Conclusion</h2>
+<p>Après un premier sprint concluant avec toutes les tâches réalisées sans réelles difficultés, le second fut plus compliqué notamment à cause des problèmes d'incompatibilités entre mac et Excel que je n'avais pas anticipé. Cependant, si on récapitule les fonctionnalités de l'outil, elles sont en accord avec la définition du projet :</p>
+<ul>
+<li>
+<p><strong>1. Feuille <code>Deplacements</code></strong> : L'utilisateur entre son déplacement avec l'aide des bases de données <code>Villes</code> et <code>Véhicules</code> puis le valide avec le bouton <code>Enregistrer</code>.</p>
+</li>
+<li>
+<p><strong>2. Feuille <code>Recap</code></strong> : Après que l'utilisateur ait enregistrer un déplacement, une nouvelle ligne apparait dans le tableau avec la distance de l'itinéraire calculée à l'aide d'une requête API REST ainsi que le calcul complet du coût du trajet grâce aux paramètres du véhicule utilisé présent dans la base de donnée <code>Véhicules</code>.</p>
+</li>
+<li>
+<p><strong>3. Feuille <code>Recap</code></strong> : Une fois ces deux dernières étapes réalisées autant de fois que l'utilisateur a de trajets à entrer, le bouton <code>Envoyer</code> permet d'envoyer le tableau récapitulatif de tous les trajets par mail.</p>
+</li>
+</ul>
+
+
+
+</article>
+
+        </main>
+
+        <footer class="min-h-[50px] border-t-2 mt-4 border-gray-200 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-center items-center">
+                    <p class="text-center">
+                        ©2025 <b><span style="font-family: Consolas, sans-serif;">Do-<span style="color: #4a86e8">It</span></span></b> - Développement, Management et Gestion de projets en IT
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- MathJax import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">
+            window.MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']], // Delimiters for inline math
+                    displayMath: [['$$', '$$'], ['\\[', '\\]']] // Delimiters for block math
+                },
+                svg: {
+                    fontCache: 'global' // Use global font cache for SVG output
+                }
+            };
+            document.addEventListener('DOMContentLoaded', () => {
+                MathJax.typeset(); // Ensures MathJax processes the content after the page loads
+            });
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">
+            Prism.plugins.NormalizeWhitespace.setDefaults({
+                'remove-trailing': true,
+                'remove-indent': true,
+                'left-trim': true,
+                'right-trim': true,
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script>
+    </body>
+</html>

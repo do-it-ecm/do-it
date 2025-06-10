@@ -1,0 +1,177 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="index, follow"><link rel="canonical" href="https://do-it.aioli.ec-m.fr/promos/2022-2023/Pont-Thomas/mon/temps-2.1/"><meta name="description" content="Do-It, cours et travaux des élèves de l&#39;école Centrale Méditerranée"><meta property="og:description" content="Do-It, cours et travaux des élèves de l&#39;école Centrale Méditerranée"><meta name="twitter:description" content="Do-It, cours et travaux des élèves de l&#39;école Centrale Méditerranée"><meta name="author" content="Thomas Pont"><meta name="keywords" content="do-it, centrale, centrale méditerranée, ecm, MON, bash"><link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon"><link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png"><link rel="apple-touch-icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png"><link href="/assets/stylesheets/main.css" rel="stylesheet"><meta property="og:title" content="MON 3 : Bash"><meta property="og:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png"><meta property="og:url" content="https://do-it.aioli.ec-m.fr/promos/2022-2023/Pont-Thomas/mon/temps-2.1/"><meta property="og:type" content="website"><meta name="twitter:card" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png"><meta name="twitter:title" content="MON 3 : Bash"><meta name="twitter:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png"><meta name="twitter:url" content="https://do-it.aioli.ec-m.fr/promos/2022-2023/Pont-Thomas/mon/temps-2.1/"><title>MON 3 : Bash</title><link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet"><link id="prism-theme" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet"><link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet"><script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script><script defer="">const storedTheme=localStorage.getItem("theme");function loadPrismTheme(e){const t=e?"prism-okaidia.min.css":"prism-solarizedlight.min.css",s=document.createElement("link");s.rel="stylesheet",s.id="prism-theme",s.href=`https://cdn.jsdelivr.net/npm/prismjs/themes/${t}`,s.onload=()=>{Prism.highlightAll()};const m=document.getElementById("prism-theme");m?document.head.replaceChild(s,m):document.head.appendChild(s)}function setMermaidTheme(e){const t=e?"dark":"forest";mermaid.initialize({securityLevel:"loose",theme:t,startOnLoad:!0})}function toggleDarkMode(){const e=document.documentElement.classList.contains("dark"),t=e?"light":"dark";localStorage.setItem("theme",t),document.documentElement.classList.toggle("dark",!e),loadPrismTheme(!e),setMermaidTheme(!e)}storedTheme?document.documentElement.classList.toggle("dark","dark"===storedTheme):document.documentElement.classList.toggle("dark",window.matchMedia("(prefers-color-scheme: dark)").matches);const isDark=document.documentElement.classList.contains("dark");loadPrismTheme(isDark),setMermaidTheme(isDark)</script></head><body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000" class="bg-neutral-50 text-neutral-950 dark:bg-neutral-900 dark:text-neutral-50"><header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white dark:bg-neutral-900 dark:border-neutral-700"><div class="max-w-[1000px] mx-auto px-4"><div class="min-h-[50px] flex justify-between items-center"><a class="mx-2" href="/">Home</a> <button class="hidden sm:block text-neutral-950 dark:text-neutral-50 hover:bg-neutral-700 hover:text-neutral-50 hover:dark:bg-neutral-300 hover:dark:text-neutral-950 transition-colors p-2 rounded-full duration-800 ease-in-out" onclick="toggleDarkMode()"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 dark:hidden stroke-current"><circle cx="12" cy="12" r="5"></circle><path d="M12 2V4" stroke-linecap="round"></path><path d="M12 20V22" stroke-linecap="round"></path><path d="M4 12L2 12" stroke-linecap="round"></path><path d="M22 12L20 12" stroke-linecap="round"></path><path d="M19.7778 4.22266L17.5558 6.25424" stroke-linecap="round"></path><path d="M4.22217 4.22266L6.44418 6.25424" stroke-linecap="round"></path><path d="M6.44434 17.5557L4.22211 19.7779" stroke-linecap="round"></path><path d="M19.7778 19.7773L17.5558 17.5551" stroke-linecap="round"></path></svg> <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 stroke-current hidden dark:block"><path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke-linecap="round" stroke-linejoin="round"></path></svg></button><div class="flex items-center gap-4 sm:gap-6"><a class="" href="/cs">CS</a> <a class="" href="/pok">POK</a> <a class="" href="/mon">MON</a> <a class="" href="/projets">Projets</a> <a class="hidden sm:block" href="/promos">Promos</a> <a href="/search"><svg class="h-5 aspect-square stroke-neutral-950 dark:stroke-neutral-300 fill-none stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path></svg> </a><a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank"><svg class="h-5 aspect-square dark:stroke-neutral-300 dark:fill-neutral-300" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg></a></div></div></div></header><main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body=""><article class="relative"><h1 class="mb-1">MON 3 : Bash</h1><div class="mb-4"><div class="px-4 flex flex-wrap items-center"><div class="font-bold">Tags :</div><ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags"><li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">MON</li><li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">bash</li></ul><div class="hidden" data-pagefind-meta="Type" aria-hidden="true"><span data-pagefind-filter="Type">MON</span></div></div><div class="px-4 flex flex-wrap items-center"><div class="font-bold">Auteur :</div><ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs"><li class="bg-blue-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Auteurs">Thomas Pont</li></ul></div><div class="absolute top-0 right-0"><span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2 text-neutral-950" data-pagefind-filter="Année">2022-2023</span></div></div><div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100 dark:border-purple-800 dark:bg-purple-950"><svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-purple-500 dark:stroke-purple-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path></svg><div class="pl-8 mr-8"><a href="/promos/2022-2023/Pont-Thomas/">Thomas Pont</a><span class="px-1">/</span><a href="/promos/2022-2023/Pont-Thomas/mon/">MON de Thomas</a><span class="px-1">/</span><a href="/promos/2022-2023/Pont-Thomas/mon/temps-2.1/">MON 3 : Bash</a></div></div><p>Bash : utilisation d'une interface en ligne de commande</p><h2 id="introduction" tabindex="-1"><a class="header-anchor" href="#introduction"></a> Introduction</h2><p>Ce MON est destiné à des <strong>débutants</strong> en Bash. En effet, avant de débuter ce travail je n'avais que peu de connaissances sur le sujet.</p><p>Bash (ou Bourne-Again Shell) est un <strong>interpréteur en ligne de commande</strong>. C’est un Shell : il reçoit des commandes informatiques d’un utilisateur et les envoie au système d’exploitation pour que ce dernier les exécute. Il permet <strong>d’utiliser son ordinateur de façon efficace</strong> et de <strong>réaliser des opérations complexes très rapidement</strong>. Il s’agit d’une <strong>interface en ligne de commande</strong> ou CLI (“Command Line Interface”). L’utilisateur est face à un terminal dans lequel il entre ses lignes de commandes. La plupart des utilisateurs utilisent une interface graphique ou GUI (“Graphical User Interface”). C’est l’utilisation la plus classique de son ordinateur : avec l’accueil, le bureau, les icônes,... Même si une CLI peut être <strong>plus complexe à maîtriser et moins intuitive</strong>, elle est <strong>plus puissante</strong> qu’une GUI. Par ailleurs Bash fonctionne généralement en <strong>commande synchrone</strong>. Cela signifie que les lignes de commande sont lues et exécutées une par une.</p><h2 id="comment-faire-du-bash-%3F" tabindex="-1"><a class="header-anchor" href="#comment-faire-du-bash-%3F"></a> Comment faire du Bash ?</h2><p>Bash est conçu pour être utilisé sur un environnement Linux ou MacOS. On peut également en faire sur Windows mais, sans interpréteur, certaines fonctions peuvent être limitées. Pour ce MON, j’ai utilisé Bash sur un système Linux en me <strong>connectant à mon compte Centrale</strong>. Pour cela j’ai lancé la commande suivante dans un terminal Windows Powershell:</p><pre class="language-bash line-numbers"><code>
+
+ssh tpont@sas1.ec-m.fr
+
+
+</code></pre><p>En entrant son mot de passe Centrale, on se connecte sur son environnement de travail Centrale.</p><p>Lorsqu’on est connecté, on peut voir que sa ligne de commande commence par :</p><pre class="language-bash line-numbers"><code>
+
+[tpont@sas1 ~]$
+
+
+</code></pre><p>Dans un premier lieu (avant le ~), il s’agit du <strong>nom d’utilisateur</strong>. Le signe “~” en fin de ligne indique que l’on se situe dans le <strong>dossier home</strong>. Le signe “$” quant à lui signifie qu’on est connecté en tant qu’<strong>utilisateur classique</strong>. Afin d’apprendre les bases de Bash, j’ai suivi le cours suivant : <a href="https://www.pierre-giraud.com/shell-bash/">Apprendre à utiliser le shell Bash - Pierre Giraud</a>.</p><h2 id="les-principales-commandes" tabindex="-1"><a class="header-anchor" href="#les-principales-commandes"></a> Les principales commandes</h2><p>Bash s’effectue en ligne de commande. Pour cela, il faut connaître les différentes commandes existantes. Sur certaines commandes, on peut rajouter des options. Cela permet d’avoir plus de fonctionnalités que la commande de base. Elles sont matérialisées par des &quot;-&quot;.</p><h3 id="principales-commandes" tabindex="-1"><a class="header-anchor" href="#principales-commandes"></a> Principales commandes</h3><p>Les <strong>principales commandes</strong> en Bash sont les suivantes :</p><ul><li><strong>pwd</strong> : print working directory renvoie le <strong>chemin</strong> du répertoire courant</li><li><strong>ls</strong> : list files and directories renvoie le <strong>contenu</strong> d’un répertoire</li><li><strong>cd</strong> : change directory permet de se <strong>déplacer</strong> vers un nouveau répertoire</li></ul><p>Par exemple,</p><pre class="language-bash line-numbers"><code>
+
+[tpont@sas1 ~]$cd Documents
+
+
+</code></pre><p>permet de se déplacer dans le dossier Documents. Ceci est matérialisé par l’invite de commande qui est désormais :</p><pre class="language-bash line-numbers"><code>
+
+[tpont@sas1 ~/Documents]$
+
+
+</code></pre><div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100 dark:border-cyan-800 dark:bg-cyan-950"><svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-cyan-500 dark:stroke-cyan-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg><div class="pl-8 mb-2 mr-8"><p><b>Information</b></p></div><div class="pl-8 mr-8"><p>La commande <strong>cd ..</strong> permet de revenir dans le <strong>dossier parent</strong> de là où l'on se trouve.</p></div></div><ul><li><strong>less</strong> : <strong>lit un fichier texte</strong>. Pour quitter ce fichier texte il faut appuyer sur la touche q.</li><li><strong>file</strong> : donne le <strong>type</strong> d’un fichier</li><li><strong>compgen</strong> et plus particulièrement <strong>compgen -c</strong>: affiche <strong>la liste de toutes les commandes</strong> disponibles là où l’on se situe</li><li><strong>man</strong> : affiche une <strong>description sur une commande</strong> et explique comment l’utiliser. Il affiche également toutes les options que l’on peut ajouter à cette commande et leurs effets.</li><li><strong>touch</strong> ou <strong>nano</strong> : <strong>crée un fichier texte</strong>. Ce sont des exemples de commande. D'autres commandes permettent de le faire.</li><li><strong>cp</strong> : <strong>copie</strong> un fichier ou un répertoire</li></ul><pre class="language-bash line-numbers"><code>
+
+cp fichier1 fichier2
+
+
+</code></pre><p>copie fichier1 et nomme la copie fichier2. Si fichier2 existait déjà, la précédente version en est écrasée.</p><pre class="language-bash line-numbers"><code>
+
+cp fichier1 répertoire1
+
+
+</code></pre><p>copie fichier1 et met cette copie dans répertoire1. On peut copier plusieurs fichiers dans un répertoire en mettant leurs noms les uns à la suite des autres.</p><p>Enfin, pour copier répertoire1 et mettre une copie dans un répertoire nommé répertoire2, on utilise la commande :</p><pre class="language-bash line-numbers"><code>
+
+cp -R répertoire1 répertoire2
+
+
+</code></pre><p>Comme précédemment si répertoire2 n'existait pas il est créé. Sinon, le répértoire2 déjà existant est écrasé.</p><div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100 dark:border-red-800 dark:bg-red-950"><svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-red-500 dark:stroke-red-800 stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg><div class="pl-8 mb-2 mr-8"><p><strong>Attention</strong> aux espaces</p></div><div class="pl-8 mr-8"><p>Si le nom du document ou du dossier comporte des espaces, pour que la commande puisse bien être interprétée, il faut mettre des \ avant les espaces ou des “ ” ou encore des ‘ ’ autour du nom du fichier ou du dossier. Par exemple :</p><pre class="language-bash line-numbers"><code>
+
+cp “ mon document.txt” Dossier
+
+
+</code></pre></div></div><ul><li><strong>mv</strong> : <strong>renomme ou déplace</strong> des fichiers et des répertoires dans d'autres fichiers et répertoires</li></ul><pre class="language-bash line-numbers"><code>
+
+mv fichier1.txt fichier.txt
+
+
+</code></pre><p>renomme le fichier &quot;fichier1.txt&quot; en &quot;fichier.txt&quot;.</p><pre class="language-bash line-numbers"><code>
+
+mv fichier1.txt répertoire1
+
+
+</code></pre><p>déplace le fichier &quot;fichier1.txt&quot; dans répertoire1. Cette commande fonctionne de manière identique pour déplacer un répertoire dans un autre répertoire.</p><ul><li><strong>rm</strong> : <strong>supprime</strong> des fichiers ou répertoires</li></ul><pre class="language-bash line-numbers"><code>
+
+rm fichier1.txt
+
+
+</code></pre><p>supprime &quot;fichier1.txt&quot; de manière définitive.</p><pre class="language-bash line-numbers"><code>
+
+rm -r répertoire1
+
+
+</code></pre><p>supprime le répertoire &quot;répertoire1&quot; et ce qu'il contient de manière définitive.</p><ul><li><strong>mkdir</strong> : make directory <strong>crée un nouveau répertoire</strong></li></ul><pre class="language-bash line-numbers"><code>
+
+mkdir nouveau_répertoire
+
+
+</code></pre><p>crée un nouveau répertoire intitulé &quot;nouveau_répertoire&quot;.</p><h3 id="les-extensions" tabindex="-1"><a class="header-anchor" href="#les-extensions"></a> Les extensions</h3><p>Les commandes ci-dessus permettent de naviguer dans les fichiers et les répertoires. Cependant, ceci est également possible avec l'interface graphique. Mais, Bash permet également d'utiliser des <strong>extensions</strong>. Ceci permet de réaliser des <strong>tâches plus complexes rapidement</strong>. C'est par exemple le cas de l'utilisation de <strong>métacaractères</strong>.</p><p>Ainsi on peut <strong>sélectionner des fichiers et/ou des répertoires</strong> à l'aide de ces <strong>métacaractères</strong>.</p><p>Par exemple, la commande</p><pre class="language-bash line-numbers"><code>
+
+cp *.txt Dossier
+
+
+</code></pre><p>permet de copier tous les fichiers en .txt dans le répertoire Dossier.</p><p>L'accolade {} permet de réaliser une même action sur des motifs qui se répètent. Par exemple :</p><pre class="language-bash line-numbers"><code>
+
+mkdir répertoire-{1,2,3,4}
+
+
+</code></pre><p>permet de créer quatre répertoires numérotés de 1 à 4.</p><p>Par ailleurs, on peut à l'aide de la <strong>substitution de commande</strong> écrire plusieurs commandes sur une seule ligne.</p><pre class="language-bash line-numbers"><code>
+
+mkdir $(seq 1 5)
+
+
+</code></pre><p>permet d'engendrer une séquence des chiffres de 1 à 5 et à l'aide de la substitution de commandes de créer des répertoires numérotés de 1 à 5.</p><h2 id="projet-en-bash" tabindex="-1"><a class="header-anchor" href="#projet-en-bash"></a> Projet en Bash</h2><p>Après avoir vu les commandes élémentaires et les avoir testées pour bien les comprendre, on peut réaliser un projet en Bash qui peut être pratique pour effectuer différentes tâches.</p><h3 id="cr%C3%A9ation-d'un-script-en-bash" tabindex="-1"><a class="header-anchor" href="#cr%C3%A9ation-d'un-script-en-bash"></a> Création d'un script en Bash</h3><p>Pour lancer un script faisant appel à des commandes, on peut créer un script en Bash. La commande suivante permet de le faire :</p><pre class="language-bash line-numbers"><code>
+
+cd $HOME && touch script.sh && chmod +x script.sh
+
+
+</code></pre><p>Ceci permet de se placer dans le dossier home, de créer un script &quot;<a href="http://script.sh">script.sh</a>&quot; et de l'ajouter dans la liste des scripts exécutables. Un script Bash doit commencer par :</p><pre class="language-bash line-numbers"><code>
+
+#!/bin/bash'
+
+
+</code></pre><p>pour pouvoir être exécuté correctement. On peut écrire un script qui affiche &quot;Hello world !&quot; quand on le lance en utilisant la commande <strong>nano</strong>.</p><pre class="language-bash line-numbers"><code>
+
+#!/bin/bash'
+echo "Hello World !"
+
+
+</code></pre><p>Le script ci-dessus affiche &quot;Hello World !&quot; quand on le lance, soit quand on effectue <strong>./script.sh</strong> dans l'invite de commande.</p><h3 id="scripts-plus-complexes" tabindex="-1"><a class="header-anchor" href="#scripts-plus-complexes"></a> Scripts plus complexes</h3><p>L'idée est alors de réaliser des scripts plus compliqués permettant d'effectuer des tâches complexes. Une première idée est de réaliser un script qui cherchera et affichera toutes les occurrences d'un mot dans les fichiers texte d'un répertoire en indiquant leurs positions.</p><h4 id="recherche-d'un-mot-cl%C3%A9-dans-les-fichiers-d'un-r%C3%A9pertoire" tabindex="-1"><a class="header-anchor" href="#recherche-d'un-mot-cl%C3%A9-dans-les-fichiers-d'un-r%C3%A9pertoire"></a> Recherche d'un mot clé dans les fichiers d'un répertoire</h4><p>Ce script doit prendre en entrée deux arguments : un répertoire où chercher le mot clé et le mot clé.</p><p>On commence par vérifier que notre script prend bien deux arguments en entrée puis on cherche le mot clé dans les documents du répertoire.</p><pre class="language-bash line-numbers"><code>
+
+if [ "$#" -ne 2 ]; then
+    echo "Il n'y a pas le bon nombre d'argument. Veuillez entrer, un répertoire et un mot clé."
+    exit 1
+fi
+
+fichiers=$(ls $1)
+
+for fichier in $fichiers; do
+  grep -n "$2" "$1/$file"
+done
+
+
+</code></pre><p>Ce script permet dans un premier temps de vérifier que le script prend bien deux arguments en entrée. En effet <strong>$#</strong> permet de connaître le nombre d'argument. Ensuite, la commande <strong>grep -n</strong> permet de renvoyer les lignes d'un document où un mot apparaît</p><div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100 dark:border-red-800 dark:bg-red-950"><svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-red-500 dark:stroke-red-800 stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg><div class="pl-8 mb-2 mr-8"><p><strong>Attention</strong> aux opérateurs de comparaison</p></div><div class="pl-8 mr-8"><p>Attention, pour la comparaison d'entiers, les opérateurs de comparaisons peuvent être retrouvés <a href="https://abs.traduc.org/abs-fr/ch07s03.html">ici</a>.</p></div></div><h4 id="gestionnaire-de-t%C3%A2ches" tabindex="-1"><a class="header-anchor" href="#gestionnaire-de-t%C3%A2ches"></a> Gestionnaire de tâches</h4><p>L'objectif est de créer un gestionnaire de tâches. Ce gestionnaire stockera une liste de tâches dans un fichier texte et permettra de stocker leur état (à faire, fait).</p><p>Pour ce faire, on crée un script <em><a href="http://gestion.sh">gestion.sh</a></em> et un fichier texte <em>tache.txt</em>. On a besoin de plusieurs commandes pour faire fonctionner ce gestionnaire :</p><ul><li><strong>add</strong> : pour ajouter une tâche (on doit vérifier qu'il y a bien une tâche à ajouter</li><li><strong>do</strong> : pour marquer la tâche faite (on doit vérifier que la tâche existe bien et n'est pas marquée comme effectuée)</li><li><strong>undo</strong> : pour modifier une tâche faite en non faite (on doit vérifier que la tâche existe bien et est marquée comme effectuée)</li></ul><pre class="language-bash line-numbers"><code>
+
+#!/bin/bash
+
+case "$1" in
+        "add")
+                # code pour ajouter une tache
+                if [ "$#" -eq 1 ]; then
+                        echo "La tâche à ajouter ne peut pas être vide"
+                        exit 1
+                fi
+                echo " $2" >> tache.txt
+                echo "Tâche ajoutée"
+                ;;
+        "done")
+                # code pour marquer une tâche effectué
+                if [ "$#" -eq 1 ]; then
+                        echo "Vous n'avez pas entré de tâche à valider"
+                        exit 1
+                fi
+
+                if ! grep -iq "$2" tache.txt; then
+                        echo "Cette tâche n'existe pas"
+                        exit 1
+                fi
+
+                tache=$2
+                #awk '/$2/{echo NR;exit}' tache.txt >> temporaire.txt
+                #index=cat temporaire.txt
+                #awk '/$2/{index_tache = NR;exit}' tache.txt
+
+                if sed -n '$3p' tache.txt | grep -q '^X'; then
+                        echo "La tâche a déjà été terminée"
+                        exit 1
+                fi
+
+                sed -i .txt '$3s/^/X /' tache.txt
+                echo "Tache marquée comme faite";;
+        "undo")
+                # code pour marquer une tâche non faite
+                if [ "$#" -eq 1 ]; then
+                        echo "Vous n'avez pas entré de tâche."
+                        exit 1
+                fi
+
+                if ! grep -iq "$2" tache.txt; then
+                        echo "Cette tâche n'existe pas"
+                        exit 1
+                fi
+
+                if ! sed -n '$3p' tache.txt | grep -q '^X'; then
+                        echo "La tâhe n'est pas terminée"
+                        exit 1
+                fi
+
+                sed -i .txt '$3s/^X //' tache.txt
+                echo "Tâche marquée comme non finie"
+                ;;
+esac
+
+
+</code></pre><p>Ce code permet d'ajouter une tâche, de marquer une tâche comme faite et comme non faite.</p><p>Il possède néanmoins un problème. Je n'arrive pas à récupérer le numéro de ligne d'un texte dans mon script. J'arrive à le faire directement dans l'invite de commande grâce à la commande suivante :</p><pre class="language-bash line-numbers"><code>
+
+awk '/$2/{echo NR;exit}' tache.txt >> temporaire.txt
+
+
+</code></pre><p>Cela permet de stocker la valeur dans un fichier temporaire et de la récupérer grâce à la commande cat. Ainsi, il est ici nécessaire d'entrer la ligne de la tâche pour les commandes <em>done</em> et <em>undo</em> en troisième paramètre.</p><h2 id="autres-ressources-utilis%C3%A9es" tabindex="-1"><a class="header-anchor" href="#autres-ressources-utilis%C3%A9es"></a> Autres ressources utilisées</h2><ul><li><a href="https://blog.desdelinux.net/fr/bash-como-hacer-un-script-ejecutable/">Comment créer un script exécutable</a></li><li><a href="https://docs.oracle.com/cd/E19620-01/805-1608/6j1io9lh3/index.html#:~:text=La%20commande%20grep%20est%20souvent,%C3%A0%20l'aide%20de%20grep%20.">La commande grep</a></li><li><a href="https://www.lemagit.fr/conseil/Administration-Linux-creez-des-scripts-qui-prennent-en-compte-des-arguments">Script bash avec des arguments</a></li></ul></article></main><footer class="min-h-[50px] border-t-2 mt-4 border-gray-200 dark:border-neutral-700"><div class="max-w-[1000px] mx-auto px-4"><div class="min-h-[50px] flex justify-center items-center"><p class="text-center">©2025 <b><span style="font-family:Consolas,sans-serif">Do-<span style="color:#4a86e8">It</span></span></b> - Développement, Management et Gestion de projets en IT</p></div></div></footer><script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">window.MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]]},svg:{fontCache:"global"}},document.addEventListener("DOMContentLoaded",(()=>{MathJax.typeset()}))</script><script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">Prism.plugins.NormalizeWhitespace.setDefaults({"remove-trailing":!0,"remove-indent":!0,"left-trim":!0,"right-trim":!0})</script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script></body></html>
