@@ -12,6 +12,10 @@
                             "path": "info/bases/git"
                         },
                         {
+                            "title": "Enterprise Git",
+                            "path": "info/bases/enterprise_git"
+                        },
+                        {
                             "title": "Linux",
                             "path": "info/bases/linux"
                         },
