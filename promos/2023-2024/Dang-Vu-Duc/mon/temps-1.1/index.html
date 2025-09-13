@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="robots" content="index, follow">
+
+        <link rel="canonical" href="https://do-it.aioli.ec-m.fr/promos/2023-2024/Dang-Vu-Duc/mon/temps-1.1/">
+
+        
+        
+
+        <meta name="description" content="Ce MON aura pour objectif de s&#39;initier à Qt avec Python. Cet outil permet de créer des interfaces graphiques avec Python, et sera utile pour mon POK du temps 1.">
+        <meta property="og:description" content="Ce MON aura pour objectif de s&#39;initier à Qt avec Python. Cet outil permet de créer des interfaces graphiques avec Python, et sera utile pour mon POK du temps 1.">
+        <meta name="twitter:description" content="Ce MON aura pour objectif de s&#39;initier à Qt avec Python. Cet outil permet de créer des interfaces graphiques avec Python, et sera utile pour mon POK du temps 1.">
+
+        
+            <meta name="author" content="Duc DANG VU">
+        
+        <meta name="keywords" content="do-it, centrale, centrale méditerranée, ecm, MON, Python, Programmation Objet, Qt, Interfaces graphiques">
+
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png">
+        <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png">
+
+        <link href="/assets/stylesheets/main.css" rel="stylesheet">
+
+        <meta property="og:title" content="MON1.1: Apprentissage de Qt avec Python">
+
+        <meta property="og:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta property="og:url" content="https://do-it.aioli.ec-m.fr/promos/2023-2024/Dang-Vu-Duc/mon/temps-1.1/">
+        <meta property="og:type" content="website">
+
+        <meta name="twitter:card" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:title" content="MON1.1: Apprentissage de Qt avec Python">
+        <meta name="twitter:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:url" content="https://do-it.aioli.ec-m.fr/promos/2023-2024/Dang-Vu-Duc/mon/temps-1.1/">
+
+        <title>MON1.1: Apprentissage de Qt avec Python</title>
+
+        <!-- Prismjs imports
+                - Prism line numbers
+                - Prism toolbar
+        -->
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet">
+        <link id="prism-theme" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+        <!-- Mermaid import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js "></script>
+
+        <script defer="">
+        // Check if a theme is stored in localStorage. If so, use it, otherwise fallback to the system preference.
+        const storedTheme = localStorage.getItem('theme');
+        if (storedTheme) {
+            document.documentElement.classList.toggle("dark", storedTheme === "dark");
+        } else {
+            // Use system color scheme if there is no stored theme preference.
+            document.documentElement.classList.toggle("dark", window.matchMedia("(prefers-color-scheme: dark)").matches);
+        }
+
+        function loadPrismTheme(isDarkMode) {
+            const newTheme = isDarkMode ? 'prism-okaidia.min.css' : 'prism-solarizedlight.min.css';
+            const newLink = document.createElement('link');
+            newLink.rel = 'stylesheet';
+            newLink.id = 'prism-theme';
+            newLink.href = `https://cdn.jsdelivr.net/npm/prismjs/themes/${newTheme}`;
+
+            newLink.onload = () => {
+                // Reapply highlighting after the new theme loads
+                Prism.highlightAll();
+            };
+
+            const existingLink = document.getElementById('prism-theme');
+            if (existingLink) {
+                document.head.replaceChild(newLink, existingLink);
+            } else {
+                document.head.appendChild(newLink);
+            }
+        }
+
+        function setMermaidTheme(isDarkMode) {
+            const theme = isDarkMode ? 'dark' : 'forest';
+            mermaid.initialize({
+                securityLevel: 'loose',
+                theme,
+                startOnLoad: true,
+            });
+        }
+
+        // Toggle dark and light mode and update localStorage accordingly.
+        function toggleDarkMode() {
+            const dark = document.documentElement.classList.contains("dark");
+            const newTheme = dark ? "light" : "dark";
+            localStorage.setItem('theme', newTheme);
+            document.documentElement.classList.toggle("dark", !dark);
+            loadPrismTheme(!dark);
+            setMermaidTheme(!dark);
+        }
+
+        // On initial load, ensure that Prism and Mermaid are initialized using the current theme.
+        const isDark = document.documentElement.classList.contains("dark");
+        loadPrismTheme(isDark);
+        setMermaidTheme(isDark);
+        </script>
+
+    </head>
+
+    <body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000" class="bg-neutral-50 text-neutral-950 dark:bg-neutral-900 dark:text-neutral-50">
+        <header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white dark:bg-neutral-900 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-between items-center">
+                    <a class="mx-2" href="/">Home</a>
+                    <button class="hidden sm:block text-neutral-950 dark:text-neutral-50 hover:bg-neutral-700 hover:text-neutral-50 hover:dark:bg-neutral-300 hover:dark:text-neutral-950 transition-colors p-2 rounded-full duration-800 ease-in-out" onclick="toggleDarkMode()">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 dark:hidden stroke-current">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <path d="M12 2V4" stroke-linecap="round"></path>
+                            <path d="M12 20V22" stroke-linecap="round"></path>
+                            <path d="M4 12L2 12" stroke-linecap="round"></path>
+                            <path d="M22 12L20 12" stroke-linecap="round"></path>
+                            <path d="M19.7778 4.22266L17.5558 6.25424" stroke-linecap="round"></path>
+                            <path d="M4.22217 4.22266L6.44418 6.25424" stroke-linecap="round"></path>
+                            <path d="M6.44434 17.5557L4.22211 19.7779" stroke-linecap="round"></path>
+                            <path d="M19.7778 19.7773L17.5558 17.5551" stroke-linecap="round"></path>
+                        </svg>
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 stroke-current hidden dark:block">
+                            <path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </button>
+                    <div class="flex items-center gap-4 sm:gap-6 ">
+                        <a class="" href="/cs">CS</a>
+                        <a class="" href="/pok">POK</a>
+                        <a class="" href="/mon">MON</a>
+                        <a class="" href="/projets">Projets</a>
+                        <a class="hidden sm:block" href="/promos">Promos</a>
+                        <a href="/search">
+                            <svg class="h-5 aspect-square stroke-neutral-950 dark:stroke-neutral-300 fill-none stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+                            </svg>
+                        </a>
+                        <a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank">
+                            <svg class="h-5 aspect-square dark:stroke-neutral-300 dark:fill-neutral-300" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body="">
+            
+<article class="relative">
+<h1 class="mb-1">MON1.1: Apprentissage de Qt avec Python</h1>
+<div class="mb-4">
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Tags : </div>
+            <ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags">
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">MON</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">Python</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">Programmation Objet</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">Qt</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">Interfaces graphiques</li>
+                
+
+            </ul>
+
+            
+            <div class="hidden" data-pagefind-meta="Type" aria-hidden="true">
+                
+                    
+                        <span data-pagefind-filter="Type">MON</span>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Auteur : </div>
+            <ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs">
+                
+                    <li class="bg-blue-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Auteurs">Duc DANG VU</li>
+                
+            </ul>
+        </div>
+    
+
+    
+        <div class="absolute top-0 right-0">
+            <span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2 text-neutral-950" data-pagefind-filter="Année">
+                2023-2024
+            </span>
+        </div>
+    
+</div>
+
+<p class="mb-4 text-lg">Ce MON aura pour objectif de s'initier à Qt avec Python. Cet outil permet de créer des interfaces graphiques avec Python, et sera utile pour mon POK du temps 1.</p>
+
+
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100 dark:border-purple-800 dark:bg-purple-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-purple-500 dark:stroke-purple-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/promos/2023-2024/Dang-Vu-Duc/">Duc DANG VU</a><span class="px-1">/</span><a href="/promos/2023-2024/Dang-Vu-Duc/mon/">MON de Duc DANG VU</a><span class="px-1">/</span><a href="/promos/2023-2024/Dang-Vu-Duc/mon/temps-1.1/">MON1.1: Apprentissage de Qt avec Python</a>
+
+</div>
+</div>
+
+
+
+
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100 dark:border-pink-800 dark:bg-pink-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-pink-500 dark:stroke-pink-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p>Prérequis</p>
+</div><div class="pl-8 mr-8">
+<p>Connaissance basique de la programmation objet avec Python.</p>
+</div>
+</div>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100 dark:border-amber-800 dark:bg-amber-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-amber-800 dark:stroke-amber-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Note</b></p>
+</div><div class="pl-8 mr-8">
+<p>Tout les codes présentés ci-dessous sont disponibles dans le dossier Github de Do-It: <a href="https://github.com/do-it-ecm/do-it/tree/main/src/promos/2023-2024/Dang-Vu-Duc/mon/temps-1.1">Codes du MON1.1</a></p>
+</div>
+</div>
+<h2 id="introduction" tabindex="-1"><a class="header-anchor" href="#introduction"></a> Introduction</h2>
+<p>Qt est une interface de programmation d'application (API) orientée objet pour développer des interfaces graphiques en C++. Dans ce MON, nous allons utiliser Python pour exploiter cet API, grâce au projet <em>Qt for Python</em>. L'installation se fait rapidement en rentrant la ligne de commande suivante sur un terminal:</p>
+<pre class="language-python line-numbers"><code>
+
+pip install PySide6
+
+
+</code></pre><p>PySide6 est un module de Python développé par le projet <em>Qt for Python</em>, et va nous permettre d'utiliser diverses méthodes pour développer des interfaces graphiques dans des fenêtres.</p>
+<h2 id="pr%C3%A9sentation-des-classes-de-qt-for-python" tabindex="-1"><a class="header-anchor" href="#pr%C3%A9sentation-des-classes-de-qt-for-python"></a> Présentation des classes de Qt for Python</h2>
+<p>Nous allons présenter les différentes classes utiles de <em>Qt for Python</em>, afin de créer des interfaces basiques.</p>
+<h3 id="qmainwindow" tabindex="-1"><a class="header-anchor" href="#qmainwindow"></a> QMainWindow</h3>
+<p>La première étape est de créer une fenêtre basique, avec rien dedans. Après avoir importé les différentes classes de la bibliothèque PySide, on créé une instance de la classe <strong>QMainWindow</strong> et on l'affiche:</p>
+<pre class="language-python line-numbers"><code>
+
+from PySide6.QtWidgets import QApplication, QMainWindow
+import sys
+
+app.QApplication(sys.argv)
+window = QMainWindow()
+window.setWindowTitle("Fenêtre basique")
+window.show()
+app.exec()
+
+
+
+</code></pre><p>L'exécution de ce premier code ouvre cette fenêtre:</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Dang-Vu-Duc/mon/temps-1.1/Image1.png" alt="Fenêtre basique"></p>
+<p>Comme on peut le voir, la classe <strong>QMainWindow</strong> permet de créer une fenêtre, qui va contenir tout les autres éléments que l'on veut.</p>
+<h3 id="qpushbutton" tabindex="-1"><a class="header-anchor" href="#qpushbutton"></a> QPushButton</h3>
+<p>Cette classe permet de créer des boutons avec lesquels l'utilisateur peut interagir. Dans l'exemple suivant, on va faire apparaître une fenêtre avec un bouton au milieu:</p>
+<pre class="language-python line-numbers"><code>
+
+from PySide6.QtWidgets import QApplication, QMainWindow, QPushButton
+import sys
+
+app = QApplication(sys.argv)
+window = QMainWindow()
+window.setWindowTitle("Fenêtre basique avec un bouton")
+button = QPushButton("Bouton")
+window.setCentralWidget(button)
+window.show()
+app.exec()
+
+
+</code></pre><p>L'execution de ce code affiche la fenêtre suivante:</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Dang-Vu-Duc/mon/temps-1.1/Image2.png" alt="Fenêtre basique avec un bouton"></p>
+<p>Pour l'instant, il ne se passe rien lorsque l'on clique sur ce bouton. C'est parce que on n'a pas associé d'action à ce bouton. Pour se faire, on va utiliser la méthode <em>clicked.connect</em> de la classe <strong>QPushButton</strong>. Cette méthode permet d'associer une autre méthode au bouton: lorsque l'utilisateur va cliquer sur ce bouton, ce dernier va envoyer un signal au programme et va exécuter la méthode que l'on a renseigné en argument:</p>
+<pre class="language-python line-numbers"><code>
+
+from PySide6.QtWidgets import QApplication, QMainWindow, QPushButton
+import sys
+from PySide6.QtCore import Qt
+
+class Test_button(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("Test Bouton cliquable")
+        self.button = QPushButton("Bouton cliquable")
+        self.button.clicked.connect(self.button_clicked)
+        self.setCentralWidget(self.button)
+        self.show()
+
+    def button_clicked(self):
+        print("Le bouton a été cliqué!")
+
+app = QApplication(sys.argv)
+window = Test_button()
+
+app.exec()
+
+
+</code></pre><div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100 dark:border-amber-800 dark:bg-amber-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-amber-800 dark:stroke-amber-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Note</b></p>
+</div><div class="pl-8 mr-8">
+<p>Notons que le code ci-dessus est organisé sour forme d'une classe. Il est préférable de faire ainsi pour rendre le code plus lisible.</p>
+</div>
+</div>
+<p>Ce code fait bien apparaître la même fenêtre que précédemment, mais cette fois-ci le bouton print du texte lorsque l'on clique dessus.</p>
+<h3 id="qwidget" tabindex="-1"><a class="header-anchor" href="#qwidget"></a> QWidget</h3>
+<p>La classe <strong>QWidget</strong> permet, comme son nom l'indique, de créer des widgets. Ces widgets permettent de placer des éléments dans la fenêtre principale où l'on veut. A l'intérieur de ces widgets, on peut utiliser des classes comme <strong>QVBoxLayout</strong> ou <strong>QHBoxLayout</strong> pour placer les différents éléments. Par exemple, on peut ajouter à notre classe Test_button un widget pour y centrer notre bouton. On peut même y ajouter un deuxième bouton:</p>
+<pre class="language-python line-numbers"><code>
+
+class Test_button(QMainWindow):
+    def __init__(self):
+        super().__init__()
+        self.setWindowTitle("Test Bouton cliquable")
+        central_widget = QWidget()
+        self.setCentralWidget(central_widget)
+        self.button1 = QPushButton("Bouton cliquable 1", central_widget)
+        self.button1.clicked.connect(self.button_clicked)
+        self.button2 = QPushButton("Bouton cliquable 2", central_widget)
+        self.button2.clicked.connect(self.button_clicked)
+
+        layout = QVBoxLayout()
+        layout.addWidget(self.button1)
+        layout.addWidget(self.button2)
+        central_widget.setLayout(layout)
+        self.show()
+
+    def button_clicked(self):
+        print("Le bouton a été cliqué!")
+
+
+</code></pre><p>Ce code fait apparaître la fenêtre suivante:</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Dang-Vu-Duc/mon/temps-1.1/Image3.png" alt="Test boutons cliquables"></p>
+<p>La classe <strong>QVBoxLayout</strong> permet de créer un layout vertical où tout les éléments sont centrés verticalement.</p>
+<h3 id="menubar" tabindex="-1"><a class="header-anchor" href="#menubar"></a> MenuBar</h3>
+<p>La différence entre <strong>QWidget</strong> et <strong>QMainWindow</strong> est qu'avec cette dernière classe, il est possible d'ajouter plusieurs éléments, notamment une barre de menu en haut de la fenêtre. Pour cela, nous allons utiliser la méthode <strong>MenuBar</strong>. Cette classe a de nombreuses méthodes, par exemple la méthode addMenu qui permet d'ajouter des onglets dans la barre de menu, ou bien encore la méthode addAction qui permet d'associer des actions à un onglet. A l'image des boutons, on peut également associer des méthodes pour que ces actions produisent quelque chose, grâce à la méthode triggered.connect:</p>
+<pre class="language-python line-numbers"><code>
+
+class Test_button(QMainWindow):
+    def __init__(self):
+        super().__init__()
+
+        menu_bar = self.menuBar()
+        file_menu = menu_bar.addMenu("Fichier")
+        file_menu.addAction("Nouveau Fichier")
+        file_menu.addAction("Ouvrir le fichier")
+        file_menu.addAction("Enregistrer sous")
+        save_action = file_menu.addAction("Enregistrer")
+        save_action.triggered.connect(self.save)
+
+        self.setWindowTitle("Test Bouton cliquable")
+        central_widget = QWidget()
+        self.setCentralWidget(central_widget)
+        self.button1 = QPushButton("Bouton cliquable 1", central_widget)
+        self.button1.clicked.connect(self.button_clicked)
+        self.button2 = QPushButton("Bouton cliquable 2", central_widget)
+        self.button2.clicked.connect(self.button_clicked)
+
+        layout = QVBoxLayout()
+        layout.addWidget(self.button1)
+        layout.addWidget(self.button2)
+        central_widget.setLayout(layout)
+        self.show()
+
+    def button_clicked(self):
+        print("Le bouton a été cliqué!")
+
+    def save(self):
+        print("Le fichier a été enregistré")
+
+
+
+</code></pre><p>Ce code ouvre la même fenêtre que précédemment, mais avec un onglet &quot;Fichier&quot;. Lorsque l'on passe la souris dessus, un menu déroulant apparaît et lorque l'on clique sur &quot;enregistrer&quot;, un voit print &quot;Le fichier a été enregistré&quot;:</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Dang-Vu-Duc/mon/temps-1.1/Image4.png" alt="Image menu déroulant"></p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100 dark:border-amber-800 dark:bg-amber-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-amber-800 dark:stroke-amber-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Note</b></p>
+</div><div class="pl-8 mr-8">
+<p>Notons qu'il existe énormément de méthodes associées à chaque classes. Je présente ici les méthodes que je trouve les plus importantes, mais elles sont toutes répertoriées et expliquées sur le site de la documentation du projet <em>Qt for Python</em>: <a href="https://doc.qt.io/">Documentation QT</a></p>
+</div>
+</div>
+<h3 id="qmessagebox" tabindex="-1"><a class="header-anchor" href="#qmessagebox"></a> QMessageBox</h3>
+<p>Cette classe permet de faire apparaître une fenêtre &quot;popup&quot;. On peut définir des boutons de base qui sont dans ce popup, avec la méthode <em>setStandardButtons</em>. Voici un exemple d'un code qui fait apparaître un popup (ce code est ajouté à notre méthode <em>button_clicked</em>):</p>
+<pre class="language-python line-numbers"><code>
+
+def button_clicked(self):
+        message = QMessageBox()
+        message.setMinimumSize(700,200)
+        message.setWindowTitle("Titre du popup")
+        message.setText("Message d'erreur")
+        message.setIcon(QMessageBox.Critical)
+        message.setStandardButtons(QMessageBox.Ok | QMessageBox.Cancel)
+        message.setDefaultButton(QMessageBox.Ok)
+        message.exec()
+
+
+</code></pre><p>Lorsque l'on clique sur un des deux boutons, le popup suivant apparaît:</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Dang-Vu-Duc/mon/temps-1.1/Image5.png" alt="Popup"></p>
+<p>Encore une fois, il est possible de faire bien plus de choses avec cette fenêtre popup, tout est documenté sur le site de Qt.</p>
+<h3 id="qlabel-et-qlineedit" tabindex="-1"><a class="header-anchor" href="#qlabel-et-qlineedit"></a> QLabel et QLineEdit</h3>
+<p>La classe <strong>QLabel</strong> permet de mettre des labels (c'est-à-dire du texte) dans la fenêtre, et la classe <strong>QLineEdit</strong> permet d'afficher un champ où l'utilisateur peut rentrer du texte. Ce texte peut être récupéré grâce à la méthode <em>text</em> de la classe <strong>QLineEdit</strong>. Voici un exemple d'utilisation de ces deux classes (on ajoute le code suivant dans l'initialisation de la classe <em>Test_button</em>):</p>
+<pre class="language-python line-numbers"><code>
+
+label = QLabel("Entrez votre nom:")
+self.line_edit = QLineEdit()
+button_valider = QPushButton("Valider")
+button_valider.clicked.connect(self.valider)
+
+layout2 = QHBoxLayout()
+layout2.addWidget(label)
+layout2.addWidget(self.line_edit)
+layout2.addWidget(button_valider)
+
+layout = QVBoxLayout()
+layout.addWidget(self.button1)
+layout.addWidget(self.button2)
+layout.addLayout(layout2)
+central_widget.setLayout(layout)
+self.show()
+
+def valider(self):
+  print("Nom:", self.line_edit.text())
+
+
+</code></pre><p>L'exécution de ce code fait apparaître notre fenêtre test, mais avec en plus un champ à remplir. Quand on clique sur le bouton valider, on voit que l'information du nom a bien été print:</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Dang-Vu-Duc/mon/temps-1.1/Image6.png" alt="Image QLabel et QLineEdit"></p>
+<p>On remarque l'utilisation de la classe <strong>QHBoxLayout</strong> pour mettre le label, le champ à remplir et le bouton valider côte-à-côte. Ensuite, on a rajouté ce layout au layout vertical principal.</p>
+<h2 id="utilisation-de-qt-designer" tabindex="-1"><a class="header-anchor" href="#utilisation-de-qt-designer"></a> Utilisation de Qt Designer</h2>
+<h3 id="cr%C3%A9ation-d'une-interface-graphique-sur-qt-designer" tabindex="-1"><a class="header-anchor" href="#cr%C3%A9ation-d'une-interface-graphique-sur-qt-designer"></a> Création d'une interface graphique sur Qt Designer</h3>
+<p>Il existe bien plus de classes disponibles avec Qt. Il peut-être difficile de se retrouver parmi tout cela, et trouver les bonnes méthodes pour faire ce que l'on veut. Il existe ainsi un outil pour pallier à ce problème: <strong>Qt Designer</strong>. Ce logiciel est disponible en open source sur le <a href="https://qt.io">site de Qt</a>. Grâce à cet outil, on peut placer tout les éléments possibles comme on le souhaite dans une fenêtre.
+Pour illustrer l'utilisation de cet outil, nous allons créer une fenêtre pour jouer à un jeu de carte basique: la bataille. Pour cela, on doit télécharger un dossier avec des images de cartes à jouer. Ensuite, on créé une <strong>MainWindow</strong> sur Qt Designer.</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Dang-Vu-Duc/mon/temps-1.1/Image7.png" alt="Image QT Deigner"></p>
+<p>On peut voir ci-dessus à quoi ressemble le terminal de QT Designer. Sur le côté droit, il y a l'endroit pour modifier les propriétés de chaque objet; sur la gauche, il y a tout les objets que l'on peut utiliser. Il suffit de les cliquer-glisser sur l'interface. On peut également changer les couleurs, on encore assigner des images aux objets (dans notre cas, les images de cartes).
+J'ai choisi un fond vert pour représenter le tapis de jeu. Pour charger une image sur un label (par exemple ici, une image de dos de carte), il faut cliquer sur cet élément et changer la &quot;pixmap&quot; dans les options du label (sur le côté gauche).</p>
+<h3 id="utilisation-de-l'interface-dans-un-programme" tabindex="-1"><a class="header-anchor" href="#utilisation-de-l'interface-dans-un-programme"></a> Utilisation de l'interface dans un programme</h3>
+<p>L'enregistrement de ce fichier via Qt Designer produit un fichier .ui, qui va pouvoir être utilisé dans un programme. Pour ce faire, on va utliser la classe <strong>QUiLoader</strong>, qui va permettre de charger le fichier .ui et l'associer à une fenêtre grâce à la méthode <em>load</em> de cette classe. Ensuite, il faut associer les éléments du fichier .ui à des variables dans notre code. Pour cela, on va utiliser la méthode <em>findChild</em>, qui prend en argument le type d'objet que l'on recherche ainsi que son nom que l'on a attribué dans Qt Designer. Ainsi, l'initialisation de notre classe <strong>Bataille</strong> ressemble à ceci:</p>
+<pre class="language-python line-numbers"><code>
+
+class Bataille(QMainWindow):
+    def __init__(self):
+        super().__init__()
+
+        ui_file_name = "bataille.ui"
+        ui_file = QFile(ui_file_name)
+        loader = QUiLoader()
+        self.main_window = loader.load(ui_file)
+        ui_file.close()
+        self.main_window.setWindowTitle("Bataille")
+
+        self.DealerCard = self.main_window.findChild(QLabel, "dealer_card")
+        self.PlayerCard = self.main_window.findChild(QLabel, "player_card")
+        self.DealerCount = self.main_window.findChild(QLabel, "dealer_count")
+        self.PlayerCount = self.main_window.findChild(QLabel, "player_count")
+        self.PlayerName = self.main_window.findChild(QLabel, "player_header")
+        self.CardsLeft = self.main_window.findChild(QLabel, "cards_left")
+        self.result = self.main_window.findChild(QLabel, "result")
+        self.PlayButton = self.main_window.findChild(QPushButton, "play_button")
+        self.RestartButton = self.main_window.findChild(QPushButton, "restart_button")
+        self.ShuffleButton = self.main_window.findChild(QPushButton, "shuffle_button")
+
+        self.PlayButton.clicked.connect(self.play)
+        self.RestartButton.clicked.connect(self.restart)
+        self.ShuffleButton.clicked.connect(self.newdeck)
+
+        self.dealer_count = 0
+        self.player_count = 0
+
+        widget = QWidget()
+        self.name_window = QMainWindow()
+        self.name_window.setWindowTitle("Nom du joueur")
+        self.name_window.setCentralWidget(widget)
+        label = QLabel("Entrez votre nom:")
+        self.line_edit = QLineEdit()
+        button_valider = QPushButton("Valider")
+        button_valider.clicked.connect(self.valider)
+        layout = QHBoxLayout()
+        layout.addWidget(label)
+        layout.addWidget(self.line_edit)
+        layout.addWidget(button_valider)
+        widget.setLayout(layout)
+        self.name_window.show()
+
+        self.newdeck()
+
+
+</code></pre><p>On remarque que l'on a bien associé chaque bouton à une action (que l'on va définir plus tard). On a également deux fenêtres: main_window et name_window. Cette dernière fenêtre permet au joueur de renseigner son nom, grâce à la classe <strong>QLineEdit</strong>, explicitée précédemment.</p>
+<p>Il faut maintenant créer les méthodes pour associées à chaque bouton. La méthode newdeck créé un jeu de 52 cartes grâce à une classe <strong>Card</strong>, qui associe à chaque carte un nom et une valeur. La méthode restart créé un nouveau deck et réinitialise les compteurs de points et la méthode play affiche deux cartes aléatoires et compare leur valeurs. L'affichage des cartes se faire grâce à la métnode setPixmap de la classe <strong>QLabel</strong>. Cette pixmap contient l'information d'une image, qu'on définit grâce à la classe <strong>QPixmap</strong>. Voici le code de ces méthodes:</p>
+<pre class="language-python line-numbers"><code>
+
+    def valider(self):
+        name = self.line_edit.text()
+        self.PlayerName.setText(f"Cartes du joueur {name}")
+        self.main_window.show()
+        self.name_window.close()
+
+    def newdeck(self):
+        suits = ["diamonds", "clubs" ,"hearts", "spades"]
+        values = range(2,15)
+        self.deck = []
+        for suit in suits:
+            for value in values:
+                self.deck.append(Card(f"{value}_of_{suit}", value))
+        self.CardsLeft.setText(f"{len(self.deck)} cartes restantes")
+
+    def play(self):
+        card_dealer = random.choice(self.deck)
+        self.deck.remove(card_dealer)
+        pixmap_dealer = QPixmap(f'PNG-cards/{card_dealer.name}.png')
+        self.DealerCard.setPixmap(pixmap_dealer)
+        card_player = random.choice(self.deck)
+        self.deck.remove(card_player)
+        pixmap_player = QPixmap(f'PNG-cards/{card_player.name}.png')
+        self.PlayerCard.setPixmap(pixmap_player)
+        self.CardsLeft.setText(f"{len(self.deck)} cartes restantes")
+
+        if card_dealer.value > card_player.value:
+            self.result.setText("Le dealer a gagné!")
+            self.dealer_count += 1
+            self.DealerCount.setText(f"Le dealer a {self.dealer_count} points")
+
+        if card_dealer.value < card_player.value:
+            self.result.setText("Le joueur a gagné!")
+            self.player_count += 1
+            self.PlayerCount.setText(f"Le joueur a {self.player_count} points")
+
+        if card_dealer.value == card_player.value:
+            self.result.setText("Egalité!")
+
+        if len(self.deck) == 0:
+            self.newdeck()
+
+    def restart(self):
+        self.player_count = 0
+        self.dealer_count = 0
+        self.PlayerCount.setText("Le joueur a 0 points")
+        self.DealerCount.setText("Le dealer a 0 points")
+        pixmap = QPixmap('PNG-cards/dos.png')
+        self.DealerCard.setPixmap(pixmap)
+        self.PlayerCard.setPixmap(pixmap)
+        self.newdeck()
+
+class Card():
+    def __init__(self, name, value):
+        self.value = value
+        self.name = name
+
+
+</code></pre><p>L'exécution de ce code fait apparaître dans un premier temps une fenêtre demandant au joueur de rentrer son nom. Une fois que le joueur a validé son nom, la méthode &quot;valider&quot; change le Label du joueur pour y mettre son nom, avec la méthode setText.</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Dang-Vu-Duc/mon/temps-1.1/Image8.png" alt="Fenêtre nom joueur"></p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Dang-Vu-Duc/mon/temps-1.1/Image9.png" alt="Fenêtre bataille"></p>
+<p>Ce jeu de bataille est donc bien fonctionnel. Il compte les points à chaque tour et met bien à jour chaque texte.</p>
+<h2 id="conclusion" tabindex="-1"><a class="header-anchor" href="#conclusion"></a> Conclusion</h2>
+<p>Comme on a pu le voir, Qt permet de faire des interfaces graphiques de tout genre. Il existe une multitude de classes et de méthodes, je n'ai ici que présenté une infime partie de ce qui est possible. Cependant, avec ces principales classes, il est possible de faire les applications les plus basiques, comme par exemple le jeu de bataille que j'ai implémenté en application de ce MON (ce code python se trouve dans le dossier GitHub). De plus, si l'on veut découvrir encore plus de choses sur Qt, il peut être intéressant de parcourir le site de la documentation de Qt, ainsi que le Qt Designer pour voir tout les éléments possibles.</p>
+
+
+
+</article>
+
+        </main>
+
+        <footer class="min-h-[50px] border-t-2 mt-4 border-gray-200 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-center items-center">
+                    <p class="text-center">
+                        ©2025 <b><span style="font-family: Consolas, sans-serif;">Do-<span style="color: #4a86e8">It</span></span></b> - Développement, Management et Gestion de projets en IT
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- MathJax import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">
+            window.MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']], // Delimiters for inline math
+                    displayMath: [['$$', '$$'], ['\\[', '\\]']] // Delimiters for block math
+                },
+                svg: {
+                    fontCache: 'global' // Use global font cache for SVG output
+                }
+            };
+            document.addEventListener('DOMContentLoaded', () => {
+                MathJax.typeset(); // Ensures MathJax processes the content after the page loads
+            });
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">
+            Prism.plugins.NormalizeWhitespace.setDefaults({
+                'remove-trailing': true,
+                'remove-indent': true,
+                'left-trim': true,
+                'right-trim': true,
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script>
+    </body>
+</html>

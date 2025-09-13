@@ -1,0 +1,1308 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="robots" content="index, follow">
+
+        <link rel="canonical" href="https://do-it.aioli.ec-m.fr/promos/2023-2024/Sarah-Sebastien/pok/temps-3/">
+
+        
+        
+
+        <meta name="description" content="Ce MON traitera de l&#39;apprentissage de Google Sheet et d&#39;Apps Script et de leur application au travers d&#39;un mini projet qui impliquera, une gestion d&#39;une BDD, des liens entre les différentes applications Google (Forms, Sheets) et un traitement des données.">
+        <meta property="og:description" content="Ce MON traitera de l&#39;apprentissage de Google Sheet et d&#39;Apps Script et de leur application au travers d&#39;un mini projet qui impliquera, une gestion d&#39;une BDD, des liens entre les différentes applications Google (Forms, Sheets) et un traitement des données.">
+        <meta name="twitter:description" content="Ce MON traitera de l&#39;apprentissage de Google Sheet et d&#39;Apps Script et de leur application au travers d&#39;un mini projet qui impliquera, une gestion d&#39;une BDD, des liens entre les différentes applications Google (Forms, Sheets) et un traitement des données.">
+
+        
+            <meta name="author" content="Sebastien Sarah">
+        
+        <meta name="keywords" content="do-it, centrale, centrale méditerranée, ecm, POK, Google Apps Script, Google Sheet">
+
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png">
+        <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png">
+
+        <link href="/assets/stylesheets/main.css" rel="stylesheet">
+
+        <meta property="og:title" content="POK 3: My Google Health Assistant">
+
+        <meta property="og:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta property="og:url" content="https://do-it.aioli.ec-m.fr/promos/2023-2024/Sarah-Sebastien/pok/temps-3/">
+        <meta property="og:type" content="website">
+
+        <meta name="twitter:card" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:title" content="POK 3: My Google Health Assistant">
+        <meta name="twitter:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:url" content="https://do-it.aioli.ec-m.fr/promos/2023-2024/Sarah-Sebastien/pok/temps-3/">
+
+        <title>POK 3: My Google Health Assistant</title>
+
+        <!-- Prismjs imports
+                - Prism line numbers
+                - Prism toolbar
+        -->
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet">
+        <link id="prism-theme" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+        <!-- Mermaid import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js "></script>
+
+        <script defer="">
+        // Check if a theme is stored in localStorage. If so, use it, otherwise fallback to the system preference.
+        const storedTheme = localStorage.getItem('theme');
+        if (storedTheme) {
+            document.documentElement.classList.toggle("dark", storedTheme === "dark");
+        } else {
+            // Use system color scheme if there is no stored theme preference.
+            document.documentElement.classList.toggle("dark", window.matchMedia("(prefers-color-scheme: dark)").matches);
+        }
+
+        function loadPrismTheme(isDarkMode) {
+            const newTheme = isDarkMode ? 'prism-okaidia.min.css' : 'prism-solarizedlight.min.css';
+            const newLink = document.createElement('link');
+            newLink.rel = 'stylesheet';
+            newLink.id = 'prism-theme';
+            newLink.href = `https://cdn.jsdelivr.net/npm/prismjs/themes/${newTheme}`;
+
+            newLink.onload = () => {
+                // Reapply highlighting after the new theme loads
+                Prism.highlightAll();
+            };
+
+            const existingLink = document.getElementById('prism-theme');
+            if (existingLink) {
+                document.head.replaceChild(newLink, existingLink);
+            } else {
+                document.head.appendChild(newLink);
+            }
+        }
+
+        function setMermaidTheme(isDarkMode) {
+            const theme = isDarkMode ? 'dark' : 'forest';
+            mermaid.initialize({
+                securityLevel: 'loose',
+                theme,
+                startOnLoad: true,
+            });
+        }
+
+        // Toggle dark and light mode and update localStorage accordingly.
+        function toggleDarkMode() {
+            const dark = document.documentElement.classList.contains("dark");
+            const newTheme = dark ? "light" : "dark";
+            localStorage.setItem('theme', newTheme);
+            document.documentElement.classList.toggle("dark", !dark);
+            loadPrismTheme(!dark);
+            setMermaidTheme(!dark);
+        }
+
+        // On initial load, ensure that Prism and Mermaid are initialized using the current theme.
+        const isDark = document.documentElement.classList.contains("dark");
+        loadPrismTheme(isDark);
+        setMermaidTheme(isDark);
+        </script>
+
+    </head>
+
+    <body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000" class="bg-neutral-50 text-neutral-950 dark:bg-neutral-900 dark:text-neutral-50">
+        <header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white dark:bg-neutral-900 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-between items-center">
+                    <a class="mx-2" href="/">Home</a>
+                    <button class="hidden sm:block text-neutral-950 dark:text-neutral-50 hover:bg-neutral-700 hover:text-neutral-50 hover:dark:bg-neutral-300 hover:dark:text-neutral-950 transition-colors p-2 rounded-full duration-800 ease-in-out" onclick="toggleDarkMode()">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 dark:hidden stroke-current">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <path d="M12 2V4" stroke-linecap="round"></path>
+                            <path d="M12 20V22" stroke-linecap="round"></path>
+                            <path d="M4 12L2 12" stroke-linecap="round"></path>
+                            <path d="M22 12L20 12" stroke-linecap="round"></path>
+                            <path d="M19.7778 4.22266L17.5558 6.25424" stroke-linecap="round"></path>
+                            <path d="M4.22217 4.22266L6.44418 6.25424" stroke-linecap="round"></path>
+                            <path d="M6.44434 17.5557L4.22211 19.7779" stroke-linecap="round"></path>
+                            <path d="M19.7778 19.7773L17.5558 17.5551" stroke-linecap="round"></path>
+                        </svg>
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 stroke-current hidden dark:block">
+                            <path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </button>
+                    <div class="flex items-center gap-4 sm:gap-6 ">
+                        <a class="" href="/cs">CS</a>
+                        <a class="" href="/pok">POK</a>
+                        <a class="" href="/mon">MON</a>
+                        <a class="" href="/projets">Projets</a>
+                        <a class="hidden sm:block" href="/promos">Promos</a>
+                        <a href="/search">
+                            <svg class="h-5 aspect-square stroke-neutral-950 dark:stroke-neutral-300 fill-none stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+                            </svg>
+                        </a>
+                        <a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank">
+                            <svg class="h-5 aspect-square dark:stroke-neutral-300 dark:fill-neutral-300" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body="">
+            
+<article class="relative">
+<h1 class="mb-1">POK 3: My Google Health Assistant</h1>
+<div class="mb-4">
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Tags : </div>
+            <ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags">
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">POK</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">Google Apps Script</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">Google Sheet</li>
+                
+
+            </ul>
+
+            
+            <div class="hidden" data-pagefind-meta="Type" aria-hidden="true">
+                
+                    
+                        <span data-pagefind-filter="Type">POK</span>
+                    
+                
+                    
+                
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Auteur : </div>
+            <ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs">
+                
+                    <li class="bg-blue-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Auteurs">Sebastien Sarah</li>
+                
+            </ul>
+        </div>
+    
+
+    
+        <div class="absolute top-0 right-0">
+            <span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2 text-neutral-950" data-pagefind-filter="Année">
+                2023-2024
+            </span>
+        </div>
+    
+</div>
+
+<p class="mb-4 text-lg">Ce MON traitera de l'apprentissage de Google Sheet et d'Apps Script et de leur application au travers d'un mini projet qui impliquera, une gestion d'une BDD, des liens entre les différentes applications Google (Forms, Sheets) et un traitement des données.</p>
+
+
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100 dark:border-purple-800 dark:bg-purple-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-purple-500 dark:stroke-purple-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/promos/2023-2024/Sarah-Sebastien/">Sarah Sebastien</a><span class="px-1">/</span><a href="/promos/2023-2024/Sarah-Sebastien/pok/">POK de Sarah Sebastien</a><span class="px-1">/</span><a href="/promos/2023-2024/Sarah-Sebastien/pok/temps-3/">POK 3: My Google Health Assistant</a>
+
+</div>
+</div>
+
+
+
+
+<hr>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100 dark:border-pink-800 dark:bg-pink-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-pink-500 dark:stroke-pink-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p>Niveau débutant</p>
+</div><div class="pl-8 mr-8">
+<p>Prérequis : Aucun</p>
+</div>
+</div>
+<p><strong><a href="https://docs.google.com/forms/d/e/1FAIpQLSfFLYaqlpzypnKtLbPI_m1djJuIJRUskninneo5w1JXc8h36g/viewform?usp=sf_link">Lien vers le formulaire</a></strong></p>
+<h2 id="sommaire" tabindex="-1"><a class="header-anchor" href="#sommaire"></a> Sommaire</h2>
+<ul>
+<li><a href="#introduction">Introduction</a></li>
+<li><a href="#backlog">Backlog</a></li>
+<li><a href="#ressources">Recherches des ressources</a></li>
+<li><a href="#googlesheet">Focus sur Google Sheet</a></li>
+<li><a href="#googleAppscript">Focus sur Google Apps Scripts</a></li>
+<li><a href="#sprint2">Vers le sprint 2</a></li>
+<li><a href="#projet">Une courte présentation de My Google Health Assistant</a></li>
+<li><a href="#BDD">Construction de la base de données Google Sheet du projet</a></li>
+<li><a href="#Form">Création du Google Form</a></li>
+<li><a href="#script">Rédaction du script avec Google Apps Script</a></li>
+<li><a href="#final">Résultat final</a></li>
+<li><a href="#retex">Retour sur le sprint 2 et retour d'expérience</a></li>
+</ul>
+<h2 id="introduction"> Introduction</h2>
+<p>J'ai déjà utilisé VBA à maintes reprises au cours de mon alternance et dans mon <a href="../temps-1/">premier POK</a>. Mais j'ai remarqué que si VBA était, jusque là, l'incontournable outil quand il s'agissait de créer des macros, le nom d'&quot;Apps Script&quot; commençait à s'entendre de plus en plus souvent. Alors je me suis dit, <em>pourquoi ne pas découvrir un peu de quoi il en retourne ??</em> Et puis comme ça je pourrai comparer les 2 langages, et me faire mon propre avis.</p>
+<h2 id="backlog"> Backlog</h2>
+<p>Voici mon backlog pour le sprint 1 :</p>
+<table>
+<thead>
+<tr>
+<th>Intitulé</th>
+<th>Temps estimé</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>- Lecture des différents MON sur le sujet</td>
+<td>45 mins</td>
+</tr>
+<tr>
+<td>- Recherches et ajouts de ressources personnelles sur le sujet</td>
+<td>30 mins</td>
+</tr>
+<tr>
+<td>- Prise en main de Google Sheet à l'aide des ressources listées</td>
+<td>30mins</td>
+</tr>
+<tr>
+<td>- Application à un sujet de traitement de BDD</td>
+<td>2h</td>
+</tr>
+<tr>
+<td>- Prise en main de Google Apps Script à l'aide des ressources listées</td>
+<td>1h30</td>
+</tr>
+<tr>
+<td>- Entraînement à l'application de ces connaissances sur un sujet</td>
+<td>3h</td>
+</tr>
+<tr>
+<td>- Entraînement à la connexion d'Apps Scripts aux autres applications Google</td>
+<td>1h30</td>
+</tr>
+<tr>
+<td>- Définition du backlog pour le mini projet imaginé</td>
+<td>15 mins</td>
+</tr>
+</tbody>
+</table>
+<h2 id="ressources"> Recherches des ressources</h2>
+<p>En ayant épluché tout le site de Do-It sur le sujet, voici un petit guide sur ce qui a déjà été traité et comment :</p>
+<table>
+<thead>
+<tr>
+<th>Numéro</th>
+<th>Nom</th>
+<th>Résumé</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><a href="../../../TAING-Henri/mon/temps-2.1/">Un peu d'Excel/Google Sheets pour mourir moins idiot</a> <br> de Henri Taing</td>
+<td>- Des explications sur l'utilisation de notions de Google Sheet <em>(vue filtrée, tableau croisé dynamique, mise en forme conditionnelle, quelques fonctions...)</em> <br> - Recommandation pour Sheet et Apps Scripts des tutos de <a href="https://www.sheets-pratique.com/">ce site</a> qui lui ont mis <em>&quot;des paillettes dans les yeux</em>&quot;</td>
+</tr>
+<tr>
+<td>2</td>
+<td><a href="../../../../2022-2023/Laeuffer-Savinien/mon/appsscript/">Google Apps Script</a> <br> de Savinien Laeuffer</td>
+<td>- utilise la <em>doc fournie par Google sur son service</em> <br> - aborde les thèmes de <strong>Toast</strong>, <strong>d'envoi de mails</strong>, de <strong>déclencheurs</strong>, des <strong>scripts HTML</strong>, de <strong>menus personnalisés</strong> <br> - <em>REMARQUE :c'est assez pratique car il a mis dans son MON tous ses codes, mais on a peu d'aperçu sur le rendu de ce qu'il a fait</em></td>
+</tr>
+<tr>
+<td>3</td>
+<td><a href="../../../../2022-2023/Romer-Kasimir/mon/MON1-1/">Temps 1 - MON - Google Apps Script</a> <br> de Kasimir Romer</td>
+<td>- réalisation d'une to do list sur google sheet mise à jour automatiquement par action de l'utilisateur <br> - cite en ressource <a href="https://www.youtube.com/watch?v=Nd3DV_heK2Q">cette vidéo youtube</a>, de <a href="https://developers.google.com/apps-script/reference/spreadsheet?hl=fr">la documentation Google</a> et de <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference">la documentation JavaScript</a></td>
+</tr>
+<tr>
+<td>4</td>
+<td><a href="../../../../2022-2023/Varnerot-Antoine/mon/google-app-script/">Google Apps Script</a> <br> de Antoine Varnerot</td>
+<td>- conseille vivement les <a href="https://developers.google.com/apps-script/guides/sheets?hl=fr">tutos de Google</a> et les tutos de <a href="https://www.youtube.com/playlist?list=PLozmtcO5OqdqZZ6sP6faU18jIdyCiiYvS">cette playlist Youtube</a> <br> - pour s’entraîner, il propose d'utiliser <a href="https://developers.googleblog.com/2022/04/getting-started-is-hardest-part-find.html">ce site</a> qui propose des idées de mini-projets à faire avec Google Apps Script <br> - Détails sur sa proposition pour le projet <em>&quot;Clean up data in a spreadsheet&quot;</em></td>
+</tr>
+<tr>
+<td>5</td>
+<td><a href="../../../../2022-2023/Durand-Jean-Baptiste/mon/gglAppsScript/">Google Apps Script</a> <br> de Jean-Baptiste Durand</td>
+<td>- c'est le seul à donner quelques explications à Google App Scripts (qu'est ce que c'est, les principales fonctionnalités, etc..) <br> - répertorie plusieurs formules basiques utiles et évoque la notion de <em>déclencheurs temporels</em>, qu'il n'a pas eu le temps de trop aborder mais il conseille <a href="https://developers.google.com/apps-script/guides/triggers/installable?hl=fr">la documentation de Google</a> sur le sujet <br> - réalise ensuite un tricount sur Sheet avec Apps Script (<em>BEMOL: son lien vers le code source de son travail ne marche pas et on a accès à son Sheet qu'en lecture seule, donc pas possible d'accéder à sa macro...</em>)</td>
+</tr>
+<tr>
+<td>6</td>
+<td><a href="../../../../2022-2023/Abdane-Ossama/mon/mon1/">MON 1: Google apps script</a> <br> de Ossama Abdane</td>
+<td>- a focalisé son MON sur les <strong>triggers</strong> : explications et quelques exemples de triggers classiques <br> - explique en détails les <em>déclencheurs temporels</em> et l'applique à une fonction qui envoie un mail tous les matins pour lui rappeler d'aller signer la feuille de présence <br> - utilise les mêmes ressources que dans les MON précédents, et y inclue <a href="https://spreadsheet.dev/triggers-in-google-sheets">ce site</a> pour les triggers temporels</td>
+</tr>
+<tr>
+<td>7</td>
+<td><a href="../../../../2022-2023/Abdane-Ossama/mon/mon2.1/">MON 2.1: Google Apps Script : Rappel anniversaire</a><br> par Ossama Abdane</td>
+<td>-application des connaissances de son MON précédent sur la réalisation d'un outil qui prévient automatiquement par mail de la date d'anniversaire d'une personne dans une liste stockée sur Sheet</td>
+</tr>
+<tr>
+<td>8</td>
+<td><a href="../../../../2022-2023/Pont-Thomas/mon/gas/">MON 2 : Google Apps Script</a> <br> de Thomas Pont</td>
+<td>- réalisation d'un outil pour <em>&quot;automatiser l'envoi de mails personnalisés&quot;</em> <br> - donne des conseils sur la gestion des dates dans Sheet <br> - explique la gestion de texte HTML avec Apps Script</td>
+</tr>
+</tbody>
+</table>
+<h2 id="googlesheet"> Focus sur Google Sheet</h2>
+<p>Pour m'entrainer, je me suis appuyée sur ce <a href="olympics.zip">fichier csv</a> envoyé gracieusement par un  gentil collègue de IAM.</p>
+<p>Ce fichier traite de certaines caractéristiques de chaque vainqueur des JO <em>(l'athlète, son sexe, sa nationalité, la couleur de sa médaille, la catégorie dans laquelle il a gagné, etc...)</em>.</p>
+<h3 id="ressources" tabindex="-1"><a class="header-anchor" href="#ressources"></a> Ressources</h3>
+<p>Je me suis dit que ça ferait une base parfaite pour m'entraîner sur Sheet. Pour cela j'ai étudié et appliqué les différentes parties du <strong>cours sur Google Sheet</strong> de <a href="https://www.sheets-pratique.com/">ce site</a> qu'Henri avait conseillé, j'ai aussi utilisé <a href="https://support.google.com/docs/table/25273?hl=f">cette page</a> de Google qui répertoriait un grand nombre de formules pour Sheet, et qui m'a été, ma foi, très utile.</p>
+<h3 id="entrainement-sur-sheet" tabindex="-1"><a class="header-anchor" href="#entrainement-sur-sheet"></a> Entrainement sur Sheet</h3>
+<p>Vous retrouverez <a href="https://docs.google.com/spreadsheets/d/1zAQRbf99pT2mR93Ry3i1bm-QLbhTylIE4CK-WcgO86I/edit?usp=sharing">ici</a> un lien vers le Sheet que j'ai créé.</p>
+<ul>
+<li><strong>onglet &quot;olympics&quot;</strong> : base de données brut avec mise en forme conditionnelle de la couleur de chaque cellule de la colonne <em>&quot;Medal&quot;</em>, en fonction de la couleur de la médaille correspondante.</li>
+<li><strong>onglet &quot;test formules&quot;</strong> : test de plusieurs formules pour mettre en valeur certaines données.</li>
+<li><strong>onglet &quot;graphique&quot;</strong> : récupération des données de tous les pays <em>(via la formule UNIQUE())</em> pour venir chercher le nombre de médailles gagnées, de chaque couleur. Puis mise en forme de ces données sous la forme d'un graphique adapté</li>
+<li><strong>onglet &quot;Tableau croisé dynamique&quot;</strong> : création d'un tableau croisé dynamique avec la gestion des <em>segments</em>.</li>
+</ul>
+<p>Finalement, contente d'en être arrivée jusque là, j'ai voulu continuer, en essayant d'appliquer mon <a href="../../mon/temps-2.1/">MON 2.1</a>, en créant un tableau de bord sur Sheet. Mais là... je me suis heurtée à un mur : dès que j'ai commencé à avoir plusieurs graphiques et à manipuler les données, Sheet ne parvenait plus à actualiser correctement et le temps de réponse devenait parfois inquiétant.
+J'ai alors compris que Sheet n'était pas <strong>DU TOUT</strong> fait pour ça. Mais je suis restée sur ma faim. Alors j'ai fait mes petites recherches et j'ai découvert <strong>Looker Studio</strong>, le Power BI de Google.</p>
+<h3 id="a-la-d%C3%A9couverte-de-looker-studio" tabindex="-1"><a class="header-anchor" href="#a-la-d%C3%A9couverte-de-looker-studio"></a> A la découverte de Looker Studio</h3>
+<p>N'ayant jamais utilisé Power BI, je partais ici avec un oeil innocent. Pour savoir un peu dans quelle direction partir en ouvrant le logiciel, j'ai regardé <a href="https://www.youtube.com/watch?v=BVBvo9eKK40">cette vidéo Youtube</a> qui expliquait très bien comment prendre en main l'outil.
+Il est assez intuitif et simple à utiliser alors 12mins47 étaient largement suffisantes pour savoir comment procéder.
+Je ne suis pas extrêmement rentrée dans les détails des options qu'offraient Looker Studio, car ce n'était pas le but ici, mais il a l'air assez complet <em>(ex: possibilité de créer des champs personnalisés calculés très pointus)</em>.</p>
+<p>Alors finalement, après 1h30 de dur labeur, je vous présente mon tableau de bord, avec lequel vous pouvez jouer <a href="https://lookerstudio.google.com/reporting/3a53aba0-98ac-4a1d-aa94-3af36f8d6195">ici</a></p>
+<img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Sarah-Sebastien/pok/temps-3/looker_studio.png">
+<h2 id="googleAppscript"> Focus sur Google Apps Scripts</h2>
+<h3 id="ressources-1" tabindex="-1"><a class="header-anchor" href="#ressources-1"></a> Ressources</h3>
+<p>Après avoir lu autant d’encensements des vidéos youtube de <a href="https://www.youtube.com/playlist?list=PLozmtcO5OqdqZZ6sP6faU18jIdyCiiYvS">cette playlist youtube</a>, j'ai regardé toutes les vidéos. Et je dois dire qu'elle méritait les éloges, les vidéos étaient très complètes et très bien expliquées. <em>Je la recommande, moi aussi !</em> Mais je la complèterai quand même avec les explications de <a href="https://www.sheets-pratique.com/">sheets-pratique.com</a> qui abordent des points cruciaux qui n'apparaissent pas dans les vidéos <em>(ex : comment créer un bouton sur Sheet et y affecter une macro, ou comment enregistrer un script directement depuis Sheet,...)</em></p>
+<h3 id="entra%C3%AEnement-sur-apps-script" tabindex="-1"><a class="header-anchor" href="#entra%C3%AEnement-sur-apps-script"></a> Entraînement sur Apps Script</h3>
+<p>Cependant, quand j'ai voulu passer à un exercice applicatif, ça a été compliqué... J'ai voulu utilisé <a href="https://developers.googleblog.com/2022/04/getting-started-is-hardest-part-find.html">ce site</a>, conseillé par Antoine qui répertorie des applications simples pour débutant à refaire pour se familiariser avec le langage. Mais j'ai été déçue du peu de quantité d'exercices qu'il y avait, et du fait que les exercices ne soient pas guidés dans leur réalisation, mais seule la correction est indiquée.</p>
+<p>J'ai donc voulu créer mon propre entraînement, pour cela il me fallait trouver l'inspiration. Je voulais trouver le moyen de parvenir à interagir avec l'utilisateur:</p>
+<p>J'ai cherché sur <a href="https://data.world/search?type=all">data.world</a> des BDD qui pourraient être intéressantes. J'en ai trouvées plusieurs qui traitaient de la composition de plusieurs aliments. J'aimais beaucoup le thème mais je les trouvais trop dures à exploiter.
+En cherchant plus globalement sur internet, j'ai trouvé <a href="https://www.kaggle.com/datasets/kaggle/recipe-ingredients-dataset">celle-ci</a> sur un site appelé Kaggle. <em>Cette BDD contenait une liste de recettes, la nationalité de la recette et les ingrédients</em>. J'ai tout de suite eu l'idée de faire un script qui permettrait de proposer à l'utilisateur des recettes en fonction des ingrédients et des types de cuisine qu'il aurait sélectionnés sur le sheet. <em>Un peu comme l'option &quot;Frigo&quot; de l'application de <strong>Marmiton</strong>, ou d'autres applications de <strong>Frigos intelligents</strong></em>.</p>
+<p>Mais la réalisation de mon idée affichait déjà quelques contraintes:</p>
+<ul>
+<li><strong>BEMOL n°1</strong> : les fichiers à télécharger étaient sous le format JSON</li>
+<li><strong>BEMOL n°2</strong> : il n'y avait aucun nom de recettes dans le fichier, juste des ID</li>
+</ul>
+<p>Il en fallait plus pour m'arrêter.</p>
+<h4 id="r%C3%A9solution-des-probl%C3%A9matiques" tabindex="-1"><a class="header-anchor" href="#r%C3%A9solution-des-probl%C3%A9matiques"></a> Résolution des problématiques</h4>
+<h5 id="bemol-n%C2%B01-%3A" tabindex="-1"><a class="header-anchor" href="#bemol-n%C2%B01-%3A"></a> BEMOL n°1 :</h5>
+<p>Je savais qu'il y avait la possibilité d'utiliser <strong>Power Query</strong> pour importer des fichiers JSON. J'ai juste regardé <a href="https://www.youtube.com/watch?v=SlAuMFCF-aQ">cette vidéo</a> qui expliquait comment <strong>importer et parsemer des données d'un fichier JSON sur Excel</strong>. J'ai fait en sorte de <em>parsemer</em> les ingrédients de <strong>2 façons</strong>, pour pouvoir plus facilement traiter les données par la suite.</p>
+<table>
+<thead>
+<tr>
+<th><strong>étendre sur plusieurs lignes</strong></th>
+<th><strong>extraire les valeurs</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Sarah-Sebastien/pok/temps-3/json_excel1.png"></td>
+<td><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Sarah-Sebastien/pok/temps-3/json_excel2.png"></td>
+</tr>
+<tr>
+<td>Permet d'avoir un ingrédient par ligne</td>
+<td>Permet d'avoir tous les ingrédients dans une même cellule</td>
+</tr>
+</tbody>
+</table>
+<h5 id="bemol-n%C2%B02-%3A" tabindex="-1"><a class="header-anchor" href="#bemol-n%C2%B02-%3A"></a> BEMOL n°2 :</h5>
+<img align="right" width="150" src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Sarah-Sebastien/pok/temps-3/API_chatGPT.png">
+<p>L'outil idéal pour trouver le nom d'une recette facilement à partir de l'origine de la recette et de ses ingrédients était évident : <strong>ChatGPT</strong>. Mais lui poser la question pour chaque ligne était trop fastidieux. Après quelques recherches, j'ai vu qu'il était possible de connecter facilement <strong>l'API de ChatGPT</strong> à <strong>Sheet</strong>. <em>Processus très bien expliqué dans <a href="https://www.youtube.com/watch?v=2OukmKPCW1I">cette vidéo</a></em></p>
+<p>Ni une ni deux, je m'y atèle.</p>
+<ul>
+<li><strong>première étape</strong> : traduire tous les textes <em>(origine et ingrédients)</em> en français. Facile avec la formule de <em>Google Translate</em>. (Mais qui laisse à désirer parfois quand même)</li>
+</ul>
+<pre class="line-numbers"><code>
+
+=GOOGLETRANSLATE(B2;"en";"fr")
+
+
+</code></pre><ul>
+<li><strong>deuxième étape</strong> : concaténer les informations de l'origine de la recette et des ingrédients pour <em>faciliter la requête ChatGPT</em></li>
+</ul>
+<pre class="line-numbers"><code>
+
+="origine de la recette : "&C2&" / ingrédients de la recette :"&E2
+
+
+</code></pre><p>-<strong>troisème étape</strong>: faire la requête ChatGPT</p>
+<pre class="line-numbers"><code>
+
+=GPT("peux tu me donner le nom de la recette seulement dont ";F2)
+
+
+</code></pre><p>On obtient alors en résultat :
+<img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Sarah-Sebastien/pok/temps-3/nom_recette.png"></p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100 dark:border-cyan-800 dark:bg-cyan-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-cyan-500 dark:stroke-cyan-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p>REMARQUES</p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li>chaque requête à l'API est <strong>payante</strong>. Le prix dépend du type de la requête. Ce genre de requête n'est pas très cher. Mais comme mes crédits gratuits n'étaient pas illimités, j'ai choisi de restreindre à <strong>62 recettes</strong>.</li>
+<li>les requêtes sont re-effectuées à <strong>chaque ouverture du Sheet</strong>. J'ai donc désactivé le mode <em>&quot;dépense&quot;</em>. Il se peut qu'à l'ouverture, les cellules de la colonne ChatGPT indiquent <strong>#ERROR!</strong></li>
+</ul>
+</div>
+</div>
+<h4 id="mise-en-forme-du-sheet" tabindex="-1"><a class="header-anchor" href="#mise-en-forme-du-sheet"></a> Mise en forme du sheet</h4>
+<p>Après adaptation des données obtenues <em>(ex: suppression des lignes que ChatGPT ne trouvait pas)</em>. J'ai tout mis proprement dans un onglet <strong>BDD recettes</strong>.</p>
+<p>J'ai créé un onglet <strong>CHOIX</strong> où je suis venue placer la liste de <strong>tous les ingrédients disponibles</strong> <em>(obtenue en réalisant une fonction UNIQUE sur la colonne &quot;ingrédients&quot; du fichier généré avec l'étape &quot;étendre sur plusieurs ligne&quot; d'Excel, expliqué plus haut)</em> et de <strong>tous les types de cuisine disponibles</strong> <em>(même process)</em>.</p>
+<p>On rajoute ensuite des <strong>case à cocher</strong> (Menu <em>Insertion</em>&gt;<em>Case à cocher</em>). Et hop, le tour est joué !</p>
+<h4 id="r%C3%A9alisation-du-script" tabindex="-1"><a class="header-anchor" href="#r%C3%A9alisation-du-script"></a> Réalisation du script</h4>
+<p>Besoin de 2 fonctions :</p>
+<ul>
+<li>une fonction <strong>contientElement</strong> qui va venir tester si un élément est dans un tableau <em>(car le cas se présente plusieurs fois dans la fonction principale)</em></li>
+</ul>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>contientElement</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-javascript line-numbers"><code>
+
+function contientElement(array, element) {
+  return array.includes(element); // Retourne true si l'élément est trouvé dans le tableau
+}
+
+
+</code></pre></div>
+</details>
+</div>
+<ul>
+<li>une fonction <strong>getRecipe</strong> qui récupère les choix de l'utilisateur et les recherche dans la BDD de recettes pour lui trouver une recette remplissant tous les critères, et lui fournir tous les ingrédients de cette recette.</li>
+</ul>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>getRecipe</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-javascript line-numbers"><code>
+
+function getRecipe() {
+  //Definition des paramètres des pages
+  let mainSheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('CHOIX');
+  let mainLastRow = mainSheet.getLastRow();
+  let mainRange = mainSheet.getDataRange();
+
+  let backSheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName('BDD ingrédients');
+  let backLastRow = backSheet.getLastRow();
+  let backRange = backSheet.getDataRange();
+
+  var ingredients = [];
+  var typeCuisine = [];
+  var recetteIngredients = [];
+
+  var recetteRetenue = 'aucune';
+
+  //On récupère les ingrédients sélectionnés par l'utilisateur + types de cuisine
+  for (let i=2; i <= mainLastRow; i++){
+
+    if (mainRange.getCell(i,1).getValue()===true){
+      ingredients.push(mainRange.getCell(i,2).getValue())
+    }
+    if (mainRange.getCell(i,4).getValue()===true){
+      typeCuisine.push(mainRange.getCell(i,5).getValue())
+    }
+  }
+  //On parcout toute la liste de BDD recettes
+    for (let k=2; k<= backLastRow;k++){
+      var ingredientTest = backRange.getCell(k,5).getValue()
+      var typeTest = backRange.getCell(k,3).getValue();
+
+      //Un élement correspond aux 2 conditions, on garde en mémoire la recette correspondante
+      if (contientElement(ingredients,ingredientTest) && contientElement(typeCuisine,typeTest)){
+        recetteRetenue = backRange.getCell(k,6).getValue();
+        console.log(recetteRetenue);
+        break; //Une recette a été trouvée, on sort de la boucle
+      }
+    }
+  //on vient récupérer la liste des ingrédients de la recette
+  for (let l=2; l<= backLastRow; l++){
+    if (backRange.getCell(l,6).getValue()===recetteRetenue){
+      recetteIngredients.push(backRange.getCell(l,5).getValue());
+    }
+  }
+
+  //on affiche le message finale
+  var ui = SpreadsheetApp.getUi();
+  if (recetteRetenue==='aucune'){
+    var message = "Aucune recette n'a été trouvée... Ressayez avec d'autres ingrédients, ou de voyagez ailleurs?"
+  }else{
+    var message = "Vous pouvez réaliser un(e) "+recetteRetenue + "\n\n Il vous faudra tous ces ingrédients:\n -" + recetteIngredients.join('\n-');
+  }
+  ui.alert('Voici une recette possible', message, ui.ButtonSet.OK);
+}
+
+
+</code></pre></div>
+</details>
+</div>
+<h4 id="test-du-script" tabindex="-1"><a class="header-anchor" href="#test-du-script"></a> Test du script</h4>
+<p>Aujourd'hui, j'avais envie de manger <strong>italien</strong>. Mais je n'avais chez moi que des <strong>cacahuètes grillées</strong> et de la <strong>canneberge séchée</strong>.
+<em>Qu'est ce que j'allais bien pouvoir cuisiner?</em></p>
+<img width="350" src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Sarah-Sebastien/pok/temps-3/resultat_recette.png">
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100 dark:border-cyan-800 dark:bg-cyan-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-cyan-500 dark:stroke-cyan-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p>REMARQUES/DEFAUTS</p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li>il y a beaucoup d'ingrédients qui sont en <strong>double</strong> <em>(ex: beurre, beurre fondu, beurre sans sel)</em></li>
+<li>certaines traductions de Google sont très approximatives <em>(ex: Il traduit &quot;bifteck de flanc&quot; un &quot;flank steak&quot;, qui signifie &quot;bavette&quot;)</em></li>
+</ul>
+</div>
+</div>
+<hr>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100 dark:border-pink-800 dark:bg-pink-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-pink-500 dark:stroke-pink-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p>Lien vers le projet</p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li><a href="https://docs.google.com/spreadsheets/d/1KGEUPpCguz-CgjBRoZtw-efDRjphKRTtqgmCwERGkHs/edit?usp=sharing">Lien vers le Sheet</a></li>
+<li><a href="https://script.google.com/u/0/home/projects/16E4KcCd9lwJmOOt_XYX1SBhEZnGqHfAb8tCSZGMxqZN0VCO6gRwqTxmR/edit">Lien vers le script</a></li>
+</ul>
+</div>
+</div>
+<h2 id="sprint2"> Vers le sprint 2</h2>
+<p>Si on reprend le backlog du sprint 1 que je m'étais fixé :</p>
+<table>
+<thead>
+<tr>
+<th>Intitulé</th>
+<th>Temps estimé</th>
+<th>Temps réalisé</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>- Lecture <em><strong>et synthétisation</strong></em>  des différents MON sur le sujet</td>
+<td>45 mins</td>
+<td><strong>1h</strong></td>
+</tr>
+<tr>
+<td>- Recherches et ajouts de ressources personnelles sur le sujet</td>
+<td>30 mins</td>
+<td><strong>/</strong></td>
+</tr>
+<tr>
+<td>- Prise en main de Google Sheet à l'aide des ressources listées</td>
+<td>30mins</td>
+<td><strong>15mins</strong></td>
+</tr>
+<tr>
+<td>- Application à un sujet de traitement de BDD</td>
+<td>2h</td>
+<td><strong>30 mins</strong></td>
+</tr>
+<tr>
+<td>- <em><strong>Réalisation d'un tableau de bord sur Looker Studio</strong></em></td>
+<td><em>/</em></td>
+<td><strong>2h</strong></td>
+</tr>
+<tr>
+<td>- Prise en main de Google Apps Script à l'aide des ressources listées</td>
+<td>1h30</td>
+<td><strong>1h10</strong></td>
+</tr>
+<tr>
+<td>- <em><strong>Recherche d'une BDD adaptée à l'entraînement sur Apps Script</strong></em></td>
+<td><em>/</em></td>
+<td><strong>50mins</strong></td>
+</tr>
+<tr>
+<td>- Entraînement à l'application de ces connaissances sur un sujet</td>
+<td>3h</td>
+<td><strong>4h15</strong></td>
+</tr>
+<tr>
+<td>- Entraînement à la connexion d'Apps Scripts aux autres applications Google</td>
+<td>1h30</td>
+<td><strong>/</strong></td>
+</tr>
+<tr>
+<td>- Définition du backlog pour le mini projet imaginé</td>
+<td>15 mins</td>
+<td><strong>/</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Au final, j'ai passé <em>légèrement</em> plus que 10h sur ce Sprint 1. Mais c'est mieux ainsi. Ce mini projet sur Apps Script m'a permis de <strong>bien prendre en main</strong> les <strong>macros Google</strong>, et de faire en sorte que l'utilisation de <strong>sheet</strong> devienne plus <strong>instinctive</strong>. Ce qui sera un point essentiel dans la réalisation du sprint 2.</p>
+<p>On peut alors redéfinir le backlog pour le sprint 2 :</p>
+<table>
+<thead>
+<tr>
+<th>Intitulé</th>
+<th>Temps estimé</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>- Définition du backlog pour le mini projet imaginé</td>
+<td>15 mins</td>
+</tr>
+<tr>
+<td>- Recherches sur les connexions Apps Script avec les autres applications Google <em>(Form,Gmail)</em></td>
+<td>30 mins</td>
+</tr>
+<tr>
+<td>- Recherche et récupération des ressources utiles sur les déclencheurs</td>
+<td>30 mins</td>
+</tr>
+<tr>
+<td>- Mise en forme des données récupérées</td>
+<td>2h</td>
+</tr>
+<tr>
+<td>- Mise au point du contenu du questionnaire et création du Form</td>
+<td>45 mins</td>
+</tr>
+<tr>
+<td>- Codage du script de récupération des données du Form</td>
+<td>45 mins</td>
+</tr>
+<tr>
+<td>- Codage du script de gestion de données du Sheet</td>
+<td>3h mins</td>
+</tr>
+<tr>
+<td>- Codage du script de gestion de l'envoi des mail</td>
+<td>45 mins</td>
+</tr>
+<tr>
+<td>- Réalisations de divers tests et correction du code</td>
+<td>1h30</td>
+</tr>
+</tbody>
+</table>
+<h2 id="projet"> Une courte présentation de My Google Health Assistant</h2>
+<p>&quot;My Google Health Assistant&quot; est le tout nouveau <strong>assistant de santé personnel</strong> conçu pour fournir des <strong>recommandations de compléments alimentaires</strong> adaptées aux besoins spécifiques
+d'un utilisateur. Il se base sur les réponses d'un <strong>Form</strong> rempli par l'utilisateur, dans lequel il renseigne ses <strong>préférences alimentaires</strong> et ses <strong>antécédents de santé</strong> afin qu'on choisisse pour lui, le complément alimentaire le plus adapté, et qu'on lui envoie <strong>par mail</strong> toutes les <strong>caractéristiques du complément alimentaire</strong>.</p>
+<h3 id="backlog-du-produit" tabindex="-1"><a class="header-anchor" href="#backlog-du-produit"></a> Backlog du produit</h3>
+<table>
+<thead>
+<tr>
+<th>Intitulé</th>
+<th>Complexité</th>
+<th>Valeur métier(MoSCoW)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Permettre aux utilisateurs de remplir un formulaire en spécifiant leur prénom, adresse mail, type de population, l'objectif de santé, les allergies/intolérances alimentaires éventuelles, les antécédents</td>
+<td>3</td>
+<td>Must</td>
+</tr>
+<tr>
+<td>Pouvoir choisir plusieurs allergies</td>
+<td>1</td>
+<td>Must</td>
+</tr>
+<tr>
+<td>Pouvoir rentrer à la main ses allergies</td>
+<td>1</td>
+<td>Must</td>
+</tr>
+<tr>
+<td>Pouvoir choisir plusieurs régimes</td>
+<td>3</td>
+<td>Won't</td>
+</tr>
+<tr>
+<td>Pouvoir choisir plusieurs objectifs dans une demande</td>
+<td>5</td>
+<td>Won't</td>
+</tr>
+<tr>
+<td>Configurer l'application pour enregistrer les réponses du formulaire dans une feuille de calcul Google Sheets</td>
+<td>1</td>
+<td>Must</td>
+</tr>
+<tr>
+<td>Développer un algorithme pour recommander des compléments alimentaires personnalisés en fonction des réponses du formulaire et des données sur les compléments alimentaires disponibles</td>
+<td>5</td>
+<td>Must</td>
+</tr>
+<tr>
+<td>Intégrer une base de données de compléments alimentaires contenant des informations sur les ingrédients, les avantages pour la santé, les posologies recommandées, et les mises en garde</td>
+<td>1</td>
+<td>Must</td>
+</tr>
+<tr>
+<td>Envoyer un e-mail personnalisé à l'utilisateur avec une proposition de complément alimentaire adapté à son besoin contenant le nom du complément, sa marque, sa posologie, ses ingrédients, ses mises en gardes</td>
+<td>3</td>
+<td>Must</td>
+</tr>
+</tbody>
+</table>
+<h2 id="BDD"> Construction de la base de données Google Sheet du projet </h2>
+<p>J'ai construit ma BDD avec le jeu de données trouvé sur le site de data.gouv, <a href="https://www.data.gouv.fr/fr/datasets/liste-des-complements-alimentaires-declares/">ici</a>.</p>
+<blockquote>
+<p>Cette liste répertorie tous les compléments alimentaires ayant fait l’objet d’une déclaration auprès des services de la DGCCRF depuis le 26 avril 2016, et ayant obtenu une attestation de déclaration de commercialisation sur le territoire français.</p>
+</blockquote>
+<p>On y retrouve <strong>plus de 85 000</strong> compléments alimentaires répertoriés avec certaines de leurs <strong>caractéristiques</strong>, comme notamment :</p>
+<ul>
+<li>leur nom commercial</li>
+<li>la marque qui les a déposés</li>
+<li>leur forme galénique</li>
+<li>leur composition</li>
+<li>leur(s) objectif(s)</li>
+<li>leur posologie</li>
+<li>les mises en garde concernant leur prise</li>
+<li>...</li>
+</ul>
+<h3 id="etape-1-%3A-tri-et-nettoyage-des-donn%C3%A9es" tabindex="-1"><a class="header-anchor" href="#etape-1-%3A-tri-et-nettoyage-des-donn%C3%A9es"></a> Etape 1 : Tri et nettoyage des données</h3>
+<ul>
+<li>J'ai réduit à <strong>2000 lignes</strong> la taille des données. <em>Cela permet de couvrir tout de même une bonne quantité de données et de rester gérable à traiter.</em></li>
+<li>Je supprime toutes les colonnes dont les données ne me serviront pas, et renomme les restantes <em>(Responsable étiquetage, plantes, etc...)</em></li>
+<li>Je modifie à la main les lignes qui n'ont pas un format adapté.</li>
+</ul>
+<p>On obtient alors une BDD exploitable :</p>
+<img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Sarah-Sebastien/pok/temps-3/BDD.png">
+<h3 id="etape-2-%3A-obtenir-une-liste-exhaustive-des-possibilit%C3%A9s%2Fchoix-parmi-lesquelles-l'utilisateur-devra-choisir" tabindex="-1"><a class="header-anchor" href="#etape-2-%3A-obtenir-une-liste-exhaustive-des-possibilit%C3%A9s%2Fchoix-parmi-lesquelles-l'utilisateur-devra-choisir"></a> Etape 2 : Obtenir une liste exhaustive des possibilités/choix parmi lesquelles l'utilisateur devra choisir</h3>
+<p>Il y avait en tout <strong>3 grosses variables</strong> à prendre en compte :</p>
+<ul>
+<li>le <strong>type de population</strong> <em>(qui permettra ensuite d'éliminer les médicaments pour lesquels l'utilisateur fait partie des populations à risques)</em></li>
+<li>les <strong>objectifs</strong> du complément <em>(qui permettra à l'utilisateur de choisir l'effet qu'il recherche parmi tous les effets possibles proposés par les compléments présents dans la BDD)</em></li>
+<li>la <strong>composition</strong> des compléments <em>(qui permettra de savoir quels types d'ingrédients vont être à risque pour un consommateur)</em></li>
+</ul>
+<p>Pour ce faire, il me fallait <strong>récupérer le contenu de chaque cellule</strong> des colonnes concernées, et de réussir à <strong>extraire chaque item</strong> des cellules, de sorte à ce qu'une <strong>cellule corresponde à une item</strong>. Mon idée était d'ensuite pouvoir <strong>supprimer les doublons</strong>, mais il me fallait réussir, pour cela, à placer toutes ces cellules les unes à la suite des autres sur une <strong>même colonne</strong>.</p>
+<img width="350" src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Sarah-Sebastien/pok/temps-3/extraction_donnees.png">
+<p><strong>Petit problème :</strong> vu comment s'était déroulé la première partie de ce POK sur le traitement de données avec Sheet, réaliser toutes ces actions sur ce logiciel allait être compliqué.
+Je me suis alors tournée vers mon ancien ami Excel, et plus particulièrement <strong>Power Query</strong>.</p>
+<p>J'ai alors réalisé les actions suivantes pour parvenir au résultat :</p>
+<ul>
+<li><strong>Split column</strong> by <strong>Delimiters</strong> : qui permet de séparer le contenu des cellules de la colonne en fonction des <em>virgules</em></li>
+</ul>
+<img width="450" src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Sarah-Sebastien/pok/temps-3/extraction_donnees_2.png">
+<ul>
+<li><strong>Unpivot columns</strong>: qui permet de transformer des colonnes de valeurs en lignes</li>
+</ul>
+<img width="250" src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Sarah-Sebastien/pok/temps-3/extraction_donnees_3.png">
+<p>Ensuite, il suffit de <strong>Supprimer les doublons</strong> sur Excel, et puis le tour est joué.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100 dark:border-yellow-800 dark:bg-yellow-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-yellow-500 dark:stroke-yellow-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Faire</b></p>
+</div><div class="pl-8 mr-8">
+<p>Pour les données concernant la composition totale des médicaments, l'opération ne s'est pas terminé là. Il était un peu compliqué d'obtenir une liste exhaustive des aliments allergènes que pouvait contenir un médicament, alors je me suis juste aidée de ces données traitées pour établir certaines règles dont je parlerai plus tard.</p>
+</div>
+</div>
+<h2 id="Form"> Création du Google Form </h2>
+<p>Je pensais au début, créer une question dans laquelle l'utilisateur viendrait rentrer son/ses allergies. Mais lors de mon analyse des ingrédients des compléments alimentaires, j'ai découvert que la liste des exceptions à prendre en compte était <strong>beaucoup plus massive</strong> que je ne l'avais imaginé.</p>
+<h3 id="probl%C3%A8me-d'allergies%2Fr%C3%A9gimes-alimentaires-non-trait%C3%A9s" tabindex="-1"><a class="header-anchor" href="#probl%C3%A8me-d'allergies%2Fr%C3%A9gimes-alimentaires-non-trait%C3%A9s"></a> Problème d'allergies/régimes alimentaires non traités</h3>
+<p>Il fallait d'abord se renseigner sur <strong>son régime alimentaire</strong>.</p>
+<ul>
+<li>certains ingrédients possédaient de <em>&quot;la gélatine de porc&quot;</em>, <em>&quot;des protéines ou des cartilages de poulet&quot;</em>, <em>&quot;des membranes ou des jaunes d'oeufs&quot;</em>, &quot;<em>des extraits de poissons ou de crustacés</em> : <strong>ne convenaient pas aux végétariens</strong></li>
+<li>en plus de ces ingrédients, on retrouvait parfois <em>&quot;du lactose&quot;</em>, <em>&quot;du miel&quot;</em>, ou de la <em>&quot;cire d'abeille&quot;</em> : <strong>ne convenaient pas aux végétaliens</strong></li>
+<li>apparaissaient également dans certains compléments : de l'&quot;<em>avoine&quot;</em>, <em>&quot;amidon&quot;</em>, <em>&quot;blé&quot;</em>, <em>&quot;lin&quot;</em>, <em>&quot;gluten&quot;</em>, <em>&quot;malt&quot;</em> : <strong>ne convenaient pas aux régimes sans gluten</strong></li>
+</ul>
+<p>Par ailleurs certaines allergies étaient <strong>plus délicates à traiter</strong>:</p>
+<ul>
+<li>si la personne cochait <strong>allergique aux poissons</strong> : il fallait rajouter <em>&quot;raie&quot;</em>,<em>&quot;marin&quot;</em>,<em>&quot;requin&quot;</em>, <em>&quot;anchois&quot;</em>, <em>&quot;sardine&quot;</em>, <em>&quot;morue&quot;</em>, <em>&quot;saumon&quot;</em>, aux ingrédients interdits</li>
+<li>si la personne cochait <strong>allergique aux crustacés</strong> : il fallait rajouter <em>&quot;marin&quot;</em>,<em>&quot;huître&quot;</em>,<em>&quot;corail&quot;</em>, aux ingrédients interdits</li>
+<li>si la personne cochait <strong>allergique/intolérante au lactose</strong>: il fallait rajouter <em>&quot;lact&quot;</em>,<em>&quot;yaourt&quot;</em>, aux ingrédients interdits</li>
+</ul>
+<h3 id="probl%C3%A8me-de-formatage-des-choix-de-r%C3%A9ponses" tabindex="-1"><a class="header-anchor" href="#probl%C3%A8me-de-formatage-des-choix-de-r%C3%A9ponses"></a> Problème de formatage des choix de réponses</h3>
+<img align="right" width="138" src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Sarah-Sebastien/pok/temps-3/pop_a_risques_ex.png">
+<p>Si on reprend les données bruts de <strong>toutes les populations à risques</strong>, on distingue 2 catégories:</p>
+<ul>
+<li>les <strong>catégories de population</strong></li>
+<li>les <strong>antécédents</strong></li>
+</ul>
+<p>Par ailleurs, pour les catégories de populations, il fallait rajouter les catégories qui avaient été exclues. Et je me suis permise de renommer :</p>
+<ul>
+<li><strong>allaitement</strong> par <strong>femme allaitante</strong></li>
+<li><strong>grossesse</strong> par <strong>femme enceinte</strong>
+Ca faisait  un peu moins sauvage je trouvais..</li>
+</ul>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100 dark:border-yellow-800 dark:bg-yellow-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-yellow-500 dark:stroke-yellow-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Faire</b></p>
+</div><div class="pl-8 mr-8">
+<p>Important de noter aussi que les catégories n'étaient pas <strong>exclusives</strong>.
+Ex : un <strong>enfant (de moins de 6 ans)</strong> c'est aussi un <strong>enfant (de moins de 10 ans)</strong>, mais aussi un <strong>enfant (de moins de 12 ans)</strong>. Il fallait donc faire attention à prendre en compte dans le code, ces possibilités.</p>
+</div>
+</div>
+<hr>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100 dark:border-cyan-800 dark:bg-cyan-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-cyan-500 dark:stroke-cyan-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Information</b></p>
+</div><div class="pl-8 mr-8">
+<p><strong><a href="https://docs.google.com/forms/d/e/1FAIpQLSfFLYaqlpzypnKtLbPI_m1djJuIJRUskninneo5w1JXc8h36g/viewform?usp=sf_link">Lien vers le formulaire</a></strong></p>
+</div>
+</div>
+<h2 id="script"> Rédaction du script avec Google Apps Script </h2>
+<p>Au final, la connexion entre les <strong>réponses du Form</strong> et ma feuille <strong>de calculs Sheet</strong>, était beaucoup plus facile que je ne le pensais. Là où on a besoin d'un <strong>Power Automate</strong> pour réaliser cette action avec la suite Microsoft, pour la suite Google, il suffit de créer un lien entre le formulaire et la feuille de calcul directement avec Form. La feuille dans laquelle se trouvent les réponses se met à jour automatiquement lors de chaque réponse envoyée.</p>
+<h3 id="construction-du-code" tabindex="-1"><a class="header-anchor" href="#construction-du-code"></a> Construction du code</h3>
+<p>On pourrait découper mon code Apps Script en <strong>3 parties</strong> :</p>
+<ul>
+<li><a href="#main">fonction principale</a></li>
+<li><a href="#sendEmail">fonction d'envoi de mail</a></li>
+<li><a href="#tests">fonction annexes test</a></li>
+</ul>
+<h4 id="main"> Fonction principale </h4>
+<p>Le plan du code de ma fonction <strong>main</strong> est le suivant :</p>
+<ul>
+<li>on collecte les <strong>données de réponse</strong> de l'utilisateur</li>
+<li>on <strong>adapte les données</strong> en fonction des critères que j'ai énoncés plus haut</li>
+<li>on définit des <strong>paramètres de la page de BDD</strong></li>
+<li>on boucle sur <strong>toutes les lignes de la BDD</strong> en ajoutant dans un array toutes les lignes qui remplissent l'objectif recherché par l'utilisateur</li>
+<li>on regarde pour chaque ligne trouvée si elle <strong>correspond bien</strong> avec la <em>catégorie de population</em> de l'utilisateur, ses <em>allergies</em> et ses <em>antécédents</em>, sinon, on les enlève.</li>
+<li>on <strong>trie</strong> ensuite tous les médicaments en fonction du <strong>nombre d'objectifs qu'ils remplissent</strong> et on ne garde que celui qui ne remplit qu'un objectif</li>
+</ul>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100 dark:border-yellow-800 dark:bg-yellow-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-yellow-500 dark:stroke-yellow-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Faire</b></p>
+</div><div class="pl-8 mr-8">
+<p>Si un complément remplit beaucoup d'objectifs, ça signifie que son effet est moins ciblé. On recherche donc le complément avec <strong>l'effet le plus ciblé</strong>, et donc celui qui a le moins d'objectifs.</p>
+</div>
+</div>
+<ul>
+<li>on appelle la fonction <strong>d'envoi de mail</strong></li>
+</ul>
+<h4 id="sendEmail"> Fonction d'envoi de mail </h4>
+<p>Après avoir lu plusieurs articles sur les triggers dans Apps Script et notamment <a href="https://spreadsheet.dev/triggers-in-google-sheets">celui là</a> conseillé par Ossama, j'ai découvert que ce dont j'avais besoin, c'était d'utiliser un <strong>Spreadsheet trigger</strong> qui permettait de <em>lancer une fonction à chaque fois qu'une feuille était modifiée</em>.</p>
+<p>Pour ce qui est ensuite d'écrire le code qui permettait d'envoyer le mail avec les données adaptées, je me suis d'abord penchée sur les MON que j'avais vus qui traitaient de ce sujet. Dont notamment celui de Thomas Pont, qui correspondant le plus à ce que je voulais faire. En parallèle, je suis tombée sur cette vidéo <a href="https://www.youtube.com/watch?v=8VXSXQ-RMI0">Automate emails with Google Forms and Google Apps Script</a>. Une vidéo incroyable, qui correspondait parfaitement à mon besoin. J'ai donc basé ma méthode sur la démarche que suivait cette vidéo, pour des questions de simplicité:</p>
+<ul>
+<li>on définit d'abord les variables qui vont contenir les données de l'utilisateur récupérées : <strong>prénom</strong> (pour personnaliser le mail) et <strong>e-mail</strong> (pour envoyer le message).</li>
+<li>on vient créer un template pour construire le code <strong>html</strong></li>
+</ul>
+<pre class="language-javascript line-numbers"><code>
+
+var htmlTemplate = HtmlService.createTemplateFromFile('email');
+
+
+</code></pre><p>A partir de cette ligne, on appelle le fichier <strong>email.html</strong> créé qui contient le corps du message</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>email.html</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-html line-numbers"><code>
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <base target="_top">
+  </head>
+  <body>
+    <p>Bonjour &agrave; toi , </p>
+    <p>Apparement, tu aurais besoin d&apos;un compl&eacute;ment alimentaire pour le/la <strong></strong>. </p>
+    <p>Ne t&apos;inqui&egrave;tes pas, j&apos;ai ce qu&apos;il te faut !&nbsp;</p>
+    <p>D&apos;apr&egrave;s tout ce que tu m&apos;as renseign&eacute;, je pense que ce qui te convient le mieux c&apos;est ce compl&eacute;ment alimentaire r&eacute;pertori&eacute; et v&eacute;rifi&eacute; :</p>
+    <ol>
+      <li><strong>Nom</strong> :  </li>
+      <li><strong>Marque</strong> :  </li>
+      <li><strong>forme pharmaceutique</strong>:  </li>
+      <li><strong>Dose journali&egrave;re</strong> :  </li>
+      <li><strong>Mode d&apos;emploi </strong>:  </li>
+      <li><strong>Composition du compl&eacute;ment</strong> :  </li>
+      <li><strong>Objectif(s) du m&eacute;dicament&nbsp;</strong>:  </li>
+    </ol>
+    <p><span style="font-size:15px;font-family:&quot;Segoe UI Emoji&quot;,sans-serif;">⚠️&nbsp;</span><span style="color: rgb(226, 80, 65);"><strong>ATTENTION</strong></span> <span style="font-size:15px;font-family:&quot;Segoe UI Emoji&quot;,sans-serif;">⚠️</span></p>
+    <p><span style="color: rgb(226, 80, 65);">D&apos;apr&egrave;s les recommandations du m&eacute;dicament : <strong>  </strong> </span></p>
+  </body>
+</html>
+
+
+</code></pre></div>
+</details>
+</div>
+<ul>
+<li>on définit toutes les <strong>variables</strong> qui sont appelées dans le code html</li>
+<li>on <strong>évalue</strong> le modèle HTML <em>(ie on remplace les variables et expressions dans le modèle par leurs valeurs correspondantes)</em> et on renvoie le résultat</li>
+</ul>
+<pre class="language-javascript line-numbers"><code>
+
+var htmlForEmail = htmlTemplate.evaluate().getContent();
+
+
+</code></pre><ul>
+<li>on envoie le mail au <strong>destinataire</strong>, en renseignant <strong>l'objet du mail</strong></li>
+</ul>
+<pre class="language-javascript line-numbers"><code>
+
+GmailApp.sendEmail(
+    emailRecipient,
+    'My Google Health Assistant: Ton résultat de sélection de complément alimentaire personnalisé',
+    "This email contains html",
+    {htmlBody: htmlForEmail}
+  );
+
+
+</code></pre><h4 id="tests"> Fonctions annexes tests </h4>
+<p>Ces fonctions regroupent des tests qui devaient être réalisés à plusieurs reprises. On y retrouve notamment :</p>
+<ul>
+<li>une fonction permettant de vérifier si un un array <strong>contient un élément</strong>. <em>Fonction déjà utilisée au cours du sprint 1</em>.</li>
+<li>une fonction qui <strong>teste si une chaine de caractère est présente dans une cellule</strong></li>
+<li></li>
+</ul>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>fonction testPresence</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-javascript line-numbers"><code>
+
+function testPresence(valeurCellule, chaineRecherche) {
+  // Vérifie si la chaîne de caractères est présente dans la valeur de la cellule
+  if (valeurCellule.indexOf(chaineRecherche) !== -1) {
+    return true; // La cellule contient la chaîne de caractères
+  } else {
+    return false; // La cellule ne contient pas la chaîne de caractères
+  }
+}
+
+
+</code></pre></div>
+</details>
+</div>
+<ul>
+<li>une fonction qui permet de <strong>transformer les valeurs d'une cellule, séparées par une virgule, en éléments d'un array</strong></li>
+</ul>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>getArray</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-javascript line-numbers"><code>
+
+function getArray(array, cell) {
+  //on regarde s'il y a plusieurs items sélectionnés, en comptant le nombre virgules
+  //(recherche toutes les apparitions du motif /,/ (ie virgules) de manière "globale" et les ajoute dans un array )
+  // par défaut, si ne trouve rien, renvoie un tableau vide
+  var nbVirgules = (cell.getValue().match(/,/g) || []).length;
+  if (nbVirgules > 0) {
+    // Séparer les valeurs en utilisant la virgule comme délimiteur
+    array = cell.getValue().split(',');
+  } else {
+    // pas de virgules, on ajoute la valeur au tableau
+    array.push(cell.getValue());
+  }
+  var arraySansEspace = array.map(function(element) {
+  return element.trim(); // utilisation de trim() pour enlever les espaces avant et après la chaîne
+  });
+  return arraySansEspace;
+}
+
+
+</code></pre></div>
+</details>
+</div>
+<ul>
+<li>une fonction qui permet de <strong>comparer toutes les valeurs d'un tableau avec une valeur</strong>. Si la valeur se trouve dans ce tableau, elle est retirée, avec la méthode <strong>splice</strong>.</li>
+</ul>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>removeNonValid</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-javascript line-numbers"><code>
+
+function removeNonValid (value,array,item){
+  for (let i=0; i<array.length; i++="" ){="" if(testPresence(value.toLowerCase(),array[i].toLowerCase())){="" array.splice(item,1);="" }="" <="" code=""></array.length;></code></pre></div>
+</details>
+</div>
+<hr>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100 dark:border-cyan-800 dark:bg-cyan-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-cyan-500 dark:stroke-cyan-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Information</b></p>
+</div><div class="pl-8 mr-8">
+<p>Vous pourrez trouver le code complet de mon projet en accédant à l'Apps Script de ce <a href="https://docs.google.com/spreadsheets/d/1gZ_XYiGxzoCT6srdWcrt3L770RTBbOQ9KWiwqvOf6Cw/edit?usp=sharing">document sheet</a>.</p>
+</div>
+</div>
+<h2 id="final"> Résultat final</h2>
+<p>Je m'appelle Raphaël. Je suis en 3/2 et je passe mes concours le mois prochain. Alors je me dit qu'un petit complément alimentaire pour booster ma <strong>mémoire</strong> ne serait pas de refus.
+Il faut faire attention parce que je suis <strong>végétarien</strong>, et allergique à <strong>l'arachide</strong> et aux <strong>crustacés</strong>. Et également, sinon c'est pas drôle, j'ai quelques <strong>problèmes de foie</strong> et <strong>problèmes cardiaques</strong>...
+Je fais le test pour savoir quel complément alimentaire je peux prendre :</p>
+<img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Sarah-Sebastien/pok/temps-3/mail1.png">
+<p>Ah zut, c'est vrai que j'oubliais que je suis sous anti-coagulants. Je refais le test :</p>
+<img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Sarah-Sebastien/pok/temps-3/mail2.png">
+<p><em>En espérant que Raphaël puisse réussir ses concours avec ça !</em></p>
+<h2 id="retex"> Retour sur le sprint 2 et retour d'expérience</h2>
+<p>Si on reprend le backlog du sprint 2 que je m'étais fixé :</p>
+<table>
+<thead>
+<tr>
+<th>Intitulé</th>
+<th>Temps estimé</th>
+<th>Temps réalisé</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>- Définition du backlog pour le mini projet imaginé</td>
+<td>15 mins</td>
+<td><strong>10 mins</strong></td>
+</tr>
+<tr>
+<td>- Recherches sur les connexions Apps Script avec les autres applications Google <em>(Form,Gmail)</em></td>
+<td>30 mins</td>
+<td><strong>15 mins</strong></td>
+</tr>
+<tr>
+<td>- Recherche et récupération des ressources utiles sur les déclencheurs</td>
+<td>30 mins</td>
+<td><strong>15 mins</strong></td>
+</tr>
+<tr>
+<td>- Mise en forme des données récupérées</td>
+<td>2h</td>
+<td><strong>2h</strong></td>
+</tr>
+<tr>
+<td>- Mise au point du contenu du questionnaire et création du Form</td>
+<td>45 mins</td>
+<td><strong>1h30</strong></td>
+</tr>
+<tr>
+<td>- Codage du script de récupération des données du Form</td>
+<td>45 mins</td>
+<td><strong>5 mins</strong></td>
+</tr>
+<tr>
+<td>- Codage du script de gestion de données du Sheet</td>
+<td>3h</td>
+<td><strong>3h</strong></td>
+</tr>
+<tr>
+<td>- Codage du script de gestion de l'envoi des mail</td>
+<td>45 mins</td>
+<td><strong>30 mins</strong></td>
+</tr>
+<tr>
+<td>- Réalisations de divers tests et correction du code</td>
+<td>1h30</td>
+<td><strong>2h</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Au final, on remarque que les recherches de ressources ont été beaucoup plus rapides que ce que j'avais prévu. Egalement, comme expliqué plus tôt, le lien <strong>Sheet-Form</strong> s'est fait vraiment simplement. C'est au niveau de la rédaction du formulaire, et des tests à faire à chaque fois, que j'ai passé plus de temps que ce que j'avais planifié.</p>
+<p>AU niveau du backlog produit :</p>
+<table>
+<thead>
+<tr>
+<th>Intitulé</th>
+<th>Complexité</th>
+<th>Valeur métier(MoSCoW)</th>
+<th>Réalisé</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Permettre aux utilisateurs de remplir un formulaire en spécifiant leur prénom, adresse mail, type de population, l'objectif de santé, les allergies/intolérances alimentaires éventuelles, les antécédents</td>
+<td>3</td>
+<td>Must</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Pouvoir choisir plusieurs allergies</td>
+<td>1</td>
+<td>Must</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Pouvoir rentrer à la main ses allergies</td>
+<td>1</td>
+<td>Must</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Pouvoir choisir plusieurs régimes</td>
+<td>3</td>
+<td>Won't</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>Pouvoir choisir plusieurs objectifs dans une demande</td>
+<td>5</td>
+<td>Won't</td>
+<td>❌</td>
+</tr>
+<tr>
+<td>Configurer l'application pour enregistrer les réponses du formulaire dans une feuille de calcul Google Sheets</td>
+<td>1</td>
+<td>Must</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Développer un algorithme pour recommander des compléments alimentaires personnalisés en fonction des réponses du formulaire et des données sur les compléments alimentaires disponibles</td>
+<td>5</td>
+<td>Must</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Intégrer une base de données de compléments alimentaires contenant des informations sur les ingrédients, les avantages pour la santé, les posologies recommandées, et les mises en garde</td>
+<td>1</td>
+<td>Must</td>
+<td>✅</td>
+</tr>
+<tr>
+<td>Envoyer un e-mail personnalisé à l'utilisateur avec une proposition de complément alimentaire adapté à son besoin contenant le nom du complément, sa marque, sa posologie, ses ingrédients, ses mises en gardes</td>
+<td>3</td>
+<td>Must</td>
+<td>✅</td>
+</tr>
+</tbody>
+</table>
+<p>Seules 2 fonctionnalités n'ont pas pû être implémentées. Mais elles ne sont pas primordiales :</p>
+<ul>
+<li>Si l'utilisateur veut un complément alimentaire qui remplisse un autre objectif, il lui suffit de remplir le formulaire à nouveau</li>
+<li>Si l'utilisateur est <em>végétarien</em> et <em>sans gluten</em>, il lui suffit sélectionner <em>végétarien</em> en régime et de cocher <em>gluten</em> dans les intolérances</li>
+</ul>
+<p>Et pour finir, un petit comparatif des avantages que j'ai notés pour <strong>Google</strong> (Sheet et Apps Script) et <strong>Microsoft</strong> (Excel et VBA):</p>
+<table>
+<thead>
+<tr>
+<th>Avantages <strong>Google</strong></th>
+<th>Avantages <strong>Microsoft</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>- Gratuit <br> - Sheet : Certaines fonctionnalités simplifiées et plus facile à utiliser <br> - Apps Script : utilisation plus intuitive et simplifiée <br> - Apps Script : tests de code plus faciles à réaliser (avec l'utilisation du Logger.log(), notamment) <br> - Apps Script : mise en couleur du code qui permet visualisation plus rapide <br> - Pas besoin d'installation locale + Apps Script exécute les codes même dans le cloud</td>
+<td>- Excel : permet de traiter beaucoup plus de quantités de données et de manière plus poussé <br> - VBA : plus grande quantités de fonctionnalités disponibles + plus de capacités de programmation <br> - large base d'utilisateurs et de ressources <br> - exécution des macros en local permet le respect de certaines contraintes de sécurité au sein des entreprises</td>
+</tr>
+</tbody>
+</table>
+
+
+
+</article>
+
+        </main>
+
+        <footer class="min-h-[50px] border-t-2 mt-4 border-gray-200 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-center items-center">
+                    <p class="text-center">
+                        ©2025 <b><span style="font-family: Consolas, sans-serif;">Do-<span style="color: #4a86e8">It</span></span></b> - Développement, Management et Gestion de projets en IT
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- MathJax import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">
+            window.MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']], // Delimiters for inline math
+                    displayMath: [['$$', '$$'], ['\\[', '\\]']] // Delimiters for block math
+                },
+                svg: {
+                    fontCache: 'global' // Use global font cache for SVG output
+                }
+            };
+            document.addEventListener('DOMContentLoaded', () => {
+                MathJax.typeset(); // Ensures MathJax processes the content after the page loads
+            });
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">
+            Prism.plugins.NormalizeWhitespace.setDefaults({
+                'remove-trailing': true,
+                'remove-indent': true,
+                'left-trim': true,
+                'right-trim': true,
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script>
+    </body>
+</html>

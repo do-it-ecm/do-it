@@ -1,0 +1,198 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="index, follow"><link rel="canonical" href="https://do-it.aioli.ec-m.fr/promos/2023-2024/Rioual-Lucas/pok/temps-2/"><meta name="description" content="Création du backend et déploiement de mon site web."><meta property="og:description" content="Création du backend et déploiement de mon site web."><meta name="twitter:description" content="Création du backend et déploiement de mon site web."><meta name="author" content="Lucas Rioual"><meta name="keywords" content="do-it, centrale, centrale méditerranée, ecm, POK, backend"><link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon"><link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png"><link rel="apple-touch-icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png"><link href="/assets/stylesheets/main.css" rel="stylesheet"><meta property="og:title" content="Site web : backend"><meta property="og:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png"><meta property="og:url" content="https://do-it.aioli.ec-m.fr/promos/2023-2024/Rioual-Lucas/pok/temps-2/"><meta property="og:type" content="website"><meta name="twitter:card" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png"><meta name="twitter:title" content="Site web : backend"><meta name="twitter:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png"><meta name="twitter:url" content="https://do-it.aioli.ec-m.fr/promos/2023-2024/Rioual-Lucas/pok/temps-2/"><title>Site web : backend</title><link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet"><link id="prism-theme" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet"><link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet"><script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script><script defer="">const storedTheme=localStorage.getItem("theme");function loadPrismTheme(e){const t=e?"prism-okaidia.min.css":"prism-solarizedlight.min.css",s=document.createElement("link");s.rel="stylesheet",s.id="prism-theme",s.href=`https://cdn.jsdelivr.net/npm/prismjs/themes/${t}`,s.onload=()=>{Prism.highlightAll()};const m=document.getElementById("prism-theme");m?document.head.replaceChild(s,m):document.head.appendChild(s)}function setMermaidTheme(e){const t=e?"dark":"forest";mermaid.initialize({securityLevel:"loose",theme:t,startOnLoad:!0})}function toggleDarkMode(){const e=document.documentElement.classList.contains("dark"),t=e?"light":"dark";localStorage.setItem("theme",t),document.documentElement.classList.toggle("dark",!e),loadPrismTheme(!e),setMermaidTheme(!e)}storedTheme?document.documentElement.classList.toggle("dark","dark"===storedTheme):document.documentElement.classList.toggle("dark",window.matchMedia("(prefers-color-scheme: dark)").matches);const isDark=document.documentElement.classList.contains("dark");loadPrismTheme(isDark),setMermaidTheme(isDark)</script></head><body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000" class="bg-neutral-50 text-neutral-950 dark:bg-neutral-900 dark:text-neutral-50"><header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white dark:bg-neutral-900 dark:border-neutral-700"><div class="max-w-[1000px] mx-auto px-4"><div class="min-h-[50px] flex justify-between items-center"><a class="mx-2" href="/">Home</a> <button class="hidden sm:block text-neutral-950 dark:text-neutral-50 hover:bg-neutral-700 hover:text-neutral-50 hover:dark:bg-neutral-300 hover:dark:text-neutral-950 transition-colors p-2 rounded-full duration-800 ease-in-out" onclick="toggleDarkMode()"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 dark:hidden stroke-current"><circle cx="12" cy="12" r="5"></circle><path d="M12 2V4" stroke-linecap="round"></path><path d="M12 20V22" stroke-linecap="round"></path><path d="M4 12L2 12" stroke-linecap="round"></path><path d="M22 12L20 12" stroke-linecap="round"></path><path d="M19.7778 4.22266L17.5558 6.25424" stroke-linecap="round"></path><path d="M4.22217 4.22266L6.44418 6.25424" stroke-linecap="round"></path><path d="M6.44434 17.5557L4.22211 19.7779" stroke-linecap="round"></path><path d="M19.7778 19.7773L17.5558 17.5551" stroke-linecap="round"></path></svg> <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 stroke-current hidden dark:block"><path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke-linecap="round" stroke-linejoin="round"></path></svg></button><div class="flex items-center gap-4 sm:gap-6"><a class="" href="/cs">CS</a> <a class="" href="/pok">POK</a> <a class="" href="/mon">MON</a> <a class="" href="/projets">Projets</a> <a class="hidden sm:block" href="/promos">Promos</a> <a href="/search"><svg class="h-5 aspect-square stroke-neutral-950 dark:stroke-neutral-300 fill-none stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path></svg> </a><a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank"><svg class="h-5 aspect-square dark:stroke-neutral-300 dark:fill-neutral-300" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg></a></div></div></div></header><main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body=""><article class="relative"><h1 class="mb-1">Site web : backend</h1><div class="mb-4"><div class="px-4 flex flex-wrap items-center"><div class="font-bold">Tags :</div><ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags"><li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">POK</li><li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">backend</li></ul><div class="hidden" data-pagefind-meta="Type" aria-hidden="true"><span data-pagefind-filter="Type">POK</span></div></div><div class="px-4 flex flex-wrap items-center"><div class="font-bold">Auteur :</div><ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs"><li class="bg-blue-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Auteurs">Lucas Rioual</li></ul></div><div class="absolute top-0 right-0"><span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2 text-neutral-950" data-pagefind-filter="Année">2023-2024</span></div></div><p class="mb-4 text-lg">Création du backend et déploiement de mon site web.</p><div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100 dark:border-purple-800 dark:bg-purple-950"><svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-purple-500 dark:stroke-purple-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path></svg><div class="pl-8 mr-8"><a href="/promos/2023-2024/Rioual-Lucas/">Lucas RIOUAL</a><span class="px-1">/</span><a href="/promos/2023-2024/Rioual-Lucas/pok/">POK de Lucas Rioual</a><span class="px-1">/</span><a href="/promos/2023-2024/Rioual-Lucas/pok/temps-2/">Site web : backend</a></div></div><div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100 dark:border-pink-800 dark:bg-pink-950"><svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-pink-500 dark:stroke-pink-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg><div class="pl-8 mb-2 mr-8"><p><b>Prérequis</b></p></div><div class="pl-8 mr-8"><p>Lien de mon repo Github : <a href="https://github.com/LucasRioual/Curiolab/tree/main">https://github.com/LucasRioual/Curiolab/tree/main</a></p></div></div><h2 id="sommaire" tabindex="-1"><a class="header-anchor" href="#sommaire"></a> <strong>Sommaire</strong></h2><ol><li>Présentation</li><li>Objectif du sprint 1</li><li>Sprint 1</li><li>Bilan du sprint 1 et objectif pour le sprint 2</li><li>Sprint 2</li><li>Bilan du POK</li></ol><h2 id="objectif-du-sprint-1" tabindex="-1"><a class="header-anchor" href="#objectif-du-sprint-1"></a> <strong>Objectif du sprint 1</strong></h2><p>L’objectif du sprint 1 est d’appliquer mes connaissances en backend que j’ai acquises grâce au précèdent MON à mon site web Curiolab. Je souhaite donc créer une page admin qui permet d’ajouter, modifier ou retirer des produits de mon site internet. Je vais utiliser Node.js avec Express pour le backend et MongoDB pour la base de donnée :</p><table><thead><tr><th>Objectif</th><th>Complexité</th><th>Temps estimé</th></tr></thead><tbody><tr><td><strong>Développer la page admin</strong></td><td>4</td><td>4h</td></tr><tr><td>Section pour ajouter ou modifier un produit</td><td></td><td></td></tr><tr><td>Section pour visualiser les produits</td><td></td><td></td></tr><tr><td>Possibilité de supprimer des produits</td><td></td><td></td></tr><tr><td><strong>Développer le backend</strong></td><td>3</td><td>4h</td></tr><tr><td>Connexion avec MongoDB</td><td></td><td></td></tr><tr><td>Route pour créer un produit</td><td></td><td></td></tr><tr><td>Route pour récupérer tous les produits</td><td></td><td></td></tr><tr><td>Route pour récupérer un seul produit</td><td></td><td></td></tr><tr><td>Route pour modifier un produit</td><td></td><td></td></tr><tr><td>Route pour supprimer un produit</td><td></td><td></td></tr><tr><td><strong>Modifier le front pour accéder à cette API</strong></td><td>1</td><td>1h</td></tr><tr><td><strong>Déployer le projet sur le serveur distant OVH</strong></td><td>2</td><td>2h</td></tr></tbody></table><h2 id="sprint-1" tabindex="-1"><a class="header-anchor" href="#sprint-1"></a> Sprint 1</h2><h3 id="page-administrateur" tabindex="-1"><a class="header-anchor" href="#page-administrateur"></a> Page Administrateur</h3><p>L’objectif de cette page est de pouvoir ajouter/modifier ou supprimer des produits de la base de données.</p><p>Pour développer cette page Administrateur, j’ai choisi d’utiliser <strong>React</strong> et <strong>Tailwindcss</strong>. Ce sont des outils que j’ai appris à utiliser lors du <a href="../../mon/temps-2.1">MON 2.1</a>.</p><p>Je me suis pas du tout concentré sur le design de la page, car le coeur de POK est le développement du backend.</p><p>J’ai donc fait un formulaire sur la gauche de l’écran qui permet d’ajouter ou modifier un produit. Sur la droite, il y a une section pour visualiser les différents produits existants.</p><p>Pour chaque produit, nous pouvons afficher le détail de ses caractéristiques sur la partie gauche de l’écran. Nous pouvons ensuite modifier ses caractéristiques. Un bouton supprimer est également présent sur chaque item.</p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Rioual-Lucas/pok/temps-2/admin.PNG"><p>Vous trouverez le repo Github ici : <a href="https://github.com/LucasRioual/curiolab-admin">https://github.com/LucasRioual/curiolab-admin</a></p><h3 id="backend-avec-node.js%2C-express-et-mongodb" tabindex="-1"><a class="header-anchor" href="#backend-avec-node.js%2C-express-et-mongodb"></a> Backend avec Node.js, Express et MongoDB</h3><p>J'ai décidé de développer le backend avec <strong>Node.js</strong> et <strong>Express</strong> car j'ai fait mon <a href="../../mon/temps-1.2">MON 1.2</a> sur ces technos.</p><p>Voici les différents EndPoints que je dois développer :</p><pre class="language-js line-numbers"><code>
+
+router.post('/', stuffCtrl.createStuff);
+router.get('/', stuffCtrl.getAllStuff);
+router.get('/:id', stuffCtrl.getOneStuff);
+router.put('/:id', stuffCtrl.modifyStuff);
+router.delete('/:id', stuffCtrl.deleteStuff);
+
+
+</code></pre><p>Mon schéma de donnée :</p><pre class="language-js line-numbers"><code>
+
+const stuffSchema = mongoose.Schema({
+  titre: { type: String, required: true },
+  sousTitre: { type: String, required: true },
+  description: { type: String, required: true },
+  prix: { type: Number, required: true },
+  difficulte: { type: Number, required: true },
+});
+
+
+</code></pre><p>Par exemple, voici la fonction qui permet d'ajouter un produit dans la base de donnée :</p><pre class="language-js line-numbers"><code>
+
+exports.createStuff = (req, res, next) => {
+  const stuff = new Stuff({
+    titre : req.body.titre,
+    sousTitre : req.body.sousTitre,
+    description : req.body.description,
+    prix : req.body.prix,
+    difficulte : req.body.difficulte,
+  });
+  stuff.save().then(
+    () => {
+      res.status(201).json({
+        message: 'Post saved successfully!'
+      });
+    }
+  ).catch(
+    (error) => {
+      res.status(400).json({
+        error : error
+      });
+    }
+  );
+}
+
+
+</code></pre><p>Vous trouverez le repo Github ici : <a href="https://github.com/LucasRioual/curiolab-backend">https://github.com/LucasRioual/curiolab-backend</a></p><h3 id="r%C3%A9cup%C3%A9rer-les-donn%C3%A9es-de-l%E2%80%99api-depuis-le-site-curiolab" tabindex="-1"><a class="header-anchor" href="#r%C3%A9cup%C3%A9rer-les-donn%C3%A9es-de-l%E2%80%99api-depuis-le-site-curiolab"></a> Récupérer les données de l’API depuis le site Curiolab</h3><p>Ici, il n’y a pas eu beaucoup de travail à faire, car il fallait simplement modifier la méthode qui récupèrait les données.</p><p>Voici la requête que j’effectue à l’API :</p><pre class="language-js line-numbers"><code>
+
+const getOneStuff = async (id) => {
+  try{
+    const response = await fetch(`http://localhost:10411/api/stuff/${id}`);
+    const piece = await response.json();
+    console.log(piece);
+    document.getElementById("txt-Ring").innerText = piece.titre;
+    document.getElementById("txt-titre").innerText = piece.sousTitre;
+    document.getElementById("txt-description").innerText = piece.description;
+    document.getElementById("txt-prix").innerText = piece.prix + " € TTC";
+    document.getElementById("txt-prix-HT").innerText = piece.prix - (piece.prix * 0.2) + " € HT";
+
+  }
+  catch(error){
+    console.error(error);
+  }
+}
+
+
+</code></pre><p>Vous trouverez le repo Github ici : <a href="https://github.com/LucasRioual/Curiolab">https://github.com/LucasRioual/Curiolab</a></p><h3 id="bilan-par-rapport-aux-objectifs-fix%C3%A9s" tabindex="-1"><a class="header-anchor" href="#bilan-par-rapport-aux-objectifs-fix%C3%A9s"></a> Bilan par rapport aux objectifs fixés</h3><p>J'ai globalement respecté mes objectifs. Pour la page administrateur il y a beaucoup d'améliorations possible. Par exemple, lorsqu'on ajoute un produit, nous sommes obligés d'actualiser la page pour voir le produit. IL y a pleins de détails comme celui ci à améliorer. Ensuite, nous ne pouvons pas envoyer les images du produit au serveur.</p><p>Ensuite, le site qui tourne sur le serveur OVH ne fonctionne pas comme en local. En effet, selon le chemin que nous prenons dans le site, toutes le ressources ne s'affichent pas.</p><h2 id="sprint-2" tabindex="-1"><a class="header-anchor" href="#sprint-2"></a> Sprint 2</h2><h3 id="objectif-pour-le-sprint-2" tabindex="-1"><a class="header-anchor" href="#objectif-pour-le-sprint-2"></a> Objectif pour le sprint 2</h3><p>Je souhaite me concentrer sur une démarche CI/CD pour déployer mon site sur le serveur OVH.</p><p>Comme je ne connais rien, il est difficile d’écrire un backlog. C’est pourquoi, je vais d’abord consulter le travail qui a déjà été fait les années précédentes et me documenter. Suite à cela, je pourrai faire un Backlog.</p><p>Je me suis beaucoup basé sur le POK de Tuncay <a href="../../../../2022-2023/Bilgi-Tuncay/pok/ServeurDistant/">POK de Tuncay</a> pour ce sprint. Après avoir lu de la documentation sur la démarche CI/CD, je vais plutôt me concentrer sur la création un script shell qui permettra de récupérer les derniers changements sur la branch main de mon projet et de lancer le projet en production. Cela me permettra d’éviter de copier mon projet à chaque fois.</p><p>J’ai une partie front et une partie backend et je veux pouvoir déployer l’un sans déployer l’autre</p><table><thead><tr><th>Objectif</th><th>Temps estimé</th></tr></thead><tbody><tr><td><strong>Documentation</strong></td><td>3h</td></tr><tr><td><strong>Faire fonctionner l’application sur le serveur distant</strong></td><td>2h</td></tr><tr><td><strong>Créer une session de terminal persistante</strong></td><td>1h</td></tr><tr><td><strong>Création du premier script qui permet de récupérer la branch main du back et du front</strong></td><td>1h</td></tr><tr><td><strong>Amélioration du script</strong></td><td>3h</td></tr></tbody></table><h3 id="d%C3%A9ploiement-sur-le-serveur-distant-avec-github" tabindex="-1"><a class="header-anchor" href="#d%C3%A9ploiement-sur-le-serveur-distant-avec-github"></a> Déploiement sur le serveur distant avec Github</h3><p>La première étape est de faire fonctionner mon application web sur le serveur distant. Je peux séparer mon projet en 2 parties. Il y a les fichiers statiques (html, css, image …) et mon application Node.js.</p><p>Sur le serveur OVH, le répertoire principal de mon application est <strong><code>/node</code></strong>. À l'intérieur de ce répertoire, il y a un sous-répertoire appelé <strong><code>/static</code></strong> qui contient les fichiers statiques de l'application. Un serveur Nginx est en cours d'exécution sur le serveur OVH et il est configuré pour traiter les requêtes entrantes. Lorsqu'une requête commence par <strong><code>/static/</code></strong>, Nginx sert directement les fichiers correspondants du répertoire <strong><code>/node/static</code></strong>. Autrement, la requête est transmise à mon application Node.js.</p><p>Cependant, la toute première requête envoyée est <strong><code>'/'</code></strong>. Dans ce cas, c'est l'application Node.js qui la reçoit. Pour renvoyer le fichier <strong><code>index.html</code></strong>, Node.js doit rediriger la requête vers le chemin <strong><code>/static</code></strong>. Voici comment j'implémente cela dans le code, en utilisant Express :</p><pre class="language-bash line-numbers"><code>
+
+app.get('/', (req, res) => {
+    res.redirect('/static/');
+  });
+
+
+</code></pre><p>Je m’assure également que le port d’écoute de mon application est le bon.</p><p>Je me rends donc dans le dossier <strong><code>/node/static</code></strong> pour cloner la branche main de mon repo git qui représente le front de mon application. J’exécute ces commandes :</p><pre class="language-bash line-numbers"><code>
+
+git init
+git remote add origin https://github.com/LucasRioual/Curiolab.git
+git pull origin main
+
+
+</code></pre><p>Je fais la même chose pour le backend dans le dossier <strong><code>/node</code></strong> et je lance le serveur</p><pre class="language-bash line-numbers"><code>
+
+git init
+git remote add origin https://github.com/LucasRioual/curiolab-backend.git
+git pull origin master
+npm install
+node server
+
+
+</code></pre><p>Je sais pas pourquoi ma branche s’appelle master et pas main</p><p>Mon site est maintenant accessible à <a href="http://node.persil.ovh1.ec-m.fr/static/">http://node.persil.ovh1.ec-m.fr/</a></p><h3 id="cr%C3%A9er-une-session-de-terminal-persistante" tabindex="-1"><a class="header-anchor" href="#cr%C3%A9er-une-session-de-terminal-persistante"></a> Créer une session de terminal persistante</h3><p>Le problème est que lorsque je ferme le terminal, mon application ne fonctionne plus. Il faut maintenant que je créer une session de terminal persistante. Pour cela j’utilise Screen. Screen permet de démarrer des processus dans une session et de les laisser s'exécuter même après la déconnexion du terminal.</p><p>Voici la commande que j’ai exécuté :</p><pre class="language-bash line-numbers"><code>
+
+screen -d -m -S Curiolab node server.js
+
+
+</code></pre><p>On peut voir la liste des process :</p><pre class="language-bash line-numbers"><code>
+
+persil@ovh1 ~/node (git)-[master] % screen -ls
+There is a screen on:
+        806506.Curiolab (16/01/2024 19:14:47)   (Detached)
+1 Socket in /run/screen/S-persil.
+
+
+</code></pre><p>Je peux maintenant fermer le terminal sans tuer mon application.</p><h3 id="premier-script-pour-automatiser-ces-taches" tabindex="-1"><a class="header-anchor" href="#premier-script-pour-automatiser-ces-taches"></a> Premier script pour automatiser ces taches</h3><p>Maintenant, je veux pouvoir actualiser mon application à l’aide d’un script lorsqu’un changement est fait sur la branch main de mon repo.</p><p>La première étape est de créer un script qui récupère simplement les fichier statiques pour les mettre dans <strong><code>/node/static</code></strong></p><pre class="language-bash line-numbers"><code>
+
+#!/bin/sh
+
+cd /home/persil/node/static
+
+git pull origin main
+echo "Fichier static mis à jour"
+
+
+</code></pre><p>Je veux rajouter des paramètres pour choisir de modifier le front ou le backend.</p><pre class="language-bash line-numbers"><code>
+
+#!/bin/sh
+
+while getopts ":hfb" opt; do
+	case $opt in
+		h)
+			echo "-f : déployer le frontend dans static"
+			echo "-b : déployer le backend dans node"
+			echo "-h : afficher l'aide"
+			exit 0
+			;;
+		f)
+			cd /home/persil/node/static
+			git pull origin main
+			echo "Fichier static mis à jour"
+			exit 0
+			;;
+		b)
+			cd /home/persil/node
+			git pull origin master
+			npm install
+			echo "Backend déployer"
+			exit 0
+			;;
+		\?)
+			echo "Option invalid: $OPTARG" >&2
+			exit 1
+			;;
+		esac
+	done
+
+
+</code></pre><h3 id="am%C3%A9lioration-du-script" tabindex="-1"><a class="header-anchor" href="#am%C3%A9lioration-du-script"></a> Amélioration du script</h3><p>Le problème pour le backend, c’est que l’instance screen ne prend pas en compte les changement, il faut donc kill l’ancien process et recréer un autre process. Merci Tuncay qui explique comment kill un process dans son <a href="../../../../2022-2023/Bilgi-Tuncay/pok/ServeurDistant/">POK</a> :</p><pre class="language-bash line-numbers"><code>
+
+ ps -ef | grep Curiolab |head -n -1 | awk '{print $2}' | xargs kill -15
+
+
+</code></pre><p>J’avoue que je ne comprends pas cette ligne mais ça marche.</p><pre class="language-bash line-numbers"><code>
+
+persil@ovh1 ~/node (git)-[master] % screen -ls
+No Sockets found in /run/screen/S-persil.
+
+
+</code></pre><p>Le problème c’est que si il n’y a pas de process en cours, cela fait planter le script. J’ai donc demandé à chat GPT de me créer une condition pour vérifier si un process est en cours</p><p>Voici donc mon script final</p><pre class="language-bash line-numbers"><code>
+
+#!/bin/sh
+
+while getopts ":hfb" opt; do
+        case $opt in
+                h)
+                        echo "-f : déployer le frontend dans static"
+                        echo "-b : déployer le backend dans node"
+                        echo "-h : afficher l'aide"
+                        exit 0
+                        ;;
+                f)
+                        cd /home/persil/node/static
+                        git pull origin main
+                        echo "Fichier static mis à jour"
+                        exit 0
+                        ;;
+                b)
+                        cd /home/persil/node
+                        git pull origin master
+                        npm install
+                        echo "Backend déployer"
+                        if ps aux | grep -v grep | grep -q Curiolab; then
+                                ps -ef | grep Curiolab |head -n -1 | awk '{print $2}' | xargs kill -15
+                                echo "Process tué"
+                        else
+                                echo "il n'y a pas de process"
+                        fi
+                        screen -d -m -S Curiolab node server
+                        echo "Screen relancé"
+                        exit 0
+                        ;;
+                \?)
+                        echo "Option invalid: $OPTARG" >&2
+                        exit 1
+                        ;;
+                esac
+        done
+
+
+</code></pre><h3 id="conclusion" tabindex="-1"><a class="header-anchor" href="#conclusion"></a> Conclusion</h3><p>Voici le temps que j’ai passé sur le Sprint 2 :</p><table><thead><tr><th>Objectif</th><th>Temps passé</th></tr></thead><tbody><tr><td><strong>Documentation</strong></td><td>3h</td></tr><tr><td><strong>Faire fonctionner l’application sur le serveur distant</strong></td><td>2h</td></tr><tr><td><strong>Créer une session de terminal persistante</strong></td><td>1h</td></tr><tr><td><strong>Création du premier script qui permet de récupérer la branch main du back et du front</strong></td><td>2h</td></tr><tr><td><strong>Amélioration du script</strong></td><td>2h</td></tr></tbody></table><p>Pour conclure j’ai simplement mis un premier pied dans le devops. Il existe des outils puissants qui permettent de créer des pipeline CI/CD comme Jenkins. Pourquoi pas approfondir ce sujet dans le futur</p><h3 id="ressources" tabindex="-1"><a class="header-anchor" href="#ressources"></a> Ressources</h3><p><a href="https://resources.github.com/ci-cd/">https://resources.github.com/ci-cd/</a> <a href="https://www.data-transitionnumerique.com/devops-jenkins/">https://www.data-transitionnumerique.com/devops-jenkins/</a></p></article></main><footer class="min-h-[50px] border-t-2 mt-4 border-gray-200 dark:border-neutral-700"><div class="max-w-[1000px] mx-auto px-4"><div class="min-h-[50px] flex justify-center items-center"><p class="text-center">©2025 <b><span style="font-family:Consolas,sans-serif">Do-<span style="color:#4a86e8">It</span></span></b> - Développement, Management et Gestion de projets en IT</p></div></div></footer><script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">window.MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]]},svg:{fontCache:"global"}},document.addEventListener("DOMContentLoaded",(()=>{MathJax.typeset()}))</script><script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">Prism.plugins.NormalizeWhitespace.setDefaults({"remove-trailing":!0,"remove-indent":!0,"left-trim":!0,"right-trim":!0})</script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script></body></html>

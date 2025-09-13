@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="robots" content="index, follow">
+
+        <link rel="canonical" href="https://do-it.aioli.ec-m.fr/cs/management/si/management/">
+
+        
+        
+
+        <meta name="description" content="Do-It, cours et travaux des élèves de l&#39;école Centrale Méditerranée">
+        <meta property="og:description" content="Do-It, cours et travaux des élèves de l&#39;école Centrale Méditerranée">
+        <meta name="twitter:description" content="Do-It, cours et travaux des élèves de l&#39;école Centrale Méditerranée">
+
+        
+            <meta name="author" content="Laetitia PIET, Loïck Goupil-Hallay">
+        
+        <meta name="keywords" content="do-it, centrale, centrale méditerranée, ecm, COURS, management, si">
+
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png">
+        <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png">
+
+        <link href="/assets/stylesheets/main.css" rel="stylesheet">
+
+        <meta property="og:title" content="Management des Systèmes d&#39;Information">
+
+        <meta property="og:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta property="og:url" content="https://do-it.aioli.ec-m.fr/cs/management/si/management/">
+        <meta property="og:type" content="website">
+
+        <meta name="twitter:card" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:title" content="Management des Systèmes d&#39;Information">
+        <meta name="twitter:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:url" content="https://do-it.aioli.ec-m.fr/cs/management/si/management/">
+
+        <title>Management des Systèmes d&#39;Information</title>
+
+        <!-- Prismjs imports
+                - Prism line numbers
+                - Prism toolbar
+        -->
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet">
+        <link id="prism-theme" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+        <!-- Mermaid import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js "></script>
+
+        <script defer="">
+        // Check if a theme is stored in localStorage. If so, use it, otherwise fallback to the system preference.
+        const storedTheme = localStorage.getItem('theme');
+        if (storedTheme) {
+            document.documentElement.classList.toggle("dark", storedTheme === "dark");
+        } else {
+            // Use system color scheme if there is no stored theme preference.
+            document.documentElement.classList.toggle("dark", window.matchMedia("(prefers-color-scheme: dark)").matches);
+        }
+
+        function loadPrismTheme(isDarkMode) {
+            const newTheme = isDarkMode ? 'prism-okaidia.min.css' : 'prism-solarizedlight.min.css';
+            const newLink = document.createElement('link');
+            newLink.rel = 'stylesheet';
+            newLink.id = 'prism-theme';
+            newLink.href = `https://cdn.jsdelivr.net/npm/prismjs/themes/${newTheme}`;
+
+            newLink.onload = () => {
+                // Reapply highlighting after the new theme loads
+                Prism.highlightAll();
+            };
+
+            const existingLink = document.getElementById('prism-theme');
+            if (existingLink) {
+                document.head.replaceChild(newLink, existingLink);
+            } else {
+                document.head.appendChild(newLink);
+            }
+        }
+
+        function setMermaidTheme(isDarkMode) {
+            const theme = isDarkMode ? 'dark' : 'forest';
+            mermaid.initialize({
+                securityLevel: 'loose',
+                theme,
+                startOnLoad: true,
+            });
+        }
+
+        // Toggle dark and light mode and update localStorage accordingly.
+        function toggleDarkMode() {
+            const dark = document.documentElement.classList.contains("dark");
+            const newTheme = dark ? "light" : "dark";
+            localStorage.setItem('theme', newTheme);
+            document.documentElement.classList.toggle("dark", !dark);
+            loadPrismTheme(!dark);
+            setMermaidTheme(!dark);
+        }
+
+        // On initial load, ensure that Prism and Mermaid are initialized using the current theme.
+        const isDark = document.documentElement.classList.contains("dark");
+        loadPrismTheme(isDark);
+        setMermaidTheme(isDark);
+        </script>
+
+    </head>
+
+    <body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000" class="bg-neutral-50 text-neutral-950 dark:bg-neutral-900 dark:text-neutral-50">
+        <header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white dark:bg-neutral-900 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-between items-center">
+                    <a class="mx-2" href="/">Home</a>
+                    <button class="hidden sm:block text-neutral-950 dark:text-neutral-50 hover:bg-neutral-700 hover:text-neutral-50 hover:dark:bg-neutral-300 hover:dark:text-neutral-950 transition-colors p-2 rounded-full duration-800 ease-in-out" onclick="toggleDarkMode()">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 dark:hidden stroke-current">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <path d="M12 2V4" stroke-linecap="round"></path>
+                            <path d="M12 20V22" stroke-linecap="round"></path>
+                            <path d="M4 12L2 12" stroke-linecap="round"></path>
+                            <path d="M22 12L20 12" stroke-linecap="round"></path>
+                            <path d="M19.7778 4.22266L17.5558 6.25424" stroke-linecap="round"></path>
+                            <path d="M4.22217 4.22266L6.44418 6.25424" stroke-linecap="round"></path>
+                            <path d="M6.44434 17.5557L4.22211 19.7779" stroke-linecap="round"></path>
+                            <path d="M19.7778 19.7773L17.5558 17.5551" stroke-linecap="round"></path>
+                        </svg>
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 stroke-current hidden dark:block">
+                            <path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </button>
+                    <div class="flex items-center gap-4 sm:gap-6 ">
+                        <a class="" href="/cs">CS</a>
+                        <a class="" href="/pok">POK</a>
+                        <a class="" href="/mon">MON</a>
+                        <a class="" href="/projets">Projets</a>
+                        <a class="hidden sm:block" href="/promos">Promos</a>
+                        <a href="/search">
+                            <svg class="h-5 aspect-square stroke-neutral-950 dark:stroke-neutral-300 fill-none stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+                            </svg>
+                        </a>
+                        <a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank">
+                            <svg class="h-5 aspect-square dark:stroke-neutral-300 dark:fill-neutral-300" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body="">
+            
+<script>
+    const SIDEBAR_STATE_KEY = "courseSidebarState";
+
+    function toggleFold(button) {
+        // Find the closest parent <li> and its corresponding nested <ul>
+        const listItem = button.closest('li');
+        const nestedList = listItem.querySelector('.nested');
+
+        if (nestedList) {
+            const isActive = nestedList.classList.toggle('active'); // Toggle the 'active' class
+            button.classList.toggle('active', isActive); // Toggle button rotation
+            saveSidebarState();
+        }
+    }
+
+    function saveSidebarState() {
+        const state = {};
+        const nestedLists = document.querySelectorAll('.sidebar-navigation .nested');
+        nestedLists.forEach((list, index) => {
+            state[index] = list.classList.contains('active');
+        });
+        localStorage.setItem(SIDEBAR_STATE_KEY, JSON.stringify(state));
+    }
+
+    function restoreSidebarState() {
+        const state = JSON.parse(localStorage.getItem(SIDEBAR_STATE_KEY));
+        if (!state) return;
+
+        const nestedLists = document.querySelectorAll('.sidebar-navigation .nested');
+        nestedLists.forEach((list, index) => {
+            if (state[index]) {
+                list.classList.add('active');
+                const button = list.parentNode.querySelector('.course-sidebar-item-toggle-button'); // Correctly locate the button
+                if (button) {
+                    button.classList.add('active'); // Rotate the button
+                }
+            }
+        });
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+        restoreSidebarState();
+    });
+
+let lastScrollYCourses = window.scrollY;
+
+function toggleCourseSidebar() {
+    document.getElementById('course-sidebar').classList.toggle('open');
+}
+
+window.addEventListener('scroll', () => {
+    const burger = document.getElementById('course-burger-button');
+    const sidebar = document.getElementById('course-sidebar');
+    const currentScroll = window.scrollY;
+    // Hide the burger button if max width is reached
+    if (currentScroll < 10 || currentScroll < lastScrollYCourses) {
+        burger.classList.remove('hidden');
+    } else if (!sidebar || !sidebar.classList.contains('open')) {
+        burger.classList.add('hidden');
+    }
+
+    lastScrollYCourses = currentScroll;
+});
+</script>
+
+<button id="course-burger-button" class="sidebar-burger-button left-2" onclick="toggleCourseSidebar()">☰</button>
+
+<nav id="course-sidebar" class="sidebar left-0 border-r-2 -translate-x-full 3xl:translate-x-0">
+    <article><h2>Cours</h2></article>
+    <ul class="sidebar-navigation space-y-2">
+        
+        
+            
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700  bg-info dark:text-neutral-950">
+        <a class="flex-1 text-left pr-2 text-lg">Informatique</a>
+        
+            <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a class="flex-1 text-left pr-2 text-lg">Bases</a>
+        
+            <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/info/bases/git" class="flex-1 text-left pr-2 text-lg">Git</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/info/bases/enterprise_git" class="flex-1 text-left pr-2 text-lg">Enterprise Git</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/info/bases/linux" class="flex-1 text-left pr-2 text-lg">Linux</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/info/bases/ordinateur" class="flex-1 text-left pr-2 text-lg">Ordinateur</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a class="flex-1 text-left pr-2 text-lg">Structures de données</a>
+        
+            <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/info/bases/struct_donnees/linkedlist" class="flex-1 text-left pr-2 text-lg">Listes Chaînées</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/info/bases/struct_donnees/arbres_dict" class="flex-1 text-left pr-2 text-lg">Arbres et Dictionnaires</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/info/bases/struct_donnees/hash" class="flex-1 text-left pr-2 text-lg">Hachage</a>
+        
+    </div>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a class="flex-1 text-left pr-2 text-lg">Dev</a>
+        
+            <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a class="flex-1 text-left pr-2 text-lg">Web</a>
+        
+            <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/info/dev/web/fullstack" class="flex-1 text-left pr-2 text-lg">Fullstack</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/info/dev/web/websocket" class="flex-1 text-left pr-2 text-lg">WebSocket</a>
+        
+    </div>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/info/dev/bash" class="flex-1 text-left pr-2 text-lg">Bash</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/info/dev/java" class="flex-1 text-left pr-2 text-lg">Java</a>
+        
+    </div>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a class="flex-1 text-left pr-2 text-lg">Ops</a>
+        
+            <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/info/ops/ssh" class="flex-1 text-left pr-2 text-lg">SSH</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/info/ops/aioli" class="flex-1 text-left pr-2 text-lg">aioli</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/info/ops/postgres" class="flex-1 text-left pr-2 text-lg">PostgreSQL</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/info/ops/reseaux" class="flex-1 text-left pr-2 text-lg">Réseaux</a>
+        
+    </div>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+        
+            
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700  bg-mgt dark:text-neutral-950">
+        <a class="flex-1 text-left pr-2 text-lg">Management</a>
+        
+            <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a class="flex-1 text-left pr-2 text-lg">SI</a>
+        
+            <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/management/si/management" class="flex-1 text-left pr-2 text-lg">Management</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/management/si/audit" class="flex-1 text-left pr-2 text-lg">Audit</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/management/si/conception" class="flex-1 text-left pr-2 text-lg">Conception SI</a>
+        
+    </div>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a class="flex-1 text-left pr-2 text-lg">Agilité</a>
+        
+            <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/management/agile/gdp" class="flex-1 text-left pr-2 text-lg">Gestion Agile</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/management/agile/scrum" class="flex-1 text-left pr-2 text-lg">SCRUM</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/management/agile/cristal_clear" class="flex-1 text-left pr-2 text-lg">Cristal Clear</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/management/agile/methodes_agiles" class="flex-1 text-left pr-2 text-lg">Autres méthodes agiles</a>
+        
+    </div>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/management/cyber" class="flex-1 text-left pr-2 text-lg">CyberSécurité</a>
+        
+            <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/management/cyber/crise" class="flex-1 text-left pr-2 text-lg">CyberSécurité - Crises</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/management/cyber/rssi" class="flex-1 text-left pr-2 text-lg">CyberSécurité - RSSI</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/management/cyber/soc" class="flex-1 text-left pr-2 text-lg">CyberSécurité - SOC</a>
+        
+    </div>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a class="flex-1 text-left pr-2 text-lg">Sobriété Numérique</a>
+        
+            <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/management/sobriete/numerique" class="flex-1 text-left pr-2 text-lg">Sobriété Numérique</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/management/sobriete/accessibilite" class="flex-1 text-left pr-2 text-lg">Accessibilité Numérique</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/management/sobriete/fresque_numerique" class="flex-1 text-left pr-2 text-lg">Fresque du Numérique</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/management/sobriete/impacts" class="flex-1 text-left pr-2 text-lg">Impacts du Numérique</a>
+        
+    </div>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+        
+            
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700  bg-gp dark:text-neutral-950">
+        <a class="flex-1 text-left pr-2 text-lg">Gestion &amp; Modélisation Projet</a>
+        
+            <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/gestion_modelisation/service_design" class="flex-1 text-left pr-2 text-lg">Service Design</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/gestion_modelisation/gdp" class="flex-1 text-left pr-2 text-lg">Gestion de Projet</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/gestion_modelisation/uiux" class="flex-1 text-left pr-2 text-lg">UI/UX</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/gestion_modelisation/hpt" class="flex-1 text-left pr-2 text-lg">High Performance Team</a>
+        
+    </div>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+        
+            
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a class="flex-1 text-left pr-2 text-lg">Tronc Commun</a>
+        
+            <button class="course-sidebar-item-toggle-button" onclick="toggleFold(this)">&gt;</button>
+        
+    </div>
+    
+        <ul class="nested">
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/tronc_commun/change_management" class="flex-1 text-left pr-2 text-lg">Conduite du Changement</a>
+        
+    </div>
+    
+</li>
+
+            
+                
+<li>
+    <div class="course-sidebar-item hover:bg-neutral-200 dark:hover:bg-neutral-700 dark:text-neutral-50">
+        <a href="/cs/tronc_commun/ethique" class="flex-1 text-left pr-2 text-lg">Ethique et Responsabilité</a>
+        
+    </div>
+    
+</li>
+
+            
+        </ul>
+    
+</li>
+
+        
+    </ul>
+</nav>
+
+<article>
+<h1 class="mb-1">Management des Systèmes d&#39;Information</h1>
+<div class="mb-4">
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Tags : </div>
+            <ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags">
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">COURS</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">management</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">si</li>
+                
+
+            </ul>
+
+            
+            <div class="hidden" data-pagefind-meta="Type" aria-hidden="true">
+                
+                    
+                
+                    
+                
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Auteurs : </div>
+            <ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs">
+                
+                    <li class="bg-blue-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Auteurs">Laetitia PIET</li>
+                
+                    <li class="bg-blue-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Auteurs">Loïck Goupil-Hallay</li>
+                
+            </ul>
+        </div>
+    
+
+    
+</div>
+
+
+<script>
+let lastScrollYSummary = window.scrollY;
+
+function toggleSummarySidebar() {
+    document.getElementById('toc-sidebar').classList.toggle('open');
+}
+
+window.addEventListener('scroll', () => {
+    const burger = document.getElementById('toc-burger-button');
+    const sidebar = document.getElementById('toc-sidebar');
+    const currentScroll = window.scrollY;
+    // Hide the burger button if max width is reached
+    if (currentScroll < 10 || currentScroll < lastScrollYSummary) {
+        burger.classList.remove('hidden');
+    } else if (!sidebar || !sidebar.classList.contains('open')) {
+        burger.classList.add('hidden');
+    }
+
+    lastScrollYSummary = currentScroll;
+});
+</script>
+<p><button id="toc-burger-button" class="sidebar-burger-button right-2" onclick="toggleSummarySidebar()">☰</button></p>
+<nav id="toc-sidebar" class="sidebar right-0 border-l-2 translate-x-full 3xl:translate-x-0">
+<h2>Sommaire</h2>
+<nav class="toc"><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#d%C3%A9finitions"> Définitions</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#d%C3%A9finition-fonctionnelle"> Définition fonctionnelle</a></li><li class="toc-item"><a class="toc-link" href="#d%C3%A9finition-analytique"> Définition analytique</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#dimension-informationnelle"> Dimension informationnelle</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#relation-entre-donn%C3%A9es%2C-informations-et-connaissances"> Relation entre données, informations et connaissances</a></li><li class="toc-item"><a class="toc-link" href="#crit%C3%A8res-d'%C3%A9valuation-d'un-si"> Critères d&#39;évaluation d&#39;un SI</a></li></ol></li></ol></li><li class="toc-item"><a class="toc-link" href="#dimension-technologique"> Dimension technologique</a></li><li class="toc-item"><a class="toc-link" href="#dimension-organisationnelle"> Dimension organisationnelle</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#processus"> Processus</a></li><li class="toc-item"><a class="toc-link" href="#structure"> Structure</a></li><li class="toc-item"><a class="toc-link" href="#mod%C3%A8les-de-l'utilisateur-mod%C3%A8le"> Modèles de l&#39;utilisateur modèle</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#mod%C3%A8le-coercitif"> Modèle coercitif</a></li><li class="toc-item"><a class="toc-link" href="#mod%C3%A8le-habilitant"> Modèle habilitant</a></li></ol></li></ol></li><li class="toc-item"><a class="toc-link" href="#classification-des-si"> Classification des SI</a></li></ol></li><li class="toc-item"><a class="toc-link" href="#enjeux"> Enjeux</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#des-%C3%A9volutions-majeures-et-des-d%C3%A9fis-constants"> Des évolutions majeures et des défis constants</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#technologiques"> Technologiques</a></li><li class="toc-item"><a class="toc-link" href="#organisationnels"> Organisationnels</a></li></ol></li></ol></li><li class="toc-item"><a class="toc-link" href="#management-des-si"> Management des SI</a><ol class="toc-list"><li class="toc-item"><a class="toc-link" href="#enjeux-du-management-des-si"> Enjeux du management des SI</a></li><li class="toc-item"><a class="toc-link" href="#usages-des-si"> Usages des SI</a></li></ol></li></ol></nav></nav>
+<h2 id="d%C3%A9finitions" tabindex="-1"><a class="header-anchor" href="#d%C3%A9finitions"></a> Définitions</h2>
+<h3 id="d%C3%A9finition-fonctionnelle" tabindex="-1"><a class="header-anchor" href="#d%C3%A9finition-fonctionnelle"></a> Définition fonctionnelle</h3>
+<p><strong><u>Schema de principe d'un SI:</u></strong></p>
+<pre class="mermaid" style="background-color: transparent;">
+graph LR;
+  A[Système d'Information]
+  B(Personnel) --> A
+  C(Matériel) --> A
+  D(Logiciels & Procédures) --> A
+  E(Données) --> A
+  A --> F(Communiquer des informations)
+  A --> G(Stocker des informations)
+  A --> H(Traiter des informations)
+  A --> I(Acquérir des informations)
+</pre>
+<p>Un système d’information est un ensemble organisé de ressources permettant d’acquérir, de traiter, de stocker
+et de diffuser des informations dans et entre des organisations. Il est finalisé pour répondre à des objectifs.</p>
+<p><strong>Niveaux de définition:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Niveau</th>
+<th>Caractéristiques</th>
+<th>Exemples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Individuel</td>
+<td>Utilsié par un individu à son poste de travail. N'implique pas qu'il a été implementé ni conçu par l'individu</td>
+<td>Tableur Excel</td>
+</tr>
+<tr>
+<td>Collectif</td>
+<td>Plusieurs individus utilisent le même système d'information (une fonction, un service, un groupe)</td>
+<td>Système de gestion des commandes</td>
+</tr>
+<tr>
+<td>Organisationnel</td>
+<td>Concerne et est accessible à l'ensemble de l'organisation</td>
+<td>Système de messagerie électronique globale</td>
+</tr>
+<tr>
+<td>Inter-organisationnel</td>
+<td>Des organisations identiques s'entendent pour échanger et traiter par des voies automatiques, des informations d'intérêt commun</td>
+<td>EDI (Echange de données informatisées)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="d%C3%A9finition-analytique" tabindex="-1"><a class="header-anchor" href="#d%C3%A9finition-analytique"></a> Définition analytique</h3>
+<div class="mx-8">
+  <div class="text-xl italic text-neutral-700 mx-auto w-fit dark:text-neutral-200">
+    <svg class="w-8 h-8 text-red-800 scale-x-[-1]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 14"><path d="M6 0H2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4v1a3 3 0 0 1-3 3H2a1 1 0 0 0 0 2h1a5.006 5.006 0 0 0 5-5V2a2 2 0 0 0-2-2Zm10 0h-4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4v1a3 3 0 0 1-3 3h-1a1 1 0 0 0 0 2h1a5.006 5.006 0 0 0 5-5V2a2 2 0 0 0-2-2Z"></path></svg>
+    <div class="px-9 w-fit">
+Un système d’information est un système d’acteurs sociaux qui mémorisent et transforment des représentations via des technologies de l’information et des modes opératoires.
+</div>
+    <svg class="w-8 h-8 text-red-800 mb-4 ml-auto scale-y-[-1]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 14"><path d="M6 0H2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4v1a3 3 0 0 1-3 3H2a1 1 0 0 0 0 2h1a5.006 5.006 0 0 0 5-5V2a2 2 0 0 0-2-2Zm10 0h-4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4v1a3 3 0 0 1-3 3h-1a1 1 0 0 0 0 2h1a5.006 5.006 0 0 0 5-5V2a2 2 0 0 0-2-2Z"></path></svg>
+    <div class="text-right text-neutral-600 ml-auto dark:text-neutral-300">R.Reix et F. Rowe, 2002</div>
+  </div>
+</div>
+<p>Il existe 3 dimensions dans un SI:</p>
+<ol>
+<li><strong>Dimension informationnelle</strong>: Le SI produit des représentations de l'information</li>
+<li><strong>Dimension technologique</strong>: Le SI se construit à partir de technologies physiques et logicielles de l'information</li>
+<li><strong>Dimension organisationnelle</strong>: Le SI est un élément des processus et de la structure de l'organisation</li>
+</ol>
+<h4 id="dimension-informationnelle" tabindex="-1"><a class="header-anchor" href="#dimension-informationnelle"></a> Dimension informationnelle</h4>
+<div class="mx-8">
+  <div class="text-xl italic text-neutral-700 mx-auto w-fit dark:text-neutral-200">
+    <svg class="w-8 h-8 text-red-800 scale-x-[-1]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 14"><path d="M6 0H2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4v1a3 3 0 0 1-3 3H2a1 1 0 0 0 0 2h1a5.006 5.006 0 0 0 5-5V2a2 2 0 0 0-2-2Zm10 0h-4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4v1a3 3 0 0 1-3 3h-1a1 1 0 0 0 0 2h1a5.006 5.006 0 0 0 5-5V2a2 2 0 0 0-2-2Z"></path></svg>
+    <div class="px-9 w-fit">
+Tout système d’information concerne un individu, pourvu d’un profil psychologique donné, confronté à un problème décisionnel précis, dans un contexte organisationnel déterminé. Il y a nécessité d’éléments de décision perçus au travers d’un mode de représentation propre au décideur.
+</div>
+    <svg class="w-8 h-8 text-red-800 mb-4 ml-auto scale-y-[-1]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 14"><path d="M6 0H2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4v1a3 3 0 0 1-3 3H2a1 1 0 0 0 0 2h1a5.006 5.006 0 0 0 5-5V2a2 2 0 0 0-2-2Zm10 0h-4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4v1a3 3 0 0 1-3 3h-1a1 1 0 0 0 0 2h1a5.006 5.006 0 0 0 5-5V2a2 2 0 0 0-2-2Z"></path></svg>
+    <div class="text-right text-neutral-600 ml-auto dark:text-neutral-300">R.O. Mason, J.-L. Mitroff (1975), Management Science, vol.19 n°6, p.475.</div>
+  </div>
+</div>
+<h5 id="relation-entre-donn%C3%A9es%2C-informations-et-connaissances" tabindex="-1"><a class="header-anchor" href="#relation-entre-donn%C3%A9es%2C-informations-et-connaissances"></a> Relation entre données, informations et connaissances</h5>
+<p><u>Schema simplifié:</u></p>
+<pre class="mermaid" style="background-color: transparent;">
+graph LR;
+  A(Signal) -->|Mesure par un capteur| B(Donnée)
+  B -->|Interprétation| C(Information)
+</pre>
+<p>L'information est une donnée interprétée par un individu ou un système. Elle est le résultat d'un traitement de données. Elle est utile pour la prise de décision.</p>
+<h5 id="crit%C3%A8res-d'%C3%A9valuation-d'un-si" tabindex="-1"><a class="header-anchor" href="#crit%C3%A8res-d'%C3%A9valuation-d'un-si"></a> Critères d'évaluation d'un SI</h5>
+<pre class="mermaid" style="background-color: transparent;">
+graph RL;
+  A(Pertinence)
+
+  A <--> B[<b>Complétude</b>]
+  A <--> C[<b>Finesse</b><br><small>Accroît la pertinence<br>mais attention aux effets<br>sur l'accessibilité</small>]
+  A <--> D[<b>Actualité</b><br><small>La réductions des délais<br>accroît la pertinence<br>mais effets pervers<br>sur le volume</small>]
+  A <--> E[<b>Ponctualité</b><br><small>Respect des limites<br>de temps des processus<br>d'utilisation</small>]
+  A <--> F[<b>Forme & Richesse</b>]
+  A <--> G[[<b>Accessibilité</b><br><small>Déterminant majeur de l'utilisation effective</small>]]
+  A <--> H[<b>Exactitude</b><br><small>Qualité des données<br>et des informations</small>]
+  A <--> I[<b>Fiabilité</b><br><small>Degré de confiance<br>dans la source</small>]
+</pre>
+<p>Il faut rester vigilant, un système d'information générant une quantité massive de données à faible coût risque de produire des informations inutiles et de saturer les utilisateurs.</p>
+<h3 id="dimension-technologique" tabindex="-1"><a class="header-anchor" href="#dimension-technologique"></a> Dimension technologique</h3>
+<p>Un SI est un système qui utilise des technologies de l'information au sein d'une architecture technique</p>
+<ul>
+<li>Réseaux</li>
+<li>Serveurs</li>
+<li>Ordinateurs (stations de travail)</li>
+<li>Logiciels</li>
+<li>Bases de données</li>
+<li>Automates</li>
+</ul>
+<p>La technologie est à la fois une ressource et une contrainte pour l’exécution des tâches par les utilisateurs. Il faut s'assurer que cette technologie est <strong>adaptée aux besoins</strong> des utilisateurs.<br>
+Ainsi, le système d'information est en <strong>amélioration continue</strong> (réalisée par les acteurs décideurs, concepteurs et utilisateurs)</p>
+<ol>
+<li>Au départ planifiée à la conception</li>
+<li>Spontanée en fonction des retours et des besoins des utilisateurs</li>
+</ol>
+<p>Il faut toujours garder en tête que la technologie n'est pas une fin en soi, c'est son <strong>appropriation</strong> par les utilisateurs qui en fait un outil efficace.</p>
+<h3 id="dimension-organisationnelle" tabindex="-1"><a class="header-anchor" href="#dimension-organisationnelle"></a> Dimension organisationnelle</h3>
+<p>Un SI est un système qui supporte les <strong>processus de travail</strong> et la <strong>structure d’une organisation</strong>. Le SI de l'entreprise porte les deux aspects:</p>
+<ul>
+<li>Le fonctionnement de l'organisation, le déroulement des processus de travail, à l'intérieur et aux frontières de l'organisation</li>
+<li>La structure de l'organisation, qui concerne les caractéristiques stables de toute l'organisation<br>
+Un SI est un élément clé, <em>essentiel</em> au <strong>fonctionnement</strong> ainsi qu'à la <strong>structure</strong> de l'organisation.</li>
+</ul>
+<h4 id="processus" tabindex="-1"><a class="header-anchor" href="#processus"></a> Processus</h4>
+<p>Un processus est un ensemble d’activités et de tâches corrélées et synchronisées qui :</p>
+<ul>
+<li>A un objectif clair et précis rattaché, directement ou indirectement, au métier et aux activités de l ’entreprise</li>
+<li>Consomme des ressources et produit des résultats</li>
+</ul>
+<p><strong><u>Schema de principe d'un processus:</u></strong></p>
+<pre class="mermaid" style="background-color: transparent;">
+graph LR;
+  A(Evénement) --> B(Activité)
+  B --> C(Résultat)
+</pre>
+<p><strong><u>Catégories de processus:</u></strong></p>
+<pre class="mermaid" style="background-color: transparent;">
+graph TD;
+  A[<b>Processus opérationnels</b><br><small>coeur de métier</small>]
+  B[<b>Processus de pilotage</b><br><small>management</small>]
+  C[<b>Processus de soutien</b><br><small>support</small>]
+</pre>
+<h4 id="structure" tabindex="-1"><a class="header-anchor" href="#structure"></a> Structure</h4>
+<p>La construction de tout SI implique des choix déterminants quant à la conception de l’organisation :</p>
+<ul>
+<li>Choix relatifs au partage d’informations entre les acteurs
+<ul>
+<li>Répartition du pouvoir décisionnel et des responsabilités (degré de décentralisation)</li>
+<li>Division du travail (degré de spécialisation)</li>
+</ul>
+</li>
+<li>Choix relatifs au contenu des représentations et aux technologies de communication
+<ul>
+<li>Pertinence des informations pour quoi ? Pour qui ?</li>
+<li>Moyens de coordination</li>
+</ul>
+</li>
+<li>Choix relatifs au degré de formalisation et d’automatisation des processus de travail
+<ul>
+<li>Niveau de contrôle et d’autonomie des acteurs</li>
+<li>Degré de standardisation / flexibilité</li>
+</ul>
+</li>
+</ul>
+<h4 id="mod%C3%A8les-de-l'utilisateur-mod%C3%A8le" tabindex="-1"><a class="header-anchor" href="#mod%C3%A8les-de-l'utilisateur-mod%C3%A8le"></a> Modèles de l'utilisateur modèle</h4>
+<p>L'organisation effectue des choix qui déterminent le fonctionnement du SI et la capacité qu'aura ses utilisateurs à s'approprier le SI.
+Elle peut choisir un modèle coercitif ou habilitant. Dans le premier cas, l'utilisateur modèle est passif, il ne peut rien faire d'autre qu'utiliser le SI, dans le second cas, il est actif et peut participer à l'évolution du SI.</p>
+<h5 id="mod%C3%A8le-coercitif" tabindex="-1"><a class="header-anchor" href="#mod%C3%A8le-coercitif"></a> Modèle coercitif</h5>
+<table>
+<thead>
+<tr>
+<th><strong>Caractéristiques des formalisations coercitives</strong></th>
+<th><strong>Vision de l'utilisateur modèle</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Impossibilité de réparer</strong></td>
+<td>Ne doit pas intervenir par lui même lorsque la formalisation s'avère inutilisable, endommagée, ou mal adaptée aux circonstances</td>
+</tr>
+<tr>
+<td><strong>Rigidité</strong></td>
+<td>Ne doit pas pouvoir modifier l'outil par lui même</td>
+</tr>
+<tr>
+<td><strong>Opacité Interne</strong></td>
+<td>Ne doit pas comprendre le fonctionnement interne de l'outil, doit seulement suivre les indications données</td>
+</tr>
+<tr>
+<td><strong>Opacité Globale</strong></td>
+<td>Ne doit pas comprendre le fonctionnement du système dans lequel l'outil s'insère et opère</td>
+</tr>
+<tr>
+<td><strong>Non participation au design</strong></td>
+<td>Ne doit pas être associé au design de l'outil</td>
+</tr>
+<tr>
+<td><strong>Non participation à l'implémentation</strong></td>
+<td>Ne doit pas être associé à l'implémentation de l'outil</td>
+</tr>
+</tbody>
+</table>
+<h5 id="mod%C3%A8le-habilitant" tabindex="-1"><a class="header-anchor" href="#mod%C3%A8le-habilitant"></a> Modèle habilitant</h5>
+<table>
+<thead>
+<tr>
+<th><strong>Caractéristiques des formalisations habilitantes</strong></th>
+<th><strong>Vision de l'utilisateur modèle</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Réparation</strong></td>
+<td>Peut intervenir pour réparer l'outil, le modifier, l'adapter aux circonstances</td>
+</tr>
+<tr>
+<td><strong>Flexibilité</strong></td>
+<td>Peut ignorer, remettre en cause, modifier l'outil pour l'adapter à ses besoins</td>
+</tr>
+<tr>
+<td><strong>Transparence interne</strong></td>
+<td>Peut comprendre le fonctionnement interne de l'outil pour l'aider à le modifier</td>
+</tr>
+<tr>
+<td><strong>Transparence globale</strong></td>
+<td>Peut comprendre le fonctionnement du système dans lequel l'outil s'insère et opère</td>
+</tr>
+<tr>
+<td><strong>Participation au design</strong></td>
+<td>Capable de participer au design de l'outil car est source d'information utile</td>
+</tr>
+<tr>
+<td><strong>Participation à l'implémentation</strong></td>
+<td>Capable de participer à l'implémentation de l'outil car est source d'information utile</td>
+</tr>
+</tbody>
+</table>
+<h3 id="classification-des-si" tabindex="-1"><a class="header-anchor" href="#classification-des-si"></a> Classification des SI</h3>
+<img src="https://raw.githubusercontent.com/do-it-ecm/courses/refs/heads/main/management/si/management/assets/img/classification_si.png" alt="Classification des SI" class="img-big-img mx-auto">
+<h2 id="enjeux" tabindex="-1"><a class="header-anchor" href="#enjeux"></a> Enjeux</h2>
+<p>Via leur SI, les entreprises s’insèrent plus intensivement dans une mondialisation agitée</p>
+<pre class="mermaid" style="background-color: transparent;">
+graph TD;
+  A[<b>Nouvelles opportunités</b><br><small>couplés à l’internet, les S.I participent<br> à l’abaissement important des coûts de transaction<br> et favorisent l’accès aux marchés et aux ressources</small>]
+  B[<b>Nouvelles incertitudes</b>s<br><small>la dématérialisation de nombreux biens<br>et services bouleverse les règles établies<br>dans de nombreux secteurs économiques</small>]
+</pre>
+<h3 id="des-%C3%A9volutions-majeures-et-des-d%C3%A9fis-constants" tabindex="-1"><a class="header-anchor" href="#des-%C3%A9volutions-majeures-et-des-d%C3%A9fis-constants"></a> Des évolutions majeures et des défis constants</h3>
+<h4 id="technologiques" tabindex="-1"><a class="header-anchor" href="#technologiques"></a> Technologiques</h4>
+<ul>
+<li><strong>Big Data et analyse de données massives</strong></li>
+<li><strong>Cloud computing</strong></li>
+<li><strong>Mobilité</strong></li>
+<li><strong>Intelligence artificielle</strong></li>
+<li><strong>XaaS (Everything as a Service)</strong></li>
+</ul>
+<h4 id="organisationnels" tabindex="-1"><a class="header-anchor" href="#organisationnels"></a> Organisationnels</h4>
+<ul>
+<li><strong>Horizontalisation des organisations</strong></li>
+<li><strong>Collaboration</strong></li>
+<li><strong>Externalisation des activités</strong></li>
+<li><strong>Réactivité et agilité</strong></li>
+<li><strong>Nouvelles pratiques managériales</strong></li>
+</ul>
+<h2 id="management-des-si" tabindex="-1"><a class="header-anchor" href="#management-des-si"></a> Management des SI</h2>
+<div class="mx-8">
+  <div class="text-xl italic text-neutral-700 mx-auto w-fit dark:text-neutral-200">
+    <svg class="w-8 h-8 text-red-800 scale-x-[-1]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 14"><path d="M6 0H2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4v1a3 3 0 0 1-3 3H2a1 1 0 0 0 0 2h1a5.006 5.006 0 0 0 5-5V2a2 2 0 0 0-2-2Zm10 0h-4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4v1a3 3 0 0 1-3 3h-1a1 1 0 0 0 0 2h1a5.006 5.006 0 0 0 5-5V2a2 2 0 0 0-2-2Z"></path></svg>
+    <div class="px-9 w-fit">
+Les SI ne doivent pas être simplement considérés comme une ressource de support, mais comme une ressource stratégique capable de donner un avantage concurrentiel durable à l’entreprise qui saura les utiliser.
+</div>
+    <svg class="w-8 h-8 text-red-800 mb-4 ml-auto scale-y-[-1]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 18 14"><path d="M6 0H2a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4v1a3 3 0 0 1-3 3H2a1 1 0 0 0 0 2h1a5.006 5.006 0 0 0 5-5V2a2 2 0 0 0-2-2Zm10 0h-4a2 2 0 0 0-2 2v4a2 2 0 0 0 2 2h4v1a3 3 0 0 1-3 3h-1a1 1 0 0 0 0 2h1a5.006 5.006 0 0 0 5-5V2a2 2 0 0 0-2-2Z"></path></svg>
+    <div class="text-right text-neutral-600 ml-auto dark:text-neutral-300">Porter, 1985</div>
+  </div>
+</div>
+<h3 id="enjeux-du-management-des-si" tabindex="-1"><a class="header-anchor" href="#enjeux-du-management-des-si"></a> Enjeux du management des SI</h3>
+<ul>
+<li>Interne
+<ul>
+<li><strong>Alignement stratégique</strong></li>
+<li><strong>Création de valeur</strong></li>
+<li><strong>Gestion des risques</strong></li>
+<li><strong>Gestion des ressources</strong></li>
+<li><strong>Gestion de la performance</strong></li>
+<li><strong>Gestion des processus</strong></li>
+</ul>
+</li>
+<li>Externe
+<ul>
+<li><strong>Conquête de nouveaux marchés</strong></li>
+<li><strong>Amélioration de la relation client</strong></li>
+<li><strong>Fidélisation des clients</strong></li>
+<li><strong>Innovation</strong></li>
+</ul>
+</li>
+</ul>
+<h3 id="usages-des-si" tabindex="-1"><a class="header-anchor" href="#usages-des-si"></a> Usages des SI</h3>
+<ul>
+<li>Automatisation des tâches</li>
+<li>Aide à la décision</li>
+<li>Communication</li>
+<li>Gestion des connaissances</li>
+<li>Collaboration</li>
+<li>Innovation</li>
+</ul>
+
+
+</article>
+
+        </main>
+
+        <footer class="min-h-[50px] border-t-2 mt-4 border-gray-200 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-center items-center">
+                    <p class="text-center">
+                        ©2025 <b><span style="font-family: Consolas, sans-serif;">Do-<span style="color: #4a86e8">It</span></span></b> - Développement, Management et Gestion de projets en IT
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- MathJax import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">
+            window.MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']], // Delimiters for inline math
+                    displayMath: [['$$', '$$'], ['\\[', '\\]']] // Delimiters for block math
+                },
+                svg: {
+                    fontCache: 'global' // Use global font cache for SVG output
+                }
+            };
+            document.addEventListener('DOMContentLoaded', () => {
+                MathJax.typeset(); // Ensures MathJax processes the content after the page loads
+            });
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">
+            Prism.plugins.NormalizeWhitespace.setDefaults({
+                'remove-trailing': true,
+                'remove-indent': true,
+                'left-trim': true,
+                'right-trim': true,
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script>
+    </body>
+</html>

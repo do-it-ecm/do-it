@@ -1,0 +1,237 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="index, follow"><link rel="canonical" href="https://do-it.aioli.ec-m.fr/promos/2024-2025/Oliana-Guillaume/mon/temps-1.2/"><meta name="description" content="Un MON reprenant les bases de l&#39;analyse de portefeuille d&#39;actions avec Python"><meta property="og:description" content="Un MON reprenant les bases de l&#39;analyse de portefeuille d&#39;actions avec Python"><meta name="twitter:description" content="Un MON reprenant les bases de l&#39;analyse de portefeuille d&#39;actions avec Python"><meta name="author" content="OLIANA Guillaume"><meta name="keywords" content="do-it, centrale, centrale méditerranée, ecm, MON, Python - Finance, Portfolio Analysis"><link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon"><link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png"><link rel="apple-touch-icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png"><link href="/assets/stylesheets/main.css" rel="stylesheet"><meta property="og:title" content="Analyse de Portefeuille d&#39;Actions avec Python"><meta property="og:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png"><meta property="og:url" content="https://do-it.aioli.ec-m.fr/promos/2024-2025/Oliana-Guillaume/mon/temps-1.2/"><meta property="og:type" content="website"><meta name="twitter:card" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png"><meta name="twitter:title" content="Analyse de Portefeuille d&#39;Actions avec Python"><meta name="twitter:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png"><meta name="twitter:url" content="https://do-it.aioli.ec-m.fr/promos/2024-2025/Oliana-Guillaume/mon/temps-1.2/"><title>Analyse de Portefeuille d&#39;Actions avec Python</title><link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet"><link id="prism-theme" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet"><link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet"><script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script><script defer="">const storedTheme=localStorage.getItem("theme");function loadPrismTheme(e){const t=e?"prism-okaidia.min.css":"prism-solarizedlight.min.css",s=document.createElement("link");s.rel="stylesheet",s.id="prism-theme",s.href=`https://cdn.jsdelivr.net/npm/prismjs/themes/${t}`,s.onload=()=>{Prism.highlightAll()};const m=document.getElementById("prism-theme");m?document.head.replaceChild(s,m):document.head.appendChild(s)}function setMermaidTheme(e){const t=e?"dark":"forest";mermaid.initialize({securityLevel:"loose",theme:t,startOnLoad:!0})}function toggleDarkMode(){const e=document.documentElement.classList.contains("dark"),t=e?"light":"dark";localStorage.setItem("theme",t),document.documentElement.classList.toggle("dark",!e),loadPrismTheme(!e),setMermaidTheme(!e)}storedTheme?document.documentElement.classList.toggle("dark","dark"===storedTheme):document.documentElement.classList.toggle("dark",window.matchMedia("(prefers-color-scheme: dark)").matches);const isDark=document.documentElement.classList.contains("dark");loadPrismTheme(isDark),setMermaidTheme(isDark)</script></head><body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000" class="bg-neutral-50 text-neutral-950 dark:bg-neutral-900 dark:text-neutral-50"><header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white dark:bg-neutral-900 dark:border-neutral-700"><div class="max-w-[1000px] mx-auto px-4"><div class="min-h-[50px] flex justify-between items-center"><a class="mx-2" href="/">Home</a> <button class="hidden sm:block text-neutral-950 dark:text-neutral-50 hover:bg-neutral-700 hover:text-neutral-50 hover:dark:bg-neutral-300 hover:dark:text-neutral-950 transition-colors p-2 rounded-full duration-800 ease-in-out" onclick="toggleDarkMode()"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 dark:hidden stroke-current"><circle cx="12" cy="12" r="5"></circle><path d="M12 2V4" stroke-linecap="round"></path><path d="M12 20V22" stroke-linecap="round"></path><path d="M4 12L2 12" stroke-linecap="round"></path><path d="M22 12L20 12" stroke-linecap="round"></path><path d="M19.7778 4.22266L17.5558 6.25424" stroke-linecap="round"></path><path d="M4.22217 4.22266L6.44418 6.25424" stroke-linecap="round"></path><path d="M6.44434 17.5557L4.22211 19.7779" stroke-linecap="round"></path><path d="M19.7778 19.7773L17.5558 17.5551" stroke-linecap="round"></path></svg> <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 stroke-current hidden dark:block"><path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke-linecap="round" stroke-linejoin="round"></path></svg></button><div class="flex items-center gap-4 sm:gap-6"><a class="" href="/cs">CS</a> <a class="" href="/pok">POK</a> <a class="" href="/mon">MON</a> <a class="" href="/projets">Projets</a> <a class="hidden sm:block" href="/promos">Promos</a> <a href="/search"><svg class="h-5 aspect-square stroke-neutral-950 dark:stroke-neutral-300 fill-none stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path></svg> </a><a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank"><svg class="h-5 aspect-square dark:stroke-neutral-300 dark:fill-neutral-300" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg></a></div></div></div></header><main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body=""><article class="relative"><h1 class="mb-1">Analyse de Portefeuille d&#39;Actions avec Python</h1><div class="mb-4"><div class="px-4 flex flex-wrap items-center"><div class="font-bold">Tags :</div><ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags"><li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">MON</li><li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">Python - Finance</li><li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">Portfolio Analysis</li></ul><div class="hidden" data-pagefind-meta="Type" aria-hidden="true"><span data-pagefind-filter="Type">MON</span></div></div><div class="px-4 flex flex-wrap items-center"><div class="font-bold">Auteur :</div><ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs"><li class="bg-blue-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Auteurs">OLIANA Guillaume</li></ul></div><div class="absolute top-0 right-0"><span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2 text-neutral-950" data-pagefind-filter="Année">2024-2025</span></div></div><p class="mb-4 text-lg">Un MON reprenant les bases de l'analyse de portefeuille d'actions avec Python</p><div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100 dark:border-purple-800 dark:bg-purple-950"><svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-purple-500 dark:stroke-purple-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path></svg><div class="pl-8 mr-8"><a href="/promos/2024-2025/Oliana-Guillaume/">OLIANA Guillaume</a><span class="px-1">/</span><a href="/promos/2024-2025/Oliana-Guillaume/mon/">MON de OLIANA Guillaume</a><span class="px-1">/</span><a href="/promos/2024-2025/Oliana-Guillaume/mon/temps-1.2/">Analyse de Portefeuille d&#39;Actions avec Python</a></div></div><div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100 dark:border-pink-800 dark:bg-pink-950"><svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-pink-500 dark:stroke-pink-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg><div class="pl-8 mb-2 mr-8"><p><b>Prérequis</b></p></div><div class="pl-8 mr-8"><p>Connaissances de base en informatique et en programmation. Pas de prérequis spécifiques en finance.</p></div></div><div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100 dark:border-emerald-800 dark:bg-emerald-950"><svg class="absolute w-6 h-6 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-emerald-500 dark:stroke-emerald-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path></svg><div class="pl-8 mb-2 mr-8"><p><b>Liens</b></p></div><div class="pl-8 mr-8"><p>Les liens utiles pour la compréhension de ce projet.</p><ul><li><a href="https://www.pythonforfinance.net">Python Finance Tutorials</a>d</li><li><a href="https://pypi.org/project/yfinance/">yfinance Documentation</a></li></ul></div></div><hr><h1 id="sommaire-%3A-optimisation-de-portefeuille" tabindex="-1"><a class="header-anchor" href="#sommaire-%3A-optimisation-de-portefeuille"></a> Sommaire : Optimisation de Portefeuille</h1><h2 id="1.-optimisation-de-portefeuille" tabindex="-1"><a class="header-anchor" href="#1.-optimisation-de-portefeuille"></a> 1. Optimisation de portefeuille</h2><ul><li><strong>1.1 Concepts de base</strong> : Explication du rendement, du risque, du ratio de Sharpe et de la frontière efficiente.</li><li><strong>1.2 Téléchargement des données avec <code>yfinance</code></strong> : Récupération des données boursières pour construire un portefeuille.</li><li><strong>1.3 Optimisation avec la méthode de Markowitz</strong> : Calcul de la frontière efficiente et des portefeuilles optimaux.</li></ul><hr><h1 id="1.-optimisation-de-portefeuille-1" tabindex="-1"><a class="header-anchor" href="#1.-optimisation-de-portefeuille-1"></a> 1. Optimisation de Portefeuille</h1><h2 id="1.1-concepts-de-base" tabindex="-1"><a class="header-anchor" href="#1.1-concepts-de-base"></a> 1.1 Concepts de base</h2><p>L'optimisation de portefeuille est une méthode qui permet de sélectionner les meilleurs actifs pour maximiser le rendement attendu tout en minimisant le risque. Le principe fondamental est basé sur la théorie moderne du portefeuille développée par <strong>Harry Markowitz</strong> en 1952, connue sous le nom de <strong>modèle de Markowitz</strong>.</p><h3 id="concepts-cl%C3%A9s-%3A" tabindex="-1"><a class="header-anchor" href="#concepts-cl%C3%A9s-%3A"></a> Concepts clés :</h3><h4 id="rendement-attendu" tabindex="-1"><a class="header-anchor" href="#rendement-attendu"></a> Rendement attendu</h4><p>Le <strong>rendement attendu</strong> est la moyenne des rendements possibles d'un portefeuille, pondérés par les probabilités d'occurrence. Il est calculé comme une moyenne pondérée des rendements attendus de chaque actif en fonction de son poids dans le portefeuille.</p><p>$$ \text{Rendement attendu du portefeuille} = \sum_{i=1}^{n} w_i \times r_i $$</p><ul><li>$w_i$ : Poids de l'actif $i$ dans le portefeuille (la proportion du capital total investi dans cet actif).</li><li>$r_i$ : Rendement attendu de l'actif $i$.</li></ul><h4 id="volatilit%C3%A9-(risque)" tabindex="-1"><a class="header-anchor" href="#volatilit%C3%A9-(risque)"></a> Volatilité (Risque)</h4><p>La <strong>volatilité</strong> d'un portefeuille mesure l'incertitude quant aux rendements futurs. Elle représente l'écart-type des rendements d'un portefeuille et est une mesure du risque.</p><p>La volatilité d'un portefeuille dépend de la variance et de la covariance des actifs qui le composent. La <strong>variance</strong> mesure la dispersion des rendements d'un actif par rapport à sa moyenne, tandis que la <strong>covariance</strong> mesure comment deux actifs se comportent ensemble.</p><p>$$ \text{Volatilité du portefeuille} = \sqrt{ \sum_{i=1}^{n} \sum_{j=1}^{n} w_i w_j \times \text{Cov}(r_i, r_j) } $$</p><ul><li>$\text{Cov}(r_i, r_j)$ : Covariance entre les rendements de l'actif $i$ et l'actif $j$.</li></ul><h4 id="ratio-de-sharpe" tabindex="-1"><a class="header-anchor" href="#ratio-de-sharpe"></a> Ratio de Sharpe</h4><p>Le <strong>ratio de Sharpe</strong> est une mesure de la performance d'un portefeuille ajustée au risque. Il compare le rendement excédentaire (au-dessus du taux sans risque) à la volatilité du portefeuille. Plus le ratio de Sharpe est élevé, meilleure est la performance ajustée au risque.</p><p>$$ \text{Ratio de Sharpe} = \frac{\text{Rendement du portefeuille} - \text{Taux sans risque}}{\text{Volatilité du portefeuille}} $$</p><ul><li><strong>Rendement du portefeuille</strong> : Rendement moyen du portefeuille.</li><li><strong>Taux sans risque</strong> : Rendement d'un actif sans risque (par exemple, les obligations d'État).</li><li><strong>Volatilité du portefeuille</strong> : Écart-type des rendements du portefeuille.</li></ul><h4 id="fronti%C3%A8re-efficiente" tabindex="-1"><a class="header-anchor" href="#fronti%C3%A8re-efficiente"></a> Frontière efficiente</h4><p>La <strong>frontière efficiente</strong> est un graphique montrant les portefeuilles qui offrent le meilleur rendement possible pour un niveau de risque donné. Chaque point sur la frontière représente un portefeuille optimal, et tout portefeuille en dessous de la frontière est considéré comme sous-optimal car il présente un rendement inférieur pour un niveau de risque équivalent.</p><hr><h2 id="1.2-t%C3%A9l%C3%A9chargement-des-donn%C3%A9es-avec-yfinance" tabindex="-1"><a class="header-anchor" href="#1.2-t%C3%A9l%C3%A9chargement-des-donn%C3%A9es-avec-yfinance"></a> 1.2 Téléchargement des données avec <code>yfinance</code></h2><p>Pour créer et optimiser un portefeuille, nous devons d'abord récupérer les données des prix historiques des actifs que nous voulons inclure dans notre portefeuille. La bibliothèque Python <code>yfinance</code> permet de télécharger ces données directement depuis Yahoo Finance.</p><h3 id="exemple-de-code-pour-t%C3%A9l%C3%A9charger-les-donn%C3%A9es-%3A" tabindex="-1"><a class="header-anchor" href="#exemple-de-code-pour-t%C3%A9l%C3%A9charger-les-donn%C3%A9es-%3A"></a> Exemple de code pour télécharger les données :</h3><pre class="language-python line-numbers"><code>
+
+import yfinance as yf
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Sélection des actions
+actions = ['AAPL', 'MSFT', 'GOOGL']
+
+# Téléchargement des données
+data = yf.download(actions, start="2020-01-01", end="2023-01-01")['Adj Close']
+
+# Calcul des rendements quotidiens
+rendements = data.pct_change().dropna()
+
+# Calcul du rendement moyen
+rendement_moyen = rendements.mean() * 100
+
+# Calcul de la volatilité
+volatilite = rendements.std() * 100
+
+# Rendement quotidien du portefeuille
+rendement_portefeuille = rendements.mean(axis=1)
+
+# Rendement cumulé du portefeuille
+rendement_cumule = (1 + rendement_portefeuille).cumprod() - 1
+
+# Visualisation
+plt.figure(figsize=(12, 6))
+for action in actions:
+    plt.plot(data.index, data[action], label=action)
+plt.title("Évolution des prix des actions")
+plt.xlabel("Date")
+plt.ylabel("Prix de clôture ajusté ($)")
+plt.legend()
+plt.show()
+
+# Histogramme des rendements d'Apple
+plt.figure(figsize=(8, 4))
+plt.hist(rendements['AAPL'], bins=50, color='skyblue', edgecolor='black')
+plt.title("Distribution des rendements quotidiens d'Apple")
+plt.xlabel("Rendement quotidien")
+plt.ylabel("Fréquence")
+plt.show()
+
+# Rendement cumulé du portefeuille
+plt.figure(figsize=(12, 6))
+plt.plot(rendement_cumule.index, rendement_cumule * 100, color='purple')
+plt.title("Rendement cumulé du portefeuille")
+plt.xlabel("Date")
+plt.ylabel("Rendement cumulé (%)")
+plt.show()
+
+
+# Taux sans risque (par exemple, 1 % par an)
+taux_sans_risque = 0.01 / 252  # Quotidien, divisé par 252 jours de bourse
+
+# Calcul du ratio de Sharpe pour chaque action
+ratio_sharpe = (rendements.mean() - taux_sans_risque) / rendements.std()
+
+# Création d'un DataFrame avec les résultats
+resultats = pd.DataFrame({
+    'Rendement Moyen (%)': rendement_moyen,
+    'Volatilité (%)': volatilite,
+    'Ratio de Sharpe': ratio_sharpe
+})
+
+# Affichage du tableau
+print(resultats)
+
+# Afficher le tableau dans une manière plus lisible dans VSCode
+import ace_tools as tools; tools.display_dataframe_to_user(name="Rendements et Volatilité", dataframe=resultats)
+
+
+
+
+</code></pre><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Oliana-Guillaume/mon/temps-1.2/image.png" alt="alt text"> <img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Oliana-Guillaume/mon/temps-1.2/image-1.png" alt="alt text"> <img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Oliana-Guillaume/mon/temps-1.2/image-2.png" alt="alt text"></p><h2 id="1.3-optimisation-avec-la-m%C3%A9thode-de-markowitz" tabindex="-1"><a class="header-anchor" href="#1.3-optimisation-avec-la-m%C3%A9thode-de-markowitz"></a> 1.3 Optimisation avec la méthode de Markowitz</h2><p>La méthode de Markowitz, également appelée <strong>théorie moderne du portefeuille</strong>, est une technique qui permet de sélectionner les actifs dans un portefeuille afin de maximiser le rendement attendu tout en minimisant le risque (volatilité). Elle repose sur la relation entre la <strong>variance</strong> (ou volatilité) et les <strong>rendements attendus</strong> des actifs.</p><p>L'objectif principal est de déterminer la <strong>frontière efficiente</strong>, c'est-à-dire un ensemble de portefeuilles optimaux offrant le meilleur rendement pour un niveau de risque donné.</p><h3 id="formules-cl%C3%A9s-%3A" tabindex="-1"><a class="header-anchor" href="#formules-cl%C3%A9s-%3A"></a> Formules clés :</h3><h4 id="1.-rendement-attendu-du-portefeuille" tabindex="-1"><a class="header-anchor" href="#1.-rendement-attendu-du-portefeuille"></a> 1. <strong>Rendement attendu du portefeuille</strong></h4><p>Le rendement attendu du portefeuille est la somme des rendements attendus pondérés de chaque actif :</p><p>$$ \text{Rendement attendu du portefeuille} = \sum_{i=1}^{n} w_i \times r_i $$</p><ul><li>$w_i$ : Poids de l'actif $i$ dans le portefeuille (la proportion du capital investi dans cet actif).</li><li>$r_i$ : Rendement attendu de l'actif $i$.</li></ul><h4 id="2.-risque-(volatilit%C3%A9)-du-portefeuille" tabindex="-1"><a class="header-anchor" href="#2.-risque-(volatilit%C3%A9)-du-portefeuille"></a> 2. <strong>Risque (volatilité) du portefeuille</strong></h4><p>Le risque (volatilité) d'un portefeuille est déterminé à partir de la variance des actifs individuels ainsi que de leurs covariances. Il est exprimé par :</p><p>$$ \text{Volatilité du portefeuille} = \sqrt{\sum_{i=1}^{n} \sum_{j=1}^{n} w_i w_j \times \text{Cov}(r_i, r_j)} $$</p><ul><li>$\text{Cov}(r_i, r_j)$ : Covariance entre les rendements des actifs $i$ et $j$.</li></ul><h4 id="3.-optimisation-du-portefeuille" tabindex="-1"><a class="header-anchor" href="#3.-optimisation-du-portefeuille"></a> 3. <strong>Optimisation du portefeuille</strong></h4><p>L'objectif de l'optimisation du portefeuille est de minimiser la volatilité pour un rendement donné ou de maximiser le rendement pour un niveau de risque donné.</p><p>La <strong>frontière efficiente</strong> est un ensemble de portefeuilles optimaux qui fournissent le meilleur rendement pour un niveau de risque donné. Chaque point sur cette frontière représente un portefeuille optimal.</p><hr><h3 id="code-python-pour-l'optimisation-du-portefeuille" tabindex="-1"><a class="header-anchor" href="#code-python-pour-l'optimisation-du-portefeuille"></a> Code Python pour l'optimisation du portefeuille</h3><p>On va ici chercher à optimiser le portefeuille, c'est-à-dire le poids des actifs selon les critères de volatilité, rendement et risque.</p><p>Avec le code python suivant, on obtient les figures ci-dessous :</p><pre class="language-python line-numbers"><code>
+
+import yfinance as yf
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import scipy.optimize as sco
+from tabulate import tabulate
+
+# Sélection des actions
+actions = ['AAPL', 'MSFT', 'GOOGL']
+
+# Téléchargement des données
+data = yf.download(actions, start="2020-01-01", end="2023-01-01")['Adj Close']
+
+# Calcul des rendements quotidiens
+rendements = data.pct_change().dropna()
+
+
+jours_bourse_par_an = 252
+
+# Calcul du rendement moyen annuel
+rendement_moyen_annuel = rendements.mean() * jours_bourse_par_an * 100
+
+# Calcul de la volatilité annuelle
+volatilite_annuelle = rendements.std() * np.sqrt(jours_bourse_par_an) * 100
+# Taux sans risque (par exemple, 1 % par an)
+taux_sans_risque_annuel = 0.01  # 1% par an
+
+# Calcul du ratio de Sharpe annuel
+ratio_sharpe_annuel = (rendements.mean() * jours_bourse_par_an - taux_sans_risque_annuel) / (rendements.std() * np.sqrt(jours_bourse_par_an))
+
+# Création d'un DataFrame avec les résultats annuels
+resultats_annuels = pd.DataFrame({
+    'Rendement Moyen Annuel (%)': rendement_moyen_annuel,
+    'Volatilité Annuelle (%)': volatilite_annuelle,
+    'Ratio de Sharpe Annuel': ratio_sharpe_annuel
+})
+
+# Affichage du tableau avec pandas (utile dans un notebook)
+print(resultats_annuels)
+
+# Affichage du tableau avec tabulate
+print("\nTableau récapitulatif des rendements moyens, volatilités et ratios de Sharpe (annuels) :")
+print(tabulate(resultats_annuels, headers='keys', tablefmt='pretty'))
+
+# ============================
+# Optimisation de portefeuille avec la méthode de Markowitz
+# ============================
+
+# Calcul du rendement annuel moyen et de la matrice de covariance
+rendement_annuel = rendements.mean() * jours_bourse_par_an  # Rendement annuel
+cov_matrix_annuelle = rendements.cov() * jours_bourse_par_an  # Covariance annuelle
+
+# Nombre d'actions dans le portefeuille
+nombre_actions = len(actions)
+
+
+def objectif_volatilite(weights):
+    return np.sqrt(np.dot(weights.T, np.dot(cov_matrix_annuelle, weights)))
+
+
+def objectif_sharpe(weights):
+    rendement_portefeuille = np.sum(weights * rendement_annuel)
+    volatilite_portefeuille = np.sqrt(np.dot(weights.T, np.dot(cov_matrix_annuelle, weights)))
+    ratio_sharpe_portefeuille = (rendement_portefeuille - taux_sans_risque_annuel) / volatilite_portefeuille
+    return -ratio_sharpe_portefeuille  # Nous minimisons l'inverse pour maximiser le ratio de Sharpe
+
+
+def objectif_rendement(weights):
+    return -np.sum(weights * rendement_annuel)  # Nous minimisons l'inverse pour maximiser le rendement
+
+
+# Contraintes : somme des poids doit être égale à 1
+contraintes = ({'type': 'eq', 'fun': lambda x: np.sum(x) - 1})
+
+# Limites sur les poids des actifs (entre 0 et 1)
+limites = tuple((0, 1) for asset in range(nombre_actions))
+
+# ============================
+# Optimisation pour chaque objectif
+# ============================
+
+# 1. Minimisation de la volatilité
+result_volatilite = sco.minimize(objectif_volatilite, nombre_actions * [1./nombre_actions], method='SLSQP', bounds=limites, constraints=contraintes)
+poids_optimal_volatilite = result_volatilite.x
+
+# 2. Maximisation du ratio de Sharpe
+result_sharpe = sco.minimize(objectif_sharpe, nombre_actions * [1./nombre_actions], method='SLSQP', bounds=limites, constraints=contraintes)
+poids_optimal_sharpe = result_sharpe.x
+
+# 3. Maximisation du rendement
+result_rendement = sco.minimize(objectif_rendement, nombre_actions * [1./nombre_actions], method='SLSQP', bounds=limites, constraints=contraintes)
+poids_optimal_rendement = result_rendement.x
+
+# ============================
+# Visualisation des répartitions optimales pour chaque stratégie
+# ============================
+
+# Répartition pour minimisation de la volatilité
+plt.figure(figsize=(8, 8))
+plt.pie(poids_optimal_volatilite, labels=actions, autopct='%1.1f%%', startangle=90, colors=['lightblue', 'lightgreen', 'coral'])
+plt.title("Répartition des actifs - Minimisation de la volatilité")
+plt.axis('equal')  # Assure que le camembert est un cercle
+plt.show()
+
+# Répartition pour maximisation du ratio de Sharpe
+plt.figure(figsize=(8, 8))
+plt.pie(poids_optimal_sharpe, labels=actions, autopct='%1.1f%%', startangle=90, colors=['lightblue', 'lightgreen', 'coral'])
+plt.title("Répartition des actifs - Maximisation du ratio de Sharpe")
+plt.axis('equal')  # Assure que le camembert est un cercle
+plt.show()
+
+# Répartition pour maximisation du rendement
+plt.figure(figsize=(8, 8))
+plt.pie(poids_optimal_rendement, labels=actions, autopct='%1.1f%%', startangle=90, colors=['lightblue', 'lightgreen', 'coral'])
+plt.title("Répartition des actifs - Maximisation du rendement")
+plt.axis('equal')  # Assure que le camembert est un cercle
+plt.show()
+
+rendements_portefeuille = []
+volatilites_portefeuille = []
+poids_optimal = []
+
+# Génération des portefeuilles pour différents niveaux de rendement
+for rendement_cible in np.linspace(rendement_annuel.min(), rendement_annuel.max(), 100):
+    contraintes = ({'type': 'eq', 'fun': lambda x: np.sum(x) - 1},
+                   {'type': 'eq', 'fun': lambda x: np.sum(x * rendement_annuel) - rendement_cible})
+    result = sco.minimize(objectif_volatilite, len(actions) * [1./len(actions)], method='SLSQP', bounds=limites, constraints=contraintes)
+
+    rendements_portefeuille.append(rendement_cible)
+    volatilites_portefeuille.append(np.sqrt(np.dot(result.x.T, np.dot(cov_matrix_annuelle, result.x))))
+    poids_optimal.append(result.x)
+
+# ============================
+# Tracé de la frontière efficiente
+# ============================
+plt.figure(figsize=(10, 6))
+plt.plot(volatilites_portefeuille, rendements_portefeuille, marker='o', linestyle='-', color='b')
+plt.title('Frontière efficiente (Markowitz)')
+plt.xlabel('Risque (Volatilité)')
+plt.ylabel('Rendement attendu')
+plt.grid(True)
+plt.show()
+
+# ============================
+# Visualisation de la répartition optimale pour minimisation de la volatilité
+# ============================
+# Choisir un portefeuille optimal (par exemple, le 50ème portefeuille pour un compromis intermédiaire)
+poids_optimal_volatilite = poids_optimal[50]
+
+# Création d'un camembert pour afficher la répartition optimale des actifs
+plt.figure(figsize=(8, 8))
+plt.pie(poids_optimal_volatilite, labels=actions, autopct='%1.1f%%', startangle=90, colors=['lightblue', 'lightgreen', 'coral'])
+plt.title("Répartition des actifs - Minimisation de la volatilité")
+plt.axis('equal')
+plt.show()
+
+
+</code></pre><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Oliana-Guillaume/mon/temps-1.2/image-8.png" alt="Frontière de Markowitz"></p><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Oliana-Guillaume/mon/temps-1.2/image-4.png" alt="alt text"></p><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Oliana-Guillaume/mon/temps-1.2/image-5.png" alt="alt text"></p><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Oliana-Guillaume/mon/temps-1.2/image-6.png" alt="alt text"></p><p>Ce qui est cohérent du fait que l'action d'APPLE est celle qui a le mieux performé sur cette période, comme on peut le voir dans le tableau suivant :</p><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Oliana-Guillaume/mon/temps-1.2/image-7.png" alt="alt text"></p><h2 id="conclusion" tabindex="-1"><a class="header-anchor" href="#conclusion"></a> Conclusion</h2><p>Dans ce projet, nous avons exploré deux aspects essentiels de la finance avec Python : l'<strong>optimisation de portefeuille</strong> selon la méthode de Markowitz et le développement d'une <strong>stratégie de trading</strong> basée sur des indicateurs techniques. Ces deux approches permettent d'aborder la gestion de portefeuille de manière quantitative, en maximisant le rendement attendu tout en minimisant le risque ou en appliquant des stratégies de trading systématiques.</p><h3 id="1.-optimisation-de-portefeuille-2" tabindex="-1"><a class="header-anchor" href="#1.-optimisation-de-portefeuille-2"></a> 1. <strong>Optimisation de Portefeuille</strong></h3><p>L'optimisation de portefeuille selon la théorie moderne de Markowitz repose sur la maximisation du rendement pour un niveau de risque donné ou la minimisation du risque pour un rendement ciblé. Grâce à cette méthode :</p><ul><li>Nous avons calculé la <strong>frontière efficiente</strong>, qui représente les portefeuilles optimaux en termes de rendement-risque.</li><li>Nous avons examiné trois portefeuilles optimaux : celui qui minimise la volatilité, celui qui maximise le <strong>ratio de Sharpe</strong>, et celui qui maximise le rendement.</li><li>Les résultats montrent que la meilleure répartition des actifs dépend des objectifs de l'investisseur. Si l'on cherche à minimiser le risque, une allocation prudente répartie entre Apple, Microsoft et Google est optimale. Pour un rendement maximum, une exposition plus importante à Apple, qui a surperformé durant la période analysée, est recommandée.</li></ul><h3 id="2.-performance-et-analyse" tabindex="-1"><a class="header-anchor" href="#2.-performance-et-analyse"></a> 2. <strong>Performance et Analyse</strong></h3><p>Les graphiques générés permettent de visualiser clairement la <strong>frontière efficiente</strong>, ainsi que la répartition optimale des actifs pour différents objectifs financiers. Il ressort de l'analyse que :</p><ul><li>La <strong>stratégie de minimisation de la volatilité</strong> offre un portefeuille relativement stable mais avec un rendement plus modéré.</li><li>La <strong>maximisation du ratio de Sharpe</strong> permet d'obtenir un bon équilibre entre risque et rendement, ce qui en fait un choix privilégié pour beaucoup d'investisseurs.</li><li>Enfin, la <strong>maximisation du rendement</strong> peut offrir des gains élevés mais expose l'investisseur à des risques plus importants, notamment en période de forte volatilité.</li></ul></article></main><footer class="min-h-[50px] border-t-2 mt-4 border-gray-200 dark:border-neutral-700"><div class="max-w-[1000px] mx-auto px-4"><div class="min-h-[50px] flex justify-center items-center"><p class="text-center">©2025 <b><span style="font-family:Consolas,sans-serif">Do-<span style="color:#4a86e8">It</span></span></b> - Développement, Management et Gestion de projets en IT</p></div></div></footer><script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">window.MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]]},svg:{fontCache:"global"}},document.addEventListener("DOMContentLoaded",(()=>{MathJax.typeset()}))</script><script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">Prism.plugins.NormalizeWhitespace.setDefaults({"remove-trailing":!0,"remove-indent":!0,"left-trim":!0,"right-trim":!0})</script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script></body></html>

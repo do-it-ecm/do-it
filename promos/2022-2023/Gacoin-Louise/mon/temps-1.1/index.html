@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="robots" content="index, follow">
+
+        <link rel="canonical" href="https://do-it.aioli.ec-m.fr/promos/2022-2023/Gacoin-Louise/mon/temps-1.1/">
+
+        
+        
+
+        <meta name="description" content="Do-It, cours et travaux des élèves de l&#39;école Centrale Méditerranée">
+        <meta property="og:description" content="Do-It, cours et travaux des élèves de l&#39;école Centrale Méditerranée">
+        <meta name="twitter:description" content="Do-It, cours et travaux des élèves de l&#39;école Centrale Méditerranée">
+
+        
+            <meta name="author" content="Louise Gacoin">
+        
+        <meta name="keywords" content="do-it, centrale, centrale méditerranée, ecm, MON, gestions de projet, agile, scrum">
+
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png">
+        <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png">
+
+        <link href="/assets/stylesheets/main.css" rel="stylesheet">
+
+        <meta property="og:title" content="MON 1: Comparatif des typologies des projets agiles">
+
+        <meta property="og:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta property="og:url" content="https://do-it.aioli.ec-m.fr/promos/2022-2023/Gacoin-Louise/mon/temps-1.1/">
+        <meta property="og:type" content="website">
+
+        <meta name="twitter:card" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:title" content="MON 1: Comparatif des typologies des projets agiles">
+        <meta name="twitter:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:url" content="https://do-it.aioli.ec-m.fr/promos/2022-2023/Gacoin-Louise/mon/temps-1.1/">
+
+        <title>MON 1: Comparatif des typologies des projets agiles</title>
+
+        <!-- Prismjs imports
+                - Prism line numbers
+                - Prism toolbar
+        -->
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet">
+        <link id="prism-theme" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+        <!-- Mermaid import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js "></script>
+
+        <script defer="">
+        // Check if a theme is stored in localStorage. If so, use it, otherwise fallback to the system preference.
+        const storedTheme = localStorage.getItem('theme');
+        if (storedTheme) {
+            document.documentElement.classList.toggle("dark", storedTheme === "dark");
+        } else {
+            // Use system color scheme if there is no stored theme preference.
+            document.documentElement.classList.toggle("dark", window.matchMedia("(prefers-color-scheme: dark)").matches);
+        }
+
+        function loadPrismTheme(isDarkMode) {
+            const newTheme = isDarkMode ? 'prism-okaidia.min.css' : 'prism-solarizedlight.min.css';
+            const newLink = document.createElement('link');
+            newLink.rel = 'stylesheet';
+            newLink.id = 'prism-theme';
+            newLink.href = `https://cdn.jsdelivr.net/npm/prismjs/themes/${newTheme}`;
+
+            newLink.onload = () => {
+                // Reapply highlighting after the new theme loads
+                Prism.highlightAll();
+            };
+
+            const existingLink = document.getElementById('prism-theme');
+            if (existingLink) {
+                document.head.replaceChild(newLink, existingLink);
+            } else {
+                document.head.appendChild(newLink);
+            }
+        }
+
+        function setMermaidTheme(isDarkMode) {
+            const theme = isDarkMode ? 'dark' : 'forest';
+            mermaid.initialize({
+                securityLevel: 'loose',
+                theme,
+                startOnLoad: true,
+            });
+        }
+
+        // Toggle dark and light mode and update localStorage accordingly.
+        function toggleDarkMode() {
+            const dark = document.documentElement.classList.contains("dark");
+            const newTheme = dark ? "light" : "dark";
+            localStorage.setItem('theme', newTheme);
+            document.documentElement.classList.toggle("dark", !dark);
+            loadPrismTheme(!dark);
+            setMermaidTheme(!dark);
+        }
+
+        // On initial load, ensure that Prism and Mermaid are initialized using the current theme.
+        const isDark = document.documentElement.classList.contains("dark");
+        loadPrismTheme(isDark);
+        setMermaidTheme(isDark);
+        </script>
+
+    </head>
+
+    <body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000" class="bg-neutral-50 text-neutral-950 dark:bg-neutral-900 dark:text-neutral-50">
+        <header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white dark:bg-neutral-900 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-between items-center">
+                    <a class="mx-2" href="/">Home</a>
+                    <button class="hidden sm:block text-neutral-950 dark:text-neutral-50 hover:bg-neutral-700 hover:text-neutral-50 hover:dark:bg-neutral-300 hover:dark:text-neutral-950 transition-colors p-2 rounded-full duration-800 ease-in-out" onclick="toggleDarkMode()">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 dark:hidden stroke-current">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <path d="M12 2V4" stroke-linecap="round"></path>
+                            <path d="M12 20V22" stroke-linecap="round"></path>
+                            <path d="M4 12L2 12" stroke-linecap="round"></path>
+                            <path d="M22 12L20 12" stroke-linecap="round"></path>
+                            <path d="M19.7778 4.22266L17.5558 6.25424" stroke-linecap="round"></path>
+                            <path d="M4.22217 4.22266L6.44418 6.25424" stroke-linecap="round"></path>
+                            <path d="M6.44434 17.5557L4.22211 19.7779" stroke-linecap="round"></path>
+                            <path d="M19.7778 19.7773L17.5558 17.5551" stroke-linecap="round"></path>
+                        </svg>
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 stroke-current hidden dark:block">
+                            <path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </button>
+                    <div class="flex items-center gap-4 sm:gap-6 ">
+                        <a class="" href="/cs">CS</a>
+                        <a class="" href="/pok">POK</a>
+                        <a class="" href="/mon">MON</a>
+                        <a class="" href="/projets">Projets</a>
+                        <a class="hidden sm:block" href="/promos">Promos</a>
+                        <a href="/search">
+                            <svg class="h-5 aspect-square stroke-neutral-950 dark:stroke-neutral-300 fill-none stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+                            </svg>
+                        </a>
+                        <a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank">
+                            <svg class="h-5 aspect-square dark:stroke-neutral-300 dark:fill-neutral-300" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body="">
+            
+<article class="relative">
+<h1 class="mb-1">MON 1: Comparatif des typologies des projets agiles</h1>
+<div class="mb-4">
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Tags : </div>
+            <ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags">
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">MON</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">gestions de projet</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">agile</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">scrum</li>
+                
+
+            </ul>
+
+            
+            <div class="hidden" data-pagefind-meta="Type" aria-hidden="true">
+                
+                    
+                        <span data-pagefind-filter="Type">MON</span>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Auteur : </div>
+            <ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs">
+                
+                    <li class="bg-blue-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Auteurs">Louise Gacoin</li>
+                
+            </ul>
+        </div>
+    
+
+    
+        <div class="absolute top-0 right-0">
+            <span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2 text-neutral-950" data-pagefind-filter="Année">
+                2022-2023
+            </span>
+        </div>
+    
+</div>
+
+
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100 dark:border-purple-800 dark:bg-purple-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-purple-500 dark:stroke-purple-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/promos/2022-2023/Gacoin-Louise/">Louise Gacoin</a><span class="px-1">/</span><a href="/promos/2022-2023/Gacoin-Louise/mon/">MON de Louise </a><span class="px-1">/</span><a href="/promos/2022-2023/Gacoin-Louise/mon/temps-1.1/">MON 1: Comparatif des typologies des projets agiles</a>
+
+</div>
+</div>
+
+
+
+
+<h2 id="sommaire" tabindex="-1"><a class="header-anchor" href="#sommaire"></a> Sommaire</h2>
+<ol>
+<li>Introduction</li>
+<li>Lean Project Management</li>
+<li>Scrum</li>
+<li>SAFE</li>
+<li>Shape Up</li>
+<li>Conclusion</li>
+</ol>
+<h2 id="1.introduction" tabindex="-1"><a class="header-anchor" href="#1.introduction"></a> 1.Introduction</h2>
+<p>L'agile est un mode de conduite de projet né dans les années 2000. Il s'oppose à la conduite de projet classique par ses valeurs et son aspect itératif. En effet dans la conduite de projet classique, on suit les étapes suivantes:</p>
+<ul>
+<li>Un cahier des charges précisant les périmètres couts et délais du projet est remis aux développeurs par le client</li>
+<li>Le projet est développé</li>
+<li>Les livrables sont remis au client</li>
+</ul>
+<p>En agile on réalise les projets par petits blocs et chaque étape est discutée, validée avec le client. L'objectif de ces itérations est de satisfaire au mieux le du besoin client. (On hiérarchise ses besoins et on ajuste le projet au fil de l'eau.) L’idée est alors de replacer les individus et les interactions au centre de chaque projet (plutôt que de prioriser les processus et les outils). Mais aussi et surtout de répondre et de s’adapter au changement.</p>
+<img src="https://raw.githubusercontent.com/do-it-ecm/promo-2022-2023/refs/heads/main//Gacoin-Louise/mon/temps-1.1/agile-vs-waterfall-min.png">
+source: https://hackr.io/blog/agile-vs-waterfall
+<p>Il existe alors plusieurs méthodologies agile. Nous allons ici en étudier 4 : le Lean, le Scrum, le SAFe et le Shape up.</p>
+<h2 id="2.lean-project-management" tabindex="-1"><a class="header-anchor" href="#2.lean-project-management"></a> 2.Lean Project Management</h2>
+<p>L'objectif du lean project management est <strong>d'éliminer le gaspillage</strong> pour rendre le projet plus <strong>efficace</strong> et mieux servir les clients et utilisateurs. Cette approche vise à supprimer les goulots d'étranglement du projet pour ainsi l'accélérer.
+Elle fut mise en place pour la première fois dans les lignes de production de TOYOTA dans les années 90's. Les tâches ont été redécoupées pour  accélérer la ligne.
+Cette méthode cherche avant tout la performance tout en satisfaisant le client.</p>
+<p>Dans le lean, le TEMPS est très important on va à l'essentiel pour rendre le projet à l'heure et on évite de gaspiller des ressources. Cela signifie qu'on réduit le temps dépensé sur les activités sans <strong>valeur ajoutée</strong>.</p>
+<p>Pour produire vite, on utilise un MVP ou Minimum Viable Product. Le but est de concevoir une version simplifiée du produit finale comportant ses fonctionnalités principales. On fait ensuite valider le MVP par les clients/utilisateurs via des tests. Cette technique permet de valider une idée à moindre coût. Si le produit est validé, on industrialise, sinon il faut pivoter. (Le pivot est important).</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100 dark:border-yellow-800 dark:bg-yellow-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-yellow-500 dark:stroke-yellow-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><em><strong>boîte à outils</strong></em></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li>Pour cartographier les flux on utilise un VSM (Value Stream Mapping). Cela permet d'identifier le temps passés sur des activités sans valeur ajoutées</li>
+<li>Management visuel (avec des KPI...)</li>
+<li>Roue d'amélioration continue: DMAIC (Define, Measure, Analyse, Improve, Control)</li>
+<li>MVP</li>
+</ul>
+</div>
+</div>
+<img src="https://raw.githubusercontent.com/do-it-ecm/promo-2022-2023/refs/heads/main//Gacoin-Louise/mon/temps-1.1/Tbl_Lean.png"  ="">
+<h2 id="3.scrum" tabindex="-1"><a class="header-anchor" href="#3.scrum"></a> 3.Scrum</h2>
+<p>Scrum signifie mélée en français. Cette approche est basée sur des rôles données aux parties prenantes du projet :</p>
+<ul>
+<li>L'équipe, est constituée des personnes nécessaires à la réalisation du projet (Développeurs, Product Owner, Scrum master...)</li>
+<li>Le Product Owner, a un rôle de chef de projet, c'est lui qui défini le périmètre du projet, établi les priorités via le product backlog,</li>
+<li>Le Scrum Master, s'assure de la bonne communication entre l'équipe et du respect des processus srcum.
+Il n'y a pas de hiérarchie dans cette équipe. Tous travaillent ensemble pour mener à bien le projet</li>
+</ul>
+<p>Les étapes de réalisation d'un projet sont les suivantes :</p>
+<ul>
+<li>On réalise les <strong>User stories</strong> dans lesquelles on va compiler les fonctionnalités voulues par les utilisateurs. Une user story doit être réalisable en 1 sprint.</li>
+<li>On fait le <strong>Product Backlog</strong>. C'est une liste des fonctionnalités/ exigences du clients. Son contenu est priorisé, hiérarchisé par le Product Owner. Elle évolue tout au long du projet.</li>
+<li>Début d'un <strong>Sprint</strong>. C'est une période de temps qui dure 2 à 4 semaines où l'on va développer les fonctionnalités en haut de la product backlog. Elle commence par un réunion de planification (Le Sprint Planning Meeting). Le développement commence. Des réunions quotidiennes courtes sont effectuées (= des scrums) où cahcun dit ce qu'il a fait la veille, ce qu'il va faire le jour même et les problèmes qu'il  rencontre. A l'issue de cette réunion, le scrum master met à jour le 'burn down chart' où il identifie les problèmes rencontrés par l'équipe pour  y apporter des solutions.
+A la fin du sprint, des tests qualité sont réalisés, puis on présente la solution au client lors du Sprint Meeting Review. Ses retours sont priorisés et ajoutés au product backlog</li>
+<li>On recommence un nouveau sprint</li>
+</ul>
+<img src="https://raw.githubusercontent.com/do-it-ecm/promo-2022-2023/refs/heads/main//Gacoin-Louise/mon/temps-1.1/Scrum.png">
+source: https://www.google.fr/
+https://www.cfi.ch/wp-content/uploads/processus-2048x842.png
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100 dark:border-yellow-800 dark:bg-yellow-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-yellow-500 dark:stroke-yellow-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><em><strong>boîte à outils</strong></em></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li>Product Backlog</li>
+<li>Burn down chart (graphique qui montre l'avancement du projet et les points de difficultées)</li>
+</ul>
+</div>
+</div>
+<img src="https://raw.githubusercontent.com/do-it-ecm/promo-2022-2023/refs/heads/main//Gacoin-Louise/mon/temps-1.1/tbl_Scrum.png"  ="">
+<h2 id="4.safe-(scaled-agile-framework)" tabindex="-1"><a class="header-anchor" href="#4.safe-(scaled-agile-framework)"></a> 4.SAFe (Scaled Agile Framework)</h2>
+<p>La méthode Safe est utilisée pour organiser des projets, pilotés en scrum à grandes échelles. Elle permet d'orchestrer plusieurs équipes qui travaillent sur le même projet. En général on l'utilise lorsque le nombre de collaborateurs dépasse 50 ou lorsque plusieurs équipes différentes travaillent sur un même projet.</p>
+<p>La méthode SAFe fait  évoluer l’Agilité à l’échelle de l’entreprise. Grâce à celle-ci on instaure au sein d’une même entreprise un langage commun et fluide entre  différentes équipes. Elle est notamment utilisée dans les projets informatiques.</p>
+<p>Fonctionnement :</p>
+<p>On peut voir la méthode SAFe comme un embriquement de SCRUM (poupée russe). Cet assemblage comporte plusieurs niveaux. Initialement en 4 niveaux, elle en présente aujourd'hui 3
+Du plus local au plus global :</p>
+<ul>
+<li>Les équipes (Teams)</li>
+<li>Le programme
+⇒ forment maintenant le niveau (essentials)</li>
+<li>Large solution value stream</li>
+<li>Le portefeuille (ou portfolio), qui concerne le « top management »</li>
+</ul>
+<p>Les rôles de SCRUM sont conservés au niveau des équipes. Ils sont complétés par d'autres rôles qui s'assurent que les différents équipes du projet livrent bien les fonctionnalités dues, au  moments attendus. A chacun des niveaux de cette organisation, on retrouve des backlogs, qui fonctionnent sur le même modèle que décrit dans la partie précédente.</p>
+<img src="https://raw.githubusercontent.com/do-it-ecm/promo-2022-2023/refs/heads/main//Gacoin-Louise/mon/temps-1.1/Safe_level.png"  ="">
+<p>La notion de CADENCE est très importante dans SAFe. Elle est établie en nombre de Sprints</p>
+<img src="https://raw.githubusercontent.com/do-it-ecm/promo-2022-2023/refs/heads/main//Gacoin-Louise/mon/temps-1.1/SAFE.png"  ="">
+source: https://www.google.fr/
+https://blog.talanlabs.com/safe-cest-quoi/cover.png
+<p>étapes :</p>
+<ul>
+<li>
+<p>Lors de séminaires appelés Program Implement Planning, les personnes impliquées sont informées des objectifs à atteindre et des cycles de développement prévus (sprint) pour y parvenir. La longueur des périodes est déterminée par le PI (programm increment cadence)</p>
+</li>
+<li>
+<p>Les équipes du train sont synchronisées : Elles ont toutes le même temps de PI et ont les mêmes dates de début et fin des itérations. Le planning du train est établi périodiquement lors de rencontres en face à face avec les équipes.
+La plupart des personnes de l'ART (du train) sont dédiées à plein temps à ce train</p>
+</li>
+<li>
+<p>A chaque fin de période de travail (PI)
+La solution est évaluée. Les équipes ainsi que le manangement indentifient les améliorations à faire lors d'ateliers. Ces changements sont ajoutés aux différentes backlogs</p>
+</li>
+<li>
+<p>Develop on Cadence, Release on Demand : Le développement par les équipes est cadencé et synchronisé mais la sortie d'une solution ne dépend pas de ce rythme. En effet l'ART peut sortir une solution ou un de ses éléments à n'importe quel moment selon certains critères/ contraintes imposées par le client.</p>
+</li>
+</ul>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100 dark:border-yellow-800 dark:bg-yellow-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-yellow-500 dark:stroke-yellow-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><em><strong>boîte à outils</strong></em></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li>ART (Agile Release Train)</li>
+<li>Backlogs (Product, feature, capability, epic...)</li>
+<li>Burn down Chart</li>
+</ul>
+</div>
+</div>
+<img src="https://raw.githubusercontent.com/do-it-ecm/promo-2022-2023/refs/heads/main//Gacoin-Louise/mon/temps-1.1/tbl_SAFE.png">
+<h2 id="5.shape-up" tabindex="-1"><a class="header-anchor" href="#5.shape-up"></a> 5.Shape UP</h2>
+<p>La méthode Shape up est une méthode inventée par la société Basecamp qui édite des logicilels à Chicago. Elle est assez récente puisqu'elle fut théorisée en 2019.</p>
+<p>Cette méthode fonctionne en cycles de 6 semaines suivis par des cool down de 2 semaines (objectif = éviter l'effet tunnel).
+L’évaluation des projets envisagés ne se fait pas sur la base d’une estimation de leur durée (combien de temps cela va prendre ?), mais plutôt de <strong>“l’appétit”</strong> qu’on a à les mener (combien de temps on a envie d’y consacrer ?). C'est une durée fixe , la variable d'ajustement devient le périmètre !</p>
+<p>Fonctionnement :</p>
+<p><strong>Etape 1 : Shapping</strong>
+Cette étape sert à identifier les problématiques à adresser, solutions potentielles, leurs limites…
+Lors du premier cycle, on va collecter les besoins des utilisateurs, cadrer la solution produit evisagée. L'idée est de “façonner”/”défricher” une idée brute. On doit êtablir clairement le problème auquel on veut répondre et les limites de notre solution, décrire ses grandes fonctionnalités et les risques.
+Lors des cycles suivants, on va collecter les besoins au fur et à mesure que les équipes développent la solution. Pour ce faire on va interviwer les équipes en interne pour cerner leurs besoins.</p>
+<p>Le shaping se conclut par la rédaction de pitchs (ou scénarios) qui doivent contenir 5 éléments :
+– Le problème auquel on veut répondre;
+– L’appétit, le temps que l’on souhaite y consacrer en semaines (sachant qu’on peut mener un ou plusieurs projets pendant les 6 semaines. Principe des small ou big batch);
+– La solution (du moins, les éléments clés, features);
+– Les pièges qui pourraient survenir;
+– Les no-gos. Ce que l’on ne veut pas faire.</p>
+<p>A chaque cycle on remet à plat tous les besoins !</p>
+<p><strong>Etape 2 : Betting (durant le cool down)</strong>
+Durant le cool-down, quelques personnes (le management) vont décider de ce qui va être conçu et par qui dans le prochain cycle, en fonction des pitchs reçus. C’est la betting table. 
+Pour prioriser ces scénarios on peut utiliser la méthode RICE.
+Toutes les 6 semaines, un nombre limité de pitchs sont retenus. Si un pitch était bon mais n’a pas été choisi, il peut être proposé à une nouvelle Betting Table. En Shape up on part du principe que  si une demande est importante elle reviendra aux cycles d'après.
+On fait un « plan » de ce qu'il va se produire dans le cycle suivant.</p>
+<p>Durant cette période les équipes de développement sont libres de travailler sur ce qu'elles veulent. (En général elles vont réparer des bugs…)
+Les équipes vont aussi, dans la mesure du possible, se positionner sur les projets de leur choix.</p>
+<p><strong>Etape 3 : Building (6semianes)</strong>
+Les équipes passent à l'action. On leur donne un projet à réaliser et non des tâches. Elles sont donc libres de s'organiser comme elles le souhaitent (les équipes sont responsabilisées)</p>
+<p>A noter : Les phases de Shape et de build se déroulent simultanément à partir de la 2 ème itération (on parle de dual run).
+Les équipes tournent ! ( ce ne sont pas les même personnes qui shape et build à chaque fois).</p>
+<img src="https://raw.githubusercontent.com/do-it-ecm/promo-2022-2023/refs/heads/main//Gacoin-Louise/mon/temps-1.1/cycles_ShapeUp.png">
+source: https://www.le-ticket.fr/resume-shape-up-basecamp/2821/
+<img src="https://raw.githubusercontent.com/do-it-ecm/promo-2022-2023/refs/heads/main//Gacoin-Louise/mon/temps-1.1/tbl_Shape_up.png">
+<h2 id="6.conclusion" tabindex="-1"><a class="header-anchor" href="#6.conclusion"></a> 6.Conclusion</h2>
+<p>Nous avons ici vu le fonctionnement de quelques méthodes agiles assez différentes. On constate qu'elles ont chacune leurs avantages et limites. On peut en conclure que chaque méthode est adaptée à des équipes et des types de projets différents.
+Ainsi le lean project management sera plus adapté à des projets de production ou d'ingénieurie R&amp;D alors que le Shape Up sera plus performant sur du développement informatique. Le Scrum et le SAFe fonctionneront bien pour tous types de projet avec des équipes rigoureuses lorsque le Shape Up laissera plus de place à la créativité.</p>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100 dark:border-pink-800 dark:bg-pink-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-pink-500 dark:stroke-pink-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p>Sources</p>
+</div><div class="pl-8 mr-8">
+<p>Lean : <a href="https://www.youtube.com/watch?v=Pp8-ahZQlLA">https://www.youtube.com/watch?v=Pp8-ahZQlLA</a></p>
+<p>Scrum: <a href="https://www.youtube.com/watch?v=anZcEIQlpoY">https://www.youtube.com/watch?v=anZcEIQlpoY</a>
+<a href="http://igm.univ-mlv.fr/~dr/XPOSE2008/SCRUM/deepscrum.php">http://igm.univ-mlv.fr/~dr/XPOSE2008/SCRUM/deepscrum.php</a></p>
+<p>SAFe:<a href="https://www.scaledagileframework.com/#">https://www.scaledagileframework.com/#</a>
+<a href="https://www.tuleap.org/fr/agilite-echelle/comprendre-safe-scaled-agile-framework">https://www.tuleap.org/fr/agilite-echelle/comprendre-safe-scaled-agile-framework</a></p>
+<p>Shape UP: <a href="https://basecamp.com/shapeup">https://basecamp.com/shapeup</a></p>
+</div>
+</div>
+
+
+
+</article>
+
+        </main>
+
+        <footer class="min-h-[50px] border-t-2 mt-4 border-gray-200 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-center items-center">
+                    <p class="text-center">
+                        ©2025 <b><span style="font-family: Consolas, sans-serif;">Do-<span style="color: #4a86e8">It</span></span></b> - Développement, Management et Gestion de projets en IT
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- MathJax import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">
+            window.MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']], // Delimiters for inline math
+                    displayMath: [['$$', '$$'], ['\\[', '\\]']] // Delimiters for block math
+                },
+                svg: {
+                    fontCache: 'global' // Use global font cache for SVG output
+                }
+            };
+            document.addEventListener('DOMContentLoaded', () => {
+                MathJax.typeset(); // Ensures MathJax processes the content after the page loads
+            });
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">
+            Prism.plugins.NormalizeWhitespace.setDefaults({
+                'remove-trailing': true,
+                'remove-indent': true,
+                'left-trim': true,
+                'right-trim': true,
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script>
+    </body>
+</html>

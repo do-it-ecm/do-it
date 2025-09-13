@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="robots" content="index, follow">
+
+        <link rel="canonical" href="https://do-it.aioli.ec-m.fr/promos/2023-2024/Beguier-Benoit/mon/temps-1.1/">
+
+        
+        
+
+        <meta name="description" content="Initiation au langage R et application dans l&#39;analyse et la visualisation des données.">
+        <meta property="og:description" content="Initiation au langage R et application dans l&#39;analyse et la visualisation des données.">
+        <meta name="twitter:description" content="Initiation au langage R et application dans l&#39;analyse et la visualisation des données.">
+
+        
+            <meta name="author" content="Benoit BEGUIER">
+        
+        <meta name="keywords" content="do-it, centrale, centrale méditerranée, ecm, MON, R, Analyse des données, RStudio">
+
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png">
+        <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png">
+
+        <link href="/assets/stylesheets/main.css" rel="stylesheet">
+
+        <meta property="og:title" content="Analyse des données sans galèR">
+
+        <meta property="og:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta property="og:url" content="https://do-it.aioli.ec-m.fr/promos/2023-2024/Beguier-Benoit/mon/temps-1.1/">
+        <meta property="og:type" content="website">
+
+        <meta name="twitter:card" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:title" content="Analyse des données sans galèR">
+        <meta name="twitter:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:url" content="https://do-it.aioli.ec-m.fr/promos/2023-2024/Beguier-Benoit/mon/temps-1.1/">
+
+        <title>Analyse des données sans galèR</title>
+
+        <!-- Prismjs imports
+                - Prism line numbers
+                - Prism toolbar
+        -->
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet">
+        <link id="prism-theme" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+        <!-- Mermaid import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js "></script>
+
+        <script defer="">
+        // Check if a theme is stored in localStorage. If so, use it, otherwise fallback to the system preference.
+        const storedTheme = localStorage.getItem('theme');
+        if (storedTheme) {
+            document.documentElement.classList.toggle("dark", storedTheme === "dark");
+        } else {
+            // Use system color scheme if there is no stored theme preference.
+            document.documentElement.classList.toggle("dark", window.matchMedia("(prefers-color-scheme: dark)").matches);
+        }
+
+        function loadPrismTheme(isDarkMode) {
+            const newTheme = isDarkMode ? 'prism-okaidia.min.css' : 'prism-solarizedlight.min.css';
+            const newLink = document.createElement('link');
+            newLink.rel = 'stylesheet';
+            newLink.id = 'prism-theme';
+            newLink.href = `https://cdn.jsdelivr.net/npm/prismjs/themes/${newTheme}`;
+
+            newLink.onload = () => {
+                // Reapply highlighting after the new theme loads
+                Prism.highlightAll();
+            };
+
+            const existingLink = document.getElementById('prism-theme');
+            if (existingLink) {
+                document.head.replaceChild(newLink, existingLink);
+            } else {
+                document.head.appendChild(newLink);
+            }
+        }
+
+        function setMermaidTheme(isDarkMode) {
+            const theme = isDarkMode ? 'dark' : 'forest';
+            mermaid.initialize({
+                securityLevel: 'loose',
+                theme,
+                startOnLoad: true,
+            });
+        }
+
+        // Toggle dark and light mode and update localStorage accordingly.
+        function toggleDarkMode() {
+            const dark = document.documentElement.classList.contains("dark");
+            const newTheme = dark ? "light" : "dark";
+            localStorage.setItem('theme', newTheme);
+            document.documentElement.classList.toggle("dark", !dark);
+            loadPrismTheme(!dark);
+            setMermaidTheme(!dark);
+        }
+
+        // On initial load, ensure that Prism and Mermaid are initialized using the current theme.
+        const isDark = document.documentElement.classList.contains("dark");
+        loadPrismTheme(isDark);
+        setMermaidTheme(isDark);
+        </script>
+
+    </head>
+
+    <body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000" class="bg-neutral-50 text-neutral-950 dark:bg-neutral-900 dark:text-neutral-50">
+        <header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white dark:bg-neutral-900 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-between items-center">
+                    <a class="mx-2" href="/">Home</a>
+                    <button class="hidden sm:block text-neutral-950 dark:text-neutral-50 hover:bg-neutral-700 hover:text-neutral-50 hover:dark:bg-neutral-300 hover:dark:text-neutral-950 transition-colors p-2 rounded-full duration-800 ease-in-out" onclick="toggleDarkMode()">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 dark:hidden stroke-current">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <path d="M12 2V4" stroke-linecap="round"></path>
+                            <path d="M12 20V22" stroke-linecap="round"></path>
+                            <path d="M4 12L2 12" stroke-linecap="round"></path>
+                            <path d="M22 12L20 12" stroke-linecap="round"></path>
+                            <path d="M19.7778 4.22266L17.5558 6.25424" stroke-linecap="round"></path>
+                            <path d="M4.22217 4.22266L6.44418 6.25424" stroke-linecap="round"></path>
+                            <path d="M6.44434 17.5557L4.22211 19.7779" stroke-linecap="round"></path>
+                            <path d="M19.7778 19.7773L17.5558 17.5551" stroke-linecap="round"></path>
+                        </svg>
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 stroke-current hidden dark:block">
+                            <path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </button>
+                    <div class="flex items-center gap-4 sm:gap-6 ">
+                        <a class="" href="/cs">CS</a>
+                        <a class="" href="/pok">POK</a>
+                        <a class="" href="/mon">MON</a>
+                        <a class="" href="/projets">Projets</a>
+                        <a class="hidden sm:block" href="/promos">Promos</a>
+                        <a href="/search">
+                            <svg class="h-5 aspect-square stroke-neutral-950 dark:stroke-neutral-300 fill-none stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+                            </svg>
+                        </a>
+                        <a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank">
+                            <svg class="h-5 aspect-square dark:stroke-neutral-300 dark:fill-neutral-300" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body="">
+            
+<article class="relative">
+<h1 class="mb-1">Analyse des données sans galèR</h1>
+<div class="mb-4">
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Tags : </div>
+            <ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags">
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">MON</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">R</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">Analyse des données</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">RStudio</li>
+                
+
+            </ul>
+
+            
+            <div class="hidden" data-pagefind-meta="Type" aria-hidden="true">
+                
+                    
+                        <span data-pagefind-filter="Type">MON</span>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Auteur : </div>
+            <ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs">
+                
+                    <li class="bg-blue-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Auteurs">Benoit BEGUIER</li>
+                
+            </ul>
+        </div>
+    
+
+    
+        <div class="absolute top-0 right-0">
+            <span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2 text-neutral-950" data-pagefind-filter="Année">
+                2023-2024
+            </span>
+        </div>
+    
+</div>
+
+<p class="mb-4 text-lg">Initiation au langage R et application dans l'analyse et la visualisation des données.</p>
+
+
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100 dark:border-purple-800 dark:bg-purple-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-purple-500 dark:stroke-purple-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/promos/2023-2024/Beguier-Benoit/">Benoit BEGUIER</a><span class="px-1">/</span><a href="/promos/2023-2024/Beguier-Benoit/mon/">MON de Benoit Beguier</a><span class="px-1">/</span><a href="/promos/2023-2024/Beguier-Benoit/mon/temps-1.1/">Analyse des données sans galèR</a>
+
+</div>
+</div>
+
+
+
+
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100 dark:border-pink-800 dark:bg-pink-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-pink-500 dark:stroke-pink-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Prérequis</b></p>
+</div><div class="pl-8 mr-8">
+<p><strong>Niveau :</strong> débutant
+<strong>Prérequis :</strong></p>
+<ul>
+<li>Bases de programmation</li>
+</ul>
+</div>
+</div>
+<h2 id="sommaire" tabindex="-1"><a class="header-anchor" href="#sommaire"></a> Sommaire</h2>
+<ol>
+<li>Introduction</li>
+<li>Bases</li>
+<li>Importation de données à partir de fichiers externes</li>
+<li>Application sur des données de Formule 1</li>
+</ol>
+<h2 id="1.-introduction" tabindex="-1"><a class="header-anchor" href="#1.-introduction"></a> 1. Introduction</h2>
+<p>Pour la réalisation de ce cours, j'aurais cinq sources principales :</p>
+<ul>
+<li>Initiez-vous au langage R pour analyser vos données, cours dispensé sur le site openclassrooms que vous pouvez trouvez <a href="https://openclassrooms.com/fr/courses/4525256-initiez-vous-au-langage-r-pour-analyser-vos-donnees">ici</a>.</li>
+<li>La documentation officielle R pour aller plus loin accessible <a href="https://cran.r-project.org/other-docs.html">ici</a>.</li>
+<li>Le site internet Racing Statistics accessible <a href="https://www.racing-statistics.com">ici</a></li>
+<li>Le site internet Pitwall.app accessible <a href="https://www.pitwall.app">ici</a></li>
+<li>L'e-book d'AWS sur la gestion des données en Formule 1</li>
+</ul>
+<p>R est un logiciel de la famille GNU (GNU signifie &quot;GNU's Not Unix&quot;). Le projet GNU a été lancé en 1984 afin de développer un système d’exploitation complet, semblable à Unix, et qui soit un logiciel libre.
+Je vais utiliser l'environnement de travail RStudio tout au long de cette formation puis des approfondissements. Mon but à la fin de ce MON est de pouvoir analyser et visualiser des jeux de données divers. J'espère approfondir suffisamment le langage pour analyser des données d'un sujet que je connais assez bien, le sport automobile.</p>
+<h2 id="2.-bases" tabindex="-1"><a class="header-anchor" href="#2.-bases"></a> 2. Bases</h2>
+<h4 id="r%C3%A9pertoire" tabindex="-1"><a class="header-anchor" href="#r%C3%A9pertoire"></a> Répertoire</h4>
+<p>Comme dans beaucoup d'environnements, il faut spécifier à RStudio le répertoire de travail avec la commande</p>
+<pre class="language-shell line-numbers"><code>
+
+setwd("C:Users...")
+
+
+</code></pre><h4 id="types-d'objets" tabindex="-1"><a class="header-anchor" href="#types-d'objets"></a> Types d'objets</h4>
+<p>S'en suivent ensuite d'autres explications basiques sur les trois manières d'attribuer des variables, ou <em>objets</em> comme ils sont appelés dans la formation ; ainsi que la suppression des objets et l'explication sur les différents types d'objets en R.</p>
+<p>J'ai trouvé très intéressante la partie sur la conversion entre les types. R permet de convertir un objet en n'importe quel type, et ce même quand cela n'a pas de sens (par exemple : un nombre en type <em>numeric</em> que l'on peut convertir en booléen de type <em>logical</em>). Cette liberté peut permettre, à mon sens, des facilités de programmation utiles dans certains cas.</p>
+<h4 id="les-dataframes" tabindex="-1"><a class="header-anchor" href="#les-dataframes"></a> Les dataframes</h4>
+<p>Les dataframes sont des listes d'objets (appelés <em>composantes</em>), dont chaques composantes ont la même longueur. Ils sont particulièrement utiles dans l'analyse des données. J'ai appris à en créer à partir de deux listes, à partir d'une matrice et à en importer depuis un fixhier (.csv ou .txt par exemple) et aussi à les visualiser grâce à la fonction View.</p>
+<h4 id="la-s%C3%A9lection-d'%C3%A9l%C3%A9ments-dans-les-diff%C3%A9rents-types-d'objets" tabindex="-1"><a class="header-anchor" href="#la-s%C3%A9lection-d'%C3%A9l%C3%A9ments-dans-les-diff%C3%A9rents-types-d'objets"></a> La sélection d'éléments dans les différents types d'objets</h4>
+<p>Un réel atout de R par rapport à Python repose, à mon sens, dans la syntaxe de sélection d'éléments. Je trouve celle-ci très intuitive et logique et ce pour tous types d'objets, là où cela peut s'avérer plus technique selon les objets manipulés sur Python.
+La sélection peut se faire par condition, par exemple :</p>
+<pre class="language-shell line-numbers"><code>
+
+#Créons la matrice X
+
+X <- matrix(1:12,nrow=3,ncol=4)
+X
+#      [,1] [,2] [,3] [,4]
+# [1,]    1    4    7   10
+# [2,]    2    5    8   11
+# [3,]    3    6    9   12
+
+#Sélection par condition
+X[,X[1,]>2]
+#      [,1] [,2] [,3]
+# [1,]    4    7   10
+# [2,]    5    8   11
+# [3,]    6    9   12
+
+
+</code></pre><p>ou alors par indice :</p>
+<pre class="language-shell line-numbers"><code>
+
+X[1,-1:2] # Première ligne de X privée de ses deux premières colonnes
+#      [,1] [,2]
+# [1,]    7   10
+
+
+</code></pre><h2 id="3.-importation-de-donn%C3%A9es-%C3%A0-partir-de-fichiers-externes" tabindex="-1"><a class="header-anchor" href="#3.-importation-de-donn%C3%A9es-%C3%A0-partir-de-fichiers-externes"></a> 3. Importation de données à partir de fichiers externes</h2>
+<h4 id="a-partir-d'un-fichier-texte-(.txt-ou-.csv)" tabindex="-1"><a class="header-anchor" href="#a-partir-d'un-fichier-texte-(.txt-ou-.csv)"></a> A partir d'un fichier texte (.txt ou .csv)</h4>
+<p>Pour lire les données d'un fichier texte externe avec R, il faut utiliser la commande</p>
+<pre class="language-shell line-numbers"><code>
+
+maVariable <- read.table("monFichier.txt", sep=";", row.names=1, header=TRUE)
+#header indique si la première ligne contient ou non les intitulés des variables. Il est FALSE par défaut.
+
+
+</code></pre><h4 id="a-partir-d'un-fichier-quelconque" tabindex="-1"><a class="header-anchor" href="#a-partir-d'un-fichier-quelconque"></a> A partir d'un fichier quelconque</h4>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100 dark:border-amber-800 dark:bg-amber-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-amber-800 dark:stroke-amber-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Note</b></p>
+</div><div class="pl-8 mr-8">
+<p>Il est aussi possible avec RStudio d'importer tous les types de fichiers en utilisant le bouton Import Dataset.</p>
+</div>
+</div>
+<h4 id="g%C3%A9rer-les-erreurs-d'importations" tabindex="-1"><a class="header-anchor" href="#g%C3%A9rer-les-erreurs-d'importations"></a> Gérer les erreurs d'importations</h4>
+<p>J'ai appris dans ce MOOC à détecter les erreurs d'importation (provenant du fichier source généralement), notamment avec la bonne pratique d'utiliser la fonction <code>summary()</code>.
+Celle-ci permet de visualiser un résumé de chaque donnée, ainsi que le nombre de type <em>NA</em>, en l'occurrence des erreurs de données. Un trop grand nombre de <em>NA</em> montre que le fichier source manque d'un grand nombre de données.</p>
+<pre class="language-shell line-numbers"><code>
+
+> summary(data1)
+     noms               sexe                age
+ Length:6           Length:6           Min.   :16
+ Class :character   Class :character   1st Qu.:17
+ Mode  :character   Mode  :character   Median :17
+                                       Mean   :17
+                                       3rd Qu.:17
+                                       Max.   :18
+
+
+</code></pre><div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100 dark:border-cyan-800 dark:bg-cyan-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-cyan-500 dark:stroke-cyan-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Information</b></p>
+</div><div class="pl-8 mr-8">
+<p>Ici il n'y a aucun problème d'import.</p>
+</div>
+</div>
+<p>Ce MOOC s'est ensuite terminé sur un petit test que j'ai validé.
+<img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beguier-Benoit/mon/temps-1.1/Mooc.png" alt="MOOC">
+Source : Open Classrooms</p>
+<h2 id="4.-application-sur-des-donn%C3%A9es-de-formule-1" tabindex="-1"><a class="header-anchor" href="#4.-application-sur-des-donn%C3%A9es-de-formule-1"></a> 4. Application sur des données de Formule 1</h2>
+<h4 id="objectif" tabindex="-1"><a class="header-anchor" href="#objectif"></a> Objectif</h4>
+<p>Je vais dans cette partie appliquer ce que j'ai appris dans le MOOC pour visualiser et analyser rapidement des données issues de la Formule 1. Je fais d'abord des recherches pour déterminer le type de données auxquelles je pourrais avoir accès.</p>
+<h4 id="g%C3%A9n%C3%A9rer-un-graphique-des-positions-des-pilotes-%C3%A0-chaque-tour" tabindex="-1"><a class="header-anchor" href="#g%C3%A9n%C3%A9rer-un-graphique-des-positions-des-pilotes-%C3%A0-chaque-tour"></a> Générer un graphique des positions des pilotes à chaque tour</h4>
+<p>J'ai trouvé sur Internet plusieurs bases de données mettant à disposition des données de chaque Grand Prix, telles que les positions d'arrivées, les écarts avec les autres pilotes, les positions à chaque tour... C'est cette dernière donnée qui va m'intéresser, et je vais d'abord essayer de générer un graphique des positions de chaque pilote à chaque tour, comme montré ci-dessous :</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beguier-Benoit/mon/temps-1.1/graphique.png" alt="Graphique">
+Source : Pitwall</p>
+<p>Cela me paraît assez accessible mais relève d'un bon entraînement d'utilisation de la fonction <code>plot()</code> .</p>
+<h4 id="r%C3%A9cup%C3%A9rer-les-donn%C3%A9es" tabindex="-1"><a class="header-anchor" href="#r%C3%A9cup%C3%A9rer-les-donn%C3%A9es"></a> Récupérer les données</h4>
+<p>A partir du site <a href="https://pitwall.app">Pitwall</a>, j'ai extrait les positions à chaque tour de deux pilotes (seulement deux pour l'exemple car je dois faire la procédure manuellement), Max Verstappen et lando Norris, pour le Grand Prix du Japon qui s'est déroulé le 24/09/2023. J'ai ensuite placé ces données dans un fichier Excel puis je les ai exporté en .csv.
+J'importe ensuite les fichiers dans RStudio, en déclarant des variables <code>Lando</code> et <code>Max</code> qui sont de type <code>dataframe</code> :</p>
+<pre class="language-shell line-numbers"><code>
+
+setwd("C:/Users/Beguier/Desktop")
+Lando  <- read.csv("Norris.csv", header = TRUE, sep = ";")
+
+Max  <- read.csv("Verstappen.csv", header = TRUE, sep = ";")
+
+
+</code></pre><p>Je peux ensuite facilement demander à R une représentation graphique de la position des pilotes en fonction du tour dans lequel ils se situent.</p>
+<pre class="language-shell line-numbers"><code>
+
+# Créez un graphique avec la première colonne en abscisse et la deuxième colonne des deux fichiers en ordonnée
+plot(Lando$Lap, Lando$Position, type="l", col="blue", xlab="Tours", ylab="Positions", ylim=rev(range(Lando$Position)))
+lines(Lando$Lap, Max$Position, type="l", col="red")
+
+# Inversez l'axe des ordonnées
+axis(2, at=pretty(rev(Lando$Position)))
+
+# Légendes
+legend("topright", legend=c("Lando Norris", "Max Verstappen"), col=c("blue", "red"), lty=1)
+
+
+</code></pre><p>On obtient alors ce graphique :</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beguier-Benoit/mon/temps-1.1/graphique1.png" alt="Graphique1"></p>
+<p>Afin d'améliorer l'esthétisme de ce graphique, j'y apporte quelques modifications pour obtenir le résultat suivant :</p>
+<pre class="language-python line-numbers"><code>
+
+setwd("C:/Users/Beguier/Desktop")
+Lando  <- read.csv("Norris.csv", header = TRUE, sep = ";")
+
+Max  <- read.csv("Verstappen.csv", header = TRUE, sep = ";")
+
+
+# Créez un graphique avec la première colonne en abscisse et la deuxième colonne des deux fichiers en ordonnée
+par(bg="white") # Définir le fond en blanc
+plot(Lando$Lap, Lando$Position, type="l", col="blue", xlab="", ylab="", xlim=c(0, max(Lando$Lap)), ylim=rev(range(Lando$Position)), lwd=2, axes=FALSE)
+lines(Lando$Lap, Max$Position, type="l", col="red", lwd=2)
+
+# Emplacements des graduations sur l'axe des abscisses (tous les 5 tours)
+x_ticks <- seq(0, max(Lando$Lap), by=5)
+
+# Emplacements des graduations sur l'axe des ordonnées
+y_ticks <- seq(max(Lando$Position), min(Lando$Position), by=-1)
+
+# Ajoutez des axes personnalisés en noir (sans quadrillage)
+axis(1, at=x_ticks, col.axis="black", tck=0.02, labels=TRUE) # Axe des abscisses en noir sans quadrillage
+axis(2, at=y_ticks, col.axis="black", tck=0.02, labels=TRUE) # Axe des abscisses en noir sans quadrillage
+
+# Déplacez l'étiquette de l'axe des abscisses en bas
+mtext("Tours", side=1, line=2, col="black") # Texte en noir, ligne 2 pour le bas
+mtext("Positions", side=2, line=2, col="black") # Texte en noir, ligne 2 pour le bas
+
+# Légendes (positionnée en bas à droite)
+legend("bottomright", legend=c("Lando Norris", "Max Verstappen"), col=c("blue", "red"), lty=1, text.col="black", bty="n") # Texte en noir, position en bas à droite
+# Titre du graphique avec retour à la ligne au milieu
+title(main="Position des pilotes par rapport \n au tour dans lequel ils se situent", col.main="black") # Titre en noir avec retour à la ligne au milieu
+
+
+</code></pre><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beguier-Benoit/mon/temps-1.1/graphique2.png" alt="Graphique2"></p>
+<p>J'ai donc réussi mon cas pratique. J'aimerais poursuivre plus loin l'utilisation de R, peut-être dans un prochain MON ou de mon côté.</p>
+
+
+
+</article>
+
+        </main>
+
+        <footer class="min-h-[50px] border-t-2 mt-4 border-gray-200 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-center items-center">
+                    <p class="text-center">
+                        ©2025 <b><span style="font-family: Consolas, sans-serif;">Do-<span style="color: #4a86e8">It</span></span></b> - Développement, Management et Gestion de projets en IT
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- MathJax import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">
+            window.MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']], // Delimiters for inline math
+                    displayMath: [['$$', '$$'], ['\\[', '\\]']] // Delimiters for block math
+                },
+                svg: {
+                    fontCache: 'global' // Use global font cache for SVG output
+                }
+            };
+            document.addEventListener('DOMContentLoaded', () => {
+                MathJax.typeset(); // Ensures MathJax processes the content after the page loads
+            });
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">
+            Prism.plugins.NormalizeWhitespace.setDefaults({
+                'remove-trailing': true,
+                'remove-indent': true,
+                'left-trim': true,
+                'right-trim': true,
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script>
+    </body>
+</html>

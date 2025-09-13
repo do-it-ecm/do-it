@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="robots" content="index, follow">
+
+        <link rel="canonical" href="https://do-it.aioli.ec-m.fr/promos/2023-2024/Agathe-Rabachou/mon/temps-3.2/">
+
+        
+        
+
+        <meta name="description" content="Ce MON a pour but de m&#39;initier aux bases du langage de programmation Java.">
+        <meta property="og:description" content="Ce MON a pour but de m&#39;initier aux bases du langage de programmation Java.">
+        <meta name="twitter:description" content="Ce MON a pour but de m&#39;initier aux bases du langage de programmation Java.">
+
+        
+            <meta name="author" content="Agathe Rabachou">
+        
+        <meta name="keywords" content="do-it, centrale, centrale méditerranée, ecm, MON, programmation, Java">
+
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png">
+        <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png">
+
+        <link href="/assets/stylesheets/main.css" rel="stylesheet">
+
+        <meta property="og:title" content="Initiation au Java">
+
+        <meta property="og:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta property="og:url" content="https://do-it.aioli.ec-m.fr/promos/2023-2024/Agathe-Rabachou/mon/temps-3.2/">
+        <meta property="og:type" content="website">
+
+        <meta name="twitter:card" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:title" content="Initiation au Java">
+        <meta name="twitter:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:url" content="https://do-it.aioli.ec-m.fr/promos/2023-2024/Agathe-Rabachou/mon/temps-3.2/">
+
+        <title>Initiation au Java</title>
+
+        <!-- Prismjs imports
+                - Prism line numbers
+                - Prism toolbar
+        -->
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet">
+        <link id="prism-theme" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+        <!-- Mermaid import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js "></script>
+
+        <script defer="">
+        // Check if a theme is stored in localStorage. If so, use it, otherwise fallback to the system preference.
+        const storedTheme = localStorage.getItem('theme');
+        if (storedTheme) {
+            document.documentElement.classList.toggle("dark", storedTheme === "dark");
+        } else {
+            // Use system color scheme if there is no stored theme preference.
+            document.documentElement.classList.toggle("dark", window.matchMedia("(prefers-color-scheme: dark)").matches);
+        }
+
+        function loadPrismTheme(isDarkMode) {
+            const newTheme = isDarkMode ? 'prism-okaidia.min.css' : 'prism-solarizedlight.min.css';
+            const newLink = document.createElement('link');
+            newLink.rel = 'stylesheet';
+            newLink.id = 'prism-theme';
+            newLink.href = `https://cdn.jsdelivr.net/npm/prismjs/themes/${newTheme}`;
+
+            newLink.onload = () => {
+                // Reapply highlighting after the new theme loads
+                Prism.highlightAll();
+            };
+
+            const existingLink = document.getElementById('prism-theme');
+            if (existingLink) {
+                document.head.replaceChild(newLink, existingLink);
+            } else {
+                document.head.appendChild(newLink);
+            }
+        }
+
+        function setMermaidTheme(isDarkMode) {
+            const theme = isDarkMode ? 'dark' : 'forest';
+            mermaid.initialize({
+                securityLevel: 'loose',
+                theme,
+                startOnLoad: true,
+            });
+        }
+
+        // Toggle dark and light mode and update localStorage accordingly.
+        function toggleDarkMode() {
+            const dark = document.documentElement.classList.contains("dark");
+            const newTheme = dark ? "light" : "dark";
+            localStorage.setItem('theme', newTheme);
+            document.documentElement.classList.toggle("dark", !dark);
+            loadPrismTheme(!dark);
+            setMermaidTheme(!dark);
+        }
+
+        // On initial load, ensure that Prism and Mermaid are initialized using the current theme.
+        const isDark = document.documentElement.classList.contains("dark");
+        loadPrismTheme(isDark);
+        setMermaidTheme(isDark);
+        </script>
+
+    </head>
+
+    <body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000" class="bg-neutral-50 text-neutral-950 dark:bg-neutral-900 dark:text-neutral-50">
+        <header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white dark:bg-neutral-900 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-between items-center">
+                    <a class="mx-2" href="/">Home</a>
+                    <button class="hidden sm:block text-neutral-950 dark:text-neutral-50 hover:bg-neutral-700 hover:text-neutral-50 hover:dark:bg-neutral-300 hover:dark:text-neutral-950 transition-colors p-2 rounded-full duration-800 ease-in-out" onclick="toggleDarkMode()">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 dark:hidden stroke-current">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <path d="M12 2V4" stroke-linecap="round"></path>
+                            <path d="M12 20V22" stroke-linecap="round"></path>
+                            <path d="M4 12L2 12" stroke-linecap="round"></path>
+                            <path d="M22 12L20 12" stroke-linecap="round"></path>
+                            <path d="M19.7778 4.22266L17.5558 6.25424" stroke-linecap="round"></path>
+                            <path d="M4.22217 4.22266L6.44418 6.25424" stroke-linecap="round"></path>
+                            <path d="M6.44434 17.5557L4.22211 19.7779" stroke-linecap="round"></path>
+                            <path d="M19.7778 19.7773L17.5558 17.5551" stroke-linecap="round"></path>
+                        </svg>
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 stroke-current hidden dark:block">
+                            <path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </button>
+                    <div class="flex items-center gap-4 sm:gap-6 ">
+                        <a class="" href="/cs">CS</a>
+                        <a class="" href="/pok">POK</a>
+                        <a class="" href="/mon">MON</a>
+                        <a class="" href="/projets">Projets</a>
+                        <a class="hidden sm:block" href="/promos">Promos</a>
+                        <a href="/search">
+                            <svg class="h-5 aspect-square stroke-neutral-950 dark:stroke-neutral-300 fill-none stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+                            </svg>
+                        </a>
+                        <a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank">
+                            <svg class="h-5 aspect-square dark:stroke-neutral-300 dark:fill-neutral-300" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body="">
+            
+<article class="relative">
+<h1 class="mb-1">Initiation au Java</h1>
+<div class="mb-4">
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Tags : </div>
+            <ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags">
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">MON</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">programmation</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">Java</li>
+                
+
+            </ul>
+
+            
+            <div class="hidden" data-pagefind-meta="Type" aria-hidden="true">
+                
+                    
+                        <span data-pagefind-filter="Type">MON</span>
+                    
+                
+                    
+                
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Auteur : </div>
+            <ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs">
+                
+                    <li class="bg-blue-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Auteurs">Agathe Rabachou</li>
+                
+            </ul>
+        </div>
+    
+
+    
+        <div class="absolute top-0 right-0">
+            <span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2 text-neutral-950" data-pagefind-filter="Année">
+                2023-2024
+            </span>
+        </div>
+    
+</div>
+
+<p class="mb-4 text-lg">Ce MON a pour but de m'initier aux bases du langage de programmation Java.</p>
+
+
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100 dark:border-purple-800 dark:bg-purple-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-purple-500 dark:stroke-purple-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/promos/2023-2024/Agathe-Rabachou/">Agathe Rabachou</a><span class="px-1">/</span><a href="/promos/2023-2024/Agathe-Rabachou/mon/">MON de Agathe Rabachou</a><span class="px-1">/</span><a href="/promos/2023-2024/Agathe-Rabachou/mon/temps-3.2/">Initiation au Java</a>
+
+</div>
+</div>
+
+
+
+
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100 dark:border-pink-800 dark:bg-pink-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-pink-500 dark:stroke-pink-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p>Niveau</p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li>Débutant en Java</li>
+<li>Quelques bases en Programmation Orientée Objet dans d'autres langages</li>
+</ul>
+</div>
+</div>
+<h2 id="1.-introduction" tabindex="-1"><a class="header-anchor" href="#1.-introduction"></a> 1. Introduction</h2>
+<p>A travers ce MON, je cherche à me familiariser avec le langage de programmation Java, couramment utilisé en entreprise, afin de faciliter de potentiels futurs échanges avec des équipes de développeurs (mon but n'étant pas dans devenir un, mais sûrement de travailler en contact avec eux).</p>
+<p>J'ai donc commencé par regarder ce qui avait déjà été fait sur le sujet, et on peut recenser le <a href="https://do-it.aioli.ec-m.fr/promos/2023-2024/Ouzoulias-Nicolas/mon/temps-1.1/">MON de Nicolas</a>, le <a href="https://do-it.aioli.ec-m.fr/promos/2023-2024/Vladimir-Jeantroux/mon/temps-3.1/">MON de Vladimir</a> et le <a href="https://do-it.aioli.ec-m.fr/promos/2023-2024/Sarah-Sebastien/pok/temps-2/">POK de Sarah</a>. Tous les trois on commencé en s'appuyant sur la même formation OpenClassroom intitulée <a href="https://openclassrooms.com/fr/courses/6173501-apprenez-a-programmer-en-java">Apprenez à programmer en Java</a>, qu'ils recommandent. J'ai donc suivi cette formation en un peu moins des 10h annoncées, et je vais essayer de la synthétiser ci-dessous afin de pouvoir réutiliser ce MON comme fiche mémoire au besoin.</p>
+<p>J'ai ensuite utilisé le temps restant pour lire le MON de Vladimir, qui a suivi une formation plus avancée sur Codecademy, disponible à <a href="https://www.codecademy.com/courses/learn-intermediate-java/informationals/welcome-to-learn-intermediate-java">ce lien</a>. Je n'ai pas suivi la formation moi-même par manque de temps, et le résumé de Valdimir m'a donc été très utile.</p>
+<h2 id="2.-les-variables" tabindex="-1"><a class="header-anchor" href="#2.-les-variables"></a> 2. Les variables</h2>
+<p>Une <strong>variable</strong> est une sorte de conteneur qui renferme une donnée utilisée par un programme. Cette donnée s'appelle alors valeur, et il est de rigueur de donner à la variable associée un nom qui reflète la signification de cette valeur afin de rendre le code plus compréhensible.
+Pour déclarer une variable, on utilise un mot clé qui dépend du type de la variable. On écrire par exemple :</p>
+<pre class="language-java line-numbers"><code>
+
+int age = 38; // pour un entier
+double taille = 1.77; // pour un décimal (on peut également utiliser float, mais moins précis)
+String text = "bonjour"; // pour du texte
+boolean isItTrue = true; // pour un booléen
+int count; // pour un entier dont on ne connaît pas encore la valeur
+
+
+</code></pre><div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100 dark:border-cyan-800 dark:bg-cyan-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-cyan-500 dark:stroke-cyan-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Information</b></p>
+</div><div class="pl-8 mr-8">
+<p>Attention à ne pas oublier le <strong>;</strong> pour indiquer la fin d'une instruction.</p>
+</div>
+</div>
+<p>On peut ensuite modifier ces variables grâce aux opérateurs mathématiques classiques, et utiliser les raccourcis courants tels que <strong>+=</strong> pour simplifier les affectations. Pour des chaînes de caractère, on peut réaliser une concaténation grâce au <strong>+</strong>, et on utilise <strong>!</strong> placé juste devant un booléen pour l'inverser.</p>
+<p>Les variables qui ne sont pas destinées à être modifiées sont appelées <strong>constantes</strong>. Il est très recommandé de les utiliser plutôt que des variables classiques dès que possibles, déjà pour éviter des modifications accidentelles de leur valeur, mais aussi car elles améliorent la rapidité d'exécution des programmes. On les déclare comme suit :</p>
+<pre class="language-java line-numbers"><code>
+
+final int AGE = 38;
+final String MESSAGE = "bonjour";
+// C'est un bonne pratique commune de les nommer en majuscules
+
+
+</code></pre><p>Lorsque l'on réalise une opération mathématique sur des variables, il faut faire attention à la façon dont les types se mélangent. Par exemple, la division d'un entier par un entier donnera forcément un résultat entier, même si celui-ci est faux, et cela peut être à l'origine de nombreuses erreurs. Il faut donc bien penser à déclarer au moins l'un des entiers initiaux comme décimal pour que le résultat soit correct. Il existe une autre méthode pour corriger ce problème, qui consiste à changer le type d'une variable déjà déclarée directement dans l'opération dans laquelle on l'utilise. On écrit alors :</p>
+<pre class="language-java line-numbers"><code>
+
+int a = 5;
+int b = 2;
+float c = (float) a / b;
+
+
+</code></pre><p>C'est ce que l'on appelle le cast.</p>
+<h2 id="3.-les-classes-et-les-fonctions" tabindex="-1"><a class="header-anchor" href="#3.-les-classes-et-les-fonctions"></a> 3. Les classes et les fonctions</h2>
+<p>Pour rappel, en Programmation Orientée Objet, une classe est un ensemble de variables (que l'on appelle attributs) et de fonctions (nommées méthodes) qui utilisent ces variables. En Java, l'ensemble du code doit se trouver à l'intérieur d'une classe, qui elle même est contenue dans un package.</p>
+<p>Lorsque l'on lance un programme en Java, c'est la fonction appelée <em>main</em> qui se lance. On dit que c'est le point d'entrée.
+Voici un programme très simple pour découvrir la syntaxe de base :</p>
+<pre class="language-java line-numbers"><code>
+
+package hello;                                      // déclare le package hello
+
+public class HelloWorld {                           // déclare la classe HelloWorld qui contiendra le code
+
+  public static void main(String[] args) {          // morceau de code recherché par l'interpréteur pour lancer le programme
+
+    System.out.println("Hello World!");             // affiche dans la console le message passé entre guillemets
+
+    }
+}
+
+
+</code></pre><p>Je ne me suis pas attardée sur cette partie car j'utilise un environnement de développement qui fait cela tout seul, mais à ce moment du cours sont présentées les différentes étapes et commandes pour exécuter un programme Java à partir du terminal. Je laisse cependant le lien <a href="https://openclassrooms.com/fr/courses/6173501-apprenez-a-programmer-en-java/6445721-ecrivez-une-fonction">ici</a> pour les lecteurs intéressés.</p>
+<p>Une autre bonne pratique en Java et en programmation de manière générale, est d'avoir un code organisé pour que la fonction main soit la plus courte possible et appelle uniquement les méthodes utiles, toutes écrites séparément.
+Pour aider à cette organisation, il existe deux types de classes :</p>
+<ul>
+<li><strong>Les classes modèles</strong> : ce sont des types complexes qui regroupent différentes variables d'un même concept. La classe <em>String</em> avec l'ensemble de ses méthodes en est un exemple (contrairement à <em>int</em> ou <em>double</em> qui sont des primitifs). En général, elles modélisent des objets auxquels s'appliquent le programme.</li>
+<li><strong>Les classes utilitaires</strong> : elles contiennent des méthodes statiques que l'on écrit spécifiquement dans le cadre du programme et que l'on peut appeler directement sur la classe.</li>
+</ul>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100 dark:border-cyan-800 dark:bg-cyan-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-cyan-500 dark:stroke-cyan-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Information</b></p>
+</div><div class="pl-8 mr-8">
+<p>Lorsque l'on crée une classe, il est courant de la documenter pour expliquer son utilité et son fonctionnement. On le fait alors entre les indicateurs /** et */, ce qui crée automatiquement une page HTML avec la documentation, que l'on appelle Javadoc.</p>
+</div>
+</div>
+<p>Pour appeler une méthode à agir sur une variable, on utilise la syntaxe suivante :</p>
+<pre class="language-java line-numbers"><code>
+
+variable = variable.méthode()     // on met les arguments nécessaires à la fonction entre les parenthèses le cas échéant
+
+
+</code></pre><p>Une variable ne peut être utilisée que dans l'environnement dans laquelle elle a été déclarée (une boucle, une fonction, une classe...). C'est ce que l'on appelle la <strong>portée</strong> de la variable. En général, on repère cet environnement grâce à des indicateurs d'ouverture et de fermeture. En Java, ce sont des <strong>accolades</strong>. Voici un schéma tiré de la formation suivie qui explique très bien ce principe :
+<img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Agathe-Rabachou/mon/temps-3.2/schema_portee_variable.png">
+Cependant, une variable déclarée dans une classe peut par défaut être utilisée en dehors de celle-ci. Pour empêcher cela, on peut la restreindre en la précédant de la commande <em>private</em> (le contraire est le mot clé <em>public</em>). On peut faire de même avec une fonction pour empêcher son accès depuis une autre classe que celle dans laquelle elle a été déclarée. Il existe d'autres commandes pour contrôler de manière plus précise l'accès aux données.</p>
+<h2 id="4.-les-boucles-et-les-conditions" tabindex="-1"><a class="header-anchor" href="#4.-les-boucles-et-les-conditions"></a> 4. Les boucles et les conditions</h2>
+<p>Comme dans la plupart des langages de programmation, on construit et structure les fonctions avec des boucles et des conditions. Voici la syntaxe en Java de ces outils :</p>
+<ul>
+<li><strong>Les boucles énumérées</strong> (ou boucle for) :</li>
+</ul>
+<pre class="language-java line-numbers"><code>
+
+for (int i=0; i<10; i++) {               // ou en général for (initialisation, terminaison, incrément)
+  // instruction qui sera répétée 10 fois
+};
+
+
+</code></pre><div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100 dark:border-cyan-800 dark:bg-cyan-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-cyan-500 dark:stroke-cyan-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Information</b></p>
+</div><div class="pl-8 mr-8">
+<p><strong>Attention</strong> à bien choisir la condition de terminaison pour ne pas créer de boucles infinies !</p>
+</div>
+</div>
+<ul>
+<li><strong>Les boucles 'for each'</strong>
+Elles fonctionnent comme les boucles for, mais lorsqu'on veut parcourir tous les éléments d'un tableau par exemple, dont on ne connaît pas la taille. On écrit alors :</li>
+</ul>
+<pre class="language-java line-numbers"><code>
+
+for (int number: monTableau) {
+  // instruction
+};
+
+
+</code></pre><ul>
+<li><strong>Les boucles conditionnelles</strong> (ou boucle while)
+L'instruction est alors répétée tant que la condition est vraie.</li>
+</ul>
+<pre class="language-java line-numbers"><code>
+
+while (condition) {
+  // instruction
+};
+
+
+</code></pre><ul>
+<li><strong>Les boucles 'do... while'</strong>
+C'est une variante de la boucle while classique, mais dans laquelle la condition se trouve à la fin du code. Ainsi, l'instruction de la boucle est forcément exécutée au moins une fois, même quand la condition est fausse. On écrit :</li>
+</ul>
+<pre class="language-java line-numbers"><code>
+
+do {
+  // instruction
+} while (condition);
+
+
+</code></pre><ul>
+<li><strong>Interruption de boucle</strong>
+Il est possible d'interrompre une boucle. Par exemple si l'on a trouvé la valeur que la boucle cherchait dans un tableau. Pour cela, on écrit une condition dans la boucle qui vérifie à chaque itération si la valeur cherchée a été trouvée; lorsque c'est le cas, on arrête les itérations avec la commande <em>'break'</em>.
+On peut également répéter k fois une action en voulant ignorer les itérations 3 et 7. On ajoute alors, dans la boucle et avant le code explicitant l'action, l'instruction suivante :</li>
+</ul>
+<pre class="language-java line-numbers"><code>
+
+if(k == 3 || k == 7) {
+  continue;
+}
+
+
+</code></pre><ul>
+<li><strong>Les opérateurs</strong>
+Afin de pouvoir construire des conditions pour la sous-partie suivante, voici des opérateurs courants, qu'il peut être utile de retenir :</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Symbole</th>
+<th>Signification</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>==</td>
+<td>égal à</td>
+</tr>
+<tr>
+<td>=!</td>
+<td>différent de</td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td>inférieur à</td>
+</tr>
+<tr>
+<td>&lt;=</td>
+<td>inférieur ou égal à</td>
+</tr>
+<tr>
+<td>&gt;</td>
+<td>supérieur à</td>
+</tr>
+<tr>
+<td>&gt;=</td>
+<td>supérieur ou égal à</td>
+</tr>
+<tr>
+<td>equals</td>
+<td>identique à (pour une chaîne de caractères)</td>
+</tr>
+<tr>
+<td>&amp;&amp;</td>
+<td>ET logique</td>
+</tr>
+<tr>
+<td>||</td>
+<td>OU logique</td>
+</tr>
+<tr>
+<td>!</td>
+<td>NON logique</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Les conditions</strong>
+Pour écrire une condition ou un enchaînement de conditions en Java, on utilise la syntaxe classique suivante :</li>
+</ul>
+<pre class="language-java line-numbers"><code>
+
+if(condition1) {
+  //instructions
+}
+else if(condition2) {
+  //instructions
+}
+...
+else {
+  //instructions
+}
+
+
+</code></pre><p>On peut utiliser les arguments rentrés en paramètre de la fonction pour créer les conditions. A noter que ces arguments sont en réalité sous forme d'un tableau d'arguments, il faut donc les appeler en conséquence.</p>
+<p>Il existe deux outils qui permettent dans certains cas de simplifier la rédaction des conditions.
+Premièrement, la commande <em>switch</em>. Imaginons que l'on veuille par exemple agir différemment selon le nombre d'arguments entrés. On pourrait écrire avec la méthode basique présentée ci-dessus :</p>
+<pre class="language-java line-numbers"><code>
+
+public static void main(String[] args) {
+    if (args.length==0) {
+        //instructions
+    }
+    else if (args.length==1) {
+        //instructions
+    }
+    else if (args.length==2) {
+        //instructions
+    }
+    else {
+        //instructions
+    }
+}
+
+
+</code></pre><p>On peut également utiliser la méthode <em>switch</em>, plus claire, pour n'évaluer qu'une fois la longueur du tableau d'arguments et faire une disjonction de cas. On écrit :</p>
+<pre class="language-java line-numbers"><code>
+
+public static void main(String[] args) {
+    switch(args.length) {
+        case 0:
+            //instructions
+            break;
+        case 1:
+            //instructions
+            break;
+        case 2:
+            //instructions
+            break;
+        default:
+            //instructions
+    }
+}
+
+
+</code></pre><p>Deuxièmement, il existe le type <em>énumération</em>, qui permet de lister des cas prédéfinis et de les utiliser dans un switch, à nouveau à fin de simplifier et de clarifier le code. Voici un exemple parlant tiré du cours :</p>
+<pre class="language-java line-numbers"><code>
+
+public class myDirection {
+
+    enum Direction {
+        north, east, south, west;       //liste des cas possibles
+    }
+
+    public static void main(String[] args) {
+        Direction direction = Direction.north;
+        switch (direction) {
+            case north:
+                //instructions
+                break;
+            case east:
+                //instructions
+                break;
+            case south:
+                //instructions
+                break;
+            case west:
+                //instructions
+                break;
+        }
+    }
+}
+
+
+</code></pre><p>Tous les cas sont couverts, il n'est donc pas nécessaire d'avoir un cas par défaut. Si maintenant on considère qu'il n'y a une instruction spécifique que pour la direction nord, on peut remplacer la fonction par :</p>
+<pre class="language-java line-numbers"><code>
+
+public static void main(String[] args) {
+    Direction direction = Direction.north;
+    switch (direction) {
+        case north:
+            //instructions
+            break;
+        default:
+            //instructions
+    }
+}
+
+
+</code></pre><h2 id="5.-la-programmation-orient%C3%A9e-objet-en-java" tabindex="-1"><a class="header-anchor" href="#5.-la-programmation-orient%C3%A9e-objet-en-java"></a> 5. La Programmation Orientée Objet en Java</h2>
+<p>Pour comprendre le principe global de la POO, je vous renvoie vers mon <a href="https://do-it.aioli.ec-m.fr/promos/2023-2024/Agathe-Rabachou/mon/temps-1.2/">MON 1.2 : Programmation orientée objet</a>. Ici, on va s'intéresser plus particulièrement à son implémentation en Java.
+Voici le format d'une déclaration de <strong>classe</strong> en Java :</p>
+<pre class="language-java line-numbers"><code>
+
+class ExempleClasse {
+  String attribut1;
+  String attribut2;
+  int attribut3;
+  // autres propriétés de la classe
+}
+
+
+</code></pre><p>Une fois que la classe existe, on peut y faire une <strong>instanciation</strong>, c'est-à-dire créer un <strong>objet</strong> du type de cette classe. Pour cela, il faut donner une valeur à chaque champ de la classe, en commençant par initialiser ces champs grâce à un <strong>constructeur</strong>. C'est une sorte d'objet référence, à partir duquel on pourra ensuite modifier les attributs. A noter que si un champ est identique pour tous les objets de la classe, il peut être rempli directement dans la déclaration de la classe. Prenons un exemple pour mieux comprendre, qui pourrait servir dans le cas d'une bibliothèque en ligne par exemple :</p>
+<pre class="language-java line-numbers"><code>
+
+class Book {            // déclaration de la classe
+      String title;
+      String author;
+      int numberOfPages;
+      String publisher;
+      Book(String title, String author, int numberOfPages, String publisher) {          // constructeur
+            this.title = title;
+            this.author = author;
+            this.numberOfPages = numberOfPages;
+            this.publisher = publisher;
+      }
+}
+
+
+</code></pre><p>On initialise toujours les attributs du constructeur grâce au mot-clé <em>this</em>.
+De plus, il est possible de déclarer plusieurs constructeurs pour une même classe, par exemple dans le cas où l'un des attributs est identique pour un grand nombre d'éléments de la classe. Afin d'éviter les répétitions, on déclare alors un constructeur principal, et un secondaire dans lequel l'attribut en question est déjà renseigné et n'est plus une variable des objets.</p>
+<p>Une fois que tout cela est fait, on peut alors créer un objet de notre classe. On écrit, si l'on reprend l'exemple de classe précédent :</p>
+<pre class="language-java line-numbers"><code>
+
+Book monLivre = new Book("Harry Potter et le prisonnier d'Azkaban", "J.K. Rowling", 444, "folio")
+
+
+</code></pre><p>Enfin, il est possible d'accéder aux champs de notre objet pour les modifier en utilisant le point :</p>
+<pre class="language-java line-numbers"><code>
+
+monLivre.numberOfPages = 446
+
+
+</code></pre><h2 id="6.-l'h%C3%A9ritage-et-le-polymorphisme" tabindex="-1"><a class="header-anchor" href="#6.-l'h%C3%A9ritage-et-le-polymorphisme"></a> 6. L'héritage et le polymorphisme</h2>
+<p>Il existe deux notions importantes pour spécialiser des classes, que l'on va expliciter dans cette partie.</p>
+<ul>
+<li><strong>L'héritage</strong> :
+C'est le fait de regrouper des attributs ou des méthodes communes à plusieurs classe dans une <em>classe mère</em>, puis de créer plusieurs <em>classes filles</em> qui récupèrent les propriétés de la classe mère et y ajoutent leurs spécialisations. Pour cela, on définit la classe mère comme vu précédemment, puis on crée une classe fille avec la syntaxe suivante :</li>
+</ul>
+<pre class="language-java line-numbers"><code>
+
+public class ClasseFille extends ClasseMere {
+    // propriétés spécifiques à la classe fille
+}
+
+
+</code></pre><p>Plusieurs points sont importants : une classe fille ne peut hériter que d'une seule classe mère (l'inverse est faux); tous les champs de la classe mère sont hérités, et ils peuvent être manipulés selon leur accessibilité (comme présenté plus haut); on peut également appeler le constructeur de la classe mère dans la classe fille grâce au mot clé <em>super</em>.</p>
+<ul>
+<li><strong>Le polymorphisme</strong>
+C'est un concept qui permet d'adapter le comportement d'une méthode de la classe mère selon la classe fille depuis laquelle on l'appelle. Prenons un exemple :</li>
+</ul>
+<pre class="language-java line-numbers"><code>
+
+class Saluer {
+  void saluer() {
+    System.out.println("Bonjour");
+  }
+}
+
+class SaluerAmi extends Saluer {
+  void saluer() {
+    System.out.println("Salut");
+  }
+}
+
+class SaluerEtranger extends Saluer {
+  void saluer() {
+    System.out.println("Hello");
+  }
+}
+
+
+</code></pre><p>On peut alors appeler la méthode saluer sur toutes les classes et elle s'adapte à l'objet pour lequel on l'utilise.</p>
+<p>Grâce au mot clé <em>super</em>, on peut appeler la méthode parente sans la modifier pour y ajouter autre chose ensuite. Cela donne par exemple :</p>
+<pre class="language-java line-numbers"><code>
+
+class SaluerProfesseur extends Saluer {
+  void saluer() {
+    super.saluer();
+    System.out.println("Monsieur");
+  }
+}
+
+
+</code></pre><h2 id="7.-les-collections" tabindex="-1"><a class="header-anchor" href="#7.-les-collections"></a> 7. Les collections</h2>
+<p>Cette partie présente les principaux moyens de stocker des piles de données.</p>
+<ul>
+<li><strong>Le tableau</strong> (ou array en anglais) :
+Il est ordonné et indexé à partir de 0. On le déclare en fournissant le type de variables qu'il stocke, des crochets et le nom de ces variables. Ensuite on l'instancie en lui attribuant un nombre d'emplacements qui s'initialisent automatiquement à 0 dans le cas d'entiers. Puis on peut accéder à ces emplacements et les modifier si besoin. Cela donne :</li>
+</ul>
+<pre class="language-java line-numbers"><code>
+
+int[] notesElevesDoIT;       // création du tableau
+
+notesElevesDoIT=new int[23];         // instanciation
+
+int[] notesElevesDoIt = new int [23];          // les deux lignes précédentes en une
+
+notesELevesDoIt[7]=16;       // attribue 16 au 8ème élève
+
+System.out.println(notesElevesDoIt[12]);         // affiche la note du 13ème élève
+
+
+</code></pre><p>Il est également possible de remplir le tableau directement à sa création en ajoutant ses valeurs entre accolades, ou de créer des tableaux multidimensionnels en ajoutant des paires de crochets (pour faire des matrices par exemple).</p>
+<ul>
+<li><strong>La liste</strong> :
+Elle n'a pas une taille fixe, elle est ordonnée et on ne peut y modifier que des variables existantes. Elle est obligatoirement vide au départ et se déclare comme suit :</li>
+</ul>
+<pre class="language-java line-numbers"><code>
+
+List<Integer>maListe = new ArrayList<Integer>();
+
+
+</Integer></Integer></code></pre><p>Ensuite, on peut y effectuer plusieurs opérations :</p>
+<pre class="language-java line-numbers"><code>
+
+maListe.add(7); // ajoute l'élément 7
+maListe.set(0,4); // change l'élément de rang 0 en un 4
+maListe.remove(0); // retire le premier élément
+System.out.println(maListe.size()); // affiche la taille de la liste
+
+
+</code></pre><ul>
+<li><strong>L'ensemble</strong> (ou set) :
+Il est non ordonné, ses éléments sont uniques.</li>
+</ul>
+<pre class="language-java line-numbers"><code>
+
+Set<String>nomsPrenomsEleves = new HashSet<String>(); // déclaration de l'ensemble
+nomsPrenomsEleves.add("AgatheRabachou"); // ajoute l'élève AgatheRabachou à l'ensemble
+nomsPrenomsEleves.remove("AgatheRabachou"); // retire l'élève AgatheRabachou de l'ensemble
+System.out.println(nomsPrenomsEleves()); // compte les éléments de l'ensemble
+
+
+</String></String></code></pre><ul>
+<li>Il existe également les <strong>dictionnaires</strong> (ou maps), qui sont des sortes de listes améliorées de paires d'éléments (clé-valeur), et dans lesquels on accède à une valeur par sa clé.</li>
+</ul>
+<h2 id="8.-les-param%C3%A8tres-et-les-retours" tabindex="-1"><a class="header-anchor" href="#8.-les-param%C3%A8tres-et-les-retours"></a> 8. Les paramètres et les retours</h2>
+<p>Lorsque l'on définit une méthode, elle peut prendre en arguments des paramètres, que l'on déclare entre parenthèses lors de la définition par leur nom précédé de leur type. Si l'on veut que la fonction renvoie une valeur afin de pouvoir la réutiliser ailleurs, il faut le préciser avec le mot-clé <em>return</em>. Ensuite, on utilise ce retour en appelant la fonction avec les paramètres choisis. Un exemple simple :</p>
+<pre class="language-java line-numbers"><code>
+
+public static int sum(int a, int b) {
+  int c = a + b;
+  return c;
+  // ou return a + b pour écrire les deux lignes en une seule
+}
+
+// on peut alors utiliser le résultat :
+int resultat = sum(2,4);
+
+
+</code></pre><div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100 dark:border-cyan-800 dark:bg-cyan-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-cyan-500 dark:stroke-cyan-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Information</b></p>
+</div><div class="pl-8 mr-8">
+<p><strong>Attention</strong>, il existe deux types pour les paramètres, et la différence est fondamentale.
+Si l'on copie un objet de type <strong>valeur</strong>, comme un entier, d'une variable dans une autre, les deux variables sont indépendantes, on peut en modifier une sans changer l'autre.
+A l'inverse, dans le cas d'un objet de type <strong>référence</strong>, comme une classe, lorsque l'on en crée une copie on crée simplement un autre pointeur qui renvoie en fait vers le même élément. Une modification sur cette copie modifie donc la classe originale.
+Ainsi, il faut faire très attention à ce que l'on fait des éléments dans une fonction, et notamment des éléments de types référence, au risque de faire des modifications plus larges sans le vouloir.</p>
+</div>
+</div>
+<h2 id="9.-la-r%C3%A9cursivit%C3%A9" tabindex="-1"><a class="header-anchor" href="#9.-la-r%C3%A9cursivit%C3%A9"></a> 9. La récursivité</h2>
+<p>Pour rappel, une méthode est dite récursive lorsqu'elle fonctionne en continue en s'appelant elle-même. Cela s'illustre très bien avec la fonction qui calcule la factorielle de n (n!) :</p>
+<pre class="language-java line-numbers"><code>
+
+class Recursion {
+  public static int factoriel(int n) {
+    if (n == 1) return 1;             // Attention à ne pas oublier la condition d'arrêt !!
+    else return n * factoriel (n-1);
+  }
+}
+
+
+</code></pre><h2 id="10.-pour-aller-plus-loin" tabindex="-1"><a class="header-anchor" href="#10.-pour-aller-plus-loin"></a> 10. Pour aller plus loin</h2>
+<p>La méthode <strong>try/catch</strong> est une méthode qui permet de gérer des exceptions pour éviter les bugs. L'idée est d'essayer d'exécuter un morceau de code, et d'en prévoir un autre qui s'exécute dans le cas où le premier génère une erreur. On écrit :</p>
+<pre class="language-java line-numbers"><code>
+
+try {
+  // code principal, contenant une fonction qui peut potentiellement générer une erreur
+}
+catch (Exception e) {
+  // code à lancer si la partie try renvoie une erreur
+}
+
+
+</code></pre><p>Il est possible de faire intervenir des fichiers extérieurs dans notre code Java. Plusieurs outils pour cela :</p>
+<pre class="language-java line-numbers"><code>
+
+FileReader fileReader = new FileReader("/path/to/file") // lit le fichier situé au chemin donné
+
+BufferedReader reader = new BufferedReader(fileReader); // utilise le fileReader
+
+line = reader.readLine(); //lit la prochaine ligne du fichier (à mettre dans une boucle pour lire le fichier en entier)
+
+FileWriter fileWriter = new FileWriter("/path/to/file", false); // trouve le fichier au chemin donné
+
+BufferedWriter writer = new BufferedWriter(fileWriter); // prépare le fichier pour écrire dedans
+
+writer.write("text") // ajoute du texte
+
+writer.newLine(); // revient à la ligne
+
+
+</code></pre><p>Enfin, le <a href="https://do-it.aioli.ec-m.fr/promos/2023-2024/Vladimir-Jeantroux/mon/temps-3.1/">MON de Vladimir</a> présente d'autres notions avancées en Java, comme les <strong>input et output</strong> (que j'ai en partie utilisé plus haut sans réellement expliquer le concept), la <strong>sérialisation</strong> et les <strong>génériques</strong>, que je ne vais pas expliquer ici car il l'a déjà très bien fait.</p>
+<h2 id="11.-retours" tabindex="-1"><a class="header-anchor" href="#11.-retours"></a> 11. Retours</h2>
+<p>Comme les quelques cours OpenClassroom que j'avais déjà suivi auparavant, le gros point fort est pour moi la partie mise en pratique, avec des exercices interactifs tout au long de la formation pour pouvoir appliquer les notions de manière plus concrète au fur et à mesure de l'apprentissage (bien que je les ai trouvés ici légèrement trop peu nombreux par rapport à d'autres cours que j'avais pu faire). Sur cette formation, ils étaient à faire sur la plateforme <a href="https://replit.com/">Replit</a>, que je ne connaissais pas mais qui est gratuite et simple d'utilisation. Par ailleurs, le cours est très clair, adapté aux débutants en Java (de préférences avec quelques notions globales en informatique quand même), et permet je trouve une bonne prise en main des concepts de base du langage et de la programmation orientée objet.</p>
+<p>Pour ce qui est du résumé fait par Vladimir de la formation Codecademy qu'il a suivie, je l'ai également trouvé très clair et présentant des notions différentes de la formation OpenClassroom (qui s'intéressait surtout aux bases et à la syntaxe), c'était donc un très bon complément.</p>
+<h2 id="12.-organisation-du-temps" tabindex="-1"><a class="header-anchor" href="#12.-organisation-du-temps"></a> 12. Organisation du temps</h2>
+<table>
+<thead>
+<tr>
+<th>Durée</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3h45</td>
+<td>Cours OpenClassroom partie 1 : Gestion des variables</td>
+</tr>
+<tr>
+<td>2h45</td>
+<td>Cours OpenClassroom partie 2 : Programmation Orientée Objet</td>
+</tr>
+<tr>
+<td>2h</td>
+<td>Cours OpenClassroom partie 3 : Quelques principes avancés</td>
+</tr>
+<tr>
+<td>1h30</td>
+<td>MON de Vladimir</td>
+</tr>
+</tbody>
+</table>
+
+
+
+</article>
+
+        </main>
+
+        <footer class="min-h-[50px] border-t-2 mt-4 border-gray-200 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-center items-center">
+                    <p class="text-center">
+                        ©2025 <b><span style="font-family: Consolas, sans-serif;">Do-<span style="color: #4a86e8">It</span></span></b> - Développement, Management et Gestion de projets en IT
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- MathJax import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">
+            window.MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']], // Delimiters for inline math
+                    displayMath: [['$$', '$$'], ['\\[', '\\]']] // Delimiters for block math
+                },
+                svg: {
+                    fontCache: 'global' // Use global font cache for SVG output
+                }
+            };
+            document.addEventListener('DOMContentLoaded', () => {
+                MathJax.typeset(); // Ensures MathJax processes the content after the page loads
+            });
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">
+            Prism.plugins.NormalizeWhitespace.setDefaults({
+                'remove-trailing': true,
+                'remove-indent': true,
+                'left-trim': true,
+                'right-trim': true,
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script>
+    </body>
+</html>

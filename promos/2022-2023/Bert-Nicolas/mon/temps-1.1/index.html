@@ -1,0 +1,183 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="index, follow"><link rel="canonical" href="https://do-it.aioli.ec-m.fr/promos/2022-2023/Bert-Nicolas/mon/temps-1.1/"><meta name="description" content="Do-It, cours et travaux des élèves de l&#39;école Centrale Méditerranée"><meta property="og:description" content="Do-It, cours et travaux des élèves de l&#39;école Centrale Méditerranée"><meta name="twitter:description" content="Do-It, cours et travaux des élèves de l&#39;école Centrale Méditerranée"><meta name="author" content="Nicolas BERT"><meta name="keywords" content="do-it, centrale, centrale méditerranée, ecm, MON, eleventy, statique, markdown, web"><link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon"><link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png"><link rel="apple-touch-icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png"><link href="/assets/stylesheets/main.css" rel="stylesheet"><meta property="og:title" content="Créer un site web statique avec 11ty"><meta property="og:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png"><meta property="og:url" content="https://do-it.aioli.ec-m.fr/promos/2022-2023/Bert-Nicolas/mon/temps-1.1/"><meta property="og:type" content="website"><meta name="twitter:card" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png"><meta name="twitter:title" content="Créer un site web statique avec 11ty"><meta name="twitter:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png"><meta name="twitter:url" content="https://do-it.aioli.ec-m.fr/promos/2022-2023/Bert-Nicolas/mon/temps-1.1/"><title>Créer un site web statique avec 11ty</title><link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet"><link id="prism-theme" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet"><link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet"><script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script><script defer="">const storedTheme=localStorage.getItem("theme");function loadPrismTheme(e){const t=e?"prism-okaidia.min.css":"prism-solarizedlight.min.css",s=document.createElement("link");s.rel="stylesheet",s.id="prism-theme",s.href=`https://cdn.jsdelivr.net/npm/prismjs/themes/${t}`,s.onload=()=>{Prism.highlightAll()};const m=document.getElementById("prism-theme");m?document.head.replaceChild(s,m):document.head.appendChild(s)}function setMermaidTheme(e){const t=e?"dark":"forest";mermaid.initialize({securityLevel:"loose",theme:t,startOnLoad:!0})}function toggleDarkMode(){const e=document.documentElement.classList.contains("dark"),t=e?"light":"dark";localStorage.setItem("theme",t),document.documentElement.classList.toggle("dark",!e),loadPrismTheme(!e),setMermaidTheme(!e)}storedTheme?document.documentElement.classList.toggle("dark","dark"===storedTheme):document.documentElement.classList.toggle("dark",window.matchMedia("(prefers-color-scheme: dark)").matches);const isDark=document.documentElement.classList.contains("dark");loadPrismTheme(isDark),setMermaidTheme(isDark)</script></head><body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000" class="bg-neutral-50 text-neutral-950 dark:bg-neutral-900 dark:text-neutral-50"><header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white dark:bg-neutral-900 dark:border-neutral-700"><div class="max-w-[1000px] mx-auto px-4"><div class="min-h-[50px] flex justify-between items-center"><a class="mx-2" href="/">Home</a> <button class="hidden sm:block text-neutral-950 dark:text-neutral-50 hover:bg-neutral-700 hover:text-neutral-50 hover:dark:bg-neutral-300 hover:dark:text-neutral-950 transition-colors p-2 rounded-full duration-800 ease-in-out" onclick="toggleDarkMode()"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 dark:hidden stroke-current"><circle cx="12" cy="12" r="5"></circle><path d="M12 2V4" stroke-linecap="round"></path><path d="M12 20V22" stroke-linecap="round"></path><path d="M4 12L2 12" stroke-linecap="round"></path><path d="M22 12L20 12" stroke-linecap="round"></path><path d="M19.7778 4.22266L17.5558 6.25424" stroke-linecap="round"></path><path d="M4.22217 4.22266L6.44418 6.25424" stroke-linecap="round"></path><path d="M6.44434 17.5557L4.22211 19.7779" stroke-linecap="round"></path><path d="M19.7778 19.7773L17.5558 17.5551" stroke-linecap="round"></path></svg> <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 stroke-current hidden dark:block"><path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke-linecap="round" stroke-linejoin="round"></path></svg></button><div class="flex items-center gap-4 sm:gap-6"><a class="" href="/cs">CS</a> <a class="" href="/pok">POK</a> <a class="" href="/mon">MON</a> <a class="" href="/projets">Projets</a> <a class="hidden sm:block" href="/promos">Promos</a> <a href="/search"><svg class="h-5 aspect-square stroke-neutral-950 dark:stroke-neutral-300 fill-none stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path></svg> </a><a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank"><svg class="h-5 aspect-square dark:stroke-neutral-300 dark:fill-neutral-300" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg></a></div></div></div></header><main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body=""><article class="relative"><h1 class="mb-1">Créer un site web statique avec 11ty</h1><div class="mb-4"><div class="px-4 flex flex-wrap items-center"><div class="font-bold">Tags :</div><ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags"><li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">MON</li><li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">eleventy</li><li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">statique</li><li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">markdown</li><li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">web</li></ul><div class="hidden" data-pagefind-meta="Type" aria-hidden="true"><span data-pagefind-filter="Type">MON</span></div></div><div class="px-4 flex flex-wrap items-center"><div class="font-bold">Auteur :</div><ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs"><li class="bg-blue-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Auteurs">Nicolas BERT</li></ul></div><div class="absolute top-0 right-0"><span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2 text-neutral-950" data-pagefind-filter="Année">2022-2023</span></div></div><div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100 dark:border-purple-800 dark:bg-purple-950"><svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-purple-500 dark:stroke-purple-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path></svg><div class="pl-8 mr-8"><a href="/promos/2022-2023/Bert-Nicolas/">Nicolas BERT</a><span class="px-1">/</span><a href="/promos/2022-2023/Bert-Nicolas/mon/">MONs</a><span class="px-1">/</span><a href="/promos/2022-2023/Bert-Nicolas/mon/temps-1.1/">Créer un site web statique avec 11ty</a></div></div><p>Site web statique avec 11ty (Temps 1)</p><p>Dans ce cours nous allons apprendre à créer un site web statique de zéro en utilisant <a href="https://www.11ty.dev/">Eleventy</a>.</p><p>Eleventy est un générateur de site statique, il va, ici, transformer le langage markdown en langage HTML. Il utilise un langage de templating qui s'appelle Nunjucks.</p><div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100 dark:border-yellow-800 dark:bg-yellow-950"><svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-yellow-500 dark:stroke-yellow-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg><div class="pl-8 mb-2 mr-8"><p><b>Faire</b></p></div><div class="pl-8 mr-8"><p>Nous allons avoir besoin de Node.js, si vous ne l'avez pas vous pouvez le télécharger sur le site officiel de <a href="https://nodejs.org/">Node.js</a> (version &gt; 12).</p></div></div><h2 id="1.-cr%C3%A9ation-du-projet" tabindex="-1"><a class="header-anchor" href="#1.-cr%C3%A9ation-du-projet"></a> 1. Création du projet</h2><h3 id="1.1-cr%C3%A9er-le-r%C3%A9pertoire-du-projet" tabindex="-1"><a class="header-anchor" href="#1.1-cr%C3%A9er-le-r%C3%A9pertoire-du-projet"></a> 1.1 Créer le répertoire du projet</h3><p>Pour commencer, nous allons créer un dossier <code>mon-site</code> . Pour cela, ouvrir le terminal et taper les commandes suivantes :</p><pre class="language-bash line-numbers"><code>
+
+mkdir mon-site
+cd mon-site
+
+
+</code></pre><p><em>Vous pouvez ensuite ouvrir ce dossier dans votre éditeur de code favori. Pour ma part j'utilise VSCode, il me suffit de taper <code>code .</code> afin d'ouvrir le dossier avec VSCode.</em></p><h3 id="1.2-installer-le-package-eleventy" tabindex="-1"><a class="header-anchor" href="#1.2-installer-le-package-eleventy"></a> 1.2 Installer le package <code>eleventy</code></h3><p>Afin d'installer <code>eleventy</code> dans notre projet, nous allons utiliser <code>npm</code> (Node Package Manager). Commençons par initialiser npm dans notre projet puis installer <code>eleventy</code>. Pour cela, exécuter les deux commandes suivantes :</p><pre class="language-bash line-numbers"><code>
+
+npm init -y
+npm install -D @11ty/eleventy
+
+
+</code></pre><p>Une fois ces deux commandes exécutées vous devriez avoir l'arborescence suivante :</p><pre class="language-bash line-numbers"><code>
+
+mon-site
+    ├── node_modules
+    ├── package-lock.json
+    └── package.json
+
+
+
+</code></pre><p>Vous devriez également voir <code>&quot;@11ty/eleventy&quot;: {version}</code> dans la partie <code>&quot;dependencies</code> du fichier <code>.package.json</code>.</p><h3 id="1.3-lancer-le-projet" tabindex="-1"><a class="header-anchor" href="#1.3-lancer-le-projet"></a> 1.3 Lancer le projet</h3><p>Afin de lancer le projet, il faut demander à <code>eleventy</code> de compiler les fichiers du projet. Pour cela on utilisera la commande :</p><pre class="language-bash line-numbers"><code>
+
+npx @11ty/eleventy
+
+
+</code></pre><p>Eleventy va alors vous dire qu'il a compilé 0 fichier et c'est normal, on n'a rien écrit encore ! :D</p><div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100 dark:border-red-800 dark:bg-red-950"><svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-red-500 dark:stroke-red-800 stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg><div class="pl-8 mb-2 mr-8"><p><b>Attention</b></p></div><div class="pl-8 mr-8"><p>Si jamais la compilation indique des erreurs, recommencez depuis le début.</p></div></div><h3 id="1.4-premi%C3%A8re-page" tabindex="-1"><a class="header-anchor" href="#1.4-premi%C3%A8re-page"></a> 1.4 Première page</h3><p>Pour montrer que la compilation fonctionne, il serait bien d'avoir un fichier à compiler ! C'est parti ! Créons un fichier <code>index.md</code>.</p><pre class="language-html line-numbers"><code>
+
+# Une belle page !
+
+Regarder ce mot est en **gras** et celui là est en *italique* !
+
+
+</code></pre><p>Relançons la commande <code>npx @11ty/eleventy</code>. On voit alors que notre fichier <code>index.md</code> a été compilé en un fichier <code>index.html</code> dans le dossier <code>_site</code>. Voilà son contenu :</p><pre class="language-html line-numbers"><code>
+
+<h1>Une belle page !</h1>
+<p>Regarder ce mot est en <strong>gras</strong> et celui là est en <em>italique</em> !</p>
+
+
+</code></pre><p>Si vous connaissez un minimum le langage HTML vous voyez que la compilation ne fait rien de délirant et que c'est logique, c'est bien !</p><h3 id="1.5-mettre-en-place-le-serveur-web-en-local" tabindex="-1"><a class="header-anchor" href="#1.5-mettre-en-place-le-serveur-web-en-local"></a> 1.5 Mettre en place le serveur web en local</h3><p>Afin d'éviter d'avoir à relancer la compilation à chaque fois, nous allons mettre en place un serveur web local pour qu'Eleventy détecte les changements en permanence, nous allons le lancer la commande <code>npx @11ty/eleventy --serve</code>. Rendez-vous ensuite sur <a href="http://localhost:8080">http://localhost:8080</a> et vous devriez voir le contenu de votre fichier compilé !</p><div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100 dark:border-cyan-800 dark:bg-cyan-950"><svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-cyan-500 dark:stroke-cyan-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg><div class="pl-8 mb-2 mr-8"><p><b>Information</b></p></div><div class="pl-8 mr-8"><p>Actuellement, il est nécessaire de rafraîchir la page web pour voir les modifications, c'est normal ! Ce problème sera réglé plus tard :)</p></div></div><div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100 dark:border-yellow-800 dark:bg-yellow-950"><svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-yellow-500 dark:stroke-yellow-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg><div class="pl-8 mb-2 mr-8"><p><strong>Mise en place d'un alias pour la compilation</strong></p></div><div class="pl-8 mr-8"><p>Cette commande étant un peu difficile à se souvenir, nous allons créer un alias à cette commande dans le fichier <code>package.json</code>. Pour cela, il suffit d'ajouter la ligne suivante :</p><pre class="language-json line-numbers"><code>
+
+{
+  ...
+  "scripts": {
+    ... 
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "npx @11ty/eleventy --serve"
+    ...
+  }
+  ...
+}
+
+
+</code></pre><p>La ligne de <code>&quot;test&quot;</code> se trouve déjà là, cependant n'oubliez pas d'ajouter la virgule à la fin de cette ligne !</p></div></div><h2 id="2.-mise-en-place-des-templates-%26-configuration" tabindex="-1"><a class="header-anchor" href="#2.-mise-en-place-des-templates-%26-configuration"></a> 2. Mise en place des templates &amp; configuration</h2><h3 id="2.1-cr%C3%A9ation-d'un-template" tabindex="-1"><a class="header-anchor" href="#2.1-cr%C3%A9ation-d'un-template"></a> 2.1 Création d'un template</h3><p>Les templates sont comme leur nom l'indique des templates qui pourront être utilisé par d'autres pages. Les templates doivent se trouver dans le dossier <code>_includes/</code>. Créons notre premier template que nous appellerons <code>base.njk</code></p><pre class="language-html line-numbers"><code>
+
+---
+title: Mon super site statique
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>{ title }</title>
+  </head>
+  <body>
+    Bienvenue à tous sur mon site créer avec Eleventy !
+    { content | safe }
+  </body>
+</html>
+
+
+</code></pre><div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100 dark:border-red-800 dark:bg-red-950"><svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-red-500 dark:stroke-red-800 stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg><div class="pl-8 mb-2 mr-8"><p><b>Attention</b></p></div><div class="pl-8 mr-8"><p><strong>ATTENTION</strong>, ici il faut remplacer les simples accolades &quot;{ }&quot; par des doubles accolades afin que le contenu soit interprété comme il faut. Je ne peux pas les afficher ici puisqu'elles sont interprétées directement par le compilateur.</p></div></div><p>Ici, dans la balise <code>content</code> sera ajouté le contenu des &quot;enfants&quot;, c'est-à-dire les pages qui vont utiliser ce template. Afin que la page que nous venons de créer utiliser ce template il faut rajouter les quelques lignes suivantes en en-tête du fichier <code>index.md</code>.</p><pre class="language-markdown line-numbers"><code>
+
+---
+layout: base.njk
+title: Ma première page
+---
+
+# Une belle page !
+
+Regarder ce mot est en **gras** et celui là est en *italique* !
+
+
+
+</code></pre><p>Dans cette en-tête on indique à Eleventy qu'il doit utiliser le template base.njk et qu'il doit afficher &quot;Ma première page&quot; dans l'emplacement &quot;title&quot; du template. Si cette valeur de title n'est pas spécifié dans la page, elle vaudra par défaut celle du template, ici &quot;Mon super site statique&quot;.</p><div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100 dark:border-cyan-800 dark:bg-cyan-950"><svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-cyan-500 dark:stroke-cyan-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg><div class="pl-8 mb-2 mr-8"><p><b>Information</b></p></div><div class="pl-8 mr-8"><p>Il est possible d’enchaîner les templates les uns dans les autres et d'avoir ainsi plusieurs niveau de templating !</p></div></div><h3 id="2.2-configuration" tabindex="-1"><a class="header-anchor" href="#2.2-configuration"></a> 2.2 configuration</h3><p>Pour gagner en lisibilité, nous allons mettre tous nos fichiers à compiler dans un dossier <code>src</code> et les fichiers compilés seront dans le dossier <code>dist</code>. Pour cela nous allons ajouter à la racine du projet le fichier de configuration appelé <code>.eleventy.js</code>. (Attention, il y a un <strong>.</strong> devant !) Voici la configuration a insérer dans le fichier :</p><pre class="language-js line-numbers"><code>
+
+module.exports = function (eleventyConfig) {
+    return {
+        dir: {
+            input: "src",
+            output: "dist"
+        }
+    }
+}
+
+
+</code></pre><p>Il faut cependant déplacer le dossier de layout dans le dossier <code>src</code>. On a alors l'arborescence suivante :</p><pre class="language-bash line-numbers"><code>
+
+node_modules
+dist
+├── index.html
+src
+├── _includes
+|  ├── base.njk
+└── index.md
+.eleventy.js
+package.json
+package-lock.json
+
+
+</code></pre><p>Voilà à ce niveau du tutoriel vous avez de quoi créer votre site statique !</p><div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100 dark:border-pink-800 dark:bg-pink-950"><svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-pink-500 dark:stroke-pink-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg><div class="pl-8 mb-2 mr-8"><p><b>Prérequis</b></p></div><div class="pl-8 mr-8"><p>Pour davantage d'informations, rendez-vous sur la <a href="https://www.11ty.dev/">documentation d'Eleventy</a>.</p></div></div><h2 id="3.-installation-de-tailwindcss" tabindex="-1"><a class="header-anchor" href="#3.-installation-de-tailwindcss"></a> 3. Installation de TailwindCSS</h2><div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950"><details class="group"><summary class="list-none py-0.5"><svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path></svg> <svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path></svg><div class="pl-8 font-bold inline-block group-open:select-text"><p>A vos risques et périls</p></div><svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path></svg></summary><div class="mx-8 pb-2 cursor-auto select-text"><p>Afin de faciliter la création du style, nous allons utiliser <a href="https://tailwindcss.com/">TailwindCSS</a> dans notre projet. TailwindCSS est un framework CSS basé sur le principe de classes utilitaires. Cela rend la phase de développement beaucoup plus simple.</p><p>Commençons par installer <code>tailwindcss</code> et <code>concurrently</code> (cela nous servira plus tard):</p><pre class="language-bash line-numbers"><code>
+
+npm install -D tailwindcss concurrently
+npx tailwindcss init
+
+
+</code></pre><p>La deuxième commande permet de créer automatiquement un fichier de configuration pour TailwindCSS. Nous allons le modifier de cette façon :</p><pre class="language-js line-numbers"><code>
+
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ["./dist/**/*.{html,js,njk,md}"],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+
+
+</code></pre><p>Ainsi, on indique à Tailwind que les fichiers contenant les classes utilitaires se trouvent dans le dossier <code>dist</code>.</p><p>Commençons par créer un fichier <code>tailwind.css</code> dans <code>src/styles/</code>, puis nous allons importer le style de base de TailwindCSS.</p><pre class="language-css line-numbers"><code>
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+</code></pre><p>Nous devons ensuite indiquer à notre template <code>base.njk</code> d'utiliser le style de Tailwind. Pour cela on rajoute dans la balise <code>head</code> :</p><pre class="language-html line-numbers"><code>
+
+<link href="/styles/index.css" rel="stylesheet">
+
+
+</code></pre><div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100 dark:border-red-800 dark:bg-red-950"><svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-red-500 dark:stroke-red-800 stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg><div class="pl-8 mb-2 mr-8"><p><b>Attention</b></p></div><div class="pl-8 mr-8"><p>Le chemin indiqué ici fait référence au fichier CSS compilé. Ce chemin est défini dans la commande <code>tailwind</code>, dans le <code>package.json</code> que nous allons modifier ci-après.</p></div></div><p>Pour que le commande de lancement du serveur compile aussi le style de Tailwind, nous allons devoir effectuer des modifications dans le fichier <code>package.json</code>.</p><pre class="language-json line-numbers"><code>
+
+{
+  ...
+  scripts": {
+    "serve": "npx @11ty/eleventy --serve",
+    "tailwind": "npx tailwindcss -i ./src/styles/tailwind.css -o ./dist/styles/index.css --watch",
+    "start": "concurrently \"npm run tailwind\" \"npm run serve\""
+  },
+  ...
+}
+
+
+</code></pre><p>La commande <code>serve</code> (se lançant avec <code>npm run serve</code>) permet de lancer la compilation des fichiers avec Eleventy, et la commande <code>tailwind</code> (se lançant avec <code>npm run tailwind</code>) permet de compiler le style de Tailwind.</p><p>Pour exécuter ses deux commandes en parallèle, on lance <code>npm run start</code>. <em>(Cette commande utilise <code>concurrently</code>, une bilbiothèque permettant de lancer des scripts en parallèle.)</em></p><p>Modifions désormais notre <code>base.njk</code> pour y ajouter des classes Tailwind !</p><pre class="language-markdown line-numbers"><code>
+
+---
+title: Mon super site statique
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Créer un site web statique avec 11ty</title>
+  </head>
+  <body class="text-3xl text-blue-600">
+    Bienvenue à tous sur mon site créer avec Eleventy !
+    
+  </body>
+</html>
+
+
+</code></pre><p>Il ne reste plus qu'à lancer la commande npm run start, les fichiers ainsi que le style vont être compilés et tindiinnn !</p><div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100 dark:border-red-800 dark:bg-red-950"><svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-red-500 dark:stroke-red-800 stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg><div class="pl-8 mb-2 mr-8"><p><b>Attention</b></p></div><div class="pl-8 mr-8"><p>J'ai découvert cela durant l'élaboration de ce MON. Quand vous appliquez des classes Tailwind sur un template pas de problème. En revanche si vous appliquer ces classes à l'intérieur d'une de vos pages dans un fichier markdown, le style de tailwind prendre le dessus sur le style du Markdown.</p><p><strong>Exemple</strong> : le code ci dessous, une fois compilé n'affiche que du vert et le mot <code>amis</code> n'est pas mis en gras et les étoiles sont affichées. ⟶ <strong>Le style du Markdown n'est pas pris en compte</strong>.</p><pre class="language-markdown line-numbers"><code>
+
+<div class="text-green-600">
+  Bonjour les **amis** !
+</div>
+
+
+</code></pre><p>⟶ Ainsi je vous conseille de ne pas utiliser de classes Tailwind dans vos pages mais seulement dans vos templates.</p></div></div></div></details></div><h2 id="4.-un-exemple-%2B-des-bidouilles" tabindex="-1"><a class="header-anchor" href="#4.-un-exemple-%2B-des-bidouilles"></a> 4. Un exemple + des bidouilles</h2><p>J'ai crée un petit site pour présenter les formations du GInfo en suivant le tuto ci dessus. Voilà le lien du repo : <a href="https://github.com/nbert71/eleventy-cours">https://github.com/nbert71/eleventy-cours</a> Vous pouvez le consulter à l'adresse suivante : <a href="http://nbert.perso.ec-m.fr/eleventy">http://nbert.perso.ec-m.fr/eleventy</a></p><p>J'ai installé <a href="https://getbootstrap.com/docs/5.2/getting-started/introduction/">Bootstrap</a> (via le CDN pour aller plus vite) pour styliser rapidement mes pages.</p><div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100 dark:border-cyan-800 dark:bg-cyan-950"><svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-cyan-500 dark:stroke-cyan-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg><div class="pl-8 mb-2 mr-8"><p><b>Information</b></p></div><div class="pl-8 mr-8"><p>J'ai créé plusieurs pages. Il faut savoir que si l'on n'utilise pas de bilbiothèque spécifique pour gérer la navigation, le rounting du site suivra l'arbrescence des fichiers de votre projets. Exemple : si vous mettez la page <code>linux</code> dans un dossier <code>formations</code>, celle-ci sera accessible sur <code>http://monsite.com/formations/linux</code></p></div></div><p>Vous pouvez voir différentes pages ainsi qu'une page regroupant toutes les formations. Vous avez la possibilité de filtrer suivant un tag pour n'afficher que les formations qui possèdent ce tag. Ensuite en cliquant sur une formation vous avez accès au détail de la formation.</p></article></main><footer class="min-h-[50px] border-t-2 mt-4 border-gray-200 dark:border-neutral-700"><div class="max-w-[1000px] mx-auto px-4"><div class="min-h-[50px] flex justify-center items-center"><p class="text-center">©2025 <b><span style="font-family:Consolas,sans-serif">Do-<span style="color:#4a86e8">It</span></span></b> - Développement, Management et Gestion de projets en IT</p></div></div></footer><script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">window.MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]]},svg:{fontCache:"global"}},document.addEventListener("DOMContentLoaded",(()=>{MathJax.typeset()}))</script><script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">Prism.plugins.NormalizeWhitespace.setDefaults({"remove-trailing":!0,"remove-indent":!0,"left-trim":!0,"right-trim":!0})</script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script></body></html>

@@ -1,0 +1,1046 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="robots" content="index, follow">
+
+        <link rel="canonical" href="https://do-it.aioli.ec-m.fr/promos/2024-2025/Merle-Thomas/mon/temps-2.1/">
+
+        
+        
+
+        <meta name="description" content="Je réalise ce MON pour m&#39;initier au BackEnd et au language Go afin de pouvoir comprendre le backend de notre projet 3A et de pouvoir y contribuer. Je vais probablement utiliser un tutoriel en ligne et utiliser la documentation Go.">
+        <meta property="og:description" content="Je réalise ce MON pour m&#39;initier au BackEnd et au language Go afin de pouvoir comprendre le backend de notre projet 3A et de pouvoir y contribuer. Je vais probablement utiliser un tutoriel en ligne et utiliser la documentation Go.">
+        <meta name="twitter:description" content="Je réalise ce MON pour m&#39;initier au BackEnd et au language Go afin de pouvoir comprendre le backend de notre projet 3A et de pouvoir y contribuer. Je vais probablement utiliser un tutoriel en ligne et utiliser la documentation Go.">
+
+        
+            <meta name="author" content="Thomas Merle">
+        
+        <meta name="keywords" content="do-it, centrale, centrale méditerranée, ecm, MON, Developpement BackEnd, Go, DevWeb, Dark Kitchen">
+
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png">
+        <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png">
+
+        <link href="/assets/stylesheets/main.css" rel="stylesheet">
+
+        <meta property="og:title" content="Initiation au BackEnd: go to learn Go!">
+
+        <meta property="og:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta property="og:url" content="https://do-it.aioli.ec-m.fr/promos/2024-2025/Merle-Thomas/mon/temps-2.1/">
+        <meta property="og:type" content="website">
+
+        <meta name="twitter:card" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:title" content="Initiation au BackEnd: go to learn Go!">
+        <meta name="twitter:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:url" content="https://do-it.aioli.ec-m.fr/promos/2024-2025/Merle-Thomas/mon/temps-2.1/">
+
+        <title>Initiation au BackEnd: go to learn Go!</title>
+
+        <!-- Prismjs imports
+                - Prism line numbers
+                - Prism toolbar
+        -->
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet">
+        <link id="prism-theme" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+        <!-- Mermaid import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js "></script>
+
+        <script defer="">
+        // Check if a theme is stored in localStorage. If so, use it, otherwise fallback to the system preference.
+        const storedTheme = localStorage.getItem('theme');
+        if (storedTheme) {
+            document.documentElement.classList.toggle("dark", storedTheme === "dark");
+        } else {
+            // Use system color scheme if there is no stored theme preference.
+            document.documentElement.classList.toggle("dark", window.matchMedia("(prefers-color-scheme: dark)").matches);
+        }
+
+        function loadPrismTheme(isDarkMode) {
+            const newTheme = isDarkMode ? 'prism-okaidia.min.css' : 'prism-solarizedlight.min.css';
+            const newLink = document.createElement('link');
+            newLink.rel = 'stylesheet';
+            newLink.id = 'prism-theme';
+            newLink.href = `https://cdn.jsdelivr.net/npm/prismjs/themes/${newTheme}`;
+
+            newLink.onload = () => {
+                // Reapply highlighting after the new theme loads
+                Prism.highlightAll();
+            };
+
+            const existingLink = document.getElementById('prism-theme');
+            if (existingLink) {
+                document.head.replaceChild(newLink, existingLink);
+            } else {
+                document.head.appendChild(newLink);
+            }
+        }
+
+        function setMermaidTheme(isDarkMode) {
+            const theme = isDarkMode ? 'dark' : 'forest';
+            mermaid.initialize({
+                securityLevel: 'loose',
+                theme,
+                startOnLoad: true,
+            });
+        }
+
+        // Toggle dark and light mode and update localStorage accordingly.
+        function toggleDarkMode() {
+            const dark = document.documentElement.classList.contains("dark");
+            const newTheme = dark ? "light" : "dark";
+            localStorage.setItem('theme', newTheme);
+            document.documentElement.classList.toggle("dark", !dark);
+            loadPrismTheme(!dark);
+            setMermaidTheme(!dark);
+        }
+
+        // On initial load, ensure that Prism and Mermaid are initialized using the current theme.
+        const isDark = document.documentElement.classList.contains("dark");
+        loadPrismTheme(isDark);
+        setMermaidTheme(isDark);
+        </script>
+
+    </head>
+
+    <body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000" class="bg-neutral-50 text-neutral-950 dark:bg-neutral-900 dark:text-neutral-50">
+        <header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white dark:bg-neutral-900 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-between items-center">
+                    <a class="mx-2" href="/">Home</a>
+                    <button class="hidden sm:block text-neutral-950 dark:text-neutral-50 hover:bg-neutral-700 hover:text-neutral-50 hover:dark:bg-neutral-300 hover:dark:text-neutral-950 transition-colors p-2 rounded-full duration-800 ease-in-out" onclick="toggleDarkMode()">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 dark:hidden stroke-current">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <path d="M12 2V4" stroke-linecap="round"></path>
+                            <path d="M12 20V22" stroke-linecap="round"></path>
+                            <path d="M4 12L2 12" stroke-linecap="round"></path>
+                            <path d="M22 12L20 12" stroke-linecap="round"></path>
+                            <path d="M19.7778 4.22266L17.5558 6.25424" stroke-linecap="round"></path>
+                            <path d="M4.22217 4.22266L6.44418 6.25424" stroke-linecap="round"></path>
+                            <path d="M6.44434 17.5557L4.22211 19.7779" stroke-linecap="round"></path>
+                            <path d="M19.7778 19.7773L17.5558 17.5551" stroke-linecap="round"></path>
+                        </svg>
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 stroke-current hidden dark:block">
+                            <path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </button>
+                    <div class="flex items-center gap-4 sm:gap-6 ">
+                        <a class="" href="/cs">CS</a>
+                        <a class="" href="/pok">POK</a>
+                        <a class="" href="/mon">MON</a>
+                        <a class="" href="/projets">Projets</a>
+                        <a class="hidden sm:block" href="/promos">Promos</a>
+                        <a href="/search">
+                            <svg class="h-5 aspect-square stroke-neutral-950 dark:stroke-neutral-300 fill-none stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+                            </svg>
+                        </a>
+                        <a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank">
+                            <svg class="h-5 aspect-square dark:stroke-neutral-300 dark:fill-neutral-300" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body="">
+            
+<article class="relative">
+<h1 class="mb-1">Initiation au BackEnd: go to learn Go!</h1>
+<div class="mb-4">
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Tags : </div>
+            <ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags">
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">MON</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">Developpement BackEnd</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">Go</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">DevWeb</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">Dark Kitchen</li>
+                
+
+            </ul>
+
+            
+            <div class="hidden" data-pagefind-meta="Type" aria-hidden="true">
+                
+                    
+                        <span data-pagefind-filter="Type">MON</span>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Auteur : </div>
+            <ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs">
+                
+                    <li class="bg-blue-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Auteurs">Thomas Merle</li>
+                
+            </ul>
+        </div>
+    
+
+    
+        <div class="absolute top-0 right-0">
+            <span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2 text-neutral-950" data-pagefind-filter="Année">
+                2024-2025
+            </span>
+        </div>
+    
+</div>
+
+<p class="mb-4 text-lg">Je réalise ce MON pour m'initier au BackEnd et au language Go afin de pouvoir comprendre le backend de notre projet 3A et de pouvoir y contribuer. Je vais probablement utiliser un tutoriel en ligne et utiliser la documentation Go.</p>
+
+
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100 dark:border-purple-800 dark:bg-purple-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-purple-500 dark:stroke-purple-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/promos/2024-2025/Merle-Thomas/">Thomas Merle</a><span class="px-1">/</span><a href="/promos/2024-2025/Merle-Thomas/mon/">MONs de Thomas Merle</a><span class="px-1">/</span><a href="/promos/2024-2025/Merle-Thomas/mon/temps-2.1/">Initiation au BackEnd: go to learn Go!</a>
+
+</div>
+</div>
+
+
+
+
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100 dark:border-pink-800 dark:bg-pink-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-pink-500 dark:stroke-pink-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Prérequis</b></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li><a href="/contribuer/shortcodes/#prerequis"><code>Bases en Dev Web</code></a></li>
+</ul>
+</div>
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100 dark:border-emerald-800 dark:bg-emerald-950">
+<svg class="absolute w-6 h-6 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-emerald-500 dark:stroke-emerald-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Liens</b></p>
+</div><div class="pl-8 mr-8">
+<p><a href="https://devopssec.fr/article/configurer-environnement-golang#begin-article-section"><code>GoLang Tuto</code></a></p>
+</div>
+</div>
+<ul>
+<li>le niveau et les prérequis nécessaires en utilisant la balise <a href="/contribuer/shortcodes/#prerequis"><code>prerequis</code></a></li>
+<li>les autres POK &amp; MON en rapport en utilisant la balise <a href="/contribuer/shortcodes/#lien"><code>lien</code></a></li>
+</ul>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100 dark:border-amber-800 dark:bg-amber-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-amber-800 dark:stroke-amber-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Note</b></p>
+</div><div class="pl-8 mr-8">
+<p>Objectifs :</p>
+<ul>
+<li>Découvrir le language Go, ses utilisations et son utilité pour réaliser le BackEnd d'un site web</li>
+<li>Apprendre à utiliser Go</li>
+<li>Faire un TP d'application : codage d'un jeu de morpions, tic-tac-toe game.</li>
+</ul>
+</div>
+</div>
+<h2 id="table-des-mati%C3%A8res" tabindex="-1"><a class="header-anchor" href="#table-des-mati%C3%A8res"></a> Table des matières<a name="table-des-matières"></a></h2>
+<ul>
+<li><a href="#table-des-mati%C3%A8res">Table des matières</a></li>
+<li><a href="#introduction">Chapitre 1 : Introduction à Go</a></li>
+<li><a href="#bases">Chapitre 2 : Les Bases de la Programmation</a></li>
+<li><a href="#variables-operateurs">Chapitre 3 : Variables et Opérateurs</a></li>
+<li><a href="#conditions">Chapitre 4 : Les Conditions</a></li>
+<li><a href="#boucles">Chapitre 5 : Les Boucles</a></li>
+<li><a href="#fonctions">Chapitre 6 : Les Fonctions</a></li>
+<li><a href="#tableaux">Chapitre 7 : Les Tableaux</a></li>
+<li><a href="#projet">Mini Projet: écriture d'un code de jeu de morpions en Go</a></li>
+</ul>
+<h2 id="contenu" tabindex="-1"><a class="header-anchor" href="#contenu"></a> Contenu</h2>
+<h1 id="apprentissage-de-golang" tabindex="-1"><a class="header-anchor" href="#apprentissage-de-golang"></a> Apprentissage de GoLang</h1>
+<p>L'objectif de cet apprentissage est de maîtriser les bases du langage Go afin d'écrire un petit jeu de <strong>morpions</strong> ou <strong>tic-tac-toe</strong>.</p>
+<hr>
+<h2 id="chapitre-1-%3A-introduction-%C3%A0-go" tabindex="-1"><a class="header-anchor" href="#chapitre-1-%3A-introduction-%C3%A0-go"></a> Chapitre 1 : Introduction à Go<a name="introduction"></a></h2>
+<p>Go est un langage de programmation moderne développé par Google. Il se distingue par sa <strong>simplicité</strong>, sa <strong>performance</strong> et sa <strong>concurrence</strong>.</p>
+<h3 id="pourquoi-choisir-go-%3F" tabindex="-1"><a class="header-anchor" href="#pourquoi-choisir-go-%3F"></a> Pourquoi choisir Go ?</h3>
+<ul>
+<li><strong>Concis et expressif :</strong> Code lisible et compact.</li>
+<li><strong>Compilé et performant :</strong> Génère des exécutables rapides.</li>
+<li><strong>Concurrence facilitée :</strong> Avec des goroutines et des canaux.</li>
+<li><strong>Communauté active :</strong> De nombreux projets open-source.</li>
+</ul>
+<h3 id="applications-typiques-%3A" tabindex="-1"><a class="header-anchor" href="#applications-typiques-%3A"></a> Applications typiques :</h3>
+<ul>
+<li>Développement web (back-end)</li>
+<li>Infrastructure (Docker, Kubernetes)</li>
+<li>Data science</li>
+<li>Développement de jeux</li>
+</ul>
+<hr>
+<h2 id="chapitre-2-%3A-les-bases-de-la-programmation" tabindex="-1"><a class="header-anchor" href="#chapitre-2-%3A-les-bases-de-la-programmation"></a> Chapitre 2 : Les Bases de la Programmation<a name="bases"></a></h2>
+<ol>
+<li><strong>Télécharger et installer Go</strong> : instructions officielles sur <a href="https://go.dev/dl/">go.dev</a>.</li>
+</ol>
+<h3 id="exemple-%3A-hello%2C-world-!" tabindex="-1"><a class="header-anchor" href="#exemple-%3A-hello%2C-world-!"></a> Exemple : Hello, World !</h3>
+<p>Le programme le plus simple pour afficher du texte.</p>
+<pre class="language-go line-numbers"><code>
+
+package main
+
+import "fmt"
+
+func main() {
+    fmt.Println("Hello, World!")
+}
+
+
+</code></pre><h3 id="points-cl%C3%A9s-%3A" tabindex="-1"><a class="header-anchor" href="#points-cl%C3%A9s-%3A"></a> Points clés :</h3>
+<ul>
+<li><strong>Package</strong> : Groupe de fichiers Go.</li>
+<li><strong>Fonction <code>main</code></strong> : Point d'entrée du programme.</li>
+<li><strong><code>fmt.Println</code></strong> : Fonction pour afficher des messages à la console.</li>
+</ul>
+<hr>
+<h2 id="chapitre-3-%3A-variables-et-op%C3%A9rateurs" tabindex="-1"><a class="header-anchor" href="#chapitre-3-%3A-variables-et-op%C3%A9rateurs"></a> Chapitre 3 : Variables et Opérateurs<a name="variables-operateurs"></a></h2>
+<h3 id="d%C3%A9claration-des-variables" tabindex="-1"><a class="header-anchor" href="#d%C3%A9claration-des-variables"></a> Déclaration des variables</h3>
+<ul>
+<li><strong>Syntaxe classique</strong> : <code>var nom_variable type</code></li>
+<li><strong>Avec initialisation</strong> : <code>var nom_variable type = valeur</code></li>
+<li><strong>Inférence de type</strong> : <code>nom_variable := valeur</code></li>
+</ul>
+<h3 id="types-de-base" tabindex="-1"><a class="header-anchor" href="#types-de-base"></a> Types de base</h3>
+<ul>
+<li><strong>Entiers :</strong> <code>int</code>, <code>uint</code>, etc.</li>
+<li><strong>Flottants :</strong> <code>float32</code>, <code>float64</code></li>
+<li><strong>Chaînes :</strong> <code>string</code></li>
+<li><strong>Booléens :</strong> <code>bool</code></li>
+</ul>
+<h3 id="exemple" tabindex="-1"><a class="header-anchor" href="#exemple"></a> Exemple</h3>
+<pre class="language-go line-numbers"><code>
+
+var age int = 30
+var name string = "Alice"
+var isStudent bool = true
+
+
+</code></pre><h3 id="op%C3%A9rateurs" tabindex="-1"><a class="header-anchor" href="#op%C3%A9rateurs"></a> Opérateurs</h3>
+<ul>
+<li><strong>Arithmétiques</strong> : <code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>%</code></li>
+<li><strong>De comparaison</strong> : <code>==</code>, <code>!=</code>, <code>&lt;</code>, <code>&gt;</code></li>
+<li><strong>Logiques</strong> : <code>&amp;&amp;</code>, <code>||</code>, <code>!</code></li>
+</ul>
+<h3 id="exemple-1" tabindex="-1"><a class="header-anchor" href="#exemple-1"></a> Exemple</h3>
+<pre class="language-go line-numbers"><code>
+
+// Opérations arithmétiques
+var x, y int = 10, 5
+var z float64 = 2.5
+result := x + y * int(z) // Conversion de z en int
+
+// Conditions
+if age >= 18 {
+    fmt.Println("Vous êtes majeur")
+} else {
+    fmt.Println("Vous êtes mineur")
+}
+
+// Boucle for
+for i := 0; i < 10; i++ {
+    fmt.Println(i)
+}
+
+
+
+</code></pre><h3 id="points-cl%C3%A9s%3A" tabindex="-1"><a class="header-anchor" href="#points-cl%C3%A9s%3A"></a> Points clés:</h3>
+<ul>
+<li>*<strong>Typage fort</strong>: Go est un langage à typage statique, ce qui signifie que le type d'une variable doit être déclaré explicitement ou déduit par le compilateur.</li>
+<li><strong>Inférence de type</strong>: Le compilateur peut souvent déduire le type d'une variable lors de son initialisation.</li>
+<li><strong>Conversion de type</strong>: Il est possible de convertir un type en un autre à l'aide d'une conversion explicite (cast).</li>
+<li><strong>Constante</strong>: Une valeur qui ne peut pas être modifiée après sa déclaration. On utilise le mot-clé const.</li>
+<li><strong>Zero value</strong>: Si une variable n'est pas initialisée, elle prend une valeur par défaut (0 pour les nombres, &quot;&quot; pour les chaînes, false pour les booléens).</li>
+</ul>
+<hr>
+<h2 id="chapitre-4-%3A-les-conditions" tabindex="-1"><a class="header-anchor" href="#chapitre-4-%3A-les-conditions"></a> Chapitre 4 : Les Conditions<a name="conditions"></a></h2>
+<p>Dans ce chapitre, nous abordons les conditions en Go, essentielles pour gérer la logique de contrôle dans vos programmes.</p>
+<h2 id="1.-les-instructions-if-et-else" tabindex="-1"><a class="header-anchor" href="#1.-les-instructions-if-et-else"></a> 1. Les instructions <code>if</code> et <code>else</code></h2>
+<h3 id="exemple-%3A-contr%C3%B4le-d'entr%C3%A9e-en-bo%C3%AEte-de-nuit" tabindex="-1"><a class="header-anchor" href="#exemple-%3A-contr%C3%B4le-d'entr%C3%A9e-en-bo%C3%AEte-de-nuit"></a> Exemple : Contrôle d'entrée en boîte de nuit</h3>
+<p>Pour automatiser l'entrée des clients selon leur âge, nous utilisons les conditions <code>if</code> et <code>else</code>.</p>
+<pre class="language-go line-numbers"><code>
+
+package main
+
+import (
+    "fmt"
+    "os"
+    "strconv"
+)
+
+func main() {
+    fmt.Print("Entrez votre âge : ")
+    var age int
+    fmt.Scan(&age)
+
+    if age < 18 {
+        fmt.Println("Sortez !")
+    } else {
+        fmt.Println("Entrez :)")
+    }
+}
+
+
+</code></pre><p>🏁 <strong>Résultats :</strong>
+Entrez votre âge : 16 Sortez !
+Entrez votre âge : 25 Entrez :</p>
+<h2 id="2.-les-instructions-elseif" tabindex="-1"><a class="header-anchor" href="#2.-les-instructions-elseif"></a> 2. Les instructions <code>elseif</code></h2>
+<p>L'instruction <code>else if</code> permet de gérer des cas supplémentaires lorsque la première condition <code>if</code> n'est pas remplie. Elle permet de tester plusieurs alternatives de manière structurée.</p>
+<h2 id="3.-les-instructions-switch-et-case" tabindex="-1"><a class="header-anchor" href="#3.-les-instructions-switch-et-case"></a> 3. Les instructions <code>switch</code> et <code>case</code></h2>
+<p>L'instruction <code>switch</code> simplifie les tests d'égalité multiples, idéale pour des menus ou des choix.</p>
+<h3 id="exemple-%3A-menu-interactif" tabindex="-1"><a class="header-anchor" href="#exemple-%3A-menu-interactif"></a> Exemple : Menu interactif</h3>
+<p>Ce programme teste différentes valeurs entrées par l'utilisateur et affiche un message approprié :</p>
+<pre class="language-go line-numbers"><code>
+
+func main() {
+    scanner := bufio.NewScanner(os.Stdin)
+    fmt.Print("Votre choix : ")
+    scanner.Scan()
+    choix, err := strconv.Atoi(scanner.Text())
+    if err != nil {
+        fmt.Println("Entrez un entier !")
+        os.Exit(2)
+    }
+
+    switch choix {
+    case 0, 1:
+        fmt.Println("George Boole !")
+    case 7:
+        fmt.Println("William Van de Walle !")
+    case 23:
+        fmt.Println("Pour certains, le nombre 23 est source de nombreux mystères.")
+    case 42:
+        fmt.Println("La réponse à la question ultime du sens de la vie !")
+    case 666:
+        fmt.Println("Quand le diable veut une âme, le mal devient séduisant.")
+    default:
+        fmt.Println("Mauvais choix !")
+    }
+}
+
+
+</code></pre><p>🏁 <strong>Résultats :</strong>
+Votre choix : 666
+Quand le diable veut une âme, le mal devient séduisant
+Votre choix : 7
+William Van de Walle !
+Votre choix : 1
+George Boole !
+Votre choix : 0
+George Boole !</p>
+<h3 id="points-cl%C3%A9s-%3A-1" tabindex="-1"><a class="header-anchor" href="#points-cl%C3%A9s-%3A-1"></a> Points clés :</h3>
+<ul>
+<li>Utiliser <code>if</code>, <code>else if</code>, et <code>else</code> pour structurer la logique.</li>
+<li><code>switch</code> simplifie les tests d'égalité.</li>
+</ul>
+<hr>
+<h2 id="chapitre-5-%3A-les-boucles" tabindex="-1"><a class="header-anchor" href="#chapitre-5-%3A-les-boucles"></a> Chapitre 5 : Les Boucles<a name="boucles"></a></h2>
+<p>Les boucles permettent d'exécuter un bloc de code de manière répétée. En Go, la seule structure de boucle est le mot-clé <code>for</code>.
+Utilisons une boucle avec une initialisation, une condition et une itération pour les cas où vous savez combien de fois le bloc sera exécuté.</p>
+<h3 id="1.-boucle-avec-un-nombre-d'it%C3%A9rations-connu" tabindex="-1"><a class="header-anchor" href="#1.-boucle-avec-un-nombre-d'it%C3%A9rations-connu"></a> 1. Boucle avec un nombre d'itérations connu</h3>
+<pre class="language-go line-numbers"><code>
+
+for i := 0; i < 10; i++ {
+    fmt.Println(i)
+}
+
+
+</code></pre><h3 id="exemple-%3A-%C3%A9crire-une-phrase-100-fois" tabindex="-1"><a class="header-anchor" href="#exemple-%3A-%C3%A9crire-une-phrase-100-fois"></a> Exemple : Écrire une phrase 100 fois</h3>
+<pre class="language-go line-numbers"><code>
+
+func main() {
+    for compteur := 0; compteur < 100; compteur++ {
+        fmt.Println(compteur+1, ") Je ne dois frapper mes camarades de classe")
+    }
+}
+
+
+</code></pre><p>🏁 <strong>Résultats:</strong></p>
+<ol>
+<li>Je ne dois frapper mes camarades de classe</li>
+<li>Je ne dois frapper mes camarades de classe
+...</li>
+<li>Je ne dois frapper mes camarades de classe</li>
+</ol>
+<h3 id="2.-boucle-avec-un-nombre-d'it%C3%A9rations-inconnu" tabindex="-1"><a class="header-anchor" href="#2.-boucle-avec-un-nombre-d'it%C3%A9rations-inconnu"></a> 2. Boucle avec un nombre d'itérations inconnu</h3>
+<p>Utilisez une boucle avec une condition pour des itérations dont le nombre n’est pas déterminé à l'avance. La boucle s'arrête quand la condition devient fausse.</p>
+<h3 id="exemple-%3A-accepter-l'entr%C3%A9e-en-bo%C3%AEte-uniquement-pour-les-majeurs-%3A" tabindex="-1"><a class="header-anchor" href="#exemple-%3A-accepter-l'entr%C3%A9e-en-bo%C3%AEte-uniquement-pour-les-majeurs-%3A"></a> Exemple : Accepter l'entrée en boîte uniquement pour les majeurs :</h3>
+<pre class="language-go line-numbers"><code>
+
+package main
+
+import (
+    "bufio"
+    "fmt"
+    "os"
+    "strconv"
+)
+
+func main() {
+    scanner := bufio.NewScanner(os.Stdin)
+    var age int
+
+    for age < 18 {
+        fmt.Print("Entrez votre âge : ")
+        scanner.Scan()
+        age, _ = strconv.Atoi(scanner.Text())
+    }
+
+    fmt.Println("Bienvenue en boîte de nuit !")
+}
+
+
+</code></pre><p>🏁 <strong>Résultats:</strong>
+Entrez votre âge : 17
+Entrez votre âge : 19
+Bienvenue en boîte de nuit !</p>
+<h3 id="points-cl%C3%A9s-%3A-2" tabindex="-1"><a class="header-anchor" href="#points-cl%C3%A9s-%3A-2"></a> Points clés :</h3>
+<ul>
+<li>Nombre d'itérations connu : Utilisez la syntaxe '<code>for initialisation</code> ; <code>condition</code> ; <code>itération</code>.</li>
+<li>Nombre d'itérations inconnu : Utilisez une condition avec <code>for</code>.</li>
+<li>Gérez toujours les entrées utilisateur pour éviter des boucles infinies.</li>
+</ul>
+<hr>
+<h2 id="chapitre-6-%3A-les-fonctions" tabindex="-1"><a class="header-anchor" href="#chapitre-6-%3A-les-fonctions"></a> Chapitre 6 : Les Fonctions<a name="fonctions"></a></h2>
+<p>Les fonctions structurent le code en regroupant des instructions pour accomplir des tâches spécifiques. Elles améliorent la lisibilité et permettent de réutiliser le code.</p>
+<h3 id="d%C3%A9claration-d'une-fonction" tabindex="-1"><a class="header-anchor" href="#d%C3%A9claration-d'une-fonction"></a> Déclaration d'une Fonction</h3>
+<pre class="language-go line-numbers"><code>
+
+func nomDeLaFonction(liste_de_paramètres) type_de_retour {
+    // Bloc de code
+}
+
+
+</code></pre><ol>
+<li><strong>Fonction sans type de retour ni paramètres</strong>
+Une fonction simple qui n'accepte ni paramètres ni type de retour.</li>
+</ol>
+<h3 id="exemple-%3A" tabindex="-1"><a class="header-anchor" href="#exemple-%3A"></a> Exemple :</h3>
+<pre class="language-go line-numbers"><code>
+
+func affichage() {
+    fmt.Println("#################################")
+    fmt.Println("\tBonjour")
+    fmt.Println("#################################")
+}
+
+func main() {
+    affichage()
+}
+
+
+</code></pre><ol start="2">
+<li><strong>Fonction avec paramètres et type de retour</strong>
+Une fonction peut accepter plusieurs paramètres, quels que soient leurs types.</li>
+</ol>
+<h3 id="exemple-%3A-1" tabindex="-1"><a class="header-anchor" href="#exemple-%3A-1"></a> Exemple :</h3>
+<pre class="language-go line-numbers"><code>
+
+func affichage(nom string, age int) {
+    fmt.Println("Bonjour", nom, "vous avez", age, "ans")
+}
+
+func main() {
+    affichage("Hatim", 9)
+    affichage("Alex", 12)
+}
+
+
+</code></pre><p>🏁 <strong>Résultat:</strong>
+Bonjour Hatim vous avez 9 ans
+Bonjour Alex vous avez 12 ans</p>
+<ol start="3">
+<li><strong>Fonction avec type de retour</strong>
+Utilisez le mot-clé <code>return</code> pour renvoyer une valeur, qui peut être stockée ou utilisée directement.</li>
+</ol>
+<h3 id="exemple-%3A-2" tabindex="-1"><a class="header-anchor" href="#exemple-%3A-2"></a> Exemple :</h3>
+<pre class="language-go line-numbers"><code>
+
+func maxNbr(a int, b int) int {
+    if a > b {
+        return a
+    }
+    return b
+}
+
+func main() {
+    max := maxNbr(10, 30)
+    fmt.Println(max)
+    fmt.Printf("Valeur : %d , Type : %T\n", maxNbr(50, 30), maxNbr(50, 30))
+}
+
+
+</code></pre><p>🏁 <strong>Résultat:</strong>
+30
+Valeur : 50 , Type : int</p>
+<ol start="4">
+<li><strong>Retourner plusieurs valeurs</strong>
+Une fonction peut renvoyer plusieurs valeurs de types différents.</li>
+</ol>
+<h3 id="exemple-%3A-3" tabindex="-1"><a class="header-anchor" href="#exemple-%3A-3"></a> Exemple :</h3>
+<pre class="language-go line-numbers"><code>
+
+func additionTrois(a int, b int) (int, int) {
+    return a + 3, b + 3
+}
+
+func main() {
+    a, b := 5, 8
+    fmt.Println("Avant fonction a =", a, " b =", b)
+    a, b = additionTrois(a, b)
+    fmt.Println("Après fonction a =", a, " b =", b)
+}
+
+
+</code></pre><p>🏁 <strong>Résultat:</strong>
+Avant fonction a = 5  b = 8
+Après fonction a = 8  b = 11</p>
+<hr>
+<h2 id="chapitre-7-%3A-les-tableaux" tabindex="-1"><a class="header-anchor" href="#chapitre-7-%3A-les-tableaux"></a> Chapitre 7 : Les Tableaux<a name="tableaux"></a></h2>
+<p>Les tableaux permettent de stocker un ensemble de valeurs de même type. Ils peuvent être statiques (taille fixe) ou multidimensionnels.</p>
+<h2 id="1.-initialisation-des-tableaux" tabindex="-1"><a class="header-anchor" href="#1.-initialisation-des-tableaux"></a> 1. Initialisation des Tableaux</h2>
+<h3 id="d%C3%A9claration" tabindex="-1"><a class="header-anchor" href="#d%C3%A9claration"></a> Déclaration</h3>
+<pre class="language-go line-numbers"><code>
+
+var nomTableau [taille]type
+
+
+</code></pre><h3 id="exemple%3A" tabindex="-1"><a class="header-anchor" href="#exemple%3A"></a> Exemple:</h3>
+<pre class="language-go line-numbers"><code>
+
+func main() {
+    var tableauInt [10]int
+    var tableauFloat [10]float32
+    var tableauString [10]string
+    var tableauBool [10]bool
+
+    fmt.Println("Valeur par défaut des tableaux :")
+    fmt.Println("Int :", tableauInt)
+    fmt.Println("Float :", tableauFloat)
+    fmt.Println("String :", tableauString)
+    fmt.Println("Bool :", tableauBool)
+}
+
+
+</code></pre><p>🏁 <strong>Résultat :</strong>
+Int : [0 0 0 0 0 0 0 0 0 0]
+Float : [0 0 0 0 0 0 0 0 0 0]
+String : [         ]
+Bool : [false false false false false false false false false false]</p>
+<h2 id="2.-acc%C3%A8s-aux-%C3%A9l%C3%A9ments" tabindex="-1"><a class="header-anchor" href="#2.-acc%C3%A8s-aux-%C3%A9l%C3%A9ments"></a> 2. Accès aux éléments</h2>
+<ul>
+<li>Accès par Index</li>
+</ul>
+<pre class="language-go line-numbers"><code>
+
+func main() {
+    var jours = [7]string{"lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi", "dimanche"}
+
+    fmt.Println("Premier jour :", jours[0])
+    fmt.Println("Dernier jour :", jours[len(jours)-1])
+}
+
+
+</code></pre><ul>
+<li>Parcourir avec une Boucle range</li>
+<li></li>
+</ul>
+<pre class="language-go line-numbers"><code>
+
+func main() {
+    var jours = [7]string{"lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi", "dimanche"}
+
+    for index, jour := range jours {
+        fmt.Println(jour, "est le jour numéro", index+1)
+    }
+}
+
+
+</code></pre><p>🏁 <strong>Résultat:</strong>
+lundi est le jour numéro 1
+mardi est le jour numéro 2
+...
+dimanche est le jour numéro 7</p>
+<h2 id="3.-modifier-des-valeurs" tabindex="-1"><a class="header-anchor" href="#3.-modifier-des-valeurs"></a> 3. Modifier des valeurs</h2>
+<pre class="language-go line-numbers"><code>
+
+func main() {
+    var jours = [5]string{"Hatim", "Robert", "Inconnu", "Ahmed", "Inconnu"}
+
+    jours[0] = "Alex" // Remplacer "Hatim" par "Alex"
+    fmt.Println(jours)
+}
+
+
+</code></pre><ul>
+<li>Modifier via une fonction</li>
+</ul>
+<pre class="language-go line-numbers"><code>
+
+func replaceByHatim(jours [5]string) [5]string {
+    for i, jour := range jours {
+        if jour == "Inconnu" {
+            jours[i] = "Hatim"
+        }
+    }
+    return jours
+}
+
+
+</code></pre><h2 id="4.-tableaux-%C3%A0-deux-dimensions" tabindex="-1"><a class="header-anchor" href="#4.-tableaux-%C3%A0-deux-dimensions"></a> 4. Tableaux à Deux Dimensions</h2>
+<pre class="language-go line-numbers"><code>
+
+func main() {
+    const (
+        maxLigne   = 3
+        maxColonne = 4
+    )
+    var tableau [maxLigne][maxColonne]int
+    fmt.Println(tableau)
+}
+
+
+</code></pre><p><strong>Modifier une valeur :</strong></p>
+<pre class="language-go line-numbers"><code>
+
+tableau[0][1] = 42 // Modifier l'élément de la première ligne, deuxième colonne
+
+
+</code></pre><h3 id="points-cl%C3%A9s%3A-1" tabindex="-1"><a class="header-anchor" href="#points-cl%C3%A9s%3A-1"></a> Points Clés:</h3>
+<ul>
+<li><strong>Initialisation</strong> : Un tableau a une taille fixe et un type unique pour ses éléments.</li>
+<li><strong>Accès</strong> : Utilisez les index pour accéder ou modifier des éléments.</li>
+<li><strong>Boucle</strong> : Utilisez range pour parcourir les éléments avec index et valeurs.</li>
+<li><strong>Multidimensionnel</strong> : Permet de modéliser des structures comme des grilles.</li>
+</ul>
+<hr>
+<p>🎯 <strong>Prochaine étape :</strong> Utiliser ces concepts pour coder un jeu de morpions ou tic tac toe game en Go !</p>
+<hr>
+<h2 id="mini-projet%3A-%C3%A9criture-d'un-code-de-jeu-de-morpions-en-go" tabindex="-1"><a class="header-anchor" href="#mini-projet%3A-%C3%A9criture-d'un-code-de-jeu-de-morpions-en-go"></a> Mini Projet: écriture d'un code de jeu de morpions en Go<a name="projet"></a></h2>
+<h3 id="introduction" tabindex="-1"><a class="header-anchor" href="#introduction"></a> Introduction</h3>
+<p>L'objectif de ce projet est de développer un jeu de morpions en ligne de commande avec Go. Les joueurs alternent leurs tours pour placer leur symbole (X ou O) sur un damier 3x3, et le jeu se termine lorsqu'un joueur aligne trois symboles ou qu'il n'y a plus de place.</p>
+<h3 id="etape-1-%3A-initialisation" tabindex="-1"><a class="header-anchor" href="#etape-1-%3A-initialisation"></a> Etape 1 : Initialisation</h3>
+<pre class="language-go line-numbers"><code>
+
+package main
+
+import (
+	"bufio"
+	"fmt"
+	"os"
+	"strconv"
+)
+
+// Taille du damier et symboles des joueurs
+const (
+	tailleDamier   = 3
+	symboleJoueur1 = "X"
+	symboleJoueur2 = "O"
+)
+
+// Damier initial
+var damier = [3][3]string{
+	{"1", "2", "3"},
+	{"4", "5", "6"},
+	{"7", "8", "9"},
+}
+
+var joueur1 = true // Le joueur 1 commence
+
+
+</code></pre><p><strong>Explications:</strong></p>
+<ul>
+<li>Constantes globales : Taille du damier et symboles des joueurs pour éviter les erreurs dans le code.</li>
+<li>Damier : Utilisation d'un tableau 2D pour modéliser un damier clair.</li>
+<li>Tour du joueur : La variable joueur1 permet de savoir à qui c’est le tour.</li>
+</ul>
+<p><strong>Difficultés rencontrées:</strong>
+Créer un damier en 2D a été un défi au départ, car cela nécessite d’ajuster les indices lors des placements. J’ai choisi un tableau 2D pour une meilleure lisibilité lors de l’affichage.</p>
+<h3 id="%C3%A9tape-2-%3A-fonction-principale" tabindex="-1"><a class="header-anchor" href="#%C3%A9tape-2-%3A-fonction-principale"></a> Étape 2 : Fonction Principale</h3>
+<pre class="language-go line-numbers"><code>
+
+func main() {
+	jouer()
+}
+
+func jouer() {
+	for {
+		afficherDamier()
+		numeroCase := recupererSaisieUtilisateur()
+		placerSymbole(numeroCase)
+
+		if verifierVictoire() {
+			afficherDamier()
+			fmt.Println(obtenirNomJoueur(), "a gagné !")
+			break
+		}
+
+		if verifierMatchNul() {
+			afficherDamier()
+			fmt.Println("Match nul !")
+			break
+		}
+
+		joueur1 = !joueur1 // Changement de joueur
+	}
+}
+
+
+</code></pre><p><strong>Explications:</strong></p>
+<ul>
+<li>Boucle principale : Le jeu continue jusqu'à ce qu’un joueur gagne ou qu’il n’y ait plus de cases disponibles.</li>
+<li>Fonctions clés : <code>recupererSaisieUtilisateur</code>, <code>placerSymbole</code>, <code>verifierVictoire</code> et <code>verifierMatchNul</code>.</li>
+</ul>
+<p><strong>Difficultés rencontrées:</strong>
+La gestion des conditions de victoire dans une structure 2D a nécessité une réflexion sur les indices (lignes, colonnes, diagonales).</p>
+<h3 id="%C3%A9tape-3-%3A-gestion-des-entr%C3%A9es-utilisateur" tabindex="-1"><a class="header-anchor" href="#%C3%A9tape-3-%3A-gestion-des-entr%C3%A9es-utilisateur"></a> Étape 3 : Gestion des Entrées Utilisateur</h3>
+<pre class="language-go line-numbers"><code>
+
+func recupererSaisieUtilisateur() (ligne, colonne int) {
+	scanner := bufio.NewScanner(os.Stdin)
+	for {
+		fmt.Printf("%s, entrez la ligne et la colonne (ex: 1 2) : ", obtenirNomJoueur())
+		scanner.Scan()
+		input := scanner.Text()
+		fmt.Sscanf(input, "%d %d", &ligne, &colonne)
+
+		// Vérification des limites et des cases libres
+		if ligne >= 1 && ligne <= tailleDamier && colonne >= 1 && colonne <= tailleDamier && damier[ligne-1][colonne-1] != symboleJoueur1 && damier[ligne-1][colonne-1] != symboleJoueur2 {
+			return ligne - 1, colonne - 1
+		}
+
+		fmt.Println("Entrée invalide ou case occupée. Essayez encore.")
+	}
+}
+
+
+</code></pre><p><strong>Explications:</strong>
+Cette fonction <code>recupererSaisieUtilisateur</code> :</p>
+<ul>
+<li>Vérifie que l’entrée est valide (nombres dans les limites, case libre).</li>
+<li>Utilise <code>fmt.Sscanf</code> pour interpréter facilement les coordonnées.</li>
+</ul>
+<p><strong>Difficultés rencontrées:</strong>
+Le parsing des coordonnées a été délicat, mais l'utilisation de fmt.Sscanf a grandement simplifié la lecture des saisies.</p>
+<h3 id="%C3%A9tape-4-%3A-mise-%C3%A0-jour-du-damier" tabindex="-1"><a class="header-anchor" href="#%C3%A9tape-4-%3A-mise-%C3%A0-jour-du-damier"></a> Étape 4 : Mise à Jour du Damier</h3>
+<pre class="language-go line-numbers"><code>
+
+func placerSymbole(ligne, colonne int) {
+	if joueur1 {
+		damier[ligne][colonne] = symboleJoueur1
+	} else {
+		damier[ligne][colonne] = symboleJoueur2
+	}
+}
+
+func afficherDamier() {
+	fmt.Println()
+	for _, ligne := range damier {
+		fmt.Println(ligne)
+	}
+	fmt.Println()
+}
+
+
+</code></pre><p><strong>Explications:</strong></p>
+<ul>
+<li>La fonction <code>placerSymbole</code> met à jour le damier avec le symbole du joueur.</li>
+<li>La fonction <code>afficherDamier</code> montre l'état actuel du jeu.</li>
+</ul>
+<h3 id="%C3%A9tape-5-%3A-v%C3%A9rification-des-conditions" tabindex="-1"><a class="header-anchor" href="#%C3%A9tape-5-%3A-v%C3%A9rification-des-conditions"></a> Étape 5 : Vérification des Conditions</h3>
+<pre class="language-go line-numbers"><code>
+
+func verifierVictoire() bool {
+	// Vérifie les lignes, colonnes et diagonales
+	for i := 0; i < tailleDamier; i++ {
+		if damier[i][0] == damier[i][1] && damier[i][1] == damier[i][2] {
+			return true
+		}
+		if damier[0][i] == damier[1][i] && damier[1][i] == damier[2][i] {
+			return true
+		}
+	}
+	// Vérifie les diagonales
+	return (damier[0][0] == damier[1][1] && damier[1][1] == damier[2][2]) ||
+		(damier[0][2] == damier[1][1] && damier[1][1] == damier[2][0])
+}
+
+func verifierMatchNul() bool {
+	for _, ligne := range damier {
+		for _, caseDamier := range ligne {
+			if caseDamier != symboleJoueur1 && caseDamier != symboleJoueur2 {
+				return false
+			}
+		}
+	}
+	return true
+}
+
+
+</code></pre><p><strong>Explications:</strong></p>
+<ul>
+<li>La focntion <code>verifierVictoire</code> vérifie les conditions de victoire pour les lignes, colonnes et diagonales.</li>
+<li>La focntion <code>verifierMatchNul</code> vérifie si toutes les cases sont occupées.</li>
+</ul>
+<h3 id="synth%C3%A8se-sur-le-tp" tabindex="-1"><a class="header-anchor" href="#synth%C3%A8se-sur-le-tp"></a> Synthèse sur le TP</h3>
+<p><strong>Structure choisie :</strong></p>
+<ul>
+<li>Un tableau 2D pour modéliser le damier.</li>
+<li>Des fonctions modulaires pour chaque aspect du jeu : affichage, saisie utilisateur, vérifications et gestion des tours.</li>
+<li>Utilisation de la bibliothèque <code>bufio</code> : Je n’étais pas familier avec son fonctionnement pour les entrées utilisateur, mais des recherches sur les forums Go et l’expérimentation m’ont permis de surmonter ce problème rapidement.</li>
+</ul>
+<p><strong>Difficultés et Résolutions:</strong></p>
+<h4 id="blocage-%3A-gestion-des-indices-dans-un-tableau-2d" tabindex="-1"><a class="header-anchor" href="#blocage-%3A-gestion-des-indices-dans-un-tableau-2d"></a> Blocage : Gestion des indices dans un tableau 2D</h4>
+<p><strong>Problème</strong> : L'utilisation d'un tableau 2D au lieu d'un tableau 1D rendait la vérification des conditions de victoire plus complexe, notamment pour les diagonales.
+💡 <em>Solution</em> :
+J'ai utilisé des boucles pour parcourir dynamiquement chaque ligne, colonne et diagonale.
+J'ai également vérifié manuellement les indices critiques pour les diagonales, car elles ne peuvent pas être parcourues directement comme une ligne ou une colonne.</p>
+<h4 id="blocage-%3A-contr%C3%B4le-des-entr%C3%A9es-utilisateur" tabindex="-1"><a class="header-anchor" href="#blocage-%3A-contr%C3%B4le-des-entr%C3%A9es-utilisateur"></a> Blocage : Contrôle des entrées utilisateur</h4>
+<p><strong>Problème</strong> : Les utilisateurs peuvent entrer des valeurs non valides (par exemple, des lettres, des nombres hors limites ou des cases déjà occupées).
+💡 <em>Solution</em> :
+Une boucle <code>for</code> a été mise en place pour redemander une entrée valide tant que la saisie n’était pas correcte.
+J'ai utilisé <code>fmt.Sscanf</code> pour analyser les coordonnées et ajouté des messages explicatifs pour guider les joueurs.</p>
+<h4 id="blocage-%3A-gestion-des-conditions-de-victoire" tabindex="-1"><a class="header-anchor" href="#blocage-%3A-gestion-des-conditions-de-victoire"></a> Blocage : Gestion des conditions de victoire</h4>
+<p><strong>Problème</strong> : Vérifier les alignements (lignes, colonnes et diagonales) dans un tableau 2D nécessitait une logique différente pour chaque type d'alignement.
+💡 <em>Solution</em> :
+J'ai écrit une fonction générique qui vérifie les alignements de manière conditionnelle.
+En cas de répétitions (par exemple, plusieurs lignes), j'ai optimisé le code en regroupant les vérifications dans une boucle.</p>
+<h4 id="blocage-%3A-affichage-esth%C3%A9tique-du-damier" tabindex="-1"><a class="header-anchor" href="#blocage-%3A-affichage-esth%C3%A9tique-du-damier"></a> Blocage : Affichage esthétique du damier</h4>
+<p><strong>Problème</strong> : Le damier n’était pas lisible au début à cause d’un espacement mal géré.
+💡 <em>Solution</em> :
+J’ai ajusté le formatage en ajoutant des espaces et en séparant les lignes par des bordures visuelles pour rendre le jeu plus clair.</p>
+<p><strong>Démo du jeu  via le terminal:</strong></p>
+<video width="600" controls="">
+  <source src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Merle-Thomas/mon/temps-2.1/demo_morpions.mov" type="video/quicktime">
+</video>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100 dark:border-emerald-800 dark:bg-emerald-950">
+<svg class="absolute w-6 h-6 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-emerald-500 dark:stroke-emerald-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Liens</b></p>
+</div><div class="pl-8 mr-8">
+<p><strong>Lien vers le Github du projet:</strong>
+<a href="https://github.com/ThomasMerle25/morpions-go" title="Morpions Go">Projet Morpions Go</a></p>
+<p><strong>Lien Tutoriel suivi:</strong>
+<a href="https://devopssec.fr/article/configurer-environnement-golang#begin-article-section"><code>GoLang Tuto</code></a></p>
+</div>
+</div>
+<h2 id="horodateur" tabindex="-1"><a class="header-anchor" href="#horodateur"></a> Horodateur</h2>
+<p>Toutes les séances et le nombre d'heures que l'on y a passé.</p>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Heures passées</th>
+<th>Indications</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>05-12/11/2024</td>
+<td>6H</td>
+<td>Tutoriel sur le site web: initilaisation de mon environnement Go et apprentissage des bases</td>
+</tr>
+<tr>
+<td>14/11/2024</td>
+<td>1H</td>
+<td>Initialisation du jeu et fonction principale</td>
+</tr>
+<tr>
+<td>16/11/2024</td>
+<td>1H</td>
+<td>Gestion des entrées utilisateurs</td>
+</tr>
+<tr>
+<td>17/11/2024</td>
+<td>1H</td>
+<td>Mise a jour du damier et vérifications des conditions</td>
+</tr>
+<tr>
+<td>18/11/2024</td>
+<td>2H</td>
+<td>Corrections du code et écritures des tests unitaires</td>
+</tr>
+</tbody>
+</table>
+
+
+
+</article>
+
+        </main>
+
+        <footer class="min-h-[50px] border-t-2 mt-4 border-gray-200 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-center items-center">
+                    <p class="text-center">
+                        ©2025 <b><span style="font-family: Consolas, sans-serif;">Do-<span style="color: #4a86e8">It</span></span></b> - Développement, Management et Gestion de projets en IT
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- MathJax import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">
+            window.MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']], // Delimiters for inline math
+                    displayMath: [['$$', '$$'], ['\\[', '\\]']] // Delimiters for block math
+                },
+                svg: {
+                    fontCache: 'global' // Use global font cache for SVG output
+                }
+            };
+            document.addEventListener('DOMContentLoaded', () => {
+                MathJax.typeset(); // Ensures MathJax processes the content after the page loads
+            });
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">
+            Prism.plugins.NormalizeWhitespace.setDefaults({
+                'remove-trailing': true,
+                'remove-indent': true,
+                'left-trim': true,
+                'right-trim': true,
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script>
+    </body>
+</html>

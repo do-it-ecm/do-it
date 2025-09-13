@@ -1,0 +1,305 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="index, follow"><link rel="canonical" href="https://do-it.aioli.ec-m.fr/promos/2024-2025/Manuela-Barreto/mon/temps-2.1/"><meta name="description" content="L&#39;objectif de ce travail est de suivre le « Projet Numérologie » créé par le Professeur François Brucker pour découvrir les bases du développement des services web."><meta property="og:description" content="L&#39;objectif de ce travail est de suivre le « Projet Numérologie » créé par le Professeur François Brucker pour découvrir les bases du développement des services web."><meta name="twitter:description" content="L&#39;objectif de ce travail est de suivre le « Projet Numérologie » créé par le Professeur François Brucker pour découvrir les bases du développement des services web."><meta name="author" content="Manuela Barreto"><meta name="keywords" content="do-it, centrale, centrale méditerranée, ecm, MON"><link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon"><link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png"><link rel="apple-touch-icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png"><link href="/assets/stylesheets/main.css" rel="stylesheet"><meta property="og:title" content="Projet Numérologie (Cours Linux)"><meta property="og:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png"><meta property="og:url" content="https://do-it.aioli.ec-m.fr/promos/2024-2025/Manuela-Barreto/mon/temps-2.1/"><meta property="og:type" content="website"><meta name="twitter:card" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png"><meta name="twitter:title" content="Projet Numérologie (Cours Linux)"><meta name="twitter:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png"><meta name="twitter:url" content="https://do-it.aioli.ec-m.fr/promos/2024-2025/Manuela-Barreto/mon/temps-2.1/"><title>Projet Numérologie (Cours Linux)</title><link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet"><link id="prism-theme" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet"><link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet"><script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script><script defer="">const storedTheme=localStorage.getItem("theme");function loadPrismTheme(e){const t=e?"prism-okaidia.min.css":"prism-solarizedlight.min.css",s=document.createElement("link");s.rel="stylesheet",s.id="prism-theme",s.href=`https://cdn.jsdelivr.net/npm/prismjs/themes/${t}`,s.onload=()=>{Prism.highlightAll()};const m=document.getElementById("prism-theme");m?document.head.replaceChild(s,m):document.head.appendChild(s)}function setMermaidTheme(e){const t=e?"dark":"forest";mermaid.initialize({securityLevel:"loose",theme:t,startOnLoad:!0})}function toggleDarkMode(){const e=document.documentElement.classList.contains("dark"),t=e?"light":"dark";localStorage.setItem("theme",t),document.documentElement.classList.toggle("dark",!e),loadPrismTheme(!e),setMermaidTheme(!e)}storedTheme?document.documentElement.classList.toggle("dark","dark"===storedTheme):document.documentElement.classList.toggle("dark",window.matchMedia("(prefers-color-scheme: dark)").matches);const isDark=document.documentElement.classList.contains("dark");loadPrismTheme(isDark),setMermaidTheme(isDark)</script></head><body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000" class="bg-neutral-50 text-neutral-950 dark:bg-neutral-900 dark:text-neutral-50"><header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white dark:bg-neutral-900 dark:border-neutral-700"><div class="max-w-[1000px] mx-auto px-4"><div class="min-h-[50px] flex justify-between items-center"><a class="mx-2" href="/">Home</a> <button class="hidden sm:block text-neutral-950 dark:text-neutral-50 hover:bg-neutral-700 hover:text-neutral-50 hover:dark:bg-neutral-300 hover:dark:text-neutral-950 transition-colors p-2 rounded-full duration-800 ease-in-out" onclick="toggleDarkMode()"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 dark:hidden stroke-current"><circle cx="12" cy="12" r="5"></circle><path d="M12 2V4" stroke-linecap="round"></path><path d="M12 20V22" stroke-linecap="round"></path><path d="M4 12L2 12" stroke-linecap="round"></path><path d="M22 12L20 12" stroke-linecap="round"></path><path d="M19.7778 4.22266L17.5558 6.25424" stroke-linecap="round"></path><path d="M4.22217 4.22266L6.44418 6.25424" stroke-linecap="round"></path><path d="M6.44434 17.5557L4.22211 19.7779" stroke-linecap="round"></path><path d="M19.7778 19.7773L17.5558 17.5551" stroke-linecap="round"></path></svg> <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 stroke-current hidden dark:block"><path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke-linecap="round" stroke-linejoin="round"></path></svg></button><div class="flex items-center gap-4 sm:gap-6"><a class="" href="/cs">CS</a> <a class="" href="/pok">POK</a> <a class="" href="/mon">MON</a> <a class="" href="/projets">Projets</a> <a class="hidden sm:block" href="/promos">Promos</a> <a href="/search"><svg class="h-5 aspect-square stroke-neutral-950 dark:stroke-neutral-300 fill-none stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path></svg> </a><a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank"><svg class="h-5 aspect-square dark:stroke-neutral-300 dark:fill-neutral-300" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg></a></div></div></div></header><main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body=""><article class="relative"><h1 class="mb-1">Projet Numérologie (Cours Linux)</h1><div class="mb-4"><div class="px-4 flex flex-wrap items-center"><div class="font-bold">Tag :</div><ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags"><li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">MON</li></ul><div class="hidden" data-pagefind-meta="Type" aria-hidden="true"><span data-pagefind-filter="Type">MON</span></div></div><div class="px-4 flex flex-wrap items-center"><div class="font-bold">Auteur :</div><ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs"><li class="bg-blue-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Auteurs">Manuela Barreto</li></ul></div><div class="absolute top-0 right-0"><span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2 text-neutral-950" data-pagefind-filter="Année">2024-2025</span></div></div><p class="mb-4 text-lg">L'objectif de ce travail est de suivre le « Projet Numérologie » créé par le Professeur François Brucker pour découvrir les bases du développement des services web.</p><div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100 dark:border-purple-800 dark:bg-purple-950"><svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-purple-500 dark:stroke-purple-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path></svg><div class="pl-8 mr-8"><a href="/promos/2024-2025/Manuela-Barreto/">Manuela BARRETO</a><span class="px-1">/</span><a href="/promos/2024-2025/Manuela-Barreto/mon/">MON de Manuela BARRETO</a><span class="px-1">/</span><a href="/promos/2024-2025/Manuela-Barreto/mon/temps-2.1/">Projet Numérologie (Cours Linux)</a></div></div><div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100 dark:border-emerald-800 dark:bg-emerald-950"><svg class="absolute w-6 h-6 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-emerald-500 dark:stroke-emerald-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path></svg><div class="pl-8 mb-2 mr-8"><p><b>Liens</b></p></div><div class="pl-8 mr-8"><p><a href="https://francoisbrucker.github.io/cours_informatique/cours/web/projet-num%C3%A9rologie/">Projet numérologie</a></p></div></div><h2 id="sommaire" tabindex="-1"><a class="header-anchor" href="#sommaire"></a> Sommaire</h2><ul><li><a href="#r%C3%A9sum%C3%A9">Résumé</a></li><li><a href="#comment-se-connecter-au-serveur">Comment se Connecter au Serveur</a></li><li><a href="#configuration-bonus">Configuration Bonus</a></li><li><a href="#projet">Projet</a><ul><li><a href="#projet-1">Projet 1</a></li><li><a href="#projet-2">Projet 2</a></li><li><a href="#projet-3">Projet 3</a></li><li><a href="#projet-4">Projet 4</a></li><li><a href="#projet-5">Projet 5</a></li></ul></li></ul><h2 id="comment-se-connecter-au-serveur" tabindex="-1"><a class="header-anchor" href="#comment-se-connecter-au-serveur"></a> Comment se Connecter au Serveur <a id="comment-se-connecter-au-serveur"></a></h2><h3 id="installer-wsl" tabindex="-1"><a class="header-anchor" href="#installer-wsl"></a> Installer WSL <a id="installer-wsl"></a></h3><p>La première étape pour utiliser Linux sur Windows est d’installer WSL (Windows Subsystem for Linux). Pour cela, ouvrez le terminal et exécutez la commande suivante :</p><pre class="language-PowerShell line-numbers"><code>
+
+wsl --install
+
+
+</code></pre><p>Cette commande activera les fonctionnalités nécessaires pour exécuter WSL et installera par défaut la distribution Linux <strong>Ubuntu</strong>.</p><p>Une fois l’installation terminée, vous devrez redémarrer votre ordinateur.</p><p>Si vous rencontrez des problèmes pendant l’installation, consultez la <a href="https://learn.microsoft.com/en-us/windows/wsl/install">documentation officielle de WSL</a> pour obtenir de l’aide.</p><p>Après le redémarrage, Ubuntu se lancera automatiquement. À cette étape, vous pourrez configurer votre nom d’utilisateur. Il est conseillé de choisir un nom simple et qui correspond à votre propre nom.</p><h3 id="g%C3%A9n%C3%A9rer-un-agent-et-une-cl%C3%A9" tabindex="-1"><a class="header-anchor" href="#g%C3%A9n%C3%A9rer-un-agent-et-une-cl%C3%A9"></a> Générer un agent et une clé <a id="generer-un-agent-et-une-cle"></a></h3><p>Une fois le système Linux initialisé, il est nécessaire de configurer un <strong>agent SSH</strong> et de générer une clé pour s'authentifier auprès des serveurs.</p><p>Un <strong>agent SSH</strong> est un programme qui gère vos clés privées et facilite l'authentification sur des serveurs sans avoir à saisir votre mot de passe à chaque fois. Il stocke les clés privées en mémoire de manière sécurisée et les utilise automatiquement lorsque cela est nécessaire.</p><p>Les clés SSH se composent de deux parties :</p><ul><li><strong>Clé privée</strong> : Elle doit rester confidentielle, car elle sert à prouver votre identité.</li><li><strong>Clé publique</strong> : Elle peut être partagée avec les serveurs pour qu’ils puissent vous authentifier.</li></ul><p>Voici les étapes pour configurer l'agent et générer vos clés :</p><ol><li><p>Lancez l’agent SSH avec la commande suivante :</p><pre class="language-bash line-numbers"><code>
+
+eval "$(ssh-agent -s)"
+
+
+</code></pre><p>Cette commande active l’agent, qui commencera à gérer vos clés.</p></li><li><p>Générez une paire de clés (publique et privée) avec la commande :</p><pre class="language-bash line-numbers"><code>
+
+ssh-keygen
+
+
+</code></pre><p>Pendant l’exécution, il vous sera demandé de fournir un nom pour le fichier de clé et, éventuellement, de définir un mot de passe supplémentaire pour sécuriser la clé privée.</p></li><li><p>Ajoutez la clé privée à l’agent SSH :</p><pre class="language-bash line-numbers"><code>
+
+ssh-add
+
+
+</code></pre><p>Cela permet à l’agent de stocker la clé privée en mémoire, ce qui simplifie son utilisation pour les connexions futures.</p></li></ol><p>Après avoir suivi ces étapes, vos clés seront prêtes à être utilisées pour des connexions sécurisées aux serveurs.</p><h3 id="comment-se-connecter-au-serveur-de-l'%C3%A9cole" tabindex="-1"><a class="header-anchor" href="#comment-se-connecter-au-serveur-de-l'%C3%A9cole"></a> Comment se connecter au serveur de l'École <a id="comment-se-connecter-au-serveur-de-l-ecole"></a></h3><p>Tout d'abord, nous devons copier notre clé publique qui sera utilisée pour l'authentification. Suivez ces étapes :</p><ol><li><p>Accédez au répertoire où vos clés SSH sont stockées :</p><pre class="language-bash line-numbers"><code>
+
+cd ~/.ssh
+
+
+</code></pre></li><li><p>Affichez le contenu de la clé publique :</p><pre class="language-bash line-numbers"><code>
+
+cat id_rsa.pub
+
+
+</code></pre></li><li><p>Copiez la sortie affichée dans le terminal (le contenu de votre clé publique).</p></li></ol><p>Ensuite, nous allons nous connecter au serveur de l'École. Les ordinateurs de l'École ne sont accessibles que si vous êtes déjà connecté au réseau interne de l'établissement. Cependant, pour accéder au serveur à distance (par exemple depuis chez vous), vous devez passer par le serveur intermédiaire <code>sas1.ec-m.fr</code>, qui est accessible depuis Internet. Pour vous connecter à ce serveur, vous devrez utiliser votre identifiant de l'École.</p><p>La commande est la suivante :</p><pre class="language-bash line-numbers"><code>
+
+ssh votre_identifiant@sas1.ec-m.fr
+
+
+</code></pre><p>Par exemple, dans mon cas :</p><pre class="language-bash line-numbers"><code>
+
+ssh mda-silveira@sas1.ec-m.fr
+
+
+</code></pre><p>En exécutant cette commande, il vous sera demandé d'entrer votre mot de passe et d'accepter d'ajouter le serveur à la liste des hôtes connus (uniquement lors de la première connexion). Une fois la connexion établie avec le serveur <code>sas1</code>, nous devrons ajouter notre clé publique à la liste des clés autorisées :</p><ol><li><p>Accédez au répertoire <code>.ssh</code> sur le serveur :</p><pre class="language-bash line-numbers"><code>
+
+cd ~/.ssh
+
+
+</code></pre></li><li><p>Éditez le fichier <code>authorized_keys</code>, qui contient les clés publiques autorisées :</p><pre class="language-bash line-numbers"><code>
+
+nano authorized_keys
+
+
+</code></pre></li><li><p>Dans l'éditeur de texte qui s'ouvre, collez votre clé publique copiée précédemment à la fin du fichier.</p></li><li><p>Pour enregistrer le fichier dans l'éditeur <strong>nano</strong>, suivez ces étapes :</p><ul><li>Appuyez sur <code>Ctrl + O</code> pour sauvegarder.</li><li>Appuyez sur <code>Entrée</code> pour confirmer le nom du fichier.</li><li>Appuyez sur <code>Ctrl + X</code> pour fermer l'éditeur.</li></ul></li></ol><p>Désormais, le serveur <code>sas1</code> reconnaîtra votre clé publique, et vous pourrez vous y connecter sans avoir à entrer votre mot de passe.</p><p>Après avoir configuré la clé publique sur le serveur <code>sas1</code>, vous pouvez l'utiliser comme passerelle pour accéder aux autres ordinateurs de l'École. Par exemple, pour vous connecter à l'ordinateur <code>vauban43</code>, vous pouvez exécuter la commande suivante :</p><pre class="language-bash line-numbers"><code>
+
+ssh vauban43
+
+
+</code></pre><p>Notez que vous n’avez pas besoin de spécifier à nouveau votre identifiant, car il est déjà associé à la session active sur le serveur <code>sas1</code>. Le SSH utilisera automatiquement le même utilisateur pour établir la connexion avec l’ordinateur cible.</p><p>Pour le cours de Linux, nous devons nous connecter au serveur <code>aioli.ec-m.fr</code>. Cependant, l'accès à ce serveur nécessite une étape supplémentaire : vous devez envoyer votre <strong>clé publique</strong> (de votre identifiant de l'école) par e-mail à l'administrateur du serveur. L'administrateur utilisera cette clé pour créer un utilisateur associé à votre compte.</p><p>Une fois que l'administrateur aura terminé cette configuration, vous pourrez vous connecter directement au serveur <code>aioli</code>.</p><p>En suivant toutes ces étapes, vous serez prêt à démarrer les projets du cours. Pour commancer, nous allons <code>exit</code> des serveurs.</p><h3 id="configuration-bonus" tabindex="-1"><a class="header-anchor" href="#configuration-bonus"></a> Configuration Bonus <a id="configuration-bonus"></a></h3><p>Il est assez fastidieux de devoir taper tout le chemin pour se connecter à une machine, par exemple <code>votre_identifiant@sas1.ec-m.fr</code>. Heureusement, il existe une manière de simplifier ce processus.</p><p>Sur votre système Linux, dans votre compte utilisateur (sans être connecté à un serveur), vous pouvez créer un fichier de configuration dans <code>~/.ssh/config</code>. Dans ce fichier, ajoutez le code suivant (en personnalisant avec vos informations) :</p><pre class="language-bash line-numbers"><code>
+
+Host nom_du_raccourci_souhaité
+    HostName nom_de_la_machine
+    User nom_de_l_utilisateur
+
+Host nom_du_raccourci_souhaité
+    Hostname nom_de_la_machine
+    User nom_de_l_utilisateur
+    ProxyJump nom_de_la_machine_intermediaire
+
+
+</code></pre><h4 id="que-se-passe-t-il-dans-le-fichier-config-%3F" tabindex="-1"><a class="header-anchor" href="#que-se-passe-t-il-dans-le-fichier-config-%3F"></a> Que se passe-t-il dans le fichier <code>config</code> ?</h4><ul><li><p><strong>Host nom_du_raccourci_souhaité</strong> : C'est la configuration d'un raccourci pour une machine distante. Lorsque vous tapez <code>ssh nom_du_raccourci_souhaité</code>, SSH utilise les configurations suivantes pour se connecter à la machine spécifiée.</p></li><li><p><strong>HostName nom_de_la_machine</strong> : Ici, vous définissez le nom complet ou l'adresse IP de la machine à laquelle vous souhaitez vous connecter. Lorsque vous utilisez un raccourci dans le champ <code>Host</code>, <code>HostName</code> est la machine réelle à laquelle vous vous connecterez.</p></li><li><p><strong>User nom_de_l_utilisateur</strong> : Ici, vous définissez le nom de l'utilisateur utilisé pour la connexion SSH. Plutôt que de taper le nom d'utilisateur à chaque fois, vous l'indiquez dans le fichier de configuration, et la connexion utilisera ce nom automatiquement.</p></li><li><p><strong>ProxyJump nom_de_la_machine_intermediaire</strong> : Si vous devez passer par une machine intermédiaire pour accéder à votre destination finale (comme dans le cas de serveurs avec des accès restreints), <code>ProxyJump</code> définit le &quot;saut&quot; vers cette machine intermédiaire. Cela signifie que vous pouvez accéder à des serveurs internes qui ne sont pas directement accessibles de l'extérieur en passant par une machine intermédiaire (également appelée &quot;jump host&quot;).</p></li></ul><p>Pour rendre cela plus clair, je vais partager mon propre fichier <code>~/.ssh/config</code> en exemple :</p><pre class="language-bash line-numbers"><code>
+
+Host sas1
+    HostName sas1.ec-m.fr
+    User mda-silveira
+
+Host aioli
+    Hostname aioli.ec-m.fr
+    User agastache
+    ProxyJump sas1
+
+
+</code></pre><p>Dans mon exemple :</p><ol><li><p><strong>sas1</strong> : Il s'agit du raccourci que j'ai utilisé pour me connecter au serveur <code>sas1.ec-m.fr</code> avec l'utilisateur <code>mda-silveira</code>. Lorsque j'exécute <code>ssh sas1</code>, le système sait qu'il doit se connecter à <code>sas1.ec-m.fr</code> et utiliser l'utilisateur <code>mda-silveira</code>.</p></li><li><p><strong>aioli</strong> : De la même manière, <code>aioli</code> est un raccourci qui se connecte au serveur <code>aioli.ec-m.fr</code> avec l'utilisateur <code>agastache</code>. Cependant, lorsque j'utilise le raccourci <code>aioli</code>, le système se connecte d'abord au serveur <code>sas1.ec-m.fr</code> (grâce à <code>ProxyJump</code>), puis effectue le &quot;saut&quot; vers le serveur <code>aioli.ec-m.fr</code>. Cela est utile lorsque certaines machines ne peuvent pas être accessibles directement.</p></li></ol><p>Avec cette configuration, vous simplifiez la vie. Plutôt que de taper <code>ssh mda-silveira@sas1.ec-m.fr</code> et <code>ssh agastache@aioli.ec-m.fr</code>, je peux simplement taper <code>ssh sas1</code> ou <code>ssh aioli</code> dans le terminal.</p><h2 id="projet" tabindex="-1"><a class="header-anchor" href="#projet"></a> Projet <a id="projet"></a></h2><p>Ce projet consiste à créer un site web qui associe chaque nom à un numéro en se basant sur une table de correspondance. Pour en savoir plus sur les détails du projet, consultez le <a href="https://francoisbrucker.github.io/cours_informatique/cours/web/projet-num%C3%A9rologie/">site du projet</a>.</p><p>Le projet est divisé en cinq étapes, avec une complexité croissante. Chaque étape explore un aspect différent du développement web.</p><p>Dans ce <strong>MON</strong>, <strong>je ne détaillerai pas la construction du code</strong>, car cela est déjà bien expliqué sur le site du projet. L'objectif ici est de <strong>montrer comment se connecter o serveur et comment récupérer le code prêt et l'exécuter sur le serveur</strong>, afin qu'il soit mis <strong>en ligne</strong>.</p><p>Je recommande vivement, tout au long de la lecture de ce MON, de consulter également l'explication du code, car cela vous permettra de <strong>mieux comprendre les concepts et la structure</strong> du projet. De cette manière, vous aurez une vision complète et claire du fonctionnement du système, depuis sa mise en œuvre jusqu'à sa mise en ligne.</p><h3 id="projet-%3A-partie-1" tabindex="-1"><a class="header-anchor" href="#projet-%3A-partie-1"></a> Projet : Partie 1 <a id="projet-1"></a></h3><p>Dans cette première partie du projet, nous avons mis en place tout ce qui est nécessaire pour le faire fonctionner côté <strong>frontend</strong>. La structure du projet à ce stade est la suivante :</p><pre class="line-numbers"><code>
+
+.
+├── index.html
+├── main.css
+├── mes_tests.js
+└── numérologie.js
+
+
+</code></pre><p>Pour cet exercice, axé sur les <strong>bases du développement de services web</strong> avec un focus particulier sur le <strong>déploiement sur des serveurs</strong>, nous n’allons pas nous concentrer sur la manière dont ce code a été écrit. L'objectif principal est de comprendre comment rendre ce site accessible sur le web.</p><p>Pour commencer, rendez-vous sur le <a href="https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/web/projet-num%C3%A9rologie/partie-1-front/niveau-1/num%C3%A9rologie">répertoire GitHub de ce projet</a> et téléchargez-le sur votre ordinateur.</p><p>La première modification que nous allons effectuer concerne le fichier <strong><code>numérologie.js</code></strong>. Nous allons :</p><ol><li>Retirer l’accent du nom du fichier, en le renommant <strong><code>numerologie.js</code></strong>.</li><li>Mettre à jour la référence à ce fichier dans <strong><code>index.html</code></strong> pour pointer vers <strong><code>numerologie.js</code></strong> au lieu de <strong><code>numérologie.js</code></strong>.</li></ol><p>Une fois ces ajustements faits, déplacez le dossier du projet vers votre environnement Linux.</p><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Manuela-Barreto/mon/temps-2.1/assets/Explorateur.png" alt="Explorateur"></p><h4 id="transf%C3%A9rer-le-dossier-vers-le-serveur-souhait%C3%A9" tabindex="-1"><a class="header-anchor" href="#transf%C3%A9rer-le-dossier-vers-le-serveur-souhait%C3%A9"></a> Transférer le dossier vers le serveur souhaité</h4><p>Suivez les étapes ci-dessous pour transférer et configurer le projet sur le serveur final :</p><ol><li><p><strong>Compresser le dossier du projet</strong> Avant de transférer, nous allons compresser le dossier pour simplifier l’envoi :</p><pre class="language-bash line-numbers"><code>
+
+tar czvf projet_numerologie.tgz projet_numerologie
+
+
+</code></pre></li><li><p><strong>Transférer le fichier compressé vers le serveur</strong> Dans cet exemple, nous utilisons le serveur <strong>aioli</strong>, mais il est nécessaire de passer par un serveur intermédiaire <strong>sas1</strong> pour y accéder.</p><ul><li>Transférez le fichier vers le serveur <strong>aioli</strong> (&quot;directemente&quot; grâce au fichier <code>~/.ssh/config</code>) :<pre class="language-bash line-numbers"><code>
+
+scp projet_numerologie.tgz aioli:.
+
+
+</code></pre></li></ul></li><li><p><strong>Décompresser le fichier sur le serveur final</strong></p><ul><li><p>Connectez-vous au serveur final <strong>aioli</strong> :</p><pre class="language-bash line-numbers"><code>
+
+ssh aioli
+
+
+</code></pre></li><li><p>Extrayez le contenu du fichier compressé :</p><pre class="language-bash line-numbers"><code>
+
+tar xzvf projet_numerologie.tgz
+
+
+</code></pre></li><li><p>Supprimez le fichier compressé du serveur final :</p><pre class="language-bash line-numbers"><code>
+
+rm projet_numerologie.tgz
+
+
+</code></pre></li></ul></li></ol><p>Une fois ces étapes terminées, le projet sera décompressé et prêt à être mis en ligne sur le serveur final.</p><p>Aqui está a versão traduzida e melhorada em francês:</p><hr><h4 id="mettre-le-projet-en-ligne" tabindex="-1"><a class="header-anchor" href="#mettre-le-projet-en-ligne"></a> Mettre le projet en ligne</h4><ol><li><p><strong>Vérifier le port du serveur :</strong> Ouvrez votre navigateur et accédez à l’adresse de votre utilisateur :</p><pre class="line-numbers"><code>
+
+https://votre_utilisateur.aioli.ec-m.fr/
+
+
+</code></pre><p>Vous verrez probablement une erreur <strong>502 Bad Gateway</strong>, car aucun service n’est actuellement actif sur ce port.</p></li><li><p><strong>Créer un test basique :</strong></p><ul><li><p>Connecté au serveur <strong>aioli</strong>, dans le répertoire <code>~/</code>, créez un dossier nommé <code>static</code> :</p><pre class="language-bash line-numbers"><code>
+
+mkdir static
+
+
+</code></pre></li><li><p>Accédez à ce dossier :</p><pre class="language-bash line-numbers"><code>
+
+cd static
+
+
+</code></pre></li><li><p>Créez un fichier <code>index.html</code> contenant le texte &quot;Hello world&quot; à l’aide d’un éditeur comme <code>nano</code> :</p><pre class="language-bash line-numbers"><code>
+
+nano index.html
+
+
+</code></pre></li><li><p>Accédez au site statique de votre utilisateur :</p><pre class="line-numbers"><code>
+
+https://votre_utilisateur.aioli.ec-m.fr/static
+
+
+</code></pre><p>Vous devriez maintenant voir le texte <strong>&quot;Hello world&quot;</strong> dans le navigateur. Cela montre que le serveur est configuré pour afficher automatiquement le contenu statique existant.</p></li></ul></li></ol><p>Pour afficher votre projet sur le site principal, suivez les étapes suivantes :</p><ol><li><p><strong>Démarrer le serveur local :</strong></p><ul><li>Accédez au répertoire de votre projet :<pre class="language-bash line-numbers"><code>
+
+cd projet_numerologie
+
+
+</code></pre></li><li>Lancez un serveur HTTP avec la commande suivante :<pre class="language-bash line-numbers"><code>
+
+python3 -m http.server --bind ::1 1100
+
+
+</code></pre><em>(Ici, 1100 correspond à ma port. Pour connaître votre port utilisateur, exécutez la commande <code>id</code> et regardez votre uid. Il est votre numéro de port.)</em></li></ul></li><li><p><strong>Vérifier le fonctionnement :</strong></p><ul><li>Accédez au site principal de votre utilisateur :<pre class="line-numbers"><code>
+
+https://votre_utilisateur.aioli.ec-m.fr/
+
+
+</code></pre>Vous verrez désormais votre projet fonctionner.</li></ul></li><li><p><strong>Résoudre le problème de persistance :</strong> Si vous fermez le terminal et rafraîchissez la page, l’erreur <strong>502</strong> réapparaîtra. Cela se produit parce que le serveur doit continuer à fonctionner même lorsque le terminal est fermé.</p></li></ol><p>Pour que le site reste actif même après avoir quitté le terminal, nous utiliserons <strong>tmux</strong> (ou l’équivalent <code>screen</code>). <strong>Tmux</strong> permet d’exécuter des processus en arrière-plan de manière persistante sur le serveur.</p><ol><li><p><strong>Créer une session tmux :</strong></p><ul><li>Lancez une nouvelle session appelée <code>serveur_numerologie</code> :<pre class="language-bash line-numbers"><code>
+
+tmux new -s serveur_numerologie
+
+
+</code></pre>Une nouvelle fenêtre <strong>tmux</strong> s’ouvrira.</li></ul></li><li><p><strong>Exécuter le serveur dans tmux :</strong></p><ul><li>Dans la session <strong>tmux</strong>, lancez le serveur avec :<pre class="language-bash line-numbers"><code>
+
+python3 -m http.server --bind ::1 1100
+
+
+</code></pre></li><li>Rafraîchissez le site dans votre navigateur pour vérifier qu’il fonctionne.</li></ul></li><li><p><strong>Quitter la session sans arrêter le processus :</strong></p><ul><li>Utilisez le raccourci <code>Ctrl + b</code>, suivi de <code>d</code> pour détacher la session <strong>tmux</strong> tout en gardant le serveur actif.</li></ul></li><li><p><strong>Lister les sessions actives :</strong></p><ul><li>Exécutez cette commande pour afficher les sessions tmux actives :<pre class="language-bash line-numbers"><code>
+
+tmux ls
+
+
+</code></pre>Vous verrez toutes les sessions en cours, y compris <code>serveur_numerologie</code>.</li></ul></li></ol><p>Voici une cheat sheet des commandes et raccourcis utiles pour <strong>tmux</strong> :</p><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Manuela-Barreto/mon/temps-2.1/assets/tmux.png" alt="tmux"></p><p>Avec ces étapes, vous avez mis votre premier site en ligne ! Ce projet est simple et entièrement en <strong>frontend</strong>. La prochaine étape consistera à intégrer un <strong>backend</strong> et à comprendre les ajustements nécessaires pour un site complet.</p><h3 id="projet-%3A-partie-2" tabindex="-1"><a class="header-anchor" href="#projet-%3A-partie-2"></a> Projet : Partie 2 <a id="projet-2"></a></h3><p>Avec l’ajout du backend, notre projet a maintenant la structure suivante :</p><pre class="line-numbers"><code>
+
+.
+├── back
+│   └── numérologie.js
+├── index.js
+├── package.json
+└── static
+    ├── index.html
+    └── main.css
+
+
+</code></pre><p>Nous allons commencer de la même manière que pour le projet précédent. Téléchargez le <a href="https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/web/projet-num%C3%A9rologie/partie-2-serveur/num%C3%A9rologie">projet sur GitHub</a> et nommez-le <code>projet_numerologie2</code>. Ensuite, nous retirerons l’accent sur le fichier <code>numérologie.js</code> et nous procéderons aux mêmes étapes que précédemment : compresser le dossier, le transférer sur le serveur <strong>aioli</strong> et le décompresser.</p><p>Ensuite, accédez au dossier du projet en exécutant <code>cd projet_numerologie2</code> et installez les dépendances nécessaires avec la commande :</p><pre class="language-bash line-numbers"><code>
+
+npm install
+
+
+</code></pre><h4 id="ajustements-dans-le-fichier-index.js" tabindex="-1"><a class="header-anchor" href="#ajustements-dans-le-fichier-index.js"></a> Ajustements dans le fichier <code>index.js</code></h4><p>Il y a quelques ajustements à faire dans le fichier <code>index.js</code> pour pouvoir l’exécuter correctement sur le serveur. Exécutez la commande suivante pour éditer le fichier :</p><pre class="language-bash line-numbers"><code>
+
+nano index.js
+
+
+</code></pre><p>Voici les modifications à apporter dans le fichier :</p><ol><li><p>Changez la ligne <code>const hostname = '127.0.0.1'</code> par :</p><pre class="language-javascript line-numbers"><code>
+
+const hostname = '::1';
+
+
+</code></pre></li><li><p>Changez la ligne <code>const port = 3000</code> par :</p><pre class="language-javascript line-numbers"><code>
+
+const port = '1100';  // Notez que 1100 est le nombre de ma port, il est différent pour chacun.
+
+
+</code></pre></li><li><p>Modifiez la ligne <code>app.use(&quot;/static&quot;, express.static(path.join(__dirname, '/static')))</code> par :</p><pre class="language-javascript line-numbers"><code>
+
+app.use("/numerologie", express.static(path.join(__dirname,'static')));
+
+
+</code></pre></li></ol><p>Une fois ces modifications effectuées, vous pouvez enregistrer le fichier et tenter d’exécuter la commande :</p><pre class="language-bash line-numbers"><code>
+
+node index.js
+
+
+</code></pre><p>Cependant, si cela ne fonctionne pas, il est probable que vous ayez un problème, car la <strong>port</strong> est déjà utilisée par votre site précédent. C'est dû au fait que <strong>tmux</strong> est en cours d'exécution et que le serveur de la partie 1 utilise déjà cette port. Pour résoudre ce problème, suivez ces étapes :</p><h4 id="r%C3%A9soudre-le-probl%C3%A8me-de-la-port-occup%C3%A9e" tabindex="-1"><a class="header-anchor" href="#r%C3%A9soudre-le-probl%C3%A8me-de-la-port-occup%C3%A9e"></a> Résoudre le problème de la port occupée</h4><ol><li><p><strong>Se connecter à la session tmux existante :</strong> Exécutez la commande suivante :</p><pre class="language-bash line-numbers"><code>
+
+tmux a
+
+
+</code></pre></li><li><p><strong>Fermer la session tmux en cours :</strong></p><ul><li>Appuyez sur <code>Ctrl + c</code> pour arrêter le serveur.</li><li>Puis, appuyez sur <code>Ctrl + d</code> pour quitter tmux.</li></ul></li></ol><p>Maintenant, vous pouvez de nouveau exécuter le serveur avec :</p><pre class="language-bash line-numbers"><code>
+
+node index.js
+
+
+</code></pre><p>Cela devrait démarrer le serveur et l’afficher sur le site à l’adresse suivante :</p><pre class="line-numbers"><code>
+
+https://votre_utilisateur.aioli.ec-m.fr/numerologie/
+
+
+</code></pre><p>Cependant, comme précédemment, si vous fermez le terminal, le site cessera de fonctionner. Pour le maintenir en ligne, suivez à nouveau la procédure avec <strong>tmux</strong> :</p><h4 id="garder-le-serveur-en-ligne-avec-tmux" tabindex="-1"><a class="header-anchor" href="#garder-le-serveur-en-ligne-avec-tmux"></a> Garder le serveur en ligne avec tmux</h4><ol><li><p><strong>Créer une nouvelle session tmux :</strong></p><ul><li>Lancez une nouvelle session avec le nom <code>serveur_numerologie</code> :<pre class="language-bash line-numbers"><code>
+
+tmux new -s serveur_numerologie
+
+
+</code></pre>Une nouvelle fenêtre <strong>tmux</strong> s’ouvrira.</li></ul></li><li><p><strong>Exécuter le serveur dans tmux :</strong></p><ul><li>Dans la session tmux, exécutez le serveur avec :<pre class="language-bash line-numbers"><code>
+
+node index.js
+
+
+</code></pre></li><li>Rafraîchissez la page de votre site pour vérifier que le projet fonctionne correctement.</li></ul></li><li><p><strong>Quitter la session sans arrêter le serveur :</strong></p><ul><li>Pour détacher la session tmux et la laisser tourner en arrière-plan, appuyez sur <code>Ctrl + b</code>, puis sur <code>d</code>.</li></ul></li></ol><p>Une fois cela fait, le projet fonctionnera en permanence, même si vous fermez votre terminal.</p><p>Ainsi, la deuxième partie du projet est terminée. Vous avez réussi à mettre en ligne un projet avec un backend fonctionnel. Vous pouvez maintenant passer à l’étape suivante du projet.</p><h3 id="projet-%3A-partie-3" tabindex="-1"><a class="header-anchor" href="#projet-%3A-partie-3"></a> Projet : Partie 3 <a id="projet-3"></a></h3><p>Dans la troisième partie du projet, nous avons ajouté une base de données SQLite. Après les modifications apportées au code, la nouvelle structure du projet est la suivante :</p><pre class="line-numbers"><code>
+
+.
+├── back
+│   └── numérologie.js
+├── db.init.js
+├── db.js
+├── index.js
+├── package.json
+├── readme.md
+└── static
+    ├── index.html
+    ├── main.css
+    └── prénoms.html
+
+
+</code></pre><p>Nous allons commencer de la même manière que dans les parties précédentes :</p><ol><li>Télécharger le projet depuis <a href="https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/web/projet-num%C3%A9rologie/partie-3-donn%C3%A9es/num%C3%A9rologie">GitHub</a> ;</li><li>Modifier le code pour retirer l'accent du nom du fichier <code>numérologie.js</code> et effectuer les corrections nécessaires suite à cette modification ;</li><li>Compresser le dossier du projet, le transférer vers le serveur souhaité, puis le décompresser.</li></ol><p>Ensuite, nous effectuerons les mêmes ajustements que dans la partie précédente :</p><ol><li><p>Modifiez la ligne <code>const hostname = '127.0.0.1'</code> par :</p><pre class="language-javascript line-numbers"><code>
+
+const hostname = '::1';
+
+
+</code></pre></li><li><p>Modifiez la ligne <code>const port = 3000</code> par :</p><pre class="language-javascript line-numbers"><code>
+
+const port = '1100';  // Notez que 1100 est le nombre de ma port, il est différent pour chacun.
+
+
+</code></pre></li><li><p>Modifiez la ligne <code>app.use(&quot;/static&quot;, express.static(path.join(__dirname, '/static')))</code> par :</p><pre class="language-javascript line-numbers"><code>
+
+app.use("/numerologie", express.static(path.join(__dirname,'static')));
+
+
+</code></pre></li></ol><p>Une fois ces étapes initiales terminées, nous allons exécuter la commande <code>npm install</code> pour installer toutes les dépendances nécessaires, puis exécuter la commande <code>npm run init</code> pour initialiser la base de données. Enfin, lancez le projet en exécutant :</p><pre class="language-bash line-numbers"><code>
+
+node index.js
+
+
+</code></pre><p>N'oubliez pas de fermer les autres sessions tmux utilisées pour les autres parties du projet afin de libérer le port pour ce projet actuel. Maintenant, si vous accédez à votre site à l'adresse <code>https://votre_utilisateur.aioli.ec-m.fr/numerologie/</code>, vous verrez que, lors du calcul du chiffre associé à votre nom, le site affiche également une phrase décrivant les caractéristiques des personnes portant ce nom.</p><p>Une fois encore, pour maintenir le site en ligne de manière indéfinie, nous utiliserons <strong>tmux</strong> :</p><h4 id="garder-le-serveur-en-ligne-avec-tmux-1" tabindex="-1"><a class="header-anchor" href="#garder-le-serveur-en-ligne-avec-tmux-1"></a> Garder le serveur en ligne avec tmux</h4><ol><li><p><strong>Créer une nouvelle session tmux :</strong> Lancez une nouvelle session tmux appelée <code>serveur_numerologie</code> :</p><pre class="language-bash line-numbers"><code>
+
+tmux new -s serveur_numerologie
+
+
+</code></pre><p>Une nouvelle fenêtre tmux s’ouvrira.</p></li><li><p><strong>Exécuter le serveur dans tmux :</strong> Dans la session tmux, lancez le serveur avec :</p><pre class="language-bash line-numbers"><code>
+
+node index.js
+
+
+</code></pre><p>Rafraîchissez la page de votre site pour vérifier que le projet fonctionne correctement.</p></li><li><p><strong>Quitter la session sans arrêter le serveur :</strong> Pour détacher la session tmux et laisser le serveur tourner en arrière-plan, appuyez sur <code>Ctrl + b</code>, puis sur <code>d</code>.</p></li></ol><p>Ainsi, la troisième partie du projet est terminée. Vous avez réussi à mettre en ligne un projet avec une base de données. Vous pouvez maintenant passer à l’étape suivante du projet.</p><h3 id="projet-%3A-partie-4" tabindex="-1"><a class="header-anchor" href="#projet-%3A-partie-4"></a> Projet : Partie 4 <a id="projet-4"></a></h3><p>Après les modifications, la structure finale du projet est la suivante :</p><pre class="line-numbers"><code>
+
+.
+├── back
+│   └── numérologie.js
+├── db.init.js
+├── db.js
+├── index.js
+├── modèles
+│   ├── prénoms.js
+│   └── signification.js
+├── package.json
+├── readme.md
+├── routes
+│   ├── api
+│   │   └── index.js
+│   └── signification.js
+└── static
+    ├── index.html
+    ├── main.css
+    └── prénoms.html
+
+
+</code></pre><p>Bien que de nombreuses modifications importantes aient été apportées à la structure et à la maintenance du code, très peu de choses ont changé concernant la manière de mettre ce site en ligne.</p><p>Ainsi, nous allons suivre exactement le même processus que dans la Partie 3, avec une seule différence : au lieu d'exécuter <code>node index.js</code>, nous allons désormais utiliser la commande <code>npm start</code>.</p><p>OBS: Le <a href="https://github.com/FrancoisBrucker/cours_informatique/tree/main/docs/src/cours/web/projet-num%C3%A9rologie/partie-4-jardinage/num%C3%A9rologie">github du projet</a></p><p>Cela conclut la quatrième partie du projet. Vous avez maintenant un projet fonctionnel avec une structure plus complexe et des routes pour gérer différentes parties de l'application. Vous pouvez continuer à l'étendre ou ajouter de nouvelles fonctionnalités.</p></article></main><footer class="min-h-[50px] border-t-2 mt-4 border-gray-200 dark:border-neutral-700"><div class="max-w-[1000px] mx-auto px-4"><div class="min-h-[50px] flex justify-center items-center"><p class="text-center">©2025 <b><span style="font-family:Consolas,sans-serif">Do-<span style="color:#4a86e8">It</span></span></b> - Développement, Management et Gestion de projets en IT</p></div></div></footer><script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">window.MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]]},svg:{fontCache:"global"}},document.addEventListener("DOMContentLoaded",(()=>{MathJax.typeset()}))</script><script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">Prism.plugins.NormalizeWhitespace.setDefaults({"remove-trailing":!0,"remove-indent":!0,"left-trim":!0,"right-trim":!0})</script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script></body></html>

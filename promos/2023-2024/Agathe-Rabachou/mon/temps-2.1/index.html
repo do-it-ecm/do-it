@@ -1,0 +1,188 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="index, follow"><link rel="canonical" href="https://do-it.aioli.ec-m.fr/promos/2023-2024/Agathe-Rabachou/mon/temps-2.1/"><meta name="description" content="Ce MON a pour objectif de revoir et d’approfondir mes connaissances en Excel et de découvrir le fonctionnement de VBA."><meta property="og:description" content="Ce MON a pour objectif de revoir et d’approfondir mes connaissances en Excel et de découvrir le fonctionnement de VBA."><meta name="twitter:description" content="Ce MON a pour objectif de revoir et d’approfondir mes connaissances en Excel et de découvrir le fonctionnement de VBA."><meta name="author" content="Agathe Rabachou"><meta name="keywords" content="do-it, centrale, centrale méditerranée, ecm, MON, Excel, VBA"><link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon"><link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png"><link rel="apple-touch-icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png"><link href="/assets/stylesheets/main.css" rel="stylesheet"><meta property="og:title" content="Excel et VBA"><meta property="og:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png"><meta property="og:url" content="https://do-it.aioli.ec-m.fr/promos/2023-2024/Agathe-Rabachou/mon/temps-2.1/"><meta property="og:type" content="website"><meta name="twitter:card" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png"><meta name="twitter:title" content="Excel et VBA"><meta name="twitter:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png"><meta name="twitter:url" content="https://do-it.aioli.ec-m.fr/promos/2023-2024/Agathe-Rabachou/mon/temps-2.1/"><title>Excel et VBA</title><link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet"><link id="prism-theme" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet"><link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet"><script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script><script defer="">const storedTheme=localStorage.getItem("theme");function loadPrismTheme(e){const t=e?"prism-okaidia.min.css":"prism-solarizedlight.min.css",s=document.createElement("link");s.rel="stylesheet",s.id="prism-theme",s.href=`https://cdn.jsdelivr.net/npm/prismjs/themes/${t}`,s.onload=()=>{Prism.highlightAll()};const m=document.getElementById("prism-theme");m?document.head.replaceChild(s,m):document.head.appendChild(s)}function setMermaidTheme(e){const t=e?"dark":"forest";mermaid.initialize({securityLevel:"loose",theme:t,startOnLoad:!0})}function toggleDarkMode(){const e=document.documentElement.classList.contains("dark"),t=e?"light":"dark";localStorage.setItem("theme",t),document.documentElement.classList.toggle("dark",!e),loadPrismTheme(!e),setMermaidTheme(!e)}storedTheme?document.documentElement.classList.toggle("dark","dark"===storedTheme):document.documentElement.classList.toggle("dark",window.matchMedia("(prefers-color-scheme: dark)").matches);const isDark=document.documentElement.classList.contains("dark");loadPrismTheme(isDark),setMermaidTheme(isDark)</script></head><body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000" class="bg-neutral-50 text-neutral-950 dark:bg-neutral-900 dark:text-neutral-50"><header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white dark:bg-neutral-900 dark:border-neutral-700"><div class="max-w-[1000px] mx-auto px-4"><div class="min-h-[50px] flex justify-between items-center"><a class="mx-2" href="/">Home</a> <button class="hidden sm:block text-neutral-950 dark:text-neutral-50 hover:bg-neutral-700 hover:text-neutral-50 hover:dark:bg-neutral-300 hover:dark:text-neutral-950 transition-colors p-2 rounded-full duration-800 ease-in-out" onclick="toggleDarkMode()"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 dark:hidden stroke-current"><circle cx="12" cy="12" r="5"></circle><path d="M12 2V4" stroke-linecap="round"></path><path d="M12 20V22" stroke-linecap="round"></path><path d="M4 12L2 12" stroke-linecap="round"></path><path d="M22 12L20 12" stroke-linecap="round"></path><path d="M19.7778 4.22266L17.5558 6.25424" stroke-linecap="round"></path><path d="M4.22217 4.22266L6.44418 6.25424" stroke-linecap="round"></path><path d="M6.44434 17.5557L4.22211 19.7779" stroke-linecap="round"></path><path d="M19.7778 19.7773L17.5558 17.5551" stroke-linecap="round"></path></svg> <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 stroke-current hidden dark:block"><path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke-linecap="round" stroke-linejoin="round"></path></svg></button><div class="flex items-center gap-4 sm:gap-6"><a class="" href="/cs">CS</a> <a class="" href="/pok">POK</a> <a class="" href="/mon">MON</a> <a class="" href="/projets">Projets</a> <a class="hidden sm:block" href="/promos">Promos</a> <a href="/search"><svg class="h-5 aspect-square stroke-neutral-950 dark:stroke-neutral-300 fill-none stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path></svg> </a><a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank"><svg class="h-5 aspect-square dark:stroke-neutral-300 dark:fill-neutral-300" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg></a></div></div></div></header><main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body=""><article class="relative"><h1 class="mb-1">Excel et VBA</h1><div class="mb-4"><div class="px-4 flex flex-wrap items-center"><div class="font-bold">Tags :</div><ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags"><li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">MON</li><li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">Excel</li><li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">VBA</li></ul><div class="hidden" data-pagefind-meta="Type" aria-hidden="true"><span data-pagefind-filter="Type">MON</span></div></div><div class="px-4 flex flex-wrap items-center"><div class="font-bold">Auteur :</div><ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs"><li class="bg-blue-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Auteurs">Agathe Rabachou</li></ul></div><div class="absolute top-0 right-0"><span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2 text-neutral-950" data-pagefind-filter="Année">2023-2024</span></div></div><p class="mb-4 text-lg">Ce MON a pour objectif de revoir et d’approfondir mes connaissances en Excel et de découvrir le fonctionnement de VBA.</p><div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100 dark:border-purple-800 dark:bg-purple-950"><svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-purple-500 dark:stroke-purple-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path></svg><div class="pl-8 mr-8"><a href="/promos/2023-2024/Agathe-Rabachou/">Agathe Rabachou</a><span class="px-1">/</span><a href="/promos/2023-2024/Agathe-Rabachou/mon/">MON de Agathe Rabachou</a><span class="px-1">/</span><a href="/promos/2023-2024/Agathe-Rabachou/mon/temps-2.1/">Excel et VBA</a></div></div><div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100 dark:border-pink-800 dark:bg-pink-950"><svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-pink-500 dark:stroke-pink-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg><div class="pl-8 mb-2 mr-8"><p>Prérequis</p></div><div class="pl-8 mr-8"><ul><li>Bases du fonctionnement d'Excel</li><li>Aucun prérequis en VBA</li></ul></div></div><h2 id="1.-introduction" tabindex="-1"><a class="header-anchor" href="#1.-introduction"></a> 1. Introduction</h2><p>J’utilise Excel quotidiennement dans le cadre de mon alternance, et je me suis vite rendu compte que j’avais des lacunes sur certaines fonctionnalités. Ce MON a donc été l’occasion de les combler afin de gagner en efficacité. J’ai également voulu en profiter pour découvrir VBA, dont j’avais souvent entendu parler mais que je n’avais jamais utilisé.</p><h2 id="2.-excel" tabindex="-1"><a class="header-anchor" href="#2.-excel"></a> 2. Excel</h2><p>Après avoir fait rapidement le tour de ce qui avait déjà été fait en termes de MON sur Excel (notamment par <a href="https://do-it.aioli.ec-m.fr/promos/2022-2023/Honor%C3%A9-Sarah/mon/MON3-1/">Sarah</a> et <a href="https://do-it.aioli.ec-m.fr/promos/2023-2024/Lola-Bourdon/mon/temps-1.2/">Lola</a>) et des retours concernant le contenu des différentes plateformes de formation, j’ai choisi de suivre le cours d’<a href="https://www.excel-pratique.com/">Excel-pratique</a>.</p><p>Il est découpé en 11 chapitres ponctués d’exercices d’application. J’ai parcouru sans difficulté les 6 premiers et la première partie du 7ème, qui étaient majoritairement des révisions pour moi. Ils reprenaient les bases d’Excel, les options de mise en forme, les concepts de tableaux, objets, incrémentations, formules et fonctions, et graphiques. La suite contenait plus de nouveautés, et voici un condensé de ce que j’y ai appris (ou revu pour certaines parties) :</p><h3 id="a.-graphique-sparkline" tabindex="-1"><a class="header-anchor" href="#a.-graphique-sparkline"></a> A. Graphique Sparkline</h3><p>C’est un graphique miniature qui s’insère dans une cellule (depuis le menu insertion), par exemple au bout d’une ligne d’un tableau pour représenter simplement les données de cette ligne. Il en existe 3 types : la courbe, l’histogramme et le graphique conclusions et pertes. Le style de chacun est personnalisable. Ils sont représentés pour exemple dans le cas ci-dessous :</p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Agathe-Rabachou/mon/temps-2.1/graphique_sparkline.png"><h3 id="b.-mise-en-forme-conditionnelle" tabindex="-1"><a class="header-anchor" href="#b.-mise-en-forme-conditionnelle"></a> B. Mise en forme conditionnelle</h3><p>Cette fonctionnalité permet de modifier certaines caractéristiques d’une cellule (couleur de fond, police du texte, bordures ou format des données) en fonction de son contenu. Il existe des règles proposées par Excel, et il est également possible d’en créer des personnalisées. Avec les mises en forme conditionnelles existantes dans Excel, on peut modifier une cellule si sa valeur se trouve dans un certain intervalle, si elle contient un certain mot ou encore si elle fait partie des 10% de valeurs les plus (ou moins) élevées par exemple. On peut également ajouter dans les cellules d’un tableau des barres de longueur proportionnelle à leur valeur, créer un nuancier de couleurs qui suit l’évolution des valeurs ou encore insérer des icônes selon les valeurs et leurs changements.</p><p>Pour ce qui est des mises en forme conditionnelles personnalisées, j’ai par exemple eu l’occasion de créer une règle sur un planning de projet qui mettait en rouge les missions non encore réalisées alors que la deadline était dépassée. Pour cela, il suffit de comparer la cellule contenant la deadline avec la fonction <code>AUJOURDHUI()</code> qui donne la date du jour.</p><p>De manière générale, il est possible de jouer sur tous les types de données selon les besoins.</p><h3 id="c.-tri-et-filtres" tabindex="-1"><a class="header-anchor" href="#c.-tri-et-filtres"></a> C. Tri et filtres</h3><p>Ce chapitre a également fait partie des révisions d’Excel pour moi, je vais donc passer rapidement dessus.</p><p>Simplement, la fonction tri permet de ranger les éléments sélectionnés selon un critère choisi (ordre alphabétique, croissant ou selon une caractéristique précise comme le pays d’origine dans le cas d’une sélection d’athlètes par exemple). Il est également possible de faire des tris sur plusieurs niveaux lorsque le premier critère choisi est commun à plusieurs données.</p><p>La fonction filtre permet d’afficher les données qui correspondent à un ou plusieurs critères (une valeur vaut exactement x, est comprise entre x et y, est au-dessus de la moyenne ou encore se termine par xxx), et de masquer les autres. On peut alors trier les données restantes si besoin. Il existe également une option très pratique qui permet de filtrer en retirant les doublons.</p><h3 id="d.-validation-des-donn%C3%A9es" tabindex="-1"><a class="header-anchor" href="#d.-validation-des-donn%C3%A9es"></a> D. Validation des données</h3><p>Cette fonctionnalité permet de forcer une cellule à ne contenir qu’un type de données précis, voire une donnée parmi une liste finie, sous peine de renvoyer une erreur. On peut donc forcer la cellule choisie à ne contenir que A, B ou C par exemple, une liste déroulante avec les options possibles est alors disponible dans la cellule. On peut également obliger un nombre compris dans un certain intervalle, une date ou une heure dans une plage donnée ou un certain nombre de caractères. Si aucun des cas prédéfinis ne convient, on peut écrire une fonction pour personnaliser le type de données attendu.</p><p>Enfin, il est possible d’afficher un message informatif au moment de la saisie (pour renseigner le contenu attendu par exemple), ou de choisir le message en cas d’erreur.</p><h3 id="e.-tableau-crois%C3%A9-dynamique" tabindex="-1"><a class="header-anchor" href="#e.-tableau-crois%C3%A9-dynamique"></a> E. Tableau croisé dynamique</h3><p>C’est un moyen très pratique de synthétiser des données. Ci-dessous un exemple de ce que cela peut donner, qui s’appuie sur le tableau proposé pour s’entraîner dans le cours.</p><p>La table de données initiale :</p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Agathe-Rabachou/mon/temps-2.1/TCD_initial.png"><p>Le tableau croisé dynamique associé :</p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Agathe-Rabachou/mon/temps-2.1/TCD_resultat.png"><p>C’est ici un exemple très simple, mais dans le cas de nombreuses données cette synthèse est particulièrement utile. Bien sûr, il est possible de changer les données en ligne et en colonne, l’ordre des catégories, de trier ou de filtrer à partir de données choisies, de calculer d’autres valeurs remarquables comme la somme ou le produit des données par exemple ou encore de personnaliser les couleurs et la mise en page.</p><h2 id="3.-vba" tabindex="-1"><a class="header-anchor" href="#3.-vba"></a> 3. VBA</h2><p>Comme la formation Excel d’Excel-pratique était plutôt bien faite, j’ai décidé de rester sur la même plateforme et de suivre le <a href="https://www.excel-pratique.com/fr/vba">cours de VBA</a> qui y était proposé. Il se découpe également en 11 chapitres, et de même que précédemment je vais résumer ce que j’en ai retenu afin de garder une synthèse que je pourrai utiliser comme pense-bête à l’avenir.</p><p>Le VBA est un langage de programmation orientée objet qui permet d’automatiser des tâches dans les différentes applications Microsoft. Ici, nous verrons donc uniquement l’utilisation de VBA appliquée à Excel.</p><p>Voici pour commencer le bandeau d’outils nécessaire pour ce cours :</p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Agathe-Rabachou/mon/temps-2.1/bandeau_VBA.png"><p>Si l’onglet n’apparaît pas automatiquement à l’ouverture d’Excel, il faut le rajouter depuis les options.</p><h3 id="a.-enregistreur-de-macro" tabindex="-1"><a class="header-anchor" href="#a.-enregistreur-de-macro"></a> A. Enregistreur de macro</h3><p>Un moyen très simple d’automatiser une tâche ou une suite de tâches est d’utiliser l’enregistreur de macro. Il enregistre l’ensemble des clics et des frappes de clavier sur la durée choisie, et transforme ces actions en code VBA. On peut alors voir ce code dans l’éditeur (que l’on ouvre en cliquant sur Visual Basic ou grâce au raccourci Alt+F11), le modifier, le renommer ou encore le commenter. Pour l’utiliser, il suffit d’insérer un bouton et de lui affecter la macro. Chaque clic sur ce bouton lancera alors la suite de tâches enregistrée au préalable.</p><h3 id="b.-cr%C3%A9ation-d'une-macro" tabindex="-1"><a class="header-anchor" href="#b.-cr%C3%A9ation-d'une-macro"></a> B. Création d'une macro</h3><p>L’autre possibilité est de créer une macro en la codant à la main. Pour cela, on crée un nouveau module dans l’éditeur, dans lequel on écrit :</p><pre class="language-vba line-numbers"><code>
+
+Sub nom_de_la_macro()
+
+End Sub
+
+
+</code></pre><p>Le code de la macro doit être écrit entre ces deux lignes. De la même manière que précédemment, une fois la macro écrite, il faudra l’associer à un bouton pour pouvoir l’utiliser.</p><ul><li><strong>Instructions de base :</strong></li></ul><p>Voici les principales commandes qui permettent d’écrire les actions les plus basiques :</p><pre class="language-vba line-numbers"><code>
+
+Sub instructions_de_bases()
+
+    'sélectionner une plage de cellules (on peut également sélectionner des lignes, des colonnes ou des cellules distinctes)
+    Range("C3:C7").Select
+
+    'changer la valeur d'une cellule (on peut retirer les morceaux du code correspondants lorsque l'on est dèja dans le bon fichier ou dans la bonne feuille)
+    Workbooks("Nom_du_fichier").Sheets("Nom_de_la_feuille").Range("A8").Value = 48
+
+    'mise en forme du texte
+    Range("B2").Font.Size = 14
+    Range("B2").Font.Bold = True
+
+    'bordures de la cellule sélectionnée
+    Selection.Borders.Value = 1
+
+    'masquer une feuille
+    Sheets("Feuil3").Visible = 2
+
+    'modifier une propriété de la cellule active en fonction d'une autre cellule
+    ActiveCell.Font.Name = Range("A1").Font.Name
+
+    'créer un compteur de clics
+    Range("C1") = Range("C1") + 1
+
+    'pour éviter les répétitions
+    With Sheets("Feuil1").Range("A1")
+        .Borders.Weight = 3
+        With .Font
+            .Name = "Barlow"
+            .Italic = True
+            .Underline = False
+        End With
+    End With
+
+    'appliquer une couleur (ColorIndex est un index proposé directement dans VBA qui contient 56 couleurs prédéfinies, numérotées de 1 à 56. Sinon, on peut choisir une couleur personnalisée)
+    Range("A1").Font.ColorIndex = 25
+    Range("A2").Font.Color = RGB(156, 12, 233)
+    Range("A3").Borders.ColorIndex = 44
+    Range("A4").Interior.Color = RGB(255, 0, 0)
+    Sheets("Feuil1").Tab.Color = RGB(0, 0, 255)
+    'la dernière commande colore l'onglet de la feuille
+
+End Sub
+
+
+</code></pre><ul><li><strong>Variables :</strong></li></ul><p>Pour aller plus loin et simplifier des codes plus complexes, on peut ensuite déclarer des variables. Pour cela, on écrit :</p><pre class="language-vba line-numbers"><code>
+
+Sub variables()
+    Dim Nom_variable As Integer
+    Nom_variable = 12
+End Sub
+
+
+</code></pre><p>Le type peut être un entier, un flottant, une date ou encore une chaîne de caractères par exemple. Chacun de ces types à une notation en VBA (integer, single, date, string…).</p><p>On peut ensuite afficher cette variable dans une boîte de dialogue grâce à la commande :</p><pre class="language-vba line-numbers"><code>
+
+MsgBox Nom_variable
+
+
+</code></pre><p>Ainsi, on peut par exemple afficher une phrase contenant plusieurs informations extraites d’une base de données. A noter que, comme en Excel, on utilise &amp; pour concaténer du texte et des valeurs de variables. Voici une illustration :</p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Agathe-Rabachou/mon/temps-2.1/variables_tab.png"><pre class="language-vba line-numbers"><code>
+
+Sub variables()
+    Dim Nom As String, Prenom As String, Numero As Integer, Poste As Integer, Ligne As Integer
+    Ligne = Range("G6") + 1
+    '+1 pour ne pas tenir compte de la première ligne qui contient les titres
+    Nom = Cells(Ligne, 1)
+    Prenom = Cells(Ligne, 2)
+    Numero = Cells(Ligne, 3)
+    Poste = Cells(Ligne, 4)
+    MsgBox "La joueuse " & Nom & " " & Prenom & " porte le numéro " & Numero & " et évolue au poste " & Poste
+End Sub
+
+
+</code></pre><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Agathe-Rabachou/mon/temps-2.1/variables boite_dialogue.png"><p>Une variable est utilisable dans l’environnement dans lequel elle a été définie. Dans une procédure (Sub) si elle est définie au début de cette procédure, dans tout un module si elle est initiée au début du module ou même dans l’ensemble des modules si l’on remplace Dim par Public.</p><p>Pour conserver la valeur d’une variable d’une procédure après la fin de cette procédure il faut remplacer <code>Dim</code> par <code>Static</code>, et pour conserver la valeur de toutes les variables d’une procédure il faut ajouter Static devant Sub.</p><p>Il est également possible pour des cas particuliers de créer son propre type de variable.</p><ul><li><strong>Tableaux :</strong></li></ul><p>Les tableaux fonctionnent sur le même principe que les variables mais permettent de stocker plusieurs informations. La syntaxe de définition est la suivante :</p><pre class="language-vba line-numbers"><code>
+
+Sub tableaux()
+    'créer un tableau à 1 dimension, 7 cases contenant des chaînes de caractères
+    Dim Nom_tableau(6) As String
+    'attribuer une valeur à la case 3
+    Nom_tableau(2) = "texte"
+    'à noter que la première case est la case 0
+
+    'créer un tableau à 2 dimensions, 3x4 cases
+    Dim Nom_tableau(2, 3) As Integer
+    'attribuer une valeur à la case en haut à gauche
+    Nom_tableau(0, 0) = 2
+End Sub
+
+
+</code></pre><ul><li><strong>Constantes :</strong></li></ul><p>Les constantes sont des variables dont on ne peut pas modifier la valeur. Elles sont utiles par exemple pour contenir un taux fixe qui sera réutilisé plusieurs fois dans un projet. On écrit <code>Dim NOM_CONSTANTE As Integer = 25</code> par exemple.</p><ul><li><strong>Conditions :</strong></li></ul><p>On peut ensuite ajouter des conditions, qui fonctionnent exactement comme en Python, avec la syntaxe suivante :</p><pre class="language-vba line-numbers"><code>
+
+Sub conditions()
+    If [CONDITION] Then
+        [INSTRUCTION]
+    ElseIf [CONDITION2]
+        [INSTRUCTION2]
+    Else
+        [INSTRUCTION3]
+    End If
+End Sub
+
+
+</code></pre><p>Dans certains cas, plutôt que d’utiliser beaucoup de ElseIf, il peut être pertinent d’utiliser la fonction Select. On peut alors remplacer la série de ElseIf par :</p><pre class="language-vba line-numbers"><code>
+
+Select Case Valeur_à_tester
+    Case Is = A
+        [INSTRUCTION]
+    Case Is >= B
+        [INSTRUCTION2]
+    Case C to D
+        [INSTRUCTION3]
+End Select
+
+
+</code></pre><p>Il existe également de nombreuses fonctions prédéfinies pour conditionner une instruction, telles que <code>IsNumeric</code> (vraie si la valeur est numérique), <code>IsDate</code> (vraie si la valeur est une date), <code>Day</code> ou <code>Year</code> (renvoie le jour ou l’année d’une date), ou encore <code>IsEmpty</code> (vraie si la variable n’a pas été initialisée).</p><p>Enfin, on peut aussi vérifier si une variable contient une chaîne de caractères avec <code>If Variable Like &quot;*chaîne_caractères*&quot;</code>, où <code>*</code> peut remplacer n’importe quoi. A la place de <code>*</code>, <code>#</code> remplacerait un unique caractère numérique, et <code>?</code> un unique caractère quelconque. Il existe d’autres notations pour préciser les caractères ou types de caractères que l’on cherche dans une variable.</p><div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100 dark:border-cyan-800 dark:bg-cyan-950"><svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-cyan-500 dark:stroke-cyan-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg><div class="pl-8 mb-2 mr-8"><p><b>Information</b></p></div><div class="pl-8 mr-8"><p><code>Option Compare Text</code> en début de module permet de ne pas faire de distinctions entre un caractère en majuscules et ce même caractère en minuscules.</p></div></div><ul><li><strong>Boucles :</strong></li></ul><p>Pour ne pas répéter des dizaines de fois la même instruction, on utilise des boucles.</p><div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100 dark:border-cyan-800 dark:bg-cyan-950"><svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-cyan-500 dark:stroke-cyan-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg><div class="pl-8 mb-2 mr-8"><p><b>Information</b></p></div><div class="pl-8 mr-8"><p><strong>Attention</strong> à ne pas créer de boucles infinies !</p></div></div><p>Voici les utilisations et syntaxes des différents types de boucles :</p><pre class="language-vba line-numbers"><code>
+
+Sub boucles()
+    'tant que la condition est vraie, l'instruction est exécutée
+    Do While [CONDITION]
+        [INSTRUCTION]
+    Loop
+
+    'idem mais l'instruction s'exécute au moins une première fois peu importe la condition
+    Do
+        [INSTRUCTION]
+    Loop While [CONDITION]
+
+    'lorsque la condition est vraie, la boucle d'arrête
+    Do Until [CONDITION]
+        [INSTRUCTION]
+    Loop
+
+    'la boucle se répète un nombre de fois défini
+    For i = 1 To 10
+        [INSTRUCTION]
+    Next
+    'on peut ajouter Step = x à la ligne For pour définir un pas x autre que 1
+
+    'la boucle se répète au fur et à mesure que l'on parcourt un ensemble d'éléments
+    For Each cellule In Range("A1:C5")
+    'ou For Each feuille In Worksheets
+    'ou For Each valeur In Tableau
+        [INSTRUCTION]
+    Next
+
+    'pour quitter avant la fin
+    Exit For 'une boucle For
+    Exit Do 'une boucle Do
+    Exit Sub 'une procédure
+    Exit Function 'une fonction
+End Sub
+
+
+</code></pre><ul><li><strong>Procédures :</strong></li></ul><p>Comme présenté depuis le début, on utilise des procédures, ou Sub, pour écrire en VBA. Lorsqu’il y en a plusieurs, il est possible de les faire interagir entre elles.</p><p>Premièrement, les Subs tels qu’ils ont été décris ci-dessus sont dit publics. Si l’on rajoute <code>Private</code> avant le Sub, il devient privé, c’est-à-dire inaccessible en dehors du module dans lequel il a été créé.</p><p>Ensuite, on peut appeler une procédure à s’exécuter à l’intérieur d’une autre, simplement en écrivant son nom.</p><p>On peut également entrer des valeurs en argument d’une procédure, afin qu’elles soient conservées si l’on appelle cette procédure dans une autre. Voici une illustration simple :</p><pre class="language-vba line-numbers"><code>
+
+Sub procédure1(texte As String)
+    [INSTRUCTION utilisant texte]
+End Sub
+Sub procédure2()
+    [INSTRUCTION appelant procédure1 «texte à utiliser»]
+End Sub
+
+
+</code></pre><p>Si plusieurs arguments doivent être entrés, on les sépare par une virgule.</p><p>Si l’on ajoute <code>Optional</code> devant un argument, il n’est pas obligatoire à l’exécution de la procédure. Dans ce cas, la procédure doit comprendre différents cas selon les arguments entrés. On peut tester qu’un argument a été renseigné avec la fonction <code>IsMissing</code> (attention elle ne fonctionne pas avec tous les types de variables), ou bien on peut renseigner des valeurs par défaut aux arguments optionnels et tester ensuite ces valeurs. Pour utiliser cette dernière option, on écrirait par exemple en argument <code>Optional numéro As Integer = 0</code>. Ainsi, un numéro non renseigné vaudrait 0.</p><p>Par défaut en VBA, lorsque l’on appelle un Sub qui contient des arguments, ce sont les références de ces arguments qui sont transmises. Cela signifie que si l’on modifie une variable dans la procédure initiale, elle changera aussi dans la procédure d’appel. Pour faire l’inverse et donc transmettre uniquement la valeur de la variable au moment de l’appel, sans possibilité de la modifier, on ajoute ByVal devant l’argument.</p><ul><li><strong>Fonctions :</strong></li></ul><p>Une fonction est un Sub qui retourne une valeur en sortie. Par exemple :</p><pre class="language-vba line-numbers"><code>
+
+Function carre(nombre As Integer)
+    carre = nombre ^2
+End Function
+
+
+</code></pre><p>On peut ensuite l’utiliser dans un Sub en l’appelant à l’aide de l’instruction <code>resultat = carre(7)</code>. resultat vaut alors 49.</p><ul><li><strong>Boîtes de dialogue :</strong></li></ul><p>La première utilisation possible des boîtes de dialogue est le simple affichage d’un message grâce à la requête <code>MsgBox &quot;texte à afficher&quot;</code>, comme mentionné dans la section sur les variables.</p><p>Ensuite, il est possible d’afficher une boîte de dialogue qui requiert une interaction. La structure globale est <code>MsgBox([texte], [bouton], [titre])</code>. Par exemple, on peut écrire :</p><pre class="language-vba line-numbers"><code>
+
+Sub boîte_dialogue_interactive()
+    If MsgBox("Voulez-vous vraiment supprimer le contenu de A1 ?", vbYesNo, "Confirmation") = vbYes Then
+        Range("A1").ClearContents
+    End If
+End Sub
+
+
+</code></pre><p>On obtient alors à l’exécution :</p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Agathe-Rabachou/mon/temps-2.1/boite_dialogue.png"><p>Puis l’action s’effectue ou non selon la réponse à la boîte de dialogue. Il existe de nombreux boutons qui permettent des interactions différentes telles que Ok, Annuler, Recommencer…, qui ajoutent une icône ou encore qui forcent à répondre avant de continuer. Il est possible de mettre plusieurs valeurs dans le deuxième argument de la MsgBox, séparés par des <code>+</code>.</p><p>Enfin, on peut demander à l’utilisateur de remplir une valeur dans la boîte de dialogue grâce à la fonction <code>InputBox(«texte», «titre», «valeur par défaut»)</code>, et la comparer à un résultat pour générer une action. La valeur par défaut est un argument optionnel.</p><h3 id="c.-pour-aller-plus-loin" tabindex="-1"><a class="header-anchor" href="#c.-pour-aller-plus-loin"></a> C. Pour aller plus loin</h3><p>Jusqu’ici nous avons vu les bases pour coder une macro. Dans cette partie je vais mentionner quelques fonctionnalités supplémentaires possibles (sans rentrer dans le détail du code car j’ai moins eu le temps de m’y pencher) dont il peut être très utile de connaître l’existence.</p><p>Premièrement, nous avons lancé des macros uniquement en cliquant sur un bouton. Il existe des commandes qui permettent de les lancer selon plein d’autres actions telles qu’à l’ouverture d’un classeur ou d’une feuille, avant la fermeture, à l’enregistrement, à l’impression, au clic droit, à chaque sélection etc.</p><p>Ensuite, il est possible de créer ce que l'on appelle un UserForm. C'est un objet qui se présente sous la forme d'une boîte de dialogue, et que l'on peut personnaliser avec de très nombreuses fonctionnalités appelées contrôles. On peut entre autres y ajouter des boutons, du texte, des cases à cocher, des listes déroulantes... Certains aspects du design sont également modifiables. Lorsque l'UserForm est appelé, tout comme pour une macro classique, les interactions avec celui-ci induisent des actions sur le fichier Excel associé. Ainsi, un UserForm peut être un point d'entrée pour remplir des informations dans un tableau par exemple.</p><p>Voici un exemple de rendu :</p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Agathe-Rabachou/mon/temps-2.1/userform.png"><p><em>(<a href="https://faqword.com/index.php">source de l'image</a>)</em></p><p>Enfin, il existe une multitude de fonctions pré-définies que l'on peut utiliser dans un code VBA, et en particulier toutes les fonctions Excel, que l'on appelle grâce à la commande <code>WorksheetFunction.nom_fonction_excel</code>. Si toutefois ce n'est pas suffisant, il est possible de créer une fonction personnalisée pour réaliser une tâche spécifique.</p><h2 id="4.-conclusion" tabindex="-1"><a class="header-anchor" href="#4.-conclusion"></a> 4. Conclusion</h2><p>Pour conclure, je dirais que ces deux formations étaient très claires, complètes et bien illustrées. Petit bémol, certaines parties manquaient d'exercices d'application, mais globalement je les recommande.</p><p>Il existe également sur la même plateforme une formation <a href="https://www.excel-pratique.com/fr/formation">VBA avancée</a>, mais je n'ai pas eu le temps d'en regarder le contenu.</p></article></main><footer class="min-h-[50px] border-t-2 mt-4 border-gray-200 dark:border-neutral-700"><div class="max-w-[1000px] mx-auto px-4"><div class="min-h-[50px] flex justify-center items-center"><p class="text-center">©2025 <b><span style="font-family:Consolas,sans-serif">Do-<span style="color:#4a86e8">It</span></span></b> - Développement, Management et Gestion de projets en IT</p></div></div></footer><script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">window.MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]]},svg:{fontCache:"global"}},document.addEventListener("DOMContentLoaded",(()=>{MathJax.typeset()}))</script><script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">Prism.plugins.NormalizeWhitespace.setDefaults({"remove-trailing":!0,"remove-indent":!0,"left-trim":!0,"right-trim":!0})</script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script></body></html>

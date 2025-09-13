@@ -1,0 +1,256 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="index, follow"><link rel="canonical" href="https://do-it.aioli.ec-m.fr/promos/2024-2025/Baptiste-Audouin/mon/temps-1.2/"><meta name="description" content="Au cours de ce MON je souhaite découvrir la manipulation des bases de données avec Python et faire une application à des données sportives"><meta property="og:description" content="Au cours de ce MON je souhaite découvrir la manipulation des bases de données avec Python et faire une application à des données sportives"><meta name="twitter:description" content="Au cours de ce MON je souhaite découvrir la manipulation des bases de données avec Python et faire une application à des données sportives"><meta name="author" content="Baptiste Audouin"><meta name="keywords" content="do-it, centrale, centrale méditerranée, ecm, MON, python"><link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon"><link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png"><link rel="apple-touch-icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png"><link href="/assets/stylesheets/main.css" rel="stylesheet"><meta property="og:title" content="Python et analyse de données : application à des données sportives"><meta property="og:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png"><meta property="og:url" content="https://do-it.aioli.ec-m.fr/promos/2024-2025/Baptiste-Audouin/mon/temps-1.2/"><meta property="og:type" content="website"><meta name="twitter:card" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png"><meta name="twitter:title" content="Python et analyse de données : application à des données sportives"><meta name="twitter:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png"><meta name="twitter:url" content="https://do-it.aioli.ec-m.fr/promos/2024-2025/Baptiste-Audouin/mon/temps-1.2/"><title>Python et analyse de données : application à des données sportives</title><link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet"><link id="prism-theme" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet"><link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet"><script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script><script defer="">const storedTheme=localStorage.getItem("theme");function loadPrismTheme(e){const t=e?"prism-okaidia.min.css":"prism-solarizedlight.min.css",s=document.createElement("link");s.rel="stylesheet",s.id="prism-theme",s.href=`https://cdn.jsdelivr.net/npm/prismjs/themes/${t}`,s.onload=()=>{Prism.highlightAll()};const m=document.getElementById("prism-theme");m?document.head.replaceChild(s,m):document.head.appendChild(s)}function setMermaidTheme(e){const t=e?"dark":"forest";mermaid.initialize({securityLevel:"loose",theme:t,startOnLoad:!0})}function toggleDarkMode(){const e=document.documentElement.classList.contains("dark"),t=e?"light":"dark";localStorage.setItem("theme",t),document.documentElement.classList.toggle("dark",!e),loadPrismTheme(!e),setMermaidTheme(!e)}storedTheme?document.documentElement.classList.toggle("dark","dark"===storedTheme):document.documentElement.classList.toggle("dark",window.matchMedia("(prefers-color-scheme: dark)").matches);const isDark=document.documentElement.classList.contains("dark");loadPrismTheme(isDark),setMermaidTheme(isDark)</script></head><body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000" class="bg-neutral-50 text-neutral-950 dark:bg-neutral-900 dark:text-neutral-50"><header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white dark:bg-neutral-900 dark:border-neutral-700"><div class="max-w-[1000px] mx-auto px-4"><div class="min-h-[50px] flex justify-between items-center"><a class="mx-2" href="/">Home</a> <button class="hidden sm:block text-neutral-950 dark:text-neutral-50 hover:bg-neutral-700 hover:text-neutral-50 hover:dark:bg-neutral-300 hover:dark:text-neutral-950 transition-colors p-2 rounded-full duration-800 ease-in-out" onclick="toggleDarkMode()"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 dark:hidden stroke-current"><circle cx="12" cy="12" r="5"></circle><path d="M12 2V4" stroke-linecap="round"></path><path d="M12 20V22" stroke-linecap="round"></path><path d="M4 12L2 12" stroke-linecap="round"></path><path d="M22 12L20 12" stroke-linecap="round"></path><path d="M19.7778 4.22266L17.5558 6.25424" stroke-linecap="round"></path><path d="M4.22217 4.22266L6.44418 6.25424" stroke-linecap="round"></path><path d="M6.44434 17.5557L4.22211 19.7779" stroke-linecap="round"></path><path d="M19.7778 19.7773L17.5558 17.5551" stroke-linecap="round"></path></svg> <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 stroke-current hidden dark:block"><path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke-linecap="round" stroke-linejoin="round"></path></svg></button><div class="flex items-center gap-4 sm:gap-6"><a class="" href="/cs">CS</a> <a class="" href="/pok">POK</a> <a class="" href="/mon">MON</a> <a class="" href="/projets">Projets</a> <a class="hidden sm:block" href="/promos">Promos</a> <a href="/search"><svg class="h-5 aspect-square stroke-neutral-950 dark:stroke-neutral-300 fill-none stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path></svg> </a><a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank"><svg class="h-5 aspect-square dark:stroke-neutral-300 dark:fill-neutral-300" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg></a></div></div></div></header><main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body=""><article class="relative"><h1 class="mb-1">Python et analyse de données : application à des données sportives</h1><div class="mb-4"><div class="px-4 flex flex-wrap items-center"><div class="font-bold">Tags :</div><ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags"><li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">MON</li><li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">python</li></ul><div class="hidden" data-pagefind-meta="Type" aria-hidden="true"><span data-pagefind-filter="Type">MON</span></div></div><div class="px-4 flex flex-wrap items-center"><div class="font-bold">Auteur :</div><ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs"><li class="bg-blue-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Auteurs">Baptiste Audouin</li></ul></div><div class="absolute top-0 right-0"><span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2 text-neutral-950" data-pagefind-filter="Année">2024-2025</span></div></div><p class="mb-4 text-lg">Au cours de ce MON je souhaite découvrir la manipulation des bases de données avec Python et faire une application à des données sportives</p><div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100 dark:border-purple-800 dark:bg-purple-950"><svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-purple-500 dark:stroke-purple-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path></svg><div class="pl-8 mr-8"><a href="/promos/2024-2025/Baptiste-Audouin/">Baptiste Audouin</a><span class="px-1">/</span><a href="/promos/2024-2025/Baptiste-Audouin/mon/">MON de Baptiste Audouin</a><span class="px-1">/</span><a href="/promos/2024-2025/Baptiste-Audouin/mon/temps-1.2/">Python et analyse de données : application à des données sportives</a></div></div><div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100 dark:border-emerald-800 dark:bg-emerald-950"><svg class="absolute w-6 h-6 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-emerald-500 dark:stroke-emerald-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path></svg><div class="pl-8 mb-2 mr-8"><p><b>Liens</b></p></div><div class="pl-8 mr-8"><ul><li><a href="https://realpython.com/python-for-data-analysis/">Real python</a></li><li><a href="https://scikit-learn.org/stable/">sklearn</a></li></ul></div></div><h2 id="introduction" tabindex="-1"><a class="header-anchor" href="#introduction"></a> Introduction</h2><p>A travers ce MON, je souhaitait apprendre à manipuler et analyser des données sur python. Après quelques recherches notamment sur le site <a href="https://realpython.com/python-for-data-analysis/">Real python</a> et sur Youtube je me suis lancer dans l'analyse des données de l'équipe de basketball de Golden State lors de la saison 2022/2023 et plus particulièrement de l'influence d'un joueur sur son équipe : Stephen Curry.</p><h2 id="sommaire" tabindex="-1"><a class="header-anchor" href="#sommaire"></a> Sommaire</h2><ol><li>Importation des données</li><li>Nettoyage des données</li><li>Performances de Curry</li><li>Influence de Curry sur les performances de son équipe</li><li>Comparaison avec d'autres joueurs</li><li>Modélisation prédictive des résultats des Warriors</li></ol><h2 id="1.-importation-des-donn%C3%A9es" tabindex="-1"><a class="header-anchor" href="#1.-importation-des-donn%C3%A9es"></a> 1. Importation des données</h2><p>Pour faire ces analyses, il me fallait les statistiques de tous les matchs des Golden State Warriors los de la saison 2022/2023 ainsi que ceux des joueurs de l'effectif. Après quelques recherches, j'ai trouvé le site <a href="https://www.basketball-reference.com">Basketball Reference</a> qui contient toutes ces données et bien plus encore. J'ai donc récupérer et téléchargé ces données pour commencer le projet.</p><pre class="language-python line-numbers"><code>
+
+import panda as pd
+
+warriors_data = pd.read_excel('GSW_season.xlsx')
+curry_data = pd.read_csv('Regular_curry.csv')
+
+# Aperçu des données
+print("Données des Warriors :")
+print(warriors_data.head())
+print("\nDonnées de Stephen Curry :")
+print(curry_data.head())
+
+
+</code></pre><p>On joint maintenant les deux tables en utilisant la date comme clé primaire avant de passer aux nettoyage des données.</p><pre class="language-python line-numbers"><code>
+
+curry_data['Date'] = pd.to_datetime(curry_data['Date'])
+warriors_data['game_date'] = pd.to_datetime(warriors_data['game_date'])
+
+merged_data = pd.merge(warriors_data, curry_data, left_on='game_date', right_on='Date', how='inner')
+merged_data.head()
+
+
+</code></pre><h2 id="2.-nettoyage-des-donn%C3%A9es" tabindex="-1"><a class="header-anchor" href="#2.-nettoyage-des-donn%C3%A9es"></a> 2. Nettoyage des données</h2><p>Dans cette partie nous allons nettoyer les données afin d'en faciliter la manipulation. Certaines colonnes contiennent des éléments de types $string$ ce qui peut compromettre certains calculs, pour les matchs où Curry ne joue pas nous allons remplacer <em>'Inactive'</em> par <em>'Nan'</em> afin de pouvoir calculer les corrélations entre ses performances et celles de son équipe. De plus, ces calculs sont possible seulement avec des float on va donc remplacer les <em>'W'</em> et <em>'L'</em> qui signifient victoire ou défaite par des booléens, 1 pour une Win et 0 pour une Loose.</p><pre class="language-python line-numbers"><code>
+
+merged_data['PTS'] = merged_data['PTS'].replace('Inactive', np.nan)
+merged_data['AST'] = merged_data['AST'].replace('Inactive', np.nan)
+merged_data['TRB'] = merged_data['TRB'].replace('Inactive', np.nan)
+
+merged_data['wl_home'] = merged_data['wl_home'].replace({'W': 1, 'L': 0})
+merged_data['wl_away'] = merged_data['wl_away'].replace({'W': 1, 'L': 0})
+
+# Fonction pour convertir 'MM:SS' en minutes, avec gestion des valeurs comme 'Inactive'
+def convert_to_minutes(time_str):
+    try:
+        if isinstance(time_str, str) and ':' in time_str:
+            minutes, seconds = map(int, time_str.split(':'))
+            return minutes + seconds / 60
+        else:
+            return 0  # Si le joueur est inactif ou la valeur est invalide
+    except ValueError:
+        return 0  # Si la valeur est autre que du texte attendu ou format erroné
+
+# Appliquer cette fonction sur la colonne 'MP'
+merged_data['MP'] = merged_data['MP'].apply(convert_to_minutes)
+
+
+</code></pre><p>Nous avons également besoin d'une colonne qui nous donne les résultats des Warriors.</p><pre class="language-python line-numbers"><code>
+
+result = [0]*len(merged_data['wl_home'])
+for k in range(len(result)):
+  if merged_data['team_abbreviation_home'][k] == 'GSW' :
+    result[k] = merged_data['wl_home'][k]
+  else :
+    result[k] = merged_data['wl_away'][k]
+
+merged_data['result'] = result
+merged_data.head()
+
+
+</code></pre><p>Enfin, nous ajoute au tableau le nombre de points marqués par l'équipe.</p><pre class="language-python line-numbers"><code>
+
+points = [0]*len(merged_data['pts_home'])
+for k in range(len(points)) :
+  if merged_data['team_abbreviation_home'][k] == 'GSW' :
+    points[k] = merged_data['pts_home'][k]
+  else :
+    points[k] = merged_data['pts_away'][k]
+
+merged_data['points'] = points
+
+
+</code></pre><h2 id="3.-performances-de-curry" tabindex="-1"><a class="header-anchor" href="#3.-performances-de-curry"></a> 3. Performances de Curry</h2><p>Dans cette partie nous allons simplement visualiser les performances du joueur tout au long de la saison. Pour le premier graphe on regarde l'évolution des points du joueur sur la saison.</p><pre class="language-python line-numbers"><code>
+
+# On prend seulement les matchs où Curry a joué
+
+curry_played = merged_data[merged_data['MP'] > 0]
+curry_played['PTS'] = pd.to_numeric(curry_played['PTS'], errors='coerce')
+curry_played = curry_played.sort_values(by='game_date')
+
+
+Y = curry_played['PTS']
+X = curry_played['game_date']
+
+
+plt.figure(figsize=(12, 6))
+plt.plot(X, Y, marker='o', linestyle='-', color='blue')  # Ajout de marqueurs pour chaque point
+plt.xlabel('Date')
+plt.ylabel('Points')
+plt.title('Évolution des points de Curry')
+plt.grid()  # Ajout d'une grille pour faciliter la lecture
+plt.tight_layout()  # Ajuste la mise en page pour éviter le chevauchement
+plt.show()
+
+
+</code></pre><div><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Baptiste-Audouin/mon/temps-1.2/curry_points.png"></div><p>Le graphe suivant permet de faire une distinction entre les performances à domicile et à l'exterieur afin de savoir si ce paramètre à une influence sur le joueur.</p><pre class="language-python line-numbers"><code>
+
+home_games = merged_data[merged_data['team_abbreviation_home'] == 'GSW']
+away_games = merged_data[merged_data['team_abbreviation_away'] == 'GSW']
+
+# Conversion des données en float
+home_games[['PTS', 'AST', 'TRB']] = home_games[['PTS', 'AST', 'TRB']].apply(pd.to_numeric, errors='coerce')
+away_games[['PTS', 'AST', 'TRB']] = away_games[['PTS', 'AST', 'TRB']].apply(pd.to_numeric, errors='coerce')
+
+# Calcul des moyennes
+home_avg = home_games[['PTS', 'AST', 'TRB']].mean()
+away_avg = away_games[['PTS', 'AST', 'TRB']].mean()
+
+comparison = pd.DataFrame({'Domicile': home_avg, 'Extérieur': away_avg})
+
+comparison.plot(kind='bar')
+plt.title("Performance de Curry à domicile vs extérieur")
+plt.ylabel("Moyenne")
+plt.show()
+
+
+</code></pre><div><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Baptiste-Audouin/mon/temps-1.2/home_away_curry.png"></div><p>Au vu de ces derniers résultats, on peut conclure que les statistiques du joueurs ont été constante cette saison et surtout les lieux de matchs n'ont eux aucun impacte sur lui.</p><h2 id="4.-influence-de-curry-sur-les-performances-de-son-%C3%A9quipe" tabindex="-1"><a class="header-anchor" href="#4.-influence-de-curry-sur-les-performances-de-son-%C3%A9quipe"></a> 4. Influence de Curry sur les performances de son équipe</h2><p>Nous allons visualiser dans cette partie la matrice de corrélation entre les performances de Stephen Curry (points, passes décisives, rebonds, minutes jouées) et les résultats des Warriors (victoires ou défaites)</p><pre class="language-python line-numbers"><code>
+
+correlation = merged_data[['PTS', 'AST', 'TRB', 'MP', 'result']].corr()
+
+plt.figure(figsize=(8, 6))
+sns.heatmap(correlation, annot=True, cmap="coolwarm")
+plt.title("Corrélation entre performances de Poole et résultats des Warriors")
+plt.show()
+
+
+</code></pre><div><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Baptiste-Audouin/mon/temps-1.2/matrix_curry.png"></div><h4 id="analyse-des-corr%C3%A9lations-%3A" tabindex="-1"><a class="header-anchor" href="#analyse-des-corr%C3%A9lations-%3A"></a> Analyse des corrélations :</h4><ul><li><strong>Points (PTS) et Victoires (result)</strong> : La corrélation entre les points de Curry et les victoires des Warriors est faible (0.069), ce qui indique que le nombre de points marqués par Curry n'a pas un impact direct sur les résultats de l'équipe.</li><li><strong>Passes décisives (AST) et Victoires (result)</strong> : Une corrélation plus forte (0.202) est observée entre les passes décisives de Curry et les victoires, suggérant que la capacité de Curry à faire des passes contribue davantage aux succès de l'équipe.</li><li><strong>Minutes jouées (MP) et Victoires (result)</strong> : Étonnamment, la corrélation entre les minutes jouées et les victoires est légèrement négative (-0.031), ce qui peut signifier que le simple fait que Curry passe plus de temps sur le terrain ne garantit pas toujours une victoire.</li><li><strong>Autres corrélations</strong> : Les corrélations entre les rebonds (TRB) et les victoires sont quasiment nulles (0.004), soulignant que les rebonds de Curry n'influencent pas significativement le résultat du match.</li></ul><p>Dans la suite, nous allons comparer ces résultats avec ceux de deux autres joueurs clés des Warriors pour mieux comprendre l'impact des différentes contributions individuelles sur les victoires de l'équipe. Cela permettra de voir comment les performances collectives influencent les résultats.</p><h2 id="5.-comparaison-avec-d'autres-joueurs" tabindex="-1"><a class="header-anchor" href="#5.-comparaison-avec-d'autres-joueurs"></a> 5. Comparaison avec d'autres joueurs</h2><p>Après avoir récupéré les données de deux autres joueurs majeurs de l'équipe (Jordan Poole et Klay Thompson) sur le même site <a href="https://www.basketball-reference.com">Basketball Reference</a>, j'ai effectué les mêmes manipulations sur leurs statistiques et voici les matrices obtenues :</p><div><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Baptiste-Audouin/mon/temps-1.2/matrix_poole.png"></div><div><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Baptiste-Audouin/mon/temps-1.2/matrix_thompson.png"></div><h4 id="analyse" tabindex="-1"><a class="header-anchor" href="#analyse"></a> Analyse</h4><p>Poole et Thompson, montrent des corrélations plus importantes (surtout Thompson) dans des aspects du jeu qui impactent directement les résultats des matchs, notamment les points de Thompson et les passes de Poole. Curry, en tant que joueur constant semble moins &quot;déterminant&quot; dans les victoires ce qui s'explique par le fait que son niveau est toujours élevé.</p><p>En résumé, bien que Curry soit essentiel pour la stabilité de l’équipe, les victoires des Warriors semblent davantage liées aux performances de Poole et surtout Thompson.</p><h2 id="6.-mod%C3%A9lisation-pr%C3%A9dictive-des-r%C3%A9sultats-des-warriors" tabindex="-1"><a class="header-anchor" href="#6.-mod%C3%A9lisation-pr%C3%A9dictive-des-r%C3%A9sultats-des-warriors"></a> 6. Modélisation prédictive des résultats des Warriors</h2><p>Dans cette partie j'ai voulu m'iintéresser au Machine Learning et plus particulièrement aux méthodes de modélisation prédictive, c'est à dire qu'avec un jeu de donnée dites &quot;d'entrainement&quot;, on va pouvoir prédir le reste des données dites de &quot;test&quot;. Ici, pour déterminer encore une fois l'influence de curry sur les performances de son équipe nous allons utiliser différentes méthodes de la bibliothèque <a href="https://scikit-learn.org/stable/">sklearn</a> afin de voir à partir des performances de Curry à quel point on peut prédire le résultat du match.</p><pre class="language-python line-numbers"><code>
+
+from sklearn.model_selection import train_test_split
+from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
+from sklearn.linear_model import LogisticRegression
+from sklearn.svm import SVC
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import accuracy_score
+
+
+features = curry_played[['PTS', 'AST', 'TRB', 'FG%', '3P%']]
+labels = curry_played['result']
+
+# Séparation des données en données d'entraînements et de tests
+X_train, X_test, y_train, y_test = train_test_split(features, labels, test_size=0.2, random_state=42)
+
+
+score = {}
+
+# Modèle de régression logistique
+logistic_model = LogisticRegression(max_iter=200)
+logistic_model.fit(X_train, y_train)
+y_pred_logistic = logistic_model.predict(X_test)
+accuracy_logistic = accuracy_score(y_test, y_pred_logistic)
+score['Régression Logistique'] = accuracy_logistic
+
+# Modèle SVM
+svm_model = SVC()
+svm_model.fit(X_train, y_train)
+y_pred_svm = svm_model.predict(X_test)
+accuracy_svm = accuracy_score(y_test, y_pred_svm)
+score['SVM'] = accuracy_svm
+
+# Modèle d'arbre de décision
+decision_tree_model = DecisionTreeClassifier()
+decision_tree_model.fit(X_train, y_train)
+y_pred_tree = decision_tree_model.predict(X_test)
+accuracy_tree = accuracy_score(y_test, y_pred_tree)
+score['Arbre de Décision'] = accuracy_tree
+
+# Modèle KNN
+knn_model = KNeighborsClassifier(n_neighbors=5)
+knn_model.fit(X_train, y_train)
+y_pred_knn = knn_model.predict(X_test)
+accuracy_knn = accuracy_score(y_test, y_pred_knn)
+score['KNN'] = accuracy_knn
+
+# Modèle de Random Forest
+rf_model = RandomForestClassifier()
+rf_model.fit(X_train, y_train)
+y_pred_rf = rf_model.predict(X_test)
+accuracy_rf = accuracy_score(y_test, y_pred_rf)
+score['Random Forest'] = accuracy_rf
+
+# Modèle de Gradient Boosting
+gb_model = GradientBoostingClassifier()
+gb_model.fit(X_train, y_train)
+y_pred_gb = gb_model.predict(X_test)
+accuracy_gb = accuracy_score(y_test, y_pred_gb)
+score['Gradient Boosting'] = accuracy_gb
+
+# Affichage des précisions des modèles
+for model, accuracy in score.items():
+    print(f"Précision du modèle {model} : {accuracy * 100:.2f}%")
+
+
+</code></pre><ul><li>Précision du modèle Régression Logistique : 41.67%</li><li>Précision du modèle SVM : 41.67%</li><li>Précision du modèle Arbre de Décision : 58.33%</li><li>Précision du modèle KNN : 41.67%</li><li>Précision du modèle Random Forest : 41.67%</li><li>Précision du modèle Gradient Boosting : 58.33%</li></ul><h4 id="commentaires" tabindex="-1"><a class="header-anchor" href="#commentaires"></a> Commentaires</h4><p>On voit ici que les meilleurs résultats sont obtenus par les méthodes arbres de décision, Random Forest et Gradient Boosting avec un taux de prédiction de 58,33% ce qui reste assez faible. Ces scores renforce ce que montrait la matrice de corrélations entre les performances de Curry et les résultats de son équipe.</p><p>Regardons quel score nous obtenons avec les performances de Thompson qui sempleit être plus déterminant dans les victoires de son équipe :</p><pre class="language-python line-numbers"><code>
+
+thompson_played = merged_data_thompson[merged_data_thompson['MP'] > 0]
+thompson_played['PTS'] = pd.to_numeric(thompson_played['PTS'], errors='coerce')
+thompson_played = thompson_played.sort_values(by='game_date')
+
+
+features = thompson_played[['PTS', 'AST', 'TRB', 'FG%', '3P%']]
+labels = thompson_played['result']
+
+
+X_train, X_test, y_train, y_test = train_test_split(features, labels, test_size=0.2, random_state=42)
+
+
+thompson_score = {}
+
+# Modèle de régression logistique
+logistic_model = LogisticRegression(max_iter=200)
+logistic_model.fit(X_train, y_train)
+y_pred_logistic = logistic_model.predict(X_test)
+accuracy_logistic = accuracy_score(y_test, y_pred_logistic)
+thompson_score['Régression Logistique'] = accuracy_logistic
+
+# Modèle SVM
+svm_model = SVC()
+svm_model.fit(X_train, y_train)
+y_pred_svm = svm_model.predict(X_test)
+accuracy_svm = accuracy_score(y_test, y_pred_svm)
+thompson_score['SVM'] = accuracy_svm
+
+# Modèle d'arbre de décision
+decision_tree_model = DecisionTreeClassifier()
+decision_tree_model.fit(X_train, y_train)
+y_pred_tree = decision_tree_model.predict(X_test)
+accuracy_tree = accuracy_score(y_test, y_pred_tree)
+thompson_score['Arbre de Décision'] = accuracy_tree
+
+# Modèle KNN
+knn_model = KNeighborsClassifier(n_neighbors=5)
+knn_model.fit(X_train, y_train)
+y_pred_knn = knn_model.predict(X_test)
+accuracy_knn = accuracy_score(y_test, y_pred_knn)
+thompson_score['KNN'] = accuracy_knn
+
+# Modèle de Random Forest
+rf_model = RandomForestClassifier()
+rf_model.fit(X_train, y_train)
+y_pred_rf = rf_model.predict(X_test)
+accuracy_rf = accuracy_score(y_test, y_pred_rf)
+thompson_score['Random Forest'] = accuracy_rf
+
+# Modèle de Gradient Boosting
+gb_model = GradientBoostingClassifier()
+gb_model.fit(X_train, y_train)
+y_pred_gb = gb_model.predict(X_test)
+accuracy_gb = accuracy_score(y_test, y_pred_gb)
+thompson_score['Gradient Boosting'] = accuracy_gb
+
+for model, accuracy in thompson_score.items():
+    print(f"Précision du modèle {model} : {accuracy * 100:.2f}%")
+
+
+</code></pre><ul><li>Précision du modèle Régression Logistique : 50.00%</li><li>Précision du modèle SVM : 50.00%</li><li>Précision du modèle Arbre de Décision : 57.14%</li><li>Précision du modèle KNN : 71.43%</li><li>Précision du modèle Random Forest : 42.86%</li><li>Précision du modèle Gradient Boosting : 28.57%</li></ul><p>Pour Thompson, les résultats entre les différentes méthodes sont beaucoup plus hétérogène mais avec la méthode des k plus proches voisins (KNN) le score est de 71,43% ce qui est bien plus que pour son coéquipier. Là encore, les résultats mettent en avant le caractère déterminant des performances du joueur sur son équipe.</p><h2 id="conclusion" tabindex="-1"><a class="header-anchor" href="#conclusion"></a> Conclusion</h2><p>En conclusion, ce projet m’a permis de découvrir l’analyse de données avec Python et d’explorer différentes méthodes de modélisation prédictive. En appliquant ces techniques à des données sportives. Avec davantage de statistiques, notamment celles des autres joueurs de l’équipe, il serait possible de réaliser des analyses plus poussées, comme, par exemple, l'optimisation du temps de jeu pour maximiser les performances collectives des Warriors.</p></article></main><footer class="min-h-[50px] border-t-2 mt-4 border-gray-200 dark:border-neutral-700"><div class="max-w-[1000px] mx-auto px-4"><div class="min-h-[50px] flex justify-center items-center"><p class="text-center">©2025 <b><span style="font-family:Consolas,sans-serif">Do-<span style="color:#4a86e8">It</span></span></b> - Développement, Management et Gestion de projets en IT</p></div></div></footer><script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">window.MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]]},svg:{fontCache:"global"}},document.addEventListener("DOMContentLoaded",(()=>{MathJax.typeset()}))</script><script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">Prism.plugins.NormalizeWhitespace.setDefaults({"remove-trailing":!0,"remove-indent":!0,"left-trim":!0,"right-trim":!0})</script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script></body></html>

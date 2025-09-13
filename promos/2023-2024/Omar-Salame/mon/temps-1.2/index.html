@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="robots" content="index, follow">
+
+        <link rel="canonical" href="https://do-it.aioli.ec-m.fr/promos/2023-2024/Omar-Salame/mon/temps-1.2/">
+
+        
+        
+
+        <meta name="description" content="Mon travail vise à approfondir ma maîtrise du développement web côté serveur en utilisant des technologies telles que Node.js, Express, et MongoDB. Je compte utiliser ces connaissances dans mon POK.">
+        <meta property="og:description" content="Mon travail vise à approfondir ma maîtrise du développement web côté serveur en utilisant des technologies telles que Node.js, Express, et MongoDB. Je compte utiliser ces connaissances dans mon POK.">
+        <meta name="twitter:description" content="Mon travail vise à approfondir ma maîtrise du développement web côté serveur en utilisant des technologies telles que Node.js, Express, et MongoDB. Je compte utiliser ces connaissances dans mon POK.">
+
+        
+            <meta name="author" content="Omar Salame">
+        
+        <meta name="keywords" content="do-it, centrale, centrale méditerranée, ecm, MON, Developpement Web, Back-End, Node.js, Express, MongoDB">
+
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png">
+        <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png">
+
+        <link href="/assets/stylesheets/main.css" rel="stylesheet">
+
+        <meta property="og:title" content="Maîtriser le Développement Back-End Web avec Node.js, Express et MongoDB">
+
+        <meta property="og:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta property="og:url" content="https://do-it.aioli.ec-m.fr/promos/2023-2024/Omar-Salame/mon/temps-1.2/">
+        <meta property="og:type" content="website">
+
+        <meta name="twitter:card" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:title" content="Maîtriser le Développement Back-End Web avec Node.js, Express et MongoDB">
+        <meta name="twitter:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:url" content="https://do-it.aioli.ec-m.fr/promos/2023-2024/Omar-Salame/mon/temps-1.2/">
+
+        <title>Maîtriser le Développement Back-End Web avec Node.js, Express et MongoDB</title>
+
+        <!-- Prismjs imports
+                - Prism line numbers
+                - Prism toolbar
+        -->
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet">
+        <link id="prism-theme" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+        <!-- Mermaid import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js "></script>
+
+        <script defer="">
+        // Check if a theme is stored in localStorage. If so, use it, otherwise fallback to the system preference.
+        const storedTheme = localStorage.getItem('theme');
+        if (storedTheme) {
+            document.documentElement.classList.toggle("dark", storedTheme === "dark");
+        } else {
+            // Use system color scheme if there is no stored theme preference.
+            document.documentElement.classList.toggle("dark", window.matchMedia("(prefers-color-scheme: dark)").matches);
+        }
+
+        function loadPrismTheme(isDarkMode) {
+            const newTheme = isDarkMode ? 'prism-okaidia.min.css' : 'prism-solarizedlight.min.css';
+            const newLink = document.createElement('link');
+            newLink.rel = 'stylesheet';
+            newLink.id = 'prism-theme';
+            newLink.href = `https://cdn.jsdelivr.net/npm/prismjs/themes/${newTheme}`;
+
+            newLink.onload = () => {
+                // Reapply highlighting after the new theme loads
+                Prism.highlightAll();
+            };
+
+            const existingLink = document.getElementById('prism-theme');
+            if (existingLink) {
+                document.head.replaceChild(newLink, existingLink);
+            } else {
+                document.head.appendChild(newLink);
+            }
+        }
+
+        function setMermaidTheme(isDarkMode) {
+            const theme = isDarkMode ? 'dark' : 'forest';
+            mermaid.initialize({
+                securityLevel: 'loose',
+                theme,
+                startOnLoad: true,
+            });
+        }
+
+        // Toggle dark and light mode and update localStorage accordingly.
+        function toggleDarkMode() {
+            const dark = document.documentElement.classList.contains("dark");
+            const newTheme = dark ? "light" : "dark";
+            localStorage.setItem('theme', newTheme);
+            document.documentElement.classList.toggle("dark", !dark);
+            loadPrismTheme(!dark);
+            setMermaidTheme(!dark);
+        }
+
+        // On initial load, ensure that Prism and Mermaid are initialized using the current theme.
+        const isDark = document.documentElement.classList.contains("dark");
+        loadPrismTheme(isDark);
+        setMermaidTheme(isDark);
+        </script>
+
+    </head>
+
+    <body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000" class="bg-neutral-50 text-neutral-950 dark:bg-neutral-900 dark:text-neutral-50">
+        <header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white dark:bg-neutral-900 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-between items-center">
+                    <a class="mx-2" href="/">Home</a>
+                    <button class="hidden sm:block text-neutral-950 dark:text-neutral-50 hover:bg-neutral-700 hover:text-neutral-50 hover:dark:bg-neutral-300 hover:dark:text-neutral-950 transition-colors p-2 rounded-full duration-800 ease-in-out" onclick="toggleDarkMode()">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 dark:hidden stroke-current">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <path d="M12 2V4" stroke-linecap="round"></path>
+                            <path d="M12 20V22" stroke-linecap="round"></path>
+                            <path d="M4 12L2 12" stroke-linecap="round"></path>
+                            <path d="M22 12L20 12" stroke-linecap="round"></path>
+                            <path d="M19.7778 4.22266L17.5558 6.25424" stroke-linecap="round"></path>
+                            <path d="M4.22217 4.22266L6.44418 6.25424" stroke-linecap="round"></path>
+                            <path d="M6.44434 17.5557L4.22211 19.7779" stroke-linecap="round"></path>
+                            <path d="M19.7778 19.7773L17.5558 17.5551" stroke-linecap="round"></path>
+                        </svg>
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 stroke-current hidden dark:block">
+                            <path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </button>
+                    <div class="flex items-center gap-4 sm:gap-6 ">
+                        <a class="" href="/cs">CS</a>
+                        <a class="" href="/pok">POK</a>
+                        <a class="" href="/mon">MON</a>
+                        <a class="" href="/projets">Projets</a>
+                        <a class="hidden sm:block" href="/promos">Promos</a>
+                        <a href="/search">
+                            <svg class="h-5 aspect-square stroke-neutral-950 dark:stroke-neutral-300 fill-none stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+                            </svg>
+                        </a>
+                        <a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank">
+                            <svg class="h-5 aspect-square dark:stroke-neutral-300 dark:fill-neutral-300" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body="">
+            
+<article class="relative">
+<h1 class="mb-1">Maîtriser le Développement Back-End Web avec Node.js, Express et MongoDB</h1>
+<div class="mb-4">
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Tags : </div>
+            <ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags">
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">MON</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">Developpement Web</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">Back-End</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">Node.js</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">Express</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">MongoDB</li>
+                
+
+            </ul>
+
+            
+            <div class="hidden" data-pagefind-meta="Type" aria-hidden="true">
+                
+                    
+                        <span data-pagefind-filter="Type">MON</span>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Auteur : </div>
+            <ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs">
+                
+                    <li class="bg-blue-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Auteurs">Omar Salame</li>
+                
+            </ul>
+        </div>
+    
+
+    
+        <div class="absolute top-0 right-0">
+            <span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2 text-neutral-950" data-pagefind-filter="Année">
+                2023-2024
+            </span>
+        </div>
+    
+</div>
+
+<p class="mb-4 text-lg">Mon travail vise à approfondir ma maîtrise du développement web côté serveur en utilisant des technologies telles que Node.js, Express, et MongoDB. Je compte utiliser ces connaissances dans mon POK.</p>
+
+
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100 dark:border-purple-800 dark:bg-purple-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-purple-500 dark:stroke-purple-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/promos/2023-2024/Omar-Salame/">Omar Salame</a><span class="px-1">/</span><a href="/promos/2023-2024/Omar-Salame/mon/">MON de Omar Salame</a><span class="px-1">/</span><a href="/promos/2023-2024/Omar-Salame/mon/temps-1.2/">Maîtriser le Développement Back-End Web avec Node.js, Express et MongoDB</a>
+
+</div>
+</div>
+
+
+
+
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100 dark:border-pink-800 dark:bg-pink-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-pink-500 dark:stroke-pink-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Prérequis</b></p>
+</div><div class="pl-8 mr-8">
+<p><strong>Niveau</strong> : Intermédiaire
+<strong>Prérequis</strong> : Une connaissance en JavaScript, HTML et CSS</p>
+</div>
+</div>
+<h2 id="table-des-mati%C3%A8res" tabindex="-1"><a class="header-anchor" href="#table-des-mati%C3%A8res"></a> Table des matières</h2>
+<ol>
+<li><a href="#section-1">Introduction</a></li>
+<li><a href="#section-2">Node.js &amp; Express</a>
+<ul>
+<li><a href="#subsection-1">Node.js</a></li>
+<li><a href="#subsection-2">Express</a></li>
+<li><a href="#subsection-3">Rest</a></li>
+</ul>
+</li>
+<li><a href="#section-3">MongoDB</a>
+<ul>
+<li><a href="#subsection-4">Schema</a></li>
+</ul>
+</li>
+</ol>
+<h2 id="introduction" tabindex="-1"><a class="header-anchor" href="#introduction"></a> Introduction <a id="section-1"></a></h2>
+<p>Le développement back-end, également appelé développement côté serveur, fait référence à la construction de la partie non visible des applications web, qui gère les données, la logique métier, et les interactions avec la base de données. Il est responsable de l'ensemble des opérations en coulisses qui permettent aux applications web de fonctionner. Le développement back-end se concentre sur la création de serveurs, la gestion des bases de données, le traitement des requêtes clients, et la fourniture de données dynamiques aux applications front-end. Il est essentiel pour assurer la fonctionnalité, la sécurité, et la performance des applications web.</p>
+<p>J'ai choisis de développer de compétences en Node.js, Express, et MongoDB à travers le cours <a href="https://fullstackopen.com/en/">Deep Dive Into Modern Web Development</a>. Ce cours est une initiation au développement web avec JavaScript, composé de 12 sections, chacune exigeant environ 10 à 12 heures de travail. J'ai terminé la troisième section, qui aborde la programmation d'un serveur avec NodeJS et Express.</p>
+<h2 id="node.js-%26-express" tabindex="-1"><a class="header-anchor" href="#node.js-%26-express"></a> Node.js &amp; Express <a id="section-2"></a></h2>
+<h3 id="node.js" tabindex="-1"><a class="header-anchor" href="#node.js"></a> <strong>Node.js</strong> <a id="subsection-1"></a></h3>
+<p>On Commence par créer un modèle pour notre application en utilisant la commande <code>npm init</code>. Vous devrez répondre aux questions posées par l'utilitaire, et le résultat sera la création automatique d'un fichier <em>package.json</em> à la racine du projet, qui contient des informations sur le projet.</p>
+<pre class="language-js line-numbers"><code>
+
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Omar Salame",
+  "license": "ISC"
+}
+
+
+</code></pre><p>Nous pouvons ensuite exécuter le programme sur <em>index.js</em> directement avec Node à partir de la ligne de commande <code>node index.js</code>, ou <code>npm start</code></p>
+<p>Pour commencer, on transforme l'application en serveur web en modifiant les fichiers index.js comme suit :</p>
+<pre class="language-js line-numbers"><code>
+
+const http = require('http')
+
+const app = http.createServer((request, response) => {
+  response.writeHead(200, { 'Content-Type': 'text/plain' })
+  response.end('Hello World')
+})
+
+const PORT = 3001
+app.listen(PORT)
+console.log(`Server running on port ${PORT}`)
+
+
+</code></pre><p>Dans la première ligne, l'application importe le module serveur web intégré de Node. Le code utilise la méthode createServer du module http pour créer un nouveau serveur web. Un gestionnaire d'événements est enregistré sur le serveur, qui est appelé à chaque fois qu'une requête HTTP est effectuée à l'adresse du serveur <a href="http://localhost:3001">http://localhost:3001</a>. La réponse est renvoyée avec le code d'état 200, l'en-tête Content-Type est défini sur text/plain, et le contenu du site à renvoyer est défini sur Hello World. Le but principal du serveur back-end dans ce cours est de fournir des données brutes au format JSON au front-end.</p>
+<pre class="language-js line-numbers"><code>
+
+let notes = [
+  {
+    id: 1,
+    content: "HTML is easy",
+    important: true
+  },
+  {
+    id: 2,
+    content: "Browser can execute only JavaScript",
+    important: false
+  },
+  {
+    id: 3,
+    content: "GET and POST are the most important methods of HTTP protocol",
+    important: true
+  }
+]
+const app = http.createServer((request, response) => {
+  response.writeHead(200, { 'Content-Type': 'application/json' })
+  response.end(JSON.stringify(notes))
+})
+
+
+</code></pre><p>La valeur application/json dans l'en-tête Content-Type informe le destinataire que les données sont au format JSON. Le tableau de notes est transformé en JSON à l'aide de la méthode JSON.stringify(notes).
+<img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Omar-Salame/mon/temps-1.2/js1.png" width="700" height="550"></p>
+<h3 id="express" tabindex="-1"><a class="header-anchor" href="#express"></a> <strong>Express</strong> <a id="subsection-2"></a></h3>
+<p>Il est possible de mettre en œuvre notre code serveur directement avec le serveur web http intégré de Node. Cependant, cela devient fastidieux, en particulier lorsque l'application prend de l'ampleur. C'est la raison pour laquelle de nombreuses bibliothèques ont vu le jour pour faciliter le développement côté serveur avec Node. Une de ces bibliothèques est <strong>Express</strong>
+Utilisons express en le définissant comme une dépendance du projet avec la commande : <code>npm install express</code>
+La syntaxe de notre application est differente pour utiliser Express:</p>
+<pre class="language-js line-numbers"><code>
+
+const express = require('express')
+const app = express()
+
+let notes = [
+  ...
+]
+
+app.get('/', (request, response) => {
+  response.send('<h1>Hello World!</h1>')
+})
+
+app.get('/api/notes', (request, response) => {
+  response.json(notes)
+})
+
+const PORT = 3001
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`)
+})
+
+
+</code></pre><p>Afin que le navigateur se recharge automatiquement après avoir apporté des modifications, on peut utiliser
+<em>nodemon</em></p>
+<h3 id="rest" tabindex="-1"><a class="header-anchor" href="#rest"></a> <strong>Rest</strong> <a id="subsection-3"></a></h3>
+<p>Nous allons étendre notre application pour qu'elle fournisse la même API HTTP RESTful que json-server. REST, acronyme de Representational State Transfer, a été introduit en 2000 dans la thèse de Roy Fielding. REST est un style architectural conçu pour construire des applications web évolutives. Dans cette section, nous nous concentrons sur la compréhension typique des API RESTful dans les applications web, en se basant sur l'idée que des entités uniques, comme les notes dans notre application, sont appelées des ressources. Chaque ressource a une URL associée qui constitue son adresse unique. Une convention courante pour créer des adresses uniques consiste à combiner le nom du type de ressource avec l'identifiant unique de la ressource. Par exemple, si le type de ressource est défini comme &quot;notes&quot; et que l'identifiant de la note est 10, alors l'adresse unique de cette note est '<a href="http://www.example.com/api/notes/10">www.example.com/api/notes/10</a>'. L'URL pour l'ensemble de la collection de toutes les ressources note est '<a href="http://www.example.com/api/notes.">www.example.com/api/notes.</a>'</p>
+<pre class="language-js line-numbers"><code>
+
+app.get('/api/notes/:id', (request, response) => {
+  const id = Number(request.params.id)
+  const note = notes.find(note => note.id === id)
+
+
+  if (note) {
+    response.json(note)
+  } else {
+    response.status(404).end()
+  }
+})
+
+
+</code></pre><p>Dans cette section du cours, nous étendons notre application pour fournir une interface REST permettant d'opérer sur des notes individuelles. Nous commençons par créer une route pour récupérer une ressource unique, où l'adresse unique d'une note individuelle suit le format &quot;notes/10&quot; avec un numéro faisant référence à l'identifiant unique de la note. Nous utilisons la méthode app.get('/api/notes/:id', ...) pour gérer les requêtes HTTP GET de la forme &quot;/api/notes/QUELQUECHOSE,&quot; où &quot;QUELQUECHOSE&quot; est une chaîne arbitraire.</p>
+<p>En cas de succès, nous configurons le statut de la réponse avec la méthode status et renvoyons la réponse sans données grâce à la méthode end, car les API REST sont principalement destinées à un usage programmatique.</p>
+<p>Si aucune note n'est trouvée, notre application renvoie un code d'erreur, mais ne renvoie rien à afficher dans le navigateur, conformément au fonctionnement des API REST. Cependant, il est possible de personnaliser le message d'erreur 404 pour fournir des indications sur la raison de l'erreur.</p>
+<h3 id="communiquer-des-donn%C3%A9es" tabindex="-1"><a class="header-anchor" href="#communiquer-des-donn%C3%A9es"></a> <strong>Communiquer des données</strong></h3>
+<p>On peut ensuite permettre l'ajout de nouvelles notes au serveur. Pour ajouter une note, il suffit de faire une requête HTTP POST à l'adresse <a href="http://localhost:3001/api/notes">http://localhost:3001/api/notes</a>, en envoyant toutes les informations de la nouvelle note dans le corps de la requête au format JSON.
+On modifie index.js:</p>
+<pre class="language-js line-numbers"><code>
+
+const express = require('express')
+const app = express()
+
+
+app.use(express.json())
+
+//...
+
+
+app.post('/api/notes', (request, response) => {
+  const note = request.body
+  console.log(note)
+  response.json(note)
+})
+
+
+</code></pre><p>Ensuite, la requête POST peut être envoyée à l'aide du client REST</p>
+<h2 id="mongodb" tabindex="-1"><a class="header-anchor" href="#mongodb"></a> MongoDB <a id="section-3"></a></h2>
+<p>Pour stocker nos notes enregistrées indéfiniment, nous avons besoin d'une base de données. La raison de choisir MongoDB comme base de données réside dans sa moindre complexité par rapport à une base de données relationnelle. Vous pouvez installer et exécuter <a href="https://www.mongodb.com/atlas/database">MongoDB</a> sur votre ordinateur.</p>
+<p>On peut faire une première connexion à la base de donnée MongoDB avec le script suivant:</p>
+<pre class="language-js line-numbers"><code>
+
+const mongoose = require('mongoose')
+
+if (process.argv.length<3) {
+  console.log('give password as argument')
+  process.exit(1)
+}
+
+const password = process.argv[2]
+
+const url =
+  `mongodb+srv://fullstack:${password}@cluster0.o1opl.mongodb.net/?retryWrites=true&w=majority`
+
+mongoose.set('strictQuery',false)
+mongoose.connect(url)
+
+const noteSchema = new mongoose.Schema({
+  content: String,
+  important: Boolean,
+})
+
+const Note = mongoose.model('Note', noteSchema)
+
+const note = new Note({
+  content: 'HTML is Easy',
+  important: true,
+})
+
+note.save().then(result => {
+  console.log('note saved!')
+  mongoose.connection.close()
+})
+
+
+</code></pre><p>Nous pouvons voir l'état actuel de la base de données de l'Atlas MongoDB à partir de Parcourir les collections, dans l'onglet Base de données.
+<img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Omar-Salame/mon/temps-1.2/mongo.png" width="700" height="550"></p>
+<h3 id="schema" tabindex="-1"><a class="header-anchor" href="#schema"></a> <strong>Schema</strong> <a id="subsection-4"></a></h3>
+<p>Un schéma est un objet JSON qui définit la structure et le contenu de vos données.
+Après avoir établi la connexion avec la base de données, nous définissons le schéma d'une note et le modèle correspondant :</p>
+<pre class="language-js line-numbers"><code>
+
+const noteSchema = new mongoose.Schema({
+  content: String,
+  important: Boolean,
+})
+
+const Note = mongoose.model('Note', noteSchema)
+
+
+</code></pre><p>Ensuite, on peut créer un nouvel objet note à l'aide du modèle Note. Étant donné que les objets sont créés à l'aide de la fonction constructrice du modèle, ils possèdent toutes les propriétés du modèle, y compris des méthodes pour enregistrer l'objet dans la base de données.</p>
+<p>L'enregistrement de l'objet dans la base de données se fait grâce à la méthode save, qui peut être accompagnée d'un gestionnaire d'événements à l'aide de la méthode <em>then</em>:</p>
+<pre class="language-js line-numbers"><code>
+
+const note = new Note({
+  content: 'HTML is Easy',
+  important: false,
+})
+
+note.save().then(result => {
+  console.log('note saved!')
+  mongoose.connection.close()
+})
+
+
+</code></pre><p>De la même façon nous pouvons récupérer des objets dans la base de données:</p>
+<pre class="language-js line-numbers"><code>
+
+Note.find({}).then(result => {
+  result.forEach(note => {
+    console.log(note)
+  })
+  mongoose.connection.close()
+})
+
+
+</code></pre>
+
+
+</article>
+
+        </main>
+
+        <footer class="min-h-[50px] border-t-2 mt-4 border-gray-200 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-center items-center">
+                    <p class="text-center">
+                        ©2025 <b><span style="font-family: Consolas, sans-serif;">Do-<span style="color: #4a86e8">It</span></span></b> - Développement, Management et Gestion de projets en IT
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- MathJax import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">
+            window.MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']], // Delimiters for inline math
+                    displayMath: [['$$', '$$'], ['\\[', '\\]']] // Delimiters for block math
+                },
+                svg: {
+                    fontCache: 'global' // Use global font cache for SVG output
+                }
+            };
+            document.addEventListener('DOMContentLoaded', () => {
+                MathJax.typeset(); // Ensures MathJax processes the content after the page loads
+            });
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">
+            Prism.plugins.NormalizeWhitespace.setDefaults({
+                'remove-trailing': true,
+                'remove-indent': true,
+                'left-trim': true,
+                'right-trim': true,
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script>
+    </body>
+</html>

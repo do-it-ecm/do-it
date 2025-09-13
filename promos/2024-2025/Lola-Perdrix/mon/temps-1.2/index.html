@@ -1,0 +1,1433 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="robots" content="index, follow">
+
+        <link rel="canonical" href="https://do-it.aioli.ec-m.fr/promos/2024-2025/Lola-Perdrix/mon/temps-1.2/">
+
+        
+        
+
+        <meta name="description" content="Reprendre les bases de SQL pour comprendre ce que c&#39;est et acquérir les compétences fondamentales.">
+        <meta property="og:description" content="Reprendre les bases de SQL pour comprendre ce que c&#39;est et acquérir les compétences fondamentales.">
+        <meta name="twitter:description" content="Reprendre les bases de SQL pour comprendre ce que c&#39;est et acquérir les compétences fondamentales.">
+
+        
+            <meta name="author" content="Lola Perdrix">
+        
+        <meta name="keywords" content="do-it, centrale, centrale méditerranée, ecm, MON, SQL, bigquery, vert">
+
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png">
+        <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png">
+
+        <link href="/assets/stylesheets/main.css" rel="stylesheet">
+
+        <meta property="og:title" content="Les fondamentaux de SQL">
+
+        <meta property="og:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta property="og:url" content="https://do-it.aioli.ec-m.fr/promos/2024-2025/Lola-Perdrix/mon/temps-1.2/">
+        <meta property="og:type" content="website">
+
+        <meta name="twitter:card" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:title" content="Les fondamentaux de SQL">
+        <meta name="twitter:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:url" content="https://do-it.aioli.ec-m.fr/promos/2024-2025/Lola-Perdrix/mon/temps-1.2/">
+
+        <title>Les fondamentaux de SQL</title>
+
+        <!-- Prismjs imports
+                - Prism line numbers
+                - Prism toolbar
+        -->
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet">
+        <link id="prism-theme" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+        <!-- Mermaid import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js "></script>
+
+        <script defer="">
+        // Check if a theme is stored in localStorage. If so, use it, otherwise fallback to the system preference.
+        const storedTheme = localStorage.getItem('theme');
+        if (storedTheme) {
+            document.documentElement.classList.toggle("dark", storedTheme === "dark");
+        } else {
+            // Use system color scheme if there is no stored theme preference.
+            document.documentElement.classList.toggle("dark", window.matchMedia("(prefers-color-scheme: dark)").matches);
+        }
+
+        function loadPrismTheme(isDarkMode) {
+            const newTheme = isDarkMode ? 'prism-okaidia.min.css' : 'prism-solarizedlight.min.css';
+            const newLink = document.createElement('link');
+            newLink.rel = 'stylesheet';
+            newLink.id = 'prism-theme';
+            newLink.href = `https://cdn.jsdelivr.net/npm/prismjs/themes/${newTheme}`;
+
+            newLink.onload = () => {
+                // Reapply highlighting after the new theme loads
+                Prism.highlightAll();
+            };
+
+            const existingLink = document.getElementById('prism-theme');
+            if (existingLink) {
+                document.head.replaceChild(newLink, existingLink);
+            } else {
+                document.head.appendChild(newLink);
+            }
+        }
+
+        function setMermaidTheme(isDarkMode) {
+            const theme = isDarkMode ? 'dark' : 'forest';
+            mermaid.initialize({
+                securityLevel: 'loose',
+                theme,
+                startOnLoad: true,
+            });
+        }
+
+        // Toggle dark and light mode and update localStorage accordingly.
+        function toggleDarkMode() {
+            const dark = document.documentElement.classList.contains("dark");
+            const newTheme = dark ? "light" : "dark";
+            localStorage.setItem('theme', newTheme);
+            document.documentElement.classList.toggle("dark", !dark);
+            loadPrismTheme(!dark);
+            setMermaidTheme(!dark);
+        }
+
+        // On initial load, ensure that Prism and Mermaid are initialized using the current theme.
+        const isDark = document.documentElement.classList.contains("dark");
+        loadPrismTheme(isDark);
+        setMermaidTheme(isDark);
+        </script>
+
+    </head>
+
+    <body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000" class="bg-neutral-50 text-neutral-950 dark:bg-neutral-900 dark:text-neutral-50">
+        <header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white dark:bg-neutral-900 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-between items-center">
+                    <a class="mx-2" href="/">Home</a>
+                    <button class="hidden sm:block text-neutral-950 dark:text-neutral-50 hover:bg-neutral-700 hover:text-neutral-50 hover:dark:bg-neutral-300 hover:dark:text-neutral-950 transition-colors p-2 rounded-full duration-800 ease-in-out" onclick="toggleDarkMode()">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 dark:hidden stroke-current">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <path d="M12 2V4" stroke-linecap="round"></path>
+                            <path d="M12 20V22" stroke-linecap="round"></path>
+                            <path d="M4 12L2 12" stroke-linecap="round"></path>
+                            <path d="M22 12L20 12" stroke-linecap="round"></path>
+                            <path d="M19.7778 4.22266L17.5558 6.25424" stroke-linecap="round"></path>
+                            <path d="M4.22217 4.22266L6.44418 6.25424" stroke-linecap="round"></path>
+                            <path d="M6.44434 17.5557L4.22211 19.7779" stroke-linecap="round"></path>
+                            <path d="M19.7778 19.7773L17.5558 17.5551" stroke-linecap="round"></path>
+                        </svg>
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 stroke-current hidden dark:block">
+                            <path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </button>
+                    <div class="flex items-center gap-4 sm:gap-6 ">
+                        <a class="" href="/cs">CS</a>
+                        <a class="" href="/pok">POK</a>
+                        <a class="" href="/mon">MON</a>
+                        <a class="" href="/projets">Projets</a>
+                        <a class="hidden sm:block" href="/promos">Promos</a>
+                        <a href="/search">
+                            <svg class="h-5 aspect-square stroke-neutral-950 dark:stroke-neutral-300 fill-none stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+                            </svg>
+                        </a>
+                        <a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank">
+                            <svg class="h-5 aspect-square dark:stroke-neutral-300 dark:fill-neutral-300" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body="">
+            
+<article class="relative">
+<h1 class="mb-1">Les fondamentaux de SQL</h1>
+<div class="mb-4">
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Tags : </div>
+            <ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags">
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">MON</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">SQL</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">bigquery</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">vert</li>
+                
+
+            </ul>
+
+            
+            <div class="hidden" data-pagefind-meta="Type" aria-hidden="true">
+                
+                    
+                        <span data-pagefind-filter="Type">MON</span>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Auteur : </div>
+            <ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs">
+                
+                    <li class="bg-blue-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Auteurs">Lola Perdrix</li>
+                
+            </ul>
+        </div>
+    
+
+    
+        <div class="absolute top-0 right-0">
+            <span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2 text-neutral-950" data-pagefind-filter="Année">
+                2024-2025
+            </span>
+        </div>
+    
+</div>
+
+<p class="mb-4 text-lg">Reprendre les bases de SQL pour comprendre ce que c'est et acquérir les compétences fondamentales.</p>
+
+
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100 dark:border-purple-800 dark:bg-purple-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-purple-500 dark:stroke-purple-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/promos/2024-2025/Lola-Perdrix/">Lola Perdrix</a><span class="px-1">/</span><a href="/promos/2024-2025/Lola-Perdrix/mon/">MON de Lola Perdrix</a><span class="px-1">/</span><a href="/promos/2024-2025/Lola-Perdrix/mon/temps-1.2/">Les fondamentaux de SQL</a>
+
+</div>
+</div>
+
+
+
+
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100 dark:border-pink-800 dark:bg-pink-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-pink-500 dark:stroke-pink-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Prérequis</b></p>
+</div><div class="pl-8 mr-8">
+<p>Prérequis : Aucun</p>
+</div>
+</div>
+<h2 id="objectifs" tabindex="-1"><a class="header-anchor" href="#objectifs"></a> Objectifs</h2>
+<p>L'objectif de ce MON est de replonger dans le monde de SQL après l'avoir quitté après la prépa, tout simplement car ce langage est toujours très répendu est paraît nécessaire dès lors que l'on souhaite travailler avec des bases de données relationnelles.</p>
+<h2 id="sommaire" tabindex="-1"><a class="header-anchor" href="#sommaire"></a> Sommaire</h2>
+<ul>
+<li>Introduction</li>
+<li>Les notions de base du langage SQL</li>
+<li>SQL avec BigQuery</li>
+<li>Fonctionnalités principales
+<ul>
+<li>SELECT... FROM... WHERE...</li>
+<li>COUNT, GROUP BY, GROUP BY... HAVING</li>
+<li>ORDER BY</li>
+<li>EXTRACT</li>
+<li>WITH... AS</li>
+<li>JOIN... ON</li>
+<li>Bilan</li>
+</ul>
+</li>
+<li>Pour aller plus loin
+<ul>
+<li>UNION</li>
+<li>Fonctions analytiques</li>
+<li>Nested / Repeated data</li>
+<li>Optimiser des requêtes</li>
+</ul>
+</li>
+<li>Conclusion</li>
+<li>Sources</li>
+</ul>
+<h2 id="introduction" tabindex="-1"><a class="header-anchor" href="#introduction"></a> Introduction</h2>
+<p>Aujourd'hui, la quasi-totalité des entreprises utilise des bases de données relationnelles pour gérer leur données depuis leur apparition sur le marché vers la fin des années 70.</p>
+<p>Ces données sont supportées par des <strong>systèmes de gestion de bases de données (SGBD)</strong>, qui jouent un rôle d'interface entre l'utilisateur et la base de données et permettent notamment de créer des bases, de les gérer, de les requêter, ou d'assurer leur sécurité. Il existe plusieurs SGBD relationnels conçus par différentes grandes entreprises dont MySQL, PostgreSQL, SQL Server etc.</p>
+<p><strong>SQL</strong> a alors été conçu en vue d'uniformiser toutes ces variétés de systèmes, et constitue aujourd'hui le <strong>langage standard des bases de données relationnelles</strong>. Tous les SGBD mentionnés précédemment se conforment donc tous sur le langage SQL et diffèrent uniquement par quelques spécifités qui leur sont propres, mais le but n'est pas de les détailler ici.</p>
+<p><strong>Sources :</strong> Pour ce MON je me base sur 3 sources principales (qui sont aussi à la fin de la page) :</p>
+<ul>
+<li>Le livre <em><strong>&quot;SQL, les fondamentaux du langage&quot;</strong></em>, de Anne-Christine BISSON et Eric GODOC</li>
+<li>Le livre <em><strong>&quot;Bases de données et systèmes d'information&quot;</strong></em>, de Saïd BENAÏCHOU</li>
+<li>Les cours intéractifs <a href="https://www.kaggle.com/learn/intro-to-sql"><em><strong>Intro to SQL</strong></em></a> et <a href="https://www.kaggle.com/learn/advanced-sql"><em><strong>Advanced SQL</strong></em></a> disponibles gratuitement sur Kaggle et proposant des exercices simples à chaque étape.</li>
+</ul>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100 dark:border-cyan-800 dark:bg-cyan-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-cyan-500 dark:stroke-cyan-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Information</b></p>
+</div><div class="pl-8 mr-8">
+<p>Je n'avais pas prévu initialement de faire ce MON au temps 1, mais ce qui m'a fait changer d'avis, c'est surtout que justement beaucoup d'entreprises demandent sur les offres de stages que je regarde de maîtriser (plus ou moins) SQL. Autant se former rapidement pour mettre en avant ces compétences.</p>
+</div>
+</div>
+<h2 id="notions-de-base-du-langage-sql" tabindex="-1"><a class="header-anchor" href="#notions-de-base-du-langage-sql"></a> Notions de base du langage SQL</h2>
+<h3 id="le-mod%C3%A8le-relationnel" tabindex="-1"><a class="header-anchor" href="#le-mod%C3%A8le-relationnel"></a> Le modèle relationnel</h3>
+<p>Le langage SQL (Structured Query Language) sert à manipuler des <strong>bases de données relationnelles</strong>. Le modèe relationnel vise à représenter les données de manière logique, indépendamment de la manière dont elles sont stockées physiquement.</p>
+<p>Les données sont organisées dans différentes <strong>tables</strong> distinctes, qu'on peut aussi appeler <strong>relations</strong>.
+Les tables sont constituées de différentes colonnes que l'on appelle <strong>champs</strong>, ou <strong>attributs</strong>, et des lignes contenant les valeurs que l'on appelle <strong>tuples</strong>.</p>
+<p>Quelques règles doivent être respectées, comme par exemple l'<strong>unicité</strong> des éléments d'une table, ou la présence d'une <strong>clé primaire</strong> qui sert en tant qu'identifiant unique pour chaque élément de la table.</p>
+<h3 id="les-sous-ensembles-du-sql" tabindex="-1"><a class="header-anchor" href="#les-sous-ensembles-du-sql"></a> Les sous-ensembles du SQL</h3>
+<ul>
+<li>Le <strong>DDL</strong> (Data Definition Language) : regroupe les fonctions permettant de créer, modifier ou supprimer des structures de bases de données (CREATE, ALTER, DROP)</li>
+<li>Le <strong>DML</strong> (Data Manipulation Language) : regroupe les fonctions permettant de manipuler les données dans la base (SELECT, INSERT, DELETE, UPDATE...). C'est ça qu'on utilisera principalement dans ce MON.</li>
+<li>Le <strong>DCL</strong> (Data Control Language) : regroupe les fonctions permettant de gérer la sécurité et les accès à la base (GRANT, REVOKE)</li>
+<li>Le <strong>TCL</strong> (Transaction Control Language) : regroupe les fonctions permettant de gérer la validation des mises à jour effectuées sur la base (COMMIT, ROLLBACK)</li>
+</ul>
+<h3 id="les-normes-sql" tabindex="-1"><a class="header-anchor" href="#les-normes-sql"></a> Les normes SQL</h3>
+<p>Il s'agit des différentes versions de SQL qui évoluent au fil du temps. Chaque version de SQL est normalisée. Il s'agit par exemple de :</p>
+<ul>
+<li>SQL-86 ou SQL-87 : première version normalisée</li>
+<li>SQL-2 ou SQL-92 : implémentée dans la majorité des SGBD relationnels</li>
+<li>SQL-3 ou SQL-99 : apporte des fonctionnalités complémentaires (requêtes récursives par ex, etc.)</li>
+<li>SQL:2011 : idem</li>
+</ul>
+<p>Chaque fournisseur de SGBD implémnte alors SQL comme il le souhaite dans son système en étant libre de rajouter ses propres extensions, d'où les disparités subtiles d'utilisation de SQL d'une entreprise à l'autre...</p>
+<h2 id="sql-avec-bigquery" tabindex="-1"><a class="header-anchor" href="#sql-avec-bigquery"></a> SQL avec BigQuery</h2>
+<h3 id="r%C3%A9cup%C3%A9rer-un-dataset-avec-bigquery" tabindex="-1"><a class="header-anchor" href="#r%C3%A9cup%C3%A9rer-un-dataset-avec-bigquery"></a> Récupérer un dataset avec bigquery</h3>
+<p>Le cours que je souhaite réaliser sur Kaggle repose sur l'utilisation de BigQuery avec Python pour permettre de faire des requêtes SQL sur de grands datasets (Google Cloud).</p>
+<p>Il faut donc commencer par comprendre comment faire des requêtes avec BigQuery.</p>
+<p><em><strong>Schéma de la structure de bigquery</strong></em>
+<img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Lola-Perdrix/mon/temps-1.2/bigquery_schema.jpg" alt="schema"></p>
+<p>Les premières étapes à suivre sont celles pour aller chercher son dataset choisi au préalable :</p>
+<ul>
+<li>Importer <code>bigquery</code></li>
+<li>Créer un objet <code>client</code>qui nous permet d'accéder au dataset avec la méthode <code>.Client</code></li>
+<li>Créer la référence de notre dataset avec la méthode <code>.dataset()</code></li>
+<li>Récupérer notre dataset avec la méthode <code>.get_dataset</code> et la référence créée juste avant</li>
+</ul>
+<pre class="language-python line-numbers"><code>
+
+from google.cloud import bigquery
+
+# Create a "Client" object
+client = bigquery.Client()
+
+# Construct a reference to the "hacker_news" dataset
+dataset_ref = client.dataset("hacker_news", project="bigquery-public-data")
+
+# API request - fetch the dataset
+dataset = client.get_dataset(dataset_ref)
+
+
+</code></pre><p>On peut ensuite <strong>lister les tables</strong> que contient le dataset :</p>
+<pre class="language-python line-numbers"><code>
+
+# List all the tables in the "hacker_news" dataset
+tables = list(client.list_tables(dataset))
+for table in tables:
+    print(table.table_id)
+
+
+</code></pre><div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Résultat</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-python line-numbers"><code>
+
+comments
+full
+full_201510
+stories
+
+
+</code></pre></div>
+</details>
+</div>
+<p>Puis, de la même manière que l'on récupère notre dataset, on peut <strong>récupérer une table</strong> en particulier, et afficher son <strong>schéma de table</strong> pour pouvoir étudier sa structure :</p>
+<pre class="language-python line-numbers"><code>
+
+# Construct a reference to the "full" table
+table_ref = dataset_ref.table("full")
+
+# API request - fetch the table
+table = client.get_table(table_ref)
+
+table.schema
+
+
+</code></pre><div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Résultat</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-python line-numbers"><code>
+
+[SchemaField('title', 'STRING', 'NULLABLE', 'Story title', (), None),
+ SchemaField('url', 'STRING', 'NULLABLE', 'Story url', (), None),
+ SchemaField('text', 'STRING', 'NULLABLE', 'Story or comment text', (), None),
+ SchemaField('dead', 'BOOLEAN', 'NULLABLE', 'Is dead?', (), None),
+ SchemaField('by', 'STRING', 'NULLABLE', "The username of the item's author.", (), None),
+ SchemaField('score', 'INTEGER', 'NULLABLE', 'Story score', (), None),
+ SchemaField('time', 'INTEGER', 'NULLABLE', 'Unix time', (), None),
+ SchemaField('timestamp', 'TIMESTAMP', 'NULLABLE', 'Timestamp for the unix time', (), None),
+ SchemaField('type', 'STRING', 'NULLABLE', 'Type of details (comment, comment_ranking, poll, story, job, pollopt)', (), None),
+ SchemaField('id', 'INTEGER', 'NULLABLE', "The item's unique id.", (), None),
+ SchemaField('parent', 'INTEGER', 'NULLABLE', 'Parent comment ID', (), None),
+ SchemaField('descendants', 'INTEGER', 'NULLABLE', 'Number of story or poll descendants', (), None),
+ SchemaField('ranking', 'INTEGER', 'NULLABLE', 'Comment ranking', (), None),
+ SchemaField('deleted', 'BOOLEAN', 'NULLABLE', 'Is deleted?', (), None)]
+
+
+</code></pre><p>Chaque ligne représente un champ (une colonne) de la table, et donne davantage d'informations comme le type de données dans ce champ, son titre, sa description, et certains autres paramètres.</p>
+</div>
+</details>
+</div>
+<p>Enfin, en connaissant quelques commandes / fonctions, on peut faire quelques petites choses intéressantes telles qu'<strong>afficher les premières lignes du dataset</strong>, c'est plutôt utile pour voir à quoi il ressemble :</p>
+<pre class="language-python line-numbers"><code>
+
+# Preview the first five lines of the "full" table
+client.list_rows(table, max_results=5).to_dataframe()
+
+
+</code></pre><div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Résultat</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Lola-Perdrix/mon/temps-1.2/list_rows.jpg" alt="rows"></p>
+</div>
+</details>
+</div>
+<h3 id="faire-des-requ%C3%AAtes-sql-avec-bigquery" tabindex="-1"><a class="header-anchor" href="#faire-des-requ%C3%AAtes-sql-avec-bigquery"></a> Faire des requêtes SQL avec bigquery</h3>
+<p>Pour faire des requêtes SQL, on va suivre ces différentes étapes :</p>
+<ul>
+<li>Définir la requête SQL dans une variable query</li>
+<li>Configurer la requête, ici on rajoute une <code>safe_config</code> pour empêcher de faire des requêtes trop lourdes car sinon ça devient payant...</li>
+<li>On exécute la requête et on la renvoie sous la forme d'un dataframe pour pouvoir le visualiser</li>
+</ul>
+<pre class="language-python line-numbers"><code>
+
+- # Query to select prolific commenters and post counts
+titles_query = """
+                SELECT title
+                FROM `bigquery-public-data.hacker_news.full`
+                """
+
+# Set up the query (cancel the query if it would use too much of your quota, with the limit set to 1 GB)
+safe_config = bigquery.QueryJobConfig(maximum_bytes_billed=10**10)
+query_job = client.query(titles_query, job_config=safe_config)
+
+# API request - run the query, and return a pandas DataFrame
+titles = query_job.to_dataframe()
+
+# View top few rows of results
+print(titles.head())
+
+
+</code></pre><p>Par la suite, je n'afficherai pas toujours ce code servant à exécuter la requête pour alléger le rendu, mais gardons en tête que les requêtes SQL que j'ai écrites par la suite ne se sont pas exécutées toutes seules.</p>
+<h2 id="les-requ%C3%AAtes-sql-de-base" tabindex="-1"><a class="header-anchor" href="#les-requ%C3%AAtes-sql-de-base"></a> Les requêtes SQL de base</h2>
+<p>Pour cette partie je me suis appuyé sur la formation <a href="https://www.kaggle.com/learn/intro-to-sql">Intro to SQL</a> du site Kaggle, en prenant le temps de faire chaque exercice proposé sans pour autant les restituer ici.</p>
+<h3 id="select...-from...-where" tabindex="-1"><a class="header-anchor" href="#select...-from...-where"></a> SELECT... FROM... WHERE</h3>
+<p>Ces trois mots clés servent à effectuer les requêtes les plus basiques en SQL.</p>
+<p>Rafraîchissons-nous la mémoire :</p>
+<ul>
+<li><strong>SELECT</strong> permet d'indiquer quel(s) champ(s) de la table on souhaite récupérer</li>
+<li><strong>FROM</strong> permet d'indiquer depuis quelle(s) table(s) on va chercher ces champs</li>
+<li><strong>WHERE</strong> permet de spécifier que l'on souhaite retourner uniquement les lignes qui vérifient une certaine condition</li>
+</ul>
+<p>Par exemple :</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">table : <em><strong>pet_records</strong></em></th>
+<th style="text-align:center">requête</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center" rowspan="2"><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Lola-Perdrix/mon/temps-1.2/pet_records.jpg" alt="table"></td>
+<td style="text-align:center"><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Lola-Perdrix/mon/temps-1.2/select_from.jpg" alt="query"></td>
+</tr>
+<tr>
+<td style="text-align:center"><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Lola-Perdrix/mon/temps-1.2/select_from_where.jpg" alt="query"></td>
+</tr>
+</tbody>
+</table>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100 dark:border-amber-800 dark:bg-amber-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-amber-800 dark:stroke-amber-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Note</b></p>
+</div><div class="pl-8 mr-8">
+<p>Après le FROM, on doit indiquer ici la source entre backticks (``) en mentionnant d'abord le projet auquel fait partie le dataset, puis le nom du dataset, puis le nom de la table, séparés par des points (.)</p>
+</div>
+</div>
+<p>Remarques :</p>
+<ul>
+<li>On peut sélectionner plusieurs colonnes en les séparant par des virugles après le SELECT</li>
+</ul>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Exemple</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-python line-numbers"><code>
+
+# Query to select cities and countries with units of "ppm"
+first_query = """
+              SELECT city, country
+              FROM `bigquery-public-data.openaq.global_air_quality`
+              WHERE unit = 'ppm'
+
+
+</code></pre><p>Retourne :</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th style="text-align:center">city</th>
+<th style="text-align:center">country</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td style="text-align:center">Buenos Aires</td>
+<td style="text-align:center">AR</td>
+</tr>
+<tr>
+<td>1</td>
+<td style="text-align:center">Buenos Aires</td>
+<td style="text-align:center">AR</td>
+</tr>
+<tr>
+<td>2</td>
+<td style="text-align:center">Buenos Aires</td>
+<td style="text-align:center">AR</td>
+</tr>
+<tr>
+<td>3</td>
+<td style="text-align:center">Buenos Aires</td>
+<td style="text-align:center">AR</td>
+</tr>
+<tr>
+<td>4</td>
+<td style="text-align:center">Buenos Aires</td>
+<td style="text-align:center">AR</td>
+</tr>
+</tbody>
+</table>
+</div>
+</details>
+</div>
+<ul>
+<li>On peut rajouter <code>DISTINCT</code> derrière SELECT afin de n'afficher que des résultats uniques (enlève les occurrences multiples)</li>
+</ul>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Exemple</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-python line-numbers"><code>
+
+# Query to select cities and countries with units of "ppm" (unique)
+first_query = """
+              SELECT DISTINCT city, country
+              FROM `bigquery-public-data.openaq.global_air_quality`
+              WHERE unit = 'ppm'
+              """
+
+
+</code></pre><p>Retourne :</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th style="text-align:center">city</th>
+<th style="text-align:center">country</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td style="text-align:center">Buenos Aires</td>
+<td style="text-align:center">AR</td>
+</tr>
+<tr>
+<td>1</td>
+<td style="text-align:center">彰化縣</td>
+<td style="text-align:center">TW</td>
+</tr>
+<tr>
+<td>2</td>
+<td style="text-align:center">מישור החוף הדרומי</td>
+<td style="text-align:center">IL</td>
+</tr>
+<tr>
+<td>3</td>
+<td style="text-align:center">אילת</td>
+<td style="text-align:center">IL</td>
+</tr>
+<tr>
+<td>4</td>
+<td style="text-align:center">Bogota</td>
+<td style="text-align:center">CO</td>
+</tr>
+</tbody>
+</table>
+</div>
+</details>
+</div>
+<ul>
+<li>On peut choisir de sélectionner toutes les colonnes de la table en écrivant <code>SELECT *</code></li>
+</ul>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Exemple</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-python line-numbers"><code>
+
+# Query to select all columns where pollution levels are exactly 0
+zero_pollution_query = """
+                        SELECT *
+                        FROM `bigquery-public-data.openaq.global_air_quality`
+                        WHERE value = 0
+                        """
+
+
+</code></pre><p>Retourne :</p>
+<pre class="language-markdown line-numbers"><code>
+
+|    | location                     | city     | country   | pollutant   |   value | timestamp                 | unit   | source_name   |   latitude |   longitude |   averaged_over_in_hours | location_geom      |
+|---:|:-----------------------------|:---------|:----------|:------------|--------:|:--------------------------|:-------|:--------------|-----------:|------------:|-------------------------:|:-------------------|
+|  0 | Zielonka, Bory Tucholskie    | Zielonka | PL        | bc          |       0 | 2022-04-29 14:00:00+00:00 | µg/m³  | GIOS          |          1 |     53.6621 |                  17.934  | POINT(53.662136 1) |
+|  1 | Toruń, ul. Przy Kaszowniku   | Toruń    | PL        | bc          |       0 | 2022-04-19 04:00:00+00:00 | µg/m³  | GIOS          |          1 |     53.0176 |                  18.6128 | POINT(53.017628 1) |
+|  2 | Kielce, ul. Targowa          | Kielce   | PL        | bc          |       0 | 2022-05-07 17:00:00+00:00 | µg/m³  | GIOS          |          1 |     50.879  |                  20.6337 | POINT(50.878998 1) |
+|  3 | Zielonka, Bory Tucholskie    | Zielonka | PL        | bc          |       0 | 2022-05-19 14:00:00+00:00 | µg/m³  | GIOS          |          1 |     53.6621 |                  17.934  | POINT(53.662136 1) |
+|  4 | Koszalin, ul. Armii Krajowej | Koszalin | PL        | bc          |       0 | 2022-05-12 20:00:00+00:00 | µg/m³  | GIOS          |          1 |     54.194  |                  16.1725 | POINT(54.193986 1) |
+
+
+</code></pre></div>
+</details>
+</div>
+<ul>
+<li>On peut utiliser <code>LIKE</code> et des <code>%</code> pour spécifier une condition après WHERE : cela permet de rechercher des lignes qui <em><strong>contiennent</strong></em> des mots ou des lettres spécifiques, sans être obligé d'avoir une égalité exacte entre les contenus.</li>
+</ul>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Exemple</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-python line-numbers"><code>
+
+# Query to select all columns where the name contains 'ipl'
+query = """
+        SELECT *
+        FROM `bigquery-public-data.pet_records.pets`
+        WHERE Name LIKE '%ipl%'
+        """
+
+
+</code></pre></div>
+</details>
+</div>
+<h3 id="count%2C-group-by%2C-having" tabindex="-1"><a class="header-anchor" href="#count%2C-group-by%2C-having"></a> COUNT, GROUP BY, HAVING</h3>
+<ul>
+<li>La fonction <strong>COUNT()</strong> est une fonction d'agrégation qui permet de compter le nombre d'entrées dans une colonne. Si on lui dit de compter une clé unique telle qu'une colonne &quot;ID&quot;, elle renverra le nombre de lignes, il est donc intéressant de la combiner avec la fonction GROUP BY () ci-dessous.</li>
+<li><strong>GROUP BY()</strong> prend une ou plusieurs colonnes en entrée, et va permettre de grouper ensemble toutes les lignes ayant la même valeur dans cette colonne, pour que les fonctions d'agrégation telles que COUNT() puissent s'appliquer à des catégories et non sur toutes les lignes. Je pense que c'est plus clair par l'exemple...</li>
+<li><strong>HAVING()</strong> permet de rajouter une condition sur les groupes créés pour ne pas considérer ceux qui ne correspondent pas à un certain critère.</li>
+</ul>
+<p>Par exemple :</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">table : <em><strong>pet_records</strong></em></th>
+<th style="text-align:center">requête</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center" rowspan="3"><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Lola-Perdrix/mon/temps-1.2/pet_records.jpg" alt="table"></td>
+<td style="text-align:center"><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Lola-Perdrix/mon/temps-1.2/count.jpg" alt="query"></td>
+</tr>
+<tr>
+<td style="text-align:center"><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Lola-Perdrix/mon/temps-1.2/count_groupby.jpg" alt="query"></td>
+</tr>
+<tr>
+<td style="text-align:center"><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Lola-Perdrix/mon/temps-1.2/count_groupby_having.jpg" alt="query"></td>
+</tr>
+</tbody>
+</table>
+<p>Remarques :</p>
+<ul>
+<li>
+<p>Il existe d'autres fonctions d'agrégation comme SUM(), AVG(), MIN(), ou MAX(), qui font ce à quoi on peut penser.</p>
+</li>
+<li>
+<p>On peut utiliser <code>COUNT(1)</code> pour compter le nombre de lignes si on n'est pas certains d'un colonne qui serait clé unique. Cela rend aussi le code plus lisible.</p>
+</li>
+</ul>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Exemple</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-python line-numbers"><code>
+
+# Count the number of deleted comments
+deleted_query="""
+                SELECT COUNT(1)
+                FROM `bigquery-public-data.hacker_news.full`
+                WHERE deleted = True
+                """
+
+
+</code></pre><p>Qui retourne :</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th style="text-align:left">f0_</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td style="text-align:left">0</td>
+</tr>
+</tbody>
+</table>
+<p>(Oui ce n'est pas une erreur c'est qu'il y en avait vraiment 0)</p>
+</div>
+</details>
+</div>
+<ul>
+<li>On peut utiliser <code>AS</code> pour renommer des colonnes dans notre requête pour faciliter la lecture et la compréhension.</li>
+</ul>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Exemple</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-python line-numbers"><code>
+
+# Count the number of deleted comments
+deleted_query="""
+                SELECT COUNT(1)as Number_deleted
+                FROM `bigquery-public-data.hacker_news.full`
+                WHERE deleted = True
+                """
+
+
+</code></pre><p>Qui retourne un tableau avec un joli titre :</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th style="text-align:left">Number_deleted</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td style="text-align:left">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</details>
+</div>
+<ul>
+<li>Si on utilise GROUP BY() ou COUNT(), alors tous les champs appelés doivent passer au moins dans un GROUP BY ou un COUNT, sinon la requête n'est pas valide.</li>
+</ul>
+<h3 id="order-by" tabindex="-1"><a class="header-anchor" href="#order-by"></a> ORDER BY</h3>
+<p>La fonction <strong>ORDER BY</strong> va permettre de <strong>trier</strong> les résultats de notre requête. Si on choisit de trier sur un champ numérique, cela renverra le tableau avec les valeurs de la plus petites à la plus grande, et si l'on trie sur un champ textuel, alors cela renverra les lignes dans l'ordre alphabétiquepour ce champ.</p>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100 dark:border-amber-800 dark:bg-amber-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-amber-800 dark:stroke-amber-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Note</b></p>
+</div><div class="pl-8 mr-8">
+<p>On peut inverser l'ordre (décroissant ou alphabétique inverse) en utilisant <code>DESC</code> après le ORDER BY</p>
+</div>
+</div>
+<p>Par exemple :</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">table : <em><strong>pet_records</strong></em></th>
+<th style="text-align:center">requête</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center" rowspan="2"><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Lola-Perdrix/mon/temps-1.2/pet_records.jpg" alt="table"></td>
+<td style="text-align:center"><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Lola-Perdrix/mon/temps-1.2/orderby.jpg" alt="query"></td>
+</tr>
+<tr>
+<td style="text-align:center"><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Lola-Perdrix/mon/temps-1.2/orderby_desc.jpg" alt="query"></td>
+</tr>
+</tbody>
+</table>
+<h3 id="extract" tabindex="-1"><a class="header-anchor" href="#extract"></a> EXTRACT</h3>
+<p>On peut utiliser la fonction <strong>EXTRACT</strong> pour extraire <strong>une information d'un champ uniquement</strong>. Par exemple, pour les champs contenant des dates, on peut choisir d'extraire uniquement le jour, le mois, ou l'année du champ.</p>
+<p>Par exemple :</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">table : <em><strong>pet_records2</strong></em></th>
+<th style="text-align:center">requête</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Lola-Perdrix/mon/temps-1.2/pet_records2.jpg" alt="table"></td>
+<td style="text-align:center"><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Lola-Perdrix/mon/temps-1.2/extract.jpg" alt="query"></td>
+</tr>
+</tbody>
+</table>
+<h3 id="with...-as" tabindex="-1"><a class="header-anchor" href="#with...-as"></a> WITH... AS</h3>
+<p>La syntaxe <strong>WITH... AS</strong> permet de créer des &quot;tables intermédiaires&quot; que l'on appelle <em><strong>common expression table (CTE)</strong></em> ou <em><strong>expression de table commune</strong></em>, lorsque les requêtes deviennent plus compliquées, toujours dans le but de fluidifier l'écriture et rendre la requête plus lisible.</p>
+<p>Le principe est en quelque sorte de faire un premier filtre sur notre table et ensuite faire une requête sur notre table simplifiée (on divise en deux étapes).</p>
+<p>Par exemple :</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">table : <em><strong>pet_records3</strong></em></th>
+<th style="text-align:center">requête</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center" rowspan="2"><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Lola-Perdrix/mon/temps-1.2/pet_records3.jpg" alt="table"></td>
+<td style="text-align:center"><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Lola-Perdrix/mon/temps-1.2/CTE.jpg" alt="query"></td>
+</tr>
+<tr>
+<td style="text-align:center"><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Lola-Perdrix/mon/temps-1.2/with_as.jpg" alt="query"></td>
+</tr>
+</tbody>
+</table>
+<h3 id="join...-on" tabindex="-1"><a class="header-anchor" href="#join...-on"></a> JOIN... ON</h3>
+<p>Enfin, la dernière fonctionnalité que l'on voit dans la formation, est le INNER JOIN. Cette fonction permet de faire des <strong>jointure de tables</strong> lorsque l'information que l'on recherche se trouve non pas dans une seule table mais dans plusieurs à la fois.</p>
+<p>Une jointure est une opération qui a pour but de relier deux tables en faisant correspondre des champs entre eux, comme sur l'illustration ci-dessous.</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Lola-Perdrix/mon/temps-1.2/jointure.jpg" alt="jointure"></p>
+<p>Pour récupérer le nom du propriétaire ET le nom de son animal, on fait une requête utilisant une jointure de cette manière :</p>
+<ul>
+<li><strong>Dans le FROM</strong>, on mentionne les deux tables en les séparant par le <strong>INNER JOIN</strong></li>
+<li>On fait un <strong>aliasing</strong> (&quot;AS&quot;) pour chaque table pour indiquer plus facilement à quelle table appartiennent les champs que l'on mentionne (bonne pratique qui sert notamment lorsque les deux tables contiennent les mêmes noms de champs)</li>
+<li>On indique après le <strong>ON</strong> les <strong>champs que l'on fait correspondre</strong></li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Lola-Perdrix/mon/temps-1.2/join.jpg" alt="join"></p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Exemple plus complexe de JOIN</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-python line-numbers"><code>
+
+bigquery_experts_query = """
+                        SELECT a.owner_user_id AS user_id, COUNT(1) AS number_of_answers
+                        FROM `bigquery-public-data.stackoverflow.posts_answers` as a
+                            INNER JOIN `bigquery-public-data.stackoverflow.posts_questions` as q
+                            ON a.parent_id = q.id
+                        WHERE q.tags LIKE '%bigquery%'
+                        GROUP BY user_id
+                        """
+
+
+</code></pre><p>Qui retourne les utilisateurs ayant répondu à le plus de questions sur bigquery sur Stackoverflow :</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right"></th>
+<th style="text-align:right">user_id</th>
+<th style="text-align:right">number_of_answers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">0</td>
+<td style="text-align:right">5.22194e+06</td>
+<td style="text-align:right">5203</td>
+</tr>
+<tr>
+<td style="text-align:right">1</td>
+<td style="text-align:right">1.1337e+07</td>
+<td style="text-align:right">5</td>
+</tr>
+<tr>
+<td style="text-align:right">2</td>
+<td style="text-align:right">1.45928e+07</td>
+<td style="text-align:right">11</td>
+</tr>
+<tr>
+<td style="text-align:right">3</td>
+<td style="text-align:right">1.57505e+07</td>
+<td style="text-align:right">38</td>
+</tr>
+<tr>
+<td style="text-align:right">4</td>
+<td style="text-align:right">1.35943e+06</td>
+<td style="text-align:right">1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</details>
+</div>
+<div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100 dark:border-amber-800 dark:bg-amber-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-amber-800 dark:stroke-amber-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Note</b></p>
+</div><div class="pl-8 mr-8">
+<p>Il existe plusieurs types de jointures, ici on utilise le INNER JOIN qui récupère uniquement les lignes où il y a une correspondance des champs dans les deux tables, car c'est peut-être le plus utile / le plus intuitif pour débuter (mais ce n'est pas toujours le cas). Pour mieux comprendre, c'est illustré sur le schéma ci-dessous.</p>
+</div>
+</div>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Lola-Perdrix/mon/temps-1.2/types_join.jpg" alt="schema"></p>
+<p><em><strong>Source : <a href="http://LearnSQL.fr">LearnSQL.fr</a></strong></em></p>
+<h3 id="bilan" tabindex="-1"><a class="header-anchor" href="#bilan"></a> Bilan</h3>
+<p>Et voilà ! Après avoir fait le tour de toutes ces fonctionnalités, on est déjà capables de faire tout un tas de requêtes plus ou moins complexes, ce qui était le but pour ce MON.</p>
+<p>Le cours que j'ai suivi sur Kaggle et que j'ai essayé de retranscrire ici m'a aussi permis de faire des exercices à la fin de chaque chapitre pour m'entraîner et me familiariser avec toutes les notions, c'est d'ailleurs ce qui a pris le plus de temps pendant le MON.</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Exemple de requête que je pouvais faire à la fin</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-python line-numbers"><code>
+
+# Write a query that shows, for each hour of the day in the dataset, the corresponding number of trips and average speed.
+
+speeds_query = """
+               WITH RelevantRides AS
+               (
+                   SELECT EXTRACT(HOUR FROM trip_start_timestamp) AS hour_of_day,
+                          trip_miles,
+                          trip_seconds
+                   FROM `bigquery-public-data.chicago_taxi_trips.taxi_trips`
+                   WHERE (trip_start_timestamp) > '2016-01-01'
+                         AND (trip_start_timestamp) < '2016-04-01'
+                        AND trip_seconds > 0
+                        AND trip_miles > 0
+               )
+               SELECT hour_of_day,
+                      COUNT(1) AS num_trips,
+                      3600 * SUM(trip_miles) / SUM(trip_seconds) AS avg_mph
+               FROM RelevantRides
+               GROUP BY hour_of_day
+               ORDER BY hour_of_day
+               """
+
+
+</code></pre><p>Qui retourne :</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right"></th>
+<th style="text-align:right">hour_of_day</th>
+<th style="text-align:right">num_trips</th>
+<th style="text-align:right">avg_mph</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">0</td>
+<td style="text-align:right">0</td>
+<td style="text-align:right">203092</td>
+<td style="text-align:right">20.1917</td>
+</tr>
+<tr>
+<td style="text-align:right">1</td>
+<td style="text-align:right">1</td>
+<td style="text-align:right">178046</td>
+<td style="text-align:right">18.6286</td>
+</tr>
+<tr>
+<td style="text-align:right">2</td>
+<td style="text-align:right">2</td>
+<td style="text-align:right">143447</td>
+<td style="text-align:right">18.4444</td>
+</tr>
+<tr>
+<td style="text-align:right">3</td>
+<td style="text-align:right">3</td>
+<td style="text-align:right">108899</td>
+<td style="text-align:right">19.2731</td>
+</tr>
+<tr>
+<td style="text-align:right">4</td>
+<td style="text-align:right">4</td>
+<td style="text-align:right">80067</td>
+<td style="text-align:right">27.5997</td>
+</tr>
+<tr>
+<td style="text-align:right">5</td>
+<td style="text-align:right">5</td>
+<td style="text-align:right">75786</td>
+<td style="text-align:right">33.0656</td>
+</tr>
+<tr>
+<td style="text-align:right">6</td>
+<td style="text-align:right">6</td>
+<td style="text-align:right">102254</td>
+<td style="text-align:right">28.5331</td>
+</tr>
+<tr>
+<td style="text-align:right">7</td>
+<td style="text-align:right">7</td>
+<td style="text-align:right">187585</td>
+<td style="text-align:right">19.8846</td>
+</tr>
+<tr>
+<td style="text-align:right">8</td>
+<td style="text-align:right">8</td>
+<td style="text-align:right">284223</td>
+<td style="text-align:right">16.7879</td>
+</tr>
+<tr>
+<td style="text-align:right">9</td>
+<td style="text-align:right">9</td>
+<td style="text-align:right">306854</td>
+<td style="text-align:right">18.4341</td>
+</tr>
+<tr>
+<td style="text-align:right">10</td>
+<td style="text-align:right">10</td>
+<td style="text-align:right">279762</td>
+<td style="text-align:right">20.0913</td>
+</tr>
+<tr>
+<td style="text-align:right">11</td>
+<td style="text-align:right">11</td>
+<td style="text-align:right">294006</td>
+<td style="text-align:right">20.9263</td>
+</tr>
+<tr>
+<td style="text-align:right">12</td>
+<td style="text-align:right">12</td>
+<td style="text-align:right">311522</td>
+<td style="text-align:right">20.0639</td>
+</tr>
+<tr>
+<td style="text-align:right">13</td>
+<td style="text-align:right">13</td>
+<td style="text-align:right">317225</td>
+<td style="text-align:right">19.7663</td>
+</tr>
+<tr>
+<td style="text-align:right">14</td>
+<td style="text-align:right">14</td>
+<td style="text-align:right">312629</td>
+<td style="text-align:right">19.3097</td>
+</tr>
+<tr>
+<td style="text-align:right">15</td>
+<td style="text-align:right">15</td>
+<td style="text-align:right">319953</td>
+<td style="text-align:right">18.5156</td>
+</tr>
+<tr>
+<td style="text-align:right">16</td>
+<td style="text-align:right">16</td>
+<td style="text-align:right">349455</td>
+<td style="text-align:right">17.1688</td>
+</tr>
+<tr>
+<td style="text-align:right">17</td>
+<td style="text-align:right">17</td>
+<td style="text-align:right">394324</td>
+<td style="text-align:right">14.6414</td>
+</tr>
+<tr>
+<td style="text-align:right">18</td>
+<td style="text-align:right">18</td>
+<td style="text-align:right">431991</td>
+<td style="text-align:right">15.382</td>
+</tr>
+<tr>
+<td style="text-align:right">19</td>
+<td style="text-align:right">19</td>
+<td style="text-align:right">416743</td>
+<td style="text-align:right">17.795</td>
+</tr>
+<tr>
+<td style="text-align:right">20</td>
+<td style="text-align:right">20</td>
+<td style="text-align:right">356279</td>
+<td style="text-align:right">20.3474</td>
+</tr>
+<tr>
+<td style="text-align:right">21</td>
+<td style="text-align:right">21</td>
+<td style="text-align:right">318363</td>
+<td style="text-align:right">22.5847</td>
+</tr>
+<tr>
+<td style="text-align:right">22</td>
+<td style="text-align:right">22</td>
+<td style="text-align:right">289886</td>
+<td style="text-align:right">21.1298</td>
+</tr>
+<tr>
+<td style="text-align:right">23</td>
+<td style="text-align:right">23</td>
+<td style="text-align:right">241690</td>
+<td style="text-align:right">20.2598</td>
+</tr>
+</tbody>
+</table>
+</div>
+</details>
+</div>
+<h2 id="pour-aller-plus-loin" tabindex="-1"><a class="header-anchor" href="#pour-aller-plus-loin"></a> Pour aller plus loin</h2>
+<p>Je mets ici tout ce que j'ai eu le temps de voir dans le deuxième cours de Kaggle : <a href="https://www.kaggle.com/learn/advanced-sql">Advanced SQL</a>. J'ai eu le temps de parcourir rapidement tout le cours sans m'être autant penchée sur les exercices que je ferai plus tard par manque de temps.</p>
+<h3 id="union" tabindex="-1"><a class="header-anchor" href="#union"></a> UNION</h3>
+<p>L'opérateur <strong>UNION</strong> permet de combiner non pas des lignes comme le fait JOIN, mais des colonnes. Ce n'est donc possible qu'entre des champs de même type.</p>
+<ul>
+<li><code>UNION ALL</code> récupère toutes les valeurs du champ qu'on va unir même si cela crée des doublons par la suite</li>
+<li><code>UNION DISTINCT</code> récupère seules les valeurs n'étant pas déjà citées</li>
+</ul>
+<h3 id="les-fonctions-analytiques" tabindex="-1"><a class="header-anchor" href="#les-fonctions-analytiques"></a> Les fonctions analytiques</h3>
+<p>Aussi appelées <strong>fonctions window</strong>, les fonctions analytiques permettent d'effectuer des <strong>calculs plus poussés</strong> sur les différentes données, en appliquant des formules à une <strong>selection de valeurs</strong> que l'on peut définir dans une fenêtre.</p>
+<ul>
+<li>
+<p>Ces fonctions sont par exemple <code>AVG</code>, <code>SUM</code>, <code>FIRST_VALUE</code>, <code>RANK</code>, etc.</p>
+</li>
+<li>
+<p>Chacune de ces fonctions s'appliquent avec une clause <strong>OVER</strong> qui définit comment la fonction doit être appliquée :</p>
+<ul>
+<li><strong>PARTITION BY</strong> permet de regrouper des lignes à traiter ensemble (par exemple un résultat &quot;pour chaque&quot; utilisateur donnerait <code>PARTITION BY utilisateur</code>)</li>
+<li><strong>ORDER BY</strong> fait la même chose que ce qu'on a définit avant mais concerne surtout l'ordre dans lequel les calculs vont être effectués</li>
+<li>La <strong>window frame</strong> définit les lignes qui doivent être considérées en input de la fonction : par exemple, si je souhaite calculer une somme cumulée, je peux indiquer <code>ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW</code> pour sommer sur toutes les lignes précédentes jusqu'à la ligne actuelle (c'est le principal avantage de ces fonctions)</li>
+</ul>
+</li>
+</ul>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Exemple</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-python line-numbers"><code>
+
+# Query to count the (cumulative) number of trips per day
+num_trips_query = """
+                  WITH trips_by_day AS
+                  (
+                  SELECT DATE(start_date) AS trip_date,
+                      COUNT(*) as num_trips
+                  FROM `bigquery-public-data.san_francisco.bikeshare_trips`
+                  WHERE EXTRACT(YEAR FROM start_date) = 2015
+                  GROUP BY trip_date
+                  )
+                  SELECT *,
+                      SUM(num_trips)
+                          OVER (
+                               ORDER BY trip_date
+                               ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
+                               ) AS cumulative_trips
+                      FROM trips_by_day
+                  """
+
+
+</code></pre><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Lola-Perdrix/mon/temps-1.2/cumul.jpg" alt="result"></p>
+</div>
+</details>
+</div>
+<h3 id="nested-%2F-repeated-data" tabindex="-1"><a class="header-anchor" href="#nested-%2F-repeated-data"></a> Nested / Repeated data</h3>
+<p><strong>Nested data</strong> : Si je ne veux pas créer trop de tables inutiles, il est possible de renseigner les informations d'une autre table au sein d'une seule et même colonne grâce à un <strong>type</strong> de données <code>TRUST</code> ou <code>RECORD</code>. Les données sont alors &quot;emboîtées&quot; dans la colonne d'où le nom de &quot;nested column&quot;.</p>
+<p>Pour requêter sur ce type de colonne, on renseigne en premier l'attribut principal suivi du sous-attribut contenu dans la case que l'on souhaite, séparés par un point (.).</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Exemple</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Lola-Perdrix/mon/temps-1.2/nested.jpg" alt="nested"></p>
+</div>
+</details>
+</div>
+<p><strong>Repeated data</strong> : Lorsqu'il arrive de vouloir renseigner plusieurs valeurs dans une seule et même &quot;case&quot; de la table (dans l'exmple ici, quand un animal ne possède pas qu'un seul jouet), on peut alors faire quelque chose de similaire en &quot;listant&quot; les différentes valeurs dans la même case, cette fois-ci grâce au <strong>mode</strong> <code>REPEATED</code>.</p>
+<p>Pour requêter sur des colonnes de ce type, on utilise la fonction <code>UNNEST()</code>.</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Exemple</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Lola-Perdrix/mon/temps-1.2/repeated.jpg" alt="repeated"></p>
+</div>
+</details>
+</div>
+<p>On peut alors combiner des données de type <code>RECORD</code>avec le mode <code>REPEATED</code></p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Exemple</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Lola-Perdrix/mon/temps-1.2/combined.jpg" alt="combined"></p>
+</div>
+</details>
+</div>
+<h3 id="optimiser-des-requ%C3%AAtes" tabindex="-1"><a class="header-anchor" href="#optimiser-des-requ%C3%AAtes"></a> Optimiser des requêtes</h3>
+<p>L'enjeu de l'optimisation des requêtes est plus ou moins important selon le contexte. Si l'on doit faire des requêtes très fréquemment pour alimenter un site web, ou bien sur des quantités de données très grandes, cela peut vite devenir coûteux, mais aussi long, et on n'aime pas trop ça en général. C'est donc bien de savoir comment optimiser des requêtes par des moyens très faciles dans un premier temps.</p>
+<ul>
+<li>Sélectionner <strong>uniquement les colonnes que l'on souhaite</strong> et non pas toutes les colonnes avec * (la différence peut être significative)</li>
+<li><strong>Lire le moins de données possible</strong> en essayant d'être efficace sur le choix des colonnes nécessaires</li>
+<li>Éviter les jointures trop inclusives</li>
+<li>Utiliser les fonctions <code>show_amount_of_data_scanned()</code> et <code>show_time_to_run()</code> pour évaluer nos requêtes ou les comparer afin d'avoir en tête les coûts.</li>
+</ul>
+<h2 id="conclusion" tabindex="-1"><a class="header-anchor" href="#conclusion"></a> Conclusion</h2>
+<p>Ce MON m'a permis dans un premier temps de <strong>mettre au clair tout ce que je ne comprenais pas concernant SQL</strong> : mais pourquoi il existe tant de noms qui contiennent SQL et c'est quoi la différence entre toutes ces choses ? (Je pensais notamment à SQL, vs MySQL, vs SQL3, vs SQL Server, etc...).</p>
+<p>Maintenant je me sens beaucoup plus éclairée à ce niveau (même pendant mon stage je me rends compte que je n'avais jamais compris qu'on utilisait SQL Server pour dire).</p>
+<p>Dans un second temps, pendant la majeure partie de ce MON, j'ai pu m'entraîner à utiliser SQL en pratiquant sur des exercices proposés. Je suis maintenant plus à l'aise et <strong>ai de bonnes bases pour ensuite aller plus loin</strong> (c'est l'objectif).</p>
+<p>Je me sentirais également plus à l'aise lorsque je verrais sur les offres de stages qu'il faut connaître un minimum SQL.</p>
+<p>Enfin, les livres que j'ai utilisés se sont révélés être très intéressants à approfondir, en effet je n'ai pas trop eu le temps de les exploiter mise à part pour comprendre un peu mieux les bases de SQL, mais <strong>ils contiennent beaucoup plus de ressources que je souhaite regarder après ce MON</strong>, dans un second MON ou bien sur mon temps libre. Par exemple, j'aimerais approfondir les modèles relationnels, d'autres opérateurs qui ne m'ont pas été présentés jusqu'à maintenant, comment sont implémentées les BDD dans les entreprises, et tout plein d'autres choses.</p>
+<h2 id="sources" tabindex="-1"><a class="header-anchor" href="#sources"></a> Sources</h2>
+<p><a href="https://www.kaggle.com/learn/intro-to-sql">Intro to SQL</a> course, Kaggle</p>
+<p><a href="https://www.kaggle.com/learn/advanced-sql">Advanced SQL</a> course, Kaggle</p>
+<p>Le livre <em><strong>&quot;SQL, les fondamentaux du langage&quot;</strong></em>, de Anne-Christine BISSON et Eric GODOC</p>
+<p>Le livre <em><strong>&quot;Bases de données et systèmes d'information&quot;</strong></em>, de Saïd BENAÏCHOU</p>
+
+
+
+</article>
+
+        </main>
+
+        <footer class="min-h-[50px] border-t-2 mt-4 border-gray-200 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-center items-center">
+                    <p class="text-center">
+                        ©2025 <b><span style="font-family: Consolas, sans-serif;">Do-<span style="color: #4a86e8">It</span></span></b> - Développement, Management et Gestion de projets en IT
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- MathJax import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">
+            window.MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']], // Delimiters for inline math
+                    displayMath: [['$$', '$$'], ['\\[', '\\]']] // Delimiters for block math
+                },
+                svg: {
+                    fontCache: 'global' // Use global font cache for SVG output
+                }
+            };
+            document.addEventListener('DOMContentLoaded', () => {
+                MathJax.typeset(); // Ensures MathJax processes the content after the page loads
+            });
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">
+            Prism.plugins.NormalizeWhitespace.setDefaults({
+                'remove-trailing': true,
+                'remove-indent': true,
+                'left-trim': true,
+                'right-trim': true,
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script>
+    </body>
+</html>

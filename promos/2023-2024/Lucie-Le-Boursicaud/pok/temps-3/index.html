@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="robots" content="index, follow">
+
+        <link rel="canonical" href="https://do-it.aioli.ec-m.fr/promos/2023-2024/Lucie-Le-Boursicaud/pok/temps-3/">
+
+        
+        
+
+        <meta name="description" content="Dans ce POK je vais utiliser Matter.js pour recréer le &quot;Jeu de la pastèque&quot; devenu viral grace à TikTok.">
+        <meta property="og:description" content="Dans ce POK je vais utiliser Matter.js pour recréer le &quot;Jeu de la pastèque&quot; devenu viral grace à TikTok.">
+        <meta name="twitter:description" content="Dans ce POK je vais utiliser Matter.js pour recréer le &quot;Jeu de la pastèque&quot; devenu viral grace à TikTok.">
+
+        
+            <meta name="author" content="Lucie Le Boursicaud">
+        
+        <meta name="keywords" content="do-it, centrale, centrale méditerranée, ecm, POK, Jeu, JavaScript, Frontend, Matter.js, Gravité">
+
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png">
+        <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png">
+
+        <link href="/assets/stylesheets/main.css" rel="stylesheet">
+
+        <meta property="og:title" content="Reproduction du Jeu de la pastèque sur navigateur avec Matter.js">
+
+        <meta property="og:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta property="og:url" content="https://do-it.aioli.ec-m.fr/promos/2023-2024/Lucie-Le-Boursicaud/pok/temps-3/">
+        <meta property="og:type" content="website">
+
+        <meta name="twitter:card" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:title" content="Reproduction du Jeu de la pastèque sur navigateur avec Matter.js">
+        <meta name="twitter:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:url" content="https://do-it.aioli.ec-m.fr/promos/2023-2024/Lucie-Le-Boursicaud/pok/temps-3/">
+
+        <title>Reproduction du Jeu de la pastèque sur navigateur avec Matter.js</title>
+
+        <!-- Prismjs imports
+                - Prism line numbers
+                - Prism toolbar
+        -->
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet">
+        <link id="prism-theme" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+        <!-- Mermaid import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js "></script>
+
+        <script defer="">
+        // Check if a theme is stored in localStorage. If so, use it, otherwise fallback to the system preference.
+        const storedTheme = localStorage.getItem('theme');
+        if (storedTheme) {
+            document.documentElement.classList.toggle("dark", storedTheme === "dark");
+        } else {
+            // Use system color scheme if there is no stored theme preference.
+            document.documentElement.classList.toggle("dark", window.matchMedia("(prefers-color-scheme: dark)").matches);
+        }
+
+        function loadPrismTheme(isDarkMode) {
+            const newTheme = isDarkMode ? 'prism-okaidia.min.css' : 'prism-solarizedlight.min.css';
+            const newLink = document.createElement('link');
+            newLink.rel = 'stylesheet';
+            newLink.id = 'prism-theme';
+            newLink.href = `https://cdn.jsdelivr.net/npm/prismjs/themes/${newTheme}`;
+
+            newLink.onload = () => {
+                // Reapply highlighting after the new theme loads
+                Prism.highlightAll();
+            };
+
+            const existingLink = document.getElementById('prism-theme');
+            if (existingLink) {
+                document.head.replaceChild(newLink, existingLink);
+            } else {
+                document.head.appendChild(newLink);
+            }
+        }
+
+        function setMermaidTheme(isDarkMode) {
+            const theme = isDarkMode ? 'dark' : 'forest';
+            mermaid.initialize({
+                securityLevel: 'loose',
+                theme,
+                startOnLoad: true,
+            });
+        }
+
+        // Toggle dark and light mode and update localStorage accordingly.
+        function toggleDarkMode() {
+            const dark = document.documentElement.classList.contains("dark");
+            const newTheme = dark ? "light" : "dark";
+            localStorage.setItem('theme', newTheme);
+            document.documentElement.classList.toggle("dark", !dark);
+            loadPrismTheme(!dark);
+            setMermaidTheme(!dark);
+        }
+
+        // On initial load, ensure that Prism and Mermaid are initialized using the current theme.
+        const isDark = document.documentElement.classList.contains("dark");
+        loadPrismTheme(isDark);
+        setMermaidTheme(isDark);
+        </script>
+
+    </head>
+
+    <body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000" class="bg-neutral-50 text-neutral-950 dark:bg-neutral-900 dark:text-neutral-50">
+        <header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white dark:bg-neutral-900 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-between items-center">
+                    <a class="mx-2" href="/">Home</a>
+                    <button class="hidden sm:block text-neutral-950 dark:text-neutral-50 hover:bg-neutral-700 hover:text-neutral-50 hover:dark:bg-neutral-300 hover:dark:text-neutral-950 transition-colors p-2 rounded-full duration-800 ease-in-out" onclick="toggleDarkMode()">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 dark:hidden stroke-current">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <path d="M12 2V4" stroke-linecap="round"></path>
+                            <path d="M12 20V22" stroke-linecap="round"></path>
+                            <path d="M4 12L2 12" stroke-linecap="round"></path>
+                            <path d="M22 12L20 12" stroke-linecap="round"></path>
+                            <path d="M19.7778 4.22266L17.5558 6.25424" stroke-linecap="round"></path>
+                            <path d="M4.22217 4.22266L6.44418 6.25424" stroke-linecap="round"></path>
+                            <path d="M6.44434 17.5557L4.22211 19.7779" stroke-linecap="round"></path>
+                            <path d="M19.7778 19.7773L17.5558 17.5551" stroke-linecap="round"></path>
+                        </svg>
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 stroke-current hidden dark:block">
+                            <path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </button>
+                    <div class="flex items-center gap-4 sm:gap-6 ">
+                        <a class="" href="/cs">CS</a>
+                        <a class="" href="/pok">POK</a>
+                        <a class="" href="/mon">MON</a>
+                        <a class="" href="/projets">Projets</a>
+                        <a class="hidden sm:block" href="/promos">Promos</a>
+                        <a href="/search">
+                            <svg class="h-5 aspect-square stroke-neutral-950 dark:stroke-neutral-300 fill-none stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+                            </svg>
+                        </a>
+                        <a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank">
+                            <svg class="h-5 aspect-square dark:stroke-neutral-300 dark:fill-neutral-300" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body="">
+            
+<article class="relative">
+<h1 class="mb-1">Reproduction du Jeu de la pastèque sur navigateur avec Matter.js</h1>
+<div class="mb-4">
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Tags : </div>
+            <ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags">
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">POK</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">Jeu</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">JavaScript</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">Frontend</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">Matter.js</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">Gravité</li>
+                
+
+            </ul>
+
+            
+            <div class="hidden" data-pagefind-meta="Type" aria-hidden="true">
+                
+                    
+                        <span data-pagefind-filter="Type">POK</span>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Auteur : </div>
+            <ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs">
+                
+                    <li class="bg-blue-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Auteurs">Lucie Le Boursicaud</li>
+                
+            </ul>
+        </div>
+    
+
+    
+        <div class="absolute top-0 right-0">
+            <span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2 text-neutral-950" data-pagefind-filter="Année">
+                2023-2024
+            </span>
+        </div>
+    
+</div>
+
+<p class="mb-4 text-lg">Dans ce POK je vais utiliser Matter.js pour recréer le "Jeu de la pastèque" devenu viral grace à TikTok.</p>
+
+
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100 dark:border-purple-800 dark:bg-purple-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-purple-500 dark:stroke-purple-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/promos/2023-2024/Lucie-Le-Boursicaud/">Lucie Le Boursicaud</a><span class="px-1">/</span><a href="/promos/2023-2024/Lucie-Le-Boursicaud/pok/">POK de Lucie Le Boursicaud</a><span class="px-1">/</span><a href="/promos/2023-2024/Lucie-Le-Boursicaud/pok/temps-3/">Reproduction du Jeu de la pastèque sur navigateur avec Matter.js</a>
+
+</div>
+</div>
+
+
+
+
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100 dark:border-pink-800 dark:bg-pink-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-pink-500 dark:stroke-pink-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p>Niveau intermédiare</p>
+</div><div class="pl-8 mr-8">
+<p>Etre à l'aise avec JavaScript.</p>
+</div>
+</div>
+<h3 id="introduction" tabindex="-1"><a class="header-anchor" href="#introduction"></a> Introduction</h3>
+<p>Le &quot;Jeu de la pastèque&quot; ou <em>Suika Game</em> est un jeu vidéo japonais qui est sorti en décembre 2021 au Japon. Il est diffusé au reste du monde en octobre 2023 et devient un véritable phénomène très relié par les réseaux sociaux notamment par TikTok.</p>
+<h5 id="but-du-jeu" tabindex="-1"><a class="header-anchor" href="#but-du-jeu"></a> But du jeu</h5>
+<p>Le joueur doit remplir une jarre avec des fruits, à chaque fois qu'il en jette un, il gagne des point. L'objectif est de déverser un maximum de fruits afin d'obtenir un meilleur score. Mais lorsque deux fruits identiques entrent en contact, ils fusionnent pour donner un fruit plus gros. Le plus petit fuits est une myrtille et le plus gros une pastèque (d'où le nom du jeu). Dès lors qu'un fruit dépasse de la jarre alors la partie est terminé.
+Ce jeu s'est beaucoup inspiré du mécanisme de 2048 qui a été un gros succès il y a déjà quelques années.
+Voici une capture d'écran du jeu qui est disponible sur téléphone :</p>
+<div style="display:flex">
+<div><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Lucie-Le-Boursicaud/pok/temps-3/jeu_de_pasteque.png"></div>
+</div>
+<h5 id="objectif-du-pok" tabindex="-1"><a class="header-anchor" href="#objectif-du-pok"></a> Objectif du POK</h5>
+<p>L'objectif ici est de reproduire ce jeu sur un navigateur en déplaçant le fruit avec les flèche de l'ordinateur et en le lachant avec la barre espace.</p>
+<h1 id="sprint-1" tabindex="-1"><a class="header-anchor" href="#sprint-1"></a> Sprint 1</h1>
+<h6 id="objectifs-du-premier-sprint" tabindex="-1"><a class="header-anchor" href="#objectifs-du-premier-sprint"></a> Objectifs du premier sprint</h6>
+<ul>
+<li>[x] Découvrir rapidement Matter.js (1H)</li>
+<li>[x] Créer l'environnement de code avec les différents modules utiles (1H)</li>
+<li>[x] Créer la boite du jeu (2H)</li>
+<li>[x] Créer un rond qui tombe (1H)</li>
+<li>[x] Faire un sorte que le rond ne tombe pas tout de suite (1H)</li>
+<li>[x] Pouvoir faire bouger le rond avec les flèches (1H)</li>
+<li>[x] Pouvoir lacher le rond avec la barre espace (1H)</li>
+<li>[x] Générer aléatoirement plusieurs tailles de rond (2H)</li>
+</ul>
+<h3 id="1.-d%C3%A9couvrir-rapidement-matters.js" tabindex="-1"><a class="header-anchor" href="#1.-d%C3%A9couvrir-rapidement-matters.js"></a> 1. Découvrir rapidement Matters.js</h3>
+<p><a href="https://brm.io/matter-js/">Matter.js</a> est une bibliothèque JavaScript open-source qui permet la création de simulations physiques en 2D. Il s'agit d'une bibliothèque assez populaire dans le domaine du développement de jeux car elle est facile à utiliser et est très performante. Elle permet de simuler des objets, des collisions, des forces et la gravité, ce qui va être utile dans la création du jeu.
+Je me suis rendue sur une <a href="https://brm.io/matter-js/">documentation</a> pour comprendre comment fonctionne cette bibliothèque. J'ai donc regardé une première vidéo <a href="https://www.youtube.com/watch?v=urR596FsU68&amp;list=PLRqwX-V7Uu6akvoNKE4GAxf6ZeBYoJ4uh">Introduction to Matter.js</a> et la deuxième <a href="https://www.youtube.com/watch?v=uITcoKpbQq4&amp;list=PLRqwX-V7Uu6akvoNKE4GAxf6ZeBYoJ4uh&amp;index=21">Introduction to Matter.js Continued</a>.</p>
+<h3 id="2.-cr%C3%A9er-l'environnement-de-code" tabindex="-1"><a class="header-anchor" href="#2.-cr%C3%A9er-l'environnement-de-code"></a> 2. Créer l'environnement de code</h3>
+<p>Je me crée un dossier <em>Pasteque</em> et j'initialise mon projet avec :</p>
+<pre class="language-html line-numbers"><code>
+
+npm init
+
+
+</code></pre><p>J'ajoute la ligne &quot;type&quot; : &quot;module&quot;, je crée un fichier index.js et index.html et j'installe Express et Matter via les commandes :</p>
+<pre class="language-html line-numbers"><code>
+
+npm add --save express
+npm install matter-js
+
+
+</code></pre><p>J'ajoute un fichier main.js dans lequel je vais coder les différentes fonctions pour le jeu.</p>
+<p>J'ai eu beaucoup de difficultés en suivant cette méthode dont une que j'ai pas réussi à corriger :</p>
+<div style="display:flex">
+<div><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Lucie-Le-Boursicaud/pok/temps-3/erreur_matter.png"></div>
+</div>
+<p>J'ai donc utilisé <a href="https://vitejs.dev/">Vite</a> pour créer mon projet (ce qu'un des tutos Matter.js utilisé comme environnement) et cela à très bien marché en suivant la documentation.</p>
+<h3 id="3.-cr%C3%A9er-la-boite-du-jeu" tabindex="-1"><a class="header-anchor" href="#3.-cr%C3%A9er-la-boite-du-jeu"></a> 3. Créer la boite du jeu</h3>
+<p>Maintenant que j'ai mon environnement je peux commencer à coder le jeu.
+La première chose à créer est donc une boite, pour ça j'ai juste suivi la <a href="https://brm.io/matter-js/">documentation</a> qui explique comment ajouter des corps aux mondes ce qui m'a donné cela :</p>
+<div style="display:flex">
+<div><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Lucie-Le-Boursicaud/pok/temps-3/boite.png"></div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Code associé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-html line-numbers"><code>
+
+import {Engine, Render, Runner} from "matter-js";
+
+const engine = Engine.create();
+const render = Render.create({
+    engine,
+    element: document.body,
+    options: {
+        wireframes:false,
+        background: "#E1FAD7",
+        width: 620,
+        height: 850,
+    },
+});
+
+const world = engine.world;
+
+const sol = Bodies.rectangle(115,820,620,20,{
+    isStatic:true,
+    render: {
+        fillStyle: "#9EA1D4",
+    }
+});
+
+const murgauche = Bodies.rectangle(15,470,20,700,{
+    isStatic:true,
+    render: {
+        fillStyle: "#9EA1D4",
+    }
+});
+
+const murdroite = Bodies.rectangle(410,470,20,700,{
+    isStatic:true,
+    render: {
+        fillStyle: "#9EA1D4",
+    }
+});
+
+World.add(world, [sol,murgauche,murdroite]);
+
+Render.run(render);
+Runner.run(engine);
+
+
+</code></pre></div>
+</details>
+</div>
+<h2 id="4.-cr%C3%A9er-un-rond-qui-tombe" tabindex="-1"><a class="header-anchor" href="#4.-cr%C3%A9er-un-rond-qui-tombe"></a> 4. Créer un rond qui tombe</h2>
+<p>De la même façon j'ai juste suivi la <a href="https://brm.io/matter-js/">documentation</a>. Et j'ai obtenu cela :</p>
+<div style="display:flex">
+<div><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Lucie-Le-Boursicaud/pok/temps-3/boitefruit.png"></div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Code associé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-html line-numbers"><code>
+
+import {Engine, Render, Runner} from "matter-js";
+
+const engine = Engine.create();
+const render = Render.create({
+    engine,
+    element: document.body,
+    options: {
+        wireframes:false,
+        background: "#E1FAD7",
+        width: 620,
+        height: 850,
+    },
+});
+
+const world = engine.world;
+
+const sol = Bodies.rectangle(115,820,620,20,{
+    isStatic:true,
+    render: {
+        fillStyle: "#9EA1D4",
+    }
+});
+
+const murgauche = Bodies.rectangle(15,470,20,700,{
+    isStatic:true,
+    render: {
+        fillStyle: "#9EA1D4",
+    }
+});
+
+const murdroite = Bodies.rectangle(410,470,20,700,{
+    isStatic:true,
+    render: {
+        fillStyle: "#9EA1D4",
+    }
+});
+
+World.add(world, [sol,murgauche,murdroite]);
+
+Render.run(render);
+Runner.run(engine);
+
+function ajouterFruit(){
+    const body = Bodies.circle(300, 150,30, {
+        render : {
+            fillStyle: "green",
+        },
+    });
+    World.add(world,body);
+};
+
+ajouterFruit();
+
+
+</code></pre></div>
+</details>
+</div>
+<h2 id="5.-le-rond-qui-tombe-ne-doit-pas-tomber-de-suite" tabindex="-1"><a class="header-anchor" href="#5.-le-rond-qui-tombe-ne-doit-pas-tomber-de-suite"></a> 5. Le rond qui tombe ne doit pas tomber de suite</h2>
+<p>Ici le but est de comprendre comment faire pour que le rond ne tombe pas avant que j'appuie sur la barre espace. Après avoir chercher un peu, il faut utiliser le booléen <strong>isSleeping</strong> qui permet de mettre le corps en attente et on pourra le réveiller par la suite.</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Code associé</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-html line-numbers"><code>
+
+import {Engine, Render, Runner} from "matter-js";
+
+const engine = Engine.create();
+const render = Render.create({
+    engine,
+    element: document.body,
+    options: {
+        wireframes:false,
+        background: "#E1FAD7",
+        width: 620,
+        height: 850,
+    },
+});
+
+const world = engine.world;
+
+const sol = Bodies.rectangle(115,820,620,20,{
+    isStatic:true,
+    render: {
+        fillStyle: "#9EA1D4",
+    }
+});
+
+const murgauche = Bodies.rectangle(15,470,20,700,{
+    isStatic:true,
+    render: {
+        fillStyle: "#9EA1D4",
+    }
+});
+
+const murdroite = Bodies.rectangle(410,470,20,700,{
+    isStatic:true,
+    render: {
+        fillStyle: "#9EA1D4",
+    }
+});
+
+World.add(world, [sol,murgauche,murdroite]);
+
+Render.run(render);
+Runner.run(engine);
+
+function ajouterFruit(){
+    const body = Bodies.circle(300, 150,30, {
+        isSleeping: true,
+        render : {
+            fillStyle: "green",
+        },
+    });
+    World.add(world,body);
+};
+
+ajouterFruit();
+
+
+</code></pre></div>
+</details>
+</div>
+<h2 id="6.-faire-bouger-le-rond-avec-les-fl%C3%A8ches" tabindex="-1"><a class="header-anchor" href="#6.-faire-bouger-le-rond-avec-les-fl%C3%A8ches"></a> 6. Faire bouger le rond avec les flèches</h2>
+<p>Maintenant que le rond reste endormi il faut pouvoir utiliser les flèches de notre clavier pour le faire bouger. Pour cela j'utilise des écouteurs d'évements <strong>onkeydown</strong> et en fonction du <strong> code </strong> de la touche sur laquelle j'appuie je ne vais pas faire la même action donc j'utilise un <strong>switch</strong> sur <strong>event.code</strong>. Afin de récupérer mon élement rond (qui sera un fruit par la suite) j'ajoute une ligne dans le code de la fonction <em>ajouterFruit()</em> qui affecte à la variable <strong>monFruit</strong> le body de l'élément en question. Voilà où j'en suis :</p>
+<pre class="language-html line-numbers"><code>
+
+function ajouterFruit(){
+    const body = Bodies.circle(300, 150,30, {
+        isSleeping: true,
+        render : {
+            fillStyle: "green",
+        },
+    });
+    monFruit = body;
+    World.add(world,body);
+};
+
+window.onkeydown = (event) => {
+  switch(event.code){
+    case "ArrowLeft":
+
+    case "ArrowRight":
+
+  }
+  }
+
+
+</code></pre><p>Maintenant je veux pouvoir bouger mon élement. Pour ça on va devoir importer <em>Body</em> dans cette ligne ci :</p>
+<pre class="language-html line-numbers"><code>
+
+import {Engine, Render, Runner, Bodies, World, Body} from 'matter-js';
+
+
+</code></pre><p>et on va utiliser la méthode <strong>setPosition()</strong> comme ci dessous.</p>
+<pre class="language-html line-numbers"><code>
+
+function ajouterFruit(){
+    const body = Bodies.circle(300, 150,30, {
+        isSleeping: true,
+        render : {
+            fillStyle: "green",
+        },
+    });
+    monFruit = body;
+    World.add(world,body);
+};
+
+window.onkeydown = (event) => {
+  switch(event.code){
+    case "ArrowLeft":
+      Body.setPosition(currentFruit, {x: monFruit.position.x - 1, y:monFruit.position.y,
+      });
+    case "ArrowRight":
+      Body.setPosition(currentFruit, {x: monFruit.position.x + 1, y:monFruit.position.y,
+      });
+  }
+  }
+
+
+</code></pre><p>Le soucis est que le mouvement de notre fruit est très lent, et si j'augmente en passant de 1 à 10 par exemple, le mouvement est saccadé et je ne peux pas faire tomber mon fruit avec précision. J'ai beaucoup cherché à résoudre ce problème pour trouver et mettre en place la solution : <strong>utiliser des intervalles</strong>. Ca permet d'automatiser la mise à jour de la position pour qu'elle se fasse toutes les <em>temps</em> milisecondes.</p>
+<pre class="language-html line-numbers"><code>
+
+
+let interval = null;
+
+window.onkeydown = (event) => {
+  switch(event.code){
+    case "ArrowLeft":
+      if(interval) return;
+      interval= setInterval(() => {
+        Body.setPosition(currentFruit, {x: monFruit.position.x - 1, y:monFruit.position.y,
+      });
+      },5)
+    case "ArrowRight":
+      if(internal) return;
+      interval= setInterval(() => {
+        Body.setPosition(currentFruit, {x: monFruit.position.x - 1, y:monFruit.position.y,
+      });
+      },5)
+  }
+  }
+
+window.onkeyup = (event) => {
+  switch(event.code){
+    case "ArrowLeft":
+    case "ArrowRight":
+      clearInterval(interval);
+      interval = null;
+  }
+}
+
+
+</code></pre><p>Le problème c'est que je peux déplacer le fruit à l'extérieur des murs ce qui n'est pas envisageable. Il faut donc vérifier que notre fruit ne se situe pas au bord de la boite si l'on veut le déplacer. Pour ça j'ai utilisé un <strong>if()</strong> sur la position de <em>monFruit</em>.</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Code associé à la fonction finale</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-html line-numbers"><code>
+
+window.onkeydown = (event) => {
+    switch (event.code) {
+        case "ArrowDown":
+            if(interval) return ;
+            interval = setInterval(() => {
+                if(monFruit.position.x - 20 > 25)
+            Body.setPosition(monFruit, {
+                x: monFruit.position.x - 1,
+                y: monFruit.position.y,
+            });
+            }, 5);
+            break;
+        case "ArrowRight":
+            if(interval) return ;
+            interval = setInterval(() => {
+                if(monFruit.position.x + 20 <400)
+            Body.setPosition(monFruit, {
+                x: monFruit.position.x + 1,
+                y: monFruit.position.y,
+            });
+            }, 5);
+            break;
+    }
+};
+
+window.onkeyup = (event) => {
+    switch (event.code) {
+        case "ArrowDown":
+        case "ArrowRight":
+            clearInterval(interval);
+            interval = null;
+    }
+};
+
+
+</code></pre></div>
+</details>
+</div>
+<p>Alors notre fruit est bloqué sur les deux côté du mur :</p>
+<div style="display:flex">
+<div><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Lucie-Le-Boursicaud/pok/temps-3/deplacementetmur.png"></div>
+<div><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Lucie-Le-Boursicaud/pok/temps-3/deplacementetmur2.png"></div>
+</div>
+<h2 id="7.-faire-tomber-le-fruit-avec-la-barre-espace" tabindex="-1"><a class="header-anchor" href="#7.-faire-tomber-le-fruit-avec-la-barre-espace"></a> 7. Faire tomber le fruit avec la barre espace</h2>
+<p>L'ojectif est clair : lorsque l'on appuie sur la barre espace, le fruit &quot;se réveille&quot; et tombe.
+Pour ça on utilise encore l'écouteur d'évenement <strong>onkeydown</strong> et on va devoir importer <strong>Sleeping</strong> depuis la bibliothèque matter.js.</p>
+<pre class="language-html line-numbers"><code>
+
+import {Engine, Render, Runner, Bodies, World, Body, Sleeping} from 'matter-js';
+
+
+</code></pre><p>On va donc ajouter le cas où l'on appuie sur la touche espace dans notre écouteur, et passer le booléen <strong>isSleeping</strong> à la valeur <strong>false</strong> avec la méthode <strong>set()</strong>.</p>
+<pre class="language-html line-numbers"><code>
+
+window.onkeydown = (event) => {
+    switch (event.code) {
+        case "ArrowDown":
+            if(interval) return ;
+            interval = setInterval(() => {
+                if(monFruit.position.x - 20 > 25)
+            Body.setPosition(monFruit, {
+                x: monFruit.position.x - 1,
+                y: monFruit.position.y,
+            });
+            }, 5);
+            break;
+        case "ArrowRight":
+            if(interval) return ;
+            interval = setInterval(() => {
+                if(monFruit.position.x + 20 <400)
+            Body.setPosition(monFruit, {
+                x: monFruit.position.x + 1,
+                y: monFruit.position.y,
+            });
+            }, 5);
+            break;
+        case "Space":
+            Sleeping.set(monFruit, false);
+    }
+};
+
+
+
+</code></pre><p>Notre fruit tombe quand on appuie sur espace !
+Sauf que l'on a qu'un seul fruit... Il faudrait qu'un autre fruit apparaisse lorsque le premier fruit est tombé. J'ai donc rajouté l'appel à la fonction <strong>ajouterFruit()</strong> à la suite de mon cas.</p>
+<pre class="language-html line-numbers"><code>
+
+case "Space":
+  Sleeping.set(monFruit, false);
+  ajouterFruit();
+
+
+</code></pre><p>Mais dans le jeu il y a un petit moment de latence entre le fruit qui est tombé et l'apparition d'un nouveau fruit et là c'est direct donc c'est moins agréable. On va alors ajouter un delais avec la fonction <strong>setTimeout</strong> avant d'ajouter un nouveau fruit.</p>
+<pre class="language-html line-numbers"><code>
+
+window.onkeydown = (event) => {
+    switch (event.code) {
+        case "ArrowDown":
+            if(interval) return ;
+            interval = setInterval(() => {
+                if(monFruit.position.x - 20 > 25)
+            Body.setPosition(monFruit, {
+                x: monFruit.position.x - 1,
+                y: monFruit.position.y,
+            });
+            }, 5);
+            break;
+        case "ArrowRight":
+            if(interval) return ;
+            interval = setInterval(() => {
+                if(monFruit.position.x + 20 <400)
+            Body.setPosition(monFruit, {
+                x: monFruit.position.x + 1,
+                y: monFruit.position.y,
+            });
+            }, 5);
+            break;
+        case "Space":
+            Sleeping.set(monFruit, false);
+            setTimeout(() => {
+              ajouterFruit()
+            }, 1000);
+    }
+};
+
+
+
+</code></pre><p>Mais ça ne suffit pas le problème persiste. Il faut donc empêcher le joueur de lacher le fruit, donc rendre la touche espace &quot;inactive&quot;. Pour ça on va créer une variable booléenne qui permettra de savoir si lorsque j'appuie sur espace le fruit est laché ou non.</p>
+<pre class="language-html line-numbers"><code>
+
+import {FRUITS} from "./fruits";
+
+
+</code></pre><p>Maintenant on va créer la fonction qui permet de générer un fruit aléatoire pour succéder à celui qu'on vient de lâcher. Pour ce faire on va générer un <strong>index</strong> aléatoire qu'on appliquera au tableau pour récupérer un fruit. On a la possibilité de tomber seulement sur les 5 premiers fruits sinon ça serait trop facile. Voilà ma fonction :</p>
+<pre class="language-html line-numbers"><code>
+
+function randomFruit(){
+  const randomIndex = Math.floor(Math.random()*5)
+  const fruit = FRUITS[randomIndex];
+  return fruit;
+}
+
+
+</code></pre><p>Maintenant on va utiliser cette fonction pour la génération automatique du fruit d'après. On va donc modifier un peu la fonction <strong>ajouterFruit()</strong>.</p>
+<pre class="language-html line-numbers"><code>
+
+function ajouterFruit(){
+    const randomFruit = randomFruit();
+
+    const body = Bodies.circle(300, 150,randomFruit.radius, {
+        label: randomFruit.label,
+        isSleeping: true,
+        render : {
+            fillStyle: randomFruit.color,
+        },
+    });
+    monFruit = body;
+    World.add(world,body);
+};
+
+
+</code></pre><div style="display:flex">
+<div><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Lucie-Le-Boursicaud/pok/temps-3/plusieursTailleetAleatoire.png"></div>
+</div>
+<h1 id="sprint-2" tabindex="-1"><a class="header-anchor" href="#sprint-2"></a> Sprint 2</h1>
+<h6 id="objectifs-du-second-sprint" tabindex="-1"><a class="header-anchor" href="#objectifs-du-second-sprint"></a> Objectifs du second sprint</h6>
+<ul>
+<li>[x] Détecter une collision entre deux élements (1H)</li>
+<li>[x] Supprimer les deux élements si ce sont les mêmes fruits (1H)</li>
+<li>[x] Faire apparaitre le fruit suivant à l'endroit de la collision (1H)</li>
+<li>[x] Créer une ligne de délimition en haut (15min)</li>
+<li>[x] Arrêter la partie quand un fruit dépasse la ligne (1H)</li>
+<li>[x] Trouver des images de fruits/légumes (1H)</li>
+<li>[x] Redimensionner et enlever le background des images (30min)</li>
+<li>[x] Ajouter les images dans le projet (15min)</li>
+<li>[x] Ajouter les images dans le code (1H30)</li>
+<li>[x] Rendre l'interface joli (2H)</li>
+</ul>
+<h2 id="1.-faire-apparaitre-le-fruit-suivant-lors-de-la-collision-de-deux-fruits-identiques" tabindex="-1"><a class="header-anchor" href="#1.-faire-apparaitre-le-fruit-suivant-lors-de-la-collision-de-deux-fruits-identiques"></a> 1. Faire apparaitre le fruit suivant lors de la collision de deux fruits identiques</h2>
+<p>Pour gérer la fusion des fruits, on va utiliser l'objet <strong>Events</strong> que l'on importe depuis la bibliothèque matter.js.</p>
+<pre class="language-html line-numbers"><code>
+
+import {Engine, Render, Runner, Bodies, World, Body, Sleeping, Events} from 'matter-js';
+
+
+</code></pre><p>On va pouvoir écouter certains type d'évenements qui peuvent arriver dans le moteur physique avec <strong>Events.on()</strong>. On va chercher à savoir si les deux éléments qui sont entrés en collision on le même label et dans ce cas supprimer ceux-là.</p>
+<pre class="language-html line-numbers"><code>
+
+Events.on(engine, "collisionStart", (event) => {
+  event.pairs.forEach(collision => {
+    if(collision.bodyA.label == collision.bodyB.label){
+      World.remove(world, [collision.bodyA, collision.bodyB]);
+    }
+  })
+})
+
+
+</code></pre><div style="display:flex">
+<div><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Lucie-Le-Boursicaud/pok/temps-3/disparition.png"></div>
+<div><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Lucie-Le-Boursicaud/pok/temps-3/disparition2.png"></div>
+</div>
+<p>Lorsque deux fruits identiques se touchent ils disparaisent.
+Maintenant il faut faire apparaitre le fruit d'après à l'endroit de la collision. Comment savoir le fruit prochain ? Et bien le tableau <strong>FRUITS</strong> doit être ordonné par croissance des fruits pour nous faciliter la tâche. On va donc récupérer l'<strong>index</strong> du fruit qui est rentré en collision et l'incrémenter de 1 pour obtenir l'index du nouveau fruit et extraire ses propriétés du tableau.</p>
+<pre class="language-html line-numbers"><code>
+
+Events.on(engine, "collisionStart", (event) => {
+  event.pairs.forEach(collision => {
+    if(collision.bodyA.label == collision.bodyB.label){
+      World.remove(world, [collision.bodyA, collision.bodyB]);
+
+      const index= FRUITS.findIndex((fruit) => fruit.label == collision.bodyA.label);
+
+      const nouveauFruit = FRUITS[index + 1];
+      const body = Bodies.circle(
+        collision.collision.supports[0].x,
+        collision.collision.supports[1].y,
+        nouveauFruit.radius,
+        {rendeer : {
+          fillsStyle : nouveauFruit.color
+        },
+        label : nouveauFruit.label
+        }
+      )
+      World.add(world,body);
+    }
+  });
+})
+
+
+</code></pre><div style="display:flex">
+<div><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Lucie-Le-Boursicaud/pok/temps-3/colission1.png"></div>
+<div><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Lucie-Le-Boursicaud/pok/temps-3/colission2.png"></div>
+</div>
+<p>Désormais quand deux fruits se rencontrent, le fruit suivant apparait !
+Par contre il faut que l'on fasse attention au cas ou deux derniers fruits se rencontrent. Dans le jeu les deux pastèques disparaisent mais rien ne réapparait. On va donc rajouter cette règle dans notre fonction.</p>
+<pre class="language-html line-numbers"><code>
+
+Events.on(engine, "collisionStart", (event) => {
+  event.pairs.forEach(collision => {
+    if(collision.bodyA.label == collision.bodyB.label){
+      World.remove(world, [collision.bodyA, collision.bodyB]);
+
+      const index= FRUITS.findIndex((fruit) => fruit.label == collision.bodyA.label);
+
+      if(index == FRUITS.length - 1) return;
+
+      const nouveauFruit = FRUITS[index + 1];
+      const body = Bodies.circle(
+        collision.collision.supports[0].x,
+        collision.collision.supports[1].y,
+        nouveauFruit.radius,
+        {rendeer : {
+          fillsStyle : nouveauFruit.color
+        },
+        label : nouveauFruit.label
+        }
+      )
+      World.add(world,body);
+    }
+  });
+})
+
+
+</code></pre><h2 id="2.-g%C3%A9rer-la-fin-de-la-partie" tabindex="-1"><a class="header-anchor" href="#2.-g%C3%A9rer-la-fin-de-la-partie"></a> 2. Gérer la fin de la partie</h2>
+<p>Pour ça on va rajouter une ligne en haut et si un fruit dépasse la ligne notre partie prendra fin.</p>
+<pre class="language-html line-numbers"><code>
+
+const lignehaut = Bodies.rectangle(310,150,620,2, {
+    isStatic: true,
+    isSensor: true,
+    render: {fillStyle: "#9EA1D4"},
+    label: "ligne",
+})
+
+World.add(world, [sol,murgauche,murdroite,lignehaut]);
+
+
+</code></pre><p>La propriété <strong>isSensor</strong> permet de déterminer si l'élément n'est sensible à la collision ou non. On doit le mettre à true car sinon nos fruits vont rester bloqué par cette ligne en haut et ne tomberont pas. Pas contre on détecte quand même les collisions ce qui permet de savoir si la partie est fini ou non, on va rajouter cette règle dans le jeu sur l'écouteur <strong>Events.on()</strong>.</p>
+<pre class="language-html line-numbers"><code>
+
+Events.on(engine, "collisionStart", (event) => {
+  event.pairs.forEach(collision => {
+    if(collision.bodyA.label == collision.bodyB.label){
+      World.remove(world, [collision.bodyA, collision.bodyB]);
+
+      const index= FRUITS.findIndex((fruit) => fruit.label == collision.bodyA.label);
+
+      if(index == FRUITS.length - 1) return;
+
+      const nouveauFruit = FRUITS[index + 1];
+      const body = Bodies.circle(
+        collision.collision.supports[0].x,
+        collision.collision.supports[1].y,
+        nouveauFruit.radius,
+        {rendeer : {
+          fillsStyle : nouveauFruit.color
+        },
+        label : nouveauFruit.label
+        }
+      )
+      World.add(world,body);
+    }
+    if((collision.bodyA.label === "ligne" || collision.bodyB.label === "ligne")&&!disableAction){
+      alert("Game over");
+    }
+  });
+})
+
+
+</code></pre><h2 id="3.-ajouter-des-images-pour-remplacer-les-ronds" tabindex="-1"><a class="header-anchor" href="#3.-ajouter-des-images-pour-remplacer-les-ronds"></a> 3. Ajouter des images pour remplacer les ronds</h2>
+<p>Pour ça je me suis rendue sur Canva et j'ai cherché des images de légumes/fruits qui iront bien dans le jeu, voici ceux que j'ai sélectioné :</p>
+<div style="display:flex">
+<div><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Lucie-Le-Boursicaud/pok/temps-3/radish.png"></div>
+<div><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Lucie-Le-Boursicaud/pok/temps-3/garlic.png"></div>
+<div><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Lucie-Le-Boursicaud/pok/temps-3/onionw.png"></div>
+<div><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Lucie-Le-Boursicaud/pok/temps-3/lemon.png"></div>
+<div><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Lucie-Le-Boursicaud/pok/temps-3/orange.png"></div>
+<div><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Lucie-Le-Boursicaud/pok/temps-3/tomato.png"></div>
+<div><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Lucie-Le-Boursicaud/pok/temps-3/onion.png"></div>
+<div><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Lucie-Le-Boursicaud/pok/temps-3/paprika.png"></div>
+</div>
+<div style="display:flex">
+<div><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Lucie-Le-Boursicaud/pok/temps-3/eggplant.png"></div>
+<div><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Lucie-Le-Boursicaud/pok/temps-3/artichoke.png"></div>
+<div><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Lucie-Le-Boursicaud/pok/temps-3/pumpkin.png"></div>
+</div>
+<p>Le set n'est pas parfait et il y a les filligrames de Canva mais si j'ai le temps j'essaierais de trouver quelque chose de mieux à la fin.
+On va ajouter toutes ces images dans le dossier public et les ajouter dans le code. On fera attention de nommer les images avec le label du fruit correspondant. Par exemple <em>garlic.png</em> pour notre ail. Au lieu d'ajouter une couleur à nos fruits on va leur rajouter une image avec <strong>sprite</strong>.</p>
+<pre class="language-html line-numbers"><code>
+
+function ajouterFruit(){
+    const randomFruit = randomFruit();
+
+    const body = Bodies.circle(300, 150,randomFruit.radius, {
+        label: randomFruit.label,
+        isSleeping: true,
+        render : {
+            fillStyle: randomFruit.color,
+            sprite: {texture : '/${randomFruit.label}.png'}
+        },
+    });
+    monFruit = body;
+    World.add(world,body);
+};
+
+
+</code></pre><p>Il faut faire la même modification lorsque deux fruits se rencontrent et que le prochain fruit apparait.</p>
+<div style="display:flex">
+<div><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Lucie-Le-Boursicaud/pok/temps-3/avecfruit.png"></div>
+<div><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Lucie-Le-Boursicaud/pok/temps-3/avecfruit2.png"></div>
+</div>
+<h2 id="4.-ajout-d'un-score-pour-la-partie" tabindex="-1"><a class="header-anchor" href="#4.-ajout-d'un-score-pour-la-partie"></a> 4. Ajout d'un score pour la partie</h2>
+<p>On va rajouter un tableau de score pour notre jeu. D'abord j'ajoute une nouvelle variable <strong>score</strong> qui ajoutera les points à chaque fois que l'on ajout un fruit dans notre boite.</p>
+<pre class="language-html line-numbers"><code>
+
+let score = 0;
+
+function updateScore(points) {
+    score += points;
+    document.getElementById('score').innerText = `Score: ${score}`;
+}
+
+
+</code></pre><p>Ensuite je modifie mon tableau <strong>FRUITS</strong> en rajoutant une propriété <strong>point</strong> pour chaque fruit.</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Nouveau tableau FRUITS</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-html line-numbers"><code>
+
+export const FRUITS = [
+  {
+    label: "radish",
+    radius: 40 / 2,
+    color: "#F20306",
+    points: 10
+  },
+  {
+    label: "garlic",
+    radius: 50 / 2,
+    color: "#FF624C",
+    points: 15
+  },
+  {
+    label: "onionw",
+    radius: 72 / 2,
+    color: "#A969FF",
+    points: 20
+  },
+  {
+    label: "lemon",
+    radius: 85 / 2,
+    color: "#FFAF02",
+    points: 30
+  },
+  {
+    label: "orange",
+    radius: 106 / 2,
+    color: "#FC8611",
+    points: 45
+  },
+  {
+    label: "tomato",
+    radius: 140 / 2,
+    color: "#F41615",
+    points: 65
+  },
+  {
+    label: "onion",
+    radius: 160 / 2,
+    color: "#FDF176",
+    points: 90
+  },
+  {
+    label: "paprika",
+    radius: 196 / 2,
+    color: "#FEB6AC",
+    points: 130
+  },
+  {
+    label: "eggplant",
+    radius: 220 / 2,
+    color: "#F7E608",
+    points: 200
+  },
+  {
+    label: "artichoke",
+    radius: 270 / 2,
+    color: "#89CE13",
+    points: 300
+  },
+  {
+    label: "pumpkin",
+    radius: 300 / 2,
+    color: "#26AA1E",
+    points: 450
+  },
+];
+
+
+</code></pre></div>
+</details>
+</div>
+<p>Ensuite je vais appeler la fonction <strong>updateScore</strong> lorsque je lâche un fruit et aussi quand un nouveau fruit apparait.</p>
+<pre class="language-html line-numbers"><code>
+
+case "Space":
+            disableAction=true;
+            const indexF = FRUITS.findIndex((fruit)=> fruit.label==fruitActuel.label);
+            const monFruit = FRUITS[indexF] ;
+            Sleeping.set(fruitActuel, false);
+            setTimeout(() => {
+                ajouterFruit();
+                disableAction = false;
+            },1000);
+            updateScore(monFruit.points);
+
+
+</code></pre><pre class="language-html line-numbers"><code>
+
+Events.on(engine,"collisionStart",(event)=>{
+    event.pairs.forEach(collision => {
+        if(collision.bodyA.label == collision.bodyB.label){
+            World.remove(world, [collision.bodyA, collision.bodyB]);
+
+            const index = FRUITS.findIndex((fruit )=> fruit.label==collision.bodyA.label);
+
+            if(index == FRUITS.length - 1) return;
+
+            const newfruit = FRUITS[index + 1];
+            const body = Bodies.circle(
+                collision.collision.supports[0].x,
+                collision.collision.supports[0].y,
+                newfruit.radius,
+                {render: {
+                    fillStyle: newfruit.color,
+                    sprite: { texture: `/${newfruit.label}.png` },
+                },
+            label : newfruit.label,
+        });
+        updateScore(newfruit.points);
+        World.add(world, body);
+
+        }
+        if((collision.bodyA.label === "ligne" || collision.bodyB.label === "ligne")&&!disableAction){
+            alert("Game over");
+          }
+    })
+});
+
+
+</code></pre><p>J'améliore un peu l'hmtl et j'obtiens ça :</p>
+<div style="display:flex">
+<div><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Lucie-Le-Boursicaud/pok/temps-3/amelioration.png"></div>
+<div><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Lucie-Le-Boursicaud/pok/temps-3/ameliorationavecscore.png"></div>
+</div>
+<p>Ensuite j'ai changé les couleurs de la boite et du fond et j'ai rajouté un bouton pour lancer une nouvelle partie. Pour cela j'ai supprimé tous les corps autre que les constituants de la boite et mis le score à zero lorsque le joueur clique sur le bouton.</p>
+<pre class="language-html line-numbers"><code>
+
+document.getElementById('newGameButton').addEventListener('click', () => {
+    score = 0;
+    updateScore(score);
+    world.bodies.filter(body => body.label !== "sol" && body.label !== "ligne" && body.label !== "murgauche"&& body.label !== "murdroite").forEach(body => {
+        World.remove(world, body);
+    });
+    ajouterFruit();
+ } );
+
+
+</code></pre><div style="display:flex">
+<div><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Lucie-Le-Boursicaud/pok/temps-3/nouvellescouleuretnouvellepartie.png"></div>
+</div>
+<h3 id="conclusion-et-am%C3%A9liorations-possibles" tabindex="-1"><a class="header-anchor" href="#conclusion-et-am%C3%A9liorations-possibles"></a> Conclusion et améliorations possibles</h3>
+<p>Le jeu final est très proche du jeu auquel on joue sur téléphone, néanmoins de nombreux choses peuvent être améliorés.</p>
+<p>Voici d'autres améliorations possibles :</p>
+<ul>
+<li>une interface plus jolie avec une chartre graphique précise</li>
+<li>des images en SVG, rogner à la forme du fruit/légume, pour éviter de grands espaces entre les éléments</li>
+<li>une possibilité d'enregistrement du meilleur score</li>
+<li>correction de certains bugs inexpliqués (un oignon a réussi à traverser le sol...)</li>
+</ul>
+<p><a href="./pumpkin-main.zip">Cliquez ici</a> pour télécharger le fichier zip.</p>
+<h3 id="horodateur" tabindex="-1"><a class="header-anchor" href="#horodateur"></a> Horodateur</h3>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Heures passées</th>
+<th>Indications</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Lundi 22/01</td>
+<td>1H</td>
+<td><em>Découvrir rapidement Matter.js</em></td>
+</tr>
+<tr>
+<td>Mardi 22/01</td>
+<td>2H</td>
+<td><em>Créer l'environnement de code avec les différents modules utiles</em></td>
+</tr>
+<tr>
+<td>Mercredi 23/01</td>
+<td>1H</td>
+<td><em>Créer la boite du jeu</em></td>
+</tr>
+<tr>
+<td>Mercredi 23/01</td>
+<td>15min</td>
+<td><em>Créer un rond qui tombe</em></td>
+</tr>
+<tr>
+<td>Jeudi 24/01</td>
+<td>1H30</td>
+<td><em>Faire en sorte que le rond ne tombe pas tout de suite</em></td>
+</tr>
+<tr>
+<td>Samedi 27/01</td>
+<td>2H</td>
+<td><em>Pouvoir faire bouger le rond avec les flèches</em></td>
+</tr>
+<tr>
+<td>Samedi 27/01</td>
+<td>1H</td>
+<td><em>Pouvoir lâcher le rond avec la barre espace</em></td>
+</tr>
+<tr>
+<td>Mardi 30/01</td>
+<td>2H</td>
+<td><em>Générer aléatoirement plusieurs tailles de rond</em></td>
+</tr>
+<tr>
+<td>--------</td>
+<td>--------</td>
+<td>--------</td>
+</tr>
+<tr>
+<td>Jeudi 01/02</td>
+<td>1H30</td>
+<td><em>Détecter une collision entre deux élements</em></td>
+</tr>
+<tr>
+<td>Jeudi 01/02</td>
+<td>30min</td>
+<td><em>Supprimer les deux élements si ce sont les mêmes fruits</em></td>
+</tr>
+<tr>
+<td>Samedi 03/02</td>
+<td>1H30</td>
+<td><em>Faire apparaitre le fruit suivant à l'endroit de la collision</em></td>
+</tr>
+<tr>
+<td>Samedi 03/02</td>
+<td>15min</td>
+<td><em>Créer une ligne de délimition en haut</em></td>
+</tr>
+<tr>
+<td>Samedi 03/02</td>
+<td>1H</td>
+<td><em>Arrêter la partie quand un fruit dépasse la ligne</em></td>
+</tr>
+<tr>
+<td>Dimanche 04/02</td>
+<td>1H</td>
+<td><em>Trouver des images de fruits/légumes</em></td>
+</tr>
+<tr>
+<td>Dimanche 04/02</td>
+<td>30min</td>
+<td><em>Redimensionner et enlever le background des images</em></td>
+</tr>
+<tr>
+<td>Dimanche 04/02</td>
+<td>15min</td>
+<td><em>Ajouter les images dans le projet</em></td>
+</tr>
+<tr>
+<td>Dimanche 04/02</td>
+<td>1H30</td>
+<td><em>Ajouter les images dans le code</em></td>
+</tr>
+<tr>
+<td>Vendredi 16/02</td>
+<td>1H</td>
+<td><em>Ajout d'un score et modification de couleurs</em></td>
+</tr>
+</tbody>
+</table>
+
+
+
+</article>
+
+        </main>
+
+        <footer class="min-h-[50px] border-t-2 mt-4 border-gray-200 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-center items-center">
+                    <p class="text-center">
+                        ©2025 <b><span style="font-family: Consolas, sans-serif;">Do-<span style="color: #4a86e8">It</span></span></b> - Développement, Management et Gestion de projets en IT
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- MathJax import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">
+            window.MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']], // Delimiters for inline math
+                    displayMath: [['$$', '$$'], ['\\[', '\\]']] // Delimiters for block math
+                },
+                svg: {
+                    fontCache: 'global' // Use global font cache for SVG output
+                }
+            };
+            document.addEventListener('DOMContentLoaded', () => {
+                MathJax.typeset(); // Ensures MathJax processes the content after the page loads
+            });
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">
+            Prism.plugins.NormalizeWhitespace.setDefaults({
+                'remove-trailing': true,
+                'remove-indent': true,
+                'left-trim': true,
+                'right-trim': true,
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script>
+    </body>
+</html>

@@ -1,0 +1,1146 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="robots" content="index, follow">
+
+        <link rel="canonical" href="https://do-it.aioli.ec-m.fr/promos/2024-2025/Charles-Cook/pok/temps-1/">
+
+        
+        
+
+        <meta name="description" content="Création d&#39;un outils en Python permettant d&#39;automatiser la création de bons de commande.">
+        <meta property="og:description" content="Création d&#39;un outils en Python permettant d&#39;automatiser la création de bons de commande.">
+        <meta name="twitter:description" content="Création d&#39;un outils en Python permettant d&#39;automatiser la création de bons de commande.">
+
+        
+            <meta name="author" content="Charles Cook">
+        
+        <meta name="keywords" content="do-it, centrale, centrale méditerranée, ecm, POK, Python">
+
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png">
+        <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png">
+
+        <link href="/assets/stylesheets/main.css" rel="stylesheet">
+
+        <meta property="og:title" content="Utilisation de Python pour l&#39;automatisation d&#39;un processus création de bons de commande">
+
+        <meta property="og:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta property="og:url" content="https://do-it.aioli.ec-m.fr/promos/2024-2025/Charles-Cook/pok/temps-1/">
+        <meta property="og:type" content="website">
+
+        <meta name="twitter:card" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:title" content="Utilisation de Python pour l&#39;automatisation d&#39;un processus création de bons de commande">
+        <meta name="twitter:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:url" content="https://do-it.aioli.ec-m.fr/promos/2024-2025/Charles-Cook/pok/temps-1/">
+
+        <title>Utilisation de Python pour l&#39;automatisation d&#39;un processus création de bons de commande</title>
+
+        <!-- Prismjs imports
+                - Prism line numbers
+                - Prism toolbar
+        -->
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet">
+        <link id="prism-theme" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+        <!-- Mermaid import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js "></script>
+
+        <script defer="">
+        // Check if a theme is stored in localStorage. If so, use it, otherwise fallback to the system preference.
+        const storedTheme = localStorage.getItem('theme');
+        if (storedTheme) {
+            document.documentElement.classList.toggle("dark", storedTheme === "dark");
+        } else {
+            // Use system color scheme if there is no stored theme preference.
+            document.documentElement.classList.toggle("dark", window.matchMedia("(prefers-color-scheme: dark)").matches);
+        }
+
+        function loadPrismTheme(isDarkMode) {
+            const newTheme = isDarkMode ? 'prism-okaidia.min.css' : 'prism-solarizedlight.min.css';
+            const newLink = document.createElement('link');
+            newLink.rel = 'stylesheet';
+            newLink.id = 'prism-theme';
+            newLink.href = `https://cdn.jsdelivr.net/npm/prismjs/themes/${newTheme}`;
+
+            newLink.onload = () => {
+                // Reapply highlighting after the new theme loads
+                Prism.highlightAll();
+            };
+
+            const existingLink = document.getElementById('prism-theme');
+            if (existingLink) {
+                document.head.replaceChild(newLink, existingLink);
+            } else {
+                document.head.appendChild(newLink);
+            }
+        }
+
+        function setMermaidTheme(isDarkMode) {
+            const theme = isDarkMode ? 'dark' : 'forest';
+            mermaid.initialize({
+                securityLevel: 'loose',
+                theme,
+                startOnLoad: true,
+            });
+        }
+
+        // Toggle dark and light mode and update localStorage accordingly.
+        function toggleDarkMode() {
+            const dark = document.documentElement.classList.contains("dark");
+            const newTheme = dark ? "light" : "dark";
+            localStorage.setItem('theme', newTheme);
+            document.documentElement.classList.toggle("dark", !dark);
+            loadPrismTheme(!dark);
+            setMermaidTheme(!dark);
+        }
+
+        // On initial load, ensure that Prism and Mermaid are initialized using the current theme.
+        const isDark = document.documentElement.classList.contains("dark");
+        loadPrismTheme(isDark);
+        setMermaidTheme(isDark);
+        </script>
+
+    </head>
+
+    <body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000" class="bg-neutral-50 text-neutral-950 dark:bg-neutral-900 dark:text-neutral-50">
+        <header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white dark:bg-neutral-900 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-between items-center">
+                    <a class="mx-2" href="/">Home</a>
+                    <button class="hidden sm:block text-neutral-950 dark:text-neutral-50 hover:bg-neutral-700 hover:text-neutral-50 hover:dark:bg-neutral-300 hover:dark:text-neutral-950 transition-colors p-2 rounded-full duration-800 ease-in-out" onclick="toggleDarkMode()">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 dark:hidden stroke-current">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <path d="M12 2V4" stroke-linecap="round"></path>
+                            <path d="M12 20V22" stroke-linecap="round"></path>
+                            <path d="M4 12L2 12" stroke-linecap="round"></path>
+                            <path d="M22 12L20 12" stroke-linecap="round"></path>
+                            <path d="M19.7778 4.22266L17.5558 6.25424" stroke-linecap="round"></path>
+                            <path d="M4.22217 4.22266L6.44418 6.25424" stroke-linecap="round"></path>
+                            <path d="M6.44434 17.5557L4.22211 19.7779" stroke-linecap="round"></path>
+                            <path d="M19.7778 19.7773L17.5558 17.5551" stroke-linecap="round"></path>
+                        </svg>
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 stroke-current hidden dark:block">
+                            <path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </button>
+                    <div class="flex items-center gap-4 sm:gap-6 ">
+                        <a class="" href="/cs">CS</a>
+                        <a class="" href="/pok">POK</a>
+                        <a class="" href="/mon">MON</a>
+                        <a class="" href="/projets">Projets</a>
+                        <a class="hidden sm:block" href="/promos">Promos</a>
+                        <a href="/search">
+                            <svg class="h-5 aspect-square stroke-neutral-950 dark:stroke-neutral-300 fill-none stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+                            </svg>
+                        </a>
+                        <a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank">
+                            <svg class="h-5 aspect-square dark:stroke-neutral-300 dark:fill-neutral-300" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body="">
+            
+<article class="relative">
+<h1 class="mb-1">Utilisation de Python pour l&#39;automatisation d&#39;un processus création de bons de commande</h1>
+<div class="mb-4">
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Tags : </div>
+            <ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags">
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">POK</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">Python</li>
+                
+
+            </ul>
+
+            
+            <div class="hidden" data-pagefind-meta="Type" aria-hidden="true">
+                
+                    
+                        <span data-pagefind-filter="Type">POK</span>
+                    
+                
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Auteur : </div>
+            <ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs">
+                
+                    <li class="bg-blue-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Auteurs">Charles Cook</li>
+                
+            </ul>
+        </div>
+    
+
+    
+        <div class="absolute top-0 right-0">
+            <span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2 text-neutral-950" data-pagefind-filter="Année">
+                2024-2025
+            </span>
+        </div>
+    
+</div>
+
+<p class="mb-4 text-lg">Création d'un outils en Python permettant d'automatiser la création de bons de commande.</p>
+
+
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100 dark:border-purple-800 dark:bg-purple-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-purple-500 dark:stroke-purple-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/promos/2024-2025/Charles-Cook/">Charles Cook</a><span class="px-1">/</span><a href="/promos/2024-2025/Charles-Cook/pok/">POK de Charles Cook</a><span class="px-1">/</span><a href="/promos/2024-2025/Charles-Cook/pok/temps-1/">Utilisation de Python pour l&#39;automatisation d&#39;un processus création de bons de commande</a>
+
+</div>
+</div>
+
+
+
+
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100 dark:border-pink-800 dark:bg-pink-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-pink-500 dark:stroke-pink-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Prérequis</b></p>
+</div><div class="pl-8 mr-8">
+<p>Aucun prérequis</p>
+</div>
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100 dark:border-emerald-800 dark:bg-emerald-950">
+<svg class="absolute w-6 h-6 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-emerald-500 dark:stroke-emerald-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Liens</b></p>
+</div><div class="pl-8 mr-8">
+<p><a href="https://automatetheboringstuff.com/#toc">Automate Boring Stuff With Python</a></p>
+</div>
+</div>
+<p>Au cours de mon stage de césure en tant qu'assistant supply planner, une tâche redondante et chronophage était le passage des commande mensuelles. L'objectif de ce processus est de, à partir de l'état actuel des stocks, les commandes en cours et les minimum stock, créer un bon de commande par manufacture.</p>
+<ul>
+<li>le niveau et les prérequis nécessaires en utilisant la balise <a href="/contribuer/shortcodes/#prerequis"><code>prerequis</code></a></li>
+<li>les autres POK &amp; MON en rapport en utilisant la balise <a href="/contribuer/shortcodes/#lien"><code>lien</code></a></li>
+</ul>
+<h2 id="t%C3%A2ches" tabindex="-1"><a class="header-anchor" href="#t%C3%A2ches"></a> Tâches</h2>
+<h3 id="sprints" tabindex="-1"><a class="header-anchor" href="#sprints"></a> Sprints</h3>
+<p>L'objectif de ce POK est la création automatisée de bon de commande par manufacture à partir de de l'état des stocks actuels, regroupant, par référence et taille, la quantité souhaitées, le prix unitaire ainsi que le prix du lot commandé, et la date de livraison souhaitée.</p>
+<h4 id="sprint-1" tabindex="-1"><a class="header-anchor" href="#sprint-1"></a> Sprint 1</h4>
+<p>Liste des taches que l'on pense faire. On coche si la tache est réalisée. A la fin du sprint on fait une petite étude post-mortem pour voir ce qui s'est passé et les ajustement à faire pour le prochain sprint, pok.</p>
+<ul>
+<li>[x] (Re)Découverte du langage Python</li>
+<li>[x] Création d'une base de données fictive</li>
+<li>[x] Déterminantion de la forme de l'outil</li>
+<li>[ ] Création d'une première version du code</li>
+</ul>
+<h4 id="sprint-2" tabindex="-1"><a class="header-anchor" href="#sprint-2"></a> Sprint 2</h4>
+<ul>
+<li>[x] Création d'une première version du code</li>
+<li>[x] Amélioration du code</li>
+<li>[x] Mise en forme de l'interface utilisateur</li>
+<li>[x] Complexification du modèle</li>
+</ul>
+<h3 id="horodatage" tabindex="-1"><a class="header-anchor" href="#horodatage"></a> Horodatage</h3>
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Heures passées</th>
+<th>Indications</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Vendredi 13/09</td>
+<td>2H</td>
+<td>(Re)Découverte du langage Python</td>
+</tr>
+<tr>
+<td>Lundi 16/09</td>
+<td>2H</td>
+<td>(Re)Découverte du langage Python</td>
+</tr>
+<tr>
+<td>Lundi 16/09</td>
+<td>1H</td>
+<td>Création de la base de données fictive</td>
+</tr>
+<tr>
+<td>Lundi 16/09</td>
+<td>2H</td>
+<td>Début du code</td>
+</tr>
+<tr>
+<td>Mardi 17/09</td>
+<td>1H</td>
+<td>Suite code</td>
+</tr>
+<tr>
+<td>Mercredi 18/09</td>
+<td>2H</td>
+<td>1ère version des feuilles propositions de commande</td>
+</tr>
+<tr>
+<td><strong>Fin du premier sprint</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Jeudi 26/09</td>
+<td>2H30</td>
+<td>Finalisation des feuilles propositions de commande</td>
+</tr>
+<tr>
+<td>Jeudi 03/10</td>
+<td>2H</td>
+<td>Code de la partie génération des bons de commande</td>
+</tr>
+<tr>
+<td>Samedi 05/10</td>
+<td>2H</td>
+<td>Code de la partie génération des bons de commande</td>
+</tr>
+<tr>
+<td>Jeudi 10/10</td>
+<td>2H</td>
+<td>Code de la partie Historisation</td>
+</tr>
+<tr>
+<td>Vendredi 11/10</td>
+<td>1H</td>
+<td>Rédaction du rapport</td>
+</tr>
+</tbody>
+</table>
+<h2 id="sommaire" tabindex="-1"><a class="header-anchor" href="#sommaire"></a> Sommaire</h2>
+<ul>
+<li>Contexte</li>
+<li>Présentation de l'outil</li>
+<li>Point d'avancement au premier Sprint
+<ul>
+<li>Remise à niveau Python
+<ul>
+<li>Travailler avec des feuilles Excel
+<ul>
+<li>Ouvrir un classeur Excel</li>
+<li>Manipuler les feuilles</li>
+<li>Manipuler les cellules</li>
+<li>Dimensionner un tableau</li>
+<li>Manipuler lignes et colonnes</li>
+<li>Créer un classeur Excel</li>
+<li>Créer ou supprimer une feuille</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Création d'une base de données fictive
+<ul>
+<li>Order Review</li>
+<li>Lead Time</li>
+</ul>
+</li>
+<li>Calcul des <em>quantités recommandées</em></li>
+<li>1ère version des feuilles de propositions de commande
+<ul>
+<li>Création et mise en page des feuilles de proposition de commande</li>
+<li>Calcul de la quantité de commande recommandée par référence</li>
+<li>Extraction des refs ayant un besoin et trie par manufacture</li>
+<li>Pistes d'amélioration du code</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Point d'avancement au second Sprint
+<ul>
+<li>Ajout d'un code couleur
+<ul>
+<li>Code de l'ajout du code couleur</li>
+</ul>
+</li>
+<li>Création du fichier des bon de commande finaux
+<ul>
+<li>Objectif</li>
+<li>Code pour le bons de commande</li>
+<li>Résultat des bons de commande</li>
+</ul>
+</li>
+<li>Historisation des commandes mensuelles
+<ul>
+<li>Création d'une feuille <em>Suivi Historique Fournisseur</em></li>
+<li>Synthèse des historiques dans la création des bons de commande</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Pistes d'amélioration</li>
+<li>Code complet</li>
+</ul>
+<h2 id="contexte-%3A" tabindex="-1"><a class="header-anchor" href="#contexte-%3A"></a> Contexte :</h2>
+<p>Pour ce POK, nous nous placons dans le cas d'une entreprise qui vend des produits finis. Ces produits sont référencés par numéro de références et par taille.
+La fabrication des produits est effectuée par diverses manufactures. Lorsqu'elle passe une commande à une manufacture, l'entreprise conserve alors les quantités dans un stock central. Les marchés sont les filiales de l'entreprise à l'international, et ce sont elles qui sont en contact direct avec le client final. Afin de répondre à la demande client, une filiale passe une commande à l'entreprise, qui si elle a les quantités nécéssaires en stock centrale, répond directement à la demande. Sinon, l'entreprise passe alors une commande à la manufacture.
+Il y a donc 3 niveaux à identifier clairement pour comprendre le déroulement de ce POK :</p>
+<ul>
+<li>Niveau manufacture</li>
+<li>Niveau entreprise</li>
+<li>Niveau marchés (filiales)</li>
+</ul>
+<h2 id="pr%C3%A9sentation-de-l'outil-%3A" tabindex="-1"><a class="header-anchor" href="#pr%C3%A9sentation-de-l'outil-%3A"></a> Présentation de l'outil :</h2>
+<p>Cet outil à pour but de répondre à plusieurs objectifs utilisateur :</p>
+<ul>
+<li>L'utilisateur doit pouvoir consulter les quantités de commande recommandées <strong>par</strong> manufacture,</li>
+<li>L'utilisateur doit pouvoir modifier/valider ces quantités,</li>
+<li>Les bons de commande doivent être générés automatiquement à parti des quantités modifiées/validées.</li>
+</ul>
+<h2 id="point-d'avancement-au-premier-sprint" tabindex="-1"><a class="header-anchor" href="#point-d'avancement-au-premier-sprint"></a> Point d'avancement au premier Sprint</h2>
+<h3 id="remise-%C3%A0-niveau-python" tabindex="-1"><a class="header-anchor" href="#remise-%C3%A0-niveau-python"></a> Remise à niveau Python</h3>
+<p>Pour cette partie de remise à niveau, je me suis appuyé sur le site <a href="https://automatetheboringstuff.com/#toc">Automate Boring Stuff With Python</a></p>
+<h4 id="travailler-avec-des-feuilles-excel" tabindex="-1"><a class="header-anchor" href="#travailler-avec-des-feuilles-excel"></a> Travailler avec des feuilles Excel</h4>
+<p>Il est possible de travailler sur Python à partir de classeurs Excel. Pour cela, il faut importer la librairie <code>openpyxl</code>.</p>
+<h5 id="ouvrir-un-classeur-excel" tabindex="-1"><a class="header-anchor" href="#ouvrir-un-classeur-excel"></a> Ouvrir un classeur Excel</h5>
+<p>La fonction <code>openpyxl.load_workbook()</code> permet de charger un classeur Excel. Une fois que celui-ci est chargé, nous pouvons accéder à son contenu et le manipuler ou le modifier.
+Il est important de noter que si le fichier contient des formules, il est parfois préférable de lire les valeurs calculées au lieu de lire les formules entrées dans les cellules. Dans ce cas, on précise à l'aide de l'option <code>data_only=True</code>. Ainsi, pour ouvrir le fichier <em>Exemple</em> en utilisant les valeurs calculée, on rédige le code suivant :</p>
+<pre class="line-numbers"><code>
+
+import openpyxl
+
+wb = openpyxl.load_workbook('Exemple.xsl',data_only=True)
+
+
+</code></pre><p>De même, si l'on ne souhaite pas faire de modification sur le classeur Excel, il existe l'option <code>read_only=True</code> permettant de l'ouvrir en lecture seule, ce qui est plus rapide :</p>
+<pre class="line-numbers"><code>
+
+import openpyxl
+
+wb = openpyxl.load_workbook('Exemple.xsl',read_only=True)
+
+
+</code></pre><h5 id="manipuler-les-feuilles" tabindex="-1"><a class="header-anchor" href="#manipuler-les-feuilles"></a> Manipuler les feuilles</h5>
+<p>Une fois le classeur chargé, il est possible d'accéder aux feuilles qui le composent :</p>
+<pre class="line-numbers"><code>
+
+import openpyxl
+
+wb = openpyxl.load_workbook('Exemple.xsl',data_only=True)
+
+# Obtenir les noms de feuilles composant le classeur
+wb.sheetnames
+
+# Accéder à une feuille par son nom
+ws = wb['NameSheet']
+
+# Obtenir le nom d'une feuille comme un type *String*
+Nom_feuille = ws.title
+
+
+</code></pre><h5 id="manipuler-les-cellules" tabindex="-1"><a class="header-anchor" href="#manipuler-les-cellules"></a> Manipuler les cellules</h5>
+<p>On peut séléctionner et obtenir la valuer d'une cellule grâce à ses coordonnées :</p>
+<pre class="line-numbers"><code>
+
+import openpyxl
+
+wb = openpyxl.load_workbook('Exemple.xsl',data_only=True)
+
+ws = wb['NameSheet']
+
+# Accéder à la cellule A1
+Cell = ws['A1']
+
+# Obtenir la valeur, la colonne et la ligne de la cellule A1
+Cell.value, Cell.column, Cell.row
+
+
+</code></pre><h5 id="dimensionner-un-tableau" tabindex="-1"><a class="header-anchor" href="#dimensionner-un-tableau"></a> Dimensionner un tableau</h5>
+<p>Il est possible d'obtenir les dimensions d'un tableau en utilisant les attribut <code>max.row</code>et <code>max.column</code> qui renvoient respectivmement le numéro de la dernière ligne et de la dernière colonne.</p>
+<h5 id="manipuler-lignes-et-colonnes" tabindex="-1"><a class="header-anchor" href="#manipuler-lignes-et-colonnes"></a> Manipuler lignes et colonnes</h5>
+<p>Il est possible de séletionner des lignes ou des colonnes d'un coup :</p>
+<pre class="line-numbers"><code>
+
+import openpyxl
+
+wb = openpyxl.load_workbook('Exemple.xsl',data_only=True)
+
+ws = wb['NameSheet']
+
+# Sélectionner toutes les cellules de A7 à B9
+tuple(ws['A7':'B9'])
+
+
+</code></pre><h5 id="cr%C3%A9er-un-classeur-excel" tabindex="-1"><a class="header-anchor" href="#cr%C3%A9er-un-classeur-excel"></a> Créer un classeur Excel</h5>
+<p>Nous pouvons créer un nouveau classeur Excel avec la fonction <code>openpyxl.Workbook()</code>. Par défaut, le classeur Excel créé est vide et contient une seule feuille nommé <em>Sheet</em>.</p>
+<pre class="line-numbers"><code>
+
+import openpyxl
+
+# Créer un nouveau classeur
+wb = openpyxl.Workbook()
+
+
+</code></pre><p>Pour renommer le classeur ou la feuille, il suffit d'utiliser les attributs vus précédemment.</p>
+<h5 id="cr%C3%A9er-ou-supprimer-une-feuille" tabindex="-1"><a class="header-anchor" href="#cr%C3%A9er-ou-supprimer-une-feuille"></a> Créer ou supprimer une feuille</h5>
+<p>On peut manipuler le nombre de feuilles dans un claseur en en créant ou en en suppimant. Ainsi :</p>
+<pre class="line-numbers"><code>
+
+import openpyxl
+
+wb = open.pyxl.Workbook()
+
+# Ajouter une nouvelle feuille intitulé "Base de données" en première position
+wb.create_sheet(index=0,title='Base de données')
+
+# Supprimer la feuille "Sheet"
+del wb['Sheet']
+
+
+</code></pre><p>Tous ces éléments nous seront utiles pour automatiser la création des bons de commande.</p>
+<h3 id="cr%C3%A9ation-d'une-base-de-donn%C3%A9es-fictive" tabindex="-1"><a class="header-anchor" href="#cr%C3%A9ation-d'une-base-de-donn%C3%A9es-fictive"></a> Création d'une base de données fictive</h3>
+<h4 id="order-review" tabindex="-1"><a class="header-anchor" href="#order-review"></a> Order Review</h4>
+<p>L'objectif de ce POK est d'automatiser la création de bons de commande à partir de l'état actuel des stocks. Ainsi, pour simuler cet exercice il est nécessaire de créer une base de données fictive refletant le niveau de stock.
+Cette bas de donnée doit contenir les éléments suivants :</p>
+<ul>
+<li>Le code rédérence de chaque produit.</li>
+<li>La taille de chaque produit. Nous faisons ici l'hypothèse que les produits considérés ont des tailles, et que les niveaux de stocks sont donc indépendants en fonction de la taille.</li>
+<li>Les SKU. Il s'agit d'un code unique au niveau référence taille.</li>
+<li>Le fournisseur. L'objectif est de créer un fichier par fournisseur, il est donc nécessaire de rensigner le fournisseur chargé de la production de chaque référence.</li>
+<li>Le prix.</li>
+<li>Le MOQ (Minimum Order Quantity). Le prix auquel est acheté une référence auprès du fournisseur dépend de la taille de lot, plus celle-ci est grande, plus le fournisseur peut proposer un prix faibleà l'unité. Ainsi, une taille de lot minimale (MOQ) est décidée afin de garantir le prix, et toutes les commandes passées doivent être supérieures au MOQ.</li>
+<li>Le MS (Minimum Stock). Il s'agit du seuil qui déclenche automatiquement une nouvelle commande pour le stock central afin d'éviter la rupture de stock.</li>
+<li>Le physique en stock. Il s'agit du stock central physique.</li>
+<li>Commandes manufacture. Il s'agit des commandes passées pour le stock central, mais qui n'ont pas encore été livré. Ces quantités n'apparaissent donc pas encore dans le physique en stock.</li>
+<li>Commandes marchés. Il s'agit des commandes passées par les différents marchés et qui n'ont pas encore été expédiées. Ces quantités apparaissent donc encore dans le stock central physique.</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Charles-Cook/pok/temps-1/Images/BDPOK1.png" alt="alt text"></p>
+<h4 id="lead-time" tabindex="-1"><a class="header-anchor" href="#lead-time"></a> Lead Time</h4>
+<p>Les bons de commande contiennent également une date de livraison demandée. Cette date de livraison dépend du fournisseur, une seconde feuille dans le classeur recense donc Lead Time en fonction du fournisseur (en mois).</p>
+<h3 id="calcul-des-quantit%C3%A9s-recommand%C3%A9es" tabindex="-1"><a class="header-anchor" href="#calcul-des-quantit%C3%A9s-recommand%C3%A9es"></a> Calcul des <em>quantités recommandées</em></h3>
+<p>Les quantités de commande recommandées sont calculés comme suit :</p>
+<ul>
+<li>
+<p>On caclul dans un premier temps le physique disponible. Il s'agit du physique en stock, auquel on ajoute les quantités commandées à la manufacture, et on retranche les quantités commandées par les marchés. Ainsi : Physique Dispo = Physique Stock + Commande Manuf - Commande Marchés</p>
+</li>
+<li>
+<p>Si Physique Dispo &gt;= MS , alors Quantité Recommandée = 0</p>
+</li>
+<li>
+<p>Si Physiue Dispo &lt; MS  alors Quantité Recommandée = MS - Physique Dispo</p>
+</li>
+</ul>
+<h3 id="1%C3%A8re-version-des-feuilles-de-propositions-de-commande" tabindex="-1"><a class="header-anchor" href="#1%C3%A8re-version-des-feuilles-de-propositions-de-commande"></a> 1ère version des feuilles de propositions de commande</h3>
+<p>Le code suivant permet de créer, à partir de la base de données évoquée précédemment, une feuille par manufacture listant l'ensemble des références nécéssitant une commande auprès de la manufacture, et donnant la quantité de commande recommandée pour chacune des références.</p>
+<h4 id="cr%C3%A9ation-et-mise-en-page-des-feuilles-de-proposition-de-commande" tabindex="-1"><a class="header-anchor" href="#cr%C3%A9ation-et-mise-en-page-des-feuilles-de-proposition-de-commande"></a> Création et mise en page des feuilles de proposition de commande</h4>
+<pre class="line-numbers"><code>
+
+import openpyxl
+
+wb = openpyxl.load_workbook('/Users/charlescook/Desktop/DO IT/BD POK 1.xlsx',data_only=True)
+
+indice_max = wb['Order Review'].max_row
+
+# Création des feuilles proposition pour chaque manufacture
+wb.create_sheet(title='Proposition CHT')
+wb.create_sheet(title='Proposition ELA')
+wb.create_sheet(title='Proposition ESN')
+wb.create_sheet(title='Proposition FLE')
+wb.create_sheet(title='Proposition GOD')
+wb.create_sheet(title='Proposition MAT')
+
+# Introduction des variables
+indice_CHT=2
+indice_ELA=2
+indice_ESN=2
+indice_FLE=2
+indice_GOD=2
+indice_MAT=2
+
+# Mise en place des en-têtes pour les feuilles propositions
+for k in range(1,11):
+    wb['Proposition CHT'].cell(row=1,column=k).value=wb['Order Review'].cell(row=1,column=k).value
+    wb['Proposition ELA'].cell(row=1,column=k).value=wb['Order Review'].cell(row=1,column=k).value
+    wb['Proposition ESN'].cell(row=1,column=k).value=wb['Order Review'].cell(row=1,column=k).value
+    wb['Proposition FLE'].cell(row=1,column=k).value=wb['Order Review'].cell(row=1,column=k).value
+    wb['Proposition GOD'].cell(row=1,column=k).value=wb['Order Review'].cell(row=1,column=k).value
+    wb['Proposition MAT'].cell(row=1,column=k).value=wb['Order Review'].cell(row=1,column=k).value
+
+    wb['Proposition CHT'].cell(row=1,column=11).value='Quantité Recommandée'
+    wb['Proposition CHT'].cell(row=1,column=12).value='Quantité Corrigée'
+    wb['Proposition ELA'].cell(row=1,column=11).value='Quantité Recommandée'
+    wb['Proposition ELA'].cell(row=1,column=12).value='Quantité Corrigée'
+    wb['Proposition ESN'].cell(row=1,column=11).value='Quantité Recommandée'
+    wb['Proposition ESN'].cell(row=1,column=12).value='Quantité Corrigée'
+    wb['Proposition FLE'].cell(row=1,column=11).value='Quantité Recommandée'
+    wb['Proposition FLE'].cell(row=1,column=12).value='Quantité Corrigée'
+    wb['Proposition GOD'].cell(row=1,column=11).value='Quantité Recommandée'
+    wb['Proposition GOD'].cell(row=1,column=12).value='Quantité Corrigée'
+    wb['Proposition MAT'].cell(row=1,column=11).value='Quantité Recommandée'
+    wb['Proposition MAT'].cell(row=1,column=12).value='Quantité Corrigée'
+
+
+</code></pre><p>Ce code permet de créer une feuille par manufacture et la création des en-têtes.</p>
+<h4 id="calcul-de-la-quantit%C3%A9-de-commande-recommand%C3%A9e-par-r%C3%A9f%C3%A9rence" tabindex="-1"><a class="header-anchor" href="#calcul-de-la-quantit%C3%A9-de-commande-recommand%C3%A9e-par-r%C3%A9f%C3%A9rence"></a> Calcul de la quantité de commande recommandée par référence</h4>
+<pre class="line-numbers"><code>
+
+for i in range(2,indice_max+1):
+    Physique_Stock = wb['Order Review'].cell(row=i,column=8).value
+    Commande_Manuf = wb['Order Review'].cell(row=i,column=9).value
+    Commande_Marche = wb['Order Review'].cell(row=i,column=10).value
+    MS = wb['Order Review'].cell(row=i,column=7).value
+    MOQ = wb['Order Review'].cell(row=i,column=6).value
+    Manufacture = wb['Order Review'].cell(row=i,column=4).value
+
+
+    Physique_Dispo = Physique_Stock + Commande_Manuf - Commande_Marche
+
+    if MS>Physique_Dispo :
+        R_Qty = MS - Physique_Dispo
+        if R_Qty<MOQ :="" R_Qty="MOQ" else="" <="" code=""></MOQ></code></pre><p>R_Qty est la quantité de commande recommandée, qui est nulle si il n'y a pas besoin de commander des pièces, et qui est supérieure ou égale au MOQ (Minimum Order Quantity) si il y a un besoin.</p>
+<h4 id="extraction-des-refs-ayant-un-besoin-et-trie-par-manufacture" tabindex="-1"><a class="header-anchor" href="#extraction-des-refs-ayant-un-besoin-et-trie-par-manufacture"></a> Extraction des refs ayant un besoin et trie par manufacture</h4>
+<pre class="line-numbers"><code>
+
+# Copie des refs à commander dans des feuilles séparées par manufacture
+
+    if R_Qty>0 and Manufacture == 'CHT':
+        for j in range(1,11):
+            wb['Proposition CHT'].cell(row=indice_CHT,column=j).value=wb['Order Review'].cell(row=i,column=j).value
+            wb['Proposition CHT'].cell(row=indice_CHT,column=11).value=R_Qty
+        indice_CHT=indice_CHT+1
+    if R_Qty>0 and Manufacture == 'ELA':
+        for j in range(1,11):
+            wb['Proposition ELA'].cell(row=indice_ELA,column=j).value=wb['Order Review'].cell(row=i,column=j).value
+            wb['Proposition ELA'].cell(row=indice_ELA,column=11).value=R_Qty
+        indice_ELA=indice_ELA+1
+    if R_Qty>0 and Manufacture == 'ESN':
+        for j in range(1,11):
+            wb['Proposition ESN'].cell(row=indice_ESN,column=j).value=wb['Order Review'].cell(row=i,column=j).value
+            wb['Proposition ESN'].cell(row=indice_ESN,column=11).value=R_Qty
+        indice_ESN=indice_ESN+1
+    if R_Qty>0 and Manufacture == 'FLE':
+        for j in range(1,11):
+            wb['Proposition FLE'].cell(row=indice_FLE,column=j).value=wb['Order Review'].cell(row=i,column=j).value
+            wb['Proposition FLE'].cell(row=indice_FLE,column=11).value=R_Qty
+        indice_FLE=indice_FLE+1
+    if R_Qty>0 and Manufacture == 'GOD':
+        for j in range(1,11):
+            wb['Proposition GOD'].cell(row=indice_GOD,column=j).value=wb['Order Review'].cell(row=i,column=j).value
+            wb['Proposition GOD'].cell(row=indice_GOD,column=11).value=R_Qty
+        indice_GOD=indice_GOD+1
+    if R_Qty>0 and Manufacture == 'MAT':
+        for j in range(1,11):
+            wb['Proposition MAT'].cell(row=indice_MAT,column=j).value=wb['Order Review'].cell(row=i,column=j).value
+            wb['Proposition MAT'].cell(row=indice_MAT,column=11).value=R_Qty
+        indice_MAT=indice_MAT+1
+
+wb.save('/Users/charlescook/Desktop/DO IT/fichier_modifié.xlsx')
+
+
+</code></pre><p>Ce code permet d'obtenir une feuille par manufacture qui permet de une order review par l'utilisateur chargé du processus de la commande mensuelle.</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Charles-Cook/pok/temps-1/Images/Feuille%20Order%20Review.png" alt="alt text"></p>
+<h4 id="pistes-d'am%C3%A9lioration-du-code" tabindex="-1"><a class="header-anchor" href="#pistes-d'am%C3%A9lioration-du-code"></a> Pistes d'amélioration du code</h4>
+<p>Il est possible d'améliorer le code en mettant en place un code couleur en fonction de l'importance de la commande, si cette commande résulte d'un besoin marché (un besoin client), la ligne pourrait être en rouge afin de souligner son importance. C'est une piste à étudier en second sprint.</p>
+<h2 id="point-d'avancement-au-second-sprint" tabindex="-1"><a class="header-anchor" href="#point-d'avancement-au-second-sprint"></a> Point d'avancement au second Sprint</h2>
+<h3 id="ajout-d'un-code-couleur" tabindex="-1"><a class="header-anchor" href="#ajout-d'un-code-couleur"></a> Ajout d'un code couleur</h3>
+<p>L'objectif de l'ajout du code couleur est de faciliter la relecture de la proposition automatique de commande par l'utilisateur.
+Ainsi, le code suivant permet de surligner en jaune les lignes qui concernent des commandes jugées &quot;importantes&quot; car elles répondent à un besoin marché (un besoin client). Les autres commandes sont passées afin que le stock central soit au niveau des MS, il n'y a pas d'attente client derrière celles-ci.</p>
+<h4 id="code-de-l'ajout-du-code-couleur" tabindex="-1"><a class="header-anchor" href="#code-de-l'ajout-du-code-couleur"></a> Code de l'ajout du code couleur</h4>
+<pre class="line-numbers"><code>
+
+if Physique_Dispo<0 :
+            for l in range(1,13):
+                wb['Proposition CHT'].cell(row=indice_CHT,column=l).fill=PatternFill(start_color="FFFF00", end_color="FFFF00", fill_type="solid")
+
+
+</code></pre><p>Ce code vérifie pour chaque commande passée la valeur du Physique_Dispo. Si celui-ci est négatif, cela signifie que la somme du Stock physique dans le stok central et des commandes déjà passées à la manufacture est inférieure aux quantités passées par les marchés. Ainsi il est urgent de repasser une commande manufacture afin de répondre au besoin client.
+Dans ce cas, le code couleur &quot;FFFF00&quot; est attribué à la ligne, soit la couleur jaune.
+Le résultat obtenu est le suivant :
+<img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Charles-Cook/pok/temps-1/Images/Code%20couleur.png" alt="alt text"></p>
+<h3 id="cr%C3%A9ation-du-fichier-des-bon-de-commande-finaux" tabindex="-1"><a class="header-anchor" href="#cr%C3%A9ation-du-fichier-des-bon-de-commande-finaux"></a> Création du fichier des bon de commande finaux</h3>
+<h4 id="objectif" tabindex="-1"><a class="header-anchor" href="#objectif"></a> Objectif</h4>
+<p>L'objectif de cette partie est d'avoir un fihcier Excel comprenant tous les bons de commande par manufacture. Ceux-ci doivent contenir les informations suivantes :</p>
+<ul>
+<li>Code référence</li>
+<li>Taille</li>
+<li>SKU</li>
+<li>Quantité de commande</li>
+<li>Prix du lot</li>
+<li>Date demandée</li>
+</ul>
+<h4 id="code-pour-le-bons-de-commande" tabindex="-1"><a class="header-anchor" href="#code-pour-le-bons-de-commande"></a> Code pour le bons de commande</h4>
+<pre class="line-numbers"><code>
+
+# Création des bons de commande
+for i in range(2,indice_CHT):
+    # Prise en compte des valeurs corrigées par l'utilisateur
+    if wb2['Proposition CHT'].cell(row=i,column=12).value is None :
+        wb2['Proposition CHT'].cell(row=i,column=12).value=wb2['Proposition CHT'].cell(row=i,column=11).value
+
+
+</code></pre><p>Cette partie copie les quantités de commande finales : la valeur proposée automatiquement s'il n'y a pas eu de modification faite par l'utilisateur, la valeur entrée manuellement par l'utilisateur si un changement a été effectué.</p>
+<pre class="line-numbers"><code>
+
+    # Calcul des prix de lot
+    wb2['Proposition CHT'].cell(row=i,column=13).value = wb2['Proposition CHT'].cell(row=i,column=5).value * wb2['Proposition CHT'].cell(row=i,column=12).value
+
+
+</code></pre><p>Cette partie calcule le prix de chaque lot en mulitpliant simplement la quantité finale de commande par le prix unitaire.</p>
+<pre class="line-numbers"><code>
+
+    # Caclul des dates demandées en fonction du lead time de la manufacture
+    wb2['Proposition CHT'].cell(row=i,column=14).value = (datetime.now() + relativedelta(months=+3)).strftime('%d/%m/%Y')
+
+
+</code></pre><p>Cette partie va chercher le lead time par manufacture dans la feuille <em>Lead Time</em> et calcul donc la date demandée en fonction de la date à laquelle les bons de commande sont édités.</p>
+<p>Les colonnes restantes qui ne sont pas nécessaires dans le bon de commande sont ensuite supprimées, et un total par manufacture est calculé (un total en nombre de pièces et un total en terme financier).</p>
+<h4 id="r%C3%A9sultat-des-bons-de-commande" tabindex="-1"><a class="header-anchor" href="#r%C3%A9sultat-des-bons-de-commande"></a> Résultat des bons de commande</h4>
+<p>Le résultat obtenu en faisant tourner le code est donc le suivant.</p>
+<p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Charles-Cook/pok/temps-1/Images/Bon%20de%20commande.png" alt="alt text"></p>
+<h3 id="historisation-des-commandes-mensuelles" tabindex="-1"><a class="header-anchor" href="#historisation-des-commandes-mensuelles"></a> Historisation des commandes mensuelles</h3>
+<p>Il peut être intéressant, au niveau de l'analyse et de la vérification avant d'envoyer le bon de commande, d'avoir une vision globale sur les quantités qui ont été commandées lors des précédentes commeandes mensuelles. Pour cela, nous allons tenter de mettre en place un suivi de l'hitorique sur l'année.
+Nous considererons que les commandes mensuelles de janvier à octobre ont été passées. La commande en cours est la commande mensuelle de novembre.</p>
+<p>Cette partie historisation permet notamment de pouvoir comparer les quantités afin de détecter d'éventuelles erreur dans la saisie des commandes des marchés par exemple.</p>
+<h4 id="cr%C3%A9ation-d'une-feuille-suivi-historique-fournisseur" tabindex="-1"><a class="header-anchor" href="#cr%C3%A9ation-d'une-feuille-suivi-historique-fournisseur"></a> Création d'une feuille <em>Suivi Historique Fournisseur</em></h4>
+<p>Afin de pouvoir suivre de manière précise l'historique des commandes mensuelles, nous avons créé une feuille Historique :
+<img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Charles-Cook/pok/temps-1/Images/Historique%20BD.png" alt="alt text"></p>
+<p>La cellule <em>P2</em> doit être modifiée de manière manuelle par l'utilisateur, afin de renseigner le commande mensuelle de quelle mois va être passée. Ainsi, cela permet au moment de la génération des bons de commande finaux d'avoir une simulation des quantités par rapport aux précédentes.</p>
+<h4 id="synth%C3%A8se-des-historiques-dans-la-cr%C3%A9ation-des-bons-de-commande" tabindex="-1"><a class="header-anchor" href="#synth%C3%A8se-des-historiques-dans-la-cr%C3%A9ation-des-bons-de-commande"></a> Synthèse des historiques dans la création des bons de commande</h4>
+<p>Au moment de la génération des bons de commande, le code suibvant permet d'entrer les quantités afin de compléter le tableau de suivi :</p>
+<pre class="line-numbers"><code>
+
+# Ajout Historique CHT
+wb2['Suivi Historique Four'].cell(row=3,column=hst+1).value = total
+
+
+</code></pre><p>On obtient ainsi le tableau complété suivant :
+<img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Charles-Cook/pok/temps-1/Images/Historique%20completed.png" alt="alt text"></p>
+<p>Afin d'avoir une présentation plus visuelle de l'évolution des quantités de commande, le code suivant permet de présenter les données sous forme de graphique en barres, par manufacture :</p>
+<pre class="line-numbers"><code>
+
+# Graphe Historique CHT
+refObj=openpyxl.chart.Reference(wb2['Suivi Historique Four'], min_col=2, min_row=3, max_col=13,max_row=3)
+seriesObj = openpyxl.chart.Series(refObj, title='Qty commande')
+chartObj = openpyxl.chart.BarChart()
+chartObj.title = 'Historique CHT'
+chartObj.append(seriesObj)
+wb2['Suivi Historique Four'].add_chart(chartObj, 'B12')
+
+
+</code></pre><p>Le résultat obtenu est le suivant :
+<img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Charles-Cook/pok/temps-1/Images/Tableaux%20historiuqes.png" alt="alt text"></p>
+<h2 id="pistes-d'am%C3%A9lioration" tabindex="-1"><a class="header-anchor" href="#pistes-d'am%C3%A9lioration"></a> Pistes d'amélioration</h2>
+<p>Le code, dont la version complète se trouve ci-après, fonctionne. Cependant, de nombreuses lignes se répètent. Dans un objectif d'efficacité et de clareté dans la lecture de celui-ci, il serait intéressant de le simplifier en utilisant des boucles. En effet, chacune des étapes est répétée 6 fois pour chacune des manufactures. Or, si un changement doit être apporté dans le code, il peut être chronophage de répéter ce changement 6 fois à chaque fois. De plus, cela peut également permettre d'améliorer la rapidité d'exécution du code.
+Ainsi, la solution est de créer une liste avec les identifiants de chaque manufacture, et d'utiliser une boucle <em>for</em> pour répéter l'opération pour chacun des éléments de la liste. Cette technique permet également d'ajouter facilement de nouvelle manufacture.</p>
+<p><em>J'ai tenté d'implémenter cette solution mais je n'y suis pas parvenu, des erreurs empêchaient l'execution du code</em></p>
+<h2 id="code-complet" tabindex="-1"><a class="header-anchor" href="#code-complet"></a> Code complet</h2>
+<p>Code pour la partie génération de la proposition des quantités de commande.</p>
+<pre class="line-numbers"><code>
+
+import openpyxl
+from datetime import datetime
+from dateutil.relativedelta import relativedelta
+from openpyxl.styles import Font
+from openpyxl.styles import PatternFill
+
+wb = openpyxl.load_workbook('/Users/charlescook/Desktop/DO IT/BD POK 1.xlsx',data_only=True)
+
+indice_max = wb['Order Review'].max_row
+
+# Création des feuilles proposition pour chaque manufacture
+wb.create_sheet(title='Proposition CHT')
+wb.create_sheet(title='Proposition ELA')
+wb.create_sheet(title='Proposition ESN')
+wb.create_sheet(title='Proposition FLE')
+wb.create_sheet(title='Proposition GOD')
+wb.create_sheet(title='Proposition MAT')
+
+# Introduction des variables
+indice_CHT=2
+indice_ELA=2
+indice_ESN=2
+indice_FLE=2
+indice_GOD=2
+indice_MAT=2
+
+
+# Mise en place des en-têtes pour les feuilles propositions
+for k in range(1,11):
+    wb['Proposition CHT'].cell(row=1,column=k).value=wb['Order Review'].cell(row=1,column=k).value
+    wb['Proposition ELA'].cell(row=1,column=k).value=wb['Order Review'].cell(row=1,column=k).value
+    wb['Proposition ESN'].cell(row=1,column=k).value=wb['Order Review'].cell(row=1,column=k).value
+    wb['Proposition FLE'].cell(row=1,column=k).value=wb['Order Review'].cell(row=1,column=k).value
+    wb['Proposition GOD'].cell(row=1,column=k).value=wb['Order Review'].cell(row=1,column=k).value
+    wb['Proposition MAT'].cell(row=1,column=k).value=wb['Order Review'].cell(row=1,column=k).value
+
+    wb['Proposition CHT'].cell(row=1,column=11).value='Quantité Recommandée'
+    wb['Proposition CHT'].cell(row=1,column=12).value='Quantité Corrigée'
+    wb['Proposition ELA'].cell(row=1,column=11).value='Quantité Recommandée'
+    wb['Proposition ELA'].cell(row=1,column=12).value='Quantité Corrigée'
+    wb['Proposition ESN'].cell(row=1,column=11).value='Quantité Recommandée'
+    wb['Proposition ESN'].cell(row=1,column=12).value='Quantité Corrigée'
+    wb['Proposition FLE'].cell(row=1,column=11).value='Quantité Recommandée'
+    wb['Proposition FLE'].cell(row=1,column=12).value='Quantité Corrigée'
+    wb['Proposition GOD'].cell(row=1,column=11).value='Quantité Recommandée'
+    wb['Proposition GOD'].cell(row=1,column=12).value='Quantité Corrigée'
+    wb['Proposition MAT'].cell(row=1,column=11).value='Quantité Recommandée'
+    wb['Proposition MAT'].cell(row=1,column=12).value='Quantité Corrigée'
+
+for i in range(2,indice_max+1):
+    Physique_Stock = wb['Order Review'].cell(row=i,column=8).value
+    Commande_Manuf = wb['Order Review'].cell(row=i,column=9).value
+    Commande_Marche = wb['Order Review'].cell(row=i,column=10).value
+    MS = wb['Order Review'].cell(row=i,column=7).value
+    MOQ = wb['Order Review'].cell(row=i,column=6).value
+    Manufacture = wb['Order Review'].cell(row=i,column=4).value
+
+    Physique_Dispo = Physique_Stock + Commande_Manuf - Commande_Marche
+
+    if MS>Physique_Dispo :
+        R_Qty = MS - Physique_Dispo
+        if R_Qty<MOQ :="" R_Qty="MOQ" else="" #="" Copie="" des="" refs="" à="" commander="" dans="" feuilles="" séparées="" par="" manufacture="" if="">0 and Manufacture == 'CHT':
+        for j in range(1,11):
+            wb['Proposition CHT'].cell(row=indice_CHT,column=j).value=wb['Order Review'].cell(row=i,column=j).value
+            wb['Proposition CHT'].cell(row=indice_CHT,column=11).value=R_Qty
+        if Physique_Dispo<0 :
+            for l in range(1,13):
+                wb['Proposition CHT'].cell(row=indice_CHT,column=l).fill=PatternFill(start_color="FFFF00", end_color="FFFF00", fill_type="solid")
+        indice_CHT=indice_CHT+1
+
+    if R_Qty>0 and Manufacture == 'ELA':
+        for j in range(1,11):
+            wb['Proposition ELA'].cell(row=indice_ELA,column=j).value=wb['Order Review'].cell(row=i,column=j).value
+            wb['Proposition ELA'].cell(row=indice_ELA,column=11).value=R_Qty
+        if Physique_Dispo<0 :
+            for l in range(1,13):
+                wb['Proposition ELA'].cell(row=indice_ELA,column=l).fill=PatternFill(start_color="FFFF00", end_color="FFFF00", fill_type="solid")
+        indice_ELA=indice_ELA+1
+    if R_Qty>0 and Manufacture == 'ESN':
+        for j in range(1,11):
+            wb['Proposition ESN'].cell(row=indice_ESN,column=j).value=wb['Order Review'].cell(row=i,column=j).value
+            wb['Proposition ESN'].cell(row=indice_ESN,column=11).value=R_Qty
+        if Physique_Dispo<0 :
+            for l in range(1,13):
+                wb['Proposition ESN'].cell(row=indice_ESN,column=l).fill=PatternFill(start_color="FFFF00", end_color="FFFF00", fill_type="solid")
+        indice_ESN=indice_ESN+1
+    if R_Qty>0 and Manufacture == 'FLE':
+        for j in range(1,11):
+            wb['Proposition FLE'].cell(row=indice_FLE,column=j).value=wb['Order Review'].cell(row=i,column=j).value
+            wb['Proposition FLE'].cell(row=indice_FLE,column=11).value=R_Qty
+        if Physique_Dispo<0 :
+            for l in range(1,13):
+                wb['Proposition FLE'].cell(row=indice_FLE,column=l).fill=PatternFill(start_color="FFFF00", end_color="FFFF00", fill_type="solid")
+        indice_FLE=indice_FLE+1
+    if R_Qty>0 and Manufacture == 'GOD':
+        for j in range(1,11):
+            wb['Proposition GOD'].cell(row=indice_GOD,column=j).value=wb['Order Review'].cell(row=i,column=j).value
+            wb['Proposition GOD'].cell(row=indice_GOD,column=11).value=R_Qty
+        if Physique_Dispo<0 :
+            for l in range(1,13):
+                wb['Proposition GOD'].cell(row=indice_GOD,column=l).fill=PatternFill(start_color="FFFF00", end_color="FFFF00", fill_type="solid")
+        indice_GOD=indice_GOD+1
+    if R_Qty>0 and Manufacture == 'MAT':
+        for j in range(1,11):
+            wb['Proposition MAT'].cell(row=indice_MAT,column=j).value=wb['Order Review'].cell(row=i,column=j).value
+            wb['Proposition MAT'].cell(row=indice_MAT,column=11).value=R_Qty
+        if Physique_Dispo<0 :
+            for l in range(1,13):
+                wb['Proposition MAT'].cell(row=indice_MAT,column=l).fill=PatternFill(start_color="FFFF00", end_color="FFFF00", fill_type="solid")
+        indice_MAT=indice_MAT+1
+
+wb.save('/Users/charlescook/Desktop/DO IT/proposition_commande.xlsx')
+
+
+</MOQ></code></pre><p>Code pour la partie génération des bons de comman de finaux et mise à jour de l'historique.</p>
+<pre class="line-numbers"><code>
+
+wb2 = openpyxl.load_workbook('/Users/charlescook/Desktop/DO IT/proposition_commande.xlsx',data_only=True)
+
+# Suivi de l'historique
+hst=wb2['Suivi Historique Four'].cell(row=2,column=16).value
+
+# Création des bons de commande
+for i in range(2,indice_CHT):
+    # Prise en compte des valeurs corrigées par l'utilisateur
+    if wb2['Proposition CHT'].cell(row=i,column=12).value is None :
+        wb2['Proposition CHT'].cell(row=i,column=12).value=wb2['Proposition CHT'].cell(row=i,column=11).value
+    # Calcul des prix de lot
+    wb2['Proposition CHT'].cell(row=i,column=13).value = wb2['Proposition CHT'].cell(row=i,column=5).value * wb2['Proposition CHT'].cell(row=i,column=12).value
+    # Caclul des dates demandées en fonction du lead time de la manufacture
+    wb2['Proposition CHT'].cell(row=i,column=14).value = (datetime.now() + relativedelta(months=+3)).strftime('%d/%m/%Y')
+# Supression des colonnes
+wb2['Proposition CHT'].delete_cols(4,8)
+wb2['Proposition CHT'].cell(row=1,column=4).value='Quantité'
+wb2['Proposition CHT'].cell(row=1,column=5).value='Prix lot'
+wb2['Proposition CHT'].cell(row=1,column=6).value='Date demandée'
+wb2['Proposition CHT'].cell(row=indice_CHT+1,column=3).value='TOTAL'
+total=0
+total2=0
+for j in range(2,indice_CHT):
+    total+=wb2['Proposition CHT'].cell(row=j,column=4).value
+    total2+=wb2['Proposition CHT'].cell(row=j,column=5).value
+wb2['Proposition CHT'].cell(row=indice_CHT+1,column=4).value=total
+wb2['Proposition CHT'].cell(row=indice_CHT+1,column=5).value=total2
+
+# Ajout Historique CHT
+wb2['Suivi Historique Four'].cell(row=3,column=hst+1).value = total
+
+# Mise en page
+for j in range(1,7) :
+    wb2['Proposition CHT'].cell(row=1,column=j).font = Font(bold=True)
+    wb2['Proposition CHT'].cell(row=1,column=j).fill=PatternFill(start_color="D3D3D3", end_color="D3D3D3", fill_type="solid")
+wb2['Proposition CHT'].title = 'BDC CHT'
+
+# Répétition pour ELA
+for i in range(2,indice_ELA):
+    if wb2['Proposition ELA'].cell(row=i,column=12).value is None :
+        wb2['Proposition ELA'].cell(row=i,column=12).value=wb2['Proposition ELA'].cell(row=i,column=11).value
+    wb2['Proposition ELA'].cell(row=i,column=13).value = wb2['Proposition ELA'].cell(row=i,column=5).value * wb2['Proposition ELA'].cell(row=i,column=12).value
+    wb2['Proposition ELA'].cell(row=i,column=14).value = (datetime.now() + relativedelta(months=+2)).strftime('%d/%m/%Y')
+wb2['Proposition ELA'].delete_cols(4,8)
+wb2['Proposition ELA'].cell(row=1,column=4).value='Quantité'
+wb2['Proposition ELA'].cell(row=1,column=5).value='Prix lot'
+wb2['Proposition ELA'].cell(row=1,column=6).value='Date demandée'
+wb2['Proposition ELA'].cell(row=indice_ELA+1,column=3).value='TOTAL'
+total=0
+total2=0
+for j in range(2,indice_ELA):
+    total+=wb2['Proposition ELA'].cell(row=j,column=4).value
+    total2+=wb2['Proposition ELA'].cell(row=j,column=5).value
+wb2['Proposition ELA'].cell(row=indice_ELA+1,column=4).value=total
+wb2['Proposition ELA'].cell(row=indice_ELA+1,column=5).value=total2
+
+# Ajout Historique ELA
+wb2['Suivi Historique Four'].cell(row=4,column=hst+1).value = total
+
+for j in range(1,7) :
+    wb2['Proposition ELA'].cell(row=1,column=j).font = Font(bold=True)
+    wb2['Proposition ELA'].cell(row=1,column=j).fill=PatternFill(start_color="D3D3D3", end_color="D3D3D3", fill_type="solid")
+wb2['Proposition ELA'].title = 'BDC ELA'
+
+# Répétition pour ESN
+for i in range(2,indice_ESN):
+    if wb2['Proposition ESN'].cell(row=i,column=12).value is None :
+        wb2['Proposition ESN'].cell(row=i,column=12).value=wb2['Proposition ESN'].cell(row=i,column=11).value
+    wb2['Proposition ESN'].cell(row=i,column=13).value = wb2['Proposition ESN'].cell(row=i,column=5).value * wb2['Proposition ESN'].cell(row=i,column=12).value
+    wb2['Proposition ESN'].cell(row=i,column=14).value = (datetime.now() + relativedelta(months=+2)).strftime('%d/%m/%Y')
+wb2['Proposition ESN'].delete_cols(4,8)
+wb2['Proposition ESN'].cell(row=1,column=4).value='Quantité'
+wb2['Proposition ESN'].cell(row=1,column=5).value='Prix lot'
+wb2['Proposition ESN'].cell(row=1,column=6).value='Date demandée'
+wb2['Proposition ESN'].cell(row=indice_ESN+1,column=3).value='TOTAL'
+total=0
+total2=0
+for j in range(2,indice_ESN):
+    total+=wb2['Proposition ESN'].cell(row=j,column=4).value
+    total2+=wb2['Proposition ESN'].cell(row=j,column=5).value
+wb2['Proposition ESN'].cell(row=indice_ESN+1,column=4).value=total
+wb2['Proposition ESN'].cell(row=indice_ESN+1,column=5).value=total2
+
+# Ajout Historique ESN
+wb2['Suivi Historique Four'].cell(row=5,column=hst+1).value = total
+
+for j in range(1,7) :
+    wb2['Proposition ESN'].cell(row=1,column=j).font = Font(bold=True)
+    wb2['Proposition ESN'].cell(row=1,column=j).fill=PatternFill(start_color="D3D3D3", end_color="D3D3D3", fill_type="solid")
+wb2['Proposition ESN'].title = 'BDC ESN'
+
+# Répétition pour FLE
+for i in range(2,indice_FLE):
+    if wb2['Proposition FLE'].cell(row=i,column=12).value is None :
+        wb2['Proposition FLE'].cell(row=i,column=12).value=wb2['Proposition FLE'].cell(row=i,column=11).value
+    wb2['Proposition FLE'].cell(row=i,column=13).value = wb2['Proposition FLE'].cell(row=i,column=5).value * wb2['Proposition FLE'].cell(row=i,column=12).value
+    wb2['Proposition FLE'].cell(row=i,column=14).value = (datetime.now() + relativedelta(months=+2)).strftime('%d/%m/%Y')
+wb2['Proposition FLE'].delete_cols(4,8)
+wb2['Proposition FLE'].cell(row=1,column=4).value='Quantité'
+wb2['Proposition FLE'].cell(row=1,column=5).value='Prix lot'
+wb2['Proposition FLE'].cell(row=1,column=6).value='Date demandée'
+wb2['Proposition FLE'].cell(row=indice_FLE+1,column=3).value='TOTAL'
+total=0
+total2=0
+for j in range(2,indice_FLE):
+    total+=wb2['Proposition FLE'].cell(row=j,column=4).value
+    total2+=wb2['Proposition FLE'].cell(row=j,column=5).value
+wb2['Proposition FLE'].cell(row=indice_FLE+1,column=4).value=total
+wb2['Proposition FLE'].cell(row=indice_FLE+1,column=5).value=total2
+
+# Ajout Historique FLE
+wb2['Suivi Historique Four'].cell(row=6,column=hst+1).value = total
+
+for j in range(1,7) :
+    wb2['Proposition FLE'].cell(row=1,column=j).font = Font(bold=True)
+    wb2['Proposition FLE'].cell(row=1,column=j).fill=PatternFill(start_color="D3D3D3", end_color="D3D3D3", fill_type="solid")
+wb2['Proposition FLE'].title = 'BDC FLE'
+
+# Répétition pour GOD
+for i in range(2,indice_GOD):
+    if wb2['Proposition GOD'].cell(row=i,column=12).value is None :
+        wb2['Proposition GOD'].cell(row=i,column=12).value=wb2['Proposition GOD'].cell(row=i,column=11).value
+    wb2['Proposition GOD'].cell(row=i,column=13).value = wb2['Proposition GOD'].cell(row=i,column=5).value * wb2['Proposition GOD'].cell(row=i,column=12).value
+    wb2['Proposition GOD'].cell(row=i,column=14).value = (datetime.now() + relativedelta(months=+1)).strftime('%d/%m/%Y')
+wb2['Proposition GOD'].delete_cols(4,8)
+wb2['Proposition GOD'].cell(row=1,column=4).value='Quantité'
+wb2['Proposition GOD'].cell(row=1,column=5).value='Prix lot'
+wb2['Proposition GOD'].cell(row=1,column=6).value='Date demandée'
+wb2['Proposition GOD'].cell(row=indice_GOD+1,column=3).value='TOTAL'
+total=0
+total2=0
+for j in range(2,indice_GOD):
+    total+=wb2['Proposition GOD'].cell(row=j,column=4).value
+    total2+=wb2['Proposition GOD'].cell(row=j,column=5).value
+wb2['Proposition GOD'].cell(row=indice_GOD+1,column=4).value=total
+wb2['Proposition GOD'].cell(row=indice_GOD+1,column=5).value=total2
+
+# Ajout Historique GOD
+wb2['Suivi Historique Four'].cell(row=7,column=hst+1).value = total
+
+for j in range(1,7) :
+    wb2['Proposition GOD'].cell(row=1,column=j).font = Font(bold=True)
+    wb2['Proposition GOD'].cell(row=1,column=j).fill=PatternFill(start_color="D3D3D3", end_color="D3D3D3", fill_type="solid")
+wb2['Proposition GOD'].title = 'BDC GOD'
+
+# Répétition pour MAT
+for i in range(2,indice_MAT):
+    if wb2['Proposition MAT'].cell(row=i,column=12).value is None :
+        wb2['Proposition MAT'].cell(row=i,column=12).value=wb2['Proposition MAT'].cell(row=i,column=11).value
+    wb2['Proposition MAT'].cell(row=i,column=13).value = wb2['Proposition MAT'].cell(row=i,column=5).value * wb2['Proposition MAT'].cell(row=i,column=12).value
+    wb2['Proposition MAT'].cell(row=i,column=14).value = (datetime.now() + relativedelta(months=+2)).strftime('%d/%m/%Y')
+wb2['Proposition MAT'].delete_cols(4,8)
+wb2['Proposition MAT'].cell(row=1,column=4).value='Quantité'
+wb2['Proposition MAT'].cell(row=1,column=5).value='Prix lot'
+wb2['Proposition MAT'].cell(row=1,column=6).value='Date demandée'
+wb2['Proposition MAT'].cell(row=indice_MAT+1,column=3).value='TOTAL'
+total=0
+total2=0
+for j in range(2,indice_MAT):
+    total+=wb2['Proposition MAT'].cell(row=j,column=4).value
+    total2+=wb2['Proposition MAT'].cell(row=j,column=5).value
+wb2['Proposition MAT'].cell(row=indice_MAT+1,column=4).value=total
+wb2['Proposition MAT'].cell(row=indice_MAT+1,column=5).value=total2
+
+# Ajout Historique MAT
+wb2['Suivi Historique Four'].cell(row=8,column=hst+1).value = total
+
+for j in range(1,7) :
+    wb2['Proposition MAT'].cell(row=1,column=j).font = Font(bold=True)
+    wb2['Proposition MAT'].cell(row=1,column=j).fill=PatternFill(start_color="D3D3D3", end_color="D3D3D3", fill_type="solid")
+wb2['Proposition MAT'].title = 'BDC MAT'
+
+#Supression des feuilles n'étant pas des bons de commande
+del wb2['Order Review']
+del wb2['Lead Time']
+
+# Suivi de l'historique
+
+# Graphe Historique CHT
+refObj=openpyxl.chart.Reference(wb2['Suivi Historique Four'], min_col=2, min_row=3, max_col=13,max_row=3)
+seriesObj = openpyxl.chart.Series(refObj, title='Qty commande')
+chartObj = openpyxl.chart.BarChart()
+chartObj.title = 'Historique CHT'
+chartObj.append(seriesObj)
+wb2['Suivi Historique Four'].add_chart(chartObj, 'B12')
+
+# Graphe Historique ELA
+refObj=openpyxl.chart.Reference(wb2['Suivi Historique Four'], min_col=2, min_row=4, max_col=13,max_row=4)
+seriesObj = openpyxl.chart.Series(refObj, title='Qty commande')
+chartObj = openpyxl.chart.BarChart()
+chartObj.title = 'Historique ELA'
+chartObj.append(seriesObj)
+wb2['Suivi Historique Four'].add_chart(chartObj, 'J12')
+
+# Graphe Historique ESN
+refObj=openpyxl.chart.Reference(wb2['Suivi Historique Four'], min_col=2, min_row=5, max_col=13,max_row=5)
+seriesObj = openpyxl.chart.Series(refObj, title='Qty commande')
+chartObj = openpyxl.chart.BarChart()
+chartObj.title = 'Historique ESN'
+chartObj.append(seriesObj)
+wb2['Suivi Historique Four'].add_chart(chartObj, 'B27')
+
+# Graphe Historique FLE
+refObj=openpyxl.chart.Reference(wb2['Suivi Historique Four'], min_col=2, min_row=6, max_col=13,max_row=6)
+seriesObj = openpyxl.chart.Series(refObj, title='Qty commande')
+chartObj = openpyxl.chart.BarChart()
+chartObj.title = 'Historique FLE'
+chartObj.append(seriesObj)
+wb2['Suivi Historique Four'].add_chart(chartObj, 'J27')
+
+# Graphe Historique GOD
+refObj=openpyxl.chart.Reference(wb2['Suivi Historique Four'], min_col=2, min_row=7, max_col=13,max_row=7)
+seriesObj = openpyxl.chart.Series(refObj, title='Qty commande')
+chartObj = openpyxl.chart.BarChart()
+chartObj.title = 'Historique GOD'
+chartObj.append(seriesObj)
+wb2['Suivi Historique Four'].add_chart(chartObj, 'B42')
+
+# Graphe Historique MAT
+refObj=openpyxl.chart.Reference(wb2['Suivi Historique Four'], min_col=2, min_row=7, max_col=13,max_row=7)
+seriesObj = openpyxl.chart.Series(refObj, title='Qty commande')
+chartObj = openpyxl.chart.BarChart()
+chartObj.title = 'Historique MAT'
+chartObj.append(seriesObj)
+wb2['Suivi Historique Four'].add_chart(chartObj, 'J42')
+
+wb2.save('/Users/charlescook/Desktop/DO IT/bon_de_commande.xlsx')
+
+
+</code></pre>
+
+
+</article>
+
+        </main>
+
+        <footer class="min-h-[50px] border-t-2 mt-4 border-gray-200 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-center items-center">
+                    <p class="text-center">
+                        ©2025 <b><span style="font-family: Consolas, sans-serif;">Do-<span style="color: #4a86e8">It</span></span></b> - Développement, Management et Gestion de projets en IT
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- MathJax import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">
+            window.MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']], // Delimiters for inline math
+                    displayMath: [['$$', '$$'], ['\\[', '\\]']] // Delimiters for block math
+                },
+                svg: {
+                    fontCache: 'global' // Use global font cache for SVG output
+                }
+            };
+            document.addEventListener('DOMContentLoaded', () => {
+                MathJax.typeset(); // Ensures MathJax processes the content after the page loads
+            });
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">
+            Prism.plugins.NormalizeWhitespace.setDefaults({
+                'remove-trailing': true,
+                'remove-indent': true,
+                'left-trim': true,
+                'right-trim': true,
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script>
+    </body>
+</html>

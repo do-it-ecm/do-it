@@ -1,0 +1,260 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="index, follow"><link rel="canonical" href="https://do-it.aioli.ec-m.fr/promos/2023-2024/Beyaert-Alexandre/pok/temps-2/"><meta name="description" content="Un POK traitant de l&#39;usage de la Data Science au service de l&#39;anatomie Pathologique. En particulier, la création d&#39;un algorithme de classification afin d&#39;aider au diagnostique les médecins dans le risque de récidive du carcinome basocellulaire."><meta property="og:description" content="Un POK traitant de l&#39;usage de la Data Science au service de l&#39;anatomie Pathologique. En particulier, la création d&#39;un algorithme de classification afin d&#39;aider au diagnostique les médecins dans le risque de récidive du carcinome basocellulaire."><meta name="twitter:description" content="Un POK traitant de l&#39;usage de la Data Science au service de l&#39;anatomie Pathologique. En particulier, la création d&#39;un algorithme de classification afin d&#39;aider au diagnostique les médecins dans le risque de récidive du carcinome basocellulaire."><meta name="author" content="Alexandre Beyaert"><meta name="keywords" content="do-it, centrale, centrale méditerranée, ecm, POK"><link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon"><link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png"><link rel="apple-touch-icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png"><link href="/assets/stylesheets/main.css" rel="stylesheet"><meta property="og:title" content="La Data Science au service de l&#39;Anatomie Pathologique"><meta property="og:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png"><meta property="og:url" content="https://do-it.aioli.ec-m.fr/promos/2023-2024/Beyaert-Alexandre/pok/temps-2/"><meta property="og:type" content="website"><meta name="twitter:card" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png"><meta name="twitter:title" content="La Data Science au service de l&#39;Anatomie Pathologique"><meta name="twitter:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png"><meta name="twitter:url" content="https://do-it.aioli.ec-m.fr/promos/2023-2024/Beyaert-Alexandre/pok/temps-2/"><title>La Data Science au service de l&#39;Anatomie Pathologique</title><link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet"><link id="prism-theme" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet"><link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet"><script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script><script defer="">const storedTheme=localStorage.getItem("theme");function loadPrismTheme(e){const t=e?"prism-okaidia.min.css":"prism-solarizedlight.min.css",s=document.createElement("link");s.rel="stylesheet",s.id="prism-theme",s.href=`https://cdn.jsdelivr.net/npm/prismjs/themes/${t}`,s.onload=()=>{Prism.highlightAll()};const m=document.getElementById("prism-theme");m?document.head.replaceChild(s,m):document.head.appendChild(s)}function setMermaidTheme(e){const t=e?"dark":"forest";mermaid.initialize({securityLevel:"loose",theme:t,startOnLoad:!0})}function toggleDarkMode(){const e=document.documentElement.classList.contains("dark"),t=e?"light":"dark";localStorage.setItem("theme",t),document.documentElement.classList.toggle("dark",!e),loadPrismTheme(!e),setMermaidTheme(!e)}storedTheme?document.documentElement.classList.toggle("dark","dark"===storedTheme):document.documentElement.classList.toggle("dark",window.matchMedia("(prefers-color-scheme: dark)").matches);const isDark=document.documentElement.classList.contains("dark");loadPrismTheme(isDark),setMermaidTheme(isDark)</script></head><body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000" class="bg-neutral-50 text-neutral-950 dark:bg-neutral-900 dark:text-neutral-50"><header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white dark:bg-neutral-900 dark:border-neutral-700"><div class="max-w-[1000px] mx-auto px-4"><div class="min-h-[50px] flex justify-between items-center"><a class="mx-2" href="/">Home</a> <button class="hidden sm:block text-neutral-950 dark:text-neutral-50 hover:bg-neutral-700 hover:text-neutral-50 hover:dark:bg-neutral-300 hover:dark:text-neutral-950 transition-colors p-2 rounded-full duration-800 ease-in-out" onclick="toggleDarkMode()"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 dark:hidden stroke-current"><circle cx="12" cy="12" r="5"></circle><path d="M12 2V4" stroke-linecap="round"></path><path d="M12 20V22" stroke-linecap="round"></path><path d="M4 12L2 12" stroke-linecap="round"></path><path d="M22 12L20 12" stroke-linecap="round"></path><path d="M19.7778 4.22266L17.5558 6.25424" stroke-linecap="round"></path><path d="M4.22217 4.22266L6.44418 6.25424" stroke-linecap="round"></path><path d="M6.44434 17.5557L4.22211 19.7779" stroke-linecap="round"></path><path d="M19.7778 19.7773L17.5558 17.5551" stroke-linecap="round"></path></svg> <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 stroke-current hidden dark:block"><path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke-linecap="round" stroke-linejoin="round"></path></svg></button><div class="flex items-center gap-4 sm:gap-6"><a class="" href="/cs">CS</a> <a class="" href="/pok">POK</a> <a class="" href="/mon">MON</a> <a class="" href="/projets">Projets</a> <a class="hidden sm:block" href="/promos">Promos</a> <a href="/search"><svg class="h-5 aspect-square stroke-neutral-950 dark:stroke-neutral-300 fill-none stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path></svg> </a><a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank"><svg class="h-5 aspect-square dark:stroke-neutral-300 dark:fill-neutral-300" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg></a></div></div></div></header><main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body=""><article class="relative"><h1 class="mb-1">La Data Science au service de l&#39;Anatomie Pathologique</h1><div class="mb-4"><div class="px-4 flex flex-wrap items-center"><div class="font-bold">Tag :</div><ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags"><li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">POK</li></ul><div class="hidden" data-pagefind-meta="Type" aria-hidden="true"><span data-pagefind-filter="Type">POK</span></div></div><div class="px-4 flex flex-wrap items-center"><div class="font-bold">Auteur :</div><ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs"><li class="bg-blue-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Auteurs">Alexandre Beyaert</li></ul></div><div class="absolute top-0 right-0"><span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2 text-neutral-950" data-pagefind-filter="Année">2023-2024</span></div></div><p class="mb-4 text-lg">Un POK traitant de l'usage de la Data Science au service de l'anatomie Pathologique. En particulier, la création d'un algorithme de classification afin d'aider au diagnostique les médecins dans le risque de récidive du carcinome basocellulaire.</p><div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100 dark:border-purple-800 dark:bg-purple-950"><svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-purple-500 dark:stroke-purple-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path></svg><div class="pl-8 mr-8"><a href="/promos/2023-2024/Beyaert-Alexandre/">Alexandre BEYAERT</a><span class="px-1">/</span><a href="/promos/2023-2024/Beyaert-Alexandre/pok/">POK de Alexandre Beyaert</a><span class="px-1">/</span><a href="/promos/2023-2024/Beyaert-Alexandre/pok/temps-2/">La Data Science au service de l&#39;Anatomie Pathologique</a></div></div><div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100 dark:border-pink-800 dark:bg-pink-950"><svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-pink-500 dark:stroke-pink-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg><div class="pl-8 mb-2 mr-8"><p><b>Prérequis</b></p></div><div class="pl-8 mr-8"><p><strong>Niveau :</strong> Avancé <strong>Prérequis :</strong> Bases en Python et en Datasciences (traitement d'image, segmentation, machine learning)</p></div></div><h2 id="sommaire" tabindex="-1"><a class="header-anchor" href="#sommaire"></a> Sommaire</h2><ol><li>Introduction</li><li>Description du projet</li><li>Analyse préliminaire des données</li><li>Pré-traitement des données</li><li>Conclusion</li><li>Bibliographie</li></ol><h2 id="1.-introduction" tabindex="-1"><a class="header-anchor" href="#1.-introduction"></a> 1. Introduction</h2><p>Le but de ce projet est d'apporter des solutions informatiques d'analyse de données au service de l'anatomie pathologique. L'objectif est de créer un algorithme de classification afin d'aider au diagnostique les médecins dans le risque de récidive du carcinome basocellulaire.</p><p>Cette solution permettrait l'économie d'un temps précieux dans la lecture de lames au microscope afin de détecter les souches plus ou moins atteintes. La science des données doit pouvoir aider à trier ces différentes lames pour ne demander aux médecins qu'une analyse approfondie de certains échantillons.</p><h2 id="2.-description-du-projet" tabindex="-1"><a class="header-anchor" href="#2.-description-du-projet"></a> 2. Description du projet</h2><h3 id="2.1-informations-g%C3%A9n%C3%A9rales" tabindex="-1"><a class="header-anchor" href="#2.1-informations-g%C3%A9n%C3%A9rales"></a> 2.1 Informations générales</h3><p><strong>Titre :</strong> Évaluation du risque d’agressivité des carcinomes basocellulaires à partir de multiples jeux de données <strong>Champ médical	:</strong> Cancérologie Diagnostic Anatomie Pathologique <strong>Entité de rattachement :</strong>	Service d’Anatomie Pathologiques, Timone, APHM, UMR911, MMG, AMU</p><h3 id="2.2-description-du-projet" tabindex="-1"><a class="header-anchor" href="#2.2-description-du-projet"></a> 2.2 Description du projet</h3><p>L'Anatomie Pathologique (anapath) est une spécialité médicale centrée sur <strong>le diagnostic des maladies à un niveau microscopique, en interprétant des images de tissus et de cellules, notamment dans le contexte de la pathologie tumorale et du cancer.</strong> Les avancées dans la numérisation ouvrent de nouvelles perspectives, permettant potentiellement de se passer des microscopes optiques au profit d'écrans haute résolution. Cette transition vers la numérisation totale offre des opportunités de <strong>développement d'outils basés sur l'analyse d'images et des pipelines de machine learning pour faciliter le diagnostic.</strong></p><p>En plus d'accélérer le processus diagnostique, ces outils peuvent contribuer à générer des données de santé normalisées et reproductibles, représentant un enjeu majeur pour la recherche en cancérologie. Les images microscopiques, souvent multimodales, peuvent être analysées en utilisant des techniques telles que l'immunohistochimie, permettant au pathologiste de visualiser différentes modalités d'information biologique superposées sur une même coupe tissulaire.</p><p>La thématique de l'aide au diagnostic et de l'automatisation en pathologie est actuellement compétitive, principalement axée sur l'analyse d'image. Plusieurs projets industriels et commerciaux se concentrent sur cette problématique, bien que peu d'entre eux se consacrent spécifiquement à la dermatopathologie. Ces nouvelles approches rencontrent des défis réglementaires et financiers, notamment liés à l'obtention du marquage CE et au remboursement par les organismes de santé.</p><p>En particulier, le carcinome basocellulaire, le cancer de la peau le plus fréquent, offre des images prototypiques et reproductibles au microscope, ce qui pourrait <strong>permettre une automatisation accrue du diagnostic.</strong> Cependant, les projets existants ne se concentrent pas suffisamment sur l'intégration des données existantes (compte-rendus) ni sur la combinaison de multiples jeux de données (clinique, histologique) avec l'analyse d'image pour répondre à des questions cliniques spécifiques, telles que <strong>la prédiction de la récidive tumorale.</strong></p><p>Données : fichiers images, lames de microscopes numérisées, format .ndpi – anonymisées.</p><h3 id="2.3-missions-et-attendus-souhait%C3%A9s" tabindex="-1"><a class="header-anchor" href="#2.3-missions-et-attendus-souhait%C3%A9s"></a> 2.3 Missions et attendus souhaités</h3><p>Le but de ce POK est de proposer un algorithme fonctionnel permettant de classer les lames cancéreuses et celles non cancéreuses. Pour se faire : <strong>- le sprint 1</strong> consistera en la <strong>compréhension</strong> du projet, sa <strong>description</strong> ainsi qu'en <strong>l'analyse préliminaire</strong> des données. <strong>- le sprint 2</strong> consistera à effectuer un pré-traitement qualitatif des données pour qu'elles soient prêtes à faire passer dans un algorithme de classification.</p><h2 id="3.-analyse-pr%C3%A9liminaire-des-donn%C3%A9es" tabindex="-1"><a class="header-anchor" href="#3.-analyse-pr%C3%A9liminaire-des-donn%C3%A9es"></a> 3. Analyse préliminaire des données</h2><h3 id="3.1-conversion-automatis%C3%A9e-des-images-du-format-..ndpi-au-format-.jpg" tabindex="-1"><a class="header-anchor" href="#3.1-conversion-automatis%C3%A9e-des-images-du-format-..ndpi-au-format-.jpg"></a> 3.1 Conversion automatisée des images du format ..ndpi au format .jpg</h3><p>Les images sur lesquelles je travaille proviennent de microscopes numériques. Elles sont extraites au format .ndpi &quot;NanoZoomer Digital Pathology Image&quot; et sont de très hautes résolutions.</p><p>L'échantillon dont je dispose <strong>propose des images allant de 100Mo à 1Go.</strong></p><p>Il est possible de les lire en utilisant le NDPI Viewer &quot;NDP.wiew2&quot; développé par le fabricant japonais d'instruments scientifiques Hamamatsu Photonics K.K..</p><p>Ce logiciel est téléchargeable gratuitement sur <a href="https://www.hamamatsu.com/eu/en/product/life-science-and-medical-systems/digital-slide-scanner/U12388-01.html">le site d'Hamamatsu</a></p><p>Voici son interface :</p><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beyaert-Alexandre/pok/temps-2/NDP_view2.jpg" alt="NDP Viewer2"></p><p>Afin de pouvoir utiliser ces images dans un algorithme de machine learning, <strong>il faudrait les convertir dans un format plus propice à la programmation et permettant de réduire leur taille.</strong></p><p>Toutefois, depuis NDP Viewer2, cette conversion ne peut se faire qu'image par image et serait trop chronophage pour convertir des 100aines d'images.</p><p>La première problématique de ce POK consiste alors à <strong>automatiser une conversion des images au format .ndpi vers .jpg.</strong></p><h4 id="tentative-d'automatisation-avec-ndpview2" tabindex="-1"><a class="header-anchor" href="#tentative-d'automatisation-avec-ndpview2"></a> Tentative d'automatisation avec NDPview2</h4><p>Ayant téléchargé NDPview2, ma première idée consiste alors à créer un algorithme Python convertissant les différents fichiers en faisant appel à ce NDP viewer.</p><pre class="language-python line-numbers"><code>
+
+import os
+import subprocess
+
+# Chemins des dossiers
+input_folder = 'C:\\Test-TER\\DATA-NDPI'
+viewer_path = 'C:\\Program Files\\Hamamatsu\\NDP.view 2\\NDPView2.exe'
+output_folder = 'C:\\Test-TER\\DATA-JPG'
+
+# Chemin du fichier test
+test_file = 'test.ndpi'
+test_file_path = os.path.join(input_folder, test_file)
+
+# Génération du chemin de sortie avec le même nom de fichier mais en extension .jpg
+output_file_path = os.path.join(output_folder, os.path.splitext(test_file)[0] + '.jpg')
+
+# Commande pour appeler le viewer NDPI et effectuer la conversion
+command = [viewer_path, '-i', test_file_path, '-o', output_file_path]
+
+# Exécuter la commande en utilisant subprocess.Popen
+process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+output, error = process.communicate()
+
+# Afficher la sortie et les erreurs
+print("Sortie:", output.decode())
+print("Erreurs:", error.decode())
+
+print("Conversion pour le fichier de test terminée.")
+
+
+</code></pre><p>Hélas le programme se contente de lancer le viewer sans effectuer la conversion. Il semblerait donc que le viewer ne puisse servir de façon automatisée mais nécessite des actions manuelles pour effectuer la conversion.</p><h4 id="tentative-d'automatisation-avec-openslide" tabindex="-1"><a class="header-anchor" href="#tentative-d'automatisation-avec-openslide"></a> Tentative d'automatisation avec OpenSlide</h4><p>Le programme ci-dessous n'est pas abouti... Il semble théoriquement possible de convertir les fichiers .ndpi vers .jpg grâce à la bibliothèque Python or en sortie ce programme renvoie une erreur indiquant que la bibliothèque ne peut lire les fichiers .ndpi.</p><p>cf <a href="https://openslide.org/api/python/">Documentation OpenSlyde Python</a></p><pre class="language-python line-numbers"><code>
+
+!pip install openslide-python
+
+!apt-get install openslide-tools
+!pip install openslide-python
+
+from openslide import OpenSlide
+from PIL import Image
+
+def convert_ndpi_to_jpg(input_path, output_path):
+    # Ouvrir le fichier NDPI avec OpenSlide
+    ndpi_slide = OpenSlide(input_path)
+
+    # Extraire les dimensions de l'image
+    width, height = ndpi_slide.dimensions
+
+    # Lire l'image entière
+    image = ndpi_slide.read_region((0, 0), 0, (width, height))
+
+    # Convertir l'image PIL en mode RVB (si elle n'est pas déjà en mode RVB)
+    if image.mode != 'RGB':
+        image = image.convert('RGB')
+
+    # Enregistrer l'image au format JPG
+    image.save(output_path, 'JPEG')
+
+    # Fermer la lecture du fichier NDPI
+    ndpi_slide.close()
+
+# Chemin du fichier NDPI d'entrée
+input_ndpi_path = 'C:\\Test-TER\\DATA-NDPI\\test.ndpi'
+
+# Dossier de sortie pour les fichiers JPG
+output_jpg_folder = 'C:\\Test-TER\\DATA-JPG'
+
+# Construire le chemin de sortie pour le fichier JPG
+output_jpg_path = output_jpg_folder + '\\test.jpg'
+
+# Appeler la fonction pour convertir le fichier NDPI en JPG
+convert_ndpi_to_jpg(input_ndpi_path, output_jpg_path)
+
+print(f"Conversion terminée. Fichier JPG enregistré à : {output_jpg_path}")
+
+
+</code></pre><h3 id="3.2-visualisation-d'images" tabindex="-1"><a class="header-anchor" href="#3.2-visualisation-d'images"></a> 3.2 Visualisation d'images</h3><p>Pour commencer, regardons quelques images dont nous disposons.</p><pre class="language-python line-numbers"><code>
+
+import matplotlib.pyplot as plt
+import matplotlib.image as mpimg
+
+# Liste des chemins d'accès aux images
+image_paths = ['C:\\TER\\visu1.png', 'C:\\TER\\visu3.png', 'C:\\TER\\visu2.png', 'C:\\TER\\visu4.png']
+
+# Créer une figure avec 2x2 sous-graphiques
+plt.figure(figsize=(8, 8))
+
+# Boucle pour afficher chaque image dans un sous-graphique
+for i, image_path in enumerate(image_paths, 1):
+
+    img = mpimg.imread(image_path)
+    plt.subplot(2, 2, i)
+    plt.imshow(img)
+    plt.axis('off')
+
+# Ajuster l'espacement entre les sous-graphiques
+plt.tight_layout()
+
+plt.show()
+
+
+</code></pre><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beyaert-Alexandre/pok/temps-2/Visualisation.jpg" alt="Exemples d'images"></p><p>Ces différentes images sont à l'heure actuelle peu exploitables. On y remarque beaucoup de bruit, des tâches qui pourraient tromper l'algorithme quant à la détection du carcinome...</p><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beyaert-Alexandre/pok/temps-2/Visualisation_annotee.jpg" alt="Annotations"> En noir, la zone où se trouve le carcinome. En rouge, du bruit pour l'algorithme</p><p>Il va donc être nécessaire d'effectuer un pré-traitement de ces données pour réaliser la segmentation &quot;zone cancéreuse vs zone non cancéreuse&quot;.</p><h3 id="3.3-premier-pr%C3%A9-traitement---segmentation" tabindex="-1"><a class="header-anchor" href="#3.3-premier-pr%C3%A9-traitement---segmentation"></a> 3.3 Premier pré-traitement - Segmentation</h3><pre class="language-python line-numbers"><code>
+
+import cv2
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Chemin de l'image
+image_path = "D:/Master_SID/projet_TER/data/tumeur/9.jpg"
+
+# Lecture de l'image et conversion BGR2RGB
+image = cv2.imread(image_path)
+image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+
+# Aplatissement des pixels, préparation à la segmentation
+pixels = image.reshape((-1, 3))
+pixels = np.float32(pixels)
+
+# Définition des critères pour l'algorithme k-means
+criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 100, 0.2)
+
+# Choix du nombre de clusters
+k = 3
+
+# Modèle
+_, labels, centers = cv2.kmeans(pixels, k, None, criteria, 10, cv2.KMEANS_RANDOM_CENTERS)
+
+centers = np.uint8(centers)
+
+# Reconstruction de l'image segmentée
+segmented_image = centers[labels.flatten()]
+segmented_image = segmented_image.reshape(image.shape)
+
+
+# Chemin de sortie
+cv2.imwrite("D:/Master_SID/projet_TER/data/pretraitement_tumeur/9.jpg", cv2.cvtColor(segmented_image, cv2.COLOR_RGB2BGR))
+
+# Affichage
+
+plt.subplot(121), plt.imshow(image), plt.title('Original Image')
+plt.subplot(122), plt.imshow(segmented_image), plt.title('Segmented Image')
+plt.show()
+
+
+</code></pre><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beyaert-Alexandre/pok/temps-2/pretraitement.jpg" alt="Image d'origine vs Image segmentée"></p><h2 id="4.-pr%C3%A9-traitement-des-donn%C3%A9es" tabindex="-1"><a class="header-anchor" href="#4.-pr%C3%A9-traitement-des-donn%C3%A9es"></a> 4. Pré-traitement des données</h2><p>Le pré-traitement précédent est une première avancée pour par la suite optimiser la classification. Cependant, il <strong>reste encore un peu de bruit</strong> risquant d'abaisser les performances de l'algorithme. Il est alors nécessaire d'accoître la performance du pré-traitement.</p><h3 id="4.1-d%C3%A9limitation-du-contour" tabindex="-1"><a class="header-anchor" href="#4.1-d%C3%A9limitation-du-contour"></a> 4.1 Délimitation du contour</h3><p>Une première chose à faire consiste à <strong>délimiter le contour</strong> des membranes, cela permettra à l'algorithme de se focaliser uniquement sur la membrane et non pas sur les corps étrangers présents sur la lame.</p><p>Voici une membrane :</p><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beyaert-Alexandre/pok/temps-2/celulle.png" alt="Celulle avant extraction du contour">{width=50%}</p><p>Et le 1er code testé pour extraire le contour :</p><pre class="language-python line-numbers"><code>
+
+def extraire_contour(image_entree, image_sortie, seuil_canny, taille_dilatation, superficie_min):
+    # Charger l'image en niveaux de gris
+    image = cv2.imread(image_entree, cv2.IMREAD_GRAYSCALE)
+
+    # Appliquer un flou pour réduire le bruit
+    image_floue = cv2.GaussianBlur(image, (5, 5), 0)
+
+    # Utiliser le détecteur de contours Canny avec le seuil spécifié
+    contours = cv2.Canny(image_floue, seuil_canny, 2 * seuil_canny)
+
+    # Appliquer la dilatation pour lier les contours discontinus
+    element_structurel = cv2.getStructuringElement(cv2.MORPH_RECT, (taille_dilatation, taille_dilatation))
+    contours = cv2.dilate(contours, element_structurel)
+
+    contours, _ = cv2.findContours(contours, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+
+    contours = [contour for contour in contours if len(contour) > superficie_min]
+
+    contours_image = np.zeros_like(image)
+
+    cv2.drawContours(contours_image, contours, -1, (255), 2)
+
+    cv2.imwrite(image_sortie, contours_image)
+
+    return contours
+
+
+</code></pre><p>Ce 1er code hélas n'est pas suffisament robuste. Le bruit perturbe le découpage et toutes les formes et contour à l'intérieur de la membrane sont découpés.</p><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beyaert-Alexandre/pok/temps-2/celulle_contour_v1.png" alt="Celulle après extraction du contour">{width=50%}</p><p>Pour y remédier, j'ai donc décidé d'apporter de la <strong>dilatation :</strong> concrètement, la dilatation consiste à élargir les régions d'une image qui contiennent des pixels blancs. Elle va permettre ainsi de connecter les régions blanches qui sont proches les unes des autres et ainsi combler les lacunes.</p><pre class="language-python line-numbers"><code>
+
+def decouper_image(image_entree, contours, dossier_sortie,fichier):
+    # Charger l'image originale
+    image_originale = cv2.imread(image_entree)
+
+    # Boucler sur les contours
+    for i, contour in enumerate(contours):
+        masque = np.zeros_like(image_originale)
+
+        # Dessiner le contour sur le masque
+        cv2.drawContours(masque, [contour], 0, (255, 255, 255), -1)
+
+        petite_image = cv2.bitwise_and(image_originale, masque)
+
+        # Trouver la boîte englobante du contour
+        x, y, w, h = cv2.boundingRect(contour)
+
+        petite_image = image_originale[y:y+h, x:x+w]
+
+        cv2.imwrite(os.path.join(dossier_sortie, f"{fichier}image_{i}.jpg"), petite_image)
+
+
+</code></pre><pre class="language-python line-numbers"><code>
+
+def pre_traitement_1_contour_dilatation(dossier_E,dossier_S,dossier_C):
+
+    seuil_canny = 100
+    taille_delatation=80
+    superficier_mini=300
+    seuil_contour=20
+
+    fichiers = os.listdir(dossier_E)
+
+    for fichier in fichiers:
+        if fichier.lower().endswith(('.png', '.jpg', '.jpeg', '.bmp', '.gif')):
+
+            chemin_entree = os.path.join(dossier_E, fichier)
+            chemin_contour = os.path.join(dossier_C, fichier)
+
+            #### premier fonction
+            contours = extraire_contour(chemin_entree, chemin_contour, seuil_canny,taille_delatation,superficier_mini)
+            #### deuxieme fonction
+            decouper_image(chemin_entree, contours, dossier_S,fichier)
+
+pre_traitement_1_contour_dilatation('D:/Master_SID/projet_TER/data/tumeur','D:/Master_SID/projet_TER/data/pretraitement_1','D:/Master_SID/projet_TER/data/contour')
+
+
+</code></pre><p>Le résultat est tout de suite plus satisfaisant, la forme globale de la membrane est respectée et plus aucun contour n'apparaît à l'intérieur.</p><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beyaert-Alexandre/pok/temps-2/celulle_contour_v2.png" alt="Extraction du contour après dilatation">{width=50%}</p><p>Seul un problème persiste, lorsque plusieurs membranes sont présents sur une même lame, le programme risque de fusionner certaines membranes. Dans un premier temps, je décide de ne pas m'attarder sur ce problème et débuterai la classification avec des lames ne présentant qu'une seule membrane.</p><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beyaert-Alexandre/pok/temps-2/plusieurs_celulles.png" alt="Plusieurs membranes sur une même lame">{width=50%}</p><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beyaert-Alexandre/pok/temps-2/plusieurs_celulles_contour.png" alt="Plusieurs membranes sur une même lame">{width=50%}</p><h3 id="4.2-am%C3%A9lioration-de-la-segmentation" tabindex="-1"><a class="header-anchor" href="#4.2-am%C3%A9lioration-de-la-segmentation"></a> 4.2 Amélioration de la segmentation</h3><p>Les contours délimités, je décide de revoir l'opération de segmentation des images avec l'algorithme de k-means.</p><pre class="language-python line-numbers"><code>
+
+def pre_traitement_2_segmentation(dossier_E,dossier_S):
+
+
+    fichiers = os.listdir(dossier_E)
+
+    for fichier in fichiers:
+        if fichier.lower().endswith(('.png', '.jpg', '.jpeg', '.bmp', '.gif')):
+
+            chemin_entree = os.path.join(dossier_E, fichier)
+            chemin_sortie = os.path.join(dossier_S, fichier)
+
+            image_path = chemin_entree
+
+            ######################################################
+            image = cv2.imread(image_path)
+            image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
+            pixels = image.reshape((-1, 3))
+            pixels = np.float32(pixels)
+            criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 100, 0.2)
+
+            ############ le NB de clusters
+            ######## changer le pour tester
+
+            k = 3
+
+            ############################
+            ######## modele ############
+            _, labels, centers = cv2.kmeans(pixels, k, None, criteria, 10, cv2.KMEANS_RANDOM_CENTERS)
+            centers = np.uint8(centers)
+            segmented_image = centers[labels.flatten()]
+            segmented_image = segmented_image.reshape(image.shape)
+            cv2.imwrite(chemin_sortie, cv2.cvtColor(segmented_image, cv2.COLOR_RGB2BGR))
+
+pre_traitement_2_segmentation('D:/Master_SID/projet_TER/data/pretraitement_1','D:/Master_SID/projet_TER/data/pretraitement_2')
+
+
+</code></pre><p>Avant segmentation <img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beyaert-Alexandre/pok/temps-2/avant_pre-trait.png" alt="Avant pré-traitement">{width=50%}</p><p>Après segmentation <img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beyaert-Alexandre/pok/temps-2/apres_pre-trait.png" alt="Après pré-traitement">{width=50%}</p><p>Le résultat semble tout à fait satisfaisant, je décide donc dans un dernier temps d'effectuer de l'annotation avec le logiciel QuPath pour aider le futur algorithme de classification à détecter la zone de la tumeur.</p><h3 id="4.3-annotation" tabindex="-1"><a class="header-anchor" href="#4.3-annotation"></a> 4.3 Annotation</h3><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beyaert-Alexandre/pok/temps-2/annotation.png" alt="Annotation">{width=50%}</p><p><img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Beyaert-Alexandre/pok/temps-2/logiciel.png" alt="Logiciel QuPath">{width=50%}</p><h2 id="5.-conclusion" tabindex="-1"><a class="header-anchor" href="#5.-conclusion"></a> 5. Conclusion</h2><p><strong>Timing Sprint 1</strong></p><table><thead><tr><th>Timing</th><th>Introduction du sujet (déplacement à la Timone)</th><th>Prise en main des données</th><th>Conversion auto avec NDPview2</th><th>Pré-traitement</th></tr></thead><tbody><tr><td>Sprint 1 - Temps prévu (en heures)</td><td>2</td><td>2</td><td>3</td><td>3</td></tr><tr><td>Sprint 1 - Temps dédié (en heures)</td><td>2</td><td>3</td><td>4</td><td>2</td></tr></tbody></table><p><strong>Timing Sprint 2</strong></p><table><thead><tr><th>Timing</th><th>Extraction contour</th><th>Segmentation</th><th>Annotation</th><th>Choix algorithme</th></tr></thead><tbody><tr><td>Sprint 2 - Temps prévu (en heures)</td><td>4</td><td>3</td><td>1</td><td>2</td></tr><tr><td>Sprint 2 - Temps dédié (en heures)</td><td>5</td><td>2</td><td>1</td><td>2</td></tr></tbody></table></article></main><footer class="min-h-[50px] border-t-2 mt-4 border-gray-200 dark:border-neutral-700"><div class="max-w-[1000px] mx-auto px-4"><div class="min-h-[50px] flex justify-center items-center"><p class="text-center">©2025 <b><span style="font-family:Consolas,sans-serif">Do-<span style="color:#4a86e8">It</span></span></b> - Développement, Management et Gestion de projets en IT</p></div></div></footer><script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">window.MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]]},svg:{fontCache:"global"}},document.addEventListener("DOMContentLoaded",(()=>{MathJax.typeset()}))</script><script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">Prism.plugins.NormalizeWhitespace.setDefaults({"remove-trailing":!0,"remove-indent":!0,"left-trim":!0,"right-trim":!0})</script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script><script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script></body></html>

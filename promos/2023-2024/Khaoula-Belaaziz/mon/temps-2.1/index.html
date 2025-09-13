@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="robots" content="index, follow">
+
+        <link rel="canonical" href="https://do-it.aioli.ec-m.fr/promos/2023-2024/Khaoula-Belaaziz/mon/temps-2.1/">
+
+        
+        
+
+        <meta name="description" content="Cette page est conçue pour les débutants qui aspirez à maîtriser React Native. Ici, nous allons découvrir ensemble les bases de React Native, accompagnées d&#39;exemples de code simples et de ressources utiles pour démarrer. J&#39;ai choisi d&#39;apprendre React Native pour développer la partie frontend de notre projet 3A &quot;Killer&quot;.">
+        <meta property="og:description" content="Cette page est conçue pour les débutants qui aspirez à maîtriser React Native. Ici, nous allons découvrir ensemble les bases de React Native, accompagnées d&#39;exemples de code simples et de ressources utiles pour démarrer. J&#39;ai choisi d&#39;apprendre React Native pour développer la partie frontend de notre projet 3A &quot;Killer&quot;.">
+        <meta name="twitter:description" content="Cette page est conçue pour les débutants qui aspirez à maîtriser React Native. Ici, nous allons découvrir ensemble les bases de React Native, accompagnées d&#39;exemples de code simples et de ressources utiles pour démarrer. J&#39;ai choisi d&#39;apprendre React Native pour développer la partie frontend de notre projet 3A &quot;Killer&quot;.">
+
+        
+            <meta name="author" content="Khaoula BELAAZIZ">
+        
+        <meta name="keywords" content="do-it, centrale, centrale méditerranée, ecm, MON">
+
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png">
+        <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png">
+
+        <link href="/assets/stylesheets/main.css" rel="stylesheet">
+
+        <meta property="og:title" content="Apprendre et Maîtriser React Native : Guide pour Débutants">
+
+        <meta property="og:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta property="og:url" content="https://do-it.aioli.ec-m.fr/promos/2023-2024/Khaoula-Belaaziz/mon/temps-2.1/">
+        <meta property="og:type" content="website">
+
+        <meta name="twitter:card" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:title" content="Apprendre et Maîtriser React Native : Guide pour Débutants">
+        <meta name="twitter:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:url" content="https://do-it.aioli.ec-m.fr/promos/2023-2024/Khaoula-Belaaziz/mon/temps-2.1/">
+
+        <title>Apprendre et Maîtriser React Native : Guide pour Débutants</title>
+
+        <!-- Prismjs imports
+                - Prism line numbers
+                - Prism toolbar
+        -->
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet">
+        <link id="prism-theme" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+        <!-- Mermaid import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js "></script>
+
+        <script defer="">
+        // Check if a theme is stored in localStorage. If so, use it, otherwise fallback to the system preference.
+        const storedTheme = localStorage.getItem('theme');
+        if (storedTheme) {
+            document.documentElement.classList.toggle("dark", storedTheme === "dark");
+        } else {
+            // Use system color scheme if there is no stored theme preference.
+            document.documentElement.classList.toggle("dark", window.matchMedia("(prefers-color-scheme: dark)").matches);
+        }
+
+        function loadPrismTheme(isDarkMode) {
+            const newTheme = isDarkMode ? 'prism-okaidia.min.css' : 'prism-solarizedlight.min.css';
+            const newLink = document.createElement('link');
+            newLink.rel = 'stylesheet';
+            newLink.id = 'prism-theme';
+            newLink.href = `https://cdn.jsdelivr.net/npm/prismjs/themes/${newTheme}`;
+
+            newLink.onload = () => {
+                // Reapply highlighting after the new theme loads
+                Prism.highlightAll();
+            };
+
+            const existingLink = document.getElementById('prism-theme');
+            if (existingLink) {
+                document.head.replaceChild(newLink, existingLink);
+            } else {
+                document.head.appendChild(newLink);
+            }
+        }
+
+        function setMermaidTheme(isDarkMode) {
+            const theme = isDarkMode ? 'dark' : 'forest';
+            mermaid.initialize({
+                securityLevel: 'loose',
+                theme,
+                startOnLoad: true,
+            });
+        }
+
+        // Toggle dark and light mode and update localStorage accordingly.
+        function toggleDarkMode() {
+            const dark = document.documentElement.classList.contains("dark");
+            const newTheme = dark ? "light" : "dark";
+            localStorage.setItem('theme', newTheme);
+            document.documentElement.classList.toggle("dark", !dark);
+            loadPrismTheme(!dark);
+            setMermaidTheme(!dark);
+        }
+
+        // On initial load, ensure that Prism and Mermaid are initialized using the current theme.
+        const isDark = document.documentElement.classList.contains("dark");
+        loadPrismTheme(isDark);
+        setMermaidTheme(isDark);
+        </script>
+
+    </head>
+
+    <body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000" class="bg-neutral-50 text-neutral-950 dark:bg-neutral-900 dark:text-neutral-50">
+        <header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white dark:bg-neutral-900 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-between items-center">
+                    <a class="mx-2" href="/">Home</a>
+                    <button class="hidden sm:block text-neutral-950 dark:text-neutral-50 hover:bg-neutral-700 hover:text-neutral-50 hover:dark:bg-neutral-300 hover:dark:text-neutral-950 transition-colors p-2 rounded-full duration-800 ease-in-out" onclick="toggleDarkMode()">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 dark:hidden stroke-current">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <path d="M12 2V4" stroke-linecap="round"></path>
+                            <path d="M12 20V22" stroke-linecap="round"></path>
+                            <path d="M4 12L2 12" stroke-linecap="round"></path>
+                            <path d="M22 12L20 12" stroke-linecap="round"></path>
+                            <path d="M19.7778 4.22266L17.5558 6.25424" stroke-linecap="round"></path>
+                            <path d="M4.22217 4.22266L6.44418 6.25424" stroke-linecap="round"></path>
+                            <path d="M6.44434 17.5557L4.22211 19.7779" stroke-linecap="round"></path>
+                            <path d="M19.7778 19.7773L17.5558 17.5551" stroke-linecap="round"></path>
+                        </svg>
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 stroke-current hidden dark:block">
+                            <path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </button>
+                    <div class="flex items-center gap-4 sm:gap-6 ">
+                        <a class="" href="/cs">CS</a>
+                        <a class="" href="/pok">POK</a>
+                        <a class="" href="/mon">MON</a>
+                        <a class="" href="/projets">Projets</a>
+                        <a class="hidden sm:block" href="/promos">Promos</a>
+                        <a href="/search">
+                            <svg class="h-5 aspect-square stroke-neutral-950 dark:stroke-neutral-300 fill-none stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+                            </svg>
+                        </a>
+                        <a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank">
+                            <svg class="h-5 aspect-square dark:stroke-neutral-300 dark:fill-neutral-300" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body="">
+            
+<article class="relative">
+<h1 class="mb-1">Apprendre et Maîtriser React Native : Guide pour Débutants</h1>
+<div class="mb-4">
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Tag : </div>
+            <ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags">
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">MON</li>
+                
+
+            </ul>
+
+            
+            <div class="hidden" data-pagefind-meta="Type" aria-hidden="true">
+                
+                    
+                        <span data-pagefind-filter="Type">MON</span>
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Auteur : </div>
+            <ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs">
+                
+                    <li class="bg-blue-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Auteurs">Khaoula BELAAZIZ</li>
+                
+            </ul>
+        </div>
+    
+
+    
+        <div class="absolute top-0 right-0">
+            <span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2 text-neutral-950" data-pagefind-filter="Année">
+                2023-2024
+            </span>
+        </div>
+    
+</div>
+
+<p class="mb-4 text-lg">Cette page est conçue pour les débutants qui aspirez à maîtriser React Native. Ici, nous allons découvrir ensemble les bases de React Native, accompagnées d'exemples de code simples et de ressources utiles pour démarrer. J'ai choisi d'apprendre React Native pour développer la partie frontend de notre projet 3A "Killer".</p>
+
+
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100 dark:border-purple-800 dark:bg-purple-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-purple-500 dark:stroke-purple-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/promos/2023-2024/Khaoula-Belaaziz/">BELAAZIZ Khaoula</a><span class="px-1">/</span><a href="/promos/2023-2024/Khaoula-Belaaziz/mon/">MON de BELAAZIZ Khaoula</a><span class="px-1">/</span><a href="/promos/2023-2024/Khaoula-Belaaziz/mon/temps-2.1/">Apprendre et Maîtriser React Native : Guide pour Débutants</a>
+
+</div>
+</div>
+
+
+
+
+<p>Avant de commencer React Native, vaut mieux avoir des bases sur React. Je vous propose de jeter un coup d'oeil sur <a href="https://do-it.aioli.ec-m.fr/promos/2023-2024/Rioual-Lucas/mon/temps-2.1/">React.js et Tailwind CSS</a> fait par <a href="https://do-it.aioli.ec-m.fr/promos/2023-2024/Rioual-Lucas/"> Lucas Rioual</a></p>
+<h2 id="qu'est-ce-que-react-native-%3F" tabindex="-1"><a class="header-anchor" href="#qu'est-ce-que-react-native-%3F"></a> Qu'est-ce que React Native ?</h2>
+<p>React Native est un framework de développement d'applications mobiles créé par Facebook. Il permet aux développeurs de construire des applications mobiles en utilisant JavaScript et React, tout en offrant une expérience proche de celle d'une application native. Les principaux avantages de React Native incluent la capacité de réutiliser le code entre les plateformes iOS et Android, une grande communauté de développeurs, et un développement plus rapide.</p>
+<h2 id="les-bases-de-react-native" tabindex="-1"><a class="header-anchor" href="#les-bases-de-react-native"></a> Les Bases de React Native</h2>
+<p>Pour commencer avec React Native, on aura besoin d'installer Node.js, Watchman, et l'environnement de développement React Native CLI. Une fois installé, on peut créer un premier projet en exécutant <em>npx react-native init MonApplication</em>.
+Un projet React Native typique a une structure de dossiers contenant des fichiers JavaScript pour les composants, ainsi que des dossiers pour les ressources et les tests.</p>
+<h2 id="exemples-de-code-de-base" tabindex="-1"><a class="header-anchor" href="#exemples-de-code-de-base"></a> Exemples de Code de Base</h2>
+<p>React Native utilise des composants pour construire l'interface utilisateur. Par exemple, un composant simple peut être un bouton ou une vue texte. La navigation entre les écrans se fait à l'aide de bibliothèques comme React Navigation. Les états et les props sont utilisés pour gérer les données et rendre les composants réactifs. Voici un exemple de composant simple :</p>
+<pre class="language-js line-numbers"><code>
+
+import React from 'react';
+import { View, Text, Button } from 'react-native';
+
+const MonComposant = () => {
+  return (
+    <View>
+      <Text>Bienvenue dans React Native!</Text>
+      <Button title="Cliquez ici" onPress="{()" ==""> alert('Bouton cliqué!')} />
+    </Button></View>
+  );
+};
+
+export default MonComposant;
+
+
+</code></pre><h2 id="construire-une-application-simple" tabindex="-1"><a class="header-anchor" href="#construire-une-application-simple"></a> Construire une Application Simple</h2>
+<p>On peut maintenant voir comment construire une application simple. Je vais créer une application de liste de tâches. Le but est de se familiariser avec la création de composants, l'utilisation de l'état, et la manipulation des données.</p>
+<h3 id="cr%C3%A9ation-du-projet" tabindex="-1"><a class="header-anchor" href="#cr%C3%A9ation-du-projet"></a> Création du Projet</h3>
+<p>Ouvrez votre terminal et exécutez la commande suivante pour créer un nouveau projet React Native :</p>
+<pre class="language-html line-numbers"><code>
+
+npx react-native init MaListeDeTaches
+
+
+
+</code></pre><h3 id="structure-de-base" tabindex="-1"><a class="header-anchor" href="#structure-de-base"></a> Structure de Base</h3>
+<p>En naviguant dans le dossier du projet et en l'ouvrant dans l'éditeur de code,on va trouver plusieurs dossiers et fichiers.On va principalement travailler dans le fichier <strong>App.js</strong></p>
+<h3 id="d%C3%A9veloppement-de-l'interface-utilisateur" tabindex="-1"><a class="header-anchor" href="#d%C3%A9veloppement-de-l'interface-utilisateur"></a> Développement de l'Interface Utilisateur</h3>
+<p>Dans App.js, on commence par importer les composants nécessaires de React Native :</p>
+<pre class="language-js line-numbers"><code>
+
+// Importer les composants nécessaires de React et React Native
+import React, { useState } from 'react';
+import { View, Text, TextInput, Button, FlatList } from 'react-native';
+
+
+
+</code></pre><p>Ensuite, on crée un composant fonctionnel <strong>App</strong> :</p>
+<pre class="language-js line-numbers"><code>
+
+// Créer le composant principal App
+const App = () => {
+  // Utiliser le Hook d'état pour gérer les tâches et la liste des tâches
+  const [tache, setTache] = useState(''); // Pour la tâche actuellement saisie
+  const [listeDeTaches, setListeDeTaches] = useState([]); // Pour toutes les tâches ajoutées
+
+  // Fonction pour ajouter une nouvelle tâche à la liste
+  const ajouterTache = () => {
+    setListeDeTaches([...listeDeTaches, tache]); // Ajouter la tâche actuelle à la liste
+    setTache(''); // Réinitialiser le champ de saisie de la tâche
+  };
+
+  // Rendu de l'interface utilisateur de l'application
+  return (
+    <View 20="" style="{{" padding:="" }}="">
+      <Text>Liste de Tâches</Text>
+      <TextInput 10="" placeholder="Ajoutez une tâche..." Placeholder="" pour="" le="" champ="" de="" saisie="" value="{tache}" Valeur="" actuelle="" la="" tâche="" onChangeText="{setTache}" Mise="" à="" jour="" valeur="" chaque="" modification="" du="" texte="" style="{{" borderWidth:="" 1,="" borderColor:="" 'black',="" marginBottom:="" }}="" Style="">
+      <Button title="Ajouter" onPress="{ajouterTache}"> {/* Bouton pour ajouter une tâche */}
+      <FlatList data="{listeDeTaches}" Données="" pour="" la="" liste="" des="" tâches="" renderItem="{({" item="" })=""> <Text>{item}</Text>} // Comment afficher chaque tâche
+        keyExtractor={(item, index) => index.toString()} // Clé unique pour chaque élément de la liste
+      />
+    </FlatList></Button></TextInput></View>
+  );
+};
+
+export default App; // Exporter le composant pour utilisation dans l'application
+
+
+
+</code></pre><p>Dans ce code, on a:</p>
+<p>Un <em>TextInput</em> pour saisir les tâches.
+Un <em>bouton Ajouter</em> pour ajouter des tâches à la liste.
+Un <em>composant FlatList</em> pour afficher les tâches.</p>
+<h3 id="ex%C3%A9cution-de-l'application" tabindex="-1"><a class="header-anchor" href="#ex%C3%A9cution-de-l'application"></a> Exécution de l'Application</h3>
+<p>Pour exécuter l'application, dans le terminal, on navigue vers le dossier de votre projet et on exécute :</p>
+<pre class="language-html line-numbers"><code>
+
+npx react-native run-android
+
+
+
+</code></pre><h2 id="exemples-d'application-%3A" tabindex="-1"><a class="header-anchor" href="#exemples-d'application-%3A"></a> Exemples d'application :</h2>
+<p>Projet 3A : <strong>KILLER</strong></p>
+<div style="display: flex; justify-content: space-around;">
+  <img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Khaoula-Belaaziz/mon/temps-2.1/page2.jpg" alt="Description Image 1" style="width: 40%; margin-right: 2%;">
+  <img src="https://raw.githubusercontent.com/do-it-ecm/promo-2023-2024/refs/heads/main//Khaoula-Belaaziz/mon/temps-2.1/page1.jpg" alt="Description Image 2" style="width: 40%;">
+</div>
+<h2 id="bibliographie" tabindex="-1"><a class="header-anchor" href="#bibliographie"></a> Bibliographie</h2>
+<ul>
+<li>React native official site <strong>Tout au long de la phase d'apprentissage</strong> : (<a href="https://reactnative.dev/docs/getting-started">https://reactnative.dev/docs/getting-started</a>)</li>
+<li>Build your first React Native app - Todo List Tutorial <strong>Temps estimé = 1h</strong>, , <strong>Niveau débutant</strong>: (<a href="https://www.youtube.com/watch?v=0kL6nhutjQ8&amp;t=54s">https://www.youtube.com/watch?v=0kL6nhutjQ8&amp;t=54s</a>)</li>
+<li>React Native Course – Android and iOS App Development <strong>Temps estimé = 5h</strong>, <strong>Niveau débutant</strong> : (<a href="https://youtu.be/obH0Po_RdWk?si=sR43Z5PRW9saUu_q">https://youtu.be/obH0Po_RdWk?si=sR43Z5PRW9saUu_q</a>)</li>
+<li>Build and Deploy a React Native App <strong>Temps estimé = 3H</strong>, <strong>Niveau Avancé</strong> : (<a href="https://youtu.be/mJ3bGvy0WAY?si=E2pUqappCHahguCX">https://youtu.be/mJ3bGvy0WAY?si=E2pUqappCHahguCX</a>)</li>
+</ul>
+
+
+
+</article>
+
+        </main>
+
+        <footer class="min-h-[50px] border-t-2 mt-4 border-gray-200 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-center items-center">
+                    <p class="text-center">
+                        ©2025 <b><span style="font-family: Consolas, sans-serif;">Do-<span style="color: #4a86e8">It</span></span></b> - Développement, Management et Gestion de projets en IT
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- MathJax import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">
+            window.MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']], // Delimiters for inline math
+                    displayMath: [['$$', '$$'], ['\\[', '\\]']] // Delimiters for block math
+                },
+                svg: {
+                    fontCache: 'global' // Use global font cache for SVG output
+                }
+            };
+            document.addEventListener('DOMContentLoaded', () => {
+                MathJax.typeset(); // Ensures MathJax processes the content after the page loads
+            });
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">
+            Prism.plugins.NormalizeWhitespace.setDefaults({
+                'remove-trailing': true,
+                'remove-indent': true,
+                'left-trim': true,
+                'right-trim': true,
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script>
+    </body>
+</html>

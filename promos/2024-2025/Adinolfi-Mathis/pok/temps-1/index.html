@@ -1,0 +1,1576 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="robots" content="index, follow">
+
+        <link rel="canonical" href="https://do-it.aioli.ec-m.fr/promos/2024-2025/Adinolfi-Mathis/pok/temps-1/">
+
+        
+        
+
+        <meta name="description" content="Mon POK a pour but de simuler le trafic routier à l&#39;aide de python afin d&#39;analyser la formation d&#39;embouteillage en ville">
+        <meta property="og:description" content="Mon POK a pour but de simuler le trafic routier à l&#39;aide de python afin d&#39;analyser la formation d&#39;embouteillage en ville">
+        <meta name="twitter:description" content="Mon POK a pour but de simuler le trafic routier à l&#39;aide de python afin d&#39;analyser la formation d&#39;embouteillage en ville">
+
+        
+            <meta name="author" content="ADINOLFI Mathis">
+        
+        <meta name="keywords" content="do-it, centrale, centrale méditerranée, ecm, POK, trafic routier, Simulation, Python">
+
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png" type="image/png">
+        <link rel="apple-touch-icon" href="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/minimal.png">
+
+        <link href="/assets/stylesheets/main.css" rel="stylesheet">
+
+        <meta property="og:title" content="Simuler le trafic routier avec python">
+
+        <meta property="og:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta property="og:url" content="https://do-it.aioli.ec-m.fr/promos/2024-2025/Adinolfi-Mathis/pok/temps-1/">
+        <meta property="og:type" content="website">
+
+        <meta name="twitter:card" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:title" content="Simuler le trafic routier avec python">
+        <meta name="twitter:image" content="https://raw.githubusercontent.com/do-it-ecm/do-it/main/src/assets/img/logo/intermediate-text.png">
+        <meta name="twitter:url" content="https://do-it.aioli.ec-m.fr/promos/2024-2025/Adinolfi-Mathis/pok/temps-1/">
+
+        <title>Simuler le trafic routier avec python</title>
+
+        <!-- Prismjs imports
+                - Prism line numbers
+                - Prism toolbar
+        -->
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.css" rel="stylesheet">
+        <link id="prism-theme" href="https://cdn.jsdelivr.net/npm/prismjs/themes/prism-solarizedlight.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.css" rel="stylesheet">
+
+        <!-- Mermaid import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js "></script>
+
+        <script defer="">
+        // Check if a theme is stored in localStorage. If so, use it, otherwise fallback to the system preference.
+        const storedTheme = localStorage.getItem('theme');
+        if (storedTheme) {
+            document.documentElement.classList.toggle("dark", storedTheme === "dark");
+        } else {
+            // Use system color scheme if there is no stored theme preference.
+            document.documentElement.classList.toggle("dark", window.matchMedia("(prefers-color-scheme: dark)").matches);
+        }
+
+        function loadPrismTheme(isDarkMode) {
+            const newTheme = isDarkMode ? 'prism-okaidia.min.css' : 'prism-solarizedlight.min.css';
+            const newLink = document.createElement('link');
+            newLink.rel = 'stylesheet';
+            newLink.id = 'prism-theme';
+            newLink.href = `https://cdn.jsdelivr.net/npm/prismjs/themes/${newTheme}`;
+
+            newLink.onload = () => {
+                // Reapply highlighting after the new theme loads
+                Prism.highlightAll();
+            };
+
+            const existingLink = document.getElementById('prism-theme');
+            if (existingLink) {
+                document.head.replaceChild(newLink, existingLink);
+            } else {
+                document.head.appendChild(newLink);
+            }
+        }
+
+        function setMermaidTheme(isDarkMode) {
+            const theme = isDarkMode ? 'dark' : 'forest';
+            mermaid.initialize({
+                securityLevel: 'loose',
+                theme,
+                startOnLoad: true,
+            });
+        }
+
+        // Toggle dark and light mode and update localStorage accordingly.
+        function toggleDarkMode() {
+            const dark = document.documentElement.classList.contains("dark");
+            const newTheme = dark ? "light" : "dark";
+            localStorage.setItem('theme', newTheme);
+            document.documentElement.classList.toggle("dark", !dark);
+            loadPrismTheme(!dark);
+            setMermaidTheme(!dark);
+        }
+
+        // On initial load, ensure that Prism and Mermaid are initialized using the current theme.
+        const isDark = document.documentElement.classList.contains("dark");
+        loadPrismTheme(isDark);
+        setMermaidTheme(isDark);
+        </script>
+
+    </head>
+
+    <body data-prismjs-copy="📋" data-prismjs-copy-error="❌" data-prismjs-copy-success="✅" data-prismjs-copy-timeout="1000" class="bg-neutral-50 text-neutral-950 dark:bg-neutral-900 dark:text-neutral-50">
+        <header class="fixed top-0 z-50 w-full border-b-2 border-gray-200 bg-white dark:bg-neutral-900 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-between items-center">
+                    <a class="mx-2" href="/">Home</a>
+                    <button class="hidden sm:block text-neutral-950 dark:text-neutral-50 hover:bg-neutral-700 hover:text-neutral-50 hover:dark:bg-neutral-300 hover:dark:text-neutral-950 transition-colors p-2 rounded-full duration-800 ease-in-out" onclick="toggleDarkMode()">
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 dark:hidden stroke-current">
+                            <circle cx="12" cy="12" r="5"></circle>
+                            <path d="M12 2V4" stroke-linecap="round"></path>
+                            <path d="M12 20V22" stroke-linecap="round"></path>
+                            <path d="M4 12L2 12" stroke-linecap="round"></path>
+                            <path d="M22 12L20 12" stroke-linecap="round"></path>
+                            <path d="M19.7778 4.22266L17.5558 6.25424" stroke-linecap="round"></path>
+                            <path d="M4.22217 4.22266L6.44418 6.25424" stroke-linecap="round"></path>
+                            <path d="M6.44434 17.5557L4.22211 19.7779" stroke-linecap="round"></path>
+                            <path d="M19.7778 19.7773L17.5558 17.5551" stroke-linecap="round"></path>
+                        </svg>
+                        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="h-5 aspect-square fill-none aspect-square stroke-2 stroke-current hidden dark:block">
+                            <path d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                    </button>
+                    <div class="flex items-center gap-4 sm:gap-6 ">
+                        <a class="" href="/cs">CS</a>
+                        <a class="" href="/pok">POK</a>
+                        <a class="" href="/mon">MON</a>
+                        <a class="" href="/projets">Projets</a>
+                        <a class="hidden sm:block" href="/promos">Promos</a>
+                        <a href="/search">
+                            <svg class="h-5 aspect-square stroke-neutral-950 dark:stroke-neutral-300 fill-none stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"></path>
+                            </svg>
+                        </a>
+                        <a class="hidden sm:block" href="https://github.com/do-it-ecm/do-it" target="_blank">
+                            <svg class="h-5 aspect-square dark:stroke-neutral-300 dark:fill-neutral-300" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>GitHub</title><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"></path></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="mt-[66px] max-w-[1000px] mx-auto px-4" data-pagefind-body="">
+            
+<article class="relative">
+<h1 class="mb-1">Simuler le trafic routier avec python</h1>
+<div class="mb-4">
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Tags : </div>
+            <ul class="flex flex-wrap overflow-auto not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Tags">
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">POK</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">trafic routier</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">Simulation</li>
+                
+                    <li class="bg-yellow-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Tags">Python</li>
+                
+
+            </ul>
+
+            
+            <div class="hidden" data-pagefind-meta="Type" aria-hidden="true">
+                
+                    
+                        <span data-pagefind-filter="Type">POK</span>
+                    
+                
+                    
+                
+                    
+                
+                    
+                
+            </div>
+        </div>
+    
+
+    
+        <div class="px-4 flex flex-wrap items-center">
+            <div class="font-bold">Auteur : </div>
+            <ul class="flex flex-wrap not-prose list-none my-1 mx-0 px-1 gap-1" data-pagefind-meta="Auteurs">
+                
+                    <li class="bg-blue-200 rounded-full px-2 text-neutral-950" data-pagefind-filter="Auteurs">ADINOLFI Mathis</li>
+                
+            </ul>
+        </div>
+    
+
+    
+        <div class="absolute top-0 right-0">
+            <span class="bg-purple-200 rounded-full px-3 py-1 mt-2 mr-2 text-neutral-950" data-pagefind-filter="Année">
+                2024-2025
+            </span>
+        </div>
+    
+</div>
+
+<p class="mb-4 text-lg">Mon POK a pour but de simuler le trafic routier à l'aide de python afin d'analyser la formation d'embouteillage en ville</p>
+
+
+
+    
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-purple-500 bg-purple-100 dark:border-purple-800 dark:bg-purple-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-purple-500 dark:stroke-purple-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 19a2 2 0 01-2-2V7a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1M5 19h14a2 2 0 002-2v-5a2 2 0 00-2-2H9a2 2 0 00-2 2v5a2 2 0 01-2 2z"></path>
+</svg>
+<div class="pl-8 mr-8">
+
+<a href="/promos/2024-2025/Adinolfi-Mathis/">ADINOLFI Mathis</a><span class="px-1">/</span><a href="/promos/2024-2025/Adinolfi-Mathis/pok/">POK</a><span class="px-1">/</span><a href="/promos/2024-2025/Adinolfi-Mathis/pok/temps-1/">Simuler le trafic routier avec python</a>
+
+</div>
+</div>
+
+
+
+
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-pink-500 bg-pink-100 dark:border-pink-800 dark:bg-pink-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-pink-500 dark:stroke-pink-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Prérequis</b></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li>Base en python</li>
+<li>Code de la route</li>
+</ul>
+</div>
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100 dark:border-emerald-800 dark:bg-emerald-950">
+<svg class="absolute w-6 h-6 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-emerald-500 dark:stroke-emerald-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Liens</b></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li><a href="https://github.com/Mathisadi/CTZ">GitHub du projet</a></li>
+</ul>
+</div>
+</div>
+<h2 id="project-management" tabindex="-1"><a class="header-anchor" href="#project-management"></a> Project Management</h2>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>✏️ TO-DO Sprint 1</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<ul>
+<li>[x] Documentation</li>
+<li>[x] Définir un cas d'étude</li>
+<li>[x] Définir quels sont les élements constitutifs d'une route</li>
+<li>[x] Définir comment on modélisera notre route</li>
+<li>[x] Traduire notre cas d'étude en code</li>
+<li>[x] Détailler le résumer pour que tout le monde comprennent la réflexion</li>
+</ul>
+</div>
+</details>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>⌛ Horodatage sprint 1</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Heures passées</th>
+<th>Indications</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mercredi 4/09</td>
+<td>1H</td>
+<td>Initialisation du projet / Définission des objectifs</td>
+</tr>
+<tr>
+<td>Samedi 7/09</td>
+<td>2H</td>
+<td>Documentation et liste des éléments d'une route</td>
+</tr>
+<tr>
+<td>Dimanche 8/09</td>
+<td>1H</td>
+<td>Modéle 1 (abandoné)</td>
+</tr>
+<tr>
+<td>Mercredi 11/09</td>
+<td>1H</td>
+<td>Modèle 2 (abandonné)</td>
+</tr>
+<tr>
+<td>Mercredi 11/09</td>
+<td>2H</td>
+<td>Modèle 3 (retenu) + theory thinking</td>
+</tr>
+<tr>
+<td>Samedi 14/09</td>
+<td>30min</td>
+<td>Création du projet</td>
+</tr>
+<tr>
+<td>Samedi 14/09</td>
+<td>1H</td>
+<td>Traduction de notre étude en code</td>
+</tr>
+<tr>
+<td>Dimanche 15/09</td>
+<td>1H30</td>
+<td>Rédaction POK</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Total</td>
+<td>10H</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Bonne gestion de mon temps mais beaucoup de tâches à faire dans le prochain sprint</p>
+</div>
+</details>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>✏️ TO-DO Sprint 2</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<ul>
+<li>[x] Définir les régles du trafic</li>
+<li>[x] GitHub</li>
+<li>[x] Coder la simulation</li>
+<li>[x] Coder les priorités</li>
+<li>[x] Coder les mouvement</li>
+<li>[x] Coder les feux rouges</li>
+<li>[x] Coder les départ</li>
+<li>[x] Coder les fin</li>
+<li>[x] Coder les directions avec les probas</li>
+<li>[x] Coder les chemins intersection pour 2 voies</li>
+<li>[x] Debuger</li>
+</ul>
+</div>
+</details>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>⌛ Horodatage sprint 2</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<table>
+<thead>
+<tr>
+<th>Date</th>
+<th>Heures passées</th>
+<th>Indications</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Mercredi 20/09</td>
+<td>1H</td>
+<td>Création d'une TO DO list</td>
+</tr>
+<tr>
+<td>Samedi 21/09</td>
+<td>2H</td>
+<td>Dévellopement update route</td>
+</tr>
+<tr>
+<td>Dimanche 22/09</td>
+<td>2H</td>
+<td>Dévellopement intentions</td>
+</tr>
+<tr>
+<td>Samedi 28/09</td>
+<td>1H</td>
+<td>Développement mouvements</td>
+</tr>
+<tr>
+<td>Dimanche 29/09</td>
+<td>1H30</td>
+<td>Debug 1</td>
+</tr>
+<tr>
+<td>Mardi 01/10</td>
+<td>1H</td>
+<td>Debug 2</td>
+</tr>
+<tr>
+<td>Samedi 05/10</td>
+<td>1H</td>
+<td>Simulation</td>
+</tr>
+<tr>
+<td>Samedi 12/10</td>
+<td>1H30</td>
+<td>Rédaction POK</td>
+</tr>
+<tr>
+<td>(Bonus) Dimanche 06/09</td>
+<td>2H</td>
+<td>Refonte projet / Bonnes pratiques</td>
+</tr>
+<tr>
+<td>(Bonus) Dimanche 06/09</td>
+<td>4H</td>
+<td>Commentaire code + GitHub</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Total</td>
+<td>11H</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>J'ai sous-estimé le temps de débogage, j'ai donc privilégié le fonctionnement au cas par cas pour ce POK. Il me revient de modifier mon code pour gérer l'ensemble des cas possibles dans le prochain POK.</p>
+</div>
+</details>
+</div>
+<h2 id="objectif-%3A-mod%C3%A9liser-et-visualiser-le-trafic-sur-un-cas-donn%C3%A9" tabindex="-1"><a class="header-anchor" href="#objectif-%3A-mod%C3%A9liser-et-visualiser-le-trafic-sur-un-cas-donn%C3%A9"></a> Objectif : Modéliser et visualiser le trafic sur un cas donné</h2>
+<div style="text-align: center;">
+    <img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Adinolfi-Mathis/pok/temps-1/Cas_etude_feux.png" width="800">
+    <br>
+    <u> Image 1 : Cas d'étude</u>
+</div>
+<br>
+<h2 id="partie-0-%3A-%F0%9F%92%A1-introduction-et-plan-d'action" tabindex="-1"><a class="header-anchor" href="#partie-0-%3A-%F0%9F%92%A1-introduction-et-plan-d'action"></a> Partie 0 : 💡 Introduction et plan d'action</h2>
+<p>Dans un monde en pleine croissance, les gestionnaires des infrastructures routières ont du mal à suivre l'évolution du nombre d'usagers, causant ainsi des embouteillages plus longs et plus fréquents.</p>
+<p>Ces bouchons sont à l'origine de nombreux problèmes pour les individus de notre société moderne : stress, pollution sonore, fatigue, etc. Mais constituent surtout une énorme perte de temps et donc d'argent ; on estime la perte à 5,9 M€ par an [1].</p>
+<p>Il est donc essentiel de maîtriser ces phénomènes afin de mieux les contrôler et de mettre en place des actions pour minimiser leur apparition.</p>
+<p>De ce constat, les mathématiciens s'essayent à la modélisation du trafic routier depuis plus de 100 ans et proposent régulièrement des relations se rapprochant le plus possible de la réalité. Cependant, la multitude de paramètres rend l'évolution du trafic presque imprévisible.</p>
+<p>Par conséquent, l'ordinateur se révèle être le seul capable de modéliser le trafic routier.</p>
+<h2 id="partie-1-%3A-%F0%9F%9A%A6-mod%C3%A9lisation-de-la-route" tabindex="-1"><a class="header-anchor" href="#partie-1-%3A-%F0%9F%9A%A6-mod%C3%A9lisation-de-la-route"></a> Partie 1 : 🚦 Modélisation de la route</h2>
+<h3 id="choix-du-mod%C3%A8le" tabindex="-1"><a class="header-anchor" href="#choix-du-mod%C3%A8le"></a> Choix du modèle</h3>
+<p>Afin d'assurer le bon fonctionnement de notre simulation, nous avons besoin d'une route ! Cela paraît évident, mais la manière dont nous modéliserons notre route déterminera la complexité de notre projet : plus le modèle sera simple, plus la simulation sera facile à mettre en place.
+<br></p>
+<p>Ma première approche (naïve) a été de prendre une route quelconque et de la reproduire dans une matrice où chaque élément serait un rectangle de largeur la route et de longueur arbitraire que l'on aurait pu choisir pour affiner le modèle. Les éléments possibles seraient : les 2 pour une voiture, les 1 pour une route, et les 0 pour les cases vides.</p>
+<div style="text-align: center;">
+    <img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Adinolfi-Mathis/pok/temps-1/Version_1.jpg" width="800">
+    <br>
+    <u> Image 2 : Première version de la modélisation de la route</u>
+</div>
+<br>
+<p>✅ Certes, cette approche permet de retranscrire au mieux notre route étudiée.</p>
+<p>❌ Mais elle rend la manipulation de notre modèle complexe. Notamment dans les virages et routes inclinées où le sens de circulation serait difficile à identifier.
+<br></p>
+<p>Ainsi, pour que cette solution fonctionne, il faudrait que toutes les routes soient droites ! Même si cela paraît surprenant, ce n'est pas en soi une mauvaise idée. En effet, notre objectif principal est de faire une simulation du trafic routier, mais a-t-on besoin pour cela de reproduire la route à l'identique ? La réponse à cette question est non, et une approche plus simple serait de transformer toutes les routes courbées et virages en lignes droites de même dimension. Cela n'influencerait pas les résultats mais simplifierait nettement la modélisation. En suivant ce raisonnement, j'ai imaginé un modèle où tous les virages seraient dépliés pour devenir des lignes droites :</p>
+<div style="text-align: center;">
+    <img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Adinolfi-Mathis/pok/temps-1/Version_2.jpg" width="800">
+    <br>
+    <u> Image 3 : Seconde version de la modélisation de la route</u>
+</div>
+<br>
+<p>✅ Cette approche apporte de nombreux avantages dans la modélisation de notre route :</p>
+<ul>
+<li>Simple à mettre en place</li>
+<li>Sens de circulation facilement devinable</li>
+<li>Manipulation simple par un programme tiers</li>
+</ul>
+<p>❌ Cependant, mettre en place cette modélisation revient à s'assurer que toutes les routes peuvent être &quot;dépliées&quot; pour devenir une ligne droite, ce qui n'est pas le cas en général.</p>
+<div style="text-align: center;">
+    <img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Adinolfi-Mathis/pok/temps-1/Contreex_route_droite.jpg" width="500">
+    <br>
+    <u> Image 4 : Contre exemple</u>
+</div>
+<br>
+<p>Pour contourner ce problème, j'ai eu l'idée de découper la route par blocs. Chaque bloc correspondrait à un élément de la route : une intersection, une route, un feu rouge, une priorité, un passage piéton, etc...</p>
+<div style="text-align: center;">
+    <img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Adinolfi-Mathis/pok/temps-1/Version_3.jpg" width="800">
+    <br>
+    <u> Image 5 : Troisième version de la modélisation de la route</u>
+</div>
+<br>
+<p>L'avantage de ce modèle est qu'il reprend tous les avantages de la méthode précédente et résout le problème des routes non orthogonalisables.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100 dark:border-red-800 dark:bg-red-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-red-500 dark:stroke-red-800 stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Limites</strong></p>
+</div><div class="pl-8 mr-8">
+<p>Ce modéle à ces limites car un bloc n'a que 4 cotés ce qui sous-entend dans notre cas qu'il n'existe pas d'intersection à plus de 4 voies ce qui n'est pas le cas.</p>
+<div style="text-align: center;">
+    <img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Adinolfi-Mathis/pok/temps-1/Intersection_5voies.jpg" width="500">
+    <br>
+    <u> Image 6 : Intersection à 5 voies [2] </u>
+</div>
+<br>
+</div>
+</div>
+<p>Ce qui est sûr, c'est que ce genre d'intersections est rare, alors nous choisirons cette approche pour modéliser notre route dans tout le reste de notre projet.</p>
+<h3 id="structure-du-mod%C3%A9le" tabindex="-1"><a class="header-anchor" href="#structure-du-mod%C3%A9le"></a> Structure du modéle</h3>
+<p>Comme décrit précédemment, notre modèle sera un assemblage de blocs que l'on représentera dans une matrice. Chaque élément de la matrice sera donc un élément de la route et devra respecter la syntaxe suivante :</p>
+<pre class="language-python line-numbers"><code>
+
+Element = ["Type" = str, sens de circulation = {0,1,2,3}, Caractéristique du type = int]
+
+
+</code></pre><p>Détail pour chaque élements :</p>
+<pre class="language-python line-numbers"><code>
+
+Route = ['Route', sens de circulation, longeur]
+Intersection = ['Intersection']
+Feux rouges = ['Feu', sens de circulation, cycles en secondes, Vert/Rouge]
+Priorité = ['Priorite']
+Passage piéton = ['Passage', sens de circulation, débit H/m]
+Début = ['Debut', sens de circulation, débit V/m]
+Fin = ['Fin']
+
+
+</code></pre><div class="quote relative drop-shadow  py-2 pr-2 rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-amber-800 bg-amber-100 dark:border-amber-800 dark:bg-amber-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-amber-800 dark:stroke-amber-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Sens de circulation : si un usager veut aller vers le 0 alors le sens de ciculation sera 0</strong></p>
+</div><div class="pl-8 mr-8">
+<div style="text-align: center;">
+    <img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Adinolfi-Mathis/pok/temps-1/Sens_circulation.jpg" width="300">
+    <br>
+    <u> Image 7 : Explication sens de circulation </u>
+</div>
+<br>
+</div>
+</div>
+<p>Cependant, ces éléments ne permettent pas de représenter ni de traiter l'évolution du trafic. C'est pourquoi il faut joindre à cette matrice une matrice 'trafic' permettant de modéliser l'évolution du trafic en temps réel.</p>
+<p>Pour chaque élément, on associera une liste qui représentera le trafic de la manière suivante :</p>
+<pre class="language-python line-numbers"><code>
+
+trafic_élément = [0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1]
+
+
+</code></pre><p>Les 0 sont des espaces vides et les 1 des emplacements occupés.</p>
+<p>La taille des listes est définie de la manière suivante :</p>
+<pre class="line-numbers"><code>
+
+Si route alors:
+    taille = longeur_route/4,36
+Sinon:
+    taille = 1
+
+
+</code></pre><div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100 dark:border-cyan-800 dark:bg-cyan-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-cyan-500 dark:stroke-cyan-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Information</b></p>
+</div><div class="pl-8 mr-8">
+<p>4,36 m = longeur moyenne des voitures [3]</p>
+</div>
+</div>
+<p>Enfin, il faut prendre en compte les intentions des utilisateurs : plutôt à gauche, à droite ou tout droit ?</p>
+<p>Pour cela, on créera une matrice 'direction' qui, pour chaque élément, indiquera la probabilité d'aller dans chaque direction {0, 1, 2, 3}, ainsi que la direction choisie.</p>
+<pre class="language-python line-numbers"><code>
+
+Direction_élément = [Proba = [0,0,0,0], Direction = 0]
+
+
+</code></pre><p>En appliquant ces régles on obtient le découpage suivant :</p>
+<div style="text-align: center;">
+    <img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Adinolfi-Mathis/pok/temps-1/Schema_cas_etude.jpg" width="800">
+    <br>
+    <u> Image 8 : Découpage de notre cas d'étude </u>
+</div>
+<br>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100 dark:border-yellow-800 dark:bg-yellow-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-yellow-500 dark:stroke-yellow-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Faire</b></p>
+</div><div class="pl-8 mr-8">
+<p><strong>Traduction de notre cas d'étude en code</strong></p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Variables</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-python line-numbers"><code>
+
+# Cas 1 : feux rouges
+
+Route_02 = ["Fin"]
+Route_03 = ["Intersection"]
+Route_04 = ["Intersection"]
+Route_05 = ['Feu', 0, 30, True]
+Route_06 = ["Route", 0]
+Route_07 = ["Depart", 0, 5]
+Route_10 = ["Depart", 2, 5]
+Route_11 = ["Route", 2]
+Route_12 = ['Feu', 2, 30, True]
+Route_13 = ["Intersection"]
+Route_14 = ["Intersection"]
+Route_15 = ["Fin"]
+Route_23 = ["Fin"]
+Route_24 = ["Feu", 3, 30, False]
+Route_34 = ["Route", 3]
+Route_44 = ["Depart", 3, 5]
+
+trafic_02 = [0]
+trafic_03 = [0]
+trafic_04 = [0]
+trafic_05 = [0]
+trafic_06 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+trafic_07 = [0]
+trafic_10 = [0]
+trafic_11 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+trafic_12 = [0]
+trafic_13 = [0]
+trafic_14 = [0]
+trafic_15 = [0]
+trafic_23 = [0]
+trafic_24 = [0]
+trafic_34 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+trafic_44 = [0]
+
+Direction_02 = []
+Direction_03 = []
+Direction_04 = []
+Direction_05 = [[0.5, 0.5, 0, 0], 0]
+Direction_06 = [[1, 0, 0, 0], 0]
+Direction_07 = [[1, 0, 0, 0], 0]
+Direction_10 = [[0, 0, 1, 0], 0]
+Direction_11 = [[0, 0, 1, 0], 0]
+Direction_12 = [[0, 0.5, 0.5, 0], 0]
+Direction_13 = []
+Direction_14 = []
+Direction_15 = []
+Direction_23 = []
+Direction_24 = [[0.5, 0, 0, 0.5], 0]
+Direction_34 = [[0, 0, 0, 1], 0]
+Direction_44 = [[0, 0, 0, 1], 0]
+
+Route_etude = [
+    [0, 0, Route_02, Route_03, Route_04, Route_05, Route_06, Route_07],
+    [Route_10, Route_11, Route_12, Route_13, Route_14, Route_15, 0, 0],
+    [0, 0, 0, Route_23, Route_24, 0, 0, 0],
+    [0, 0, 0, 0, Route_34, 0, 0, 0],
+    [0, 0, 0, 0, Route_44, 0, 0, 0],
+]
+
+trafic_etude = [
+    [0, 0, trafic_02, trafic_03, trafic_04, trafic_05, trafic_06, trafic_07],
+    [trafic_10, trafic_11, trafic_12, trafic_13, trafic_14, trafic_15, 0, 0],
+    [0, 0, 0, trafic_23, trafic_24, 0, 0, 0],
+    [0, 0, 0, 0, trafic_34, 0, 0, 0],
+    [0, 0, 0, 0, trafic_44, 0, 0, 0],
+]
+
+Direction_etude = [
+    [0, 0, Direction_02, Direction_03, Direction_04, Direction_05, Direction_06, Direction_07],
+    [Direction_10, Direction_11, Direction_12, Direction_13, Direction_14, Direction_15, 0, 0],
+    [0, 0, 0, Direction_23, Direction_24, 0, 0, 0],
+    [0, 0, 0, 0, Direction_34, 0, 0, 0],
+    [0, 0, 0, 0, Direction_44, 0, 0, 0],
+]
+
+duree = 0
+
+
+</code></pre></div>
+</details>
+</div>
+<h2 id="partie-2-%3A-%F0%9F%9A%97-mod%C3%A9lisation-du-trafic" tabindex="-1"><a class="header-anchor" href="#partie-2-%3A-%F0%9F%9A%97-mod%C3%A9lisation-du-trafic"></a> Partie 2 : 🚗 Modélisation du trafic</h2>
+<p>Avant toute chose, maintenant que nous avons une route, nous devons la faire vivre. Cela consiste à faire évoluer les différents éléments de la route au fil du temps. Notamment, il faut mettre à jour les feux rouges à la fin de leur cycle. Pour cela, on peut considérer le programme suivant :</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100 dark:border-yellow-800 dark:bg-yellow-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-yellow-500 dark:stroke-yellow-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Faire</b></p>
+</div><div class="pl-8 mr-8">
+<p><strong>MAJ feux rouges</strong></p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Update_feux_rouges</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-python line-numbers"><code>
+
+
+def update_feux_rouges(route, temps):
+    """Cette fonction permet de mettre à jour les feux rouges de notre route
+
+    Args:
+        route (2D list): Liste des élements de notre route
+        temps (int): Temps depuis début de la simulation en seconde
+
+    Returns:
+        route (2D list): Retourne la route avec les feux rouges modifiés
+    """
+    for i in range(len(route)):
+        for j in range(len(route[i])):
+            if route[i][j] != 0:
+                if route[i][j][0] == "Feu":
+                    if (temps % route[i][j][2]) == 0:
+                        route[i][j][3] = not (route[i][j][3])
+
+    return route
+
+
+</code></pre></div>
+</details>
+</div>
+<p>Une fois cela fait, il faut tenir compte du fait qu'au niveau des intersections, le choix de la direction doit respecter les probabilités définies plus haut.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100 dark:border-yellow-800 dark:bg-yellow-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-yellow-500 dark:stroke-yellow-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Faire</b></p>
+</div><div class="pl-8 mr-8">
+<p><strong>MAJ directions</strong></p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Update_direction</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-python line-numbers"><code>
+
+
+def update_direction(route, direction):
+    """Cette fonction modifie les choix de trajet des utilisateurs de manière aléatoire afin de respecter les
+    probas observées sur le terrain
+
+    Args:
+        route (2D list): Liste des élements de notre route
+        direction (2D list): Liste des préferences de direction des utilisateur pour chaque élement et la direction choisie
+
+    Returns:
+        direction (2D list): Retourne la liste des direction modifiée
+    """
+
+    for i in range(len(route)):
+        for j in range(len(route[i])):
+            if route[i][j] != 0:
+                if route[i][j][0] != "Fin" and route[i][j][0] != "Intersection":
+                    direction[i][j][1] = random.choices(
+                        [0, 1, 2, 3], weights=direction[i][j][0], k=1
+                    )[0]
+
+    return direction
+
+
+</code></pre></div>
+</details>
+</div>
+<p>Ce code met à jour les directions choisies pour les éléments de la route à chaque itération. Le choix des directions se fait de manière aléatoire parmi les directions possibles, en respectant leur poids. Enfin, il faut créer des voitures sur les blocs de départ en respectant le débit.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100 dark:border-yellow-800 dark:bg-yellow-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-yellow-500 dark:stroke-yellow-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Faire</b></p>
+</div><div class="pl-8 mr-8">
+<p><strong>Création d'un trafic flows</strong></p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Update_depart</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-python line-numbers"><code>
+
+
+def update_départ(route, trafic):
+    """Cette fonction permet de générer des voitures dans les cases départ de manière aléatoire,
+    tout en respectant le débit d'entrée
+
+    Args:
+        route (2D list): Liste des élements de notre route
+        trafic (2D list): Liste resprésentant le trafic de notre route 0 = vide / 1 = voiture
+
+    Returns:
+        trafic (2D list): Ajoute les voitures générées sur les cases départs
+    """
+
+    for i in range(len(route)):
+        for j in range(len(route[i])):
+            if route[i][j] != 0:
+                if route[i][j][0] == "Depart":
+                    if random.random() <= route[i][j][2] / 60:
+                        trafic[i][j][0] += 1
+
+    return trafic
+
+
+</code></pre></div>
+</details>
+</div>
+<p>Maintenant que notre route est vivante, nous pouvons commencer à manipuler les véhicules. Pour cela, nous devons comprendre comment les voitures interagissent entre elles. Or, notre comportement sur la route est défini par des règles simples : le code de la route et les distances de sécurité. En tenant compte de ces règles, il a été possible d'imaginer un algorithme simple pour la gestion du trafic routier :</p>
+<div style="text-align: center;">
+    <img src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Adinolfi-Mathis/pok/temps-1/Schema_cas_etude.jpg" width="800">
+    <br>
+    <u> Image 9 : Diagramme en blocs trafic routier </u>
+</div>
+<br>
+<p>Maintenant nous pouvons commencer à travailler !</p>
+<p>L'objectif est de concevoir une fonction qui prend en argument une route avec des véhicules et qui retourne cette route mise à jour avec les nouveaux emplacements des véhicules. Il faut donc mettre en mouvement les voitures ! Attention, avec notre modèle, on distingue deux types de mouvements : les mouvements à l'intérieur des blocs et les mouvements entre blocs. Ces deux types de mouvements nécessitent d'être traités de manière indépendante. C'est pourquoi j'ai bâti deux fonctions :</p>
+<br>
+<ol>
+<li>Intention : Fonction qui, pour une situation de trafic, retournera l'ensemble des mouvements possibles entre les blocs. Cette fonction permet de retranscrire le code de la route dans notre programme. Par exemple, une des conditions est que si une voiture se trouve sur une intersection et qu'à sa droite se trouve une voiture sur une route (priorité à droite), alors elle laisse passer la voiture (elle n'a pas d'intention de déplacement).</li>
+</ol>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100 dark:border-yellow-800 dark:bg-yellow-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-yellow-500 dark:stroke-yellow-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Faire</b></p>
+</div><div class="pl-8 mr-8">
+<p><strong>Gestion des intentions des utilisateurs</strong></p>
+</div>
+</div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100 dark:border-cyan-800 dark:bg-cyan-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-cyan-500 dark:stroke-cyan-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Règles :</strong></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li>Pour les blocs de route, de départ et d'intersection, il faut respecter la priorité à droite.</li>
+<li>Pour les blocs de priorité, on doit vérifier qu'il n'y a personne sur les routes traversées avant de traverser.</li>
+<li>Pour les blocs de feu, on peut avancer si le feu est vert et qu'il n'y a plus personne sur l'intersection (on ignore la priorité à droite).</li>
+</ul>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Intentions</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-python line-numbers"><code>
+
+
+def intentions(route, direction, trafic):
+    """Cette fonction permet de faire la liste de l'ensemble des mouvement entre les différents éléments de la route
+    possible, pour cela les utilisateurs doivents respecter des régles : le code de la route. Ainsi cette fonction
+    retranscrit ces règles.
+
+    Args:
+        route (2D list): Liste des élements de notre route
+        direction (2D list): Liste des préferences de direction des utilisateur pour chaque élement et la direction choisie
+        trafic (2D list): Liste resprésentant le trafic de notre route 0 = vide / 1 = voiture
+
+    Returns:
+        res (2D list): Retourne l'ensemble des changement de blocs en indiquant le point de départ et l'arrivée
+    """
+
+    res = []
+
+    for i in range(len(route)):
+        for j in range(len(route[i])):
+            if route[i][j] != 0:
+                if trafic[i][j][-1] >= 1:
+                    # * Pour la route et les départ la voiture voudra toujour suivre la direction aucune perturbation n'est à prévoir
+                    # ! Les questions de priorité se pose généralement sur les bloc intersections ou feu rouge ou priorité
+                    if route[i][j][0] == "Route" or route[i][j][0] == "Depart":
+                        dir_route = route[i][j][1]
+                        if dir_route == 0:
+                            res.append([i, j, i, j - 1])
+                        elif dir_route == 1:
+                            res.append([i, aj, i + 1, j])
+                        elif dir_route == 2:
+                            res.append([i, j, i, j + 1])
+                        else:
+                            res.append([i, j, i - 1, j])
+
+                    # ! Pour les intersections ca se complique en effet il faut faire attention au priorité à droite
+                    # * La prioirité à droite s'applique si le bloc à droite de la destination est une route occupée
+                    # * De ce fait sur une intersection on peut avancer si le bloc à droite de la destination n'est pas une route
+                    # * Ou alors c'est une route non occupée
+                    # * Dépend de la direction et c'est la où c'est plus chaud matrice des chemins
+                    if route[i][j][0] == "Intersection":
+                        if trafic[i][j][0] == 1:
+                            dir_inter = direction[i][j][0]
+                            if dir_inter == 0:
+                                if 0 <= i - 1 <= len(route) and 0 <= j - 1 <= len(
+                                    route[i]
+                                ):
+                                    if route[i - 1][j - 1] != 0:
+                                        if route[i - 1][j - 1][0] != "Route":
+                                            res.append([i, j, i, j - 1])
+                                        elif trafic[i - 1][j - 1][-1] == 0:
+                                            res.append([i, j, i, j - 1])
+                                    else:
+                                        res.append([i, j, i, j - 1])
+                                else:
+                                    res.append([i, j, i, j - 1])
+                            elif dir_inter == 1:
+                                if 0 <= i + 1 <= len(route) and 0 <= j - 1 <= len(
+                                    route[i]
+                                ):
+                                    if route[i + 1][j - 1] != 0:
+                                        if route[i + 1][j - 1][0] != "Route":
+                                            res.append([i, j, i + 1, j])
+                                        elif trafic[i + 1][j - 1][-1] == 0:
+                                            res.append([i, j, i + 1, j])
+                                    else:
+                                        res.append([i, j, i + 1, j])
+                                else:
+                                    res.append([i, j, i + 1, j])
+                            elif dir_inter == 2:
+                                if 0 <= i + 1 <= len(route) and 0 <= j + 1 <= len(
+                                    route[i]
+                                ):
+                                    if route[i + 1][j + 1] != 0:
+                                        if (
+                                            route[i + 1][j + 1][0] != "Route"
+                                            or trafic[i + 1][j + 1][-1] == 0
+                                        ):
+                                            res.append([i, j, i, j + 1])
+                                    else:
+                                        res.append([i, j, i, j + 1])
+                                else:
+                                    res.append([i, j, i, j + 1])
+                            else:
+                                if 0 <= i - 1 <= len(route) and 0 <= j + 1 <= len(
+                                    route[i]
+                                ):
+                                    if route[i - 1][j + 1] != 0:
+                                        if (
+                                            route[i - 1][j + 1][0] != "Route"
+                                            or trafic[i - 1][j + 1][-1] == 0
+                                        ):
+                                            res.append([i, j, i - 1, j])
+                                    else:
+                                        res.append([i, j, i - 1, j])
+                                else:
+                                    res.append([i, j, i - 1, j])
+
+                    # * Feux rouges : pour les feux rouges il va dans la direction si le feu est vert
+                    # * Attention execption si le feu rouge est relier à une intersection
+                    # ! Et que celle-ci est pleine (voiture sur la gauche) alors on le laisse passer = évite les blocages"""
+                    if route[i][j][0] == "Feu":
+                        if route[i][j][-1] == True:
+                            dir_feu = route[i][j][1]
+                            if dir_feu == 0:
+                                if 0 <= i + 1 <= len(route) and 0 <= j - 1 <= len(
+                                    route[i]
+                                ):
+                                    if route[i][j - 1] != 0:
+                                        if (
+                                            route[i][j - 1][0] == "Intersection"
+                                            and trafic[i + 1][j - 1][-1] == 0
+                                        ):
+                                            res.append([i, j, i, j - 1])
+                                    else:
+                                        res.append([i, j, i, j - 1])
+                                else:
+                                    res.append([i, j, i, j - 1])
+                            elif dir_feu == 1:
+                                if 0 <= i + 1 <= len(route) and 0 <= j + 1 <= len(
+                                    route[i]
+                                ):
+                                    if route[i + 1][j] != 0:
+                                        if (
+                                            route[i + 1][j][0] == "Intersection"
+                                            and trafic[i + 1][j + 1][-1] == 0
+                                        ):
+                                            res.append([i, j, i + 1, j])
+                                    else:
+                                        res.append([i, j, i + 1, j])
+                                else:
+                                    res.append([i, j, i + 1, j])
+                            elif dir_feu == 2:
+                                if 0 <= i - 1 <= len(route) and 0 <= j + 1 <= len(
+                                    route[i]
+                                ):
+                                    if route[i][j + 1] != 0:
+                                        if (
+                                            route[i][j + 1][0] == "Intersection"
+                                            and trafic[i - 1][j + 1][-1] == 0
+                                        ):
+                                            res.append([i, j, i, j + 1])
+                                    else:
+                                        res.append([i, j, i, j + 1])
+                                else:
+                                    res.append([i, j, i, j + 1])
+                            else:
+                                if 0 <= i - 1 <= len(route) and 0 <= j - 1 <= len(
+                                    route[i]
+                                ):
+                                    if route[i - 1][j] != 0:
+                                        if (
+                                            route[i - 1][j][0] == "Intersection"
+                                            and trafic[i - 1][j - 1][-1] == 0
+                                        ):
+                                            res.append([i, j, i - 1, j])
+                                    else:
+                                        res.append([i, j, i - 1, j])
+                                else:
+                                    res.append([i, j, i - 1, j])
+
+                    # * Pour les priorités suivant la direction il faut :
+                    # * Si le choix de la desico, implique de couper 1 seule route alors il faut qu'il n'y est personne sur la voie coupé
+                    # ! 0n estime qu'une voie est libre si il y a 3 emplacement vacants
+                    # * Si le choix implique de couper
+                    if route[i][j][0] == "Priorite":
+                        sens_prio = route[i][j][1]
+                        dir_prio = direction[i][j][1]
+                        """Cas 1 voie coupé """
+                        if dir_prio == (sens_prio + 1) % 4:
+                            if sens_prio == 0:
+                                if (
+                                    0 <= i + 1 <= len(route)
+                                    and 0 <= i + 2 <= len(route)
+                                    and 0 <= j - 1 <= len(route[i])
+                                ):
+                                    if (
+                                        trafic[i + 1][j - 1][-1] == 0
+                                        and trafic[i + 2][j - 1][-1] == 0
+                                        and trafic[i + 2][j - 1][-2] == 0
+                                    ):  # ! ATTENTION NE MARCHE QUE POUR NOTRE CAS A MODIFIER SI GENERALISATION
+                                        res.append([i, j, i, j - 1])
+                            elif sens_prio == 1:
+                                if (
+                                    0 <= i + 1 <= len(route)
+                                    and 0 <= j + 1 <= len(route)
+                                    and 0 <= j + 2 <= len(route[i])
+                                ):
+                                    if (
+                                        trafic[i + 1][j + 1][-1] == 0
+                                        and trafic[i + 1][j + 2][-1] == 0
+                                        and trafic[i + 1][j + 2][-2] == 0
+                                    ):  # ! ATTENTION NE MARCHE QUE POUR NOTRE CAS A MODIFIER SI GENERALISATION
+                                        res.append([i, j, i + 1, j])
+                            elif sens_prio == 2:
+                                if (
+                                    0 <= i - 1 <= len(route)
+                                    and 0 <= i - 2 <= len(route)
+                                    and 0 <= j + 1 <= len(route[i])
+                                ):
+                                    if (
+                                        trafic[i - 1][j + 1][-1] == 0
+                                        and trafic[i - 2][j + 1][-1] == 0
+                                        and trafic[i - 2][j + 1][-2] == 0
+                                    ):  # ! ATTENTION NE MARCHE QUE POUR NOTRE CAS A MODIFIER SI GENERALISATION
+                                        res.append([i, j, i, j + 1])
+                            else:
+                                if (
+                                    0 <= i - 1 <= len(route)
+                                    and 0 <= j - 1 <= len(route)
+                                    and 0 <= j - 2 <= len(route[i])
+                                ):
+                                    if (
+                                        trafic[i - 1][j - 1][-1] == 0
+                                        and trafic[i - 1][j - 2][-1] == 0
+                                        and trafic[i - 1][j - 2][-2] == 0
+                                    ):  # ! ATTENTION NE MARCHE QUE POUR NOTRE CAS A MODIFIER SI GENERALISATION
+                                        res.append([i, j, i - 1, j])
+
+    return res
+
+
+</code></pre></div>
+</details>
+</div>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-red-500 bg-red-100 dark:border-red-800 dark:bg-red-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-red-500 dark:stroke-red-800 stroke-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Problèmes :</strong></p>
+</div><div class="pl-8 mr-8">
+<ul>
+<li>Cette fonction ne fonctionne que dans le cas d'une route à une seule voie.</li>
+<li>Dans le cas d'une intersection d'une largeur d'un bloc, on ne gère pas la priorité à droite pour les routes.</li>
+<li>Nous ne gérons pas les passages piétons.</li>
+</ul>
+</div>
+</div>
+  <br>
+<ol start="2">
+<li>Mouvement : C'est une fonction qui met en mouvement l'ensemble des véhicules d'une route. Pour cela, elle utilise les informations de la fonction précédente et, pour chaque intention et chaque véhicule, elle vérifie que la destination souhaitée est disponible et qu'elle l'était une itération avant (cela permet de prendre en compte le temps de réaction de l'humain).</li>
+</ol>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100 dark:border-yellow-800 dark:bg-yellow-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-yellow-500 dark:stroke-yellow-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Faire</b></p>
+</div><div class="pl-8 mr-8">
+<p><strong>Mise en mouvement des véhicules</strong></p>
+</div>
+</div>
+<div class="quote relative  py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-cyan-500 bg-cyan-100 dark:border-cyan-800 dark:bg-cyan-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-cyan-500 dark:stroke-cyan-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><strong>Règles :</strong></p>
+</div><div class="pl-8 mr-8">
+<p>On met à jour la route, puis nous prenons la liste des intentions et vérifions si la destination est libre depuis deux tours. Enfin, nous faisons avancer les voitures qui le peuvent (places libres depuis deux tours) dans la matrice de trafic.</p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Mouvement</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-python line-numbers"><code>
+
+
+def mouvement(route, direction, trafic, temps):
+    """Cette fonction a pour but de faire avancer les voitures et de mettre à jour le trafic,
+    1 itération correspond à 1 seconde.
+
+    Args:
+        route (2D list): Liste des élements de notre route
+        direction (2D list): Liste des préferences de direction des utilisateur pour chaque élement et la direction choisie
+        trafic (2D list): Liste resprésentant le trafic de notre route 0 = vide / 1 = voiture
+        temps (int): Temps depuis début de la simulation en seconde
+
+    Returns:
+        route (2D list): Element de la route mis à jour à t = temps
+        trafic (2D list): trafic mis à jour aprés mouvement des voitures
+        direction (2D list): Mise à jour des directions dans les intersections
+    """
+
+    # Update des éléments
+    direction = update_direction(route, direction)
+    trafic = update_départ(route, trafic)
+    route = update_feux_rouges(route, temps)
+
+    # On garde en copie le trafic
+    ref_trafic = copy.deepcopy(trafic)
+
+    intention = intentions(route, direction, trafic)
+
+    for i in range(len(intention)):
+        x = intention[i][0]
+        y = intention[i][1]
+        nx = intention[i][2]
+        ny = intention[i][3]
+
+        # Cas particulier départ autres blocs
+        if route[x][y][0] == "Depart":
+            if trafic[nx][ny][0] == 0:
+                trafic[nx][ny][0] += 1
+                trafic[x][y][-1] -= 1
+
+        # Cas particulier intersection->intersection
+        elif route[nx][ny][0] == "Intersection" and route[x][y][0] == "Intersection":
+            if trafic[nx][ny][0] == 0 and ref_trafic[nx][ny][0] == 0:
+                direction[nx][ny] = direction[x][y][1::]
+                direction[x][y] = []
+                trafic[nx][ny][0] += 1
+                trafic[x][y][-1] -= 1
+
+            # Cas particulier non/intersection->intersection
+        elif route[nx][ny][0] == "Intersection" and route[x][y][0] != "Intersection":
+            if trafic[nx][ny][0] == 0 and ref_trafic[nx][ny][0] == 0:
+                direction[nx][ny] = chemin_intersection(route, direction, x, y)
+                trafic[nx][ny][0] += 1
+                trafic[x][y][-1] -= 1
+
+        # Cas particulier intersection->non-intersection
+        elif route[nx][ny][0] != "Intersection" and route[x][y][0] == "Intersection":
+            if route[nx][ny][0] == "Fin":
+                direction[x][y] = []
+                trafic[nx][ny][0] += 1
+                trafic[x][y][-1] -= 1
+            elif trafic[nx][ny][0] == 0 and ref_trafic[nx][ny][0] == 0:
+                direction[x][y] = []
+                trafic[nx][ny][0] += 1
+                trafic[x][y][-1] -= 1
+
+            # Cas général
+        else:
+            if route[nx][ny][0] == "Fin":
+                trafic[nx][ny][0] += 1
+                trafic[x][y][-1] -= 1
+            elif trafic[nx][ny][0] == 0 and ref_trafic[nx][ny][0] == 0:
+                trafic[nx][ny][0] += 1
+                trafic[x][y][-1] -= 1
+
+    for i in range(len(route)):
+        for j in range(len(route[i])):
+            if route[i][j] != 0:
+                if route[i][j][0] == "Route":
+                    for k in range(2, len(trafic[i][j]) + 1):
+                        if (
+                            trafic[i][j][-k] == 1
+                            and trafic[i][j][-k + 1] == 0
+                            and ref_trafic[i][j][-k + 1] == 0
+                        ):
+                            trafic[i][j][-k + 1] += 1
+                            trafic[i][j][-k] -= 1
+
+    return route, direction, trafic
+
+
+</code></pre></div>
+</details>
+</div>
+<h2 id="partie-3-%3A-%F0%9F%92%BB-simulation" tabindex="-1"><a class="header-anchor" href="#partie-3-%3A-%F0%9F%92%BB-simulation"></a> Partie 3 : 💻 Simulation</h2>
+<p>Cela étant fait, on obtient des résultats brut quasiment inintérprétable :</p>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Résultats</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-python line-numbers"><code>
+
+[[0, 0, ['Fin'], ['Intersection'], ['Intersection'], ['Feu', 0, 30, False], ['Route', 0], ['Depart', 0, 5]], [['Depart', 2, 5], ['Route', 2], ['Feu', 2, 30, False], ['Intersection'], ['Intersection'], ['Fin'], 0, 0], [0, 0, 0, ['Fin'], ['Feu', 3, 30, True], 0, 0, 0], [0, 0, 0, 0, ['Route', 3], 0, 0, 0], [0, 0, 0, 0, ['Depart', 3, 5], 0, 0, 0]] [[0, 0, [], [], [], [[0.5, 0.5, 0, 0], 1], [[1, 0, 0, 0], 0], [[1, 0, 0, 0], 0]], [[[0, 0, 1, 0], 2], [[0, 0, 1, 0], 2], [[0, 0.5, 0.5, 0], 1], [], [], [], 0, 0], [0, 0, 0, [], [[0.5, 0, 0.5, 0], 2], 0, 0, 0], [0, 0, 0, 0, [[0, 0, 0, 1], 3], 0, 0, 0], [0, 0, 0, 0, [[0, 0, 0, 1], 3], 0, 0, 0]] [[0, 0, [0], [0], [0], [0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0]], [[0], [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], [0], [0], [0], [0], 0, 0], [0, 0, 0, [0], [0], 0, 0, 0], [0, 0, 0, 0, [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], 0, 0, 0], [0, 0, 0, 0, [0], 0, 0, 0]]
+
+
+</code></pre></div>
+</details>
+</div>
+<p>Afin de pouvoir vérifier la cohérence de notre programme, il faut avoir une interprétation visuelle. Pour cela, nous pouvons utiliser la bibliothèque Matplotlib, qui propose un module permettant de faire des simulations. J'ai demandé de l'aide à ChatGPT pour cette tâche, ce qui n'était pas vraiment la meilleure idée, car j'ai passé plus de temps à déboguer et à corriger les erreurs qu'il avait faites.</p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-yellow-500 bg-yellow-100 dark:border-yellow-800 dark:bg-yellow-950">
+<svg class="absolute w-7 h-7 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-yellow-500 dark:stroke-yellow-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path>
+  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p><b>Faire</b></p>
+</div><div class="pl-8 mr-8">
+<p><strong>Simulation</strong></p>
+</div>
+</div>
+<div class="relative drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-indigo-500 bg-indigo-100 cursor-pointer select-none dark:border-indigo-800 dark:bg-indigo-950">
+<details class="group">
+<summary class="list-none py-0.5">
+<svg class="group-open:hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"></path>
+</svg>
+<svg class="group-open:block hidden absolute w-7 h-7 pl-1 pt-0.5 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
+</svg>
+<div class="pl-8 font-bold inline-block group-open:select-text">
+<p>Code</p>
+</div>
+<svg class="group-open:hidden inline-block pl-3 w-10 fill-none stroke-2 stroke-indigo-500 dark:stroke-indigo-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path>
+</svg>
+</summary>
+<div class="mx-8 pb-2 cursor-auto select-text">
+<pre class="language-python line-numbers"><code>
+
+
+def simulation(frame, ax, trafic_matrix, n_rows, n_cols):
+    ax.clear()  # Effacer l'axe pour le prochain frame
+
+    # Parcourir la matrice et ajouter des éléments graphiques
+    for i in range(n_rows):
+        for j in range(n_cols):
+            value = trafic_matrix[i][j]
+
+            # Si c'est une case vide (0)
+            if value == 0:
+                ax.add_patch(
+                    patches.Rectangle(
+                        (j, n_rows - 1 - i), 1, 1, fill=True, color="white"
+                    )
+                )
+
+            # Si c'est une voiture simple (1)
+            elif value == [1]:
+                ax.add_patch(
+                    patches.Rectangle(
+                        (j, n_rows - 1 - i), 1, 1, fill=True, color="black"
+                    )
+                )
+
+            # Si c'est une route (liste avec plusieurs valeurs)
+            elif isinstance(value, list) and len(value) > 1:
+                route_len = len(value)
+                sub_w = 1 / route_len  # Largeur de la sous-case
+
+                # Diviser la case en plusieurs sous-cases pour chaque élément de la route
+                for k, sub_value in enumerate(value):
+                    sub_x = j + (k * sub_w)  # Position en x de la sous-case
+                    color = "Grey" if sub_value == 1 else "white"
+                    ax.add_patch(
+                        patches.Rectangle(
+                            (sub_x, n_rows - 1 - i), sub_w, 1, fill=True, color=color
+                        )
+                    )
+
+            # Si c'est une zone de départ ou fin (nombre > 1)
+            elif isinstance(value, list) and value[0] > 1:
+                ax.add_patch(
+                    patches.Rectangle(
+                        (j, n_rows - 1 - i), 1, 1, fill=True, color="lightblue"
+                    )
+                )
+                ax.text(
+                    j + 0.5,
+                    n_rows - 1 - i + 0.5,
+                    str(value[0]),
+                    color="red",
+                    weight="bold",
+                    ha="center",
+                    va="center",
+                )
+
+    # Réglages de la grille
+    ax.set_xlim(0, n_cols)
+    ax.set_ylim(0, n_rows)
+    ax.set_xticks(np.arange(0, n_cols, 1))
+    ax.set_yticks(np.arange(0, n_rows, 1))
+    ax.set_xticklabels([])
+    ax.set_yticklabels([])
+    ax.grid(True)
+
+    ax.set_aspect("equal", adjustable="box")
+    ax.set_title("Simulation du trafic au temps : " + str(frame))
+
+
+# Fonction pour générer une animation en mettant à jour la matrice de trafic
+def update(frame, ax, route, direction, trafic):
+    # Simuler le mouvement des véhicules (fonction fictive)
+    r = Modele.mouvement(route, direction, trafic, frame)
+    direction, trafic = r[1], r[2]
+
+    # Taille de la matrice
+    n_rows = len(trafic)
+    n_cols = len(trafic[0])
+
+    # Appeler la fonction de simulation pour mettre à jour le graphique
+    simulation(frame, ax, trafic, n_rows, n_cols)
+
+
+# Initialisation de la simulation
+fig, ax = plt.subplots()
+n_rows = len(trafic_etude)
+n_cols = len(trafic_etude[0])
+
+# Créer l'animation
+ani = FuncAnimation(
+    fig,
+    update,
+    frames=duree,
+    fargs=(ax, route_etude, direction_etude, trafic_etude),
+    repeat=False,
+)
+
+# Afficher l'animation
+plt.show()
+
+
+</code></pre></div>
+</details>
+</div>
+<p>On lance le programme et on obtient le résulat final suivant :</p>
+<p><video controls="" src="https://raw.githubusercontent.com/do-it-ecm/promo-2024-2025/refs/heads/main//Adinolfi-Mathis/pok/temps-1/Simu.mp4" title="Title"></video></p>
+<div class="quote relative py-2 drop-shadow rounded rounded-tl-none rounded-bl-none border-solid border-l-8 border-emerald-500 bg-emerald-100 dark:border-emerald-800 dark:bg-emerald-950">
+<svg class="absolute w-6 h-6 pl-1 pt-0.5 pb-0.5 fill-none stroke-2 stroke-emerald-500 dark:stroke-emerald-800" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"></path>
+</svg>
+<div class="pl-8 mb-2 mr-8">
+<p>Bibliographie</p>
+</div><div class="pl-8 mr-8">
+<p><strong>[1] -</strong> <a href="https://www.leparisien.fr/societe-transport-les-embouteillages-coutent-6-milliards-d-euros-par-an-a-l-economie-17-12-2013-3417529.php">Coûts des embouteillages en France</a></p>
+<p><strong>[2] -</strong> <a href="https://blog.northgate.fr/category/dans-le-coin/region-parisienne/">Intersection à 5 voies</a></p>
+<p><strong>[3] -</strong> <a href="https://journalauto.com/constructeurs/la-taille-et-le-poids-des-voitures-ont-explose-en-vingt-ans">Longeur moyenne d'une voiture</a></p>
+<p><strong>[4] -</strong> <a href="https://www.google.com/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=&amp;ved=2ahUKEwjskb-gtJGJAxUfT6QEHWrGDDgQFnoECBkQAQ&amp;url=https%3A%2F%2Frosap.ntl.bts.gov%2Fview%2Fdot%2F35775%2Fdot_35775_DS1.pdf&amp;usg=AOvVaw2Q359lomip20POa9pRyv5C&amp;opi=89978449">trafic Flow Theory - A State-of-the-Art Report</a></p>
+</div>
+</div>
+
+
+
+</article>
+
+        </main>
+
+        <footer class="min-h-[50px] border-t-2 mt-4 border-gray-200 dark:border-neutral-700">
+            <div class="max-w-[1000px] mx-auto px-4">
+                <div class="min-h-[50px] flex justify-center items-center">
+                    <p class="text-center">
+                        ©2025 <b><span style="font-family: Consolas, sans-serif;">Do-<span style="color: #4a86e8">It</span></span></b> - Développement, Management et Gestion de projets en IT
+                    </p>
+                </div>
+            </div>
+        </footer>
+
+        <!-- MathJax import and initialization -->
+        <script src="https://cdn.jsdelivr.net/npm/mathjax/es5/tex-svg-full.js" defer="">
+            window.MathJax = {
+                tex: {
+                    inlineMath: [['$', '$'], ['\\(', '\\)']], // Delimiters for inline math
+                    displayMath: [['$$', '$$'], ['\\[', '\\]']] // Delimiters for block math
+                },
+                svg: {
+                    fontCache: 'global' // Use global font cache for SVG output
+                }
+            };
+            document.addEventListener('DOMContentLoaded', () => {
+                MathJax.typeset(); // Ensures MathJax processes the content after the page loads
+            });
+        </script>
+
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/toolbar/prism-toolbar.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/line-numbers/prism-line-numbers.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/copy-to-clipboard/prism-copy-to-clipboard.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/normalize-whitespace/prism-normalize-whitespace.min.js">
+            Prism.plugins.NormalizeWhitespace.setDefaults({
+                'remove-trailing': true,
+                'remove-indent': true,
+                'left-trim': true,
+                'right-trim': true,
+            });
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/show-language/prism-show-language.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/plugins/autoloader/prism-autoloader.min.js"></script>
+    </body>
+</html>
